@@ -74,7 +74,7 @@ references:
   name: User
   href: Documentation/Identity/Identity_User.html
 - uid: index
-  name: OCS API
+  name: OSISOFT OCS API Z1
   href: index.html
 - uid: IndexConfig
   name: IndexConfig
