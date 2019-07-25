@@ -1,0 +1,383 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Egress from the Edge System </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Egress from the Edge System ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="egress">
+<h1 id="egress-from-the-edge-system">Egress from the Edge System</h1>
+
+<h2 id="overview">Overview</h2>
+<p>The Edge System provides a mechanism, called egress, to copy/transfer data to another device or destination. The data is sent via OMF. Supported destinations are OSIsoft Cloud Services or a PI server (via the OMF receiver in PI Web API).</p>
+<p>Configuration of egress includes specifying zero or more endpoints. An egress endpoint represents a destination that data will be sent. Each egress endpoint is comprised of the properties specified in the <a href="#Parameters">Parameters</a> section and is executed independently of all other egress endpoints. More than one endpoint for the same destination is allowed. The destination for an egress endpoint is expected to accept OMF messages.</p>
+<blockquote><p><strong>Note:</strong> there are some types, and consequently containers and data, that cannot be egressed. See <a href="#egress-execution-details">Egress Execution Details</a> for more inforamtion.</p>
+</blockquote>
+<h2 id="configuration">Configuration</h2>
+<h3 id="procedure">Procedure</h3>
+<blockquote><p><strong>Note:</strong> You cannot add egress configurations manually because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit egress configuration. See <a href="#rest-urls">REST Urls</a> for additional endpoints.</p>
+</blockquote>
+<p>The following procedure is for creating new egress endpoints.</p>
+<ol>
+<li>Using any text editor, create a file that contains one or more egress endpoints in JSON form<ul>
+<li>See <a href="#Examples">Examples</a> section below for content structure</li>
+<li>See <a href="#Parameters">Parameters</a> section below for a table of all available egress parameters</li>
+</ul>
+</li>
+<li>Save the file.</li>
+<li><p>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints/</code></p>
+<ul>
+<li><p>Example using cURL:</p>
+<pre><code class="lang-bash">curl -v -d &quot;@Storage_PeriodicEgressEndspoints.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints&quot;
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<h3 id="parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Id</strong></td>
+<td>Required</td>
+<td>string</td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><strong>ExecutionPeriod</strong></td>
+<td>Required</td>
+<td>string</td>
+<td>Frequency of time between each egress action. Must be a string in the following format d.hh:mm:ss.##</td>
+</tr>
+<tr>
+<td><strong>Endpoint</strong></td>
+<td>Required</td>
+<td>string</td>
+<td>Destination that accepts OMF v1.1 messages. Supported destinations include OCS and PI.</td>
+</tr>
+<tr>
+<td><strong>ClientId</strong></td>
+<td>Required for OCS endpoint</td>
+<td>string</td>
+<td>Used for authentication with the OCS OMF endpoint.</td>
+</tr>
+<tr>
+<td><strong>ClientSecret</strong></td>
+<td>Required for OCS endpoint</td>
+<td>string</td>
+<td>Used for authentication with the OCS OMF endpoint.</td>
+</tr>
+<tr>
+<td><strong>Username</strong></td>
+<td>Required for PI endpoint</td>
+<td>string</td>
+<td>Used for Basic authentication to the PI Web API OMF endpoint.</td>
+</tr>
+<tr>
+<td><strong>Password</strong></td>
+<td>Required for PI endpoint</td>
+<td>string</td>
+<td>Used for Basic authentication to the PI Web API OMF endpoint.</td>
+</tr>
+<tr>
+<td><strong>Name</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>Friendly name</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>Friendly description</td>
+</tr>
+<tr>
+<td><strong>Enabled</strong></td>
+<td>Optional</td>
+<td>bool</td>
+<td>An indicator of whether egress is enabled when the egress endpoint is loaded. Defaults to true.</td>
+</tr>
+<tr>
+<td><strong>Backfill</strong></td>
+<td>Optional</td>
+<td>bool</td>
+<td>An indicator of whether data should be backfilled. Backfilling will occur when the egress endpoint is run for the first time after application startup. Enabling backfilling will result in all data from the earliest index to the latest stored index being egressed, after applying the egress filter. Defaults to false.</td>
+</tr>
+<tr>
+<td><strong>EgressFilter</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>A filter used to determine which streams and types are egressed. See <a href="../SDS/Searching.html">Searching</a> for more information on valid filters.</td>
+</tr>
+<tr>
+<td><strong>StreamPrefix</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>Prefix applied to any streams that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters will not be allowed: / : ? # [ ] @ ! $ &amp; &#39; ( ) \ * + , ; = %</td>
+</tr>
+<tr>
+<td><strong>TypePrefix</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>Prefix applied to any types that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters will not be allowed: / : ? # [ ] @ ! $ &amp; &#39; ( ) \ * + , ; = %</td>
+</tr>
+<tr>
+<td><strong>DebugExpiration</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>A property that enables persistence of detailed information, for each outbound HTTP request pertaining to this egress endpoint, to disk. The value of this property represents the date and time this detailed information should stop being persisted. See <a href="../Troubleshooting/Troubleshooting.html">Troubleshooting</a> for more information.</td>
+</tr>
+<tr>
+<td><strong>NamespaceId</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>Represents the namespace that will be egressed. There are two available namespaces: default; diagnostics. Default namespace is “default”.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples">Examples</h3>
+<p>Find various examples below of valid egress configurations.</p>
+<p><strong>Egress data to OCS. All streams, every 15 seconds.</strong></p>
+<pre><code class="lang-json">[{
+    &quot;Id&quot;: &quot;OCS&quot;,
+    &quot;ExecutionPeriod&quot; : &quot;00:00:15&quot;,
+    &quot;Endpoint&quot; : &quot; https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf&quot;,
+    &quot;ClientId&quot; : &quot;{clientId}&quot;,
+    &quot;ClientSecret&quot; : &quot;{clientSecret}&quot;
+}]
+</code></pre><p><strong>Egress data to OCS - streams with a specific TypeId value, every 15 seconds.</strong></p>
+<pre><code class="lang-json">[{
+    &quot;Id&quot;: &quot;OCS&quot;,
+    &quot;ExecutionPeriod&quot; : &quot;00:00:15&quot;,
+    &quot;EgressFilter&quot; : &quot;TypeId:myType&quot;,
+    &quot;Endpoint&quot; : &quot; https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf&quot;,
+    &quot;ClientId&quot; : &quot;{clientId}&quot;,
+    &quot;ClientSecret&quot; : &quot;{clientSecret}&quot;
+}]
+</code></pre><p><strong>Egress data to OCS - all streams, every 15 seconds, including backfilling which occurs on first run or restart.</strong></p>
+<pre><code class="lang-json">[{
+    &quot;Id&quot;: &quot;OCS&quot;,
+    &quot;ExecutionPeriod&quot; : &quot;00:00:15&quot;,
+    &quot;Backfill&quot; : true,
+    &quot;Endpoint&quot; : &quot; https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf&quot;,
+    &quot;ClientId&quot; : &quot;{clientId}&quot;,
+    &quot;ClientSecret&quot; : &quot;{clientSecret}&quot;
+}]
+</code></pre><p><strong>Egress diagnostic data to OCS - every 1 hour.</strong></p>
+<pre><code class="lang-json">[{
+    &quot;Id&quot;: &quot;OCS&quot;,
+    &quot;ExecutionPeriod&quot; : &quot;01:00:00&quot;,
+    &quot;Endpoint&quot; : &quot; https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf&quot;,
+    &quot;ClientId&quot; : &quot;{clientId}&quot;,
+    &quot;ClientSecret&quot; : &quot;{clientSecret}&quot;,
+    &quot;NamespaceId&quot; : &quot;diagnostics&quot;
+}]
+</code></pre><p><strong>Egress data to PI - all streams, every 15 seconds, including both type and stream prefix. All properties explicitly listed.</strong></p>
+<pre><code class="lang-json">[{
+    &quot;Id&quot;: &quot;PI&quot;,
+    &quot;Name&quot; : null,
+    &quot;Description&quot; : null,
+    &quot;ExecutionPeriod&quot; : &quot;00:00:15&quot;,
+    &quot;Enabled&quot; : true,
+    &quot;Backfill&quot; : false,
+    &quot;EgressFilter&quot; : null,
+    &quot;Endpoint&quot; : &quot;https://{webApiLocation}/piwebapi/omf/&quot;,
+    &quot;ClientId&quot; : null,
+    &quot;ClientSecret&quot; : null,
+    &quot;Username&quot; : &quot;{username}&quot;,
+    &quot;Password&quot; : &quot;{password}&quot;,
+    &quot;StreamPrefix&quot; : &quot;1ValidPrefix.&quot;,
+    &quot;TypePrefix&quot; : &quot;AlsoValid_&quot;,
+    &quot;DebugExpiration&quot; : null,
+    &quot;NamespaceId&quot; : &quot;default&quot;,
+}]
+</code></pre><p><strong>Egress data to PI - streams whose Id contains &quot;Modbus&quot; or &quot;Opc&quot;, every 1 minute.</strong></p>
+<pre><code class="lang-json">[{
+    &quot;Id&quot;: &quot;PI&quot;,
+    &quot;ExecutionPeriod&quot; : &quot;00:01:00&quot;,
+    &quot;EgressFilter&quot; : &quot;Id:*Modbus* OR Id:*Opc*&quot;,
+    &quot;Endpoint&quot; : &quot;https://{webApiLocation}/piwebapi/omf/&quot;,
+    &quot;Username&quot; : &quot;{username}&quot;,
+    &quot;Password&quot; : &quot;{password}&quot;
+}]
+</code></pre><p><strong>Egress data to PI - streams containing a field that begins with &quot;Unique&quot;, every 1 hour.</strong></p>
+<pre><code class="lang-json">[{
+    &quot;Id&quot;: &quot;PI&quot;,
+    &quot;ExecutionPeriod&quot; : &quot;01:00:00&quot;,
+    &quot;EgressFilter&quot; : &quot;Unique*&quot;,
+    &quot;Endpoint&quot; : &quot;https://{webApiLocation}/piwebapi/omf/&quot;,
+    &quot;Username&quot; : &quot;{username}&quot;,
+    &quot;Password&quot; : &quot;{password}&quot;
+}]
+</code></pre><h3 id="rest-urls">REST Urls</h3>
+<table>
+<thead>
+<tr>
+<th>Relative Url</th>
+<th>HTTP Verb</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api/v1/configuration/storage/periodicegressendpoints</td>
+<td>GET</td>
+<td>Gets all configured egress endpoints</td>
+</tr>
+<tr>
+<td>api/v1/configuration/storage/periodicegressendpoints</td>
+<td>DELETE</td>
+<td>Deletes all configured egress endpoints</td>
+</tr>
+<tr>
+<td>api/v1/configuration/storage/periodicegressendpoints</td>
+<td>POST</td>
+<td>Add an array of egress endpoints, will fail if any endpoint already exists</td>
+</tr>
+<tr>
+<td>api/v1/configuration/storage/periodicegressendpoints</td>
+<td>POST</td>
+<td>Add a single egress endpoints, will fail if endpoint already exists</td>
+</tr>
+<tr>
+<td>api/v1/configuration/storage/periodicegressendpoints</td>
+<td>PUT</td>
+<td>Replace all egress endpoints</td>
+</tr>
+<tr>
+<td>api/v1/configuration/storage/periodicegressendpoints/{id}</td>
+<td>GET</td>
+<td>Get configured endpoint with <em>id</em></td>
+</tr>
+<tr>
+<td>api/v1/configuration/storage/periodicegressendpoints/{id}</td>
+<td>DELETE</td>
+<td>Delete configured endpoint with <em>id</em></td>
+</tr>
+<tr>
+<td>api/v1/configuration/storage/periodicegressendpoints/{id}</td>
+<td>PUT</td>
+<td>Replace egress endpoint with <em>id</em>, will fail if endpoint doesn&#39;t exist</td>
+</tr>
+<tr>
+<td>api/v1/configuration/storage/periodicegressendpoints/{id}</td>
+<td>PATCH</td>
+<td>Allows partial updating of configured endpoint with <em>id</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="egress-execution-details">Egress Execution Details</h2>
+<p>After configuration for an egress endpoint is added, egress execution will periodically occur for that endpoint. Egress is handled individually per configured endpoint. On first execution types and containers will be egressed, subsequently only new or changed types/containers will be egressed. Type creation must be successful in order to perform container creation, likewise container creation must be successful in order to perform to data egress. It&#39;s important to note that type and container creation succeed or fail as a whole (e.g. if a single type fails to be created then type creation is considered to have failed). A failed creation will result in a 5 minute wait before re-attempting egress. As opposed to type/container egress, data egress is performed independently for each stream.</p>
+<blockquote><p><strong>Note:</strong> only streams with a single, timeseries-based index can be egressed; a single HTTP request is made per type and container</p>
+</blockquote>
+<p>For data collection and egress, in-memory and on-disk storage are used to track the last successfully-egressed data event, per stream. Batches of 200 events are egressed at a time (i.e. per HTTP request). Data is egressed in-order and includes events in the future. Be aware, when an event with a future timestamp is successfully egressed then only values after the associated timestamp of that event will be egressed.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-System-Docs/blob/master/Beta2/Egress/Egress.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

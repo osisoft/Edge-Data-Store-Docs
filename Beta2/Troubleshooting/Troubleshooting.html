@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Edge System Troubleshooting </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Edge System Troubleshooting ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="troubleShooting">
+<h1 id="edge-system-troubleshooting">Edge System Troubleshooting</h1>
+
+<p>If errors are encountered while using or developing against the Edge System, there are both local and remote means of diagnosing issues.</p>
+<p>The Edge System supports a diagnostics namespace that is used to store streams containing diagnostic information from the Edge System itself. As with any other stream data stored in the Edge Storage component, this can be egressed to either PI Web API or OSIsoft Cloud Services to monitor the state of a system remotely.</p>
+<p>In addition, all components in the Edge System support OMF Health messages that can be configured using the Health Endpoint configuration so that OMF Health messages are sent to remote PI Web API or OSIsoft Cloud Service endpoints to support remote monitoring of devices.</p>
+<h2 id="egress">Egress</h2>
+<h3 id="egress-logging">Egress Logging</h3>
+<p>Log messages related to egress can be found in the Storage logs. Setting the log level temporarily to Verbose will output the most information for troubleshooting.</p>
+<h3 id="egress-debugging">Egress Debugging</h3>
+<p>In order to troubleshoot problems between the Edge System and the destination, enable debugging. Setting an appropriate value for the <em>DebugExpiration</em> property in an egress configuration will enable debugging for that destination, and result in HTTP request and response content being stored to disk for review. The property represents the date and time that debugging should no longer be enabled. Setting the the value to <em>null</em> will also disable debugging.</p>
+<p>Examples of valid strings representing date and time:</p>
+<pre><code>Utc: “yyyy-mm-ddThh:mm:ssZ”
+
+Local: “mm-dd-yyyy hh:mm:ss”
+</code></pre><p>The content length of each request/response, as well as the overall number of requests/responses, can be quite large. As a result debug inforamtion is stored to disk in a separate location then the typical log messages. Debug folders/files will be created under the Edge System data folder. The debug folder/file structure is:</p>
+<pre><code>Windows: %programdata%\OSIsoft\EdgeSystem\Storage\egressdump\{tenantId}\{namespaceId}\{egressId}\{omfType}\{Ticks}-{Guid}-{Req/Res}.txt
+
+Linux: /usr/share/OSIsoft/EdgeSystem/Storage/egressdump/{tenantId}/{namespaceId}/{egressId}/{omfType}/{Ticks}-{Guid}-{Req/Res}.txt
+</code></pre><p>where <em>omfType</em> represents Type/Container/Data; <em>Ticks</em> represents the tick count for the Utc DateTime when it was decided that the message would be written to disk; <em>Guid</em> represents a unique Guid for each request/response pair; <em>Req/Res</em> whether it was the HTTP request or response.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-System-Docs/blob/master/Beta2/Troubleshooting/Troubleshooting.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

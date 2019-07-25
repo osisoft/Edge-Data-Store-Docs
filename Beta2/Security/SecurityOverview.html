@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Edge System Security Overview </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Edge System Security Overview ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="security">
+<h1 id="edge-system-security-overview">Edge System Security Overview</h1>
+
+<h2 id="connectivity">Connectivity</h2>
+<h3 id="rest-apis">REST APIs</h3>
+<p>The Edge System supports REST APIs for configuration, data reading (via SDS), and data writing (via OMF and SDS). </p>
+<p>The Edge System is built to provide only localhost access to REST APIs - any code that reads or writes to the REST APIs must reside on the computer or device that the Edge System is running on. </p>
+<p>REST access is via HTTP; the default port is 5590. The Port number can be changed at install time or by configuration after installation. URLs must be of the form &quot;http://localhost:{port}/&quot; or &quot;http://127.0.0.1:{port}/&quot; - do not use the host&#39;s name or IP Address in the URL.</p>
+<p>Note for Docker users: You must use the &quot;host&quot; networking mode for the container. See the section pertaining to <a class="xref" href="../Docker/EdgeDocker.html">Docker containers</a> for an example of running a container using this mode.</p>
+<h3 id="data-egress">Data egress</h3>
+<p>Writing data to OSIsoft Cloud Services or OSIsoft PI Web API is not limited to the local machine and data can be written to either of these destinations using HTTPS.</p>
+<h3 id="adapters">Adapters</h3>
+<p>Modbus and Opc Ua are not limited to the local machine; both are enabled to access remote data sources via binary protocols.</p>
+<h2 id="secure-storage">Secure Storage</h2>
+<p>Sensitive information, such as passwords and client secrets, are saved in configuration files in an encrypted form; only the Edge System runtime can properly store and retrieve these protected data items. Do not manually edit configuration files; altering encrypted values will cause failures.</p>
+<p>The only time unencrypted values for sensitive information are available is when the user is providing them to the system via the REST API, e.g. for initial configuration or update. From that point forward, the unencrypted values are not available, either in the configuration file(s) or via the REST API. The REST API will only return a placeholder string (e.g. &quot;****&quot;) for such values.</p>
+<p>Care should be taken when submitting sensitive data items; for example, a temporary file used to submit configuration to the REST API containing unencrypted credentials should be removed from the system.</p>
+<h2 id="service-and-file-system-security">Service and File System Security</h2>
+<p>The installer creates a specific user account that the Edge System service runs under. This account can only be used for running the service, e.g. it cannot be used for interactive sessions etc. </p>
+<p>This service account is typically not user configurable -- modifying the service configuration in this respect could cause system failure.</p>
+<p>The Edge System binary files, configuration files, and data files are configured by the installer and runtime to allow appropriate access by the service account. Normally, the user does not need to modify the permission and ownership assignments for these files, and should not as failures could occur.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-System-Docs/blob/master/Beta2/Security/SecurityOverview.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

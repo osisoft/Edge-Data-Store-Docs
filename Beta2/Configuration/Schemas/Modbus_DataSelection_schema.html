@@ -1,0 +1,493 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Modbus DataSelectionConfiguration Schema </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Modbus DataSelectionConfiguration Schema ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="modbus_DataSelection_schema">
+<h1 id="modbus-dataselectionconfiguration-schema">Modbus DataSelectionConfiguration Schema</h1>
+
+<pre><code>
+</code></pre><table>
+<thead>
+<tr>
+<th>Abstract</th>
+<th>Extensible</th>
+<th>Status</th>
+<th>Identifiable</th>
+<th>Custom Properties</th>
+<th>Additional Properties</th>
+<th>Defined In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Can be instantiated</td>
+<td>Yes</td>
+<td>Experimental</td>
+<td>No</td>
+<td>Forbidden</td>
+<td>Forbidden</td>
+<td><a href="Modbus_DataSelection_schema.json">Modbus_DataSelection_schema.json</a></td>
+</tr>
+</tbody>
+</table>
+<h1 id="dataselectionconfiguration-properties">DataSelectionConfiguration Properties</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Defined by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#bitmap">BitMap</a></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td>Yes</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#conversionfactor">ConversionFactor</a></td>
+<td><code>number</code></td>
+<td>Optional</td>
+<td>Yes</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#conversionoffset">ConversionOffset</a></td>
+<td><code>number</code></td>
+<td>Optional</td>
+<td>Yes</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#datatypecode">DataTypeCode</a></td>
+<td><code>integer</code></td>
+<td>Optional</td>
+<td>No</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#name">Name</a></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td>Yes</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#registeroffset">RegisterOffset</a></td>
+<td><code>integer</code></td>
+<td>Optional</td>
+<td>No</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#registertype">RegisterType</a></td>
+<td>reference</td>
+<td>Optional</td>
+<td>No</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#scanrate">ScanRate</a></td>
+<td><code>integer</code></td>
+<td>Optional</td>
+<td>No</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#selected">Selected</a></td>
+<td><code>boolean</code></td>
+<td>Optional</td>
+<td>No</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#streamid">StreamId</a></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td>Yes</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#unitid">UnitId</a></td>
+<td><code>integer</code></td>
+<td>Optional</td>
+<td>No</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bitmap">BitMap</h2>
+<p><code>BitMap</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>string</code></li>
+<li>defined in this schema</li>
+</ul>
+<h3 id="bitmap-type">BitMap Type</h3>
+<p><code>string</code>, nullable</p>
+<h2 id="conversionfactor">ConversionFactor</h2>
+<p><code>ConversionFactor</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>number</code></li>
+<li>defined in this schema</li>
+</ul>
+<h3 id="conversionfactor-type">ConversionFactor Type</h3>
+<p><code>number</code>, nullable</p>
+<h2 id="conversionoffset">ConversionOffset</h2>
+<p><code>ConversionOffset</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>number</code></li>
+<li>defined in this schema</li>
+</ul>
+<h3 id="conversionoffset-type">ConversionOffset Type</h3>
+<p><code>number</code>, nullable</p>
+<h2 id="datatypecode">DataTypeCode</h2>
+<p><code>DataTypeCode</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>integer</code></li>
+<li>defined in this schema</li>
+</ul>
+<h3 id="datatypecode-type">DataTypeCode Type</h3>
+<p><code>integer</code></p>
+<h2 id="name">Name</h2>
+<p><code>Name</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>string</code></li>
+<li>defined in this schema</li>
+</ul>
+<h3 id="name-type">Name Type</h3>
+<p><code>string</code>, nullable</p>
+<h2 id="registeroffset">RegisterOffset</h2>
+<p><code>RegisterOffset</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>integer</code></li>
+<li>defined in this schema</li>
+</ul>
+<h3 id="registeroffset-type">RegisterOffset Type</h3>
+<p><code>integer</code></p>
+<h2 id="registertype">RegisterType</h2>
+<p><code>RegisterType</code></p>
+<ul>
+<li>is optional</li>
+<li>type: reference</li>
+<li>defined in this schema</li>
+</ul>
+<h3 id="registertype-type">RegisterType Type</h3>
+<ul>
+<li><a href=""></a> – <code>#/definitions/ModbusRegisterType</code></li>
+</ul>
+<h2 id="scanrate">ScanRate</h2>
+<p><code>ScanRate</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>integer</code></li>
+<li>defined in this schema</li>
+</ul>
+<h3 id="scanrate-type">ScanRate Type</h3>
+<p><code>integer</code></p>
+<h2 id="selected">Selected</h2>
+<p><code>Selected</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>boolean</code></li>
+<li>defined in this schema</li>
+</ul>
+<h3 id="selected-type">Selected Type</h3>
+<p><code>boolean</code></p>
+<h2 id="streamid">StreamId</h2>
+<p><code>StreamId</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>string</code></li>
+<li>defined in this schema</li>
+</ul>
+<h3 id="streamid-type">StreamId Type</h3>
+<p><code>string</code>, nullable</p>
+<h2 id="unitid">UnitId</h2>
+<p><code>UnitId</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>integer</code></li>
+<li>defined in this schema</li>
+</ul>
+<h3 id="unitid-type">UnitId Type</h3>
+<p><code>integer</code></p>
+<p><strong>All</strong> of the following <em>requirements</em> need to be fulfilled.</p>
+<h4 id="requirement-1">Requirement 1</h4>
+<ul>
+<li><a href=""></a> – <code>#/definitions/EdgeConfigurationBase</code></li>
+</ul>
+<h4 id="requirement-2">Requirement 2</h4>
+<p><code>object</code> with following properties:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BitMap</code></td>
+<td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>ConversionFactor</code></td>
+<td>number</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>ConversionOffset</code></td>
+<td>number</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>DataTypeCode</code></td>
+<td>integer</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>RegisterOffset</code></td>
+<td>integer</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>RegisterType</code></td>
+<td></td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>ScanRate</code></td>
+<td>integer</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>Selected</code></td>
+<td>boolean</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>StreamId</code></td>
+<td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>UnitId</code></td>
+<td>integer</td>
+<td>Optional</td>
+</tr>
+</tbody>
+</table>
+<h4 id="bitmap-1">BitMap</h4>
+<p><code>BitMap</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>string</code></li>
+</ul>
+<h5 id="bitmap-type-1">BitMap Type</h5>
+<p><code>string</code>, nullable</p>
+<h4 id="conversionfactor-1">ConversionFactor</h4>
+<p><code>ConversionFactor</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>number</code></li>
+</ul>
+<h5 id="conversionfactor-type-1">ConversionFactor Type</h5>
+<p><code>number</code>, nullable</p>
+<h4 id="conversionoffset-1">ConversionOffset</h4>
+<p><code>ConversionOffset</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>number</code></li>
+</ul>
+<h5 id="conversionoffset-type-1">ConversionOffset Type</h5>
+<p><code>number</code>, nullable</p>
+<h4 id="datatypecode-1">DataTypeCode</h4>
+<p><code>DataTypeCode</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>integer</code></li>
+</ul>
+<h5 id="datatypecode-type-1">DataTypeCode Type</h5>
+<p><code>integer</code></p>
+<h4 id="name-1">Name</h4>
+<p><code>Name</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>string</code></li>
+</ul>
+<h5 id="name-type-1">Name Type</h5>
+<p><code>string</code>, nullable</p>
+<h4 id="registeroffset-1">RegisterOffset</h4>
+<p><code>RegisterOffset</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>integer</code></li>
+</ul>
+<h5 id="registeroffset-type-1">RegisterOffset Type</h5>
+<p><code>integer</code></p>
+<h4 id="registertype-1">RegisterType</h4>
+<p><code>RegisterType</code></p>
+<ul>
+<li>is optional</li>
+<li>type: reference</li>
+</ul>
+<h5 id="registertype-type-1">RegisterType Type</h5>
+<ul>
+<li><a href=""></a> – <code>#/definitions/ModbusRegisterType</code></li>
+</ul>
+<h4 id="scanrate-1">ScanRate</h4>
+<p><code>ScanRate</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>integer</code></li>
+</ul>
+<h5 id="scanrate-type-1">ScanRate Type</h5>
+<p><code>integer</code></p>
+<h4 id="selected-1">Selected</h4>
+<p><code>Selected</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>boolean</code></li>
+</ul>
+<h5 id="selected-type-1">Selected Type</h5>
+<p><code>boolean</code></p>
+<h4 id="streamid-1">StreamId</h4>
+<p><code>StreamId</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>string</code></li>
+</ul>
+<h5 id="streamid-type-1">StreamId Type</h5>
+<p><code>string</code>, nullable</p>
+<h4 id="unitid-1">UnitId</h4>
+<p><code>UnitId</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>integer</code></li>
+</ul>
+<h5 id="unitid-type-1">UnitId Type</h5>
+<p><code>integer</code></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-System-Docs/blob/master/Beta2/Configuration/Schemas/Modbus_DataSelection_schema.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

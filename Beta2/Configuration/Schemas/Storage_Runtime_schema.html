@@ -1,0 +1,280 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Storage Runtime Configuration Schema </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Storage Runtime Configuration Schema ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="storage_Runtime_schema">
+<h1 id="storage-runtime-configuration-schema">Storage Runtime Configuration Schema</h1>
+
+<table>
+<thead>
+<tr>
+<th>Abstract</th>
+<th>Extensible</th>
+<th>Status</th>
+<th>Identifiable</th>
+<th>Custom Properties</th>
+<th>Additional Properties</th>
+<th>Defined In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Can be instantiated</td>
+<td>Yes</td>
+<td>Experimental</td>
+<td>No</td>
+<td>Forbidden</td>
+<td>Forbidden</td>
+<td><a href="Storage_Runtime_schema.json">Storage_Runtime_schema.json</a></td>
+</tr>
+</tbody>
+</table>
+<h1 id="storageruntimeconfiguration-properties">StorageRuntimeConfiguration Properties</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Defined by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#ingressdebugexpiration">IngressDebugExpiration</a></td>
+<td><code>string</code></td>
+<td><strong>Required</strong></td>
+<td>No</td>
+<td>StorageRuntimeConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#streamstoragelimitmb">StreamStorageLimitMb</a></td>
+<td><code>integer</code></td>
+<td><strong>Required</strong></td>
+<td>No</td>
+<td>StorageRuntimeConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#streamstoragetargetmb">StreamStorageTargetMb</a></td>
+<td><code>integer</code></td>
+<td><strong>Required</strong></td>
+<td>No</td>
+<td>StorageRuntimeConfiguration (this schema)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ingressdebugexpiration">IngressDebugExpiration</h2>
+<p><code>IngressDebugExpiration</code></p>
+<ul>
+<li>is <strong>required</strong></li>
+<li>type: <code>string</code></li>
+<li>defined in this schema</li>
+</ul>
+<h3 id="ingressdebugexpiration-type">IngressDebugExpiration Type</h3>
+<p><code>string</code></p>
+<ul>
+<li>format: <code>date-time</code> – date and time (according to <a href="http://tools.ietf.org/html/rfc3339">RFC 3339, section 5.6</a>)</li>
+<li>minimum length: 1 characters</li>
+</ul>
+<h2 id="streamstoragelimitmb">StreamStorageLimitMb</h2>
+<p><code>StreamStorageLimitMb</code></p>
+<ul>
+<li>is <strong>required</strong></li>
+<li>type: <code>integer</code></li>
+<li>defined in this schema</li>
+</ul>
+<h3 id="streamstoragelimitmb-type">StreamStorageLimitMb Type</h3>
+<p><code>integer</code></p>
+<ul>
+<li>minimum value: <code>2</code></li>
+<li>maximum value: <code>2147483647</code></li>
+</ul>
+<h2 id="streamstoragetargetmb">StreamStorageTargetMb</h2>
+<p><code>StreamStorageTargetMb</code></p>
+<ul>
+<li>is <strong>required</strong></li>
+<li>type: <code>integer</code></li>
+<li>defined in this schema</li>
+</ul>
+<h3 id="streamstoragetargetmb-type">StreamStorageTargetMb Type</h3>
+<p><code>integer</code></p>
+<ul>
+<li>minimum value: <code>1</code></li>
+<li>maximum value: <code>2147483647</code></li>
+</ul>
+<p><strong>All</strong> of the following <em>requirements</em> need to be fulfilled.</p>
+<h4 id="requirement-1">Requirement 1</h4>
+<ul>
+<li><a href=""></a> – <code>#/definitions/EdgeConfigurationBase</code></li>
+</ul>
+<h4 id="requirement-2">Requirement 2</h4>
+<p><code>object</code> with following properties:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IngressDebugExpiration</code></td>
+<td>string</td>
+<td><strong>Required</strong></td>
+</tr>
+<tr>
+<td><code>StreamStorageLimitMb</code></td>
+<td>integer</td>
+<td><strong>Required</strong></td>
+</tr>
+<tr>
+<td><code>StreamStorageTargetMb</code></td>
+<td>integer</td>
+<td><strong>Required</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="ingressdebugexpiration-1">IngressDebugExpiration</h4>
+<p><code>IngressDebugExpiration</code></p>
+<ul>
+<li>is <strong>required</strong></li>
+<li>type: <code>string</code></li>
+</ul>
+<h5 id="ingressdebugexpiration-type-1">IngressDebugExpiration Type</h5>
+<p><code>string</code></p>
+<ul>
+<li>format: <code>date-time</code> – date and time (according to <a href="http://tools.ietf.org/html/rfc3339">RFC 3339, section 5.6</a>)</li>
+<li>minimum length: 1 characters</li>
+</ul>
+<h4 id="streamstoragelimitmb-1">StreamStorageLimitMb</h4>
+<p><code>StreamStorageLimitMb</code></p>
+<ul>
+<li>is <strong>required</strong></li>
+<li>type: <code>integer</code></li>
+</ul>
+<h5 id="streamstoragelimitmb-type-1">StreamStorageLimitMb Type</h5>
+<p><code>integer</code></p>
+<ul>
+<li>minimum value: <code>2</code></li>
+<li>maximum value: <code>2147483647</code></li>
+</ul>
+<h4 id="streamstoragetargetmb-1">StreamStorageTargetMb</h4>
+<p><code>StreamStorageTargetMb</code></p>
+<ul>
+<li>is <strong>required</strong></li>
+<li>type: <code>integer</code></li>
+</ul>
+<h5 id="streamstoragetargetmb-type-1">StreamStorageTargetMb Type</h5>
+<p><code>integer</code></p>
+<ul>
+<li>minimum value: <code>1</code></li>
+<li>maximum value: <code>2147483647</code></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-System-Docs/blob/master/Beta2/Configuration/Schemas/Storage_Runtime_schema.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

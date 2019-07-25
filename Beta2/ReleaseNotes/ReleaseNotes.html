@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Edge System Beta 2 Release Notes </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Edge System Beta 2 Release Notes ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="releaseNotes">
+<h1 id="edge-system-beta-2-release-notes">Edge System Beta 2 Release Notes</h1>
+
+<p>Edge System Beta 2 contains all the features expected to be present in the first release of the Edge System. Since this is a Beta release, some features may change slightly in the final release, but most of the engineering work will focus on bug fixes and performance improvements after this Beta.</p>
+<p>This is the second beta release of the combined Edge System - including Storage (SDS and OMF) along with Modbus and Opc Ua connectivity. Upon installation storage functions will be immediately available - Modbus and Opc Ua will require additional configuration steps. Additional steps for configuring connectivity will be available, along with other documentation at <a href="https://edge-docs.osisoft.com/">https://edge-docs.osisoft.com/</a> shortly after Beta 2 is available.</p>
+<h2 id="overview">Overview</h2>
+<p>The Edge System is supported on a variety of platforms and processors. OSIsoft provides ready to use install kits for the following platforms:</p>
+<ul>
+<li>Windows 10 x64 - EdgeSystem.msi (Intel/AMD 64 bit processors)</li>
+<li>Debian 9 x64/AMD64 - EdgeSystem_linux-x64.deb (Intel/AMD 64 bit processors)</li>
+<li>Debian 9 ARM32 - EdgeSystem_linux-arm.deb (Raspberry PI 2,3,4, BeagleBone devices, other ARM v7 and ARM v8 32 bit processors)</li>
+</ul>
+<p>In addition to ready to use install kits, OSIsoft also provides examples of how to create Docker Containers in a separate file and tar.gz files are provided with binaries for customers who wish to build their own custom installers or containers for Linux.</p>
+<h2 id="differences-from-beta-1">Differences from Beta 1</h2>
+<ul>
+<li>The Edge System is now built using Microsoft .NET Core version 2.2.6.</li>
+<li>The default port has been changed from 5000 to 5590. It can be changed during the install process, and also through configuration after installation.  Changing the port requires a restart of the Edge System for it to take effect.</li>
+<li>When run in a Docker container the exposed port is now 5590 and not port 80 as in Beta 1.</li>
+<li>The entire Edge System (including Modbus and Opc Ua adapters) can now be configured using a single file in a single REST call.</li>
+<li>Secret storage on Linux has been moved from the /.OSIsoft to a directory under /usr/share/OSIsoft.</li>
+<li>PeriodicEgressTargets has been renamed to PeriodicEgressEndpoints.</li>
+<li>StreamStorage configuration has been renamed Runtime configuration and includes a new setting for ingress debugging.</li>
+<li>Both ingress and egress debugging options have been changed from a boolean value to a DateTime. After the configured DateTime for debugging, it will automatically be disabled.</li>
+<li>OMF Health messages are now supported for all Edge Components (Storage, Modbus, Opc Ua)</li>
+<li>A new diagnostics namespace has been added where streams are populated by components in the system with information useful for monitoring performance and reliabiliy. It can be egressed to a remote PI Web API server or OSIsoft Cloud Services to assist with remote montitoring of an Edge System.</li>
+<li>Support for PI Connector Relay has been removed - the only authentication models supported for egress are now Basic Authentication for PI Web Api, and ClientId and ClientSecret for OSIsoft Cloud Services.</li>
+<li>Schemas for a number of configuration files have changed to make them more consistent across different components. Please refer to the updated documentation for the new schemas.</li>
+<li>Issues related to errors caused by egressing data upon startup of the product have been resolved.</li>
+<li>The TypePrefix property  is now properly applied to types when they are egressed to PI Web Api or OSIsoft Cloud Services.</li>
+<li>The Event Filtering capabilities of PeriodicEgressEndpoints has been removed from the product.</li>
+<li>Significant improvements have been made in the reliability of egressing data to PI Web Api or OSIsoft Cloud Services.</li>
+<li>The Edge System now supports a Rest method for performing a full reset of the product, which will include removal of all existing configuration and stored event data.</li>
+<li>A new Rest method has been added for purging all stored event data and configuration related to the Storage component.</li>
+<li>Individual connectivity components may be started and stopped via newly added Rest methods.</li>
+<li>Startup of the Edge System has been made more resilient so that the product will start and may be configured even in circumstances where it&#39;s improperly configured.</li>
+<li>Library libicu63 is now added as a dependency on Linux so the Edge System may properly install on Raspberry PI 4 devices.</li>
+<li>The optional Type and Stream prefix strings for PeriodicEgressTargets were relaxed. Previously they had to be alphanumeric with an optional underscore. They can now be any string, including special characters, but there are a list of restriced characters that are not allowed. See documentation for list of restricted characters.</li>
+</ul>
+<h2 id="installing-edge-system-on-a-device-using-an-install-kit">Installing Edge System on a Device using an install kit</h2>
+<p>To use any of the installers, first copy the appropriate file to the file system of the device.</p>
+<h3 id="windows-windows-10-x64">Windows (Windows 10 x64)</h3>
+<p>Double click the EdgeSystem.msi file in Windows Explorer or execute the file from a command prompt. You will be prompted for install location and default port, and when the install finishes the EdgeSystem will be installed and running on either the default port 5590 or the port you specified during the install.</p>
+<h3 id="debian-9-linux-ubuntu--raspberry-pi-beaglebone-other-debian-based-linux-distros">Debian 9 Linux (Ubuntu  Raspberry PI, BeagleBone, other Debian based Linux distros)</h3>
+<p>Open a terminal window and type:</p>
+<pre><code class="lang-bash">sudo apt install ./EdgeSystem_linux_&lt;either x64 or arm depending upon processor&gt;.deb
+</code></pre><p>A check will be done for prerequisites. If the Linux OS is up to date the install will succeed. If the install fails run the following commands from the terminal window and try the install again:</p>
+<pre><code class="lang-bash">sudo apt update
+sudo apt uggrade
+</code></pre><p>After the check for prerequisites succeeds, a prompt will appear asking if you want to change the default port (5590). If you wish to change the port type in another port in the acceptable range for the OS you are using, or if 5590 is acceptable, press enter.</p>
+<p>The install will complete and the EdgeSystem will be running on your device. You can verify the EdgeSystem is correctly installed by running the following script from the terminal window (depending upon the processor, memory, and storage it may take the system a few seconds to start up):</p>
+<pre><code class="lang-bash">curl http://localhost:5590/api/v1/configuration
+</code></pre><p>If the installation was successful you will get back a JSON copy of the default system configuration:</p>
+<pre><code class="lang-json">{
+    &quot;Storage&quot;: {
+        &quot;Runtime&quot;: {
+            &quot;streamStorageLimitMb&quot;: 2,
+            &quot;streamStorageTargetMb&quot;: 1,
+            &quot;ingressDebugExpiration&quot;: &quot;0001-01-01T00:00:00&quot;
+        },
+        &quot;Logging&quot;: {
+            &quot;logLevel&quot;: &quot;Information&quot;,
+            &quot;logFileSizeLimitBytes&quot;: 34636833,
+            &quot;logFileCountLimit&quot;: 31
+        },
+        &quot;OEM&quot;: {
+            &quot;checkpointRateInSec&quot;: 30,
+            &quot;transactionLogLimitMB&quot;: 250,
+            &quot;enableTransactionLog&quot;: true
+        },
+        &quot;PeriodicEgressEndpoints&quot;: []
+    },
+    &quot;System&quot;: {
+        &quot;Logging&quot;: {
+            &quot;logLevel&quot;: &quot;Information&quot;,
+            &quot;logFileSizeLimitBytes&quot;: 34636833,
+            &quot;logFileCountLimit&quot;: 31
+        },
+        &quot;Components&quot;: [{
+                &quot;componentId&quot;: &quot;OpcUa1&quot;,
+                &quot;componentType&quot;: &quot;OpcUa&quot;
+            },
+            {
+                &quot;componentId&quot;: &quot;Modbus1&quot;,
+                &quot;componentType&quot;: &quot;Modbus&quot;
+            },
+            {
+                &quot;componentId&quot;: &quot;Storage&quot;,
+                &quot;componentType&quot;: &quot;EDS.Component&quot;
+            }
+        ],
+        &quot;HealthEndpoints&quot;: [],
+        &quot;Port&quot;: {
+            &quot;port&quot;: 5590
+        }
+    },
+    &quot;Modbus1&quot;: {
+        &quot;Logging&quot;: {
+            &quot;logLevel&quot;: &quot;Information&quot;,
+            &quot;logFileSizeLimitBytes&quot;: 34636833,
+            &quot;logFileCountLimit&quot;: 31
+        },
+        &quot;DataSource&quot;: {},
+        &quot;DataSelection&quot;: []
+    },
+    &quot;OpcUa1&quot;: {
+        &quot;Logging&quot;: {
+            &quot;logLevel&quot;: &quot;Information&quot;,
+            &quot;logFileSizeLimitBytes&quot;: 34636833,
+            &quot;logFileCountLimit&quot;: 31
+        },
+        &quot;DataSource&quot;: {},
+        &quot;DataSelection&quot;: []
+    }
+}
+</code></pre><p>If you get back an error, wait a few seconds and try it again. On a device with limited processor, memory and slow storage it may take some time before the Edge System is fully initialized and running for the first time.</p>
+<h2 id="known-issues">Known Issues</h2>
+<p>When configuration is retrieved from a default installation of Edge System <a href="http://localhost:5590/api/vi/configuration">http://localhost:5590/api/vi/configuration</a> the output JSON cannot be successfully written back to configure the system. The workaround is to remove the OEMConfiguration section of the JSON schema and any non-configured Modbus or Opc Ua components before updating the configuration, otherwise 400 errors will occur when the <a href="http://localhost:5590/api/vi/configuration">http://localhost:5590/api/vi/configuration</a> URI is called with a PUT command. This will be fixed before the inital release of the Edge System.</p>
+<p>Final component health status updates may be lost when the product is shutdown.  This will be fixed before the inital release of the Edge System.</p>
+<p>The Edge System reset and Storage component reset methods do not properly restart the server when invoked.  The server must be manually restarted in order to complete the reset of the System or Storage component.  This will be fixed before the inital release of the Edge System.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-System-Docs/blob/master/Beta2/ReleaseNotes/ReleaseNotes.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

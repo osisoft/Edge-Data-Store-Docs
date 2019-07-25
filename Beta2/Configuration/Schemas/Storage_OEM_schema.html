@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Storage OEM Configuration Schema </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Storage OEM Configuration Schema ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="storage_OEM_schema">
+<h1 id="storage-oem-configuration-schema">Storage OEM Configuration Schema</h1>
+
+<pre><code>
+</code></pre><table>
+<thead>
+<tr>
+<th>Abstract</th>
+<th>Extensible</th>
+<th>Status</th>
+<th>Identifiable</th>
+<th>Custom Properties</th>
+<th>Additional Properties</th>
+<th>Defined In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Can be instantiated</td>
+<td>Yes</td>
+<td>Experimental</td>
+<td>No</td>
+<td>Forbidden</td>
+<td>Forbidden</td>
+<td><a href="Storage_OEM_schema.json">Storage_OEM_schema.json</a></td>
+</tr>
+</tbody>
+</table>
+<h1 id="oemconfiguration-properties">OEMConfiguration Properties</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Defined by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#checkpointrateinsec">CheckpointRateInSec</a></td>
+<td><code>integer</code></td>
+<td>Optional</td>
+<td>No</td>
+<td>OEMConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#enabletransactionlog">EnableTransactionLog</a></td>
+<td><code>boolean</code></td>
+<td>Optional</td>
+<td>No</td>
+<td>OEMConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#transactionloglimitmb">TransactionLogLimitMB</a></td>
+<td><code>integer</code></td>
+<td>Optional</td>
+<td>No</td>
+<td>OEMConfiguration (this schema)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="checkpointrateinsec">CheckpointRateInSec</h2>
+<p><code>CheckpointRateInSec</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>integer</code></li>
+<li>defined in this schema</li>
+</ul>
+<h3 id="checkpointrateinsec-type">CheckpointRateInSec Type</h3>
+<p><code>integer</code></p>
+<ul>
+<li>minimum value: <code>0</code></li>
+<li>maximum value: <code>2147483647</code></li>
+</ul>
+<h2 id="enabletransactionlog">EnableTransactionLog</h2>
+<p><code>EnableTransactionLog</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>boolean</code></li>
+<li>defined in this schema</li>
+</ul>
+<h3 id="enabletransactionlog-type">EnableTransactionLog Type</h3>
+<p><code>boolean</code></p>
+<h2 id="transactionloglimitmb">TransactionLogLimitMB</h2>
+<p><code>TransactionLogLimitMB</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>integer</code></li>
+<li>defined in this schema</li>
+</ul>
+<h3 id="transactionloglimitmb-type">TransactionLogLimitMB Type</h3>
+<p><code>integer</code></p>
+<ul>
+<li>minimum value: <code>1</code></li>
+<li>maximum value: <code>9223372036854780000</code></li>
+</ul>
+<p><strong>All</strong> of the following <em>requirements</em> need to be fulfilled.</p>
+<h4 id="requirement-1">Requirement 1</h4>
+<ul>
+<li><a href=""></a> – <code>#/definitions/EdgeConfigurationBase</code></li>
+</ul>
+<h4 id="requirement-2">Requirement 2</h4>
+<p><code>object</code> with following properties:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CheckpointRateInSec</code></td>
+<td>integer</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>EnableTransactionLog</code></td>
+<td>boolean</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>TransactionLogLimitMB</code></td>
+<td>integer</td>
+<td>Optional</td>
+</tr>
+</tbody>
+</table>
+<h4 id="checkpointrateinsec-1">CheckpointRateInSec</h4>
+<p><code>CheckpointRateInSec</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>integer</code></li>
+</ul>
+<h5 id="checkpointrateinsec-type-1">CheckpointRateInSec Type</h5>
+<p><code>integer</code></p>
+<ul>
+<li>minimum value: <code>0</code></li>
+<li>maximum value: <code>2147483647</code></li>
+</ul>
+<h4 id="enabletransactionlog-1">EnableTransactionLog</h4>
+<p><code>EnableTransactionLog</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>boolean</code></li>
+</ul>
+<h5 id="enabletransactionlog-type-1">EnableTransactionLog Type</h5>
+<p><code>boolean</code></p>
+<h4 id="transactionloglimitmb-1">TransactionLogLimitMB</h4>
+<p><code>TransactionLogLimitMB</code></p>
+<ul>
+<li>is optional</li>
+<li>type: <code>integer</code></li>
+</ul>
+<h5 id="transactionloglimitmb-type-1">TransactionLogLimitMB Type</h5>
+<p><code>integer</code></p>
+<ul>
+<li>minimum value: <code>1</code></li>
+<li>maximum value: <code>9223372036854780000</code></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-System-Docs/blob/master/Beta2/Configuration/Schemas/Storage_OEM_schema.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

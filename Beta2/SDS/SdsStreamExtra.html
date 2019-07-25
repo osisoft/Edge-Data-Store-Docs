@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Stream Metadata and Tags </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Stream Metadata and Tags ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="sdsStreamExtra">
+<h1 id="stream-metadata-and-tags">Stream Metadata and Tags</h1>
+
+<p>SdsStream metadata is represented as a dictionary of string keys and associated string values. It can be used to associate additional information with a stream. SdsStream tags are represented as a list of strings. Tags can be used to categorize or denote special attributes of streams. The SdsStream Metadata API And SdsStream Tags API do not accept the search query parameter in their respective Get calls. However, stream tags and metadata can be used as criteria in search query strings to return SdsStream results with the <a class="xref" href="SDS_Streams.html">Stream</a> API.</p>
+<h2 id="sdsstream-metadata-api">SdsStream Metadata API</h2>
+<h2 id="get-stream-metadata"><code>Get stream metadata</code></h2>
+<p>Returns the metadata dictionary for the specified stream.</p>
+<p><strong>Request</strong></p>
+<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Metadata
+</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>default or diagnostics</p>
+<p><code>string streamId</code><br>The stream identifier  </p>
+<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
+<p><strong>Response body</strong><br>The metadata for the specified SdsStream.</p>
+<p><strong>Sample response body</strong>  </p>
+<pre><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+{
+  &quot;a metadata key&quot;:&quot;a metadata value&quot;,
+  &quot;another key&quot;:&quot;another value&quot;
+}
+</code></pre><p><strong>Security</strong><br>Allowed for administrator and user accounts</p>
+<hr>
+<h2 id="get-stream-metadata-value"><code>Get stream metadata value</code></h2>
+<p>Returns the value for the specified key in the metadata dictionary of the specified stream.</p>
+<p><strong>Request</strong></p>
+<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Metadata/{key}
+</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>default or diagnostics</p>
+<p><code>string streamId</code><br>The stream identifier  </p>
+<p><code>string key</code><br>The key specifying the metadata value of interest  </p>
+<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
+<p><strong>Response body</strong><br>The metadata for the specified SdsStream.</p>
+<p><strong>Sample response body</strong> </p>
+<pre><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+{
+  &quot;a metadata value”
+}
+</code></pre><p><strong>Security</strong><br>Allowed for administrator and user accounts</p>
+<hr>
+<h2 id="update-stream-metadata"><code>Update stream metadata</code></h2>
+<p>Replaces the metadata for the specified stream with the metadata in the request body. Overwrites any existing metadata; does not merge.</p>
+<p><strong>Request</strong></p>
+<pre><code class="lang-text">PUT api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Metadata
+</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>default or diagnostics</p>
+<p><code>string streamId</code><br>The stream identifier  </p>
+<p><strong>Response</strong><br>The response includes a status code.</p>
+<p><strong>Security</strong><br>Allowed for administrator accounts</p>
+<hr>
+<h2 id="delete-stream-metadata"><code>Delete stream metadata</code></h2>
+<p>Deletes the metadata for the specified stream.  </p>
+<p><strong>Request</strong></p>
+<pre><code class="lang-text">DELETE api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Metadata
+</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>default or diagnostics</p>
+<p><code>string streamId</code><br>The stream identifier  </p>
+<p><strong>Response</strong><br>The response includes a status code.</p>
+<p><strong>Security</strong><br>Allowed for administrator accounts</p>
+<hr>
+<h2 id="sdsstream-tags-api">SdsStream Tags API</h2>
+<h2 id="get-stream-tags"><code>Get stream tags</code></h2>
+<p>Returns the tag list for the specified stream.</p>
+<p><strong>Request</strong></p>
+<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Tags
+</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>default or diagnostics</p>
+<p><code>string streamId</code><br>The stream identifier  </p>
+<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
+<p><strong>Response body</strong><br>The tags for the specified SdsStream.</p>
+<p><strong>Sample response body</strong></p>
+<pre><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+[
+  &quot;a tag&quot;,
+  &quot;another tag&quot;
+]
+</code></pre><p><strong>Security</strong><br>Allowed for administrator and user accounts</p>
+<hr>
+<h2 id="update-stream-tags"><code>Update stream tags</code></h2>
+<p>Replaces the tag list for the specified stream with the tags listed in the request body. Overwrites any existing tags; does not merge.</p>
+<p><strong>Request</strong></p>
+<pre><code class="lang-text">PUT api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Tags
+</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>default or diagnostics</p>
+<p><code>string streamId</code><br>The stream identifier  </p>
+<p>The request content is the serialized list of tags.</p>
+<p><strong>Response</strong><br>The response includes a status code.</p>
+<p><strong>Security</strong><br>Allowed by administrator accounts.</p>
+<hr>
+<h2 id="delete-stream-tags"><code>Delete stream tags</code></h2>
+<p>Deletes the tag list for the specified stream.</p>
+<p><strong>Request</strong></p>
+<pre><code class="lang-text">DELETE api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Tags
+</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>default or diagnostics</p>
+<p><code>string streamId</code><br>The stream identifier  </p>
+<p><strong>Response</strong><br>The response includes a status code.</p>
+<p><strong>Security</strong><br>Allowed for administrator accounts.</p>
+<hr>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-System-Docs/blob/master/Beta2/SDS/SdsStreamExtra.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

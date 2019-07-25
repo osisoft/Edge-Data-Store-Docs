@@ -3,148 +3,148 @@ sorted: true
 references:
 - uid: commandLine
   name: Command Line Configuration of the Edge System
-  href: Beta2/CommandLine/CommandLine.md
+  href: Beta2/CommandLine/CommandLine.html
 - uid: configurationSchemaList
   name: Configuration Schemas
-  href: Beta2/Configuration/Schemas/ConfigurationSchemaList.md
+  href: Beta2/Configuration/Schemas/ConfigurationSchemaList.html
 - uid: edgeDocker
   name: Using Edge System with Docker
-  href: Beta2/Docker/EdgeDocker.md
+  href: Beta2/Docker/EdgeDocker.html
 - uid: edgeSystemAdministration
   name: Edge System Administration
-  href: Beta2/Administration/Administration.md
+  href: Beta2/Administration/Administration.html
 - uid: edgeSystemConfiguration
   name: Edge System Configuration
-  href: Beta2/Configuration/EdgeSystemConfiguration.md
+  href: Beta2/Configuration/EdgeSystemConfiguration.html
 - uid: edgeSystemDiagnostics
   name: Edge System Diagnostics
-  href: Beta2/Diagnostics/Diagnostics.md
+  href: Beta2/Diagnostics/Diagnostics.html
 - uid: edgeSystemHealth
   name: Edge System Health
-  href: Beta2/Health/Health.md
+  href: Beta2/Health/Health.html
 - uid: edsQuickStart
   name: Edge Storage Quick Start
-  href: Beta2/Overview/EDSQuickStart.md
+  href: Beta2/Overview/EDSQuickStart.html
 - uid: egress
   name: Egress from the Edge System
-  href: Beta2/Egress/Egress.md
+  href: Beta2/Egress/Egress.html
 - uid: index
   name: index
-  href: Beta2/index.md
+  href: Beta2/index.html
 - uid: installationOverview
   name: Installation of Edge System
-  href: Beta2/Installation/InstallationOverview.md
+  href: Beta2/Installation/InstallationOverview.html
 - uid: linuxWindows
   name: Linux and Windows Platform Differences
-  href: Beta2/LinuxWindows/LinuxWindows.md
+  href: Beta2/LinuxWindows/LinuxWindows.html
 - uid: managementTools
   name: Tools for Managing the Edge System
-  href: Beta2/Administration/ManagementTools.md
+  href: Beta2/Administration/ManagementTools.html
 - uid: modbus_DataSelection_schema
   name: Modbus DataSelectionConfiguration Schema
-  href: Beta2/Configuration/Schemas/Modbus_DataSelection_schema.md
+  href: Beta2/Configuration/Schemas/Modbus_DataSelection_schema.html
 - uid: modbus_DataSource_schema
   name: Modbus Data Source Configuration Schema
-  href: Beta2/Configuration/Schemas/Modbus_DataSource_schema.md
+  href: Beta2/Configuration/Schemas/Modbus_DataSource_schema.html
 - uid: modbus_Logging_schema
   name: EdgeLoggerConfiguration Schema
-  href: Beta2/Configuration/Schemas/Modbus_Logging_schema.md
+  href: Beta2/Configuration/Schemas/Modbus_Logging_schema.html
 - uid: modbusOverview
   name: Modbus Connectivity
-  href: Beta2/Modbus/ModbusOverview.md
+  href: Beta2/Modbus/ModbusOverview.html
 - uid: omfOverview
   name: OSIsoft Message Format (OMF) Ingress with Edge Storage
-  href: Beta2/OMF/OMFOverview.md
+  href: Beta2/OMF/OMFOverview.html
 - uid: opcUa_DataSelection_schema
   name: Opc Ua Data Collection Item Schema
-  href: Beta2/Configuration/Schemas/OpcUa_DataSelection_schema.md
+  href: Beta2/Configuration/Schemas/OpcUa_DataSelection_schema.html
 - uid: opcUa_DataSelection_Schema
   name: Opc Ua Data Source Configuration Schema
-  href: Beta2/Configuration/Schemas/OpcUa_DataSource_schema.md
+  href: Beta2/Configuration/Schemas/OpcUa_DataSource_schema.html
 - uid: opcUa_Logging_schema
   name: Opc Ua Logger Configuration Schema
-  href: Beta2/Configuration/Schemas/OpcUa_Logging_schema.md
+  href: Beta2/Configuration/Schemas/OpcUa_Logging_schema.html
 - uid: opcUaOverview
   name: Opc Ua Connectivity
-  href: Beta2/OpcUa/OpcUaOverview.md
+  href: Beta2/OpcUa/OpcUaOverview.html
 - uid: releaseNotes
   name: Edge System Beta 2 Release Notes
-  href: Beta2/ReleaseNotes/ReleaseNotes.md
+  href: Beta2/ReleaseNotes/ReleaseNotes.html
 - uid: scalePerformance
   name: Edge System Design Considerations
-  href: Beta2/Design/ScalePerformance.md
+  href: Beta2/Design/ScalePerformance.html
 - uid: sdsCompression
   name: Compression
-  href: Beta2/SDS/Compression.md
+  href: Beta2/SDS/Compression.html
 - uid: sdsFilterExpressions
   name: 'Filter Expressions: Values'
-  href: Beta2/SDS/Filter_Expressions.md
+  href: Beta2/SDS/Filter_Expressions.html
 - uid: sdsIndexes
   name: Indexes
-  href: Beta2/SDS/indexes.md
+  href: Beta2/SDS/indexes.html
 - uid: sdsOverview
   name: OSIsoft Sequential Data Store (SDS)
-  href: Beta2/SDS/SequentialDataStore.md
+  href: Beta2/SDS/SequentialDataStore.html
 - uid: sdsReadingData
   name: Reading data
-  href: Beta2/SDS/Reading_Data.md
+  href: Beta2/SDS/Reading_Data.html
 - uid: sdsReadingDataApi
   name: API calls for reading data
-  href: Beta2/SDS/Reading_Data_API.md
+  href: Beta2/SDS/Reading_Data_API.html
 - uid: sdsSearching
   name: Searching
-  href: Beta2/SDS/Searching.md
+  href: Beta2/SDS/Searching.html
 - uid: sdsStreamExtra
   name: Stream Metadata and Tags
-  href: Beta2/SDS/SdsStreamExtra.md
+  href: Beta2/SDS/SdsStreamExtra.html
 - uid: sdsStreams
   name: Streams
-  href: Beta2/SDS/SDS_Streams.md
+  href: Beta2/SDS/SDS_Streams.html
 - uid: sdsStreamViews
   name: Stream Views
-  href: Beta2/SDS/SDS_Views.md
+  href: Beta2/SDS/SDS_Views.html
 - uid: sdsTableFormat
   name: Table format
-  href: Beta2/SDS/table_format.md
+  href: Beta2/SDS/table_format.html
 - uid: sdsTypes
   name: Types
-  href: Beta2/SDS/SDS_Types.md
+  href: Beta2/SDS/SDS_Types.html
 - uid: sdsWritingData
   name: Writing data
-  href: Beta2/SDS/Writing_Data.md
+  href: Beta2/SDS/Writing_Data.html
 - uid: sdsWritingDataApi
   name: API calls for writing data
-  href: Beta2/SDS/Writing_Data_API.md
+  href: Beta2/SDS/Writing_Data_API.html
 - uid: security
   name: Edge System Security Overview
-  href: Beta2/Security/SecurityOverview.md
+  href: Beta2/Security/SecurityOverview.html
 - uid: Storage_Logging_schema
   name: Storage Logging Schema
-  href: Beta2/Configuration/Schemas/Storage_Logging_schema.md
+  href: Beta2/Configuration/Schemas/Storage_Logging_schema.html
 - uid: storage_OEM_schema
   name: Storage OEM Configuration Schema
-  href: Beta2/Configuration/Schemas/Storage_OEM_schema.md
+  href: Beta2/Configuration/Schemas/Storage_OEM_schema.html
 - uid: storage_PeriodicEgressEndpoints_schema
   name: Storage Periodic Egress Configuration Schema
-  href: Beta2/Configuration/Schemas/Storage_PeriodicEgressEndpoints_schema.md
+  href: Beta2/Configuration/Schemas/Storage_PeriodicEgressEndpoints_schema.html
 - uid: storage_Runtime_schema
   name: Storage Runtime Configuration Schema
-  href: Beta2/Configuration/Schemas/Storage_Runtime_schema.md
+  href: Beta2/Configuration/Schemas/Storage_Runtime_schema.html
 - uid: system_Components_schema
   name: Edge System Components Schema
-  href: Beta2/Configuration/Schemas/System_Components_schema.md
+  href: Beta2/Configuration/Schemas/System_Components_schema.html
 - uid: system_HealthEndpoints_schema
   name: Omf Health Endpoint Configuration Schema
-  href: Beta2/Configuration/Schemas/System_HealthEndpoints_schema.md
+  href: Beta2/Configuration/Schemas/System_HealthEndpoints_schema.html
 - uid: system_Logging_schema
   name: System Logging Schema
-  href: Beta2/Configuration/Schemas/System_Logging_schema.md
+  href: Beta2/Configuration/Schemas/System_Logging_schema.html
 - uid: system_Port_schema
   name: System Port Schema
-  href: Beta2/Configuration/Schemas/System_Port_schema.md
+  href: Beta2/Configuration/Schemas/System_Port_schema.html
 - uid: troubleShooting
   name: Edge System Troubleshooting
-  href: Beta2/Troubleshooting/Troubleshooting.md
+  href: Beta2/Troubleshooting/Troubleshooting.html
 - uid: unitsOfMeasure
   name: Units of Measure
-  href: Beta2/SDS/Units_of_Measure.md
+  href: Beta2/SDS/Units_of_Measure.html
