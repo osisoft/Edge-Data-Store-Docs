@@ -1,159 +1,150 @@
 ### YamlMime:XRefMap
 sorted: true
 references:
-- uid: accessControl
-  name: Role-based access control
-  href: Documentation/Access_Control.html
-- uid: AccountClientRole_1
-  name: Client Roles
-  href: Documentation/Management/Account_ClientRole_1.html
-- uid: AccountManagementOverview
-  name: Account Management
-  href: Documentation/Management/Management_Overview.html
-- uid: AccountNamespace_1
-  name: Namespaces
-  href: Documentation/Management/Account_Namespace_1.html
-- uid: AccountRole_1
-  name: Roles
-  href: Documentation/Management/Account_Role_1.html
-- uid: AccountRootAccessControl_1
-  name: Root AccessControl
-  href: Documentation/Management/Account_RootAccessControl_1.html
-- uid: AccountServiceBlog
-  name: Service Blog
-  href: Documentation/Management/Account_ServiceBlog.html
-- uid: AccountTenant
-  name: Tenants
-  href: Documentation/Management/Account_Tenant.html
-- uid: AccountTenantFeatureState
-  name: Tenant Feature States
-  href: Documentation/Management/Account_TenantFeatureState.html
-- uid: AccountUserRole_1
-  name: User Roles
-  href: Documentation/Management/Account_UserRole_1.html
-- uid: dataIngress
-  name: Data Ingress and OSIsoft Message Format
-  href: Documentation/DataIngress/Data_Ingress.html
-- uid: DataViewsApi
-  name: DataViews
-  href: Documentation/DataViews/DataViews_API.html
-- uid: DataViewsOverview
-  name: Data Views (Preview)
-  href: Documentation/DataViews/DataViews_Overview.html
-- uid: GroupRules
-  name: GroupRules
-  href: Documentation/DataViews/GroupRules.html
-- uid: identityAzureActiveDirectoryTenant
-  name: AzureActiveDirectoryTenant
-  href: Documentation/Identity/Identity_AzureActiveDirectoryTenant.html
-- uid: identityClientCredentialClient
-  name: ClientCredentialClient
-  href: Documentation/Identity/Identity_ClientCredentialClient.html
-- uid: identityConsent
-  name: Consent to OSIsoft Applications
-  href: Documentation/Identity/Consent.html
-- uid: identityHybridClient
-  name: HybridClient
-  href: Documentation/Identity/Identity_HybridClient.html
-- uid: identityIdentityProvider
-  name: IdentityProvider
-  href: Documentation/Identity/Identity_IdentityProvider.html
-- uid: identityImplicitClient
-  name: ImplicitClient
-  href: Documentation/Identity/Identity_ImplicitClient.html
-- uid: identityInvitation
-  name: Invitation
-  href: Documentation/Identity/Identity_Invitation.html
-- uid: identityOverview
-  name: OSIsoft Identity Service
-  href: Documentation/Identity/Identity_Overview.html
-- uid: identitySecret
-  name: Secret
-  href: Documentation/Identity/Identity_Secret.html
-- uid: identityUser
-  name: User
-  href: Documentation/Identity/Identity_User.html
+- uid: commandLine
+  name: Command Line Configuration of the Edge System
+  href: Beta2/CommandLine/CommandLine.md
+- uid: configurationSchemaList
+  name: Configuration Schemas
+  href: Beta2/Configuration/Schemas/ConfigurationSchemaList.md
+- uid: edgeDocker
+  name: Using Edge System with Docker
+  href: Beta2/Docker/EdgeDocker.md
+- uid: edgeSystemAdministration
+  name: Edge System Administration
+  href: Beta2/Administration/Administration.md
+- uid: edgeSystemConfiguration
+  name: Edge System Configuration
+  href: Beta2/Configuration/EdgeSystemConfiguration.md
+- uid: edgeSystemDiagnostics
+  name: Edge System Diagnostics
+  href: Beta2/Diagnostics/Diagnostics.md
+- uid: edgeSystemHealth
+  name: Edge System Health
+  href: Beta2/Health/Health.md
+- uid: edsQuickStart
+  name: Edge Storage Quick Start
+  href: Beta2/Overview/EDSQuickStart.md
+- uid: egress
+  name: Egress from the Edge System
+  href: Beta2/Egress/Egress.md
 - uid: index
-  name: OSISOFT OCS API Z1
-  href: index.html
-- uid: IndexConfig
-  name: IndexConfig
-  href: Documentation/DataViews/IndexConfig.html
-- uid: Introduction
-  name: Introduction to Data Views
-  href: Documentation/DataViews/Introduction.html
-- uid: Mappings
-  name: Mappings
-  href: Documentation/DataViews/Mappings.html
-- uid: omfIngressSpecification
-  name: Using OMF with Cloud Services
-  href: Documentation/DataIngress/OMF_Ingress_Specification.html
-- uid: omfIngressSubsctriptions
-  name: 'Subscriptions '
-  href: Documentation/DataIngress/OMF_Ingress_Subscriptions.html
-- uid: omfIngressToOCS
-  name: Data Ingress to Cloud Services using OMF
-  href: Documentation/DataIngress/OMF_Ingress_to_OCS.html
-- uid: omfIngressTopics
-  name: 'Topics '
-  href: Documentation/DataIngress/OMF_Ingress_Topics.html
-- uid: osisoftCloudServices
-  name: OSIsoft Cloud Services
-  href: Documentation/OSIsoft_Cloud_Services.html
-- uid: Queries
-  name: Queries
-  href: Documentation/DataViews/Queries.html
-- uid: samples
-  name: Samples
-  href: Documentation/samples.html
-- uid: sds
-  name: Sequential Data Store
-  href: Documentation/SequentialDataStore/Data_Store_and_SDS.html
+  name: index
+  href: index.md
+- uid: installationOverview
+  name: Installation of Edge System
+  href: Beta2/Installation/InstallationOverview.md
+- uid: linuxWindows
+  name: Linux and Windows Platform Differences
+  href: Beta2/LinuxWindows/LinuxWindows.md
+- uid: managementTools
+  name: Tools for Managing the Edge System
+  href: Beta2/Administration/ManagementTools.md
+- uid: modbus_DataSelection_schema
+  name: Modbus DataSelectionConfiguration Schema
+  href: Beta2/Configuration/Schemas/Modbus_DataSelection_schema.md
+- uid: modbus_DataSource_schema
+  name: Modbus Data Source Configuration Schema
+  href: Beta2/Configuration/Schemas/Modbus_DataSource_schema.md
+- uid: modbus_Logging_schema
+  name: EdgeLoggerConfiguration Schema
+  href: Beta2/Configuration/Schemas/Modbus_Logging_schema.md
+- uid: modbusOverview
+  name: Modbus Connectivity
+  href: Beta2/Modbus/ModbusOverview.md
+- uid: omfOverview
+  name: OSIsoft Message Format (OMF) Ingress with Edge Storage
+  href: Beta2/OMF/OMFOverview.md
+- uid: opcUa_DataSelection_schema
+  name: Opc Ua Data Collection Item Schema
+  href: Beta2/Configuration/Schemas/OpcUa_DataSelection_schema.md
+- uid: opcUa_DataSelection_Schema
+  name: Opc Ua Data Source Configuration Schema
+  href: Beta2/Configuration/Schemas/OpcUa_DataSource_schema.md
+- uid: opcUa_Logging_schema
+  name: Opc Ua Logger Configuration Schema
+  href: Beta2/Configuration/Schemas/OpcUa_Logging_schema.md
+- uid: opcUaOverview
+  name: Opc Ua Connectivity
+  href: Beta2/OpcUa/OpcUaOverview.md
+- uid: releaseNotes
+  name: Edge System Beta 2 Release Notes
+  href: Beta2/ReleaseNotes/ReleaseNotes.md
+- uid: scalePerformance
+  name: Edge System Design Considerations
+  href: Beta2/Design/ScalePerformance.md
 - uid: sdsCompression
   name: Compression
-  href: Documentation/SequentialDataStore/Compression.html
+  href: Beta2/SDS/Compression.md
 - uid: sdsFilterExpressions
   name: 'Filter Expressions: Values'
-  href: Documentation/SequentialDataStore/Filter_Expressions.html
+  href: Beta2/SDS/Filter_Expressions.md
 - uid: sdsIndexes
   name: Indexes
-  href: Documentation/SequentialDataStore/indexes.html
-- uid: sdsQuickStart
-  name: Quick Start
-  href: Documentation/SequentialDataStore/Quick_Start.html
+  href: Beta2/SDS/indexes.md
+- uid: sdsOverview
+  name: OSIsoft Sequential Data Store (SDS)
+  href: Beta2/SDS/SequentialDataStore.md
 - uid: sdsReadingData
   name: Reading data
-  href: Documentation/SequentialDataStore/Reading_Data.html
+  href: Beta2/SDS/Reading_Data.md
 - uid: sdsReadingDataApi
   name: API calls for reading data
-  href: Documentation/SequentialDataStore/Reading_Data_API.html
+  href: Beta2/SDS/Reading_Data_API.md
 - uid: sdsSearching
   name: Searching
-  href: Documentation/SequentialDataStore/Searching.html
+  href: Beta2/SDS/Searching.md
 - uid: sdsStreamExtra
   name: Stream Metadata and Tags
-  href: Documentation/SequentialDataStore/SdsStreamExtra.html
+  href: Beta2/SDS/SdsStreamExtra.md
 - uid: sdsStreams
   name: Streams
-  href: Documentation/SequentialDataStore/SDS_Streams.html
+  href: Beta2/SDS/SDS_Streams.md
 - uid: sdsStreamViews
   name: Stream Views
-  href: Documentation/SequentialDataStore/SDS_Views.html
+  href: Beta2/SDS/SDS_Views.md
 - uid: sdsTableFormat
   name: Table format
-  href: Documentation/SequentialDataStore/table_format.html
+  href: Beta2/SDS/table_format.md
 - uid: sdsTypes
   name: Types
-  href: Documentation/SequentialDataStore/SDS_Types.html
+  href: Beta2/SDS/SDS_Types.md
 - uid: sdsWritingData
   name: Writing data
-  href: Documentation/SequentialDataStore/Writing_Data.html
+  href: Beta2/SDS/Writing_Data.md
 - uid: sdsWritingDataApi
   name: API calls for writing data
-  href: Documentation/SequentialDataStore/Writing_Data_API.html
-- uid: support
-  name: Getting support
-  href: Documentation/support.html
+  href: Beta2/SDS/Writing_Data_API.md
+- uid: security
+  name: Edge System Security Overview
+  href: Beta2/Security/SecurityOverview.md
+- uid: Storage_Logging_schema
+  name: Storage Logging Schema
+  href: Beta2/Configuration/Schemas/Storage_Logging_schema.md
+- uid: storage_OEM_schema
+  name: Storage OEM Configuration Schema
+  href: Beta2/Configuration/Schemas/Storage_OEM_schema.md
+- uid: storage_PeriodicEgressEndpoints_schema
+  name: Storage Periodic Egress Configuration Schema
+  href: Beta2/Configuration/Schemas/Storage_PeriodicEgressEndpoints_schema.md
+- uid: storage_Runtime_schema
+  name: Storage Runtime Configuration Schema
+  href: Beta2/Configuration/Schemas/Storage_Runtime_schema.md
+- uid: system_Components_schema
+  name: Edge System Components Schema
+  href: Beta2/Configuration/Schemas/System_Components_schema.md
+- uid: system_HealthEndpoints_schema
+  name: Omf Health Endpoint Configuration Schema
+  href: Beta2/Configuration/Schemas/System_HealthEndpoints_schema.md
+- uid: system_Logging_schema
+  name: System Logging Schema
+  href: Beta2/Configuration/Schemas/System_Logging_schema.md
+- uid: system_Port_schema
+  name: System Port Schema
+  href: Beta2/Configuration/Schemas/System_Port_schema.md
+- uid: troubleShooting
+  name: Edge System Troubleshooting
+  href: Beta2/Troubleshooting/Troubleshooting.md
 - uid: unitsOfMeasure
   name: Units of Measure
-  href: Documentation/SequentialDataStore/Units_of_Measure.html
+  href: Beta2/SDS/Units_of_Measure.md
