@@ -30,7 +30,7 @@ references:
   href: Beta2/Egress/Egress.md
 - uid: index
   name: index
-  href: index.md
+  href: Beta2/index.md
 - uid: installationOverview
   name: Installation of Edge System
   href: Beta2/Installation/InstallationOverview.md
