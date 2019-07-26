@@ -54,3 +54,7 @@ curl -i -d "@EdgeMinimumConfiguration.json" -H "Content-Type: application/json" 
 ```
 
 The configuration takes effect immediately after the command completes.
+
+Full JSON definition of configuration parameters:
+[Edge System Configuration](xref:edge_system_schema)
+
