@@ -2,7 +2,7 @@
 uid: modbus_DataSelection_schema
 ---
 
-# Modbus DataSelectionConfiguration Schema
+# Modbus DataSelectionConfiguration schema
 
 ```
 
@@ -12,7 +12,7 @@ uid: modbus_DataSelection_schema
 | ------------------- | ---------- | ------------ | ------------ | ----------------- | --------------------- | -------------------------------------------------------------------- |
 | Can be instantiated | Yes        | Experimental | No           | Forbidden         | Forbidden             | [Modbus_DataSelection_schema.json](Modbus_DataSelection_schema.json) |
 
-# DataSelectionConfiguration Properties
+# DataSelectionConfiguration properties
 
 | Property                              | Type      | Required | Nullable | Defined by                               |
 | ------------------------------------- | --------- | -------- | -------- | ---------------------------------------- |
@@ -36,7 +36,7 @@ uid: modbus_DataSelection_schema
 - type: `string`
 - defined in this schema
 
-### BitMap Type
+### BitMap type
 
 `string`, nullable
 
@@ -48,7 +48,7 @@ uid: modbus_DataSelection_schema
 - type: `number`
 - defined in this schema
 
-### ConversionFactor Type
+### ConversionFactor type
 
 `number`, nullable
 
@@ -60,7 +60,7 @@ uid: modbus_DataSelection_schema
 - type: `number`
 - defined in this schema
 
-### ConversionOffset Type
+### ConversionOffset type
 
 `number`, nullable
 
@@ -72,7 +72,7 @@ uid: modbus_DataSelection_schema
 - type: `integer`
 - defined in this schema
 
-### DataTypeCode Type
+### DataTypeCode type
 
 `integer`
 
@@ -84,7 +84,7 @@ uid: modbus_DataSelection_schema
 - type: `string`
 - defined in this schema
 
-### Name Type
+### Name type
 
 `string`, nullable
 
@@ -96,7 +96,7 @@ uid: modbus_DataSelection_schema
 - type: `integer`
 - defined in this schema
 
-### RegisterOffset Type
+### RegisterOffset type
 
 `integer`
 
@@ -108,7 +108,7 @@ uid: modbus_DataSelection_schema
 - type: reference
 - defined in this schema
 
-### RegisterType Type
+### RegisterType type
 
 - []() – `#/definitions/ModbusRegisterType`
 
@@ -120,7 +120,7 @@ uid: modbus_DataSelection_schema
 - type: `integer`
 - defined in this schema
 
-### ScanRate Type
+### ScanRate type
 
 `integer`
 
@@ -132,7 +132,7 @@ uid: modbus_DataSelection_schema
 - type: `boolean`
 - defined in this schema
 
-### Selected Type
+### Selected type
 
 `boolean`
 
@@ -144,7 +144,7 @@ uid: modbus_DataSelection_schema
 - type: `string`
 - defined in this schema
 
-### StreamId Type
+### StreamId type
 
 `string`, nullable
 
@@ -156,7 +156,7 @@ uid: modbus_DataSelection_schema
 - type: `integer`
 - defined in this schema
 
-### UnitId Type
+### UnitId type
 
 `integer`
 
@@ -191,7 +191,7 @@ uid: modbus_DataSelection_schema
 - is optional
 - type: `string`
 
-##### BitMap Type
+##### BitMap type
 
 `string`, nullable
 
@@ -202,7 +202,7 @@ uid: modbus_DataSelection_schema
 - is optional
 - type: `number`
 
-##### ConversionFactor Type
+##### ConversionFactor type
 
 `number`, nullable
 
@@ -213,7 +213,7 @@ uid: modbus_DataSelection_schema
 - is optional
 - type: `number`
 
-##### ConversionOffset Type
+##### ConversionOffset type
 
 `number`, nullable
 
@@ -224,7 +224,7 @@ uid: modbus_DataSelection_schema
 - is optional
 - type: `integer`
 
-##### DataTypeCode Type
+##### DataTypeCode type
 
 `integer`
 
@@ -235,7 +235,7 @@ uid: modbus_DataSelection_schema
 - is optional
 - type: `string`
 
-##### Name Type
+##### Name type
 
 `string`, nullable
 
@@ -246,7 +246,7 @@ uid: modbus_DataSelection_schema
 - is optional
 - type: `integer`
 
-##### RegisterOffset Type
+##### RegisterOffset type
 
 `integer`
 
@@ -257,7 +257,7 @@ uid: modbus_DataSelection_schema
 - is optional
 - type: reference
 
-##### RegisterType Type
+##### RegisterType type
 
 - []() – `#/definitions/ModbusRegisterType`
 
@@ -268,7 +268,7 @@ uid: modbus_DataSelection_schema
 - is optional
 - type: `integer`
 
-##### ScanRate Type
+##### ScanRate type
 
 `integer`
 
@@ -279,7 +279,7 @@ uid: modbus_DataSelection_schema
 - is optional
 - type: `boolean`
 
-##### Selected Type
+##### Selected type
 
 `boolean`
 
@@ -290,7 +290,7 @@ uid: modbus_DataSelection_schema
 - is optional
 - type: `string`
 
-##### StreamId Type
+##### StreamId type
 
 `string`, nullable
 
@@ -301,6 +301,6 @@ uid: modbus_DataSelection_schema
 - is optional
 - type: `integer`
 
-##### UnitId Type
+##### UnitId type
 
 `integer`
