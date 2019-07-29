@@ -5,7 +5,7 @@ references:
   name: Command Line Configuration of the Edge System
   href: Beta2/CommandLine/CommandLine.html
 - uid: configurationSchemaList
-  name: Configuration Schemas
+  name: Configuration schemas
   href: Beta2/Configuration/Schemas/ConfigurationSchemaList.html
 - uid: edgeDocker
   name: Using Edge System with Docker
@@ -44,7 +44,7 @@ references:
   name: Edge System management tools
   href: Beta2/Administration/ManagementTools.html
 - uid: modbus_DataSelection_schema
-  name: Sample Modbus Data Selection Configuration
+  name: Sample Modbus data selection configuration
   href: Beta2/Configuration/Schemas/Modbus_DataSelection_schema.html
 - uid: modbus_DataSource_schema
   name: Sample Modbus data source configuration
@@ -65,10 +65,10 @@ references:
   name: OSIsoft Message Format (OMF) Ingress with Edge Storage
   href: Beta2/OMF/OMFOverview.html
 - uid: opcUa_DataSelection_schema
-  name: Sample Opc Ua Data Selection Configuration
+  name: Sample Opc Ua data selection configuration
   href: Beta2/Configuration/Schemas/OpcUa_DataSelection_schema.html
 - uid: opcUa_DataSelection_Schema
-  name: Sample Opc Ua Data Source Configuration
+  name: Sample Opc Ua data source configuration
   href: Beta2/Configuration/Schemas/OpcUa_DataSource_schema.html
 - uid: opcUa_Logging_schema
   name: OPC UA logger configuration schema
@@ -131,7 +131,7 @@ references:
   name: API calls for writing data
   href: Beta2/SDS/Writing_Data_API.html
 - uid: security
-  name: Edge System Security Overview
+  name: Edge System security overview
   href: Beta2/Security/SecurityOverview.html
 - uid: Storage_Logging_schema
   name: Storage logging schema
@@ -158,7 +158,7 @@ references:
   name: Sample system port configuration file
   href: Beta2/Configuration/Schemas/System_Port_schema.html
 - uid: troubleShooting
-  name: Edge System Troubleshooting
+  name: Edge System troubleshooting
   href: Beta2/Troubleshooting/Troubleshooting.html
 - uid: unitsOfMeasure
   name: Units of Measure
