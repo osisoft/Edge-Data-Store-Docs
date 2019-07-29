@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Opc Ua Data Source Configuration Schema </title>
+    <title>Sample Opc Ua Data Source Configuration </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Opc Ua Data Source Configuration Schema ">
+    <meta name="title" content="Sample Opc Ua Data Source Configuration ">
     <meta name="generator" content="docfx 2.43.2.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
@@ -70,19 +70,28 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="opcUa_DataSelection_Schema">
-<h1 id="opc-ua-data-source-configuration-schema">Opc Ua Data Source Configuration Schema</h1>
+<h1 id="sample-opc-ua-data-source-configuration">Sample Opc Ua Data Source Configuration</h1>
 
-<pre><code>
-</code></pre><table>
+<pre><code class="lang-json">{
+    &quot;EndpointUrl&quot;: &quot;opc.tcp://&lt;ip address&gt;:&lt;port - often 62541&gt;/&lt;server path&gt;&quot;,
+    &quot;UseSecureConnection&quot;: false,
+    &quot;UserName&quot;: null,
+    &quot;Password&quot;: null,
+    &quot;RootNodeIds&quot;: null,
+    &quot;IncomingTimestamp&quot;: &quot;Source&quot;,
+    &quot;StreamIdPrefix&quot;: &quot;OpcUa&quot;
+}
+</code></pre><h1 id="opc-ua-data-source-configuration-schema">OPC UA data source configuration schema</h1>
+<table>
 <thead>
 <tr>
 <th>Abstract</th>
 <th>Extensible</th>
 <th>Status</th>
 <th>Identifiable</th>
-<th>Custom Properties</th>
-<th>Additional Properties</th>
-<th>Defined In</th>
+<th>Custom properties</th>
+<th>Additional properties</th>
+<th>Defined in</th>
 </tr>
 </thead>
 <tbody>
@@ -97,7 +106,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="datasourceconfiguration-properties">DataSourceConfiguration Properties</h1>
+<h1 id="datasourceconfiguration-properties">DataSourceConfiguration properties</h1>
 <table>
 <thead>
 <tr>
@@ -167,7 +176,7 @@
 <li>type: <code>string</code></li>
 <li>defined in this schema</li>
 </ul>
-<h3 id="endpointurl-type">EndpointUrl Type</h3>
+<h3 id="endpointurl-type">EndpointUrl type</h3>
 <p><code>string</code>, nullable</p>
 <h2 id="incomingtimestamp">IncomingTimestamp</h2>
 <p><code>IncomingTimestamp</code></p>
@@ -176,7 +185,7 @@
 <li>type: reference</li>
 <li>defined in this schema</li>
 </ul>
-<h3 id="incomingtimestamp-type">IncomingTimestamp Type</h3>
+<h3 id="incomingtimestamp-type">IncomingTimestamp type</h3>
 <ul>
 <li><a href=""></a> – <code>#/definitions/IncomingTimestampType</code></li>
 </ul>
@@ -187,7 +196,7 @@
 <li>type: <code>string</code></li>
 <li>defined in this schema</li>
 </ul>
-<h3 id="password-type">Password Type</h3>
+<h3 id="password-type">Password type</h3>
 <p><code>string</code>, nullable</p>
 <h2 id="rootnodeids">RootNodeIds</h2>
 <p><code>RootNodeIds</code></p>
@@ -196,7 +205,7 @@
 <li>type: <code>string</code></li>
 <li>defined in this schema</li>
 </ul>
-<h3 id="rootnodeids-type">RootNodeIds Type</h3>
+<h3 id="rootnodeids-type">RootNodeIds type</h3>
 <p><code>string</code>, nullable</p>
 <h2 id="streamidprefix">StreamIdPrefix</h2>
 <p><code>StreamIdPrefix</code></p>
@@ -205,7 +214,7 @@
 <li>type: <code>string</code></li>
 <li>defined in this schema</li>
 </ul>
-<h3 id="streamidprefix-type">StreamIdPrefix Type</h3>
+<h3 id="streamidprefix-type">StreamIdPrefix type</h3>
 <p><code>string</code>, nullable</p>
 <h2 id="usesecureconnection">UseSecureConnection</h2>
 <p><code>UseSecureConnection</code></p>
@@ -214,7 +223,7 @@
 <li>type: <code>boolean</code></li>
 <li>defined in this schema</li>
 </ul>
-<h3 id="usesecureconnection-type">UseSecureConnection Type</h3>
+<h3 id="usesecureconnection-type">UseSecureConnection type</h3>
 <p><code>boolean</code></p>
 <h2 id="username">UserName</h2>
 <p><code>UserName</code></p>
@@ -223,7 +232,7 @@
 <li>type: <code>string</code></li>
 <li>defined in this schema</li>
 </ul>
-<h3 id="username-type">UserName Type</h3>
+<h3 id="username-type">UserName type</h3>
 <p><code>string</code>, nullable</p>
 <p><strong>All</strong> of the following <em>requirements</em> need to be fulfilled.</p>
 <h4 id="requirement-1">Requirement 1</h4>
@@ -284,7 +293,7 @@
 <li>is optional</li>
 <li>type: <code>string</code></li>
 </ul>
-<h5 id="endpointurl-type-1">EndpointUrl Type</h5>
+<h5 id="endpointurl-type-1">EndpointUrl type</h5>
 <p><code>string</code>, nullable</p>
 <h4 id="incomingtimestamp-1">IncomingTimestamp</h4>
 <p><code>IncomingTimestamp</code></p>
@@ -292,7 +301,7 @@
 <li>is optional</li>
 <li>type: reference</li>
 </ul>
-<h5 id="incomingtimestamp-type-1">IncomingTimestamp Type</h5>
+<h5 id="incomingtimestamp-type-1">IncomingTimestamp type</h5>
 <ul>
 <li><a href=""></a> – <code>#/definitions/IncomingTimestampType</code></li>
 </ul>
@@ -302,7 +311,7 @@
 <li>is optional</li>
 <li>type: <code>string</code></li>
 </ul>
-<h5 id="password-type-1">Password Type</h5>
+<h5 id="password-type-1">Password type</h5>
 <p><code>string</code>, nullable</p>
 <h4 id="rootnodeids-1">RootNodeIds</h4>
 <p><code>RootNodeIds</code></p>
@@ -310,7 +319,7 @@
 <li>is optional</li>
 <li>type: <code>string</code></li>
 </ul>
-<h5 id="rootnodeids-type-1">RootNodeIds Type</h5>
+<h5 id="rootnodeids-type-1">RootNodeIds type</h5>
 <p><code>string</code>, nullable</p>
 <h4 id="streamidprefix-1">StreamIdPrefix</h4>
 <p><code>StreamIdPrefix</code></p>
@@ -318,7 +327,7 @@
 <li>is optional</li>
 <li>type: <code>string</code></li>
 </ul>
-<h5 id="streamidprefix-type-1">StreamIdPrefix Type</h5>
+<h5 id="streamidprefix-type-1">StreamIdPrefix type</h5>
 <p><code>string</code>, nullable</p>
 <h4 id="usesecureconnection-1">UseSecureConnection</h4>
 <p><code>UseSecureConnection</code></p>
@@ -326,7 +335,7 @@
 <li>is optional</li>
 <li>type: <code>boolean</code></li>
 </ul>
-<h5 id="usesecureconnection-type-1">UseSecureConnection Type</h5>
+<h5 id="usesecureconnection-type-1">UseSecureConnection type</h5>
 <p><code>boolean</code></p>
 <h4 id="username-1">UserName</h4>
 <p><code>UserName</code></p>
@@ -334,7 +343,7 @@
 <li>is optional</li>
 <li>type: <code>string</code></li>
 </ul>
-<h5 id="username-type-1">UserName Type</h5>
+<h5 id="username-type-1">UserName type</h5>
 <p><code>string</code>, nullable</p>
 </article>
           </div>

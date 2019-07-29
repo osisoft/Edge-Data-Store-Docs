@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Modbus DataSelectionConfiguration Schema </title>
+    <title>Sample Modbus Data Selection Configuration </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Modbus DataSelectionConfiguration Schema ">
+    <meta name="title" content="Sample Modbus Data Selection Configuration ">
     <meta name="generator" content="docfx 2.43.2.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
@@ -70,19 +70,75 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="modbus_DataSelection_schema">
-<h1 id="modbus-dataselectionconfiguration-schema">Modbus DataSelectionConfiguration Schema</h1>
+<h1 id="sample-modbus-data-selection-configuration">Sample Modbus Data Selection Configuration</h1>
 
-<pre><code>
-</code></pre><table>
+<pre><code class="lang-json">[{
+        &quot;Selected&quot;: &quot;true&quot;,
+        &quot;UnitId&quot;: 1,
+        &quot;RegisterType&quot;: 3,
+        &quot;RegisterOffset&quot;: 1,
+        &quot;DataTypeCode&quot;: 20,
+        &quot;BitMap&quot;: &quot;16151413&quot;,
+        &quot;ConversionFactor&quot;: 2,
+        &quot;ConversionOffset&quot;: 3.4,
+        &quot;ScanRate&quot;: 500
+    },
+    {
+        &quot;Selected&quot;: &quot;true&quot;,
+        &quot;UnitId&quot;: 1,
+        &quot;RegisterType&quot;: 3,
+        &quot;RegisterOffset&quot;: 2,
+        &quot;DataTypeCode&quot;: 20,
+        &quot;BitMap&quot;: &quot;16151413&quot;,
+        &quot;ConversionFactor&quot;: 2,
+        &quot;ConversionOffset&quot;: 3.4,
+        &quot;ScanRate&quot;: 500
+    },
+    {
+        &quot;Selected&quot;: &quot;true&quot;,
+        &quot;UnitId&quot;: 1,
+        &quot;RegisterType&quot;: 3,
+        &quot;RegisterOffset&quot;: 3,
+        &quot;DataTypeCode&quot;: 20,
+        &quot;BitMap&quot;: &quot;16151413&quot;,
+        &quot;ConversionFactor&quot;: 2,
+        &quot;ConversionOffset&quot;: 3.4,
+        &quot;ScanRate&quot;: 500
+    },
+    {
+        &quot;Selected&quot;: &quot;true&quot;,
+        &quot;UnitId&quot;: 1,
+        &quot;RegisterType&quot;: 3,
+        &quot;RegisterOffset&quot;: 4,
+        &quot;DataTypeCode&quot;: 20,
+        &quot;BitMap&quot;: &quot;16151413&quot;,
+        &quot;ConversionFactor&quot;: 2,
+        &quot;ConversionOffset&quot;: 3.4,
+        &quot;ScanRate&quot;: 500
+    },
+    {
+        &quot;Selected&quot;: &quot;true&quot;,
+        &quot;UnitId&quot;: 1,
+        &quot;RegisterType&quot;: 3,
+        &quot;RegisterOffset&quot;: 5,
+        &quot;DataTypeCode&quot;: 20,
+        &quot;BitMap&quot;: &quot;16151413&quot;,
+        &quot;ConversionFactor&quot;: 2,
+        &quot;ConversionOffset&quot;: 3.4,
+        &quot;ScanRate&quot;: 500
+    }
+]
+</code></pre><h1 id="modbus-dataselectionconfiguration-schema">Modbus DataSelectionConfiguration schema</h1>
+<table>
 <thead>
 <tr>
 <th>Abstract</th>
 <th>Extensible</th>
 <th>Status</th>
 <th>Identifiable</th>
-<th>Custom Properties</th>
-<th>Additional Properties</th>
-<th>Defined In</th>
+<th>Custom properties</th>
+<th>Additional properties</th>
+<th>Defined in</th>
 </tr>
 </thead>
 <tbody>
@@ -97,7 +153,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="dataselectionconfiguration-properties">DataSelectionConfiguration Properties</h1>
+<h1 id="dataselectionconfiguration-properties">DataSelectionConfiguration properties</h1>
 <table>
 <thead>
 <tr>
@@ -195,7 +251,7 @@
 <li>type: <code>string</code></li>
 <li>defined in this schema</li>
 </ul>
-<h3 id="bitmap-type">BitMap Type</h3>
+<h3 id="bitmap-type">BitMap type</h3>
 <p><code>string</code>, nullable</p>
 <h2 id="conversionfactor">ConversionFactor</h2>
 <p><code>ConversionFactor</code></p>
@@ -204,7 +260,7 @@
 <li>type: <code>number</code></li>
 <li>defined in this schema</li>
 </ul>
-<h3 id="conversionfactor-type">ConversionFactor Type</h3>
+<h3 id="conversionfactor-type">ConversionFactor type</h3>
 <p><code>number</code>, nullable</p>
 <h2 id="conversionoffset">ConversionOffset</h2>
 <p><code>ConversionOffset</code></p>
@@ -213,7 +269,7 @@
 <li>type: <code>number</code></li>
 <li>defined in this schema</li>
 </ul>
-<h3 id="conversionoffset-type">ConversionOffset Type</h3>
+<h3 id="conversionoffset-type">ConversionOffset type</h3>
 <p><code>number</code>, nullable</p>
 <h2 id="datatypecode">DataTypeCode</h2>
 <p><code>DataTypeCode</code></p>
@@ -222,7 +278,7 @@
 <li>type: <code>integer</code></li>
 <li>defined in this schema</li>
 </ul>
-<h3 id="datatypecode-type">DataTypeCode Type</h3>
+<h3 id="datatypecode-type">DataTypeCode type</h3>
 <p><code>integer</code></p>
 <h2 id="name">Name</h2>
 <p><code>Name</code></p>
@@ -231,7 +287,7 @@
 <li>type: <code>string</code></li>
 <li>defined in this schema</li>
 </ul>
-<h3 id="name-type">Name Type</h3>
+<h3 id="name-type">Name type</h3>
 <p><code>string</code>, nullable</p>
 <h2 id="registeroffset">RegisterOffset</h2>
 <p><code>RegisterOffset</code></p>
@@ -240,7 +296,7 @@
 <li>type: <code>integer</code></li>
 <li>defined in this schema</li>
 </ul>
-<h3 id="registeroffset-type">RegisterOffset Type</h3>
+<h3 id="registeroffset-type">RegisterOffset type</h3>
 <p><code>integer</code></p>
 <h2 id="registertype">RegisterType</h2>
 <p><code>RegisterType</code></p>
@@ -249,7 +305,7 @@
 <li>type: reference</li>
 <li>defined in this schema</li>
 </ul>
-<h3 id="registertype-type">RegisterType Type</h3>
+<h3 id="registertype-type">RegisterType type</h3>
 <ul>
 <li><a href=""></a> – <code>#/definitions/ModbusRegisterType</code></li>
 </ul>
@@ -260,7 +316,7 @@
 <li>type: <code>integer</code></li>
 <li>defined in this schema</li>
 </ul>
-<h3 id="scanrate-type">ScanRate Type</h3>
+<h3 id="scanrate-type">ScanRate type</h3>
 <p><code>integer</code></p>
 <h2 id="selected">Selected</h2>
 <p><code>Selected</code></p>
@@ -269,7 +325,7 @@
 <li>type: <code>boolean</code></li>
 <li>defined in this schema</li>
 </ul>
-<h3 id="selected-type">Selected Type</h3>
+<h3 id="selected-type">Selected type</h3>
 <p><code>boolean</code></p>
 <h2 id="streamid">StreamId</h2>
 <p><code>StreamId</code></p>
@@ -278,7 +334,7 @@
 <li>type: <code>string</code></li>
 <li>defined in this schema</li>
 </ul>
-<h3 id="streamid-type">StreamId Type</h3>
+<h3 id="streamid-type">StreamId type</h3>
 <p><code>string</code>, nullable</p>
 <h2 id="unitid">UnitId</h2>
 <p><code>UnitId</code></p>
@@ -287,7 +343,7 @@
 <li>type: <code>integer</code></li>
 <li>defined in this schema</li>
 </ul>
-<h3 id="unitid-type">UnitId Type</h3>
+<h3 id="unitid-type">UnitId type</h3>
 <p><code>integer</code></p>
 <p><strong>All</strong> of the following <em>requirements</em> need to be fulfilled.</p>
 <h4 id="requirement-1">Requirement 1</h4>
@@ -368,7 +424,7 @@
 <li>is optional</li>
 <li>type: <code>string</code></li>
 </ul>
-<h5 id="bitmap-type-1">BitMap Type</h5>
+<h5 id="bitmap-type-1">BitMap type</h5>
 <p><code>string</code>, nullable</p>
 <h4 id="conversionfactor-1">ConversionFactor</h4>
 <p><code>ConversionFactor</code></p>
@@ -376,7 +432,7 @@
 <li>is optional</li>
 <li>type: <code>number</code></li>
 </ul>
-<h5 id="conversionfactor-type-1">ConversionFactor Type</h5>
+<h5 id="conversionfactor-type-1">ConversionFactor type</h5>
 <p><code>number</code>, nullable</p>
 <h4 id="conversionoffset-1">ConversionOffset</h4>
 <p><code>ConversionOffset</code></p>
@@ -384,7 +440,7 @@
 <li>is optional</li>
 <li>type: <code>number</code></li>
 </ul>
-<h5 id="conversionoffset-type-1">ConversionOffset Type</h5>
+<h5 id="conversionoffset-type-1">ConversionOffset type</h5>
 <p><code>number</code>, nullable</p>
 <h4 id="datatypecode-1">DataTypeCode</h4>
 <p><code>DataTypeCode</code></p>
@@ -392,7 +448,7 @@
 <li>is optional</li>
 <li>type: <code>integer</code></li>
 </ul>
-<h5 id="datatypecode-type-1">DataTypeCode Type</h5>
+<h5 id="datatypecode-type-1">DataTypeCode type</h5>
 <p><code>integer</code></p>
 <h4 id="name-1">Name</h4>
 <p><code>Name</code></p>
@@ -400,7 +456,7 @@
 <li>is optional</li>
 <li>type: <code>string</code></li>
 </ul>
-<h5 id="name-type-1">Name Type</h5>
+<h5 id="name-type-1">Name type</h5>
 <p><code>string</code>, nullable</p>
 <h4 id="registeroffset-1">RegisterOffset</h4>
 <p><code>RegisterOffset</code></p>
@@ -408,7 +464,7 @@
 <li>is optional</li>
 <li>type: <code>integer</code></li>
 </ul>
-<h5 id="registeroffset-type-1">RegisterOffset Type</h5>
+<h5 id="registeroffset-type-1">RegisterOffset type</h5>
 <p><code>integer</code></p>
 <h4 id="registertype-1">RegisterType</h4>
 <p><code>RegisterType</code></p>
@@ -416,7 +472,7 @@
 <li>is optional</li>
 <li>type: reference</li>
 </ul>
-<h5 id="registertype-type-1">RegisterType Type</h5>
+<h5 id="registertype-type-1">RegisterType type</h5>
 <ul>
 <li><a href=""></a> – <code>#/definitions/ModbusRegisterType</code></li>
 </ul>
@@ -426,7 +482,7 @@
 <li>is optional</li>
 <li>type: <code>integer</code></li>
 </ul>
-<h5 id="scanrate-type-1">ScanRate Type</h5>
+<h5 id="scanrate-type-1">ScanRate type</h5>
 <p><code>integer</code></p>
 <h4 id="selected-1">Selected</h4>
 <p><code>Selected</code></p>
@@ -434,7 +490,7 @@
 <li>is optional</li>
 <li>type: <code>boolean</code></li>
 </ul>
-<h5 id="selected-type-1">Selected Type</h5>
+<h5 id="selected-type-1">Selected type</h5>
 <p><code>boolean</code></p>
 <h4 id="streamid-1">StreamId</h4>
 <p><code>StreamId</code></p>
@@ -442,7 +498,7 @@
 <li>is optional</li>
 <li>type: <code>string</code></li>
 </ul>
-<h5 id="streamid-type-1">StreamId Type</h5>
+<h5 id="streamid-type-1">StreamId type</h5>
 <p><code>string</code>, nullable</p>
 <h4 id="unitid-1">UnitId</h4>
 <p><code>UnitId</code></p>
@@ -450,7 +506,7 @@
 <li>is optional</li>
 <li>type: <code>integer</code></li>
 </ul>
-<h5 id="unitid-type-1">UnitId Type</h5>
+<h5 id="unitid-type-1">UnitId type</h5>
 <p><code>integer</code></p>
 </article>
           </div>

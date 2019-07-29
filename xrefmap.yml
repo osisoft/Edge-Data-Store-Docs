@@ -14,7 +14,7 @@ references:
   name: Edge System Administration
   href: Beta2/Administration/Administration.html
 - uid: edgeSystemConfiguration
-  name: Edge System Configuration
+  name: Edge System configuration
   href: Beta2/Configuration/EdgeSystemConfiguration.html
 - uid: edgeSystemDiagnostics
   name: Edge System Diagnostics
@@ -22,6 +22,9 @@ references:
 - uid: edgeSystemHealth
   name: Edge System Health
   href: Beta2/Health/Health.html
+- uid: edgeSystemOverview
+  name: Edge System Overview
+  href: Beta2/Overview/EdgeSystemOverview.html
 - uid: edsQuickStart
   name: Edge Storage Quick Start
   href: Beta2/Overview/EDSQuickStart.html
@@ -38,35 +41,47 @@ references:
   name: Linux and Windows Platform Differences
   href: Beta2/LinuxWindows/LinuxWindows.html
 - uid: managementTools
-  name: Tools for Managing the Edge System
+  name: Edge System management tools
   href: Beta2/Administration/ManagementTools.html
 - uid: modbus_DataSelection_schema
-  name: Modbus DataSelectionConfiguration Schema
+  name: Sample Modbus Data Selection Configuration
   href: Beta2/Configuration/Schemas/Modbus_DataSelection_schema.html
 - uid: modbus_DataSource_schema
-  name: Modbus Data Source Configuration Schema
+  name: Sample Modbus data source configuration
   href: Beta2/Configuration/Schemas/Modbus_DataSource_schema.html
 - uid: modbus_Logging_schema
-  name: EdgeLoggerConfiguration Schema
+  name: EdgeLoggerConfiguration schema
   href: Beta2/Configuration/Schemas/Modbus_Logging_schema.html
 - uid: modbusOverview
   name: Modbus Connectivity
   href: Beta2/Modbus/ModbusOverview.html
+- uid: modbusQuickStart
+  name: Edge Modbus Quick Start
+  href: Beta2/Overview/ModbusQuickStart.html
+- uid: ocsEgressQuickStart
+  name: OSIsoft Cloud Services (OCS) Egress Quick Start
+  href: Beta2/Overview/OCSEgressQuickStart.html
 - uid: omfOverview
   name: OSIsoft Message Format (OMF) Ingress with Edge Storage
   href: Beta2/OMF/OMFOverview.html
 - uid: opcUa_DataSelection_schema
-  name: Opc Ua Data Collection Item Schema
+  name: Sample Opc Ua Data Selection Configuration
   href: Beta2/Configuration/Schemas/OpcUa_DataSelection_schema.html
 - uid: opcUa_DataSelection_Schema
-  name: Opc Ua Data Source Configuration Schema
+  name: Sample Opc Ua Data Source Configuration
   href: Beta2/Configuration/Schemas/OpcUa_DataSource_schema.html
 - uid: opcUa_Logging_schema
-  name: Opc Ua Logger Configuration Schema
+  name: OPC UA logger configuration schema
   href: Beta2/Configuration/Schemas/OpcUa_Logging_schema.html
 - uid: opcUaOverview
-  name: Opc Ua Connectivity
+  name: OPC UA Connectivity
   href: Beta2/OpcUa/OpcUaOverview.html
+- uid: opcUaQuickStart
+  name: Edge Opc Ua Quick Start
+  href: Beta2/Overview/OpcUaQuickStart.html
+- uid: piEgressQuickStart
+  name: PI System (PI Web API) Egress Quick Start
+  href: Beta2/Overview/PIEgressQuickStart.html
 - uid: releaseNotes
   name: Edge System Beta 2 Release Notes
   href: Beta2/ReleaseNotes/ReleaseNotes.html
@@ -119,28 +134,28 @@ references:
   name: Edge System Security Overview
   href: Beta2/Security/SecurityOverview.html
 - uid: Storage_Logging_schema
-  name: Storage Logging Schema
+  name: Storage logging schema
   href: Beta2/Configuration/Schemas/Storage_Logging_schema.html
 - uid: storage_OEM_schema
-  name: Storage OEM Configuration Schema
+  name: Storage OEM configuration schema
   href: Beta2/Configuration/Schemas/Storage_OEM_schema.html
 - uid: storage_PeriodicEgressEndpoints_schema
   name: Storage Periodic Egress Configuration Schema
   href: Beta2/Configuration/Schemas/Storage_PeriodicEgressEndpoints_schema.html
 - uid: storage_Runtime_schema
-  name: Storage Runtime Configuration Schema
+  name: Storage runtime configuration schema
   href: Beta2/Configuration/Schemas/Storage_Runtime_schema.html
 - uid: system_Components_schema
-  name: Edge System Components Schema
+  name: Sample Edge System components configuration
   href: Beta2/Configuration/Schemas/System_Components_schema.html
 - uid: system_HealthEndpoints_schema
-  name: Omf Health Endpoint Configuration Schema
+  name: OMF health endpoint configuration schema
   href: Beta2/Configuration/Schemas/System_HealthEndpoints_schema.html
 - uid: system_Logging_schema
-  name: System Logging Schema
+  name: System logging schema
   href: Beta2/Configuration/Schemas/System_Logging_schema.html
 - uid: system_Port_schema
-  name: System Port Schema
+  name: Sample system port configuration file
   href: Beta2/Configuration/Schemas/System_Port_schema.html
 - uid: troubleShooting
   name: Edge System Troubleshooting

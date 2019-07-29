@@ -78,8 +78,8 @@
 <p>The Edge System is supported on a variety of platforms and processors. OSIsoft provides ready to use install kits for the following platforms:</p>
 <ul>
 <li>Windows 10 x64 - EdgeSystem.msi (Intel/AMD 64 bit processors)</li>
-<li>Debian 9 x64/AMD64 - EdgeSystem_linux-x64.deb (Intel/AMD 64 bit processors)</li>
-<li>Debian 9 ARM32 - EdgeSystem_linux-arm.deb (Raspberry PI 2,3,4, BeagleBone devices, other ARM v7 and ARM v8 32 bit processors)</li>
+<li>Debian 9 or later x64/AMD64 - EdgeSystem_linux-x64.deb (Intel/AMD 64 bit processors)</li>
+<li>Debian 9 or later ARM32 - EdgeSystem_linux-arm.deb (Raspberry PI 2,3,4, BeagleBone devices, other ARM v7 and ARM v8 32 bit processors)</li>
 </ul>
 <p>In addition to ready to use install kits, OSIsoft also provides examples of how to create Docker Containers in a separate file and tar.gz files are provided with binaries for customers who wish to build their own custom installers or containers for Linux.</p>
 <h2 id="differences-from-beta-1">Differences from Beta 1</h2>
@@ -111,7 +111,7 @@
 <p>To use any of the installers, first copy the appropriate file to the file system of the device.</p>
 <h3 id="windows-windows-10-x64">Windows (Windows 10 x64)</h3>
 <p>Double click the EdgeSystem.msi file in Windows Explorer or execute the file from a command prompt. You will be prompted for install location and default port, and when the install finishes the EdgeSystem will be installed and running on either the default port 5590 or the port you specified during the install.</p>
-<h3 id="debian-9-linux-ubuntu--raspberry-pi-beaglebone-other-debian-based-linux-distros">Debian 9 Linux (Ubuntu  Raspberry PI, BeagleBone, other Debian based Linux distros)</h3>
+<h3 id="debian-9-or-later-linux-ubuntu--raspberry-pi-beaglebone-other-debian-based-linux-distros">Debian 9 or later Linux (Ubuntu  Raspberry PI, BeagleBone, other Debian based Linux distros)</h3>
 <p>Open a terminal window and type:</p>
 <pre><code class="lang-bash">sudo apt install ./EdgeSystem_linux_&lt;either x64 or arm depending upon processor&gt;.deb
 </code></pre><p>A check will be done for prerequisites. If the Linux OS is up to date the install will succeed. If the install fails run the following commands from the terminal window and try the install again:</p>

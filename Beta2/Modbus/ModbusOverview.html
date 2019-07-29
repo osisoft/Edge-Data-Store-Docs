@@ -72,8 +72,260 @@
             <article class="content wrap" id="_content" data-uid="modbusOverview">
 <h1 id="modbus-connectivity">Modbus Connectivity</h1>
 
-<p>The Edge System offers Modbus connectivity to allow Modbus compatible devices to send data to Edge Storage.</p>
-</article>
+<h2 id="overview">Overview</h2>
+<p>The Modbus TCP Connectivity transfers time-series data from Modbus TCP slave devices into the Edge System.</p>
+<p>The Modbus TCP connectivity models the register measurements in a Modbus data source by polling data from the Modbus devices, based on the measurement configuration provided.</p>
+<p>Modbus is a commonly available communication protocol used for connecting and transmitting information between industrial electronic devices. The Modbus TCP connectivity communicates with any device conforming to the Modbus TCP/IP protocol through a gateway or router. The Modbus slave devices and routers do not need to be on the same subnet as Edge System.</p>
+<h2 id="configuration-of-modbus-data-source">Configuration of Modbus Data Source</h2>
+<p>To utilize the Modbus TCP connectivity component of the Edge System, it must be configured to which Modbus data source it will be polling data from.</p>
+<h3 id="procedure-for-configuring-modbus-data-source">Procedure for Configuring Modbus Data Source</h3>
+<blockquote><p><strong>Note:</strong> You cannot modify Modbus data source configurations manually. You must use the REST endpoints to add/edit the configuration. See <a href="#rest-urls">REST Urls</a>.</p>
+</blockquote>
+<p>The following procedure is for configuring Modbus data source.</p>
+<ol>
+<li>Using any text editor, create a file that contains a Modbus data source in JSON form<ul>
+<li>See Modbus Data Source Example section below for content structure</li>
+<li>See Parameters for Modbus Data Source section below for a table of all available parameters</li>
+</ul>
+</li>
+<li>Save the file as DataSource.config.json.</li>
+<li><p>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSource/</code></p>
+<ul>
+<li><p>Example using cURL:</p>
+<pre><code class="lang-bash">curl -v -d &quot;@DataSource.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSource&quot;
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<h3 id="parameters-for-modbus-data-source">Parameters for Modbus Data Source</h3>
+<p>The following parameters are available for configuring a Modbus data source.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IpAddress</strong></td>
+<td>Required</td>
+<td>string</td>
+<td>The IP Address of the device from which the data is to be collected using the Modbus protocol. Host name is not supported.</td>
+</tr>
+<tr>
+<td><strong>Port</strong></td>
+<td>Required</td>
+<td>number</td>
+<td>The TCP port of the target device that listens for and responds to Modbus requests. The value ranges from 0 to 65535. The default TCP port for Modbus protocol is 502.</td>
+</tr>
+<tr>
+<td><strong>StreamIdPrefix</strong></td>
+<td>Optional</td>
+<td>number</td>
+<td>Parameter applied to all data items collected from the data source. If not configured, the default value will be the component ID Modbus1. The custom StreamIdPrefix has the highest priority.</td>
+</tr>
+<tr>
+<td><strong>ConnectTimeout</strong></td>
+<td>Optional</td>
+<td>number</td>
+<td>Parameter to specify the time (in milliseconds) to wait when Modbus TCP connectivity is trying to connect to the data source. The value ranges from 1000 ms to 30000 ms. The default value is 5000 ms.</td>
+</tr>
+<tr>
+<td><strong>ReconnectInterval</strong></td>
+<td>Optional</td>
+<td>number</td>
+<td>Parameter to specify the time (in milliseconds) to wait before retrying to connect to the data source when the data source is offline. The value ranges from 100 ms to 30000 ms. The default value is 1000 ms.</td>
+</tr>
+<tr>
+<td><strong>RequestTimeout</strong></td>
+<td>Optional</td>
+<td>number</td>
+<td>Parameter to specify the time (in milliseconds) that Modbus TCP connectivity waits for a pending request before marking it as timeout and dropping the request. The default value is 10000 ms. The value must be a positive integer, there is no value range.</td>
+</tr>
+<tr>
+<td><strong>DelayBetweenRequests</strong></td>
+<td>Optional</td>
+<td>number</td>
+<td>Parameter to specify the minimum time (in milliseconds) between two successive requests sent to the data source. The value ranges from 0 ms to 1000 ms. The default value is 0 ms.</td>
+</tr>
+<tr>
+<td><strong>MaxResponseDataLength</strong></td>
+<td>Optional</td>
+<td>number</td>
+<td>Parameter to limit the maximum length (in bytes) of data that can be read within one transaction. This feature is provided to support devices that limit the number of bytes that can be returned. If there is no device limitation, the request length should be the maximum length of 250 bytes. The value ranges from 2 to 250. The default value is 250 ms.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="modbus-data-source-example">Modbus Data Source Example</h3>
+<p>Below is an example of valid Modbus Data Source configuration.</p>
+<pre><code class="lang-json">{
+    &quot;IpAddress&quot;: &quot;117.23.45.110&quot;,
+    &quot;Port&quot; : 502,
+    &quot;ConnectTimeout&quot; : 10000,
+}
+</code></pre><h2 id="configuration-of-modbus-data-selection">Configuration of Modbus Data Selection</h2>
+<p>Once a data source is configured for a Modbus instance, which data is to be collected from the Modbus slave device must be configured.</p>
+<h3 id="procedure-for-configuring-modbus-data-selection">Procedure for Configuring Modbus Data Selection</h3>
+<blockquote><p><strong>Note:</strong> You cannot modify Modbus data selection configurations manually. You must use the REST endpoints to add/edit the configuration. See <a href="#rest-urls">REST Urls</a>.</p>
+</blockquote>
+<p>The following procedure is for configuring Modbus data selection.</p>
+<ol>
+<li>Using any text editor, create a file that contains a Modbus data selection in JSON form<ul>
+<li>See Modbus Data Selection Example section below for content structure</li>
+<li>See Parameters for Modbus Data Selection section below for a table of all available parameters</li>
+</ul>
+</li>
+<li>Save the file as DataSelection.config.json.</li>
+<li><p>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection/</code></p>
+<ul>
+<li><p>Example using cURL:</p>
+<pre><code class="lang-bash">curl -v -d &quot;@DataSelection.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection&quot;
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<h3 id="parameters-for-modbus-data-selection">Parameters for Modbus Data Selection</h3>
+<p>The following parameters are available for configuring a Modbus data selection.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Selected</strong></td>
+<td>Optional</td>
+<td>bool</td>
+<td>This field is used to select or clear a measurement. To select an item, set to true. To remove an item, leave the field empty or set to false.</td>
+</tr>
+<tr>
+<td><strong>Name</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>The optional friendly name of the data item collected from the data source. If not configured, the default value will be the stream ID.</td>
+</tr>
+<tr>
+<td><strong>UnitId</strong></td>
+<td>Required</td>
+<td>number</td>
+<td>Modbus slave device unit ID. This must be a value between 0 and 247, inclusively.</td>
+</tr>
+<tr>
+<td><strong>RegisterType</strong></td>
+<td>Required</td>
+<td>number</td>
+<td>Modbus register type. Supported types are Coil, Discrete, Input16, Input32, Holding16 and Holding32.<br><br>Input16 and Holding16 are used to read registers that have a size of 16 bits. For registers that have a size of 32 bits, use the Input32 and Holding32 register types. To represent the types, you can type in the register type ID or the exact name: <br><br>1 or Coil (Read Coil Status)<br>2 or Discrete (Read Discrete Input Status)<br>3 or Holding16 (Read 16-bit Holding Registers)<br>4 or Holding32 (Read 32-bit Holding Registers)<br>6 or Input16 (Read 16-bit Input Registers)<br>7 or Input32 (Read 32-bit Input Registers)</td>
+</tr>
+<tr>
+<td><strong>RegisterOffset</strong></td>
+<td>Required</td>
+<td>number</td>
+<td>The 0 relative offset to the starting register for this measurement. For example, if your Holding registers start at base register 40001, the offset to this register is 0. For 40002, the offset to this register is 1.</td>
+</tr>
+<tr>
+<td><strong>DataTypeCode</strong></td>
+<td>Required</td>
+<td>number</td>
+<td>An integer representing the data type that Modbus TCP connectivity will read starting at the register specified by the offset. Supported data types are:<br>1 = Boolean<br>10 = Int16<br>20 = UInt16<br>30 = Int32<br>31 = Int32ByteSwap<br>100 = Float32<br>101 = Float32ByteSwap<br>110 = Float64<br>111 = Float64ByteSwap<br>1001 - 1250 = String <br>2001 - 2250 = StringByteSwap</td>
+</tr>
+<tr>
+<td><strong>ScanRate</strong></td>
+<td>Required</td>
+<td>number</td>
+<td>How often this measurement should be read from the device in milliseconds. Acceptable values are from 0 to 86400000. If 0 ms is specified, Modbus TCP connectivity will scan for data as fast as possible.</td>
+</tr>
+<tr>
+<td><strong>BitMap</strong></td>
+<td>Required</td>
+<td>number</td>
+<td>The bitmap is used to extract and reorder bits from a word register. The format of the bitmap is uuvvwwxxyyzz, where uu, vv, ww, yy, and zz each refer to a single bit. A leading zero is required if the referenced bit is less than 10. The low-order bit is 01 and high-order bit is either 16 or 32. Up to 16 bits can be referenced for a 16-bit word (data types 10 and 20) and up to 32 bits can be reference for a 32-bit word (data type 30 and 31). The bitmap 0307120802 will map the second bit of the original word to the first bit of the new word, the eighth bit to the second bit, the twelfth bit to the third bit, and so on. The high-order bits of the new word are padded with zeros if they are not specified.</td>
+</tr>
+<tr>
+<td><strong>ConversionFactor</strong></td>
+<td>Required</td>
+<td>number</td>
+<td>This numerical value can be used to scale the raw response received from the Modbus TCP device. If this is specified, regardless of the specified data type, the value will be promoted to a float32 (single) when stored. [Result = (Value / Conversion Factor)]</td>
+</tr>
+<tr>
+<td><strong>ConversionOffset</strong></td>
+<td>Required</td>
+<td>number</td>
+<td>This numerical value can be used to apply an offset to the response received from the Modbus TCP device. [Result = (Value - Conversion Offset)]</td>
+</tr>
+<tr>
+<td><strong>StreamID</strong></td>
+<td>Required</td>
+<td>string</td>
+<td>The custom stream ID that will be used to create the streams. If not specified, the Modbus TCP connectivity will generate a default stream ID based on the measurement configuration. A properly configured custom stream ID follows these rules:<br><br>Is not case-sensitive.<br>Can contain spaces.<br>Cannot start with two underscores (&quot;__&quot;).<br>Can contain a maximum of 260 characters.<br>Cannot use the following characters: / : ? # [ ] @ ! $ &amp; &#39; ( ) \ * + , ; = % &lt; &gt; &#124;<br>Cannot start or end with a period.<br>Cannot contain consecutive periods.<br>Cannot consist of only periods.</td>
+</tr>
+</tbody>
+</table>
+<p>Each JSON object in the file represents a measurement. You can modify the fields in each object to configure the measurement parameters. To add more measurements, you need to create more JSON objects with properly completed fields.</p>
+<h3 id="data-selection-examples">Data Selection Examples</h3>
+<p>Below is an example of valid Modbus Data Source configuration.</p>
+<p><strong>Modbus Data Selection example.</strong></p>
+<pre><code class="lang-json">[
+  {
+    &quot;Selected&quot;: true,
+    &quot;Name&quot;: &quot;Measurement1&quot;,
+    &quot;UnitId&quot;: 0,
+    &quot;RegisterType&quot;: 1,
+    &quot;RegisterOffset&quot;: 0,
+    &quot;DataTypeCode&quot;: 1,
+    &quot;BitMap&quot;: &quot;&quot;,
+    &quot;ConversionFactor&quot;: null,
+    &quot;ConversionOffset&quot;: null,
+    &quot;StreamId&quot;: &quot;SampleStreamID1&quot;,
+    &quot;ScanRate&quot;: 0
+  },
+  {
+    &quot;Selected&quot;: true,
+    &quot;Name&quot;: &quot;Measurement2&quot;,
+    &quot;UnitId&quot;: 247,
+    &quot;RegisterType&quot;: 2,
+    &quot;RegisterOffset&quot;: 65535,
+    &quot;DataTypeCode&quot;: 10,
+    &quot;BitMap&quot;: &quot;&quot;,
+    &quot;ConversionFactor&quot;: 1,
+    &quot;ConversionOffset&quot;: 0,
+    &quot;StreamId&quot;: &quot;&quot;,
+    &quot;ScanRate&quot;: 86400000
+  },
+  {
+    &quot;Selected&quot;: true,
+    &quot;Name&quot;: &quot;Measurement3&quot;,
+    &quot;UnitId&quot;: 1,
+    &quot;RegisterType&quot;: 3,
+    &quot;RegisterOffset&quot;: 1,
+    &quot;DataTypeCode&quot;: 20,
+    &quot;BitMap&quot;: &quot;16151413&quot;,
+    &quot;ConversionFactor&quot;: 2,
+    &quot;ConversionOffset&quot;: 3.4,
+    &quot;StreamId&quot;: &quot;Sample Stream ID 2&quot;,
+    &quot;ScanRate&quot;: 1000
+  },
+  {
+    &quot;Selected&quot;: true,
+    &quot;Name&quot;: &quot;Measurement4&quot;,
+    &quot;UnitId&quot;: 1,
+    &quot;RegisterType&quot;: 4,
+    &quot;RegisterOffset&quot;: 1,
+    &quot;DataTypeCode&quot;: 30,
+    &quot;BitMap&quot;: &quot;30293231&quot;,
+    &quot;ConversionFactor&quot;: 1,
+    &quot;ConversionOffset&quot;: 2,
+    &quot;StreamId&quot;: &quot;Sample_Stream_ID_3&quot;,
+    &quot;ScanRate&quot;: 1000
+  }
+]
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

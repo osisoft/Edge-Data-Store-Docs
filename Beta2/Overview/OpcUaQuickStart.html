@@ -5,19 +5,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Sample Opc Ua Data Selection Configuration </title>
+    <title>Edge Opc Ua Quick Start </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Sample Opc Ua Data Selection Configuration ">
+    <meta name="title" content="Edge Opc Ua Quick Start ">
     <meta name="generator" content="docfx 2.43.2.0">
     
-    <link rel="shortcut icon" href="../../../favicon.ico">
-    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../../styles/docfx.css">
-    <link rel="stylesheet" href="../../../styles/main.css">
-    <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../../toc.html">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
     
-    <meta property="docfx:rel" content="../../../">
+    <meta property="docfx:rel" content="../../">
     
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -34,8 +34,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../../../index.html">
-                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -69,9 +69,26 @@
       <div role="main" class="container body-content hide-when-search">
         <div class="article row grid">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="opcUa_DataSelection_schema">
-<h1 id="sample-opc-ua-data-selection-configuration">Sample Opc Ua Data Selection Configuration</h1>
+            <article class="content wrap" id="_content" data-uid="opcUaQuickStart">
+<h1 id="edge-opc-ua-quick-start">Edge Opc Ua Quick Start</h1>
 
+<p>This document is a quick tour of setting up the Edge Opc Ua component.</p>
+<h2 id="configuring-an-opc-ua-data-source">Configuring an Opc Ua Data Source</h2>
+<p>The first step in configuring Edge Opc Ua is to create a file in JSON format describing the location of the data source. Please modify the values below to match your environment.</p>
+<pre><code class="lang-json">{
+    &quot;EndpointUrl&quot;: &quot;opc.tcp://&lt;ip address&gt;:&lt;port - often 62541&gt;/&lt;server path&gt;&quot;,
+    &quot;UseSecureConnection&quot;: false,
+    &quot;UserName&quot;: null,
+    &quot;Password&quot;: null,
+    &quot;RootNodeIds&quot;: null,
+    &quot;IncomingTimestamp&quot;: &quot;Source&quot;,
+    &quot;StreamIdPrefix&quot;: &quot;OpcUa&quot;
+}
+</code></pre><p>Enter the correct IP address and port for your Opc Ua data source and save the file with the name OpcUa1Datasource.json. Then run the following curl script from the same directory where the file is located. The script should be run on the same computer where the Edge System is installed:</p>
+<pre><code class="lang-bash">curl -i -d &quot;@OpcUa1Datasource.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Datasource
+</code></pre><p>When this command completes successfully (a 204 is returned by curl), your Opc Ua data source has been created. If you get a 400 error check your JSON file for errors, if you get a 404 or 500 error check to make sure the Edge System is running on your computer.</p>
+<h2 id="configuring-opc-ua-data-selection">Configuring Opc Ua Data Selection</h2>
+<p>The next step in setting up Opc Ua is to select the Opc Ua data you wish to store in the Edge System. This is done by configuring Opc Ua data selection. Sample JSON for 5 Opc Ua values is below - please modify the values as appropriate for your environment.</p>
 <pre><code class="lang-json">[{
         &quot;Selected&quot;: true,
         &quot;Name&quot;: &quot;Cold Side Inlet Temperature&quot;,
@@ -103,131 +120,13 @@
         &quot;StreamId&quot;: null
     }
 ]
-</code></pre><pre><code>
-# OPC UA data collection item schema
-
-| Abstract            | Extensible | Status       | Identifiable | Custom Properties | Additional Properties | Defined in                                                         |
-| ------------------- | ---------- | ------------ | ------------ | ----------------- | --------------------- | ------------------------------------------------------------------ |
-| Can be instantiated | Yes        | Experimental | No           | Forbidden         | Forbidden             | [OpcUa_DataSelection_schema.json](OpcUa_DataSelection_schema.json) |
-
-# DataCollectionItem properties
-
-| Property              | Type      | Required | Nullable | Defined by                       |
-| --------------------- | --------- | -------- | -------- | -------------------------------- |
-| [Name](#name)         | `string`  | Optional | Yes      | DataCollectionItem (this schema) |
-| [NodeId](#nodeid)     | `string`  | Optional | Yes      | DataCollectionItem (this schema) |
-| [Selected](#selected) | `boolean` | Optional | No       | DataCollectionItem (this schema) |
-| [StreamId](#streamid) | `string`  | Optional | Yes      | DataCollectionItem (this schema) |
-
-## Name
-
-`Name`
-
-- is optional
-- type: `string`
-- defined in this schema
-
-### Name type
-
-`string`, nullable
-
-## NodeId
-
-`NodeId`
-
-- is optional
-- type: `string`
-- defined in this schema
-
-### NodeId Type
-
-`string`, nullable
-
-## Selected
-
-`Selected`
-
-- is optional
-- type: `boolean`
-- defined in this schema
-
-### Selected Type
-
-`boolean`
-
-## StreamId
-
-`StreamId`
-
-- is optional
-- type: `string`
-- defined in this schema
-
-### StreamId Type
-
-`string`, nullable
-
-**All** of the following _requirements_ need to be fulfilled.
-
-#### Requirement 1
-
-- []() – `#/definitions/EdgeConfigurationBase`
-
-#### Requirement 2
-
-`object` with following properties:
-
-| Property   | Type    | Required |
-| ---------- | ------- | -------- |
-| `Name`     | string  | Optional |
-| `NodeId`   | string  | Optional |
-| `Selected` | boolean | Optional |
-| `StreamId` | string  | Optional |
-
-#### Name
-
-`Name`
-
-- is optional
-- type: `string`
-
-##### Name Type
-
-`string`, nullable
-
-#### NodeId
-
-`NodeId`
-
-- is optional
-- type: `string`
-
-##### NodeId Type
-
-`string`, nullable
-
-#### Selected
-
-`Selected`
-
-- is optional
-- type: `boolean`
-
-##### Selected Type
-
-`boolean`
-
-#### StreamId
-
-`StreamId`
-
-- is optional
-- type: `string`
-
-##### StreamId Type
-
-`string`, nullable
-</code></pre></article>
+</code></pre><p>Save the JSON content above in a text file and name it OpcUa1Dataselection.json. When you run the following curl script the system will be configured to collect Opc Ua data values.</p>
+<pre><code class="lang-bash">curl -i -d &quot;@OpcUa1Dataselection.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
+</code></pre><p>To see the streams that have been created in Edge Storage to store the data you are writing you can run the following curl script:</p>
+<pre><code class="lang-bash">curl http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/
+</code></pre><p>To view the data in the streams being written  you can refer to the SDS part of this documentation.</p>
+<p>To egress the data to OSIsoft Cloud Services or the PI System, see the egress documentation or quick starts.</p>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -235,7 +134,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-System-Docs/blob/master/Beta2/Configuration/Schemas/OpcUa_DataSelection_schema.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-System-Docs/blob/master/Beta2/Overview/OpcUaQuickStart.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -261,8 +160,8 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../../styles/main.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
   </body>
 </html>
