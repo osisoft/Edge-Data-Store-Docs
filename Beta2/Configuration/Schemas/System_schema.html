@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Sample Edge System components configuration </title>
+    <title>SystemConfiguration schema </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Sample Edge System components configuration ">
+    <meta name="title" content="SystemConfiguration schema ">
     <meta name="generator" content="docfx 2.43.2.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
@@ -69,25 +69,11 @@
       <div role="main" class="container body-content hide-when-search">
         <div class="article row grid">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="system_Components_schema">
-<h1 id="sample-edge-system-components-configuration">Sample Edge System components configuration</h1>
+            <article class="content wrap" id="_content" data-uid="system_schema">
+<h1 id="systemconfiguration-schema">SystemConfiguration schema</h1>
 
-<pre><code class="lang-json">[
- {
-   &quot;ComponentId&quot;: &quot;OpcUa1&quot;,
-   &quot;ComponentType&quot;: &quot;OpcUa&quot;
- },
- {
-   &quot;ComponentId&quot;: &quot;Modbus1&quot;,
-   &quot;ComponentType&quot;: &quot;Modbus&quot;
- },
- {
-   &quot;ComponentId&quot;: &quot;Storage&quot;,
-   &quot;ComponentType&quot;: &quot;EDS.Component&quot;
- }
-]
-</code></pre><h1 id="edge-system-components-schema">Edge System components schema</h1>
-<table>
+<pre><code>
+</code></pre><table>
 <thead>
 <tr>
 <th>Abstract</th>
@@ -107,51 +93,11 @@
 <td>No</td>
 <td>Forbidden</td>
 <td>Forbidden</td>
-<td><a href="System_Components_schema.json">System_Components_schema.json</a></td>
+<td><a href="Modbus_Logging_schema.json">Modbus_Logging_schema.json</a></td>
 </tr>
 </tbody>
 </table>
-<h1 id="edgesystemconfig-definitions">EdgeSystemConfig definitions</h1>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Group</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#componentid">ComponentId</a></td>
-<td><code>string</code></td>
-<td><code>#/definitions/EdgeComponentConfig</code></td>
-</tr>
-<tr>
-<td><a href="#componenttype">ComponentType</a></td>
-<td><code>string</code></td>
-<td><code>#/definitions/EdgeComponentConfig</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="componentid">ComponentId</h2>
-<p><code>ComponentId</code></p>
-<ul>
-<li>is optional</li>
-<li>type: <code>string</code></li>
-<li>defined in this schema</li>
-</ul>
-<h3 id="componentid-type">ComponentId type</h3>
-<p><code>string</code>, nullable</p>
-<h2 id="componenttype">ComponentType</h2>
-<p><code>ComponentType</code></p>
-<ul>
-<li>is optional</li>
-<li>type: <code>string</code></li>
-<li>defined in this schema</li>
-</ul>
-<h3 id="componenttype-type">ComponentType type</h3>
-<p><code>string</code>, nullable</p>
-<h1 id="edgesystemconfig-properties">EdgeSystemConfig properties</h1>
+<h2 id="properties">Properties</h2>
 <table>
 <thead>
 <tr>
@@ -164,61 +110,54 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="#componentconfigurations">ComponentConfigurations</a></td>
-<td>reference</td>
+<td><a href="#logging">Logging</a></td>
+<td><a class="xref" href="System_Logging_schema.html"><code>SystemLoggingConfiguration</code></a></td>
 <td>Optional</td>
 <td>Yes</td>
-<td>EdgeSystemConfig (this schema)</td>
+<td>EdgeLoggerConfiguration</td>
 </tr>
-</tbody>
-</table>
-<h2 id="componentconfigurations">ComponentConfigurations</h2>
-<p><code>ComponentConfigurations</code></p>
-<ul>
-<li>is optional</li>
-<li>type: reference</li>
-<li>defined in this schema</li>
-</ul>
-<h3 id="componentconfigurations-type">ComponentConfigurations type</h3>
-<p>Array type: reference</p>
-<p>All items must be of the type:</p>
-<ul>
-<li><a href=""></a> – <code>#/definitions/EdgeComponentConfig</code></li>
-</ul>
-<p><strong>All</strong> of the following <em>requirements</em> need to be fulfilled.</p>
-<h4 id="requirement-1">Requirement 1</h4>
-<ul>
-<li><a href=""></a> – <code>#/definitions/EdgeConfigurationBase</code></li>
-</ul>
-<h4 id="requirement-2">Requirement 2</h4>
-<p><code>object</code> with following properties:</p>
-<table>
-<thead>
 <tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ComponentConfigurations</code></td>
-<td>array</td>
+<td><a href="#components">Components</a></td>
+<td><a class="xref" href="System_Components_schema.html"><code>[SystemComponentsConfiguration]</code></a></td>
 <td>Optional</td>
+<td>Yes</td>
+<td>ComponentsConfiguration</td>
+</tr>
+<tr>
+<td><a href="#healthEndpoints">HealthEndpoints</a></td>
+<td><a class="xref" href="System_HealthEndpoints_schema.html"><code>[SystemHealthEndpointsConfiguration]</code></a></td>
+<td>Optional</td>
+<td>Yes</td>
+<td>HealthEndpointsConfiguration</td>
+</tr>
+<tr>
+<td><a href="#port">Port</a></td>
+<td><a href="xref:portschema"><code>SystemPortConfiguration</code></a></td>
+<td>Optional</td>
+<td>Yes</td>
+<td>PortConfiguration</td>
 </tr>
 </tbody>
 </table>
-<h4 id="componentconfigurations-1">ComponentConfigurations</h4>
-<p><code>ComponentConfigurations</code></p>
+<h2 id="logging">Logging</h2>
 <ul>
 <li>is optional</li>
-<li>type: reference</li>
+<li>type: <a class="xref" href="System_Logging_schema.html"><code>SystemLoggingConfiguration</code></a></li>
 </ul>
-<h5 id="componentconfigurations-type-1">ComponentConfigurations type</h5>
-<p>Array type: reference</p>
-<p>All items must be of the type:</p>
+<h2 id="components">Components</h2>
 <ul>
-<li><a href=""></a> – <code>#/definitions/EdgeComponentConfig</code></li>
+<li>is optional</li>
+<li>type: <a class="xref" href="System_Components_schema.html"><code>[SystemComponentsConfiguration]</code></a></li>
+</ul>
+<h2 id="healthendpoints">HealthEndpoints</h2>
+<ul>
+<li>is optional</li>
+<li>type: <a class="xref" href="System_HealthEndpoints_schema.html"><code>[SystemHealthEndpointsConfiguration]</code></a></li>
+</ul>
+<h2 id="port">Port</h2>
+<ul>
+<li>is optional</li>
+<li>type: <a href="xref:portschema"><code>SystemPortConfiguration</code></a></li>
 </ul>
 </article>
           </div>
@@ -228,7 +167,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-System-Docs/blob/master/Beta2/Configuration/Schemas/System_Components_schema.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-System-Docs/blob/master/Beta2/Configuration/Schemas/System_schema.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

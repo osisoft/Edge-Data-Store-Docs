@@ -79,7 +79,7 @@
 <h2 id="configuration-of-opc-ua-data-source">Configuration of OPC UA Data Source</h2>
 <p>To utilize the OPC UA connectivity component of the Edge System, it must be configured to which OPC UA data source it will be receiving data from.</p>
 <h3 id="procedure-for-configuring-opc-ua-data-source">Procedure for Configuring OPC UA Data Source</h3>
-<blockquote><p><strong>Note:</strong> You cannot modify OPC UA data source configurations manually. You must use the REST endpoints to add/edit the configuration. See <a href="#rest-urls">REST Urls</a>.</p>
+<blockquote><p><strong>Note:</strong> You cannot modify OPC UA data source configurations manually. You must use the REST endpoints to add/edit the configuration.</p>
 </blockquote>
 <p>The following procedure is for configuring OPC UA data source.</p>
 <ol>
@@ -89,15 +89,13 @@
 </ul>
 </li>
 <li>Save the file as &quot;DataSource.config.json&quot;.</li>
-<li><p>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSource/</code></p>
-<ul>
-<li><p>Example using cURL:</p>
-<pre><code class="lang-bash">curl -v -d &quot;@DataSource.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSource&quot;
-</code></pre></li>
+<li>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSource/</code><ul>
+<li>Example using cURL:</li>
 </ul>
 </li>
 </ol>
-<h3 id="parameters-for-opc-ua-data-source">Parameters for OPC UA Data Source</h3>
+<pre><code class="lang-bash">curl -v -d &quot;@DataSource.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSource&quot;
+</code></pre><h3 id="parameters-for-opc-ua-data-source">Parameters for OPC UA Data Source</h3>
 <p>The following parameters are available for configuring a OPC UA data source.</p>
 <table>
 <thead>
@@ -177,15 +175,13 @@
 </ul>
 </li>
 <li>Save the file as &quot;DataSelection.config.json&quot;</li>
-<li><p>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection/</code></p>
-<ul>
-<li><p>Example using cURL:</p>
-<pre><code class="lang-bash">curl -v -d &quot;@DataSelection.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection&quot;
-</code></pre></li>
+<li>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection/</code><ul>
+<li>Example using cURL:</li>
 </ul>
 </li>
 </ol>
-<h3 id="parameters-for-opc-ua-data-selection">Parameters for OPC UA Data Selection</h3>
+<pre><code class="lang-bash">curl -v -d &quot;@DataSelection.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection&quot;
+</code></pre><h3 id="parameters-for-opc-ua-data-selection">Parameters for OPC UA Data Selection</h3>
 <p>Configuration parameters for OPC UA data selection</p>
 <table>
 <thead>

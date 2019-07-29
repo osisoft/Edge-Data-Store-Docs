@@ -79,7 +79,7 @@
 <h2 id="configuration-of-modbus-data-source">Configuration of Modbus Data Source</h2>
 <p>To utilize the Modbus TCP connectivity component of the Edge System, it must be configured to which Modbus data source it will be polling data from.</p>
 <h3 id="procedure-for-configuring-modbus-data-source">Procedure for Configuring Modbus Data Source</h3>
-<blockquote><p><strong>Note:</strong> You cannot modify Modbus data source configurations manually. You must use the REST endpoints to add/edit the configuration. See <a href="#rest-urls">REST Urls</a>.</p>
+<blockquote><p><strong>Note:</strong> You cannot modify Modbus data source configurations manually. You must use the REST endpoints to add/edit the configuration. </p>
 </blockquote>
 <p>The following procedure is for configuring Modbus data source.</p>
 <ol>
@@ -89,14 +89,13 @@
 </ul>
 </li>
 <li>Save the file as DataSource.config.json.</li>
-<li><p>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSource/</code></p>
+<li>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSource/</code></li>
+</ol>
 <ul>
 <li><p>Example using cURL:</p>
 <pre><code class="lang-bash">curl -v -d &quot;@DataSource.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSource&quot;
 </code></pre></li>
 </ul>
-</li>
-</ol>
 <h3 id="parameters-for-modbus-data-source">Parameters for Modbus Data Source</h3>
 <p>The following parameters are available for configuring a Modbus data source.</p>
 <table>
@@ -169,7 +168,7 @@
 </code></pre><h2 id="configuration-of-modbus-data-selection">Configuration of Modbus Data Selection</h2>
 <p>Once a data source is configured for a Modbus instance, which data is to be collected from the Modbus slave device must be configured.</p>
 <h3 id="procedure-for-configuring-modbus-data-selection">Procedure for Configuring Modbus Data Selection</h3>
-<blockquote><p><strong>Note:</strong> You cannot modify Modbus data selection configurations manually. You must use the REST endpoints to add/edit the configuration. See <a href="#rest-urls">REST Urls</a>.</p>
+<blockquote><p><strong>Note:</strong> You cannot modify Modbus data selection configurations manually. You must use the REST endpoints to add/edit the configuration.</p>
 </blockquote>
 <p>The following procedure is for configuring Modbus data selection.</p>
 <ol>
@@ -179,15 +178,13 @@
 </ul>
 </li>
 <li>Save the file as DataSelection.config.json.</li>
-<li><p>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection/</code></p>
-<ul>
-<li><p>Example using cURL:</p>
-<pre><code class="lang-bash">curl -v -d &quot;@DataSelection.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection&quot;
-</code></pre></li>
+<li>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection/</code><ul>
+<li>Example using cURL:</li>
 </ul>
 </li>
 </ol>
-<h3 id="parameters-for-modbus-data-selection">Parameters for Modbus Data Selection</h3>
+<pre><code class="lang-bash">curl -v -d &quot;@DataSelection.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection&quot;
+</code></pre><h3 id="parameters-for-modbus-data-selection">Parameters for Modbus Data Selection</h3>
 <p>The following parameters are available for configuring a Modbus data selection.</p>
 <table>
 <thead>

@@ -54,7 +54,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Configuration/EdgeSystemConfiguration.html",
-          "hash": "RNd3uLAAt6C96HEIXpfVig=="
+          "hash": "UmKKC/bz8Rg+hFwrePXuwg=="
         }
       },
       "is_incremental": false,
@@ -67,6 +67,18 @@
         ".html": {
           "relative_path": "Beta2/Configuration/Schemas/ConfigurationSchemaList.html",
           "hash": "nYY8otlCPOeZsY2y3V7g/A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Beta2/Configuration/Schemas/EdgeSystem_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "Beta2/Configuration/Schemas/EdgeSystem_schema.html",
+          "hash": "IISdbXukxpNk2/EF9axV0A=="
         }
       },
       "is_incremental": false,
@@ -111,7 +123,22 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Configuration/Schemas/Modbus_Logging_schema.html",
-          "hash": "5wy6DIFSY/CUnZTUeM//nw=="
+          "hash": "k6Z/J+8rTjAmbWYLAyoxLA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "Beta2/Configuration/Schemas/Modbus_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "Beta2/Configuration/Schemas/Modbus_schema.html",
+          "hash": "G0OUps2Dc1eXDZ38vlBDCg=="
         }
       },
       "is_incremental": false,
@@ -138,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Configuration/Schemas/OpcUa_DataSource_schema.html",
-          "hash": "hV+UqmpWgR5/Lvj9wzPYOA=="
+          "hash": "MsJ+Tn3hkulNQWYmsnk3CQ=="
         }
       },
       "is_incremental": false,
@@ -153,7 +180,22 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Configuration/Schemas/OpcUa_Logging_schema.html",
-          "hash": "40UOmomOM08x8UABQa/rbA=="
+          "hash": "8U9/zoFyEOZctec9bplWZA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "Beta2/Configuration/Schemas/OpcUa_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "Beta2/Configuration/Schemas/OpcUa_schema.html",
+          "hash": "Yr6aQjJUuDsEOJvVvl1pgQ=="
         }
       },
       "is_incremental": false,
@@ -168,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Configuration/Schemas/Storage_Logging_schema.html",
-          "hash": "rRcStKEtwl01+YAhckWA6w=="
+          "hash": "9lqDV3mlKlj76vHd/SmQBw=="
         }
       },
       "is_incremental": false,
@@ -213,7 +255,22 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Configuration/Schemas/Storage_Runtime_schema.html",
-          "hash": "Wdcz+Us+4hySi3JSTM3fYA=="
+          "hash": "mdR58wxFScHbhlKdhz8UYA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "Beta2/Configuration/Schemas/Storage_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "Beta2/Configuration/Schemas/Storage_schema.html",
+          "hash": "eBdSWaCoaIydHh3XrBxUEg=="
         }
       },
       "is_incremental": false,
@@ -228,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Configuration/Schemas/System_Components_schema.html",
-          "hash": "iRaOPHe6PYsHn9K5Z9apDg=="
+          "hash": "KZ/DwDtVRqYgqrMkM0GJkQ=="
         }
       },
       "is_incremental": false,
@@ -243,7 +300,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Configuration/Schemas/System_HealthEndpoints_schema.html",
-          "hash": "uWeNiGI8UXCbm6mpBgyplw=="
+          "hash": "SnzmrN51o0YXEzB4qt3/Cw=="
         }
       },
       "is_incremental": false,
@@ -258,7 +315,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Configuration/Schemas/System_Logging_schema.html",
-          "hash": "igU85CYYpKlDJdN4TDIzaw=="
+          "hash": "OuKl1rcdoIhyeDODJxWMJg=="
         }
       },
       "is_incremental": false,
@@ -273,7 +330,23 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Configuration/Schemas/System_Port_schema.html",
-          "hash": "QgkEPhiQPEIz6G6hG9VI4Q=="
+          "hash": "2ouSdvtW0WilWSIvAZLFoQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink",
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "Beta2/Configuration/Schemas/System_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "Beta2/Configuration/Schemas/System_schema.html",
+          "hash": "OOrKKM6hl7EmBMCIf8K2WQ=="
         }
       },
       "is_incremental": false,
@@ -297,7 +370,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Diagnostics/Diagnostics.html",
-          "hash": "OviXcBhYVaCoIfJ5cDfeMg=="
+          "hash": "XLwKwM8qNR4uKnIhoUYbRg=="
         }
       },
       "is_incremental": false,
@@ -369,7 +442,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Modbus/ModbusOverview.html",
-          "hash": "UJ4jIPBfCsw4HCGO0bHyqg=="
+          "hash": "3nGX3Rszuv45kUjei2UcJA=="
         }
       },
       "is_incremental": false,
@@ -393,7 +466,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/OpcUa/OpcUaOverview.html",
-          "hash": "uJD+lKxNDNDalc0UKHFbRg=="
+          "hash": "oGPKNLYmM4nXG0EfsftIZw=="
         }
       },
       "is_incremental": false,
@@ -805,7 +878,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 58,
+          "total_file_count": 63,
           "skipped_file_count": 0
         }
       }

@@ -7,6 +7,9 @@ references:
 - uid: configurationSchemaList
   name: Configuration schemas
   href: Beta2/Configuration/Schemas/ConfigurationSchemaList.html
+- uid: edge_system_schema
+  name: EdgeSystemConfiguration Schema
+  href: Beta2/Configuration/Schemas/EdgeSystem_schema.html
 - uid: edgeDocker
   name: Using Edge System with Docker
   href: Beta2/Docker/EdgeDocker.html
@@ -17,7 +20,7 @@ references:
   name: Edge System configuration
   href: Beta2/Configuration/EdgeSystemConfiguration.html
 - uid: edgeSystemDiagnostics
-  name: Edge System Diagnostics
+  name: Edge System diagnostics
   href: Beta2/Diagnostics/Diagnostics.html
 - uid: edgeSystemHealth
   name: Edge System Health
@@ -50,8 +53,11 @@ references:
   name: Sample Modbus data source configuration
   href: Beta2/Configuration/Schemas/Modbus_DataSource_schema.html
 - uid: modbus_Logging_schema
-  name: EdgeLoggerConfiguration schema
+  name: ModbusLoggerConfiguration Schema
   href: Beta2/Configuration/Schemas/Modbus_Logging_schema.html
+- uid: modbus_schema
+  name: ModbusConfiguration Schema
+  href: Beta2/Configuration/Schemas/Modbus_schema.html
 - uid: modbusOverview
   name: Modbus Connectivity
   href: Beta2/Modbus/ModbusOverview.html
@@ -67,12 +73,15 @@ references:
 - uid: opcUa_DataSelection_schema
   name: Sample Opc Ua data selection configuration
   href: Beta2/Configuration/Schemas/OpcUa_DataSelection_schema.html
-- uid: opcUa_DataSelection_Schema
+- uid: opcUa_DataSource_Schema
   name: Sample Opc Ua data source configuration
   href: Beta2/Configuration/Schemas/OpcUa_DataSource_schema.html
 - uid: opcUa_Logging_schema
   name: OPC UA logger configuration schema
   href: Beta2/Configuration/Schemas/OpcUa_Logging_schema.html
+- uid: opcua_schema
+  name: OpcUaConfiguration Schema
+  href: Beta2/Configuration/Schemas/OpcUa_schema.html
 - uid: opcUaOverview
   name: OPC UA Connectivity
   href: Beta2/OpcUa/OpcUaOverview.html
@@ -145,6 +154,9 @@ references:
 - uid: storage_Runtime_schema
   name: Sample storage runtime configuration
   href: Beta2/Configuration/Schemas/Storage_Runtime_schema.html
+- uid: storage_schema
+  name: StorageConfiguration schema
+  href: Beta2/Configuration/Schemas/Storage_schema.html
 - uid: system_Components_schema
   name: Sample Edge System components configuration
   href: Beta2/Configuration/Schemas/System_Components_schema.html
@@ -157,6 +169,9 @@ references:
 - uid: system_Port_schema
   name: Sample system port configuration file
   href: Beta2/Configuration/Schemas/System_Port_schema.html
+- uid: system_schema
+  name: SystemConfiguration schema
+  href: Beta2/Configuration/Schemas/System_schema.html
 - uid: troubleShooting
   name: Edge System troubleshooting
   href: Beta2/Troubleshooting/Troubleshooting.html
