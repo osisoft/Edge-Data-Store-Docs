@@ -2,13 +2,21 @@
 uid: system_Port_schema
 ---
 
-# System Port Schema
+# Sample system port configuration file
+
+```json
+{
+  "Port": 5590
+}
+```
+
+# System port schema
 
 | Abstract            | Extensible | Status       | Identifiable | Custom Properties | Additional Properties | Defined In                                         |
 | ------------------- | ---------- | ------------ | ------------ | ----------------- | --------------------- | -------------------------------------------------- |
 | Can be instantiated | Yes        | Experimental | No           | Forbidden         | Forbidden             | [System_Port_schema.json](System_Port_schema.json) |
 
-# PortConfiguration Properties
+# PortConfiguration properties
 
 | Property      | Type      | Required | Nullable | Defined by                      |
 | ------------- | --------- | -------- | -------- | ------------------------------- |
@@ -22,7 +30,7 @@ uid: system_Port_schema
 - type: `integer`
 - defined in this schema
 
-### Port Type
+### Port type
 
 `integer`
 
@@ -50,7 +58,7 @@ uid: system_Port_schema
 - is optional
 - type: `integer`
 
-##### Port Type
+##### Port type
 
 `integer`
 

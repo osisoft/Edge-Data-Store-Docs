@@ -111,5 +111,4 @@ curl "http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/My
 
 Both values that were entered were returned - up to 100 values after the specified timestamp would be returned.
 
-For more information on SDS APIs:
-<https://ocs-docs.osisoft.com/Documentation/SequentialDataStore/Data_Store_and_SDS.html>
+For more information on SDS APIs see the SDS section of this documentation.

@@ -13,8 +13,8 @@ This is the second beta release of the combined Edge System - including Storage 
 The Edge System is supported on a variety of platforms and processors. OSIsoft provides ready to use install kits for the following platforms:
 
 * Windows 10 x64 - EdgeSystem.msi (Intel/AMD 64 bit processors)
-* Debian 9 x64/AMD64 - EdgeSystem_linux-x64.deb (Intel/AMD 64 bit processors)
-* Debian 9 ARM32 - EdgeSystem_linux-arm.deb (Raspberry PI 2,3,4, BeagleBone devices, other ARM v7 and ARM v8 32 bit processors)
+* Debian 9 or later x64/AMD64 - EdgeSystem_linux-x64.deb (Intel/AMD 64 bit processors)
+* Debian 9 or later ARM32 - EdgeSystem_linux-arm.deb (Raspberry PI 2,3,4, BeagleBone devices, other ARM v7 and ARM v8 32 bit processors)
 
 In addition to ready to use install kits, OSIsoft also provides examples of how to create Docker Containers in a separate file and tar.gz files are provided with binaries for customers who wish to build their own custom installers or containers for Linux.
 
@@ -51,7 +51,7 @@ To use any of the installers, first copy the appropriate file to the file system
 
 Double click the EdgeSystem.msi file in Windows Explorer or execute the file from a command prompt. You will be prompted for install location and default port, and when the install finishes the EdgeSystem will be installed and running on either the default port 5590 or the port you specified during the install.
 
-### Debian 9 Linux (Ubuntu  Raspberry PI, BeagleBone, other Debian based Linux distros)
+### Debian 9 or later Linux (Ubuntu  Raspberry PI, BeagleBone, other Debian based Linux distros)
 
 Open a terminal window and type:
 

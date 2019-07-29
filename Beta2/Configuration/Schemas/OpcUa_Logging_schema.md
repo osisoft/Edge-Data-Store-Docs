@@ -2,9 +2,9 @@
 uid: opcUa_Logging_schema
 ---
 
-# Opc Ua Logger Configuration Schema
+# OPC UA logger configuration schema
 
-| Abstract            | Extensible | Status       | Identifiable | Custom Properties | Additional Properties | Defined In                                             |
+| Abstract            | Extensible | Status       | Identifiable | Custom properties | Additional properties | Defined in                                             |
 | ------------------- | ---------- | ------------ | ------------ | ----------------- | --------------------- | ------------------------------------------------------ |
 | Can be instantiated | Yes        | Experimental | No           | Forbidden         | Forbidden             | [OpcUa_Logging_schema.json](OpcUa_Logging_schema.json) |
 
@@ -24,7 +24,7 @@ uid: opcUa_Logging_schema
 - type: `integer`
 - defined in this schema
 
-### LogFileCountLimit Type
+### LogFileCountLimit type
 
 `integer`, nullable
 
@@ -36,7 +36,7 @@ uid: opcUa_Logging_schema
 - type: `integer`
 - defined in this schema
 
-### LogFileSizeLimitBytes Type
+### LogFileSizeLimitBytes type
 
 `integer`, nullable
 
@@ -48,7 +48,7 @@ uid: opcUa_Logging_schema
 - type: reference
 - defined in this schema
 
-### LogLevel Type
+### LogLevel type
 
 - []() – `#/definitions/EdgeLogLevel`
 
@@ -75,7 +75,7 @@ uid: opcUa_Logging_schema
 - is optional
 - type: `integer`
 
-##### LogFileCountLimit Type
+##### LogFileCountLimit type
 
 `integer`, nullable
 
@@ -86,7 +86,7 @@ uid: opcUa_Logging_schema
 - is optional
 - type: `integer`
 
-##### LogFileSizeLimitBytes Type
+##### LogFileSizeLimitBytes type
 
 `integer`, nullable
 
@@ -97,6 +97,6 @@ uid: opcUa_Logging_schema
 - is optional
 - type: reference
 
-##### LogLevel Type
+##### LogLevel type
 
 - []() – `#/definitions/EdgeLogLevel`

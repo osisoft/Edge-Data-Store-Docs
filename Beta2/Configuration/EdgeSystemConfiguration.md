@@ -2,15 +2,13 @@
 uid: edgeSystemConfiguration
 ---
 
-# Edge System Configuration
+# Edge System configuration
+Edge System is configured using JSON files stored in a protected directory on Linux or Windows. While the files are accessible to view, it is recommended that any changes to the files be done using REST. As part of making Edge System as secure as possible, any passwords or secrets that are configured will be stored in encrypted form (with cryptographic key material stored separately in a secure location.) If the files are edited directly, the system may not work as expected. Configuration of the system can also be accomplished using the command line if desired, but since REST is the primary means of interacting with Edge Storage functionality, REST is the recommended technique for configuring the system.
 
-The Edge System is configured using JSON files that are stored in a protected directory on Linux and Windows. While the files are accessible to view, it is recommended that any changes to the files be done using REST. As part of making the Edge System as secure as possible, any passwords or secrets that are configured will be stored in encrypted form (with cryptographic key material stored separately in a secure location.) If the files are edited directly the system may not work as expected. Configuration of the system can also be accomplished using the command line if desired, but since REST is the primary means of interacting with Edge Storage functionality, REST is the recommended technique for configuring the system.
-
-It is possible to edit any single component or facet of the system using REST, but it is possible to also configure the system as a whole with a single REST call.
+**Note:** It is possible to edit any single component or facet of the system using REST, but it is also possible to configure the system as a whole with a single REST call.
 
 ## System Configuration
-
-The following JSON represents the minimal configuration of an Edge System. There are no Modbus or Opc Ua components, and the Storage component configuration are set to the default. If a system is configured using this JSON file, any existing Modbus or Opc Ua components would be disabled and removed. No storage data would be deleted or modified, and OMF and SDS data access would not be impacted.
+The following JSON file represents minimal configuration of an Edge System. There are no Modbus or Opc Ua components, and the Storage component configurations are set to the default. If a system were configured with this JSON file, any existing Modbus or Opc Ua components would be disabled and removed. No storage data would be deleted or modified, and OMF and SDS data access would not be impacted.
 
 ```json
 {
@@ -47,7 +45,7 @@ The following JSON represents the minimal configuration of an Edge System. There
 }
 ```
 
-When the following curl command is run this will be set as the configuration of a running Edge System:
+When the following curl command is run, this will be set as the configuration of a running Edge System:
 
 ```bash
 curl -i -d "@EdgeMinimumConfiguration.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration

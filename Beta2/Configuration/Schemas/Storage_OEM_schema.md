@@ -2,17 +2,13 @@
 uid: storage_OEM_schema
 ---
 
-# Storage OEM Configuration Schema
+# Storage OEM configuration schema
 
-```
-
-```
-
-| Abstract            | Extensible | Status       | Identifiable | Custom Properties | Additional Properties | Defined In                                         |
+| Abstract            | Extensible | Status       | Identifiable | Custom properties | Additional properties | Defined in                                         |
 | ------------------- | ---------- | ------------ | ------------ | ----------------- | --------------------- | -------------------------------------------------- |
 | Can be instantiated | Yes        | Experimental | No           | Forbidden         | Forbidden             | [Storage_OEM_schema.json](Storage_OEM_schema.json) |
 
-# OEMConfiguration Properties
+# OEMConfiguration properties
 
 | Property                                        | Type      | Required | Nullable | Defined by                     |
 | ----------------------------------------------- | --------- | -------- | -------- | ------------------------------ |
@@ -28,7 +24,7 @@ uid: storage_OEM_schema
 - type: `integer`
 - defined in this schema
 
-### CheckpointRateInSec Type
+### CheckpointRateInSec type
 
 `integer`
 
@@ -43,7 +39,7 @@ uid: storage_OEM_schema
 - type: `boolean`
 - defined in this schema
 
-### EnableTransactionLog Type
+### EnableTransactionLog type
 
 `boolean`
 
@@ -55,7 +51,7 @@ uid: storage_OEM_schema
 - type: `integer`
 - defined in this schema
 
-### TransactionLogLimitMB Type
+### TransactionLogLimitMB type
 
 `integer`
 
@@ -85,7 +81,7 @@ uid: storage_OEM_schema
 - is optional
 - type: `integer`
 
-##### CheckpointRateInSec Type
+##### CheckpointRateInSec type
 
 `integer`
 
@@ -99,7 +95,7 @@ uid: storage_OEM_schema
 - is optional
 - type: `boolean`
 
-##### EnableTransactionLog Type
+##### EnableTransactionLog type
 
 `boolean`
 
@@ -110,7 +106,7 @@ uid: storage_OEM_schema
 - is optional
 - type: `integer`
 
-##### TransactionLogLimitMB Type
+##### TransactionLogLimitMB type
 
 `integer`
 

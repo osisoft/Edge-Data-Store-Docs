@@ -2,13 +2,13 @@
 uid: system_Logging_schema
 ---
 
-# System Logging Schema
+# System logging schema
 
 | Abstract            | Extensible | Status       | Identifiable | Custom Properties | Additional Properties | Defined In                                               |
 | ------------------- | ---------- | ------------ | ------------ | ----------------- | --------------------- | -------------------------------------------------------- |
 | Can be instantiated | Yes        | Experimental | No           | Forbidden         | Forbidden             | [System_Logging_schema.json](System_Logging_schema.json) |
 
-# EdgeLoggerConfiguration Properties
+# EdgeLoggerConfiguration properties
 
 | Property                                        | Type      | Required | Nullable | Defined by                            |
 | ----------------------------------------------- | --------- | -------- | -------- | ------------------------------------- |
@@ -24,7 +24,7 @@ uid: system_Logging_schema
 - type: `integer`
 - defined in this schema
 
-### LogFileCountLimit Type
+### LogFileCountLimit type
 
 `integer`, nullable
 
@@ -36,7 +36,7 @@ uid: system_Logging_schema
 - type: `integer`
 - defined in this schema
 
-### LogFileSizeLimitBytes Type
+### LogFileSizeLimitBytes type
 
 `integer`, nullable
 
@@ -48,7 +48,7 @@ uid: system_Logging_schema
 - type: reference
 - defined in this schema
 
-### LogLevel Type
+### LogLevel type
 
 - []() – `#/definitions/EdgeLogLevel`
 
@@ -75,7 +75,7 @@ uid: system_Logging_schema
 - is optional
 - type: `integer`
 
-##### LogFileCountLimit Type
+##### LogFileCountLimit type
 
 `integer`, nullable
 
@@ -86,7 +86,7 @@ uid: system_Logging_schema
 - is optional
 - type: `integer`
 
-##### LogFileSizeLimitBytes Type
+##### LogFileSizeLimitBytes type
 
 `integer`, nullable
 
@@ -97,6 +97,6 @@ uid: system_Logging_schema
 - is optional
 - type: reference
 
-##### LogLevel Type
+##### LogLevel type
 
 - []() – `#/definitions/EdgeLogLevel`

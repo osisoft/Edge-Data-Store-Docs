@@ -2,13 +2,13 @@
 uid: storage_Runtime_schema
 ---
 
-# Storage Runtime Configuration Schema
+# Storage runtime configuration schema
 
 | Abstract            | Extensible | Status       | Identifiable | Custom Properties | Additional Properties | Defined In                                                 |
 | ------------------- | ---------- | ------------ | ------------ | ----------------- | --------------------- | ---------------------------------------------------------- |
 | Can be instantiated | Yes        | Experimental | No           | Forbidden         | Forbidden             | [Storage_Runtime_schema.json](Storage_Runtime_schema.json) |
 
-# StorageRuntimeConfiguration Properties
+# StorageRuntimeConfiguration properties
 
 | Property                                          | Type      | Required     | Nullable | Defined by                                |
 | ------------------------------------------------- | --------- | ------------ | -------- | ----------------------------------------- |
@@ -24,7 +24,7 @@ uid: storage_Runtime_schema
 - type: `string`
 - defined in this schema
 
-### IngressDebugExpiration Type
+### IngressDebugExpiration type
 
 `string`
 
@@ -39,7 +39,7 @@ uid: storage_Runtime_schema
 - type: `integer`
 - defined in this schema
 
-### StreamStorageLimitMb Type
+### StreamStorageLimitMb type
 
 `integer`
 
@@ -54,7 +54,7 @@ uid: storage_Runtime_schema
 - type: `integer`
 - defined in this schema
 
-### StreamStorageTargetMb Type
+### StreamStorageTargetMb type
 
 `integer`
 
@@ -84,7 +84,7 @@ uid: storage_Runtime_schema
 - is **required**
 - type: `string`
 
-##### IngressDebugExpiration Type
+##### IngressDebugExpiration type
 
 `string`
 
@@ -98,7 +98,7 @@ uid: storage_Runtime_schema
 - is **required**
 - type: `integer`
 
-##### StreamStorageLimitMb Type
+##### StreamStorageLimitMb type
 
 `integer`
 
@@ -112,7 +112,7 @@ uid: storage_Runtime_schema
 - is **required**
 - type: `integer`
 
-##### StreamStorageTargetMb Type
+##### StreamStorageTargetMb type
 
 `integer`
 

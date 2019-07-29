@@ -16,15 +16,15 @@ Supported compression schemes
 Request compression (writing data)
 ----------------------------------
 
-The body content of an HTTP request can be compressed using the [supported compression schemes](#supported-compression-schemes) allowing you to send stream values to the REST API more efficiently.
-
-The ``Content-Encoding`` HTTP header must be used to specify the compression scheme of compressed-content requests. This header provides context to the API to properly decode the request content.
+You can compress the body content of an HTTP request by using the [supported compression schemes](#supported-compression-schemes) allowing you to send stream values to the REST API more efficiently. 
+You must use the **Content-Encoding** HTTP header to specify the compression scheme of compressed-content requests. This header provides context to the API to properly decode the request content.
 
 Response compression (reading data)
 ----------------------------------
 
-Compressed responses can be requested from the REST API by specifying one of the [supported compression schemes](#supported-compression-schemes) using the ``Accept-Encoding`` HTTP header.
+You can request compressed responses from the REST API by specifying one of the [supported compression schemes](#supported-compression-schemes) using the **Accept-Encoding** HTTP header.
 
-Compressed responses from the REST API will include a ``Content-Encoding`` HTTP header indicating the compression scheme used to compress the response content.
+Compressed responses from the REST API will include a **Content-Encoding** HTTP header indicating the compression scheme used to compress the response content.
 
-*Note that specifying a compression scheme through the use of the* ``Accept-Encoding`` *HTTP header does not guarantee a compressed response. Always refer to presence and value of the* ``Content-Encoding`` *HTTP header of the response to properly decode the response content.*
+**Note:** Specifying a compression scheme through the use of the* **Accept-Encoding** HTTP header does not guarantee a compressed response. Always refer to presence and value of the* **Content-Encoding** HTTP header of the response to properly decode the response content.*
+

@@ -16,6 +16,7 @@ uid: edge_system_schema
 | ----------------------------------------------- | --------- | -------- | -------- | ------------------------------------- |
 | [Storage](#storage)         | [`StorageConfiguration`](xref:storage_schema) | Optional | Yes      | StorageConfiguration |
 | [System](#system) | [`SystemConfiguration`](xref:system_schema) | Optional | Yes      | SystemConfiguration |
+| [{ComponentName}](#system) | [`{ComponentConfiguration}`](xref:system_schema) | Optional | Yes      | {ComponentConfiguration} |
 
 ## Storage
 
@@ -26,3 +27,9 @@ uid: edge_system_schema
 
 - is optional
 - type: [`SystemConfiguration`](xref:system_schema)
+
+## {ComponentName}
+- The name of the component is configured at configuration time as determined by [System](#system)[.]()[Components](xref:system_schema#components)
+- is optional
+- type: depends on component.  One of: [`ModbusConfiguration`](xref:modbus_schema), [`OpcUaConfiguration`](xref:opcua_schema)
+

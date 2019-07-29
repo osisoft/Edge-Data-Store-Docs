@@ -2,17 +2,27 @@
 uid: opcUa_DataSelection_Schema
 ---
 
-# Opc Ua Data Source Configuration Schema
+# Sample Opc Ua Data Source Configuration
 
+```json
+{
+    "EndpointUrl": "opc.tcp://<ip address>:<port - often 62541>/<server path>",
+    "UseSecureConnection": false,
+    "UserName": null,
+    "Password": null,
+    "RootNodeIds": null,
+    "IncomingTimestamp": "Source",
+    "StreamIdPrefix": "OpcUa"
+}
 ```
 
-```
+# OPC UA data source configuration schema
 
-| Abstract            | Extensible | Status       | Identifiable | Custom Properties | Additional Properties | Defined In                                                   |
+| Abstract            | Extensible | Status       | Identifiable | Custom properties | Additional properties | Defined in                                                   |
 | ------------------- | ---------- | ------------ | ------------ | ----------------- | --------------------- | ------------------------------------------------------------ |
 | Can be instantiated | Yes        | Experimental | No           | Forbidden         | Forbidden             | [OpcUa_DataSource_schema.json](OpcUa_DataSource_schema.json) |
 
-# DataSourceConfiguration Properties
+# DataSourceConfiguration properties
 
 | Property                                    | Type      | Required | Nullable | Defined by                            |
 | ------------------------------------------- | --------- | -------- | -------- | ------------------------------------- |
@@ -32,7 +42,7 @@ uid: opcUa_DataSelection_Schema
 - type: `string`
 - defined in this schema
 
-### EndpointUrl Type
+### EndpointUrl type
 
 `string`, nullable
 
@@ -44,7 +54,7 @@ uid: opcUa_DataSelection_Schema
 - type: reference
 - defined in this schema
 
-### IncomingTimestamp Type
+### IncomingTimestamp type
 
 - []() – `#/definitions/IncomingTimestampType`
 
@@ -56,7 +66,7 @@ uid: opcUa_DataSelection_Schema
 - type: `string`
 - defined in this schema
 
-### Password Type
+### Password type
 
 `string`, nullable
 
@@ -68,7 +78,7 @@ uid: opcUa_DataSelection_Schema
 - type: `string`
 - defined in this schema
 
-### RootNodeIds Type
+### RootNodeIds type
 
 `string`, nullable
 
@@ -80,7 +90,7 @@ uid: opcUa_DataSelection_Schema
 - type: `string`
 - defined in this schema
 
-### StreamIdPrefix Type
+### StreamIdPrefix type
 
 `string`, nullable
 
@@ -92,7 +102,7 @@ uid: opcUa_DataSelection_Schema
 - type: `boolean`
 - defined in this schema
 
-### UseSecureConnection Type
+### UseSecureConnection type
 
 `boolean`
 
@@ -104,7 +114,7 @@ uid: opcUa_DataSelection_Schema
 - type: `string`
 - defined in this schema
 
-### UserName Type
+### UserName type
 
 `string`, nullable
 
@@ -135,7 +145,7 @@ uid: opcUa_DataSelection_Schema
 - is optional
 - type: `string`
 
-##### EndpointUrl Type
+##### EndpointUrl type
 
 `string`, nullable
 
@@ -146,7 +156,7 @@ uid: opcUa_DataSelection_Schema
 - is optional
 - type: reference
 
-##### IncomingTimestamp Type
+##### IncomingTimestamp type
 
 - []() – `#/definitions/IncomingTimestampType`
 
@@ -157,7 +167,7 @@ uid: opcUa_DataSelection_Schema
 - is optional
 - type: `string`
 
-##### Password Type
+##### Password type
 
 `string`, nullable
 
@@ -168,7 +178,7 @@ uid: opcUa_DataSelection_Schema
 - is optional
 - type: `string`
 
-##### RootNodeIds Type
+##### RootNodeIds type
 
 `string`, nullable
 
@@ -179,7 +189,7 @@ uid: opcUa_DataSelection_Schema
 - is optional
 - type: `string`
 
-##### StreamIdPrefix Type
+##### StreamIdPrefix type
 
 `string`, nullable
 
@@ -190,7 +200,7 @@ uid: opcUa_DataSelection_Schema
 - is optional
 - type: `boolean`
 
-##### UseSecureConnection Type
+##### UseSecureConnection type
 
 `boolean`
 
@@ -201,6 +211,6 @@ uid: opcUa_DataSelection_Schema
 - is optional
 - type: `string`
 
-##### UserName Type
+##### UserName type
 
 `string`, nullable

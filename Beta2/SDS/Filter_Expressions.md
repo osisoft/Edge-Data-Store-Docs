@@ -46,7 +46,7 @@ Logical operators
 
 The following logical operators are supported for use within a filter expression:
 
-| Operator   | Comment                                             |
+| Operator   | Description                                             |
 |------------|-----------------------------------------------------|
 | ``eq``     | Equal to                                            |
 | ``ne``     | Not equal                                           |
@@ -60,9 +60,9 @@ The following logical operators are supported for use within a filter expression
 | ``not``    | Not logical operator                                |
 | ``-``      | Negation                                            |
 
-### Logical Operator Examples
+### Logical operator examples
 
-For the following examples, assume that the SDS Type event includes a field named ``Value`` of type **double**:
+For the following examples, you can assume that the SDS Type event includes a field named ``Value`` of type **double**:
 
 - ``Value eq 1.0``
 - ``Value ne 15.6``
@@ -79,7 +79,7 @@ Math functions
 
 The following math functions are supported for use within a filter expression:
 
-| Function  | Comment                 |
+| Function  | Description                 |
 |-----------|-------------------------|
 | ``add``   | Addition                |
 | ``sub``   | Subtraction             |
@@ -90,9 +90,9 @@ The following math functions are supported for use within a filter expression:
 | ``floor`` | Rounds down to the nearest numeric component without a decimal |
 |``ceiling``| Rounds up to the nearest numeric component without a decimal |
 
-### Math Function Examples
+### Math function examples
 
-For the following examples, assume that the SDS Type event includes a field named ``Value`` of type **double**:
+For the following examples, you can assume that the SDS Type event includes a field named ``Value`` of type **double**:
 
 - ``Value eq (6.0 add 3.0)``
 - ``Value eq (6.0 sub 3.0)``
@@ -108,7 +108,7 @@ String functions
 
 String operations are case sensitive. The character index in a string is 0-based. The following string functions are supported for use within a filter expression:
 
-| function       | Comment                                                         |
+| Function       | Description                                                         |
 |----------------|-----------------------------------------------------------------|
 | ``endswith``   | Compare the character at the end of the input string            |
 | ``startswith`` | Compare the character at the start of the input string          |
@@ -124,7 +124,7 @@ String operations are case sensitive. The character index in a string is 0-based
 
 ### String function examples
 
-The following examples assume that the SDS Type event includes a field named ``sValue`` of type **string**:
+For the following examples, you can assume that the SDS Type event includes a field named ``sValue`` of type **string**:
 
 |Example                                      |Result                                                           |
 |---------------------------------------------|-----------------------------------------------------------------|
@@ -145,7 +145,7 @@ DateTime functions
 
 The following DateTime functions are supported for use within a filter expression:
 
-| Function   | Comment                          |
+| Function   | Description                          |
 |------------|----------------------------------|
 | ``year``   | Get year value from DateTime     |
 | ``month``  | Get month value from DateTime    |
@@ -154,9 +154,9 @@ The following DateTime functions are supported for use within a filter expressio
 | ``minute`` | Get minute value from DateTime   |
 | ``second`` | Get second value from DateTime   |
 
-### DateTime Function Examples
+### DateTime function examples
 
-The following examples assume that the SDS Type event includes a field named ``TimeId`` of type **DateTime**:
+For the following examples, you can assume that the SDS Type event includes a field named ``TimeId`` of type **DateTime**:
 
 - ``year(TimeId) eq 2015``
 - ``month(TimeId) eq 11``
@@ -170,7 +170,7 @@ TimeSpan functions
 
 The following TimeSpan functions are supported for use within a filter expression:
 
-| function   | Comment                          |
+| Function   | Description                          |
 |------------|----------------------------------|
 | ``years``  | Get year value from TimeSpan     |
 | ``days``   | Get day value from TimeSpan      |
@@ -178,9 +178,9 @@ The following TimeSpan functions are supported for use within a filter expressio
 | ``minutes``| Get minute value from TimeSpan   |
 | ``seconds``| Get second value from TimeSpan   |
 
-### TimeSpan Function Examples
+### TimeSpan function examples
 
-For the following examples, assume that the SDS Type event includes a field named ``TimeSpanValue`` of type **TimeSpan**:
+For the following examples, you can assume that the SDS Type event includes a field named ``TimeSpanValue`` of type **TimeSpan**:
 
 - ``years(TimeSpanValue) eq 1``
 - ``days(TimeSpanValue) eq 22``

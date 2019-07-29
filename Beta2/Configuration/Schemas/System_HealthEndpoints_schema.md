@@ -2,13 +2,13 @@
 uid: system_HealthEndpoints_schema
 ---
 
-# Omf Health Endpoint Configuration Schema
+# OMF health endpoint configuration schema
 
 | Abstract            | Extensible | Status       | Identifiable | Custom Properties | Additional Properties | Defined In                                                               |
 | ------------------- | ---------- | ------------ | ------------ | ----------------- | --------------------- | ------------------------------------------------------------------------ |
 | Can be instantiated | Yes        | Experimental | No           | Forbidden         | Forbidden             | [System_HealthEndpoints_schema.json](System_HealthEndpoints_schema.json) |
 
-# OmfHealthEndpointConfiguration Properties
+# OmfHealthEndpointConfiguration properties
 
 | Property                                                    | Type      | Required | Nullable | Defined by                                   |
 | ----------------------------------------------------------- | --------- | -------- | -------- | -------------------------------------------- |
@@ -30,7 +30,7 @@ uid: system_HealthEndpoints_schema
 - type: reference
 - defined in this schema
 
-### Buffering Type
+### Buffering type
 
 - []() – `#/definitions/BufferType`
 
@@ -42,7 +42,7 @@ uid: system_HealthEndpoints_schema
 - type: `string`
 - defined in this schema
 
-### ClientId Type
+### ClientId type
 
 `string`, nullable
 
@@ -54,7 +54,7 @@ uid: system_HealthEndpoints_schema
 - type: `string`
 - defined in this schema
 
-### ClientSecret Type
+### ClientSecret type
 
 `string`, nullable
 
@@ -66,7 +66,7 @@ uid: system_HealthEndpoints_schema
 - type: `string`
 - defined in this schema
 
-### Endpoint Type
+### Endpoint type
 
 `string`, nullable
 
@@ -78,7 +78,7 @@ uid: system_HealthEndpoints_schema
 - type: `string`
 - defined in this schema
 
-### Id Type
+### Id type
 
 `string`, nullable
 
@@ -90,7 +90,7 @@ uid: system_HealthEndpoints_schema
 - type: `integer`
 - defined in this schema
 
-### MaxBufferSizeMB Type
+### MaxBufferSizeMB type
 
 `integer`
 
@@ -102,7 +102,7 @@ uid: system_HealthEndpoints_schema
 - type: `string`
 - defined in this schema
 
-### Password Type
+### Password type
 
 `string`, nullable
 
@@ -114,7 +114,7 @@ uid: system_HealthEndpoints_schema
 - type: `string`
 - defined in this schema
 
-### UserName Type
+### UserName type
 
 `string`, nullable
 
@@ -126,7 +126,7 @@ uid: system_HealthEndpoints_schema
 - type: `boolean`
 - defined in this schema
 
-### ValidateEndpointCertificate Type
+### ValidateEndpointCertificate type
 
 `boolean`
 
@@ -159,7 +159,7 @@ uid: system_HealthEndpoints_schema
 - is optional
 - type: reference
 
-##### Buffering Type
+##### Buffering type
 
 - []() – `#/definitions/BufferType`
 
@@ -170,7 +170,7 @@ uid: system_HealthEndpoints_schema
 - is optional
 - type: `string`
 
-##### ClientId Type
+##### ClientId type
 
 `string`, nullable
 
@@ -181,7 +181,7 @@ uid: system_HealthEndpoints_schema
 - is optional
 - type: `string`
 
-##### ClientSecret Type
+##### ClientSecret type
 
 `string`, nullable
 
@@ -192,7 +192,7 @@ uid: system_HealthEndpoints_schema
 - is optional
 - type: `string`
 
-##### Endpoint Type
+##### Endpoint type
 
 `string`, nullable
 

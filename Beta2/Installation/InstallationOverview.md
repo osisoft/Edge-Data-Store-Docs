@@ -9,8 +9,8 @@ uid: installationOverview
 The Edge System is supported on a variety of platforms and processors. OSIsoft provides ready to use install kits for the following platforms:
 
 * Windows 10 x64 - EdgeSystem.msi (Intel/AMD 64 bit processors)
-* Debian 9 x64/AMD64 - EdgeSystem_linux-x64.deb (Intel/AMD 64 bit processors)
-* Debian 9 ARM32 - EdgeSystem_linux-arm.deb (Raspberry PI 2,3,4, BeagleBone devices, other ARM v7 and ARM v8 32 bit processors)
+* Debian 9 or later x64/AMD64 - EdgeSystem_linux-x64.deb (Intel/AMD 64 bit processors)
+* Debian 9 or later ARM32 - EdgeSystem_linux-arm.deb (Raspberry PI 2,3,4, BeagleBone devices, other ARM v7 and ARM v8 32 bit processors)
 
 In addition to ready to use install kits, OSIsoft also provides examples of how to create [Docker containers](xref:edgeDocker) and tar.gz files are provided with binaries for customers who wish to build their own custom installers or containers for Linux.
 
@@ -42,7 +42,7 @@ To remove the EdgeSystem program files from a computer use the Windows Control P
 
 To remove data, configuration and log files remove the directory C:\ProgramData\OSIsoft\EdgeSystem\. This will result in deletion of all data stored in the Edge Storage component in addition to configuration and log files.
 
-### Debian 9 Linux (Ubuntu  Raspberry PI, BeagleBone, other Debian based Linux distros)
+### Debian 9 or Later Linux (Ubuntu  Raspberry PI, BeagleBone, other Debian based Linux distros)
 
 You must have administrative privileges to install the software, e.g. root or sudo privilege. The examples below assume a user with permission to use sudo.
 
