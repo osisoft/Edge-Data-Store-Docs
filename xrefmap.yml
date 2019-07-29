@@ -143,7 +143,7 @@ references:
   name: Storage Periodic Egress Configuration Schema
   href: Beta2/Configuration/Schemas/Storage_PeriodicEgressEndpoints_schema.html
 - uid: storage_Runtime_schema
-  name: Storage runtime configuration schema
+  name: Sample storage runtime configuration
   href: Beta2/Configuration/Schemas/Storage_Runtime_schema.html
 - uid: system_Components_schema
   name: Sample Edge System components configuration

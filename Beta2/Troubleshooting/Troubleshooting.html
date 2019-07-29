@@ -75,6 +75,16 @@
 <p>If you encounter errors while using or developing against Edge System, you have both local and remote means of diagnosing issues.</p>
 <p>Edge System supports a diagnostics namespace that is used to store streams containing diagnostic information from Edge System itself. As with any other stream data stored in the Edge Storage component, you can egress this to either PI Web API or OSIsoft Cloud Services to monitor the state of a system remotely.</p>
 <p>In addition, all components in Edge System support OMF Health messages that can be configured using the Health Endpoint configuration so that OMF Health messages are sent to remote PI Web API or OSIsoft Cloud Service endpoints to support remote monitoring of devices.</p>
+<h2 id="ingress">Ingress</h2>
+<h3 id="ingress-logging">Ingress logging</h3>
+<p>You can find log messages related to egress in the Storage logs. If you set the the log level temporarily to <strong>Verbose</strong>, most information for troubleshooting will be output.</p>
+<h3 id="ingress-debugging">Ingress debugging</h3>
+<p>In order to troubleshoot problems between an OMF application and Edge Storage, enable debugging. If you set an appropriate value for the <em>IngressDebugExpiration</em> property in an storage runtime configuration, debugging will be enabled for all incoming OMF messages, and HTTP request and response content will be stored to disk for review. The property represents the date and time when debugging should no longer be enabled. You can also disable debugging if you set the value to <em>null</em>. </p>
+<p>Examples of valid strings representing date and time:</p>
+<pre><code>Utc: “yyyy-mm-ddThh:mm:ssZ”
+
+Local: “mm-dd-yyyy hh:mm:ss”
+</code></pre><p>The content of the OMF message, including the headers will be written to the Logs Directory. For an active application this can become quite large. As a result, debug information is stored to disk in a separate format that usual log messages. A single file will be written to the usual Logs directory for every incoming OMF Type, Container, and Data message.</p>
 <h2 id="egress">Egress</h2>
 <h3 id="egress-logging">Egress logging</h3>
 <p>You can find log messages related to egress in the Storage logs. If you set the the log level temporarily to <strong>Verbose</strong>, most information for troubleshooting will be output.</p>
