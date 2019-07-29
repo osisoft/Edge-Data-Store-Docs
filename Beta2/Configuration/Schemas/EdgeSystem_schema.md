@@ -16,7 +16,7 @@ uid: edge_system_schema
 | ----------------------------------------------- | --------- | -------- | -------- | ------------------------------------- |
 | [Storage](#storage)         | [`StorageConfiguration`](xref:storage_schema) | Optional | Yes      | StorageConfiguration |
 | [System](#system) | [`SystemConfiguration`](xref:system_schema) | Optional | Yes      | SystemConfiguration |
-| [{ComponentName}](#system) | [`{ComponentConfiguration}`](xref:system_schema) | Optional | Yes      | {ComponentConfiguration} |
+| [{ComponentName}](#system) | [`{ComponentConfiguration}`](#system) | Optional | Yes      | {ComponentConfiguration} |
 
 ## Storage
 

@@ -1,5 +1,5 @@
 ---
-uid: opcUa_DataSelection_Schema
+uid: opcUa_DataSource_Schema
 ---
 
 # Sample Opc Ua Data Source Configuration
