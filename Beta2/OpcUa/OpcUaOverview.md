@@ -13,7 +13,7 @@ OPC UA is a standard, which ensures open connectivity, interoperability, securit
 
 To utilize the OPC UA connectivity component of the Edge System, the System Configuration must be configured to include a component by providing a unique componentId and a componentType of "OpcUa" for it to be loaded by the Edge System; In addition, the OPC UA data source and data selection must be configured for the component to collect the data. The data source specifies where to poll the data from, and the data selection specifies what measurements to collect data for.
 
-## Configuration of OPC UA Component of the Edge System
+## Configuration of OPC UA component of the Edge System
 
 The default Edge System comes preconfigured with a OPC UA component. If it is not configured during the System Configuration, a new OPC UA component can be added.
 
@@ -30,7 +30,7 @@ curl -v -d "@Opcua2Component.config.json" -H "Content-Type: application/json" -X
 ```
 1. Restart the Edge System.
 
-### OPC UA Component Example
+### OPC UA component Example
 
 Below is an example of OPC UA component.
 
