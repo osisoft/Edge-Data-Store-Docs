@@ -36,7 +36,7 @@ Below is an example of OPC UA component.
 
 ```json
 [
-	{
+    {
         "componentId": "OpcUa2",
         "componentType": "OPCUA"
     }
