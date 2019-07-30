@@ -32,7 +32,7 @@ curl -v -d "@Opcua2Component.config.json" -H "Content-Type: application/json" -X
 
 ### OPC UA component Example
 
-Below is an example of OPC UA component.
+Below is an example of OPC UA component with a componentId "OpcUa2".
 
 ```json
 [
@@ -57,11 +57,11 @@ The following procedure is for configuring OPC UA data source.
     - See OPC UA Data Source Example section below for content structure
     - See Parameters for OPC UA Data Source section below for a table of all available parameters
 1. Save the file as "DataSource.config.json".
-1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/<connectivityId>/DataSource/`
+1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/<componentId>/DataSource/`
     - Example using cURL:
 
 ```bash
-curl -v -d "@DataSource.config.json" -H "Content-Type: application/json" -X POST "http://localhost:5590/api/v1/configuration/<connectivityId>/DataSource"
+curl -v -d "@DataSource.config.json" -H "Content-Type: application/json" -X POST "http://localhost:5590/api/v1/configuration/<componentId>/DataSource"
 ```
 
 ### Parameters for OPC UA Data Source
@@ -108,11 +108,11 @@ The following procedure is for configuring OPC UA data selection.
     - See OPC UA Data Selection Example section below for content structure
     - See Parameters for OPC UA Data Selection section below for a table of all available parameters
 1. Save the file as "DataSelection.config.json"
-1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/<connectivityId>/DataSelection/`
+1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/<componentId>/DataSelection/`
     - Example using cURL:
 
 ```bash
-curl -v -d "@DataSelection.config.json" -H "Content-Type: application/json" -X POST "http://localhost:5590/api/v1/configuration/<connectivityId>/DataSelection"
+curl -v -d "@DataSelection.config.json" -H "Content-Type: application/json" -X POST "http://localhost:5590/api/v1/configuration/<componentId>/DataSelection"
 ```
 
 ### Parameters for OPC UA Data Selection
