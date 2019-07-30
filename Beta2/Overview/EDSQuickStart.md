@@ -4,9 +4,9 @@ uid: edsQuickStart
 
 # Edge Storage Quick Start
 
-This document is a quick tour of getting data into the Edge Storage component using the OSisoft Message Format (OMF), and then retrieving the data using the Sequential Data Store (SDS) API. Both OMF data ingress and SDS data retrieval are accomplished using REST APIs. This tour assumes the Edge System has been installed, and is accessible via a REST API using the default installed port (5590). This tour will use curl, a commonly available tool on both Windows and Linux, and use command line commands. The same operations can be used with any programming language or tool that supports making REST calls. In addition data retrieval steps (GET commands) can be accomplished using a browser if one is available on the device.
+This document is a quick tour of getting data into the Edge Storage component using the OSisoft Message Format (OMF), and then retrieving the data using the Sequential Data Store (SDS) API. Both OMF data ingress and SDS data retrieval are accomplished using REST APIs. This tour assumes Edge System has been installed, and is accessible via a REST API using the default installed port (5590). This tour will use curl, a commonly available tool on both Windows and Linux, and use command line commands. The same operations can be used with any programming language or tool that supports making REST calls. In addition data retrieval steps (GET commands) can be accomplished using a browser if one is available on the device.
 
-## Creating an OMF Type
+## Creating an OMF type
 
 The first step in OMF data ingress is to create an OMF type that describes the format of the data to be stored in a container. In our example the data to be written is a timestamp and a numeric value, so the OMF JSON describing the type is:
 
