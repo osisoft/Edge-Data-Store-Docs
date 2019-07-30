@@ -30,7 +30,7 @@ curl -v -d "@Opcua2Component.config.json" -H "Content-Type: application/json" -X
 ```
 4. Restart the Edge System.
 
-### OPC UA component Example
+### OPC UA Component Example
 
 Below is an example of OPC UA component with a componentId "OpcUa2".
 
