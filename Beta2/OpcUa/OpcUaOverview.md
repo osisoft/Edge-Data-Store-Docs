@@ -11,23 +11,24 @@ On startup, the OPC UA connectivity browses the entire OPC UA server address spa
 
 OPC UA is a standard, which ensures open connectivity, interoperability, security, and reliability of industrial automation devices and systems. OPC UA is recognized as one of the key communication and data modeling technologies of Industry 4.0, due to the fact that it works with many software platforms and that it is completely scalable and flexible.
 
-To utilize the OPC UA connectivity component of the Edge System, the System Configuration must be configured to include a component by providing a unique componentId and a componentType of "OpcUa" for it to be loaded by the Edge System; In additiona, the OPC UA data source and data selection must be configured for the component to collect the data. The data source specifies where to poll the data from, and the data selection specifies what measurements to collect data for.
+To utilize the OPC UA connectivity component of the Edge System, the System Configuration must be configured to include a component by providing a unique componentId and a componentType of "OpcUa" for it to be loaded by the Edge System; In addition, the OPC UA data source and data selection must be configured for the component to collect the data. The data source specifies where to poll the data from, and the data selection specifies what measurements to collect data for.
 
 ## Configuration of OPC UA Component of the Edge System
 
 The default Edge System comes preconfigured with a OPC UA component. If it is not configured during the System Configuration, a new OPC UA component can be added.
 
-The following procedure is for adding a new OPC UA component to the Edge System Configuration.
+The following procedure is for adding a new OPC UA component to the Edge System Configuration. Adding a new connectivity component to the System Configuration requires the Edge System restart for the changes to take effect.
 
 1. Using any text editor, create a file that contains a new component in JSON form
-    - See OPC UA Data Source Example section below for content structure
+    - See OPC UA Component Example section below for content structure
 1. Save the file as "Opcua2Component.config.json".
-1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/Components/`
+1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/System/Components/`
     - Example using cURL:
 
 ```bash
 curl -v -d "@Opcua2Component.config.json" -H "Content-Type: application/json" -X POST "http://localhost:5590/api/v1/configuration/System/Components/"
 ```
+1. Restart the Edge System.
 
 ### OPC UA Component Example
 
