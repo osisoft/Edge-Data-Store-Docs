@@ -28,7 +28,7 @@ The following procedure is for adding a new OPC UA component to the Edge System 
 ```bash
 curl -v -d "@Opcua2Component.config.json" -H "Content-Type: application/json" -X POST "http://localhost:5590/api/v1/configuration/System/Components/"
 ```
-1. Restart the Edge System.
+4. Restart the Edge System.
 
 ### OPC UA component Example
 
