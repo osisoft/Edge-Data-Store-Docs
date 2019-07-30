@@ -17,7 +17,7 @@ To utilize the OPC UA connectivity component of the Edge System, the System Conf
 
 The default Edge System comes preconfigured with a OPC UA component. If it is not configured during the System Configuration, a new OPC UA component can be added.
 
-The following procedure is for adding a new OPC UA component to the Edge System Configuration. Adding a new connectivity component to the System Configuration requires the Edge System restart for the changes to take effect.
+The following procedure is for adding a new OPC UA component to the Edge System Configuration. Adding any new connectivity component to the System Configuration requires the Edge System restart for the changes to take effect in current version.
 
 1. Using any text editor, create a file that contains a new component in JSON form
     - See OPC UA Component Example section below for content structure
