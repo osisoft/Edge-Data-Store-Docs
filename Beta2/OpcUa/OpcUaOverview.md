@@ -17,6 +17,31 @@ To utilize the OPC UA connectivity component of the Edge System, the System Conf
 
 The default Edge System comes preconfigured with a OPC UA component. If it is not configured during the System Configuration, a new OPC UA component can be added.
 
+The following procedure is for adding a new OPC UA component to the Edge System Configuration.
+
+1. Using any text editor, create a file that contains a new component in JSON form
+    - See OPC UA Data Source Example section below for content structure
+1. Save the file as "Opcua2Component.config.json".
+1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/Components/`
+    - Example using cURL:
+
+```bash
+curl -v -d "@Opcua2Component.config.json" -H "Content-Type: application/json" -X POST "http://localhost:5590/api/v1/configuration/System/Components/"
+```
+
+### OPC UA Component Example
+
+Below is an example of OPC UA component.
+
+```json
+[
+	{
+        "componentId": "OpcUa2",
+        "componentType": "OPCUA"
+    }
+]
+```
+
 ## Configuration of OPC UA Data Source
 
 The OPC UA data source configuration specifies where it will be receiving data from.
@@ -71,10 +96,6 @@ Below is an example of valid OPC UA Data Source configuration.
 ## Configuration of OPC UA Data Selection
 
 The OPC UA data selection configuration specifies the data points for which the OPC UA connectivity component will collect data from the data source.
-
-The following procedure is for adding a new OPC UA component to the Edge System Configuration.
-
-Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: http://localhost:5590/api/v1/configuration/System/Components/
 
 ### Procedure for Configuring OPC UA Data Selection
 
