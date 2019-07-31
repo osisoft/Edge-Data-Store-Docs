@@ -95,7 +95,7 @@ references:
   name: Edge System Beta 2 Release Notes
   href: Beta2/ReleaseNotes/ReleaseNotes.html
 - uid: scalePerformance
-  name: Edge System Design Considerations
+  name: Edge System design considerations
   href: Beta2/Design/ScalePerformance.html
 - uid: sdsCompression
   name: Compression
