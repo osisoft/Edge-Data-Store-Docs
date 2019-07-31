@@ -4,7 +4,7 @@ uid: system_Logging_schema
 
 # System logging schema
 
-| Abstract            | Extensible | Status       | Identifiable | Custom Properties | Additional Properties | Defined In                                               |
+| Abstract            | Extensible | Status       | Identifiable | Custom properties | Additional properties | Defined in                                               |
 | ------------------- | ---------- | ------------ | ------------ | ----------------- | --------------------- | -------------------------------------------------------- |
 | Can be instantiated | Yes        | Experimental | No           | Forbidden         | Forbidden             | [System_Logging_schema.json](System_Logging_schema.json) |
 

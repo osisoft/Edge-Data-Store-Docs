@@ -2,29 +2,27 @@
 uid: egress
 ---
 
-# Egress from the Edge System
+# Egress from Edge System
 
-## Overview
+Edge System provides an egress mechanism to copy and transfer data to another device or destination. Data is transferred through OMF. Supported destinations are OSIsoft Cloud Services or a PI server.
 
-The Edge System provides a mechanism, called egress, to copy/transfer data to another device or destination. The data is sent via OMF. Supported destinations are OSIsoft Cloud Services or a PI server (via the OMF receiver in PI Web API).
+Configuration of egress includes specifying zero or more endpoints. An egress endpoint represents a destination to which data will be sent. Each egress endpoint is comprised of the properties specified in the [Parameters](#Parameters) section, is executed independently of all other egress endpoints, and is expected to accept OMF messages. More than one endpoint for the same destination is allowed. 
 
-Configuration of egress includes specifying zero or more endpoints. An egress endpoint represents a destination that data will be sent. Each egress endpoint is comprised of the properties specified in the [Parameters](#Parameters) section and is executed independently of all other egress endpoints. More than one endpoint for the same destination is allowed. The destination for an egress endpoint is expected to accept OMF messages.
-
-> **Note:** there are some types, and consequently containers and data, that cannot be egressed. See [Egress Execution Details](#egress-execution-details) for more inforamtion.
+> **Note:** Some types, and consequently containers and data, cannot be egressed. See [Egress Execution Details](#egress-execution-details) for more inforamtion.
 
 ## Configuration
 
 ### Procedure
 
-> **Note:** You cannot add egress configurations manually because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit egress configuration. See [REST Urls](#rest-urls) for additional endpoints.
+> **Note:** You cannot add egress configurations manually, because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit egress configuration. See [REST Urls](#rest-urls) for additional endpoints.
 
-The following procedure is for creating new egress endpoints.
+Complete the following to create new egress endpoints:
 
 1. Using any text editor, create a file that contains one or more egress endpoints in JSON form
     - See [Examples](#Examples) section below for content structure
     - See [Parameters](#Parameters) section below for a table of all available egress parameters
-1. Save the file.
-1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints/`
+2. Save the file.
+3. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints/`
     - Example using cURL:
 
         ```bash
@@ -126,7 +124,7 @@ Find various examples below of valid egress configurations.
     "StreamPrefix" : "1ValidPrefix.",
     "TypePrefix" : "AlsoValid_",
     "DebugExpiration" : null,
-    "NamespaceId" : "default",
+    "NamespaceId" : "default"
 }]
 ```
 
@@ -156,9 +154,9 @@ Find various examples below of valid egress configurations.
 }]
 ```
 
-### REST Urls
+### REST URLs
 
-| Relative Url                                              | HTTP Verb | Action               |
+| Relative URL                                              | HTTP verb | Action               |
 |-----------------------------------------------------------|-----------|----------------------|
 | api/v1/configuration/storage/periodicegressendpoints      | GET       | Gets all configured egress endpoints |
 | api/v1/configuration/storage/periodicegressendpoints      | DELETE    | Deletes all configured egress endpoints |
@@ -170,10 +168,12 @@ Find various examples below of valid egress configurations.
 | api/v1/configuration/storage/periodicegressendpoints/{id} | PUT       | Replace egress endpoint with *id*, will fail if endpoint doesn't exist |
 | api/v1/configuration/storage/periodicegressendpoints/{id} | PATCH     | Allows partial updating of configured endpoint with *id* |
 
-## Egress Execution Details
+## Egress execution details
 
-After configuration for an egress endpoint is added, egress execution will periodically occur for that endpoint. Egress is handled individually per configured endpoint. On first execution types and containers will be egressed, subsequently only new or changed types/containers will be egressed. Type creation must be successful in order to perform container creation, likewise container creation must be successful in order to perform to data egress. It's important to note that type and container creation succeed or fail as a whole (e.g. if a single type fails to be created then type creation is considered to have failed). A failed creation will result in a 5 minute wait before re-attempting egress. As opposed to type/container egress, data egress is performed independently for each stream.
+After configuration for an egress endpoint is added, egress execution will periodically occur for that endpoint. Egress is handled individually per configured endpoint. On the first execution types and containers will be egressed; subsequently only new or changed types/containers will be egressed. Only streams with a single, timeseries-based index can be egressed; a single HTTP request is made per type and container.  Type creation must be successful in order to perform container creation; likewise container creation must be successful in order to perform data egress. A failed creation will result in a 5 minute wait before re-attempting egress. 
 
-> **Note:** only streams with a single, timeseries-based index can be egressed; a single HTTP request is made per type and container
+**Note**  Type and container creation succeed or fail as a whole (e.g. if a single type fails to be created then type creation is considered to have failed). Data egress, however, is performed independently for each stream.
 
-For data collection and egress, in-memory and on-disk storage are used to track the last successfully-egressed data event, per stream. Batches of 200 events are egressed at a time (i.e. per HTTP request). Data is egressed in-order and includes events in the future. Be aware, when an event with a future timestamp is successfully egressed then only values after the associated timestamp of that event will be egressed.
+For data collection and egress, in-memory and on-disk storage are used to track the last successfully-egressed data event, per stream. Batches of 200 events are egressed at a time (per HTTP request). Data is egressed in order and includes events in the future. 
+
+**Note**  When an event with a future timestamp is successfully egressed, only values after the associated timestamp of that event will be egressed.

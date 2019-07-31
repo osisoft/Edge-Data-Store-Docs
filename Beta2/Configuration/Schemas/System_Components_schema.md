@@ -23,7 +23,7 @@ uid: system_Components_schema
 
 # Edge System components schema
 
-| Abstract            | Extensible | Status       | Identifiable | Custom Properties | Additional Properties | Defined In                                                     |
+| Abstract            | Extensible | Status       | Identifiable | Custom properties | Additional properties | Defined in                                                     |
 | ------------------- | ---------- | ------------ | ------------ | ----------------- | --------------------- | -------------------------------------------------------------- |
 | Can be instantiated | Yes        | Experimental | No           | Forbidden         | Forbidden             | [System_Components_schema.json](System_Components_schema.json) |
 

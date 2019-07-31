@@ -2,21 +2,21 @@
 uid: edgeSystemDiagnostics
 ---
 
-# Edge System Diagnostics
+# Edge System diagnostics
 
-The Edge System and it's components produce diagnostics data which is stored locally in the Storage component and may be queried locally and/or egressed to PI Web API endpoints or the OSIsoft Cloud Services.
+Edge System and its components produce diagnostics data which is stored locally in the Storage component, and may be queried locally and/or egressed to PI Web API endpoints or the OSIsoft Cloud Services.
 
 Diagnostics data is stored within the 'diagnostics' namespace of Edge Storage.  Local access to this data is available via the [Sds](xref:sdsReadingData) methods.
 
 ## Egressing diagnostics data via PeriodicEgressEndpoints
 
-To egress diagnositcs related data, configure a periodic egress endpoint and specify ```diagnostics``` as the NamespaceId in the Periodic Egress Endpoint configuration.
+To egress diagnositcs related data, configure a periodic egress endpoint and specify ```diagnostics``` as the NamespaceId in the periodic egress endpoint configuration.
 
-## Diagnostics produced by the Edge System
+## Diagnostics produced by Edge System
 
-The Edge System produces the following diagnostics streams:
+Edge System produces the following diagnostics streams:
 
-The Diagnostics.System dynamic Type includes these values and are logged in a stream with the id System.Diagnostics.
+The Diagnostics.System dynamic type includes these values which are logged in a stream with the id System.Diagnostics.
 This diagnostic stream contains system level information related to the host platform that the Edge System is running on.
 
 | Type         | Property |  Description     |
@@ -36,29 +36,29 @@ This diagnostic stream contains system level information related to the host pla
 | double | StorageTotalSize (uom=MB)  | Total size of the storage medium in use by the Edge System  |
 | double | StorageFreeSpace (uom=MB)  | Free space available  |
 
-## Edge Connectivity Components Diagnostics
+## Edge Connectivity Adapters diagnostics
 
-Each connectivity component of the Edge System produces it's own diagnostics streams.
+Each Connectivity Adapter of the Edge System produces its own diagnostics streams.
 
-### Stream Count
+### Stream count
 
-The Diagnostics.StreamCountEvent dynamic type includes these values, and are logged in a stream with the id {componentid}.StreamCount.  The stream count and type count include only types and streams created for sequential data received from a data source.
+The Diagnostics.StreamCountEvent dynamic type includes these values, which are logged in a stream with the id {componentid}.StreamCount.  The stream count and type count include only types and streams created for sequential data received from a data source.
 | Type         | Property |  Description     |
 |--------|--------------|-----------------------------------|
 | string | timestamp | Timestamp of event |
 | int | StreamCount | Number of streams created by the adapter instance |
 | int | TypeCount | Number of types created by the adapter instance |
 
-### IO Rate
+### IO rate
 
-The Diagnostics.Adapter.IORate dynamic type includes these values, and are logged in a stream with the id {componentid}.IORate. IO rate includes only sequential data collected from a data source.
+The Diagnostics.Adapter.IORate dynamic type includes these values, which are logged in a stream with the id {componentid}.IORate. IO rate includes only sequential data collected from a data source.
 
 | Type         | Property |  Description     |
 |--------|--------------|-----------------------------------|
 | string | timestamp | Timestamp of event |
 | double | IORate | 10-minute rolling average of data rate (streams/second) |
 
-### Error Rate
+### Error rate
 
 The Diganostics.Adapter.ErrorRate dynamic type includes these values, and are logged in a stream with the id {componentid}.ErrorRate.
 
@@ -67,9 +67,9 @@ The Diganostics.Adapter.ErrorRate dynamic type includes these values, and are lo
 | string | timestamp | Timestamp of event |
 | double | ErrorRate | 10-minute rolling average of error rate (streams/second)
 
-## Edge Storage Diagnostics
+## Edge Storage diagnostics
 
-The Storage component of the Edge System produces the following diagnostics streams.
+The Storage component of Edge System produces the following diagnostics streams.
 
 ### Storage.default.default.Counts
 

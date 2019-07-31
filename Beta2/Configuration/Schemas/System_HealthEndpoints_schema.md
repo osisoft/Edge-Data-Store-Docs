@@ -4,7 +4,7 @@ uid: system_HealthEndpoints_schema
 
 # OMF health endpoint configuration schema
 
-| Abstract            | Extensible | Status       | Identifiable | Custom Properties | Additional Properties | Defined In                                                               |
+| Abstract            | Extensible | Status       | Identifiable | Custom properties | Additional properties | Defined in                                                               |
 | ------------------- | ---------- | ------------ | ------------ | ----------------- | --------------------- | ------------------------------------------------------------------------ |
 | Can be instantiated | Yes        | Experimental | No           | Forbidden         | Forbidden             | [System_HealthEndpoints_schema.json](System_HealthEndpoints_schema.json) |
 
@@ -203,7 +203,7 @@ uid: system_HealthEndpoints_schema
 - is optional
 - type: `string`
 
-##### Id Type
+##### Id type
 
 `string`, nullable
 
@@ -214,7 +214,7 @@ uid: system_HealthEndpoints_schema
 - is optional
 - type: `integer`
 
-##### MaxBufferSizeMB Type
+##### MaxBufferSizeMB type
 
 `integer`
 
@@ -225,7 +225,7 @@ uid: system_HealthEndpoints_schema
 - is optional
 - type: `string`
 
-##### Password Type
+##### Password type
 
 `string`, nullable
 
@@ -236,7 +236,7 @@ uid: system_HealthEndpoints_schema
 - is optional
 - type: `string`
 
-##### UserName Type
+##### UserName type
 
 `string`, nullable
 
@@ -247,6 +247,6 @@ uid: system_HealthEndpoints_schema
 - is optional
 - type: `boolean`
 
-##### ValidateEndpointCertificate Type
+##### ValidateEndpointCertificate type
 
 `boolean`

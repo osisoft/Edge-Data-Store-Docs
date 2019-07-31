@@ -2,9 +2,19 @@
 uid: storage_Runtime_schema
 ---
 
+# Sample storage runtime configuration
+
+```json
+{
+  "StreamStorageLimitMb": 2,
+  "StreamStorageTargetMb": 1,
+  "IngressDebugExpiration": "0001-01-01T00:00:00"
+}
+```
+
 # Storage runtime configuration schema
 
-| Abstract            | Extensible | Status       | Identifiable | Custom Properties | Additional Properties | Defined In                                                 |
+| Abstract            | Extensible | Status       | Identifiable | Custom properties | Additional properties | Defined in                                                 |
 | ------------------- | ---------- | ------------ | ------------ | ----------------- | --------------------- | ---------------------------------------------------------- |
 | Can be instantiated | Yes        | Experimental | No           | Forbidden         | Forbidden             | [Storage_Runtime_schema.json](Storage_Runtime_schema.json) |
 
@@ -23,6 +33,8 @@ uid: storage_Runtime_schema
 - is **required**
 - type: `string`
 - defined in this schema
+
+Ingress Debug Expiration is a property that can be used when debugging OMF. If the date and time is the future incoming OMF messages will be logged until the date and time specified. Once the configured time is past OMF messages will no longer be logged for debugging purposes.
 
 ### IngressDebugExpiration type
 

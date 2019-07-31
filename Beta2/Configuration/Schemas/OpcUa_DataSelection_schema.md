@@ -2,7 +2,7 @@
 uid: opcUa_DataSelection_schema
 ---
 
-# Sample Opc Ua Data Selection Configuration
+# Sample Opc Ua data selection configuration
 
 ```json
 [{
@@ -42,7 +42,8 @@ uid: opcUa_DataSelection_schema
 
 # OPC UA data collection item schema
 
-| Abstract            | Extensible | Status       | Identifiable | Custom Properties | Additional Properties | Defined in                                                         |
+
+| Abstract            | Extensible | Status       | Identifiable | Custom properties | Additional properties | Defined in                                                         |
 | ------------------- | ---------- | ------------ | ------------ | ----------------- | --------------------- | ------------------------------------------------------------------ |
 | Can be instantiated | Yes        | Experimental | No           | Forbidden         | Forbidden             | [OpcUa_DataSelection_schema.json](OpcUa_DataSelection_schema.json) |
 
@@ -75,7 +76,7 @@ uid: opcUa_DataSelection_schema
 - type: `string`
 - defined in this schema
 
-### NodeId Type
+### NodeId type
 
 `string`, nullable
 
@@ -87,7 +88,7 @@ uid: opcUa_DataSelection_schema
 - type: `boolean`
 - defined in this schema
 
-### Selected Type
+### Selected type
 
 `boolean`
 
@@ -99,7 +100,7 @@ uid: opcUa_DataSelection_schema
 - type: `string`
 - defined in this schema
 
-### StreamId Type
+### StreamId type
 
 `string`, nullable
 
@@ -127,7 +128,7 @@ uid: opcUa_DataSelection_schema
 - is optional
 - type: `string`
 
-##### Name Type
+##### Name type
 
 `string`, nullable
 
@@ -138,7 +139,7 @@ uid: opcUa_DataSelection_schema
 - is optional
 - type: `string`
 
-##### NodeId Type
+##### NodeId type
 
 `string`, nullable
 
@@ -149,7 +150,7 @@ uid: opcUa_DataSelection_schema
 - is optional
 - type: `boolean`
 
-##### Selected Type
+##### Selected type
 
 `boolean`
 
@@ -160,6 +161,6 @@ uid: opcUa_DataSelection_schema
 - is optional
 - type: `string`
 
-##### StreamId Type
+##### StreamId type
 
 `string`, nullable

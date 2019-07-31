@@ -2,7 +2,8 @@
 uid: opcUa_DataSource_Schema
 ---
 
-# Sample Opc Ua Data Source Configuration
+
+# Sample Opc Ua data source configuration
 
 ```json
 {

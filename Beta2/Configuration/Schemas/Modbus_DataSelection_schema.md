@@ -2,7 +2,7 @@
 uid: modbus_DataSelection_schema
 ---
 
-# Sample Modbus Data Selection Configuration
+# Sample Modbus data selection configuration
 
 ```json
 [{
