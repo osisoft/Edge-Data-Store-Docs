@@ -2,7 +2,7 @@
 sorted: true
 references:
 - uid: commandLine
-  name: Command Line Configuration of the Edge System
+  name: Command line configuration of Edge System
   href: Beta2/CommandLine/CommandLine.html
 - uid: configurationSchemaList
   name: Configuration schemas
@@ -14,7 +14,7 @@ references:
   name: Using Edge System with Docker
   href: Beta2/Docker/EdgeDocker.html
 - uid: edgeSystemAdministration
-  name: Edge System Administration
+  name: Edge System administration
   href: Beta2/Administration/Administration.html
 - uid: edgeSystemConfiguration
   name: Edge System configuration
@@ -23,7 +23,7 @@ references:
   name: Edge System diagnostics
   href: Beta2/Diagnostics/Diagnostics.html
 - uid: edgeSystemHealth
-  name: Edge System Health
+  name: Edge System health
   href: Beta2/Health/Health.html
 - uid: edgeSystemOverview
   name: Edge System Overview
@@ -32,7 +32,7 @@ references:
   name: Edge Storage Quick Start
   href: Beta2/Overview/EDSQuickStart.html
 - uid: egress
-  name: Egress from the Edge System
+  name: Egress from Edge System
   href: Beta2/Egress/Egress.html
 - uid: index
   name: index
@@ -41,7 +41,7 @@ references:
   name: Installation of Edge System
   href: Beta2/Installation/InstallationOverview.html
 - uid: linuxWindows
-  name: Linux and Windows Platform Differences
+  name: Linux and Windows platform differences
   href: Beta2/LinuxWindows/LinuxWindows.html
 - uid: managementTools
   name: Edge System management tools
@@ -149,7 +149,7 @@ references:
   name: Storage OEM configuration schema
   href: Beta2/Configuration/Schemas/Storage_OEM_schema.html
 - uid: storage_PeriodicEgressEndpoints_schema
-  name: Storage Periodic Egress Configuration Schema
+  name: Periodic egress configuration schema
   href: Beta2/Configuration/Schemas/Storage_PeriodicEgressEndpoints_schema.html
 - uid: storage_Runtime_schema
   name: Sample storage runtime configuration

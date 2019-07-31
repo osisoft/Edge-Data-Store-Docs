@@ -116,15 +116,15 @@
 </tr>
 <tr>
 <td><strong>Port</strong></td>
-<td>Required</td>
+<td>Optional</td>
 <td>number</td>
-<td>The TCP port of the target device that listens for and responds to Modbus requests. The value ranges from 0 to 65535. The default TCP port for Modbus protocol is 502.</td>
+<td>The TCP port of the target device that listens for and responds to Modbus requests. The value ranges from 0 to 65535. If not configured, the default TCP port is 502 (which is the default port for Modbus protocol).</td>
 </tr>
 <tr>
 <td><strong>StreamIdPrefix</strong></td>
 <td>Optional</td>
 <td>number</td>
-<td>Parameter applied to all data items collected from the data source. If not configured, the default value will be the component ID Modbus1. The custom StreamIdPrefix has the highest priority.</td>
+<td>Parameter applied to all data items collected from the data source. If not configured, the default value will be the ID of the Modbus connectivity component. The custom StreamIdPrefix has the highest priority.</td>
 </tr>
 <tr>
 <td><strong>ConnectTimeout</strong></td>
@@ -164,6 +164,7 @@
     &quot;IpAddress&quot;: &quot;117.23.45.110&quot;,
     &quot;Port&quot; : 502,
     &quot;ConnectTimeout&quot; : 10000,
+    &quot;StreamIdPrefix&quot; : &quot;DataSource1&quot;,
 }
 </code></pre><h2 id="configuration-of-modbus-data-selection">Configuration of Modbus Data Selection</h2>
 <p>Once a data source is configured for a Modbus instance, which data is to be collected from the Modbus slave device must be configured.</p>
@@ -200,7 +201,7 @@
 <td><strong>Selected</strong></td>
 <td>Optional</td>
 <td>bool</td>
-<td>This field is used to select or clear a measurement. To select an item, set to true. To remove an item, leave the field empty or set to false.</td>
+<td>This field is used to select or clear a measurement. To select an item, set to true. To remove an item, leave the field empty or set to false.  If not configured, the default value is true.</td>
 </tr>
 <tr>
 <td><strong>Name</strong></td>
@@ -217,7 +218,7 @@
 <tr>
 <td><strong>RegisterType</strong></td>
 <td>Required</td>
-<td>number</td>
+<td>number or string</td>
 <td>Modbus register type. Supported types are Coil, Discrete, Input16, Input32, Holding16 and Holding32.<br><br>Input16 and Holding16 are used to read registers that have a size of 16 bits. For registers that have a size of 32 bits, use the Input32 and Holding32 register types. To represent the types, you can type in the register type ID or the exact name: <br><br>1 or Coil (Read Coil Status)<br>2 or Discrete (Read Discrete Input Status)<br>3 or Holding16 (Read 16-bit Holding Registers)<br>4 or Holding32 (Read 32-bit Holding Registers)<br>6 or Input16 (Read 16-bit Input Registers)<br>7 or Input32 (Read 32-bit Input Registers)</td>
 </tr>
 <tr>
@@ -241,7 +242,7 @@
 <tr>
 <td><strong>BitMap</strong></td>
 <td>Required</td>
-<td>number</td>
+<td>string</td>
 <td>The bitmap is used to extract and reorder bits from a word register. The format of the bitmap is uuvvwwxxyyzz, where uu, vv, ww, yy, and zz each refer to a single bit. A leading zero is required if the referenced bit is less than 10. The low-order bit is 01 and high-order bit is either 16 or 32. Up to 16 bits can be referenced for a 16-bit word (data types 10 and 20) and up to 32 bits can be reference for a 32-bit word (data type 30 and 31). The bitmap 0307120802 will map the second bit of the original word to the first bit of the new word, the eighth bit to the second bit, the twelfth bit to the third bit, and so on. The high-order bits of the new word are padded with zeros if they are not specified.</td>
 </tr>
 <tr>
@@ -254,7 +255,7 @@
 <td><strong>ConversionOffset</strong></td>
 <td>Required</td>
 <td>number</td>
-<td>This numerical value can be used to apply an offset to the response received from the Modbus TCP device. [Result = (Value - Conversion Offset)]</td>
+<td>This numerical value can be used to apply an offset to the response received from the Modbus TCP device. If this is specified, regardless of the specified data type, the value will be promoted to a float32 (single) when stored.  [Result = (Value - Conversion Offset)]</td>
 </tr>
 <tr>
 <td><strong>StreamID</strong></td>

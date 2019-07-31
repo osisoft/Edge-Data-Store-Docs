@@ -111,7 +111,7 @@
 <td><strong>EndpointURL</strong></td>
 <td>Required</td>
 <td>string</td>
-<td>The endpoint URL of the OPC UA server. The following is an example of the URL format: opc.tcp://OPCServerHost:Port/OpcUa/SimulationServer<br><br><strong>Note:</strong> If the EndpointURL is changed on a configured OPC UA connectivity that has DataCollection.config.csv file exported, the DataCollection.config.csv file will need to be relocated from the configuration directory to trigger a new browse (export).</td>
+<td>The endpoint URL of the OPC UA server. The following is an example of the URL format: opc.tcp://OPCServerHost:Port/OpcUa/SimulationServer<br><br><strong>Note:</strong> If the EndpointURL is changed on a configured OPC UA connectivity that has <connectivityid>_DataSelection.json file exported, the <connectivityid>_DataSelection.json file will need to be relocated from the configuration directory to trigger a new browse (export).</connectivityid></connectivityid></td>
 </tr>
 <tr>
 <td><strong>UseSecureConnection</strong></td>
@@ -123,19 +123,19 @@
 <td><strong>UserName</strong></td>
 <td>Optional</td>
 <td>string</td>
-<td>User name for accessing the OPC UA server. Default is null</td>
+<td>User name for accessing the OPC UA server.</td>
 </tr>
 <tr>
 <td><strong>Password</strong></td>
 <td>Optional</td>
 <td>string</td>
-<td>Password for accessing the OPC UA server. Default is null.<br><br><strong>Note:</strong> OSIsoft highly recommends using REST to configure the data source when the password must be specified.</td>
+<td>Password for accessing the OPC UA server.<br><br><strong>Note:</strong> OSIsoft highly recommends using REST to configure the data source when the password must be specified.</td>
 </tr>
 <tr>
 <td><strong>RootNodeIds</strong></td>
 <td>Optional</td>
 <td>string</td>
-<td>List of comma-separated NodeIds of those objects from which the OPC UA connectivity browses the OPC UA server address space. This option allows selecting only subsets of the OPC UA address by explicitly listing one or more NodeIds which are used to start the initial browse. For example: ns=5;s=85/0:Simulation, ns=3;s=DataItems<br><br>Default value is null, which means the whole address space will be browsed.</td>
+<td>List of comma-separated NodeIds of those objects from which the OPC UA connectivity browses the OPC UA server address space. This option allows selecting only subsets of the OPC UA address by explicitly listing one or more NodeIds which are used to start the initial browse. For example: ns=5;s=85/0:Simulation, ns=3;s=DataItems<br><br>If not specified means the whole address space will be browsed.</td>
 </tr>
 <tr>
 <td><strong>IncomingTimestamp</strong></td>
@@ -147,7 +147,7 @@
 <td><strong>StreamIdPrefix</strong></td>
 <td>Optional</td>
 <td>string</td>
-<td>Specifies what prefix is used for Stream IDs. Naming convention is StreamIdPrefix.NodeId. Default is null.<br><strong>Note:</strong> An empty string means no prefix will be added to the Stream IDs.</td>
+<td>Specifies what prefix is used for Stream IDs. Naming convention is StreamIdPrefix.NodeId. <br><strong>Note:</strong> An empty string means no prefix will be added to the Stream IDs.</td>
 </tr>
 </tbody>
 </table>
@@ -163,13 +163,13 @@
     &quot;StreamIdPrefix&quot;: null
 }
 </code></pre><h2 id="configuration-of-opc-ua-data-selection">Configuration of OPC UA Data Selection</h2>
-<p>In addition to the data source configuration, you need to provide a data selection configuration to specify the data you want the OPC UA connectivity to collect from the data sources.</p>
+<p>In addition to the data source configuration, you need to provide a data selection configuration to specify the data you want the OPC UA connectivity to collect from the data source.</p>
 <h3 id="procedure-for-configuring-opc-ua-data-selection">Procedure for Configuring OPC UA Data Selection</h3>
 <blockquote><p><strong>Note:</strong> You cannot modify OPC UA data selection configurations manually. You must use the REST endpoints to add/edit the configuration.</p>
 </blockquote>
 <p>The following procedure is for configuring OPC UA data selection.</p>
 <ol>
-<li>Using any text editor, create a file that contains a OPC UA data selection in JSON form<ul>
+<li>Using any text editor, create a file or use the file created by the adapter (discovered from OPC UA server) that contains a OPC UA data selection in JSON form<ul>
 <li>See OPC UA Data Selection Example section below for content structure</li>
 <li>See Parameters for OPC UA Data Selection section below for a table of all available parameters</li>
 </ul>
@@ -180,7 +180,7 @@
 </ul>
 </li>
 </ol>
-<pre><code class="lang-bash">curl -v -d &quot;@DataSelection.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection&quot;
+<pre><code class="lang-bash">curl -v -d &quot;@DataSelection.config.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT &quot;http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection&quot;
 </code></pre><h3 id="parameters-for-opc-ua-data-selection">Parameters for OPC UA Data Selection</h3>
 <p>Configuration parameters for OPC UA data selection</p>
 <table>

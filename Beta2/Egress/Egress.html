@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Egress from the Edge System </title>
+    <title>Egress from Edge System </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Egress from the Edge System ">
+    <meta name="title" content="Egress from Edge System ">
     <meta name="generator" content="docfx 2.43.2.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -70,18 +70,17 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="egress">
-<h1 id="egress-from-the-edge-system">Egress from the Edge System</h1>
+<h1 id="egress-from-edge-system">Egress from Edge System</h1>
 
-<h2 id="overview">Overview</h2>
-<p>The Edge System provides a mechanism, called egress, to copy/transfer data to another device or destination. The data is sent via OMF. Supported destinations are OSIsoft Cloud Services or a PI server (via the OMF receiver in PI Web API).</p>
-<p>Configuration of egress includes specifying zero or more endpoints. An egress endpoint represents a destination that data will be sent. Each egress endpoint is comprised of the properties specified in the <a href="#Parameters">Parameters</a> section and is executed independently of all other egress endpoints. More than one endpoint for the same destination is allowed. The destination for an egress endpoint is expected to accept OMF messages.</p>
-<blockquote><p><strong>Note:</strong> there are some types, and consequently containers and data, that cannot be egressed. See <a href="#egress-execution-details">Egress Execution Details</a> for more inforamtion.</p>
+<p>Edge System provides an egress mechanism to copy and transfer data to another device or destination. Data is transferred through OMF. Supported destinations are OSIsoft Cloud Services or a PI server.</p>
+<p>Configuration of egress includes specifying zero or more endpoints. An egress endpoint represents a destination to which data will be sent. Each egress endpoint is comprised of the properties specified in the <a href="#Parameters">Parameters</a> section, is executed independently of all other egress endpoints, and is expected to accept OMF messages. More than one endpoint for the same destination is allowed. </p>
+<blockquote><p><strong>Note:</strong> Some types, and consequently containers and data, cannot be egressed. See <a href="#egress-execution-details">Egress Execution Details</a> for more inforamtion.</p>
 </blockquote>
 <h2 id="configuration">Configuration</h2>
 <h3 id="procedure">Procedure</h3>
-<blockquote><p><strong>Note:</strong> You cannot add egress configurations manually because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit egress configuration. See <a href="#rest-urls">REST Urls</a> for additional endpoints.</p>
+<blockquote><p><strong>Note:</strong> You cannot add egress configurations manually, because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit egress configuration. See <a href="#rest-urls">REST Urls</a> for additional endpoints.</p>
 </blockquote>
-<p>The following procedure is for creating new egress endpoints.</p>
+<p>Complete the following to create new egress endpoints:</p>
 <ol>
 <li>Using any text editor, create a file that contains one or more egress endpoints in JSON form<ul>
 <li>See <a href="#Examples">Examples</a> section below for content structure</li>
@@ -280,12 +279,12 @@
     &quot;Username&quot; : &quot;{username}&quot;,
     &quot;Password&quot; : &quot;{password}&quot;
 }]
-</code></pre><h3 id="rest-urls">REST Urls</h3>
+</code></pre><h3 id="rest-urls">REST URLs</h3>
 <table>
 <thead>
 <tr>
-<th>Relative Url</th>
-<th>HTTP Verb</th>
+<th>Relative URL</th>
+<th>HTTP verb</th>
 <th>Action</th>
 </tr>
 </thead>
@@ -337,11 +336,11 @@
 </tr>
 </tbody>
 </table>
-<h2 id="egress-execution-details">Egress Execution Details</h2>
-<p>After configuration for an egress endpoint is added, egress execution will periodically occur for that endpoint. Egress is handled individually per configured endpoint. On first execution types and containers will be egressed, subsequently only new or changed types/containers will be egressed. Type creation must be successful in order to perform container creation, likewise container creation must be successful in order to perform to data egress. It&#39;s important to note that type and container creation succeed or fail as a whole (e.g. if a single type fails to be created then type creation is considered to have failed). A failed creation will result in a 5 minute wait before re-attempting egress. As opposed to type/container egress, data egress is performed independently for each stream.</p>
-<blockquote><p><strong>Note:</strong> only streams with a single, timeseries-based index can be egressed; a single HTTP request is made per type and container</p>
-</blockquote>
-<p>For data collection and egress, in-memory and on-disk storage are used to track the last successfully-egressed data event, per stream. Batches of 200 events are egressed at a time (i.e. per HTTP request). Data is egressed in-order and includes events in the future. Be aware, when an event with a future timestamp is successfully egressed then only values after the associated timestamp of that event will be egressed.</p>
+<h2 id="egress-execution-details">Egress execution details</h2>
+<p>After configuration for an egress endpoint is added, egress execution will periodically occur for that endpoint. Egress is handled individually per configured endpoint. On the first execution types and containers will be egressed; subsequently only new or changed types/containers will be egressed. Only streams with a single, timeseries-based index can be egressed; a single HTTP request is made per type and container.  Type creation must be successful in order to perform container creation; likewise container creation must be successful in order to perform data egress. A failed creation will result in a 5 minute wait before re-attempting egress. </p>
+<p><strong>Note</strong>  Type and container creation succeed or fail as a whole (e.g. if a single type fails to be created then type creation is considered to have failed). Data egress, however, is performed independently for each stream.</p>
+<p>For data collection and egress, in-memory and on-disk storage are used to track the last successfully-egressed data event, per stream. Batches of 200 events are egressed at a time (per HTTP request). Data is egressed in order and includes events in the future. </p>
+<p><strong>Note</strong>  When an event with a future timestamp is successfully egressed, only values after the associated timestamp of that event will be egressed.</p>
 </article>
           </div>
           

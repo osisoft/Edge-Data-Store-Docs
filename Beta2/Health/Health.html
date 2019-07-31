@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Edge System Health </title>
+    <title>Edge System health </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Edge System Health ">
+    <meta name="title" content="Edge System health ">
     <meta name="generator" content="docfx 2.43.2.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -70,13 +70,11 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="edgeSystemHealth">
-<h1 id="edge-system-health">Edge System Health</h1>
+<h1 id="edge-system-health">Edge System health</h1>
 
-<p>Having insight into the health of the Edge System and the components that make it up can be critical to ensuring your needs for data collection are being met.</p>
-<p>To that end, the Edge System and the components that make it up produce health information that may be sent to OSIsoft Health Omf Endpoints.</p>
-<p>When enabled, the Edge System will transfer to the configured Omf health endpoints types and containers that represent the health informaton made available.</p>
-<h2 id="configuring-edge-system-health-endpoints">Configuring Edge System Health Endpoints</h2>
-<p>The Edge System has the ability to report it&#39;s health to one or more OMF endpoints capable of receiving health messages. To enable this functionality, one or more HealthEndpoints must be configured.</p>
+<p>Having insight into the health of the Edge System and the components that make it up can be critical for ensuring that your needs for data collection are being met.  To that end, Edge System and its components produce health information to be sent to OSIsoft Health Omf Endpoints. When enabled, Edge System will transfer to configured Omf health endpoints the types and containers that represent available  health information.</p>
+<h2 id="configuring-edge-system-health-endpoints">Configuring Edge System health endpoints</h2>
+<p>The Edge System has the ability to report system health to one or more OMF endpoints capable of receiving health messages. To enable this functionality, one or more health endpoints must be configured.</p>
 <p>Table 1. Configuration parameters for Edge System health endpoints</p>
 <table>
 <thead>
@@ -130,12 +128,12 @@
 <tr>
 <td>ValidateEndpointCertificate</td>
 <td>Optional</td>
-<td>The Edge connectivity validates the endpoint certificate if set to true (recommended). If set to false, the Edge connectivity accepts any endpoint certificate. OSIsoft strongly recommends using disabled endpoint certificate validation for testing purposes only.</td>
+<td>Edge connectivity validates the endpoint certificate if set to true (recommended). If set to false, Edge connectivity accepts any endpoint certificate. OSIsoft strongly recommends using disabled endpoint certificate validation for testing purposes only.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="connectivity-components-health">Connectivity Components Health</h2>
-<p>The following health types and streams are created to reflect the health of connectivity components.</p>
+<h2 id="connectivity-adapters-health">Connectivity Adapters health</h2>
+<p>The following health types and streams are created to reflect the health of connectivity adapters.</p>
 <p>The Connectors static type includes these properties and servers as a root AF element with the id Connectors.</p>
 <table>
 <thead>
@@ -154,12 +152,12 @@
 <tr>
 <td>string</td>
 <td>Description</td>
-<td>Collection of Connector Assets</td>
+<td>Collection of Connector assets</td>
 </tr>
 </tbody>
 </table>
-<h3 id="connectivity-components-health-1">Connectivity Components health</h3>
-<p>The Connector Health static type includes these properties, and are logged in a stream with the id {machinename}.{componentid}. The stream is linked to root AF element (Connectors).</p>
+<h3 id="connectivity-adapters-health-1">Connectivity Adapters health</h3>
+<p>The Connector Health static type includes the following properties, which are logged in a stream with the id {machinename}.{componentid}. The stream is linked to root AF element (Connectors).</p>
 <table>
 <thead>
 <tr>
@@ -191,8 +189,8 @@
 </tr>
 </tbody>
 </table>
-<h3 id="device-status">Device Status</h3>
-<p>The DeviceStatus dynamic type includes these values, and are logged in a stream with the id Connectors.{machinename}.{componentid}.DeviceStatus. The stream is linked to {machinename}.{componentid} static stream.</p>
+<h3 id="device-status">Device status</h3>
+<p>The DeviceStatus dynamic type includes the following values, which are logged in a stream with the id Connectors.{machinename}.{componentid}.DeviceStatus. The stream is linked to {machinename}.{componentid} static stream.</p>
 <table>
 <thead>
 <tr>
@@ -215,7 +213,7 @@
 </tbody>
 </table>
 <h3 id="next-health-message-expected">Next health message expected</h3>
-<p>The NextHealthMessageExpected dynamic type includes these values, and are logged in a stream with the id Connectors.{machinename}.{componentid}.NextHealthMessageExpected. The stream is linked to {machinename}.{componentid} static stream. Heard beat message is expected once a minute.</p>
+<p>The NextHealthMessageExpected dynamic type includes the following values, which are logged in a stream with the id Connectors.{machinename}.{componentid}.NextHealthMessageExpected. The stream is linked to {machinename}.{componentid} static stream. Heard beat message is expected once a minute.</p>
 <table>
 <thead>
 <tr>
@@ -237,9 +235,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="storage-component-health">Storage Component Health</h2>
+<h2 id="storage-component-health">Storage component health</h2>
 <p>The following health types and streams are created to reflect the health of the Storage component.</p>
-<p>The Storage static type includes these properties and servers as a root AF element with the id Storage.</p>
+<p>The Storage static type includes the following properties and servers as a root AF element with the id Storage.</p>
 <table>
 <thead>
 <tr>
@@ -262,7 +260,7 @@
 </tbody>
 </table>
 <h3 id="storage-health">Storage health</h3>
-<p>The Storage Health static type includes these properties, and are logged in a stream with the id {machinename}.Storage. The stream is linked to root AF element (Storage).</p>
+<p>The Storage Health static type includes the following properties, which are logged in a stream with the id {machinename}.Storage. The stream is linked to root AF element (Storage).</p>
 <table>
 <thead>
 <tr>
@@ -294,8 +292,8 @@
 </tr>
 </tbody>
 </table>
-<h3 id="storage-device-status">Storage Device Status</h3>
-<p>The DeviceStatus dynamic type includes these values, and are logged in a stream with the id Storage.{machinename}.DeviceStatus. The stream is linked to {machinename}.Storage static stream.</p>
+<h3 id="storage-device-status">Storage device status</h3>
+<p>The DeviceStatus dynamic type includes the following values, which are logged in a stream with the id Storage.{machinename}.DeviceStatus. The stream is linked to {machinename}.Storage static stream.</p>
 <table>
 <thead>
 <tr>
@@ -317,8 +315,8 @@
 </tr>
 </tbody>
 </table>
-<h3 id="storage-next-health-message-expected">Storage Next health message expected</h3>
-<p>The NextHealthMessageExpected dynamic type includes these values, and are logged in a stream with the id Storage.{machinename}.NextHealthMessageExpected. The stream is linked to {machinename}.Storage static stream. Heard beat message is expected once a minute.</p>
+<h3 id="storage-next-health-message-expected">Storage next health message expected</h3>
+<p>The NextHealthMessageExpected dynamic type includes the following values, which are logged in a stream with the id Storage.{machinename}.NextHealthMessageExpected. The stream is linked to {machinename}.Storage static stream. Heard beat message is expected once a minute.</p>
 <table>
 <thead>
 <tr>
