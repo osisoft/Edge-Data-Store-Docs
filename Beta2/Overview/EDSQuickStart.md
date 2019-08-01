@@ -83,7 +83,7 @@ curl -i -d "@OmfCreateDataEvents.json" -H "Content-Type: application/json" -H "p
 
 When this command completes successfully, two values will have been written to the SDS stream.
 
-## Read last data written using OMF
+## Read last data written using OMF 
 
 In order to read the data back from the server that has been written, you can use the SDS REST API. Here is an example curl script that reads back the last value entered:
 
