@@ -71,7 +71,22 @@
             <article class="content wrap" id="_content" data-uid="system_HealthEndpoints_schema">
 <h1 id="omf-health-endpoint-configuration-schema">OMF health endpoint configuration schema</h1>
 
-<table>
+<pre><code class="lang-json">[{
+        &quot;endpoint&quot;: &quot;https://&lt;pi web api server&gt;/piwebapi/omf/&quot;,
+        &quot;UserName&quot;: &quot;&lt;username&gt;&quot;,
+        &quot;Password&quot;: &quot;&lt;password&gt;&quot;,
+        &quot;buffering&quot;: 0,
+        &quot;maxBufferSizeMB&quot;: 0
+    },
+    {
+        &quot;Endpoint&quot;: &quot;https://&lt;OCS OMF endpoint&gt;&quot;,
+        &quot;ClientId&quot;: &quot;&lt;clientid&gt;&quot;,
+        &quot;ClientSecret&quot;: &quot;&lt;clientsecret&gt;&quot;,
+        &quot;buffering&quot;: 0,
+        &quot;maxBufferSizeMB&quot;: 0
+    }
+]
+</code></pre><table>
 <thead>
 <tr>
 <th>Abstract</th>

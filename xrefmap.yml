@@ -28,14 +28,11 @@ references:
 - uid: edgeSystemOverview
   name: Edge System Overview
   href: Beta2/Overview/EdgeSystemOverview.html
-- uid: edsQuickStart
-  name: Edge Storage Quick Start
-  href: Beta2/Overview/EDSQuickStart.html
 - uid: egress
   name: Egress from Edge System
   href: Beta2/Egress/Egress.html
 - uid: index
-  name: index
+  name: OSIsoft Edge System
   href: Beta2/index.html
 - uid: installationOverview
   name: Installation of Edge System
@@ -70,6 +67,9 @@ references:
 - uid: omfOverview
   name: OSIsoft Message Format (OMF) Ingress with Edge Storage
   href: Beta2/OMF/OMFOverview.html
+- uid: omfQuickStart
+  name: Edge Storage OMF Quick Start
+  href: Beta2/Overview/OMFQuickStart.html
 - uid: opcUa_DataSelection_schema
   name: Sample Opc Ua data selection configuration
   href: Beta2/Configuration/Schemas/OpcUa_DataSelection_schema.html
@@ -97,6 +97,9 @@ references:
 - uid: scalePerformance
   name: Edge System design considerations
   href: Beta2/Design/ScalePerformance.html
+- uid: sddQuickStart
+  name: Edge Storage SDS Quick Start
+  href: Beta2/Overview/SDSQuickStart.html
 - uid: sdsCompression
   name: Compression
   href: Beta2/SDS/Compression.html

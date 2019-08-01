@@ -71,7 +71,30 @@
             <article class="content wrap" id="_content" data-uid="edge_system_schema">
 <h1 id="edgesystemconfiguration-schema">EdgeSystemConfiguration Schema</h1>
 
-<pre><code>
+<pre><code class="lang-json">   &quot;System&quot;: {
+        &quot;Logging&quot;: {
+            &quot;logLevel&quot;: &quot;Information&quot;,
+            &quot;logFileSizeLimitBytes&quot;: 34636833,
+            &quot;logFileCountLimit&quot;: 31
+        },
+        &quot;Components&quot;: [{
+                &quot;componentId&quot;: &quot;OpcUa1&quot;,
+                &quot;componentType&quot;: &quot;OpcUa&quot;
+            },
+            {
+                &quot;componentId&quot;: &quot;Modbus1&quot;,
+                &quot;componentType&quot;: &quot;Modbus&quot;
+            },
+            {
+                &quot;componentId&quot;: &quot;Storage&quot;,
+                &quot;componentType&quot;: &quot;EDS.Component&quot;
+            }
+        ],
+        &quot;HealthEndpoints&quot;: [],
+        &quot;Port&quot;: {
+            &quot;port&quot;: 5590
+        }
+    }
 </code></pre><h1 id="edge-system-configuration-schema">Edge System Configuration Schema</h1>
 <h2 id="properties">Properties</h2>
 <table>
@@ -120,9 +143,14 @@
 </ul>
 <h2 id="componentname">{ComponentName}</h2>
 <ul>
-<li>The name of the component is configured at configuration time as determined by <a href="#system">System</a><a href="">.</a><a class="xref" href="System_schema.html#components">Components</a></li>
-<li>is optional</li>
-<li>type: depends on component.  One of: <a class="xref" href="Modbus_schema.html"><code>ModbusConfiguration</code></a>, <a class="xref" href="OpcUa_schema.html"><code>OpcUaConfiguration</code></a></li>
+<li><a href="#edgesystemconfiguration-schema">EdgeSystemConfiguration Schema</a></li>
+<li><a href="#edge-system-configuration-schema">Edge System Configuration Schema</a><ul>
+<li><a href="#properties">Properties</a></li>
+<li><a href="#storage">Storage</a></li>
+<li><a href="#system">System</a></li>
+<li><a href="#componentname">{ComponentName}</a></li>
+</ul>
+</li>
 </ul>
 </article>
           </div>

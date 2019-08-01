@@ -71,7 +71,19 @@
             <article class="content wrap" id="_content" data-uid="storage_schema">
 <h1 id="storageconfiguration-schema">StorageConfiguration schema</h1>
 
-<pre><code>
+<pre><code class="lang-json">  &quot;Storage&quot;: {
+        &quot;Runtime&quot;: {
+            &quot;streamStorageLimitMb&quot;: 2,
+            &quot;streamStorageTargetMb&quot;: 1,
+            &quot;ingressDebugExpiration&quot;: &quot;0001-01-01T00:00:00&quot;
+        },
+        &quot;Logging&quot;: {
+            &quot;logLevel&quot;: &quot;Information&quot;,
+            &quot;logFileSizeLimitBytes&quot;: 34636833,
+            &quot;logFileCountLimit&quot;: 31
+        },
+        &quot;PeriodicEgressEndpoints&quot;: []
+    }
 </code></pre><table>
 <thead>
 <tr>

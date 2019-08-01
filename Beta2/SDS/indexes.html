@@ -73,8 +73,8 @@
 
 <p>Indexes speed up and order the results of searches. A key uniquely identifies a record within a collection of records. Keys are unique within the collection.</p>
 <p>In Sds, the key of an SdsType is also an index. The key is often referred to as the <em>primary index,</em> while all other indexes are referred to as <em>secondary indexes</em> or <em>secondaries</em>.</p>
-<p>An SdsType that is used to define an SdsStream must specify a key. When inserting data into an SdsStream, every key value must be unique. Sds will not store more than a single event for a given key; an event with a particular key may be deleted or updated, but two events with the same key cannot exist.</p>
-<p>Secondary indexes are defined on SdsStreams and are applied to a single property. You can define many secondary indexes. Secondary index values need not be unique.</p>
+<p>An SdsType that is used to define an SdsStream must specify a key. When inserting data into an SdsStream, every key value must be unique. Sds will not store more than a single event for a given key. An event with a particular key may be deleted or updated, but two events with the same key cannot exist.</p>
+<p>Secondary indexes are defined on SdsStreams and are applied to a single property. You can define many secondary indexes. Secondary index values do not need to be unique.</p>
 <p>The following table contains supported index types:</p>
 <table>
 <thead>
@@ -160,7 +160,7 @@
 </table>
 <h2 id="working-with-indexes">Working with Indexes</h2>
 <p>The following discusses the types defined in the <a href="https://github.com/osisoft/OCS-Samples/tree/master/basic_samples/SDS/Python/SDSPy">Python</a> and <a href="https://github.com/osisoft/OCS-Samples/tree/master/basic_samples/SDS/JavaScript">Java Script</a> samples. Samples in other languages can be found <a href="https://github.com/osisoft/OCS-Samples/tree/master/basic_samples/SDS">here</a>.</p>
-<p>To build a SdsType representation of the following sample class, see <a href="#sample">Sample</a>:</p>
+<p>To build an SdsType representation of the following sample class, see <a href="#sample">Sample</a>:</p>
 <p><em>Python</em></p>
 <pre><code class="lang-python">class State(Enum):
   Ok = 0
@@ -301,7 +301,7 @@ var simpleType = new SdsObjects.SdsType({
   &quot;SdsTypeCode&quot;: SdsObjects.SdsTypeCodeMap.Object,
   &quot;Properties&quot;: [timeProperty, stateProperty, valueProperty]
 });
-</code></pre><p>The Time property is identified as the Key by define its SdsTypeProperty as follows:</p>
+</code></pre><p>The Time property is identified as the Key by defining its SdsTypeProperty as follows:</p>
 <p><em>Python</em></p>
 <pre><code class="lang-python"># Time is the primary key
 time = SdsTypeProperty()
@@ -322,9 +322,9 @@ var timeProperty = new SdsObjects.SdsTypeProperty({
     &quot;SdsTypeCode&quot;: SdsObjects.SdsTypeCodeMap.DateTime
   })
 });
-</code></pre><p>Note that the time.IsKey field is set to true.</p>
+</code></pre><p><strong>Note:</strong> The time.IsKey field is set to true.</p>
 <p>To read data using the key, you define a start index and an end index. For DateTime, use ISO 8601 representation of dates and times. To query for a window of values between January 1, 2010 and February 1, 2010, you would define indexes as “2010-01-01T08:00:00.000Z” and “2010-02-01T08:00:00.000Z”, respectively.</p>
-<p>Additional information can be found in <a class="xref" href="Reading_Data.html">Reading data</a>.</p>
+<p>For additional information, see <a class="xref" href="Reading_Data.html">Reading data</a>.</p>
 </article>
           </div>
           

@@ -71,7 +71,30 @@
             <article class="content wrap" id="_content" data-uid="system_schema">
 <h1 id="systemconfiguration-schema">SystemConfiguration schema</h1>
 
-<pre><code>
+<pre><code class="lang-json">   &quot;System&quot;: {
+        &quot;Logging&quot;: {
+            &quot;logLevel&quot;: &quot;Information&quot;,
+            &quot;logFileSizeLimitBytes&quot;: 34636833,
+            &quot;logFileCountLimit&quot;: 31
+        },
+        &quot;Components&quot;: [{
+                &quot;componentId&quot;: &quot;OpcUa1&quot;,
+                &quot;componentType&quot;: &quot;OpcUa&quot;
+            },
+            {
+                &quot;componentId&quot;: &quot;Modbus1&quot;,
+                &quot;componentType&quot;: &quot;Modbus&quot;
+            },
+            {
+                &quot;componentId&quot;: &quot;Storage&quot;,
+                &quot;componentType&quot;: &quot;EDS.Component&quot;
+            }
+        ],
+        &quot;HealthEndpoints&quot;: [],
+        &quot;Port&quot;: {
+            &quot;port&quot;: 5590
+        }
+    }
 </code></pre><table>
 <thead>
 <tr>

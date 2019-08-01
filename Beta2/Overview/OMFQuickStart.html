@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Edge Storage OMF Quick Start </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Edge Storage OMF Quick Start ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../Beta2/index.html" width="46">
+                <img id="logo" src="../../Beta2/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge System"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="omfQuickStart">
+<h1 id="edge-storage-omf-quick-start">Edge Storage OMF Quick Start</h1>
+
+<p>This document is a quick tour of getting data into the Edge Storage component using the OSisoft Message Format (OMF), and then retrieving the data using the Sequential Data Store (SDS) API. Both OMF data ingress and SDS data retrieval are accomplished using REST APIs. This tour assumes the Edge System has been installed, and is accessible via a REST API using the default installed port (5590). This tour will use curl, a commonly available tool on both Windows and Linux, and use command line commands. The same operations can be used with any programming language or tool that supports making REST calls. In addition data retrieval steps (GET commands) can be accomplished using a browser if one is available on the device.</p>
+<h2 id="create-an-omf-type">Create an OMF Type</h2>
+<p>The first step in OMF data ingress is to create an OMF type that describes the format of the data to be stored in a container. In our example the data to be written is a timestamp and a numeric value, so the OMF JSON describing the type is:</p>
+<pre><code class="lang-json">[{
+    &quot;id&quot;: &quot;MyCustomType&quot;,
+    &quot;classification&quot;: &quot;dynamic&quot;,
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;Timestamp&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;date-time&quot;,
+            &quot;isindex&quot;: true
+        },
+        &quot;Value&quot;: {
+            &quot;type&quot;: &quot;number&quot;,
+            &quot;format&quot;: &quot;float32&quot;
+        }
+    }
+}]
+</code></pre><p>The value is indexed by a timestamp and the numeric value that will be stored is a 32 bit floating point value. In order to create the OMF type in the Edge Storage, the JSON should be stored as a file with the name OmfCreateType.json and run the following curl script:</p>
+<pre><code class="lang-bash">curl -i -d &quot;@OmfCreateType.json&quot; -H &quot;Content-Type: application/json&quot; -H &quot;producertoken: x &quot; -H &quot;omfversion: 1.1&quot; -H &quot;action: create&quot; -H &quot;messageformat: json&quot; -H &quot;messagetype: type&quot; -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
+</code></pre><p>When this command completes successfully, an SDS type with the same name will have been created on the server. Any number of containers can be created from the type, as long as they use a timestamp as an index and a 32 bit floating point value. Type creation only needs to be done the first time you send using a custom application, but it does not cause an error if you resend the same definition at a later time.</p>
+<h2 id="create-an-omf-container">Create an OMF Container</h2>
+<p>The next step in writing OMF data is to create a container. As with an OMF Type, this only needs to be done once before sending data events, and resending the same definition repeatedly does not cause an error.</p>
+<pre><code class="lang-json">[{
+    &quot;id&quot;: &quot;MyCustomContainer&quot;,
+    &quot;typeid&quot;: &quot;MyCustomType&quot;
+}]
+</code></pre><p>This container references the type that was created in the last step, and an error will occur if the type does not exist when the container is created. In order to create the OMF container in the Edge Storage, the JSON should be stored as a file with the name OmfCreateContainer.json and the following curl script run:</p>
+<pre><code class="lang-bash">curl -i -d &quot;@OmfCreateContainer.json&quot; -H &quot;Content-Type: application/json&quot; -H &quot;producertoken: x &quot; -H &quot;omfversion: 1.1&quot; -H &quot;action: create&quot; -H &quot;messageformat: json&quot; -H &quot;messagetype: container&quot; -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
+</code></pre><p>When this command completes successfully, an SDS stream will have been created to store data defined by the type.</p>
+<h2 id="write-data-events-to-the-omf-container">Write Data Events to the OMF Container</h2>
+<p>Now that the type and container have been created, we can write data using OMF:</p>
+<pre><code class="lang-json">[{
+    &quot;containerid&quot;: &quot;MyCustomContainer&quot;,
+    &quot;values&quot;: [{
+            &quot;Timestamp&quot;: &quot;2019-07-16T15:18:24.9870136Z&quot;,
+            &quot;Value&quot;: 12345.6789
+        },
+        {
+            &quot;Timestamp&quot;: &quot;2019-07-16T15:18:25.9870136Z&quot;,
+            &quot;Value&quot;: 12346.6789
+        }
+    ]
+}]
+</code></pre><p>This example includes two data events that will be stored in the SDS Stream that was created in the previous steps. It is generally a best practice to batch OMF values when writing them for the best performance. In order to write the data in the Edge Storage, the JSON should be stored as a file with the name OmfCreateDataEvents.json and the following curl script run:</p>
+<pre><code class="lang-bash">curl -i -d &quot;@SDSWriteData.json&quot; -H &quot;Content-Type: application/json&quot;  -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/Simple/Data
+</code></pre><p>When this command completes successfully, two values will have been written to the SDS stream.</p>
+<h2 id="read-last-data-written-using-sds">Read Last Data written using SDS</h2>
+<p>In order to read the data back from the server that has been written, you can use the SDS REST API. Here is an example curl script that reads back the last value entered:</p>
+<pre><code class="lang-bash">curl http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/Simple/Data/Last
+</code></pre><p>When run this GET command returns the last value written:</p>
+<pre><code class="lang-json">{&quot;Time&quot;:&quot;2017-11-23T18:00:00Z&quot;,&quot;Measurement&quot;:60.0}
+</code></pre><h2 id="read-a-range-of-data-events-written-using-sds">Read a range of data events written using SDS</h2>
+<p>In order to read the data back from the server that has been written, you can use the SDS REST API. Here is an example curl script that reads back a time range of values that have been written:</p>
+<pre><code class="lang-bash">curl &quot;http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/Simple/Data?startIndex=2017-07-08T13:00:00Z&amp;count=100&quot;
+</code></pre><p>This command will return up to 100 values after the startIndex specified:</p>
+<pre><code class="lang-json">[{&quot;Time&quot;:&quot;2017-11-23T17:00:00Z&quot;,&quot;Measurement&quot;:50.0},{&quot;Time&quot;:&quot;2017-11-23T18:00:00Z&quot;,&quot;Measurement&quot;:60.0}]
+</code></pre><p>Both values that were entered were returned - up to 100 values after the specified timestamp would be returned.</p>
+<p>For more information on SDS APIs see the <a href="xref:sdsQuickStart">SDS</a> section of this documentation.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-System-Docs/blob/master/Beta2/Overview/OMFQuickStart.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+            <span id='copyright-text'>© 2019 - OSIsoft, LLC.<span>
+        </span></span></div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
