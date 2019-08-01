@@ -97,9 +97,6 @@ references:
 - uid: scalePerformance
   name: Edge System design considerations
   href: Beta2/Design/ScalePerformance.html
-- uid: sddQuickStart
-  name: Edge Storage SDS Quick Start
-  href: Beta2/Overview/SDSQuickStart.html
 - uid: sdsCompression
   name: Compression
   href: Beta2/SDS/Compression.html
@@ -112,6 +109,9 @@ references:
 - uid: sdsOverview
   name: OSIsoft Sequential Data Store (SDS)
   href: Beta2/SDS/SequentialDataStore.html
+- uid: sdsQuickStart
+  name: Edge Storage SDS Quick Start
+  href: Beta2/Overview/SDSQuickStart.html
 - uid: sdsReadingData
   name: Reading data
   href: Beta2/SDS/Reading_Data.html
