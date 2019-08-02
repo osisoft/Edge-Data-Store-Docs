@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Modbus Connectivity </title>
+    <title>Modbus connectivity </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Modbus Connectivity ">
+    <meta name="title" content="Modbus connectivity ">
     <meta name="generator" content="docfx 2.43.2.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -69,20 +69,17 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="modbusOverview">
-<h1 id="modbus-connectivity">Modbus Connectivity</h1>
+<h1 id="modbus-connectivity">Modbus connectivity</h1>
 
 <h2 id="overview">Overview</h2>
-<p>The Modbus TCP Connectivity transfers time-series data from Modbus TCP slave devices into the Edge System.</p>
-<p>The Modbus TCP connectivity models the register measurements in a Modbus data source by polling data from the Modbus devices, based on the measurement configuration provided.</p>
-<p>Modbus is a commonly available communication protocol used for connecting and transmitting information between industrial electronic devices. The Modbus TCP connectivity communicates with any device conforming to the Modbus TCP/IP protocol through a gateway or router. The Modbus slave devices and routers do not need to be on the same subnet as Edge System.</p>
-<h2 id="configuration-of-modbus-data-source">Configuration of Modbus Data Source</h2>
-<p>To utilize the Modbus TCP connectivity component of the Edge System, it must be configured to which Modbus data source it will be polling data from.</p>
-<h3 id="procedure-for-configuring-modbus-data-source">Procedure for Configuring Modbus Data Source</h3>
-<blockquote><p><strong>Note:</strong> You cannot modify Modbus data source configurations manually. You must use the REST endpoints to add/edit the configuration. </p>
-</blockquote>
-<p>The following procedure is for configuring Modbus data source.</p>
+<p>Modbus is a commonly available communication protocol used for connecting and transmitting information between industrial electronic devices. The Modbus TCP Connectivity Adapter polls Modbus TCP slave devices, and transfers time series data from the data source devices into Edge System.  Polling is based on the measurement configuration provided, and models the register measurements in a Modbus data source.</p>
+<p>The Modbus TCP Connectivity Adapter communicates with any device conforming to the Modbus TCP/IP protocol through a gateway or router. The Modbus slave devices and routers do not need to be on the same subnet as Edge System.</p>
+<h2 id="configuration-of-modbus-data-source">Configuration of Modbus data source</h2>
+<p>To use the Modbus TCP Connectivity Adapter of Edge System, you must configure it for the Modbus data source from which it will be polling data.</p>
+<h3 id="procedure-for-configuring-modbus-data-source">Procedure for configuring Modbus data source</h3>
+<p>Complete the following to configure the Modbus data source:</p>
 <ol>
-<li>Using any text editor, create a file that contains a Modbus data source in JSON form<ul>
+<li>Using any text editor, create a file that contains a Modbus data source in JSON form. This file can be created or copied to any directory on a device with Edge System installed.<ul>
 <li>See Modbus Data Source Example section below for content structure</li>
 <li>See Parameters for Modbus Data Source section below for a table of all available parameters</li>
 </ul>
@@ -91,11 +88,11 @@
 <li>Use any <a class="xref" href="../Administration/ManagementTools.html">tool</a> capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSource/</code></li>
 </ol>
 <ul>
-<li><p>Example using cURL:</p>
+<li><p>Example using cURL (run this command from the same directory where the file is located):</p>
 <pre><code class="lang-bash">curl -v -d &quot;@DataSource.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSource&quot;
 </code></pre></li>
 </ul>
-<h3 id="parameters-for-modbus-data-source">Parameters for Modbus Data Source</h3>
+<h3 id="parameters-for-modbus-data-source">Parameters for Modbus data source</h3>
 <p>The following parameters are available for configuring a Modbus data source.</p>
 <table>
 <thead>
@@ -157,35 +154,31 @@
 </tr>
 </tbody>
 </table>
-<h3 id="modbus-data-source-example">Modbus Data Source Example</h3>
-<p>Below is an example of valid Modbus Data Source configuration.</p>
+<h3 id="modbus-data-source-example">Modbus data source example</h3>
+<p>The following is an example of valid Modbus data source configuration:</p>
 <pre><code class="lang-json">{
     &quot;IpAddress&quot;: &quot;117.23.45.110&quot;,
     &quot;Port&quot; : 502,
     &quot;ConnectTimeout&quot; : 10000,
     &quot;StreamIdPrefix&quot; : &quot;DataSource1&quot;,
 }
-</code></pre><h2 id="configuration-of-modbus-data-selection">Configuration of Modbus Data Selection</h2>
+</code></pre><h2 id="configuration-of-modbus-data-selection">Configuration of Modbus data selection</h2>
 <p>Once a data source is configured for a Modbus instance, which data is to be collected from the Modbus slave device must be configured.</p>
-<h3 id="procedure-for-configuring-modbus-data-selection">Procedure for Configuring Modbus Data Selection</h3>
-<blockquote><p><strong>Note:</strong> You cannot modify Modbus data selection configurations manually. You must use the REST endpoints to add/edit the configuration.</p>
-</blockquote>
-<p>The following procedure is for configuring Modbus data selection.</p>
+<h3 id="procedure-for-configuring-modbus-data-selection">Procedure for configuring Modbus data selection</h3>
+<p>Complete the following to configure Modbus data selection:</p>
 <ol>
-<li>Using any text editor, create a file that contains a Modbus data selection in JSON form<ul>
+<li>Using any text editor, create a file that contains a Modbus data selection in JSON form. This file can be created or copied to any directory on a device with Edge System installed.<ul>
 <li>See Modbus Data Selection Example section below for content structure</li>
 <li>See Parameters for Modbus Data Selection section below for a table of all available parameters</li>
 </ul>
 </li>
 <li>Save the file as DataSelection.config.json.</li>
-<li>Use any <a class="xref" href="../Administration/ManagementTools.html">tool</a> capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection/</code><ul>
-<li>Example using cURL:</li>
-</ul>
-</li>
+<li>Use any <a class="xref" href="../Administration/ManagementTools.html">tool</a> capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection/</code>.
+Example using cURL (run this command from the same directory where the file is located):</li>
 </ol>
 <pre><code class="lang-bash">curl -v -d &quot;@DataSelection.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection&quot;
-</code></pre><h3 id="parameters-for-modbus-data-selection">Parameters for Modbus Data Selection</h3>
-<p>The following parameters are available for configuring a Modbus data selection.</p>
+</code></pre><h3 id="parameters-for-modbus-data-selection">Parameters for Modbus data selection</h3>
+<p>The following parameters are available for configuring Modbus data selection.</p>
 <table>
 <thead>
 <tr>
@@ -265,9 +258,9 @@
 </tbody>
 </table>
 <p>Each JSON object in the file represents a measurement. You can modify the fields in each object to configure the measurement parameters. To add more measurements, you need to create more JSON objects with properly completed fields.</p>
-<h3 id="data-selection-examples">Data Selection Examples</h3>
-<p>Below is an example of valid Modbus Data Source configuration.</p>
-<p><strong>Modbus Data Selection example.</strong></p>
+<h3 id="data-selection-examples">Data selection examples</h3>
+<p>Below is an example of a valid Modbus data source configuration.</p>
+<p><strong>Modbus data selection example.</strong></p>
 <pre><code class="lang-json">[
   {
     &quot;Selected&quot;: true,

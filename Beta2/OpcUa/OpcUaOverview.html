@@ -72,17 +72,15 @@
 <h1 id="opc-ua-connectivity">OPC UA Connectivity</h1>
 
 <h2 id="overview">Overview</h2>
-<p>The OPC UA connectivity transfers time-series data from OPC UA devices into the Edge System.</p>
-<p>On startup, the OPC UA connectivity browses the entire OPC UA server address space and exports the available OPC UA variables into a .json file for data selection. Data is collected automatically based upon user demands.  OPC UA data from OPC UA variables is read through subscriptions (unsolicited reads).</p>
+<p>The OPC UA adapter transfers time-series data from OPC UA devices into the Edge System.</p>
+<p>As with other Edge System adapters, the OPC UA adapter is configured using data source and data selection JSON documents. The data source configuration are identical with other adapters, but OPC UA supports an option to generate a template data selection file that can be manually edited and used for subsequent configuration. This optional process for generating and editing the file is different for <a class="xref" href="OpcUaDataSelectionWindows.html">Windows</a> and <a class="xref" href="OpcUaDataSelectionLinux.html">Linux</a>. Once the template file is created it can be reused on both Linux and Windows without changes.</p>
 <p>OPC UA is a standard, which ensures open connectivity, interoperability, security, and reliability of industrial automation devices and systems. OPC UA is recognized as one of the key communication and data modeling technologies of Industry 4.0, due to the fact that it works with many software platforms and that it is completely scalable and flexible.</p>
 <h2 id="configuration-of-opc-ua-data-source">Configuration of OPC UA Data Source</h2>
 <p>To utilize the OPC UA connectivity component of the Edge System, it must be configured to which OPC UA data source it will be receiving data from.</p>
 <h3 id="procedure-for-configuring-opc-ua-data-source">Procedure for Configuring OPC UA Data Source</h3>
-<blockquote><p><strong>Note:</strong> You cannot modify OPC UA data source configurations manually. You must use the REST endpoints to add/edit the configuration.</p>
-</blockquote>
 <p>The following procedure is for configuring OPC UA data source.</p>
 <ol>
-<li>Using any text editor, create a file that contains a OPC UA data source in JSON form<ul>
+<li>Using any text editor, create a file that contains a OPC UA data source in JSON form. This file can be created or copied to any directory on a device with Edge System installed.<ul>
 <li>See OPC UA Data Source Example section below for content structure</li>
 <li>See Parameters for OPC UA Data Source section below for a table of all available parameters</li>
 </ul>
@@ -164,21 +162,19 @@
 </code></pre><h2 id="configuration-of-opc-ua-data-selection">Configuration of OPC UA Data Selection</h2>
 <p>In addition to the data source configuration, you need to provide a data selection configuration to specify the data you want the OPC UA connectivity to collect from the data source.</p>
 <h3 id="procedure-for-configuring-opc-ua-data-selection">Procedure for Configuring OPC UA Data Selection</h3>
-<blockquote><p><strong>Note:</strong> You cannot modify OPC UA data selection configurations manually. You must use the REST endpoints to add/edit the configuration.</p>
-</blockquote>
 <p>The following procedure is for configuring OPC UA data selection.</p>
 <ol>
-<li>Using any text editor, create a file or use the file created by the adapter (discovered from OPC UA server) that contains a OPC UA data selection in JSON form<ul>
+<li>Using any text editor, create a file that contains an OPC UA data selection in JSON form. This file can be created or copied to any directory on a device with Edge System installed.<ul>
 <li>See OPC UA Data Selection Example section below for content structure</li>
 <li>See Parameters for OPC UA Data Selection section below for a table of all available parameters</li>
 </ul>
 </li>
 <li>Save the file as &quot;DataSelection.config.json&quot;</li>
-<li>Use any <a class="xref" href="../Administration/ManagementTools.html">tool</a> capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection/</code><ul>
-<li>Example using cURL:</li>
-</ul>
-</li>
+<li>Use any <a class="xref" href="../Administration/ManagementTools.html">tool</a> capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection/</code>.</li>
 </ol>
+<ul>
+<li>Example using cURL (run this command from the same directory where the file is located):</li>
+</ul>
 <pre><code class="lang-bash">curl -v -d &quot;@DataSelection.config.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT &quot;http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection&quot;
 </code></pre><h3 id="parameters-for-opc-ua-data-selection">Parameters for OPC UA Data Selection</h3>
 <p>Configuration parameters for OPC UA data selection</p>

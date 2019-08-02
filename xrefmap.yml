@@ -56,7 +56,7 @@ references:
   name: ModbusConfiguration Schema
   href: Beta2/Configuration/Schemas/Modbus_schema.html
 - uid: modbusOverview
-  name: Modbus Connectivity
+  name: Modbus connectivity
   href: Beta2/Modbus/ModbusOverview.html
 - uid: modbusQuickStart
   name: Edge Modbus Quick Start
@@ -82,6 +82,12 @@ references:
 - uid: opcua_schema
   name: OpcUaConfiguration Schema
   href: Beta2/Configuration/Schemas/OpcUa_schema.html
+- uid: opcUaDataSelectionLinux
+  name: Generating a template OPC UA data selection configuration file on Windows
+  href: Beta2/OpcUa/OpcUaDataSelectionLinux.html
+- uid: opcUaDataSelectionWindows
+  name: Generating a template OPC UA data selection configuration file on Windows
+  href: Beta2/OpcUa/OpcUaDataSelectionWindows.html
 - uid: opcUaOverview
   name: OPC UA Connectivity
   href: Beta2/OpcUa/OpcUaOverview.html
@@ -110,7 +116,7 @@ references:
   name: OSIsoft Sequential Data Store (SDS)
   href: Beta2/SDS/SequentialDataStore.html
 - uid: sdsQuickStart
-  name: Edge Storage SDS Quick Start
+  name: Edge Storage SDS quick start
   href: Beta2/Overview/SDSQuickStart.html
 - uid: sdsReadingData
   name: Reading data

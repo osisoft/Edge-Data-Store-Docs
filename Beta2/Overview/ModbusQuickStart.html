@@ -71,9 +71,9 @@
             <article class="content wrap" id="_content" data-uid="modbusQuickStart">
 <h1 id="edge-modbus-quick-start">Edge Modbus Quick Start</h1>
 
-<p>This document is a quick tour of setting up the Edge Modbus component.</p>
-<h2 id="configuring-a-modbus-data-source">Configuring a Modbus Data Source</h2>
-<p>The first step in configuring Edge Modbus is to create a file in JSON format describing the location of the Modbus data source. The timeouts are in milliseconds.</p>
+<p>This topic is a quick tour of setting up the Edge Modbus TCP component.</p>
+<h2 id="configure-a-modbus-tcp-data-source">Configure a Modbus TCP data source</h2>
+<p>Create a file in JSON format describing the location of the Modbus data source. The timeouts are in milliseconds.</p>
 <pre><code class="lang-json">{
     &quot;IpAddress&quot;: &quot;&lt;Modbus IP Address&gt;&quot;,
     &quot;Port&quot;: &lt;Port - usually 502&gt;,
@@ -83,11 +83,19 @@
     &quot;DelayBetweenRequests&quot;: 0,
     &quot;MaxResponseDataLength&quot;: 250
 }
-</code></pre><p>Enter the correct IP address and port for your Modbus data source and save the file with the name Modbus1DataSource.json. Then run the following curl script from the same directory where the file is located. The script should be run on the same computer where the Edge System is installed:</p>
+</code></pre><ol>
+<li>Enter the correct IP address and port for your Modbus data source.</li>
+<li>Save the file with the name Modbus1DataSource.json. </li>
+<li>Run the following curl script from the same directory where the file is located. 
+<strong>Note:</strong> You should run the script on the same computer where the Edge System is installed:</li>
+</ol>
 <pre><code class="lang-bash">curl -i -d &quot;@Modbus1Datasource.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Datasource
-</code></pre><p>When this command completes successfully (a 204 is returned by curl), your Modbus data source has been created. If you get a 400 error check your JSON file for errors, if you get a 404 or 500 error check to make sure the Edge System is running on your computer.</p>
-<h2 id="configuring-modbus-data-selection">Configuring Modbus Data Selection</h2>
-<p>The next step in setting up Modbus is to select the Modbus data you wish to store in the Edge System. This is done by configuring Modbus data selection. Sample JSON for 5 Modbus values is below - please modify the values as appropriate for your Modbus environment.</p>
+</code></pre><p>When this command completes successfully (a 204 is returned by curl), your Modbus TCP data source has been created. If you get a 400 error, check your JSON file for errors. If you get a 404 or 500 error, check to make sure Edge System is running on your computer.</p>
+<h2 id="configure-modbus-data-selection">Configure Modbus data selection</h2>
+<p>Select the Modbus TCP data you want to store in Edge System by configuring Modbus data selection. The following is a sample JSON for 5 Modbus values.</p>
+<ol>
+<li>Modify the values as appropriate for your Modbus environment.</li>
+</ol>
 <pre><code class="lang-json">[{
         &quot;Selected&quot;: &quot;true&quot;,
         &quot;UnitId&quot;: 1,
@@ -144,11 +152,14 @@
         &quot;ScanRate&quot;: 500
     }
 ]
-</code></pre><p>Save the JSON content above in a text file and name it Modbus1Dataselection.json. When you run the following curl script the system will be configured to collect Modbus data values.</p>
+</code></pre><ol>
+<li>Save the JSON content above in a text file and name it Modbus1Dataselection.json. </li>
+</ol>
+<p><strong>Note:</strong> When you run the following curl script, the system will be configured to collect Modbus data values.</p>
 <pre><code class="lang-bash">curl -i -d &quot;@Modbus1Dataselection.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Dataselection
-</code></pre><p>To see the streams that have been created in Edge Storage to store the data you are writing you can run the following curl script:</p>
+</code></pre><p>To see the streams that have been created in Edge Storage to store the data you are writing, you can run the following curl script:</p>
 <pre><code class="lang-bash">curl http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/
-</code></pre><p>To view the data in the streams being written by Modbus you can refer to the SDS part of this documentation. </p>
+</code></pre><p>To view the data in the streams being written by Modbus, you can refer to the SDS part of this documentation. </p>
 <p>To egress the data to OSIsoft Cloud Services or the PI System, see the egress documentation or quick starts.</p>
 </article>
           </div>

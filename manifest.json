@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Administration/Administration.html",
-          "hash": "QKc/UUxXABZBrsjiTWhDxg=="
+          "hash": "TlXqybIglgSsOoOhWUftXA=="
         }
       },
       "is_incremental": false,
@@ -54,7 +54,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Configuration/EdgeSystemConfiguration.html",
-          "hash": "Hh9dx7xyCidlfRiZjYmqJg=="
+          "hash": "qT6HHye5x8D+6OPQvpdUXg=="
         }
       },
       "is_incremental": false,
@@ -442,7 +442,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Modbus/ModbusOverview.html",
-          "hash": "Wk0EIw7kiXPq4JfXdefReA=="
+          "hash": "z9Px9YJ2gHWTrQxaJLAOAA=="
         }
       },
       "is_incremental": false,
@@ -462,11 +462,35 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "Beta2/OpcUa/OpcUaDataSelectionLinux.md",
+      "output": {
+        ".html": {
+          "relative_path": "Beta2/OpcUa/OpcUaDataSelectionLinux.html",
+          "hash": "JONjUgGeipSin23UMxQh7g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Beta2/OpcUa/OpcUaDataSelectionWindows.md",
+      "output": {
+        ".html": {
+          "relative_path": "Beta2/OpcUa/OpcUaDataSelectionWindows.html",
+          "hash": "/6kPssDBjJFlyJjXBAunEQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "Beta2/OpcUa/OpcUaOverview.md",
       "output": {
         ".html": {
           "relative_path": "Beta2/OpcUa/OpcUaOverview.html",
-          "hash": "oW4KM3z45FK5SW3usFOYAQ=="
+          "hash": "kGPLJlZ2RTmSmT9bhw3VNg=="
         }
       },
       "is_incremental": false,
@@ -490,7 +514,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Overview/ModbusQuickStart.html",
-          "hash": "R8iuFTLh6r6ox8lLPNqytg=="
+          "hash": "nxU9yvG0kjv6GGRik04kfg=="
         }
       },
       "is_incremental": false,
@@ -550,7 +574,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Overview/SDSQuickStart.html",
-          "hash": "DRCzf7R64h8yfAAay0fA1A=="
+          "hash": "M3dsQ/lzGGHr5XLlxw3FLQ=="
         }
       },
       "is_incremental": false,
@@ -637,7 +661,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/SDS/SDS_Types.html",
-          "hash": "2NQja0FkMa8s9cz7HL18hA=="
+          "hash": "3xrlOyLNCgRhC3Hy2EIeaA=="
         }
       },
       "is_incremental": false,
@@ -809,7 +833,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/index.html",
-          "hash": "GJHiuZTLwSYzjKEBIAzB+A=="
+          "hash": "bwzBhgqp8tbxLcf2+4wITQ=="
         }
       },
       "is_incremental": false,
@@ -902,9 +926,9 @@
         "full_build_reason_code": "NoAvailableBuildCache"
       },
       "processors": {
-        "ResourceDocumentProcessor": {
+        "TocDocumentProcessor": {
           "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build",
           "total_file_count": 0,
           "skipped_file_count": 0
@@ -912,12 +936,12 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 64,
+          "total_file_count": 66,
           "skipped_file_count": 0
         },
-        "TocDocumentProcessor": {
+        "ResourceDocumentProcessor": {
           "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build",
           "total_file_count": 0,
           "skipped_file_count": 0
