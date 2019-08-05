@@ -25,9 +25,6 @@ references:
 - uid: edgeSystemHealth
   name: Edge System health
   href: Beta2/Health/Health.html
-- uid: edgeSystemLogging
-  name: Edge System Logging
-  href: Beta2/Administration/LoggingConfiguration.html
 - uid: edgeSystemOverview
   name: Edge System overview
   href: Beta2/Overview/EdgeSystemOverview.html
@@ -43,6 +40,9 @@ references:
 - uid: linuxWindows
   name: Linux and Windows platform differences
   href: Beta2/LinuxWindows/LinuxWindows.html
+- uid: loggingConfiguration
+  name: Edge System Logging
+  href: Beta2/Administration/LoggingConfiguration.html
 - uid: managementTools
   name: Edge System management tools
   href: Beta2/Administration/ManagementTools.html
