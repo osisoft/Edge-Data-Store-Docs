@@ -71,7 +71,7 @@
             <article class="content wrap" id="_content" data-uid="sdsSearching">
 <h1 id="searching">Searching</h1>
 
-<p>Search in SDS provides a way to search text, fields, etc. across the Sequential Data Store. This document covers the searching for SdsStreams, SdsTypes, and SdsStreamViews.</p>
+<p>Search in SDS provides a way to search text, fields, and so on across the Sequential Data Store. This topic covers the searching for SdsStreams, SdsTypes, and SdsStreamViews.</p>
 <h1 id="searching-for-streams">Searching for Streams</h1>
 <p>The search functionality for streams is exposed through the REST API.</p>
 <p>The searchable properties are below.</p>
@@ -127,9 +127,9 @@
 </table>
 <p>Searching for streams is possible using the REST API and specifying the optional <code>query</code> parameter, as shown here:</p>
 <pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams?query={query}&amp;skip={skip}&amp;count={count}
-</code></pre><p>The Stream fields valid for search are identified in the fields table located on the <a class="xref" href="SDS_Streams.html">Streams</a> page. Note that Stream Metadata has unique syntax rules, see <a href="#Stream_Metadata_search_topic">How Searching Works: Stream Metadata</a>.</p>
+</code></pre><p>The Stream fields valid for search are identified in the fields table located on the <a class="xref" href="SDS_Streams.html">Streams</a> page. <strong>Note:</strong> Stream Metadata has unique syntax rules. For more information, see <a href="#Stream_Metadata_search_topic">How Searching Works: Stream Metadata</a>.</p>
 <h1 id="searching-for-types">Searching for Types</h1>
-<p>Similarly, the search functionality for types is also exposed through REST API. The query syntax and the request parameters are the same. The only difference is the resource you&#39;re searching on, and you can search on different properties for types than for streams. The searchable properties are below. See <a class="xref" href="SDS_Types.html">Types</a> for more information.</p>
+<p>Similarly, the search functionality for types is also exposed through REST API. The query syntax and the request parameters are the same. The only difference is the resource you&#39;re searching on. You can search on different properties for types than for streams. The searchable properties are below. For more information, see <a class="xref" href="SDS_Types.html">Types</a>.</p>
 <table>
 <thead>
 <tr>
@@ -168,13 +168,11 @@
 </tr>
 </tbody>
 </table>
-<p>As previously mentioned, searching for types is also possible using the REST API and specifying the optional <code>query</code> parameter, as shown here:</p>
+<p>Searching for types is also possible using the REST API and specifying the optional <code>query</code> parameter, as shown here:</p>
 <pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Types?query={query}&amp;skip={skip}&amp;count={count}
-</code></pre><p>The Type fields valid for search are identified in the fields table located on the <a class="xref" href="SDS_Types.html">Types</a> page. The Properties field is identified
-as being searchable but with limitations: Each SdsTypeProperty of a given SdsType has its Name and Id included in the Properties field. This includes nested
-SdsTypes of the given SdsType. Therefore, the searching of Properties will distinguish SdsTypes by their respective lists of relevant SdsTypeProperty Ids and Names.</p>
+</code></pre><p>The Type fields valid for search are identified in the fields table located on the <a class="xref" href="SDS_Types.html">Types</a> page. The Properties field is identified as being searchable but with limitations: Each SdsTypeProperty of a given SdsType has its Name and Id included in the Properties field. This includes nested SdsTypes of the given SdsType. Therefore, the searching of Properties will distinguish SdsTypes by their respective lists of relevant SdsTypeProperty Ids and Names.</p>
 <h1 id="searching-for-stream-views">Searching for Stream Views</h1>
-<p>Similarly, the search functionality for stream views is also exposed through REST API. The query syntax and the request parameters are the same. The only difference is the resource you&#39;re searching on, and you can match on different properties for stream views than for streams and types. The searchable properties are below. See <a class="xref" href="SDS_Views.html">Stream Views</a> for more information.</p>
+<p>Similarly, the search functionality for stream views is also exposed through REST API. The query syntax and the request parameters are the same. The only difference is the resource you are searching on. You can match on different properties for stream views than for streams and types. The searchable properties are below. For more information, see <a class="xref" href="SDS_Views.html">Stream Views</a>.</p>
 <table>
 <thead>
 <tr>
@@ -211,12 +209,10 @@ SdsTypes of the given SdsType. Therefore, the searching of Properties will disti
 </table>
 <p>As previously mentioned, searching for stream views is also possible using the REST API and specifying the optional <code>query</code> parameter, as shown here:</p>
 <pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews?query={query}&amp;skip={skip}&amp;count={count}
-</code></pre><p>The Stream View fields valid for search are identified in the fields table located on the <a class="xref" href="SDS_Views.html">Stream Views</a> page. The Properties field
-is identified as being searchable but with limitations because SdsStreamViewProperty objects are not searchable. Only the SdsStreamViewProperty&#39;s
-SdsStreamView is searchable by its Id, SourceTypeId, and TargetTypeId, which are used to return the top level SdsStreamView object when searching. This includes nested SdsStreamViewProperties.</p>
+</code></pre><p>The Stream View fields valid for search are identified in the fields table located on the <a class="xref" href="SDS_Views.html">Stream Views</a> page. The Properties field is identified as being searchable with limitations because SdsStreamViewProperty objects are not searchable. Only the SdsStreamViewProperty&#39;s SdsStreamView is searchable by its Id, SourceTypeId, and TargetTypeId, which are used to return the top level SdsStreamView object when searching. This includes nested SdsStreamViewProperties.</p>
 <h1 id="how-searching-works">How Searching Works</h1>
-<p>The query parameter will be applied across all searchable fields of objects we’re searching on by default.</p>
-<p>For example, assume that a namespace contains the following Streams:</p>
+<p>The query parameter will be applied across all searchable fields of objects that are searched on by default.</p>
+<p>For example, you can assume that a namespace contains the following Streams:</p>
 <table>
 <thead>
 <tr>
@@ -272,7 +268,7 @@ SdsStreamView is searchable by its Id, SourceTypeId, and TargetTypeId, which are
 </table>
 <p>The <code>skip</code> and <code>count</code> parameters determine which items are returned when a large number of them match the <code>query</code> criteria. <code>count</code> indicates the maximum number of items returned. The maximum value of the <code>count</code> parameter is 1000. <code>skip</code> indicates the number of matched items to skip over before returning matching items. You use the skip parameter when more items match the search criteria than can be returned in a single call.</p>
 <p>The <code>orderby</code> parameter is supported for searching both the streams and types. The basic functionality of it is to search the items and then return the result in sorted order.
-The default value for <code>orderby</code> parameter is ascending order. It can be changed to descending order by specifying <code>desc</code> alongside the orderby field value. It can be used in conjunction with <code>query</code>, <code>skip</code>, and <code>count</code> parameters.</p>
+The default value for <code>orderby</code> parameter is ascending order. You can change it to descending order by specifying <code>desc</code> alongside the orderby field value. It can be used in conjunction with <code>query</code>, <code>skip</code>, and <code>count</code> parameters.</p>
 <p><strong>Request</strong></p>
 <pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams?query=name:pump name:pressure&amp;orderby=name
 
@@ -309,7 +305,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams?query=name:pump name
 </tr>
 <tr>
 <td><code>:</code></td>
-<td>Field-scoped query.  For example, <code>id:stream*</code> will search for streams where the <code>id</code> field starts with &quot;stream&quot;, but will not search on other fields like <code>name</code> or <code>description</code>.  <em>Note that field names are camel case and are case sensitive.</em></td>
+<td>Field-scoped query.  For example, <code>id:stream*</code> will search for streams where the <code>id</code> field starts with &quot;stream&quot;, but will not search on other fields like <code>name</code> or <code>description</code>.  <strong>Note:</strong> Field names are camel case and are case sensitive.</td>
 </tr>
 <tr>
 <td><code>( )</code></td>
@@ -317,9 +313,9 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams?query=name:pump name
 </tr>
 </tbody>
 </table>
-<p><strong>Notes regarding wildcard operator <code>*</code>:</strong> The wildcard <code>*</code> can only be used once for each search term, except for the case of a Contains type query clause. In that case two wildcards are allowed: one as prefix and one as suffix e.g. <code>*Tank*</code> is valid but <code>*Ta*nk</code>, <code>Ta*nk*</code>, and <code>*Ta*nk*</code> are currently not supported. The wildcard <code>*</code> only works when specifying a single search term. For example, you can search for <code>Tank*</code>, <code>*Tank</code>, <code>Ta*nk</code> but not <code>Tank Meter*</code>.</p>
+<p><strong>Notes regarding wildcard operator <code>*</code>:</strong> You can use the wildcard <code>*</code> only once for each search term, except for the case of a Contains type query clause. In that case, two wildcards are allowed: one as prefix and one as suffix for example, <code>*Tank*</code> is valid but <code>*Ta*nk</code>, <code>Ta*nk*</code>, and <code>*Ta*nk*</code> are currently not supported. The wildcard <code>*</code> only works when specifying a single search term. For example, you can search for <code>Tank*</code>, <code>*Tank</code>, <code>Ta*nk</code> but not <code>Tank Meter*</code>.</p>
 <h2 id="-operator"><strong>: Operator</strong></h2>
-<p>You can also qualify which fields are searched by using the following syntax:</p>
+<p>You can also determine which fields are searched by using the following syntax:</p>
 <pre><code class="lang-text">fieldname:fieldvalue
 </code></pre><p><strong>Request</strong></p>
 <pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams?query=name:pump name:pressure
@@ -404,7 +400,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams?query=name:pump name
 </tr>
 <tr>
 <td><code>name:stream* AND (description:pressure OR description:pump)</code></td>
-<td>The name starts with &quot;stream&quot; and the description has the either of the terms &quot;pressure&quot; or &quot;pump&quot;</td>
+<td>The name starts with &quot;stream&quot; and the description includes either term &quot;pressure&quot; or term &quot;pump&quot;</td>
 <td></td>
 </tr>
 </tbody>
@@ -436,7 +432,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams?query=name:pump name
 <h2 id="-operator-2">: Operator</h2>
 <p>A Stream Metadata key is only searchable in association with a Stream Metadata value. This pairing is defined using the same  field scoping <code>&#39;:&#39;</code> operator, like</p>
 <pre><code class="lang-text">myStreamMetadataKey:streamMetadataValue
-</code></pre><p>If the <code>&#39;:&#39;</code> operator is not used within an individual search clause then Metadata Keys are not searched against but Metadata Values are searched against (along with the other searchable Stream fields).</p>
+</code></pre><p>If the <code>&#39;:&#39;</code> operator is not used within an individual search clause, Metadata Keys are not searched against.Instead, Metadata values are searched against (along with the other searchable Stream fields).</p>
 <table>
 <thead>
 <tr>
@@ -462,9 +458,8 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams?query=name:pump name
 <p><strong>Request</strong></p>
 <pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams?query=manufacturer:company
 </code></pre><h2 id="-operator-3">* Operator</h2>
-<p>For searching on Metadata values the <code>&#39;*&#39;</code> character is again used as a wildcard to specify an incomplete string. Additionally,
-this wildcard character can be used with the Metadata key as well. This is not supported for any other &quot;fields&quot;, so by including a wildcard in a field
-(defined as a value to the immediate left of a <code>&#39;:&#39;</code> operator) the query will only be valid against Stream Metadata.</p>
+<p>For searching on Metadata values, the <code>&#39;*&#39;</code> character is again used as a wildcard to specify an incomplete string. Additionally,
+you can use this wildcard character with the Metadata key as well. This is not supported for any other &quot;fields&quot;. By including a wildcard in a field (defined as a value to the immediate left of a <code>&#39;:&#39;</code> operator), the query will only be valid against Stream Metadata.</p>
 <table>
 <thead>
 <tr>
@@ -495,7 +490,7 @@ this wildcard character can be used with the Metadata key as well. This is not s
 </tr>
 </tbody>
 </table>
-<p>Note that in the final example nothing matches on a Stream&#39;s Id value because including <code>&#39;*&#39;</code> in a search clause&#39;s field prevents non-Stream Metadata fields from being searched.</p>
+<p><strong>Note:</strong> In the final example nothing matches on a Stream&#39;s Id value because including <code>&#39;*&#39;</code> in a search clause&#39;s field prevents non-Stream Metadata fields from being searched.</p>
 <p><strong>Request</strong></p>
 <pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams?query=manufa*turer:compan*
 </code></pre></article>

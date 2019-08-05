@@ -98,7 +98,7 @@ references:
   name: Edge OPC UA quick start
   href: Beta2/Overview/OpcUaQuickStart.html
 - uid: piEgressQuickStart
-  name: PI System (PI Web API) Egress Quick Start
+  name: PI System (PI Web API) egress quick start
   href: Beta2/Overview/PIEgressQuickStart.html
 - uid: releaseNotes
   name: Edge System Beta 2 Release Notes

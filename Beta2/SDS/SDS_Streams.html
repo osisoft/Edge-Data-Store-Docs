@@ -72,7 +72,7 @@
 <h1 id="streams">Streams</h1>
 
 <p>SDS stores collections of events and provides convenient ways to find and associating events. Events of consistent structure are stored in streams, called SdsStreams. An SdsType defines the structure of events in an SdsStream.</p>
-<p>SdsStreams are referenced by their identifier or Id field. SdsStream identifiers must be unique within a Namespace.</p>
+<p>SdsStreams are referenced by their identifier or Id field. SdsStream identifiers must be unique within a namespace.</p>
 <p>An SdsStream must include a TypeId that references the identifier of an existing SdsType. When an SdsStream contains data, you must use a stream view to update the stream type.</p>
 <p>The following table shows the required and optional SdsStream fields. Fields not listed are reserved for internal SDS use.</p>
 <table>
@@ -81,7 +81,7 @@
 <th>Property</th>
 <th>Type</th>
 <th>Optionality</th>
-<th>Searchable</th>
+<th>Searchability</th>
 <th>Details</th>
 </tr>
 </thead>
@@ -230,11 +230,11 @@ Content-Type: application/json
 </code></pre><hr>
 <h2 id="get-streams"><code>Get Streams</code></h2>
 <p>Returns a list of streams.</p>
-<p>If specifying the optional search query parameter, the list of streams returned will match the search criteria. If the search query parameter is not specified, the list will include all streams in the Namespace. See <a class="xref" href="Searching.html">Searching</a> for information about specifying those respective parameters.</p>
+<p>If the optional search query parameter is specified, the list of streams returned will match the search criteria. If the search query parameter is not specified, the list will include all streams in the namespace. See <a class="xref" href="Searching.html">Searching</a> for information about specifying those respective parameters.</p>
 <p><strong>Request</strong></p>
 <pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams?query={query}&amp;skip={skip}&amp;count={count}&amp;orderby={orderby}
 </code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>default or diagnostics</p>
-<p><code>string query</code><br>An optional parameter representing a string search. See <a class="xref" href="Searching.html">Searching</a> for information about specifying the search parameter.</p>
+<p><code>string query</code><br>An optional parameter representing a string search. For information about specifying the search parameter, see <a class="xref" href="Searching.html">Searching</a>.</p>
 <p><code>int skip</code><br>An optional parameter representing the zero-based offset of the first SdsStream to retrieve. If not specified, a default value of 0 is used.</p>
 <p><code>int count</code><br>An optional parameter representing the maximum number of SdsStreams to retrieve. If not specified, a default value of 100 is used.</p>
 <p><code>string orderby</code><br>An optional parameter representing sorted order which SdsStreams will be returned. A field name is required. The sorting is based on the stored values for the given field (of type string). For example, <code>orderby=name</code> would sort the returned results by the <code>name</code> values (ascending by default). Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values <code>asc</code> or <code>desc</code>, respectively. For example, <code>orderby=name desc</code> would sort the returned results by the <code>name</code> values, descending. If no value is specified, there is no sorting of results.</p>

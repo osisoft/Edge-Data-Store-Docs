@@ -73,7 +73,7 @@
 
 <h2 id="example-type-stream-and-data">Example Type, Stream, and Data</h2>
 <p>Many of the API methods described below contain example requests and responses in JSON to highlight usage and specific behaviors. The following type, stream, and data are used in the examples.</p>
-<p><strong>Example Type</strong><br><code>SimpleType</code> is an SdsType with a single index. This type is defined below in Python, and Javascript:</p>
+<p><strong>Example Type</strong><br><code>SimpleType</code> is an SdsType with a single index. This type is defined in Python and Javascript:</p>
 <h6 id="python">Python</h6>
 <pre><code class="lang-python">class State(Enum):
   Ok = 0
@@ -217,7 +217,7 @@ Content-Type: application/json
         &quot;Measurement&quot;: 40
     }
 ]
-</code></pre><p>Note that <code>State</code> is not included in the JSON as its value is the default value.</p>
+</code></pre><p><strong>Note:</strong> <code>State</code> is not included in the JSON as its value is the default value.</p>
 <p><a name="getvaluesrange"></a></p>
 <h3 id="range"><code>Range</code></h3>
 <p>Returns a collection of stored values as determined by a <code>startIndex</code> and <code>count</code>. Additional optional parameters specify the direction of the range, how to handle events near or at the start index, whether to skip a certain number of events at the start of the range, and how to filter the data.</p>
@@ -260,7 +260,7 @@ Content-Type: application/json
         &quot;Measurement&quot;: 40
     }
 ]
-</code></pre><p>Note that <code>State</code> is not included in the JSON as its value is the default value.</p>
+</code></pre><p><strong>Note:</strong> <code>State</code> is not included in the JSON as its value is the default value.</p>
 <p><strong>Example</strong><br>To reverse the direction of the request, set reversed to true. The following request will return up to 100 events starting at 13:00 and extending back toward the start of the stream:</p>
 <pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
     ?startIndex=2017-11-23T13:00:00Z&amp;count=100&amp;reversed=true
@@ -277,7 +277,7 @@ Content-Type: application/json
         &quot;Time&quot;: &quot;2017-11-23T12:00:00Z&quot;
     }
 ]
-</code></pre><p>Note that <code>State</code> is not included in the JSON as its value is the default value.</p>
+</code></pre><p><strong>Note:</strong> <code>State</code> is not included in the JSON as its value is the default value.</p>
 <p>Further, <code>Measurement</code> is not included in the second, 12:00:00, event as zero is the default value for numbers.</p>
 <p>The following request specifies a boundary type of Outside for a reversed-direction range request. The response will contain up to 100 events. The boundary type Outside indicates that up to one event outside the boundary will be included in the response. For a reverse direction range request, this means one event forward of the specified start index. In a default direction range request, it would mean one event before the specified start index.</p>
 <pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
@@ -376,7 +376,7 @@ Content-Type: application/json
         &quot;Measurement&quot;: 30
     }
 ]
-</code></pre><p>Note that <code>State</code> is not included in the JSON as its value is the default value.</p>
+</code></pre><p><strong>Note:</strong> <code>State</code> is not included in the JSON as its value is the default value.</p>
 <p><strong>Example</strong><br>When the request is modified to specify a boundary type of Outside, the value before 13:30 and the value after 15:30 are included:</p>
 <pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
     ?startIndex=2017-11-23T12:30:00Z&amp;endIndex=2017-11-23T15:30:00Z
@@ -562,7 +562,7 @@ Content-Type: application/json
 <p>For a stream, named Simple, of type <code>Simple</code> for the following request:</p>
 <pre><code class="lang-text">GET api/v1/Tenants/default}/Namespaces/{namespaceId}/Streams/Simple/Data/
     Interpolated?startIndex=2017-11-23T13:00:00Z&amp;endIndex=2017-11-23T15:00:00Z&amp;count=3
-</code></pre><p>the start and end fall exactly on event indexes, and the number of events from start to end match the count of three (3).</p>
+</code></pre><p>The start and end fall exactly on event indexes, and the number of events from start to end match the count of three (3).</p>
 <p><strong>Response body</strong></p>
 <pre><code class="lang-json">HTTP/1.1 200
 Content-Type: application/json
@@ -798,7 +798,7 @@ Content-Type: application/json
 ]
 </code></pre><hr>
 <h2 id="get-sampled-values"><code>Get Sampled Values</code></h2>
-<p>Returns representative data sampled by intervals between a specified start and end index.</p>
+<p>Returns data sampled by intervals between a specified start and end index.</p>
 <p>Sampling is driven by a specified property or properties of the stream&#39;s Sds Type. Property types that cannot be interpolated do not support sampling requests. Strings are an example of a property that cannot be interpolated. For more information see <a class="xref" href="SDS_Types.html#interpolation">Interpolation.</a></p>
 <p><strong>Request</strong>  </p>
 <pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/
@@ -862,7 +862,7 @@ Content-Type: application/json
         &quot;Measurement&quot;: 6.20202628068931
     }
 ]
-</code></pre><p>Note that <code>State</code> is not included in the JSON when its value is the default value.</p>
+</code></pre><p><strong>Note:</strong> <code>State</code> is not included in the JSON when its value is the default value.</p>
 <hr>
 <h2 id="join-values"><code>Join Values</code></h2>
 <p>Returns data from multiple streams, which are joined based on the request specifications. The streams must be of the same SdsType.</p>
@@ -915,7 +915,7 @@ Content-Type: application/json
     &amp;startIndex={startIndex}&amp;endIndex={endIndex}
 </code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>default or diagnostics</p>
 <p><code>string streams</code><br>Commas separated list of stream identifiers</p>
-<p><code>SdsJoinMode joinMode</code><br>Type of join, i.e. inner, outer, etc.</p>
+<p><code>SdsJoinMode joinMode</code><br>Type of join, that is inner, outer, and so on.</p>
 <p><code>string startIndex</code><br>Index identifying the beginning of the series of events to return</p>
 <p><code>string endIndex</code><br>Index identifying the end of the series of events to return</p>
 <p><strong>Response</strong><br>The response includes a status code and a response body containing multiple serialized events. See examples for specifics.</p>
@@ -1071,7 +1071,7 @@ Content-Type: application/json
 <pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Bulk/Streams/Data/Joins
     ?streams=Simple1,Simple2&amp;joinMode=interpolated
     &amp;startIndex=0001-01-01T00:00:00.0000000&amp;endIndex=9999-12-31T23:59:59.9999999
-</code></pre><p><strong>Response</strong><br>All Measurements from both Streams with missing values interpolated. If the missing values are between valid Measurements within a Stream, they are interpolated. If the missing values are outside of the boundary values, they are extrapolated.</p>
+</code></pre><p><strong>Response</strong><br>All measurements from both Streams with missing values interpolated. If the missing values are between valid measurements within a stream, they are interpolated. If the missing values are outside of the boundary values, they are extrapolated.</p>
 <p><strong>Response body</strong></p>
 <pre><code class="lang-json">HTTP/1.1 200
 Content-Type: application/json
@@ -1166,7 +1166,7 @@ Content-Type: application/json
 <pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Bulk/Streams/Data/Joins
     ?streams=Simple1,Simple2&amp;joinMode=mergeleft
     &amp;startIndex=0001-01-01T00:00:00.0000000&amp;endIndex=9999-12-31T23:59:59.9999999
-</code></pre><p><strong>Response</strong><br>This is similar to <a href="#outerjoin-request">OuterJoin</a>, but value at each index is the first available value at that index when iterating the given list of streams from left to right.</p>
+</code></pre><p><strong>Response</strong><br>This is similar to <a href="#outerjoin-request">OuterJoin</a>, but the value at each index is the first available value at that index when iterating the given list of streams from left to right.</p>
 <p><strong>Response body</strong></p>
 <pre><code class="lang-json">HTTP/1.1 200
 Content-Type: application/json
@@ -1212,7 +1212,7 @@ Content-Type: application/json
 <pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Bulk/Streams/Data/Joins
     ?streams=Simple1,Simple2&amp;joinMode=mergeright
     &amp;startIndex=0001-01-01T00:00:00.0000000&amp;endIndex=9999-12-31T23:59:59.9999999
-</code></pre><p><strong>Response</strong><br>This is similar to <a href="#outerjoin-request">OuterJoin</a>, but value at each index is the first available value at that index when iterating the given list of streams from right to left.</p>
+</code></pre><p><strong>Response</strong><br>This is similar to <a href="#outerjoin-request">OuterJoin</a>, but the value at each index is the first available value at that index when iterating the given list of streams from right to left.</p>
 <p><strong>Response body</strong></p>
 <pre><code class="lang-json">HTTP/1.1 200
 Content-Type: application/json
@@ -1259,7 +1259,7 @@ Content-Type: application/json
 <pre><code class="lang-text">POST api/v1/Tenants/default/Namespaces/{namespaceId}/Bulk/Streams/Data/Joins
     ?joinMode={joinMode}
 </code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>default or diagnostics</p>
-<p><code>SdsJoinMode joinMode</code><br>Type of join, i.e. inner, outer, etc.</p>
+<p><code>SdsJoinMode joinMode</code><br>Type of join, that is inner, outer, and so on.</p>
 <p><strong>Request Body</strong><br>Read options specific to each stream.</p>
 <p><strong>Response</strong><br>The response includes a status code and a response body containing multiple serialized events.</p>
 <p>Consider the following outer join request,</p>
@@ -1339,7 +1339,7 @@ Content-Type: application/json
         }
     ]
 ]
-</code></pre><p>Notice that not all the values from Streams were included since they are restricted by individual queries for each Stream.</p>
+</code></pre><p><strong>Note:</strong> Not all the values from streams were included since they are restricted by individual queries for each Stream.</p>
 <hr>
 </article>
           </div>
