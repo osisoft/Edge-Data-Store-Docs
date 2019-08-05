@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Writing data </title>
+    <title>Write data </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Writing data ">
+    <meta name="title" content="Write data ">
     <meta name="generator" content="docfx 2.43.2.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -69,11 +69,11 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="sdsWritingData">
-<h1 id="writing-data">Writing data</h1>
+<h1 id="write-data">Write data</h1>
 
-<p>The SDS REST APIs provide programmatic access to read and write SDS data. This section describes the APIs used to write SdsStream data.</p>
+<p>The SDS REST APIs provide programmatic access to read and write SDS data. This topic describes the APIs used to write SdsStream data.</p>
 <p>All writes rely on a stream’s key or primary index. The primary index determines the order of events in the stream. Secondary indexes are updated, but they do not contribute to the request. All references to indexes are to the primary index.</p>
-<h2 id="single-stream-writes">Single Stream Writes</h2>
+<h2 id="single-stream-writes">Single stream writes</h2>
 <p>The following support writing multiple values:</p>
 <ul>
 <li><a class="xref" href="Writing_Data_API.html#insert-values">Insert Values</a> inserts a collection of events.</li>
@@ -86,9 +86,9 @@
 <pre><code class="lang-text">api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data  
 </code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>default or diagnostics</p>
 <p><code>string streamId</code><br>The stream identifier  </p>
-<h2 id="request-body-format">Request Body Format</h2>
+<h2 id="request-body-format">Request body format</h2>
 <p>With the exception of Remove Values, all single stream write calls require a request body containing the events to insert or modify.
-The events must be formatted as a serialized JSON array of the stream&#39;s type. JSON arrays are comma-delimited lists of a type enclosed within square brackets. The following code shows a list of three WaveData events that are properly formatted for insertion. See the <a href="https://github.com/osisoft/OCS-Samples">OCS-Samples</a> for the complete example.</p>
+The events must be formatted as a serialized JSON array of the stream&#39;s type. JSON arrays are comma-delimited lists of a type enclosed within square brackets. The following code shows a list of three WaveData events that are properly formatted for insertion. For the complete example, see the <a href="https://github.com/osisoft/OCS-Samples">OCS-Samples</a>.</p>
 <pre><code class="lang-json">[
     {
         &quot;Order&quot;:2,
@@ -125,14 +125,14 @@ The events must be formatted as a serialized JSON array of the stream&#39;s type
     }
 ]
 </code></pre><p>You can serialize your data using one of many available JSON serializers available at <a href="http://json.org/index.html">Introducing JSON</a>.</p>
-<h2 id="response-format">Response Format</h2>
+<h2 id="response-format">Response format</h2>
 <p>Supported response formats include JSON, verbose JSON, and SDS.</p>
-<p>The default response format for SDS is JSON, which is used in all examples in this document. Default JSON responses do not include any values that are equal to the default value for their type.</p>
+<p>The default response format for SDS is JSON, which is used in all examples in this documentation. Default JSON responses do not include any values that are equal to the default value for their type.</p>
 <p>Verbose JSON responses include all values in the returned JSON payload, including defaults. To specify verbose JSON return, add the header <code>Accept-Verbosity</code> with a value of <code>verbose</code> to the request.</p>
 <p>Verbose has no impact on writes; writes return only error messages.</p>
 <p>To specify SDS format, set the <code>Accept</code> header in the request to <code>application/sds</code>.</p>
 <h2 id="indexes">Indexes</h2>
-<p>SDS writes rely on the primary index for positioning within streams and locating existing events. Most writes use the index as specified by the value. Deletes are the exception to this rule. When deleting, indexes are specified as strings in the URI. More details about working with indexes can be found on the <a class="xref" href="indexes.html">Indexes</a> page.</p>
+<p>SDS writes rely on the primary index for positioning within streams and locating existing events. Most writes use the index as specified by the value. Deletes are the exception to this rule. When deleting, indexes are specified as strings in the URI. For more details about working with indexes, see the <a class="xref" href="indexes.html">Indexes</a> page.</p>
 <p>To specify compound indexes in the URI, specify each field that composes the index, in the specified order, separated by the pipe character, ‘|’.</p>
 <hr>
 </article>

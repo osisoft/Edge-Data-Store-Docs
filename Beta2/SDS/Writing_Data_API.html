@@ -71,9 +71,9 @@
             <article class="content wrap" id="_content" data-uid="sdsWritingDataApi">
 <h1 id="api-calls-for-writing-data">API calls for writing data</h1>
 
-<h4 id="example-type-stream-and-data">Example Type, Stream, and Data</h4>
-<p>Many of the API methods described below contain example requests and responses in JSON to highlight usage and specific behaviors. The following type, stream, and data are used in the examples.</p>
-<p><strong>Example Type</strong><br><code>SimpleType</code> is an SdsType with a single index and two additional properties. This type is defined below in Python, and Javascript:</p>
+<h4 id="example-type-stream-and-data">Example type, stream, and data</h4>
+<p>Many of the following API methods descriptions following contain example requests and responses in JSON to highlight usage and specific behaviors. The following type, stream, and data are used in the examples:</p>
+<p><strong>Example type</strong><br><code>SimpleType</code> is an SdsType with a single index and two additional properties. This type is defined in Python and Javascript:</p>
 <h6 id="python">Python</h6>
 <pre><code class="lang-python">class State(Enum):
   Ok = 0
@@ -128,10 +128,10 @@ var SimpleType = function () {
 <p><code>string streamId</code><br>The stream identifier  </p>
 <p><strong>Request Body</strong><br>A serialized list of one or more events of the stream type  </p>
 <p><strong>Response</strong><br>The response includes a status code</p>
-<p><strong><em>Notes</em></strong><br>This request will return an error if an event already exists for any index in the request. If any individual index encounters a problem, the entire operation is rolled back and no insertions are made. The <code>streamId</code> and <code>index</code> that caused the issue are included in the error response.</p>
+<p><strong>Note:</strong><br>This request will return an error if an event already exists for any index in the request. If any individual index encounters a problem, the entire operation is rolled back and no insertions are made. The <code>streamId</code> and <code>index</code> that caused the issue are included in the error response.</p>
 <p><strong>Example</strong><br>The following request is used to insert events into stream <code>Simple</code> of <code>SimpleType</code>,</p>
 <pre><code class="lang-text">POST api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
-</code></pre><p>where the request body specifies the values to insert:</p>
+</code></pre><p>The request body specifies the values to insert:</p>
 <pre><code class="lang-json">[
     {
         &quot;Time&quot;: &quot;2017-11-23T17:00:00Z&quot;,
@@ -152,7 +152,7 @@ var SimpleType = function () {
   ?select={selectExpression}
 </code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>default or diagnostics</p>
 <p><code>string streamId</code><br>The stream identifier</p>
-<p><code>string selectExpression</code><br>Comma separated list of strings that indicates the event fields that will be changed in stream events  </p>
+<p><code>string selectExpression</code><br>Comma-separated list of strings that indicates the event fields to be changed in stream events  </p>
 <p><strong>Request Body</strong><br>A serialized collection of one or more patch property events</p>
 <p><strong>Response</strong><br>The response includes a status code</p>
 <p>Consider you have a stream <code>Simple</code> of <code>SimpleType</code>, to change one property, <code>Measurement</code>, for one event specify the following request</p>
@@ -166,7 +166,7 @@ var SimpleType = function () {
   }
 ]
 </code></pre><p>This request will only change the <code>Measurement</code> value at the specified event index.</p>
-<p><strong><em>Notes</em></strong><br>Patching is used to patch the events of the selected fields for one or more events in the stream. Only the fields indicated in <code>selectExpression</code> are modified. The events to be modified are indicated by the index value of each entry in the collection. If there is a problem patching any individual event, the entire operation is rolled back and the error will indicate the <code>streamId</code> and <code>index</code> of the problem.  </p>
+<p><strong>Note:</strong><br>Patching is used to patch the events of the selected fields for one or more events in the stream. Only the fields indicated in <code>selectExpression</code> are modified. The events to be modified are indicated by the index value of each entry in the collection. If there is a problem patching any individual event, the entire operation is rolled back and the error will indicate the <code>streamId</code> and <code>index</code> of the problem.  </p>
 <hr>
 <h2 id="remove-values"><code>Remove Values</code></h2>
 <p>There are two options for specifying which events to remove from a stream:</p>
@@ -184,7 +184,7 @@ var SimpleType = function () {
 <p><code>string streamId</code><br>The stream identifier  </p>
 <p><code>string index</code><br>One or more indexes of events to remove</p>
 <p><strong>Response</strong><br>The response includes a status code</p>
-<p><strong><em>Notes</em></strong><br>If any individual event fails to be removed, the entire operation is rolled back and no events are removed. The streamId and index that caused the issue are included in the error response. If you attempt to remove events at indexes that have no events, an error is returned. If this occurs, you can use <a href="#removewindow">Window</a> request format to remove any events from a specified ‘window’ of indexes, which will not return an error if no data is found.</p>
+<p><strong>Note:</strong><br>If any individual event fails to be removed, the entire operation is rolled back and no events are removed. The streamId and index that caused the issue are included in the error response. If you attempt to remove events at indexes that have no events, an error is returned. If this occurs, you can use <a href="#removewindow">Window</a> request format to remove any events from a specified ‘window’ of indexes, which will not return an error if no data is found.</p>
 <p><a name="removewindow"></a></p>
 <h3 id="window"><code>Window</code></h3>
 <p>Removes events at and between the start index and end index.</p>
@@ -196,7 +196,7 @@ var SimpleType = function () {
 <p><code>string startIndex</code><br>The index defining the beginning of the window</p>
 <p><code>string endIndex</code><br>The index defining the end of the window  </p>
 <p><strong>Response</strong><br>The response includes a status code</p>
-<p><strong><em>Notes</em></strong><br>If any individual event fails to be removed, the entire operation is rolled back and no removes are done.</p>
+<p><strong>Note:</strong><br>If any individual event fails to be removed, the entire operation is rolled back and no removes are done.</p>
 <hr>
 <h2 id="replace-values"><code>Replace Values</code></h2>
 <p>Writes one or more events over existing events in the specified stream.</p>
@@ -208,7 +208,7 @@ var SimpleType = function () {
 <p><strong>Request Body</strong>
 A serialized list of one or more events of the stream type</p>
 <p><strong>Response</strong><br>The response includes a status code</p>
-<p><strong><em>Notes</em></strong><br>This request returns an error if the stream does not have an event to be replaced at the specified index. If any individual event fails to be replaced, the entire operation is rolled back and no replaces are performed. The index that caused the issue and the streamId are included in the error response.</p>
+<p><strong>Note:</strong><br>This request returns an error if the stream does not have an event to be replaced at the specified index. If any individual event fails to be replaced, the entire operation is rolled back and no replaces are performed. The index that caused the issue and the streamId are included in the error response.</p>
 <hr>
 <h2 id="update-values"><code>Update Values</code></h2>
 <p>Writes one or more events to the specified stream.</p>
@@ -218,7 +218,7 @@ A serialized list of one or more events of the stream type</p>
 <p><code>string streamId</code><br>The stream identifier  </p>
 <p><strong>Request Body</strong><br>A serialized list of one or more events of the stream type</p>
 <p><strong>Response</strong><br>The response includes a status code</p>
-<p><strong><em>Notes</em></strong><br>This request performs an insert or a replace depending on whether an event already exists at the event indexes. If any item fails to write, the entire operation is rolled back and no events are written to the stream. The index that caused the issue is included in the error response.</p>
+<p><strong>Note:</strong><br>This request performs an insert or a replace depending on whether an event already exists at the event indexes. If any item fails to write, the entire operation is rolled back and no events are written to the stream. The index that caused the issue is included in the error response.</p>
 <hr>
 </article>
           </div>

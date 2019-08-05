@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>OSIsoft Message Format (OMF) ingress with Edge Storage </title>
+    <title>Edge System Logging </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="OSIsoft Message Format (OMF) ingress with Edge Storage ">
+    <meta name="title" content="Edge System Logging ">
     <meta name="generator" content="docfx 2.43.2.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -68,20 +68,18 @@
       <div role="main" class="container body-content hide-when-search">
         <div class="article row grid">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="omfOverview">
-<h1 id="osisoft-message-format-omf-ingress-with-edge-storage">OSIsoft Message Format (OMF) ingress with Edge Storage</h1>
+            <article class="content wrap" id="_content" data-uid="edgeSystemLogging">
+<h1 id="edge-system-logging">Edge System Logging</h1>
 
-<p>The Edge Storage component supports both OMF version 1.0 and OMF version 1.1 for data ingress. The OMF ingress functionality is the same technology that is used in OSIsoft Cloud Services (OCS). Writing an OMF application to run on EDS is very similar to writing an OMF application to write data to OCS. No authentication is necessary for writing to Edge System, as long as the application is running on the same computer or device as Edge System. Remote access to OMF data ingress is currently not supported.</p>
-<h2 id="omf-specification">OMF specification</h2>
-<p>The OMF specification may be found here: <a href="http://omf-docs.osisoft.com">http://omf-docs.osisoft.com</a></p>
-<h2 id="omf-endpoint">OMF endpoint</h2>
-<p>The route to the OMF endpoint provided by the Edge Storage component is:</p>
-<pre><code class="lang-http">Method: POST
-Endpoint: http://localhost:5590/api/v1/tenants/default/namespaces/default/omf
-</code></pre><h2 id="supported-functionality">Supported functionality</h2>
-<p>The OMF endpoint for the Edge Storage component supports both OMF version 1.0 and OMF version 1.1 for data ingress.</p>
-<p>The OMF endpoint for the Edge Storage component does not support the update action.</p>
-</article>
+<p>Logging is useful for diagnosing deployment or production issues, so it can set dynamically without restarting the system.</p>
+<h2 id="edge-system-logging-configuration">Edge System Logging Configuration</h2>
+<p>Edge System and all loaded components provide the ability to configure logging per component.  An example logging configuration is given below.</p>
+<pre><code class="lang-json">{
+  &quot;LogLevel&quot;: &quot;Information&quot;,
+  &quot;LogFileSizeLimitBytes&quot;: 34636833,
+  &quot;LogFileCountLimit&quot;: 31
+}
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -89,7 +87,7 @@ Endpoint: http://localhost:5590/api/v1/tenants/default/namespaces/default/omf
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-System-Docs/blob/master/Beta2/OMF/OMFOverview.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-System-Docs/blob/master/Beta2/Administration/LoggingConfiguration.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

@@ -73,8 +73,9 @@
 
 <p>Edge System provides an egress mechanism to copy and transfer data to another device or destination. Data is transferred through OMF. Supported destinations are OSIsoft Cloud Services or a PI server.</p>
 <p>Configuration of egress includes specifying zero or more endpoints. An egress endpoint represents a destination to which data will be sent. Each egress endpoint is comprised of the properties specified in the <a href="#Parameters">Parameters</a> section, is executed independently of all other egress endpoints, and is expected to accept OMF messages. More than one endpoint for the same destination is allowed. </p>
-<blockquote><p><strong>Note:</strong> Some types, and consequently containers and data, cannot be egressed. See <a href="#egress-execution-details">Egress Execution Details</a> for more inforamtion.</p>
+<blockquote><p><strong>Note:</strong> Some types, and consequently containers and data, cannot be egressed. See <a href="#egress-execution-details">Egress Execution Details</a> for more information.</p>
 </blockquote>
+<p>One tenant and two namespaces are supported in the Edge System. The tenant is default, and the two namespaces are default (where adapter and OMF data is written) and diagnostics. Diagnostics is where the system and its components write information that can be used locally or egressed to a remote PI Server or OCS for monitoring. To egress both namespaces two egress definitions are required.</p>
 <h2 id="configuration">Configuration</h2>
 <h3 id="procedure">Procedure</h3>
 <blockquote><p><strong>Note:</strong> You cannot add egress configurations manually, because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit egress configuration. See <a href="#rest-urls">REST Urls</a> for additional endpoints.</p>
@@ -87,15 +88,13 @@
 </ul>
 </li>
 <li>Save the file.</li>
-<li><p>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints/</code></p>
-<ul>
-<li><p>Example using cURL:</p>
-<pre><code class="lang-bash">curl -v -d &quot;@Storage_PeriodicEgressEndspoints.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints&quot;
-</code></pre></li>
-</ul>
-</li>
+<li>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints/</code></li>
 </ol>
-<h3 id="parameters">Parameters</h3>
+<ul>
+<li>Example using cURL:</li>
+</ul>
+<pre><code class="lang-bash">curl -v -d &quot;@Storage_PeriodicEgressEndspoints.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints&quot;
+</code></pre><h3 id="parameters">Parameters</h3>
 <table>
 <thead>
 <tr>

@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>OSIsoft Cloud Services (OCS) Egress Quick Start </title>
+    <title>OSIsoft Cloud Services (OCS) egress Quick Start </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="OSIsoft Cloud Services (OCS) Egress Quick Start ">
+    <meta name="title" content="OSIsoft Cloud Services (OCS) egress Quick Start ">
     <meta name="generator" content="docfx 2.43.2.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -69,11 +69,11 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="ocsEgressQuickStart">
-<h1 id="osisoft-cloud-services-ocs-egress-quick-start">OSIsoft Cloud Services (OCS) Egress Quick Start</h1>
+<h1 id="osisoft-cloud-services-ocs-egress-quick-start">OSIsoft Cloud Services (OCS) egress Quick Start</h1>
 
-<p>This document is a quick tour of getting data stored in the Edge System into OCS. This is accomplished using the OCS OMF endpoint which is configured for OCS authentication.</p>
-<h2 id="create-a-periodic-egress-configuration">Create a Periodic Egress Configuration</h2>
-<p>The first step is to configure Edge Storage Periodic Egress for the PI Web API endpoint and credentials:</p>
+<p>This topic is a quick tour of getting data stored in the Edge System into OCS. You can accomplish this by using the OCS OMF endpoint which is configured for OCS authentication.</p>
+<h2 id="create-a-periodic-egress-configuration">Create a periodic egress configuration</h2>
+<p>Configure Edge Storage periodic egress for the PI Web API endpoint and credentials:</p>
 <pre><code class="lang-json">[{
     &quot;Id&quot;: &quot;OCS&quot;,
     &quot;ExecutionPeriod&quot;: &quot;00:00:50&quot;,
@@ -92,10 +92,19 @@
     &quot;Password&quot;: null,
     &quot;DebugExpiration&quot;: null
 }]
-</code></pre><p>Edit the JSON above to add the url of your OCS OMF endpoint, add a ClientId and ClientScret that can write data to your OCS tenant and namespace It is also recommended that each device have a unique StreamPrefix and TypePrefix.  These values will be used when creating unique streams on OCS. Run the following curl script to configure the Edge Storage to send data to the PI System. This configuration is set up to send all stream data to the PI System. If you wish to only send specific streams, edit the EgressFilter value. Examples of more advanced scenarios are in the Egress section of this documentation.</p>
-<p>Save the JSON with the file name PeriodicEgressEndpoints.json and run the following curl script in the same diretory where the file exists on the device where the Edge System is installed. The file and curl script can be run from any directory on the device:</p>
+</code></pre><ol>
+<li>Edit the JSON above to add the URL of your OCS OMF endpoint.</li>
+<li>Add a ClientId and ClientSecret that can write data to your OCS tenant and namespace.
+The StreamPrefix and TypePrefix can be used to ensure uniqueness on the destination system, if required. If a StreamPrefix is specified it will be used to create a unique stream id on OCS.</li>
+<li>Run the following curl script to configure the Edge Storage to send data to the PI System.
+This configuration is set up to send all stream data to the PI System.
+<strong>Note:</strong> If you want to only send specific streams, edit the EgressFilter value. 
+For examples of more advanced scenarios, see the Egress section of this documentation.</li>
+<li>Save the JSON with the file name PeriodicEgressEndpoints.json.</li>
+<li>Run the following curl script in the same directory where the file exists, on the device where the Edge System is installed. You can run the file and curl script from any directory on the device:</li>
+</ol>
 <pre><code class="lang-bash">curl -i -d &quot;@PeriodicEgressEndpoints.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/storage/PeriodicEgressEndpoints/
-</code></pre><p>When this command completes successfully data will start being sent to the OCS.</p>
+</code></pre><p>When this command completes successfully, data will start being sent to the OCS.</p>
 </article>
           </div>
           

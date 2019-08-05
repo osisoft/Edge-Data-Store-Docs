@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>OPC UA Connectivity </title>
+    <title>OPC UA connectivity </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="OPC UA Connectivity ">
+    <meta name="title" content="OPC UA connectivity ">
     <meta name="generator" content="docfx 2.43.2.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -69,31 +69,34 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="opcUaOverview">
-<h1 id="opc-ua-connectivity">OPC UA Connectivity</h1>
+<h1 id="opc-ua-connectivity">OPC UA connectivity</h1>
 
 <h2 id="overview">Overview</h2>
-<p>The OPC UA adapter transfers time-series data from OPC UA devices into the Edge System.</p>
+<p>The OPC UA connectivity transfers time-series data from OPC UA devices into Edge System.</p>
+<p>Beta 2 comes with a single OPC UA adapter installed. It is named OpcUa1. If a second OPC UA adapter is desired in Beta 2, please reference <a class="xref" href="../Configuration/EdgeSystemConfiguration.html">Edge System Configuration</a> on how to add a new component to Edge System. The example below covers configuring the default adapter. If another adapter has been installed, please substitute the name of the installed adapter in the below example for OpcUa1.</p>
 <p>As with other Edge System adapters, the OPC UA adapter is configured using data source and data selection JSON documents. The data source configuration are identical with other adapters, but OPC UA supports an option to generate a template data selection file that can be manually edited and used for subsequent configuration. This optional process for generating and editing the file is different for <a class="xref" href="OpcUaDataSelectionWindows.html">Windows</a> and <a class="xref" href="OpcUaDataSelectionLinux.html">Linux</a>. Once the template file is created it can be reused on both Linux and Windows without changes.</p>
 <p>OPC UA is a standard, which ensures open connectivity, interoperability, security, and reliability of industrial automation devices and systems. OPC UA is recognized as one of the key communication and data modeling technologies of Industry 4.0, due to the fact that it works with many software platforms and that it is completely scalable and flexible.</p>
-<h2 id="configuration-of-opc-ua-data-source">Configuration of OPC UA Data Source</h2>
-<p>To utilize the OPC UA connectivity component of the Edge System, it must be configured to which OPC UA data source it will be receiving data from.</p>
-<h3 id="procedure-for-configuring-opc-ua-data-source">Procedure for Configuring OPC UA Data Source</h3>
+<h2 id="configuration-of-opc-ua-data-source">Configuration of OPC UA data source</h2>
+<p>To use the OPC UA connectivity component of Edge System, you must configure from which OPC UA data source it will be receiving data.</p>
+<h3 id="procedure-for-configuring-opc-ua-data-source">Procedure for Configuring OPC UA data source</h3>
+<p><strong>Note:</strong> You cannot modify OPC UA data source configurations manually. You must use the REST endpoints to add or edit the configuration.</p>
 <p>The following procedure is for configuring OPC UA data source.</p>
 <ol>
-<li>Using any text editor, create a file that contains a OPC UA data source in JSON form. This file can be created or copied to any directory on a device with Edge System installed.<ul>
-<li>See OPC UA Data Source Example section below for content structure</li>
-<li>See Parameters for OPC UA Data Source section below for a table of all available parameters</li>
+<li>Use any text editor and create a file that contains an OPC UA data source in JSON form<ul>
+<li>For content structure, see the following OPC UA data source example section.</li>
+<li>For a table of all available parameters, see the following Parameters for OPC UA data source section.</li>
 </ul>
 </li>
-<li>Save the file as &quot;DataSource.config.json&quot;.</li>
-<li>Use any <a class="xref" href="../Administration/ManagementTools.html">tool</a> capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSource/</code><ul>
+<li>Save the file as DataSource.config.json.</li>
+<li><p>Use any <a class="xref" href="../Administration/ManagementTools.html">tool</a> capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSource/</code>. In Beta 2 the default OPC UA connectivityId is OpcUa1, which is used in the example below.</p>
+<ul>
 <li>Example using cURL:</li>
 </ul>
 </li>
 </ol>
-<pre><code class="lang-bash">curl -v -d &quot;@DataSource.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSource&quot;
-</code></pre><h3 id="parameters-for-opc-ua-data-source">Parameters for OPC UA Data Source</h3>
-<p>The following parameters are available for configuring a OPC UA data source.</p>
+<pre><code class="lang-bash">curl -v -d &quot;@DataSource.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/OpcUa1/DataSource&quot;
+</code></pre><h3 id="parameters-for-opc-ua-data-source">Parameters for OPC UA data source</h3>
+<p>The following parameters are available for configuring an OPC UA data source.</p>
 <table>
 <thead>
 <tr>
@@ -108,7 +111,7 @@
 <td><strong>EndpointURL</strong></td>
 <td>Required</td>
 <td>string</td>
-<td>The endpoint URL of the OPC UA server. The following is an example of the URL format: opc.tcp://OPCServerHost:Port/OpcUa/SimulationServer<br><br><strong>Note:</strong> If the EndpointURL is changed on a configured OPC UA connectivity that has <connectivityid>_DataSelection.json file exported, the <connectivityid>_DataSelection.json file will need to be relocated from the configuration directory to trigger a new browse (export).</connectivityid></connectivityid></td>
+<td>The endpoint URL of the OPC UA server. The following is an example of the URL format: opc.tcp://OPCServerHost:Port/OpcUa/SimulationServer<br><br><strong>Note:</strong> If you change the EndpointURL on a configured OPC UA connectivity that has DataCollection.config.csv file exported, you will need to relocate the DataCollection.config.csv file from the configuration directory to trigger a new browse (export).</td>
 </tr>
 <tr>
 <td><strong>UseSecureConnection</strong></td>
@@ -126,30 +129,30 @@
 <td><strong>Password</strong></td>
 <td>Optional</td>
 <td>string</td>
-<td>Password for accessing the OPC UA server.<br><br><strong>Note:</strong> OSIsoft highly recommends using REST to configure the data source when the password must be specified.</td>
+<td>Password for accessing the OPC UA server.<br><br><strong>Note:</strong> OSIsoft recommends using REST to configure the data source when the password must be specified.</td>
 </tr>
 <tr>
 <td><strong>RootNodeIds</strong></td>
 <td>Optional</td>
 <td>string</td>
-<td>List of comma-separated NodeIds of those objects from which the OPC UA connectivity browses the OPC UA server address space. This option allows selecting only subsets of the OPC UA address by explicitly listing one or more NodeIds which are used to start the initial browse. For example: ns=5;s=85/0:Simulation, ns=3;s=DataItems<br><br>If not specified means the whole address space will be browsed.</td>
+<td>List of comma-separated NodeIds of those objects from which the OPC UA connectivity browses the OPC UA server address space. This option allows selecting only subsets of the OPC UA address by explicitly listing one or more NodeIds which are used to start the initial browse. For example: ns=5;s=85/0:Simulation, ns=3;s=DataItems. If not specified, it means that the whole address space will be browsed.</td>
 </tr>
 <tr>
 <td><strong>IncomingTimestamp</strong></td>
 <td>Optional</td>
 <td>string</td>
-<td>Specifies whether the incoming timestamp is taken from the source, from the OPC UA server, or should be created by the OPC UA connectivity instance.<br><br><strong>Source</strong> - Default and recommended setting. The timestamp is taken from the source timestamp field. The source is what provides data for the item to the OPC UA server, such as a field device.<br><br><strong>Server</strong> - In case the OPC UA item has an invalid source timestamp field, the Server timestamp can be used.<br><br><strong>Connector</strong> - The OPC UA connectivity generates a timestamp for the item upon receiving it from the OPC UA server.</td>
+<td>Specifies whether the incoming timestamp is taken from the source, from the OPC UA server, or should be created by the OPC UA connectivity instance. <strong>Source</strong> - Default and recommended setting. The timestamp is taken from the source timestamp field. The source is what provides data for the item to the OPC UA server, such as a field device. <strong>Server</strong> - In case the OPC UA item has an invalid source timestamp field, the Server timestamp can be used. <strong>Connector</strong> - The OPC UA connectivity generates a timestamp for the item upon receiving it from the OPC UA server.</td>
 </tr>
 <tr>
 <td><strong>StreamIdPrefix</strong></td>
 <td>Optional</td>
 <td>string</td>
-<td>Specifies what prefix is used for Stream IDs. Naming convention is StreamIdPrefix.NodeId. <br><strong>Note:</strong> An empty string means no prefix will be added to the Stream IDs.</td>
+<td>Specifies what prefix is used for Stream IDs. Naming convention is StreamIdPrefix.NodeId. <strong>Note:</strong> An empty string means no prefix will be added to the Stream IDs.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="opc-ua-data-source-example">OPC UA Data Source Example</h3>
-<p>Below is an example of valid OPC UA Data Source configuration.</p>
+<h3 id="opc-ua-data-source-example">OPC UA data source example</h3>
+<p>The following is an example of valid OPC UA data source configuration:</p>
 <pre><code class="lang-json">{
     &quot;EndpointUrl&quot;: &quot;opc.tcp://IP-Address/TestOPCUAServer&quot;,
     &quot;UseSecureConnection&quot;: true,
@@ -159,23 +162,24 @@
     &quot;IncomingTimestamp&quot;: &quot;Source&quot;,
     &quot;StreamIdPrefix&quot;: null
 }
-</code></pre><h2 id="configuration-of-opc-ua-data-selection">Configuration of OPC UA Data Selection</h2>
-<p>In addition to the data source configuration, you need to provide a data selection configuration to specify the data you want the OPC UA connectivity to collect from the data source.</p>
-<h3 id="procedure-for-configuring-opc-ua-data-selection">Procedure for Configuring OPC UA Data Selection</h3>
-<p>The following procedure is for configuring OPC UA data selection.</p>
+</code></pre><h2 id="configuration-of-opc-ua-data-selection">Configuration of OPC UA data selection</h2>
+<p>In addition to the data source configuration, you need to provide a data selection configuration to specify the data you want the OPC UA connectivity to collect from the data sources.</p>
+<h3 id="procedure">Procedure</h3>
+<p><strong>Note:</strong> You cannot modify OPC UA data selection configurations manually. You must use the REST endpoints to add or edit the configuration.</p>
+<p>The following procedure is for configuring OPC UA data selection:</p>
 <ol>
-<li>Using any text editor, create a file that contains an OPC UA data selection in JSON form. This file can be created or copied to any directory on a device with Edge System installed.<ul>
-<li>See OPC UA Data Selection Example section below for content structure</li>
-<li>See Parameters for OPC UA Data Selection section below for a table of all available parameters</li>
+<li>Use any text editor and create a file that contains an OPC UA data selection in JSON form<ul>
+<li>For content structure, see the following OPC UA data selection example.</li>
+<li>For a table of all available parameters, see the following Parameters for OPC UA data selection section.</li>
 </ul>
 </li>
-<li>Save the file as &quot;DataSelection.config.json&quot;</li>
-<li>Use any <a class="xref" href="../Administration/ManagementTools.html">tool</a> capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection/</code>.</li>
-</ol>
-<ul>
-<li>Example using cURL (run this command from the same directory where the file is located):</li>
+<li>Save the file as DataSelection.config.json.</li>
+<li>Use any <a class="xref" href="../Administration/ManagementTools.html">tool</a> capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection/</code><ul>
+<li>Example using cURL:</li>
 </ul>
-<pre><code class="lang-bash">curl -v -d &quot;@DataSelection.config.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT &quot;http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection&quot;
+</li>
+</ol>
+<pre><code class="lang-bash">curl -v -d &quot;@DataSelection.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSelection&quot;
 </code></pre><h3 id="parameters-for-opc-ua-data-selection">Parameters for OPC UA Data Selection</h3>
 <p>Configuration parameters for OPC UA data selection</p>
 <table>
@@ -190,15 +194,15 @@
 <tbody>
 <tr>
 <td><strong>Selected</strong></td>
-<td>Required</td>
-<td>string</td>
-<td>Indicates if the item is selected for data collection.</td>
+<td>Optional</td>
+<td>bool</td>
+<td>This field is used to select or clear a measurement. To select an item, set to true. To remove an item, leave the field empty or set to false.  If not configured, the default value is true.</td>
 </tr>
 <tr>
 <td><strong>Name</strong></td>
-<td>Required</td>
+<td>Optional</td>
 <td>string</td>
-<td>The name of the OPC UA variable.</td>
+<td>The optional friendly name of the data item collected from the data source. If not configured, the default value will be the stream id</td>
 </tr>
 <tr>
 <td><strong>NodeId</strong></td>
@@ -207,15 +211,15 @@
 <td>The NodeId of the variable.</td>
 </tr>
 <tr>
-<td><strong>StreamId</strong></td>
+<td><strong>StreamID</strong></td>
 <td>Required</td>
 <td>string</td>
-<td>Allows for changing ID of items to a custom StreamId from a default naming convention.</td>
+<td>The custom stream ID that will be used to create the streams. If not specified, the Modbus TCP connectivity will generate a default stream ID based on the measurement configuration. A properly configured custom stream ID follows these rules:<br><br>Is not case-sensitive.<br>Can contain spaces.<br>Cannot start with two underscores (&quot;__&quot;).<br>Can contain a maximum of 260 characters.<br>Cannot use the following characters: / : ? # [ ] @ ! $ &amp; &#39; ( ) \ * + , ; = % &lt; &gt; &#124;<br>Cannot start or end with a period.<br>Cannot contain consecutive periods.<br>Cannot consist of only periods.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="opc-ua-data-selection-example">OPC UA Data Selection Example</h3>
-<p>Below is an example of valid OPC UA Data Selection configuration.</p>
+<h3 id="opc-ua-data-selection-example">OPC UA data selection example</h3>
+<p>The following is an example of valid OPC UA Data Selection configuration:</p>
 <pre><code class="lang-json">[
  {
     &quot;Selected&quot;: true,

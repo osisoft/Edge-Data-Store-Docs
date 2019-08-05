@@ -26,11 +26,23 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "Beta2/Administration/LoggingConfiguration.md",
+      "output": {
+        ".html": {
+          "relative_path": "Beta2/Administration/LoggingConfiguration.html",
+          "hash": "84qIOKNomB6ogMUcNockcw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "Beta2/Administration/ManagementTools.md",
       "output": {
         ".html": {
           "relative_path": "Beta2/Administration/ManagementTools.html",
-          "hash": "7xFPKB5T+qeFFdNJuLv7ng=="
+          "hash": "JgTkRnLF11d8n5VaGuEfvA=="
         }
       },
       "is_incremental": false,
@@ -54,7 +66,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Configuration/EdgeSystemConfiguration.html",
-          "hash": "qT6HHye5x8D+6OPQvpdUXg=="
+          "hash": "w52kF6YVHHfrppa2+6Tn9w=="
         }
       },
       "is_incremental": false,
@@ -66,7 +78,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Configuration/Schemas/ConfigurationSchemaList.html",
-          "hash": "BGi8SBRkz4jUYV1Qar2eeA=="
+          "hash": "nN6Fay/FCBMKTsWvPRMTzw=="
         }
       },
       "is_incremental": false,
@@ -202,15 +214,12 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "Beta2/Configuration/Schemas/Storage_Logging_schema.md",
       "output": {
         ".html": {
           "relative_path": "Beta2/Configuration/Schemas/Storage_Logging_schema.html",
-          "hash": "l7HhoWz74I/W3+B+qj1Frw=="
+          "hash": "+4TWbphQRUS24HeoIwZEjA=="
         }
       },
       "is_incremental": false,
@@ -255,7 +264,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Configuration/Schemas/Storage_Runtime_schema.html",
-          "hash": "7xLyxfX2lVpoZ775r9X6cA=="
+          "hash": "x/7888kIX476/4NMpb8/qg=="
         }
       },
       "is_incremental": false,
@@ -382,7 +391,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Docker/EdgeDocker.html",
-          "hash": "81cMAVVwzhj3z2tpdYYw4w=="
+          "hash": "JUvut+CvH5v3D84T9hVvTQ=="
         }
       },
       "is_incremental": false,
@@ -394,7 +403,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Egress/Egress.html",
-          "hash": "m/WqTD/eHHOR/tj/d+xG0g=="
+          "hash": "BYFVh9nbQmcWk79obOMNQA=="
         }
       },
       "is_incremental": false,
@@ -418,7 +427,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Installation/InstallationOverview.html",
-          "hash": "xmKeLQMrNDupvoRaSzf7NA=="
+          "hash": "JU5G/U5Ms8JsEP3L47UsYw=="
         }
       },
       "is_incremental": false,
@@ -442,7 +451,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Modbus/ModbusOverview.html",
-          "hash": "z9Px9YJ2gHWTrQxaJLAOAA=="
+          "hash": "FSwAaOUss9EOO4C90QvDPw=="
         }
       },
       "is_incremental": false,
@@ -454,7 +463,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/OMF/OMFOverview.html",
-          "hash": "n2W4IGJ1MX0AD/XvXZNZ2Q=="
+          "hash": "6b90zuISUS4P1/4anb9ckg=="
         }
       },
       "is_incremental": false,
@@ -490,7 +499,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/OpcUa/OpcUaOverview.html",
-          "hash": "kGPLJlZ2RTmSmT9bhw3VNg=="
+          "hash": "Y6xA0bkV1MnXpUzs4hQSCA=="
         }
       },
       "is_incremental": false,
@@ -502,7 +511,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Overview/EdgeSystemOverview.html",
-          "hash": "nMlM5JGuP9SraP4TYx1jVg=="
+          "hash": "OjPvukhOS5LvaUop4ZagFw=="
         }
       },
       "is_incremental": false,
@@ -514,7 +523,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Overview/ModbusQuickStart.html",
-          "hash": "nxU9yvG0kjv6GGRik04kfg=="
+          "hash": "xM1iCNjpEkEke4sbfvv8lw=="
         }
       },
       "is_incremental": false,
@@ -526,7 +535,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Overview/OCSEgressQuickStart.html",
-          "hash": "kx8buUsaWOjXPDPbJgZYGQ=="
+          "hash": "kGGg92GPj3Ra0oGycOUMgQ=="
         }
       },
       "is_incremental": false,
@@ -550,7 +559,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Overview/OpcUaQuickStart.html",
-          "hash": "74uKxfoGOo9C0nJ+b4tD1w=="
+          "hash": "IIfzNWrTJOgkCHAN+ofalQ=="
         }
       },
       "is_incremental": false,
@@ -562,7 +571,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/Overview/PIEgressQuickStart.html",
-          "hash": "ZUhSlkJL+CENuGYzi6TrVw=="
+          "hash": "flmY7UBd6ob/yHLjgZmsNw=="
         }
       },
       "is_incremental": false,
@@ -586,7 +595,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/ReleaseNotes/ReleaseNotes.html",
-          "hash": "DIMQhFzVimUkffkaE6qokg=="
+          "hash": "N9EHidDopJ/0kQo+vm5A0g=="
         }
       },
       "is_incremental": false,
@@ -724,7 +733,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/SDS/Units_of_Measure.html",
-          "hash": "GQ8F8uNawlPmXap7tBKgig=="
+          "hash": "MwftplRJaCjAKZYMjEKv/w=="
         }
       },
       "is_incremental": false,
@@ -736,7 +745,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/SDS/Writing_Data.html",
-          "hash": "bA4FVMLIyiymbLfKaAMAJQ=="
+          "hash": "ihYEYVDwQwQsAxjvFnxNxg=="
         }
       },
       "is_incremental": false,
@@ -748,7 +757,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/SDS/Writing_Data_API.html",
-          "hash": "cuSll1X/Gu1T/3Ucunlj5Q=="
+          "hash": "NSE0HpQlmJOE+LYKW3QVnQ=="
         }
       },
       "is_incremental": false,
@@ -833,7 +842,7 @@
       "output": {
         ".html": {
           "relative_path": "Beta2/index.html",
-          "hash": "bwzBhgqp8tbxLcf2+4wITQ=="
+          "hash": "WITNKmL9PBOC6iUAFdJk7Q=="
         }
       },
       "is_incremental": false,
@@ -926,9 +935,9 @@
         "full_build_reason_code": "NoAvailableBuildCache"
       },
       "processors": {
-        "TocDocumentProcessor": {
+        "ResourceDocumentProcessor": {
           "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build",
           "total_file_count": 0,
           "skipped_file_count": 0
@@ -936,12 +945,12 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 66,
+          "total_file_count": 67,
           "skipped_file_count": 0
         },
-        "ResourceDocumentProcessor": {
+        "TocDocumentProcessor": {
           "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build",
           "total_file_count": 0,
           "skipped_file_count": 0

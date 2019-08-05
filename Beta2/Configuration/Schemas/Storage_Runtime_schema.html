@@ -163,6 +163,7 @@
 <li>minimum value: <code>2</code></li>
 <li>maximum value: <code>2147483647</code></li>
 </ul>
+<p>StreamStorageLimitMb is the maximum size in megabytes that a stream can reach. When a stream exceeds the size specified, older data will be deleted from the file. Data will be removed from the stream until the stream is at or below the StreamStorageTargetMb value. It is recommended that the target value be smaller than the limit since trimming can be an expensive operation and should be done infrequently.</p>
 <h2 id="streamstoragetargetmb">StreamStorageTargetMb</h2>
 <p><code>StreamStorageTargetMb</code></p>
 <ul>
@@ -176,6 +177,7 @@
 <li>minimum value: <code>1</code></li>
 <li>maximum value: <code>2147483647</code></li>
 </ul>
+<p>StreamStorageTargetMb is the size in megabytes that a stream will be reduced to after StreamStorageLimitMb size is reached for a single stream. When a stream exceeds the size specified, older data will be deleted from the file. Data will be removed from the stream until the stream is at or below the StreamStorageTargetMb value. It is recommended that the target value be smaller than the limit since trimming can be an expensive operation and should be done infrequently.</p>
 <p><strong>All</strong> of the following <em>requirements</em> need to be fulfilled.</p>
 <h4 id="requirement-1">Requirement 1</h4>
 <ul>
@@ -209,42 +211,6 @@
 </tr>
 </tbody>
 </table>
-<h4 id="ingressdebugexpiration-1">IngressDebugExpiration</h4>
-<p><code>IngressDebugExpiration</code></p>
-<ul>
-<li>is <strong>required</strong></li>
-<li>type: <code>string</code></li>
-</ul>
-<h5 id="ingressdebugexpiration-type-1">IngressDebugExpiration type</h5>
-<p><code>string</code></p>
-<ul>
-<li>format: <code>date-time</code> – date and time (according to <a href="http://tools.ietf.org/html/rfc3339">RFC 3339, section 5.6</a>)</li>
-<li>minimum length: 1 characters</li>
-</ul>
-<h4 id="streamstoragelimitmb-1">StreamStorageLimitMb</h4>
-<p><code>StreamStorageLimitMb</code></p>
-<ul>
-<li>is <strong>required</strong></li>
-<li>type: <code>integer</code></li>
-</ul>
-<h5 id="streamstoragelimitmb-type-1">StreamStorageLimitMb type</h5>
-<p><code>integer</code></p>
-<ul>
-<li>minimum value: <code>2</code></li>
-<li>maximum value: <code>2147483647</code></li>
-</ul>
-<h4 id="streamstoragetargetmb-1">StreamStorageTargetMb</h4>
-<p><code>StreamStorageTargetMb</code></p>
-<ul>
-<li>is <strong>required</strong></li>
-<li>type: <code>integer</code></li>
-</ul>
-<h5 id="streamstoragetargetmb-type-1">StreamStorageTargetMb type</h5>
-<p><code>integer</code></p>
-<ul>
-<li>minimum value: <code>1</code></li>
-<li>maximum value: <code>2147483647</code></li>
-</ul>
 </article>
           </div>
           

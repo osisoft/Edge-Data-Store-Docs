@@ -74,6 +74,7 @@
 <h2 id="overview">Overview</h2>
 <p>Modbus is a commonly available communication protocol used for connecting and transmitting information between industrial electronic devices. The Modbus TCP Connectivity Adapter polls Modbus TCP slave devices, and transfers time series data from the data source devices into Edge System.  Polling is based on the measurement configuration provided, and models the register measurements in a Modbus data source.</p>
 <p>The Modbus TCP Connectivity Adapter communicates with any device conforming to the Modbus TCP/IP protocol through a gateway or router. The Modbus slave devices and routers do not need to be on the same subnet as Edge System.</p>
+<p>Beta 2 comes with a single Modbus adapter installed. It is named Modbus1. If a second Modbus adapter is desired in Beta 2, please reference <a class="xref" href="../Configuration/EdgeSystemConfiguration.html">Edge System Configuration</a> on how to add a new component to Edge System. The example below covers configuring the default adapter. If another adapter has been installed, please substitute the name of the installed adapter in the below example for Modbus1.</p>
 <h2 id="configuration-of-modbus-data-source">Configuration of Modbus data source</h2>
 <p>To use the Modbus TCP Connectivity Adapter of Edge System, you must configure it for the Modbus data source from which it will be polling data.</p>
 <h3 id="procedure-for-configuring-modbus-data-source">Procedure for configuring Modbus data source</h3>
@@ -85,11 +86,11 @@
 </ul>
 </li>
 <li>Save the file as DataSource.config.json.</li>
-<li>Use any <a class="xref" href="../Administration/ManagementTools.html">tool</a> capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSource/</code></li>
+<li>Use any <a class="xref" href="../Administration/ManagementTools.html">tool</a> capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSource/</code>. In Beta 2 the default Modbus adapter has the connectivityId of Modbus1, which is used in the example below.</li>
 </ol>
 <ul>
 <li><p>Example using cURL (run this command from the same directory where the file is located):</p>
-<pre><code class="lang-bash">curl -v -d &quot;@DataSource.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/&lt;connectivityId&gt;/DataSource&quot;
+<pre><code class="lang-bash">curl -v -d &quot;@DataSource.config.json&quot; -H &quot;Content-Type: application/json&quot; -X POST &quot;http://localhost:5590/api/v1/configuration/Modbus1/DataSource&quot;
 </code></pre></li>
 </ul>
 <h3 id="parameters-for-modbus-data-source">Parameters for Modbus data source</h3>
