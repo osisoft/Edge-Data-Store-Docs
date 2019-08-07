@@ -22,7 +22,7 @@ This topic is a quick tour of setting up the Edge OPC UA component. Beta 2 comes
 }
 ```
 
-1. Enter the correct IP address and port for your OPC UA data source.
+2. Enter the correct IP address and port for your OPC UA data source.
 1. Save the file with the name OpcUa1Datasource.json.
 1. Run the following curl script from the same directory where the file is located. You should run the script on the same computer where the Edge System is installed:
 
