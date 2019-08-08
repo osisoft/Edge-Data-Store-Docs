@@ -8,6 +8,10 @@ This topic is a quick tour of setting up the Edge OPC UA component. Beta 2 comes
 
 ## Configure an OPC UA data source
 
+Test case
+---------
+
+
 1. Create a file in JSON format describing the location of the data source. Modify the following values to match your environment.
 
 ```json
