@@ -8,7 +8,7 @@ This topic is a quick tour of setting up the Edge OPC UA component. Beta 2 comes
 
 ## Configure an OPC UA data source
 
-Test case
+No Test case
 ---------
 
 
