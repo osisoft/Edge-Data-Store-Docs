@@ -24,31 +24,31 @@ Table 1. Configuration parameters for Edge System health endpoints
 | MaxBufferSizeMB | Optional    | The limit on the maximum megabytes of data to buffer for messages to this endpoint if an integer is >0. This parameter is useful if you want to limit memory or disk usage growth in the event of disconnection to the endpoint. If the buffer is full, old messages will be discarded for new messages. The default is 0. |
 | ValidateEndpointCertificate | Optional | Edge connectivity validates the endpoint certificate if set to true (recommended). If set to false, Edge connectivity accepts any endpoint certificate. OSIsoft strongly recommends using disabled endpoint certificate validation for testing purposes only.|
 
-## Connectivity Adapters health
+## Adapter Component Health
 
 The following health types and streams are created to reflect the health of connectivity adapters.
 
-The Connectors static type includes these properties and servers as a root AF element with the id Connectors.
+The Adapter static type includes the following properties,  which are logged in a stream with the id "Adapters". When PI WebAPI is configured as the Health endpoint, it serves as a root AF element named Adapters.
 
 | Type         | Property |  Description     |
 |--------------|----------|------------------|
-| string | Id | Connectors - root AF element |
-| string | Description | Collection of Connector assets |
+| string | Id | Adapters |
+| string | Description | Collection of Adapter Assets |
 
-### Connectivity Adapters health
+### Adapter Health
 
-The Connector Health static type includes the following properties, which are logged in a stream with the id {machinename}.{componentid}. The stream is linked to root AF element (Connectors).
+The Adapter Health static type includes the following properties, which are logged in a stream with the id {machinename}.{componentid}. This stream is linked to the Adapter static stream: "Adapters".
 
 | Type         | Property |  Description     |
 |--------------|----------|------------------|
 | string | Id  | {machinename}.{componentId} |
 | string | Description | {productname} health |
-| string | Connector Type | {adaptertype} |
+| string | Adapter Type | {adaptertype} |
 | string | Version | {adapterversion} |
 
 ### Device status
 
-The DeviceStatus dynamic type includes the following values, which are logged in a stream with the id Connectors.{machinename}.{componentid}.DeviceStatus. The stream is linked to {machinename}.{componentid} static stream.
+The DeviceStatus dynamic type includes the following values, which are logged in a stream with the id Adapters.{machinename}.{componentid}.DeviceStatus. This stream is linked to the Adapter Health static stream: {machinename}.{componentid}.
 
 | Type         | Property |  Description     |
 |--------------|----------|------------------|
@@ -57,7 +57,7 @@ The DeviceStatus dynamic type includes the following values, which are logged in
 
 ### Next health message expected
 
-The NextHealthMessageExpected dynamic type includes the following values, which are logged in a stream with the id Connectors.{machinename}.{componentid}.NextHealthMessageExpected. The stream is linked to {machinename}.{componentid} static stream. Heard beat message is expected once a minute.
+The NextHealthMessageExpected dynamic type includes the following values, which are logged in a stream with the id Adapters.{machinename}.{componentid}.NextHealthMessageExpected. The stream is linked to the Adapter Health static stream: {machinename}.{componentid}. Heart beat message is expected once a minute.
 
 | Type         | Property |  Description     |
 |--------------|----------|------------------|
@@ -66,18 +66,18 @@ The NextHealthMessageExpected dynamic type includes the following values, which 
 
 ## Storage component health
 
-The following health types and streams are created to reflect the health of the Storage component.
+The following health types and streams are created to reflect the health of the Storage component
 
-The Storage static type includes the following properties and servers as a root AF element with the id Storage.
+The Storage static type includes the following properties, which are logged in a stream with the id "Storage". When PI WebAPI is configured as the Health endpoint, it serves as a root AF element named Storage.
 
 | Type         | Property |  Description     |
 |--------------|----------|------------------|
-| string | Id | Storage - root AF element |
+| string | Id | Storage |
 | string | Description | Storage Health |
 
 ### Storage health
 
-The Storage Health static type includes the following properties, which are logged in a stream with the id {machinename}.Storage. The stream is linked to root AF element (Storage).
+The Storage Health static type includes the following properties, which are logged in a stream with the id {machinename}.Storage. The stream is linked to the Storage static stream: Storage.
 
 | Type         | Property |  Description     |
 |--------------|----------|------------------|
@@ -88,7 +88,7 @@ The Storage Health static type includes the following properties, which are logg
 
 ### Storage device status
 
-The DeviceStatus dynamic type includes the following values, which are logged in a stream with the id Storage.{machinename}.DeviceStatus. The stream is linked to {machinename}.Storage static stream.
+The DeviceStatus dynamic type includes the following values, which are logged in a stream with the id Storage.{machinename}.DeviceStatus. The stream is linked to the Storage Health static stream: {machinename}.Storage.
 
 | Type         | Property |  Description     |
 |--------------|----------|------------------|
@@ -97,7 +97,7 @@ The DeviceStatus dynamic type includes the following values, which are logged in
 
 ### Storage next health message expected
 
-The NextHealthMessageExpected dynamic type includes the following values, which are logged in a stream with the id Storage.{machinename}.NextHealthMessageExpected. The stream is linked to {machinename}.Storage static stream. Heard beat message is expected once a minute.
+The NextHealthMessageExpected dynamic type includes the following values, which are logged in a stream with the id Storage.{machinename}.NextHealthMessageExpected. The stream is linked to the Storage Health static stream: {machinename}.Storage. Heart beat message is expected once a minute.
 
 | Type         | Property |  Description     |
 |--------------|----------|------------------|
