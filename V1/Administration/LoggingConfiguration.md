@@ -2,13 +2,13 @@
 uid: loggingConfiguration
 ---
 
-# Edge Data Store Logging
+# Edge Data Store logging
 
-Logging is useful for diagnosing deployment or production issues, so it can set dynamically without restarting the system.
+Logging is used for diagnosing deployment or production issues, and it can be set dynamically without restarting the system.
 
-## Edge Data Store Logging Configuration
+## Edge Data Store logging configuration
 
-Edge Data Store and all loaded components provide the ability to configure logging per component.  An example logging configuration is given below.
+Edge Data Store and all loaded components provide the ability to configure logging at the component level.  The following is an example logging configuration:
 
 ```json
 {
