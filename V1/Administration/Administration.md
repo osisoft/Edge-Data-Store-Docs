@@ -20,7 +20,7 @@ Endpoint: http://localhost:5590/api/v1/administration/System/Reset
 Header: Content-Type application/json
 ```
 
-Example using cURL:
+Example using curl:
 
 ```bash
 curl -v -d "" -X POST http://localhost:5590/api/v1/Administration/System/Reset
@@ -48,13 +48,13 @@ curl -v -d "" -X POST http://localhost:5590/api/v1/Administration/Storage/Reset
 
 An HTTP status 204 message indicates success.
 
-## Stop and Start an Edge Connectivity Adapter
+## Stop and Start an EDS Connectivity component
 
-Edge Data Store provides the ability to stop and start connectivity components. By default, when Edge Data Store starts, all currently configured connectivity components are started and remain running until the product shuts down.
+Edge Data Store provides the ability to stop and start EDS Connectivity components. When Edge Data Store starts, all currently configured connectivity components are started By default, and remain running until the product shuts down.
 
-### Stop a Connectivity Adapter
+### Stop an EDS Connectivity component
 
-To stop an individual connectivity component, use any REST client and make a request using one of the following:
+To stop an individual EDS Connectivity component, use any REST client and make a request using one of the following:
 
 ```http
 Method: POST
@@ -62,19 +62,19 @@ Endpoint: http://localhost:5590/api/v1/administration/ConnectivityId/Stop
 Header: Content-Type application/json
 ```
 
-Example using cURL:
+Example using curl:
 
 ```bash
 curl -v -d "" -X POST http://localhost:5590/api/v1/Administration/ConnectivityId/Stop
 ```
 
-**Note:** Replace **ConnectivityId** with the id of the connectivity component you wish to stop.
+**Note:** Replace **ConnectivityId** with the id of the EDS Connectivity component you want to stop.
 
 An HTTP status 204 message indicates success.
 
-### Start a Connectivity Adapter
+### Start an EDS Connectivity component
 
-To start an individual connectivity component, use any REST client and make a request using the following:
+To start an individual EDS Connectivity component, use any REST client and make a request using the following:
 
 ```http
 Method: POST
@@ -82,12 +82,12 @@ Endpoint: http://localhost:5590/api/v1/administration/ConnectivityId/Start
 Header: Content-Type application/json
 ```
 
-Example using cURL:
+Example using curl:
 
 ```bash
 curl -v -d "" -X POST http://localhost:5590/api/v1/Administration/ConnectivityId/Start
 ```
 
-**Note:** Replace **ConnectivityId** with the id of the connectivity component you wish to start.
+**Note:** Replace **ConnectivityId** with the id of the EDS Connectivity component you want to start.
 
 An HTTP status 204 message indicates success.
