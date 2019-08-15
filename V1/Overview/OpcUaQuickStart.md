@@ -2,13 +2,14 @@
 uid: opcUaQuickStart
 ---
 
-# Edge OPC UA quick start
+# OPC UA connectivity quick start
 
-This topic is a quick tour of setting up the Edge OPC UA component. Beta 2 comes with a single OPC UA adapter installed. It is named OpcUa1. If a second OPC UA adapter is desired in Beta 2, please reference [Edge Data Store Configuration](xref:edgeSystemConfiguration) on how to add a new component to Edge Data Store. The example below covers configuring the default adapter. If another adapter has been installed, please substitute the name of the installed adapter in the below example for OpcUa1.
+This quick start gives an overview on how to set up the OPC UA connectivity. Edge Data Store comes with a single OPC UA connectivity installed. It is named OpcUa1. If you want a second OPC UA connectivity, refer to [Edge Data Store Configuration](xref:edgeSystemConfiguration) on how to add a new component to Edge Data Store. The following example changes if you configure a second connectivity. Replace OpcUa1 with the name of the component you have added.
 
 ## Configure an OPC UA data source
 
-1. Create a file in JSON format describing the location of the data source. Modify the following values to match your environment.
+1. Create a file in JSON format describing the location of the OPC UA data source. 
+2. Modify the following values to match your environment.
 
 ```json
 {
@@ -22,9 +23,9 @@ This topic is a quick tour of setting up the Edge OPC UA component. Beta 2 comes
 }
 ```
 
-1. Enter the correct IP address and port for your OPC UA data source.
-1. Save the file with the name OpcUa1Datasource.json.
-1. Run the following curl script from the same directory where the file is located. You should run the script on the same computer where the Edge Data Store is installed:
+3. Enter the correct IP address and port for your OPC UA data source.
+4. Save the file with the name OpcUa1Datasource.json.
+5. Run the following curl script from the same directory where the file is located. **Note:** You should run the script on the same computer where Edge Data Store is installed:
 
 ```bash
 curl -i -d "@OpcUa1Datasource.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Datasource
@@ -34,9 +35,9 @@ When this command completes successfully (a 204 is returned by curl), your OPC U
 
 ## Configure OPC UA data selection
 
-Select the OPC UA data you want to store in Edge Data Store by configuring OPC UA data selection. The following is a sample JSON for five OPC UA values.
+1. Select the OPC UA data you want to store in Edge Data Store by configuring OPC UA data selection. The following is a sample JSON for five OPC UA values.
 
-1. Modify the values as appropriate for your environment.
+2. Modify the values as appropriate for your OPC UA environment.
 
 ```json
 [{
@@ -72,19 +73,19 @@ Select the OPC UA data you want to store in Edge Data Store by configuring OPC U
 ]
 ```
 
-1. Save the JSON content above in a text file and name it OpcUa1Dataselection.json. 
-1. Run the following curl script so the system will be configured to collect Opc Ua data values.
+3. Save the JSON content above in a text file and name it OpcUa1Dataselection.json. 
+**Note:** When you run the following curl script, the system will be configured to collect OPC UA data values.
 
 ```bash
 curl -i -d "@OpcUa1Dataselection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
 ```
 
-To see the streams that have been created in Edge Storage to store the data you are writing, you can run the following curl script:
+To see the streams that have been created in data store to store the data you are writing, run the following curl script:
 
 ```bash
 curl http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/
 ```
 
-To view the data in the streams being written, you can refer to the SDS part of this documentation.
+To view the data in the streams being written by OPC UA, see [Sequential Data Store](xref:sdsOverview).
 
-To egress the data to OSIsoft Cloud Services or the PI System, see the egress documentation or quick starts.
+ To egress the data to OSIsoft Cloud Services or the PI System, see [Egress](xref:egress) or [PI Egress Quick Start](xref:piEgressQuickStart).
