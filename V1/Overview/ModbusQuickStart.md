@@ -2,13 +2,13 @@
 uid: modbusQuickStart
 ---
 
-# Edge Modbus Quick Start
+# Modbus TCP connectivity quick start
 
-This topic is a quick tour of setting up the Edge Modbus TCP component. Beta 2 comes with a single Modbus adapter installed. It is named Modbus1. If a second Modbus adapter is desired in Beta 2, please reference [Edge Data Store Configuration](xref:edgeSystemConfiguration) on how to add a new component to Edge Data Store. The examples below will change if a second adapter is being configured - please replace Modbus1 with the name of the component you have added.
+This quick start gives an overview on how to set up the Modbus TCP connectivity. Edge Data Store comes with a single Modbus TCP connectivity installed. It is named Modbus1. If you want a second Modbus TCP connectivity, refer to [Edge Data Store Configuration](xref:edgeSystemConfiguration) on how to add a new component to Edge Data Store. The following example changes if you configure a second connectivity. Replace Modbus1 with the name of the component you have added.
 
 ## Configure a Modbus TCP data source
 
-Create a file in JSON format describing the location of the Modbus data source. The timeouts are in milliseconds.
+1. Create a file in JSON format describing the location of the Modbus data source. The timeouts are in milliseconds.
 
 ```json
 {
@@ -22,9 +22,9 @@ Create a file in JSON format describing the location of the Modbus data source. 
 }
 ```
 
-1. Enter the correct IP address and port for your Modbus data source.
-2. Save the file with the name Modbus1DataSource.json. 
-3. Run the following curl script from the same directory where the file is located. 
+2. Enter the correct IP address and port for the Modbus TCP data source.
+3. Save the file with the name Modbus1DataSource.json. 
+4. Run the following curl script from the same directory where the file is located. 
 **Note:** You should run the script on the same computer where the Edge Data Store is installed:
 
 ```bash
@@ -35,9 +35,9 @@ When this command completes successfully (a 204 is returned by curl), your Modbu
 
 ## Configure Modbus data selection
 
-Select the Modbus TCP data you want to store in Edge Data Store by configuring Modbus data selection. The following is a sample JSON for 5 Modbus values.
+1. Select the Modbus TCP data you want to store in Edge Data Store by configuring Modbus data selection. The following is a sample JSON for five Modbus TCP values.
 
-1. Modify the values as appropriate for your Modbus environment.
+2. Modify the values as appropriate for your Modbus TCP environment.
 
 ```json
 [{
@@ -98,20 +98,20 @@ Select the Modbus TCP data you want to store in Edge Data Store by configuring M
 ]
 ```
 
-2. Save the JSON content above in a text file and name it Modbus1Dataselection.json. 
+3. Save the JSON content above in a text file and name it Modbus1Dataselection.json. 
 
-**Note:** When you run the following curl script, the system will be configured to collect Modbus data values.
+**Note:** When you run the following curl script, the system will be configured to collect Modbus TCP data values.
 
 ```bash
 curl -i -d "@Modbus1Dataselection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Dataselection
 ```
 
-To see the streams that have been created in Edge Storage to store the data you are writing, you can run the following curl script:
+To see the streams that have been created in Edge Storage to store the data you are writing, run the following curl script:
 
 ```bash
 curl http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/
 ```
 
-To view the data in the streams being written by Modbus, you can refer to the SDS part of this documentation. 
+To view the data in the streams being written by Modbus TCP, see [Sequential Data Store](xref:sdsOverview). 
 
-To egress the data to OSIsoft Cloud Services or the PI System, see the egress documentation or quick starts.
+To egress data to OSIsoft Cloud Services or the PI System, see [Egress](xref:egress) or [PI Egress Quick Start](xref:piEgressQuickStart).
