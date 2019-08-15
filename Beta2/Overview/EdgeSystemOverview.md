@@ -2,39 +2,37 @@
 uid: edgeSystemOverview
 ---
 
-# Edge System overview
+# Edge Data Store (EDS) overview
 
-Edge System is a cross-platform component based application framework that is designed to host connectivity components (adapters such as Modbus TCP and OPC UA), and other components such as Storage. In the future, the same framework will be used to host other adapters.
+Edge Data Store is a cross-platform component based application framework that is designed to host connectivity components (such as Modbus TCP and OPC UA), and other components such as Sequential Data Store (SDS). In the future, the same framework will be used to host other EDS connectivities.
 
-## Configuring Edge System
+## Configuring Edge Data Store
 
-Edge System hosts other components. While the initial release of Edge System includes Modbus TCP, OPC UA, and Storage components, they are only active if the system is configured to use them. The system itself has a relatively small configuration surface area - the list of components and the HTTP Port used for REST calls.
+Edge Data Store hosts other components. While the initial release of Edge Data Store includes Modbus TCP connectivity, OPC UA connectivity, and SDS components, they are only active if EDS is configured to use them. EDS itself has a relatively small configuration surface area - the list of components and the HTTP Port used for REST calls.
 
-Edge System is a cross-platform component based application framework that is designed to host connectivity components (adapters such as Modbus TCP and OPC UA), and other components such as Storage. In the future the same framework will be used to host other adapters.
+## Installation of Edge Data Store
 
-## Installation of the Edge System
+You can install Edge Data Store on both Linux and Windows. For more information, see [Edge System Installation Overview](xref:installationOverview).
 
-The Edge System can be installed on both Linux and Windows: [Edge System Installation Overview](xref:installationOverview).
+## Data ingress to Edge Data Store
 
-## Data Ingress to the Edge System
+Edge Data Store can store (ingress) data in a number of ways. There are two built-in EDS connectivities - [Modbus TCP](xref:modbusQuickStart) and [OPC UA](xref:opcUaQuickStart). In addition, data can be ingressed using OSIsoft Message Format [(OMF)](xref:omfQuickStart) and the Sequential Data Store [SDS](xref:sdsWritingData) REST APIs.
 
-The Edge System can store (ingress) data in a number of ways. There are two built-in adapters - [Modbus](xref:modbusQuickStart) and [OPC UA](xref:opcUaQuickStart). In addition data can be ingressed using OSIsoft Message Format [(OMF)](xref:omfQuickStart) and the Sequential Data Store [SDS](xref:sdsWritingData) REST APIs.
+The Modbus TCP and OPC UA connectivities require additional configuration of data source and data selection before they will collect data in Edge Data Store. For OMF data ingress, once Edge Data Store is installed, you can start OMF ingress with no further configuration steps.
 
-The Modbus and OPC UA adapters require additional configuration of data source and data selection before they will collect data in the Edge System. For OMF data ingress, once the Edge System is installed OMF ingress can be started with no further configuration steps.
+The allowed port numbers are in the range of 1024-65535. Before you change the default, ensure that no other service or application on the computer running Edge Data Store is using that port - only one application or service can use a port. You must restart Edge Data Store if you change the port number through the REST API or the command line.
 
-Allowable ports are in the range of 1024-65535. Before you change the default, ensure that no other service or application on the computer running Edge System is using that port - only one application or service can use a port. You must restart Edge System if you change the port number through the REST API or the command line.
+Edge Data Store is composed of components and is designed to allow the addition at a later date of additional EDS connectivities. Edge Data Store Beta 2 comes pre-configured with one Modbus TCP and one OPC UA connectivity. This behavior will change in the final release.
 
-The Edge System is composed of components and is designed to allow the addition at a later date of additional adapters. Edge System Beta 2 comes pre-configured with one Modbus and one OPC UA adapter. This behavior will change in the final release.
+## Local data read and write access
 
-## Local Data Read and Write Access
+Following is the minimum System_Components.json file for the System. SDS is required for this initial release for Edge Data Store to run. With later releases of Edge Data Store, the storage component may not be required.  
 
-Following is the minimum System_Components.json file for the System. The Storage component is required for this initial release for the System to run. With later releases of Edge System, the storage component may not be required.  
+All data in the Edge Data Store storage can be accessed using the Sequential Data Store [SDS](xref:sdsQuickStart) REST API.
 
-All data in the Edge System storage can be accessed using the Sequential Data Store [SDS](xref:sdsQuickStart) REST API.
+## Data egress from Edge Data Store
 
-## Data Egress from the Edge System
-
-The default System_Components.json for Beta 2 is given below. It includes three components - Storage, a single Modbus TCP adapter (Modbus1), a single OPC UA adapter (OpcUa1), and a Storage component (EDS.Component).
+The default System_Components.json for Beta 2 is the following. It includes three components - SDS, a single Modbus TCP connectivity (Modbus1), a single OPC UA connectivity (OpcUa1), and an SDS (EDS.Component).
 
  ```json
 [
@@ -53,8 +51,8 @@ The default System_Components.json for Beta 2 is given below. It includes three 
 ]
  ```
 
-You can add additional Modbus TCP and OPC UA components if you want, but only a single Storage component is supported. In Beta 2, you must restart the system if you add or delete a component using the REST API or the command line.
+You can add additional Modbus TCP and OPC UA components if you want, but only a single SDS component is supported. In Beta 2, you must restart the system if you add or delete a component using the REST API or the command line.
 
-The Edge System can send data on to both the PI Data Archive (using [PI Web API](xref:piEgressQuickStart)) and OSIsoft Cloud Services ([OCS](xref:ocsEgressQuickStart)).
+Edge Data Store can send data on to both PI Data Archive (using [PI Web API](xref:piEgressQuickStart)) and OSIsoft Cloud Services ([OCS](xref:ocsEgressQuickStart)).
 
 Additional configuration is necessary to send data to both OCS and PI Web API after the Edge System is installed.
