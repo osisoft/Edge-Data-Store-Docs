@@ -4,7 +4,7 @@ uid: configurationSchemaList
 
 # Configuration schemas
 
-The Edge Data Store is configured via a series of JSON files. The schemas for these files are provided in the installation directory and are documented below. 
+You configure Edge Data Store through a series of JSON files. The schemas for these files are provided in the installation directory and are documented below. 
 
 ## Edge Data Store configuration schemas
 
@@ -15,17 +15,17 @@ Use the following schemas to configure Edge Data Store:
 - [OmfHealthEndpointConfiguration](.\System_HealthEndpoints_schema.md)
 - [EdgeSystemConfig](.\System_Components_schema.md)
   
-## Connectivity Adapters configuration schemas
+## Edge Data Store Connectivity components configuration schemas
 
-Use the following schemas to configure Connectivity Adapters:
+Use the following schemas to configure Connectivity components:
 
-### OPC UA
+### OPC UA component
 
 - [DataSourceConfiguration](.\OpcUa_DataSource_schema.md)
 - [DataCollectionItem](.\OpcUa_DataSelection_schema.md)
 - [EdgeLoggerConfiguration](.\OpcUa_Logging_schema.md)
 
-### Modbus
+### Modbus TCP component
 
 - [DataSourceConfiguration](.\Modbus_DataSource_schema.md)
 - [DataSelectionConfiguration](.\Modbus_DataSelection_schema.md)
