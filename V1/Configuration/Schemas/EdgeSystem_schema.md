@@ -2,7 +2,7 @@
 uid: edge_system_schema
 ---
 
-# EdgeSystemConfiguration Schema
+# EdgeSystemConfiguration schema
 
 ```json
    "System": {
@@ -31,7 +31,7 @@ uid: edge_system_schema
     }
 ```
 
-# Edge Data Store Configuration Schema
+# Edge Data Store configuration schema
 
 ## Properties
 
