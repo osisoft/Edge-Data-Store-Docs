@@ -4,7 +4,7 @@ uid: sdsQuickStart
 
 # Edge Storage SDS quick start
 
-This topic is a quick tour of getting data into the Edge Storage component using the Sequential Data Store (SDS) REST API. This tour assumes that Edge Data Store is installed, and that it is accessible through a REST API using the default installed port (5590). This tour will use curl, a commonly available tool on both Windows and Linux, and use command line commands. You can use the same operations with any programming language or tool that supports making REST calls. In addition, you can accomplish data retrieval steps (GET commands) using a browser if one is available on the device.
+This quick start gives an overview on how to get data into the Edge Storage component using the Sequential Data Store (SDS) REST API. Prerequisites for this quick start are that Edge Data Store is installed, and that it is accessible through a REST API using the default installed port (5590). This quick start uses curl, a commonly available tool on both Windows and Linux, and command line commands. You can use the same operations with any programming language or tool that supports making REST calls. In addition, you can accomplish data retrieval steps (GET commands) using a browser if one is available on the device.
 
 ## Create an SDS type
 
@@ -35,17 +35,20 @@ Create an SDS type that describes the format of the data to be stored in a conta
 }
 ```
 
-The value is indexed by a timestamp and the numeric value that will be stored is a 64 bit floating point value. In order to create the SDS type in the Edge Storage, store the JSON file with the name SDSCreateType.json and run the following curl script:
+The value is indexed by a timestamp and the numeric value that will be stored is a 64 bit floating point value. In order to create the SDS type in the data store
+
+1. Save the JSON as a file with the name SDSCreateType.json.
+2. Run the following curl script:
 
 ```bash
 curl -i -d "@SDSCreateType.json" -H "Content-Type: application/json"  -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/types/Simple
 ```
 
-When this command completes successfully, an SDS type with the same name will have been created on the server. You can create any number of containers from the type, as long as they use a timestamp as an index and a 32 bit floating point value. You only need to do type creation the first time you send using a custom application, but it does not cause an error if you resend the same definition at a later time.
+When this command completes successfully, an SDS type with the same name will have been created on the server. You can create any number of containers from the type, as long as they use a timestamp as an index and a 32 bit floating point value. You only need to do type creation the first time you send using a custom application. It does not cause an error if you resend the same definition at a later time.
 
 ## Create an SDS stream
 
-Create a stream. As with an SDS type, you only need to do this once before sending data events, and resending the same definition repeatedly does not cause an error.
+Create a stream. As with an SDS type, you only need to do this once before sending data events. Resending the same definition repeatedly does not cause an error.
 
 ```json
 {
@@ -55,7 +58,10 @@ Create a stream. As with an SDS type, you only need to do this once before sendi
 }
 ```
 
-This stream references the type that was created in the last step, and an error will occur if the type does not exist when the stream is created. In order to create the SDS stream in the Edge Storage, you should store the JSON file with the name SDSCreateStream.json and the following curl script run:
+This stream references the type that was created in the last step, and an error will occur if the type does not exist when the stream is created. In order to create the SDS stream in the data store
+
+1. Save the JSON as a file with the name SDSCreateStream.json.
+2. Run the following curl script:
 
 ```bash
 curl -i -d "@SDSCreateStream.json" -H "Content-Type: application/json"  -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/Simple
@@ -65,7 +71,7 @@ When this command completes successfully, an SDS stream will have been created t
 
 ## Write data events to the SDS stream
 
-Now that the type and container have been created, you can write data using SDS:
+After type and container creation, you can write data using SDS like in the following example:
 
 ```json
 [{
@@ -78,7 +84,10 @@ Now that the type and container have been created, you can write data using SDS:
 }]
 ```
 
-This example includes two data events that will be stored in the SDS Stream that was created in the previous steps. It is a best practice to batch SDS values when writing them for the best performance. In order to write the data for the purpose of this example, you should store the JSON file with the name SDSWriteData.json and run the following curl script:
+This example includes two data events that will be stored in the SDS Stream that was created in the previous steps. As a best practice, for the best performance, batch SDS values when writing them. In order to write the data 
+
+1. Save the JSON as a file with the name SDSWriteData.json.
+2. Run the following curl script:
 
 ```bash
 curl -i -d "@SDSWriteData.json" -H "Content-Type: application/json"  -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/Simple/Data
@@ -112,6 +121,6 @@ curl "http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/My
 [{"Timestamp":"2019-07-16T15:18:24.9870136Z","Value":12345.6787},{"Timestamp":"2019-07-16T15:18:25.9870136Z","Value":12346.6787}]
 ```
 
-Both values that were entered were returned - up to 100 values after the specified timestamp would be returned.
+Both values that were entered were returned - up to 100 values after the specified timestamp will be returned.
 
-For more information on SDS APIs, see the SDS section of this documentation.
+For more information on SDS APIs, see [Sequential Data Store](xref:sdsOverview).
