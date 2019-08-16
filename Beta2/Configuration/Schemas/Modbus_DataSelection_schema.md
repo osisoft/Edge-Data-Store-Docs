@@ -2,7 +2,7 @@
 uid: modbus_DataSelection_schema
 ---
 
-# Sample Modbus data selection configuration
+# Sample Modbus TCP data selection configuration
 
 ```json
 [{
@@ -63,7 +63,7 @@ uid: modbus_DataSelection_schema
 ]
 ```
 
-# Modbus DataSelectionConfiguration schema
+# Modbus TCP DataSelectionConfiguration schema
 
 | Abstract            | Extensible | Status       | Identifiable | Custom properties | Additional properties | Defined in                                                           |
 | ------------------- | ---------- | ------------ | ------------ | ----------------- | --------------------- | -------------------------------------------------------------------- |
