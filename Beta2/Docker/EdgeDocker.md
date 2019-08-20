@@ -4,15 +4,15 @@ uid: edgeDocker
 
 # Using Edge System with Docker
 
-Docker is a set of tools that can be used on Linux to manage application deployments. It is beyond the scope of this document to explain concepts behind Docker containers, and it is assumed that if a reader wants to use Docker they are familiar with the underlying technology and have determined it is appropriate for their planned use of the Edge System.
+Docker is a set of tools that can be used on Linux to manage application deployments. It is beyond the scope of this document to explain concepts behind Docker containers, and it is assumed that if a reader wants to use Docker they are familiar with the underlying technology, and have determined it is appropriate for their planned use of Edge System.
 
-The objective of this document is to provide examples of how to successfully create a Docker container with the Edge System, if it is decided Docker is desirable. Docker is not a requirement to use the Edge System and is regarded as an advanced user scenario.
+The objective of this document is to provide examples of how to successfully create a Docker container with Edge System, if you have decided that you want to use Docker. Docker is not a requirement to use Edge System, and is regarded as an advanced user scenario.
 
-## Creating a Docker container containing the Edge System
+## Creating a Docker container for Edge System
 
 ### ARM32 Processor
 
-Create the following Dockerfile in the directory where you wish to create and/or run the container:
+1. Create the following Dockerfile in the directory where you wish to create and/or run the container:
 
 ```docker
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2
@@ -22,8 +22,8 @@ ADD ./EdgeSystem_linux-arm.tar .
 ENTRYPOINT ["./EdgeSystem_linux-arm/OSIsoft.Data.System.Host"]
 ```
 
-Copy the EdgeSystem_linux-arm.tar file to the same directory as the Dockerfile.
-Run the following command line (sudo may be necessary):
+2. Copy the EdgeSystem_linux-arm.tar file to the same directory as the Dockerfile.
+3. Run the following command line (sudo may be necessary):
 
 ```bash
 docker build -t edgesystem .
@@ -31,7 +31,7 @@ docker build -t edgesystem .
 
 ### AMD64 (x64) Processor
 
-Create the following Dockerfile in the directory where you wish to create and/or run the container:
+1. Create the following Dockerfile in the directory where you wish to create and/or run the container:
 
 ```docker
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2
@@ -41,14 +41,14 @@ ADD ./EdgeSystem_linux-x64.tar .
 ENTRYPOINT ["./EdgeSystem_linux-x64/OSIsoft.Data.System.Host"]
 ```
 
-Copy the EdgeSystem_linux-x64.tar file to the same directory as the Dockerfile.
-Run the following command line (sudo may be necessary):
+2. Copy the EdgeSystem_linux-x64.tar file to the same directory as the Dockerfile.
+3. Run the following command line (sudo may be necessary):
 
 ```bash
 docker build -t edgesystem .
 ```
 
-## Running Edge System Docker Containers
+## Running Edge System Docker containers
 
 ### REST access from the local machine from Docker
 

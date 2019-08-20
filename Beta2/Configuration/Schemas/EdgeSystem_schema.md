@@ -4,8 +4,31 @@ uid: edge_system_schema
 
 # EdgeSystemConfiguration Schema
 
-```
-
+```json
+   "System": {
+        "Logging": {
+            "logLevel": "Information",
+            "logFileSizeLimitBytes": 34636833,
+            "logFileCountLimit": 31
+        },
+        "Components": [{
+                "componentId": "OpcUa1",
+                "componentType": "OpcUa"
+            },
+            {
+                "componentId": "Modbus1",
+                "componentType": "Modbus"
+            },
+            {
+                "componentId": "Storage",
+                "componentType": "EDS.Component"
+            }
+        ],
+        "HealthEndpoints": [],
+        "Port": {
+            "port": 5590
+        }
+    }
 ```
 
 # Edge System Configuration Schema
@@ -29,7 +52,10 @@ uid: edge_system_schema
 - type: [`SystemConfiguration`](xref:system_schema)
 
 ## {ComponentName}
-- The name of the component is configured at configuration time as determined by [System](#system)[.]()[Components](xref:system_schema#components)
-- is optional
-- type: depends on component.  One of: [`ModbusConfiguration`](xref:modbus_schema), [`OpcUaConfiguration`](xref:opcua_schema)
+- [EdgeSystemConfiguration Schema](#edgesystemconfiguration-schema)
+- [Edge System Configuration Schema](#edge-system-configuration-schema)
+  - [Properties](#properties)
+  - [Storage](#storage)
+  - [System](#system)
+  - [{ComponentName}](#componentname)
 

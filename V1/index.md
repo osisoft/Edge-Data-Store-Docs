@@ -1,0 +1,71 @@
+---
+uid: index
+---
+
+# OSIsoft Edge Data Store
+
+=======
+
+- [Overview](xref:edgeSystemOverview)
+  - [OMF Quick Start](xref:omfQuickStart)
+  - [Modbus Quick Start](xref:modbusQuickStart)
+  - [Opc Ua Quick Start](xref:opcUaQuickStart)
+  - [OCS Egress Quick Start](xref:ocsEgressQuickStart)
+  - [PI Egress Quick Start](xref:piEgressQuickStart)
+  - [SDS Read/Write Quick Start](xref:sdsQuickStart)
+- [Design](xref:scalePerformance)
+- [Installation](xref:installationOverview)
+- [Security](xref:security)
+- [System Configuration](xref:edgeSystemConfiguration)
+- Connectivity Adapters
+  - [OpcUa](xref:opcUaOverview)
+    - [Linux Opc Ua Data Selection](xref:opcUaDataSelectionLinux)
+    - [Windows Opc Ua Data Selection](xref:opcUaDataSelectionWindows)
+  - [Modbus](xref:modbusOverview)
+  - [OMF](xref:omfOverview)
+- [Storage](xref:)
+  - [Sequential Data Store](xref:sdsOverview)
+    - [Types](xref:sdsTypes)
+    - [Streams](xref:sdsStreams)
+    - [Stream Views](xref:sdsStreamViews)
+    - [Indexes](xref:sdsIndexes)
+    - [Writing Data](xref:sdsWritingData)
+      - [Write Data API](xref:sdsWritingDataApi)
+    - [Reading Data](xref:sdsReadingData)
+      - [Reading Data API](xref:sdsReadingDataApi)
+      - [Filter Expressions](xref:sdsFilterExpressions)
+      - [Table Format](xref:sdsTableFormat)
+    - [Units of Measure](xref:unitsOfMeasure)
+    - [Request/Response Compression](xref:sdsCompression)
+    - [Searching](xref:sdsSearching)
+    - [Stream Tags and Metadata](xref:sdsStreamExtra)
+  - [Egress](xref:egress)
+- [Administration](xref:edgeSystemAdministration)
+  - [Management Tools](xref:managementTools)
+  - [Logging Configuration](xref:loggingConfiguration)
+- [Configuration Schemas](xref:configurationSchemaList)
+  - [Edge Data Store Schema](xref:edge_system_schema)
+  - System
+    - [System Schema](xref:system_schema)
+    - [System Port Schema](xref:system_Port_schema)
+  - Modbus
+    - [Modbus Data Source Schema](xref:modbus_DataSource_schema)
+    - [Modbus Data Selection Schema](xref:modbus_DataSelection_schema)
+    - [Modbus Logging Schema](xref:modbus_Logging_schema)
+  - OPC UA
+    - [OPC UA Data Source Schema](xref:opcUa_DataSource_Schema)
+    - [OPC UA Data Selection Schema](xref:opcUa_DataSelection_schema)
+    - [OPC UA Logging Schema](xref:opcUa_Logging_schema)
+  - Storage
+    - [Storage Schema](xref:storage_schema)
+    - [Storage Logging Schema](xref:Storage_Logging_schema)
+    - [Storage Periodic Egress Endpoints Schema](xref:storage_PeriodicEgressEndpoints_schema)
+    - [Storage Runtime Schema](xref:storage_Runtime_schema)
+    - [Storage OEM Schema](xref:storage_OEM_schema)
+- [Health](xref:edgeSystemHealth)
+- [Diagnostics](xref:edgeSystemDiagnostics)
+- [Platforms](xref:linuxWindows)
+- [Docker](xref:edgeDocker)
+- [Command Line](xref:commandLine)
+- [Troubleshooting](xref:troubleShooting)
+- [Release Notes](xref:releaseNotes)

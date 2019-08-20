@@ -13,7 +13,8 @@ Edge System provides a method of performing a complete reset of the product. Whe
 **Note:** All configuration and stored data will be lost as a result of performing this action.
 
 To reset the Edge System, use any REST client and make a request using one of the following:
-```
+
+```http
 Method: POST
 Endpoint: http://localhost:5590/api/v1/administration/System/Reset
 Header: Content-Type application/json
@@ -33,7 +34,7 @@ Edge System provides a method by which a user may delete and reset all event and
 
 To reset the Storage component, use any REST client and make a request using one of the following:
 
-```
+```http
 Method: POST
 Endpoint: http://localhost:5590/api/v1/administration/Storage/Reset
 Header: Content-Type application/json
@@ -55,7 +56,7 @@ Edge System provides the ability to stop and start connectivity components. By d
 
 To stop an individual connectivity component, use any REST client and make a request using one of the following:
 
-```
+```http
 Method: POST
 Endpoint: http://localhost:5590/api/v1/administration/ConnectivityId/Stop
 Header: Content-Type application/json
@@ -75,7 +76,7 @@ An HTTP status 204 message indicates success.
 
 To start an individual connectivity component, use any REST client and make a request using the following:
 
-```
+```http
 Method: POST
 Endpoint: http://localhost:5590/api/v1/administration/ConnectivityId/Start
 Header: Content-Type application/json

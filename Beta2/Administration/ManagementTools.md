@@ -4,6 +4,10 @@ uid: managementTools
 
 # Edge System management tools
 
+## Command Line Configuration
+
+In Beta 2 it is recommended that REST be used to configure the Edge System. In the final release there will also be command line configuration tools available.
+
 ## REST tools
 
 The following tools are available to facilitate the execution of REST calls.

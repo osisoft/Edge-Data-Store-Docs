@@ -8,7 +8,9 @@ Edge System provides an egress mechanism to copy and transfer data to another de
 
 Configuration of egress includes specifying zero or more endpoints. An egress endpoint represents a destination to which data will be sent. Each egress endpoint is comprised of the properties specified in the [Parameters](#Parameters) section, is executed independently of all other egress endpoints, and is expected to accept OMF messages. More than one endpoint for the same destination is allowed. 
 
-> **Note:** Some types, and consequently containers and data, cannot be egressed. See [Egress Execution Details](#egress-execution-details) for more inforamtion.
+> **Note:** Some types, and consequently containers and data, cannot be egressed. See [Egress Execution Details](#egress-execution-details) for more information.
+
+One tenant and two namespaces are supported in the Edge System. The tenant is default, and the two namespaces are default (where adapter and OMF data is written) and diagnostics. Diagnostics is where the system and its components write information that can be used locally or egressed to a remote PI Server or OCS for monitoring. To egress both namespaces two egress definitions are required.
 
 ## Configuration
 
@@ -23,11 +25,12 @@ Complete the following to create new egress endpoints:
     - See [Parameters](#Parameters) section below for a table of all available egress parameters
 2. Save the file.
 3. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints/`
-    - Example using cURL:
 
-        ```bash
-        curl -v -d "@Storage_PeriodicEgressEndspoints.config.json" -H "Content-Type: application/json" -X POST "http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints"
-        ```
+- Example using cURL:
+
+```bash
+curl -v -d "@Storage_PeriodicEgressEndspoints.config.json" -H "Content-Type: application/json" -X POST "http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints"
+```
 
 ### Parameters
 

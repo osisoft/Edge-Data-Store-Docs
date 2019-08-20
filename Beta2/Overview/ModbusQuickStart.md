@@ -4,11 +4,11 @@ uid: modbusQuickStart
 
 # Edge Modbus Quick Start
 
-This document is a quick tour of setting up the Edge Modbus component.
+This topic is a quick tour of setting up the Edge Modbus TCP component. Beta 2 comes with a single Modbus adapter installed. It is named Modbus1. If a second Modbus adapter is desired in Beta 2, please reference [Edge System Configuration](xref:edgeSystemConfiguration) on how to add a new component to Edge System. The examples below will change if a second adapter is being configured - please replace Modbus1 with the name of the component you have added.
 
-## Configuring a Modbus Data Source
+## Configure a Modbus TCP data source
 
-The first step in configuring Edge Modbus is to create a file in JSON format describing the location of the Modbus data source. The timeouts are in milliseconds.
+Create a file in JSON format describing the location of the Modbus data source. The timeouts are in milliseconds.
 
 ```json
 {
@@ -22,17 +22,22 @@ The first step in configuring Edge Modbus is to create a file in JSON format des
 }
 ```
 
-Enter the correct IP address and port for your Modbus data source and save the file with the name Modbus1DataSource.json. Then run the following curl script from the same directory where the file is located. The script should be run on the same computer where the Edge System is installed:
+1. Enter the correct IP address and port for your Modbus data source.
+2. Save the file with the name Modbus1DataSource.json. 
+3. Run the following curl script from the same directory where the file is located. 
+**Note:** You should run the script on the same computer where the Edge System is installed:
 
 ```bash
 curl -i -d "@Modbus1Datasource.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Datasource
 ```
 
-When this command completes successfully (a 204 is returned by curl), your Modbus data source has been created. If you get a 400 error check your JSON file for errors, if you get a 404 or 500 error check to make sure the Edge System is running on your computer.
+When this command completes successfully (a 204 is returned by curl), your Modbus TCP data source has been created. If you get a 400 error, check your JSON file for errors. If you get a 404 or 500 error, check to make sure Edge System is running on your computer.
 
-## Configuring Modbus Data Selection
+## Configure Modbus data selection
 
-The next step in setting up Modbus is to select the Modbus data you wish to store in the Edge System. This is done by configuring Modbus data selection. Sample JSON for 5 Modbus values is below - please modify the values as appropriate for your Modbus environment.
+Select the Modbus TCP data you want to store in Edge System by configuring Modbus data selection. The following is a sample JSON for 5 Modbus values.
+
+1. Modify the values as appropriate for your Modbus environment.
 
 ```json
 [{
@@ -93,18 +98,20 @@ The next step in setting up Modbus is to select the Modbus data you wish to stor
 ]
 ```
 
-Save the JSON content above in a text file and name it Modbus1Dataselection.json. When you run the following curl script the system will be configured to collect Modbus data values.
+2. Save the JSON content above in a text file and name it Modbus1Dataselection.json. 
+
+**Note:** When you run the following curl script, the system will be configured to collect Modbus data values.
 
 ```bash
 curl -i -d "@Modbus1Dataselection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Dataselection
 ```
 
-To see the streams that have been created in Edge Storage to store the data you are writing you can run the following curl script:
+To see the streams that have been created in Edge Storage to store the data you are writing, you can run the following curl script:
 
 ```bash
 curl http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/
 ```
 
-To view the data in the streams being written by Modbus you can refer to the SDS part of this documentation. 
+To view the data in the streams being written by Modbus, you can refer to the SDS part of this documentation. 
 
 To egress the data to OSIsoft Cloud Services or the PI System, see the egress documentation or quick starts.
