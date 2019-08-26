@@ -90,4 +90,4 @@ curl -v -d "" -X POST http://localhost:5590/api/v1/Administration/ConnectivityId
 
 **Note:** Replace **ConnectivityId** with the id of the connectivity component you wish to start.
 
-An HTTP status 204 message indicates success.
+An HTTP status 204 message indicates success. 
