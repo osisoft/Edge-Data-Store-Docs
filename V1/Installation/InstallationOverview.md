@@ -28,11 +28,11 @@ You must have administrative privileges to run the installer.
 
 Double click the EdgeDataStore.msi file in Windows Explorer to launch the installer UI. You will be prompted for install location and port (with the default 5590 value pre-set). When the install finishes, Edge Data Store will be installed and running on the port specified. There are also checkboxes to allow a Modbus or OPC UA EDS adapter to be installed along with the default Storage component.
 
-![alt text](https://osisoft.github.io/Edge-System-Docs/V1/images/WindowsInstall1.jpg "Windows Installation 1")
-![alt text](https://osisoft.github.io/Edge-System-Docs/V1/images/WindowsInstall2.jpg "Windows Installation 2")
-![alt text](https://osisoft.github.io/Edge-System-Docs/V1/images/WindowsInstall3.jpg "Windows Installation 3")
-![alt text](https://osisoft.github.io/Edge-System-Docs/V1/images/WindowsInstall4.jpg "Windows Installation 4")
-![alt text](https://osisoft.github.io/Edge-System-Docs/V1/images/WindowsInstall5.jpg "Windows Installation 5")
+![alt text](https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/WindowsInstall1.jpg "Windows Installation 1")
+![alt text](https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/WindowsInstall2.jpg "Windows Installation 2")
+![alt text](https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/WindowsInstall3.jpg "Windows Installation 3")
+![alt text](https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/WindowsInstall4.jpg "Windows Installation 4")
+![alt text](https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/WindowsInstall5.jpg "Windows Installation 5")
 
 **Note** The UI based installer will prompt for a port value, and will not proceed if an invalid port is specified.
 
