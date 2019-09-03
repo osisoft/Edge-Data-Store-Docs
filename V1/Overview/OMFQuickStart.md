@@ -78,7 +78,7 @@ Now that the type and container have been created, we can write data using OMF:
 This example includes two data events that will be stored in the SDS Stream that was created in the previous steps. It is generally a best practice to batch OMF values when writing them for the best performance. In order to write the data in the Edge Storage, the JSON should be stored as a file with the name OmfCreateDataEvents.json and the following curl script run:
 
 ```bash
-curl -i -d "@SDSWriteData.json" -H "Content-Type: application/json"  -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/MyCustomContainer/Data
+curl -i -d "@OmfCreateDataEvents.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: data" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
 ```
 
 When this command completes successfully, two values will have been written to the SDS stream.
