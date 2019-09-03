@@ -14,30 +14,23 @@ Edge Data Store is supported on a variety of platforms and processors. OSIsoft p
 
 In addition to ready to use install kits, OSIsoft also provides examples of how to create Docker Containers in a separate file. tar.gz files are provided with binaries for customers who want to build their own custom installers or containers for Linux.
 
-## Differences from Beta 1
+## Differences from Beta 2
 
-* Edge Data Store is built using Microsoft .NET Core version 2.2.6.
-* The default port has been changed from 5000 to 5590. It can be changed during the install process, and also through configuration after installation.  Changing the port requires a restart of Edge Data Store for it to take effect.
-* When run in a Docker container, the exposed port is now 5590 and not port 80 as in Beta 1.
-* Entire Edge Data Store (including Modbus TCP and OPC UA adapters) can now be configured using a single file in a single REST call.
-* Secret storage on Linux has been moved from the /.OSIsoft to a directory under /usr/share/OSIsoft.
-* PeriodicEgressTargets has been renamed to PeriodicEgressEndpoints.
-* StreamStorage configuration has been renamed Runtime configuration and includes a new setting for ingress debugging.
-* Both ingress and egress debugging options have been changed from a boolean value to a DateTime. After the configured DateTime for debugging, it will automatically be disabled.
-* OMF Health messages are now supported for all Edge Components (Storage, Modbus TCP, OPC UA)
-* A new diagnostics namespace has been added where streams are populated by components in the system with information useful for monitoring performance and reliabiliy. It can be egressed to a remote PI Web API server or OSIsoft Cloud Services to assist with remote montitoring of an Edge Data Store.
-* Support for PI Connector Relay has been removed - the only authentication models supported for egress are now Basic Authentication for PI Web Api, and ClientId and ClientSecret for OSIsoft Cloud Services.
-* Schemas for a number of configuration files have changed to make them more consistent across different components. Please refer to the updated documentation for the new schemas.
-* Issues related to errors caused by egressing data upon startup of the product have been resolved.
-* The TypePrefix property  is now properly applied to types when they are egressed to PI Web Api or OSIsoft Cloud Services.
-* The Event Filtering capabilities of PeriodicEgressEndpoints has been removed from the product.
-* Significant improvements have been made in the reliability of egressing data to PI Web Api or OSIsoft Cloud Services.
-* Edge Data Store now supports a REST method for performing a full reset of the product, which will include removal of all existing configuration and stored event data.
-* A new REST method has been added for purging all stored event data and configuration related to the Storage component.
-* Individual EDS adapters may be started and stopped through newly added REST methods.
-* Startup of Edge Data Store has been made more resilient so that the product will start and may be configured even in circumstances where it's improperly configured.
-* Library libicu63 is now added as a dependency on Linux so Edge Data Store may properly install on Raspberry PI 4 devices.
-* The optional Type and Stream prefix strings for PeriodicEgressTargets were relaxed. Previously they had to be alphanumeric with an optional underscore. They can now be any string, including special characters, but there are a list of restriced characters that are not allowed. See documentation for list of restricted characters.
+* The "OSIsoft Edge System" product was renamed to "OSIsoft Edge Data Store".
+* The edgecmd command line utility is now provided to allow access to and modification of Edge Data Store configuration.  This utility supercedes the command line functionality that was previously available via OSIsoft.Data.System.Host.
+* Significant improvements have been made in the reliability and performance of egressing configuration and data to PI Web Api or OSIsoft Cloud Services.
+* Improvements were made to ensure that no data is lost when egressing data from an Edge Data Store to an egress endpoint.
+* The OEM configuration facet of the Storage component has been deprecated.  The following configuration properties were relocated to the Storage Runtime configuration facet:
+   * CheckpointRateInSec
+   * TransactionLogLimitMB
+   * EnableTransactionLog
+* The Id property of a PeriodicEgressEndpoint configuration has been changed to be optional.  If one is not provided when the endpoint is configured, a unique value will be assigned to it.
+* Improvements were made to ensure component health status updates may not lost when the product is shutdown.  
+* When the reset functionality for the entire product or the storage component is invoked, the product now properly restarts.
+* Improvements were made to improve resiliency of the product by ensuring data and configuration are properly checkpointed to storage.
+* Improvements were made to handle a wider range of data corruptions encountered when power loss scenarios are encountered.
+* In Beta 2, under certain data egress scenarios, the Storage component would attempt to retrieve all data destine to be egressed and then egress the data to the destination endpoint.  This could lead to high memory useage and potential stability issues.  This behavior has been changed to stream the data from streams in a more controlled manner leading to less memory being demanded.
+* The OPCUA and Modbus adapters may now be enabled at install time of the product.
 
 ## Install Edge Data Store on a Device using an install kit
 
@@ -59,7 +52,7 @@ A check will be done for prerequisites. If the Linux OS is up to date, the insta
 
 ```bash
 sudo apt update
-sudo apt uggrade
+sudo apt upgrade
 ```
 
 After the check for prerequisites succeeds, a prompt will display asking if you want to change the default port (5590). If you want to change the port type in another port in the acceptable range for the OS you are using, or if 5590 is acceptable, press enter.
@@ -74,66 +67,65 @@ If the installation was successful, you will get back a JSON copy of the default
 
 ```json
 {
-    "Storage": {
-        "Runtime": {
-            "streamStorageLimitMb": 2,
-            "streamStorageTargetMb": 1,
-            "ingressDebugExpiration": "0001-01-01T00:00:00"
-        },
-        "Logging": {
-            "logLevel": "Information",
-            "logFileSizeLimitBytes": 34636833,
-            "logFileCountLimit": 31
-        },
-        "OEM": {
-            "checkpointRateInSec": 30,
-            "transactionLogLimitMB": 250,
-            "enableTransactionLog": true
-        },
-        "PeriodicEgressEndpoints": []
+  "Storage": {
+    "PeriodicEgressEndpoints": [],
+    "Runtime": {
+      "streamStorageLimitMb": 2,
+      "streamStorageTargetMb": 1,
+      "ingressDebugExpiration": "0001-01-01T00:00:00",
+      "checkpointRateInSec": 30,
+      "transactionLogLimitMB": 250,
+      "enableTransactionLog": true
     },
-    "System": {
-        "Logging": {
-            "logLevel": "Information",
-            "logFileSizeLimitBytes": 34636833,
-            "logFileCountLimit": 31
-        },
-        "Components": [{
-                "componentId": "OpcUa1",
-                "componentType": "OpcUa"
-            },
-            {
-                "componentId": "Modbus1",
-                "componentType": "Modbus"
-            },
-            {
-                "componentId": "Storage",
-                "componentType": "EDS.Component"
-            }
-        ],
-        "HealthEndpoints": [],
-        "Port": {
-            "port": 5590
-        }
-    },
-    "Modbus1": {
-        "Logging": {
-            "logLevel": "Information",
-            "logFileSizeLimitBytes": 34636833,
-            "logFileCountLimit": 31
-        },
-        "DataSource": {},
-        "DataSelection": []
-    },
-    "OpcUa1": {
-        "Logging": {
-            "logLevel": "Information",
-            "logFileSizeLimitBytes": 34636833,
-            "logFileCountLimit": 31
-        },
-        "DataSource": {},
-        "DataSelection": []
+    "Logging": {
+      "logLevel": "Information",
+      "logFileSizeLimitBytes": 34636833,
+      "logFileCountLimit": 31
     }
+  },
+  "Modbus1": {
+    "Logging": {
+      "logLevel": "Information",
+      "logFileSizeLimitBytes": 34636833,
+      "logFileCountLimit": 31
+    },
+    "DataSource": {},
+    "DataSelection": []
+  },
+  "System": {
+    "Logging": {
+      "logLevel": "Information",
+      "logFileSizeLimitBytes": 34636833,
+      "logFileCountLimit": 31
+    },
+    "HealthEndpoints": [],
+    "Port": {
+      "port": 5590
+    },
+    "Components": [
+      {
+        "componentId": "OpcUa1",
+        "componentType": "OpcUa"
+      },
+      {
+        "componentId": "Modbus1",
+        "componentType": "Modbus"
+      },
+      {
+        "componentId": "Storage",
+        "componentType": "EDS.Component"
+      }
+    ]
+  },
+  "OpcUa1": {
+    "Logging": {
+      "logLevel": "Information",
+      "logFileSizeLimitBytes": 34636833,
+      "logFileCountLimit": 31
+    },
+    "DataSource": {},
+    "DataSelection": []
+  }
 }
 ```
 
@@ -141,8 +133,3 @@ If you get back an error, wait a few seconds and try it again. On a device with 
 
 ## Known Issues
 
-When configuration is retrieved from a default installation of Edge Data Store <http://localhost:5590/api/vi/configuration>, the output JSON cannot be successfully written back to configure the system. The workaround is to remove the OEMConfiguration section of the JSON schema and any non-configured Modbus or Opc Ua components before updating the configuration. Otherwise, 400 errors will occur when the <http://localhost:5590/api/vi/configuration> URI is called with a PUT command. This will be fixed before the inital release of Edge Data Store.
-
-Final component health status updates may be lost when the product is shutdown.  This will be fixed before the inital release of the Edge Data Store.
-
-The Edge Data Store reset and Storage component reset methods do not properly restart the server when invoked. You must manually restart the server in order to complete the reset of the System or Storage component. This will be fixed before the inital release of the Edge Data Store.
