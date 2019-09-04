@@ -16,21 +16,36 @@ In addition to ready to use install kits, OSIsoft also provides examples of how 
 
 ## Differences from Beta 2
 
+### General
+
 * The "OSIsoft Edge System" product was renamed to "OSIsoft Edge Data Store".
 * The edgecmd command line utility is now provided to allow access to and modification of Edge Data Store configuration.  This utility supercedes the command line functionality that was previously available via OSIsoft.Data.System.Host.
+* Improvements were made to ensure component health status updates may not lost when the product is shutdown.  
+* When the reset functionality for the entire product or the storage component is invoked, the product now properly restarts.
+* The OPCUA and Modbus adapters may now be enabled at install time of the product.
+* The structure for health streams produced by the product has been updated.
+* Adapter components may be added or removed at runtime and no longer requires a restart of the product.
+* Changes to the Health Endpoints configuration are now applied at runtime and no longer requires a restart of the product.
+* All endpoint configurations related to transfering data and configuration to PI Web Api or OSIsoft Cloud Services have the following new properties:
+   * ValidateEndpointCertificate - Enable/Disable validation of endpoint certificate. Any endpoint certificate is accepted if false.
+   * TokenEndpoint - For use with OSIsoft Cloud Services endpoints only.  Allows for alternative endpoint for retrieval of an OCS access token.
+
+### Modbus Adapter
+
+* Support has been added for an user-defined optional Streamid prefix.
+
+### Storage
+
 * Significant improvements have been made in the reliability and performance of egressing configuration and data to PI Web Api or OSIsoft Cloud Services.
-* Improvements were made to ensure that no data is lost when egressing data from an Edge Data Store to an egress endpoint.
+* Improvements were made to ensure that no data is lost when egressing data to an egress endpoint.
 * The OEM configuration facet of the Storage component has been deprecated.  The following configuration properties were relocated to the Storage Runtime configuration facet:
    * CheckpointRateInSec
    * TransactionLogLimitMB
    * EnableTransactionLog
 * The Id property of a PeriodicEgressEndpoint configuration has been changed to be optional.  If one is not provided when the endpoint is configured, a unique value will be assigned to it.
-* Improvements were made to ensure component health status updates may not lost when the product is shutdown.  
-* When the reset functionality for the entire product or the storage component is invoked, the product now properly restarts.
 * Improvements were made to improve resiliency of the product by ensuring data and configuration are properly checkpointed to storage.
 * Improvements were made to handle a wider range of data corruptions encountered when power loss scenarios are encountered.
 * In Beta 2, under certain data egress scenarios, the Storage component would attempt to retrieve all data destine to be egressed and then egress the data to the destination endpoint.  This could lead to high memory useage and potential stability issues.  This behavior has been changed to stream the data from streams in a more controlled manner leading to less memory being demanded.
-* The OPCUA and Modbus adapters may now be enabled at install time of the product.
 
 ## Install Edge Data Store on a Device using an install kit
 
