@@ -100,7 +100,7 @@ When this command completes successfully, two values will have been written to t
 In order to read the data back from the server that has been written, you can use the SDS REST API. The following is an example curl script that reads back the last value entered:
 
 ```bash
-curl http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/MyCustomContainer/Data/Last
+curl http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/Simple/Data/Last
 ```
 
 When run, this GET command returns the last value written:
@@ -114,7 +114,7 @@ When run, this GET command returns the last value written:
 In order to read the data back from the server that has been written, you can use the SDS REST API. The following is an example curl script that reads back a time range of values that have been written:
 
 ```bash
-curl "http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/MyCustomContainer/Data?startIndex=2019-07-08T13:00:00Z&count=100"
+curl "http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/Simple/Data?startIndex=2019-07-08T13:00:00Z&count=100"
 ```
 
 ```json
