@@ -55,7 +55,7 @@ C:\msdn\MayflowerBeta2>"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" conf
 
 ## Getting Help
 
-The Edgecmd application provides a 'Help' utility. For general instructions about how to use the Edgecmd application, type:
+The Edgecmd application provides a 'Help' utility. For general instructions on how to use the Edgecmd application, type:
 
 ```
 "c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Help
@@ -129,7 +129,7 @@ Port                        [Required] The tcp port to bind this application hos
 Example: .\edgecmd.exe Configuration System Port Port=5590
 ```
 
-## Viewing Edge Data Store Configuration Data
+## Retrieve Existing Edge Data Store Configurations
 
 The edgecmd utility can be used to view the configuration for each part of the Edge Data Store.
 
@@ -190,8 +190,116 @@ C:\>"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration Storage L
 }
 ```
 
+- Viewing the configuration of a specific entry in the 'PeriodicEgressEndpoint' facet within the 'Storage' component
+```cmd
+C:\>"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration Storage PeriodicEgressEndpoints id=Endpoint_1
+{
+  "id": "Endpoint_1",
+  "executionPeriod": "2.00:00:00",
+  "name": null,
+  "description": null,
+  "enabled": true,
+  "endpoint": "http://localhost:5590",
+  "clientId": null,
+  "clientSecret": null,
+  "userName": "user_54",
+  "password": "***************",
+  "validateEndpointCertificate": true,
+  "tokenEndpoint": null,
+  "debugExpiration": null,
+  "namespaceId": "default",
+  "backfill": false,
+  "egressFilter": null,
+  "streamPrefix": null,
+  "typePrefix": null
+}
+```
+
 ## Configuring the Edge Data Store
+
+To create a configuration a user must enter the component and facet where the configuration payload should go, followed by key=value pairs to specify which values to be changed. Example, changing all values in the 'Logging' facet:
+```cmd
+"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration Storage Logging LogLevel=Warning LogFileSizeLimitBytes=32768 LogFileCountLimit=5
+```
+
+This can be used to configure any number of valid key=value pairs in a facet. Example, changing a single value in the 'Logging' facet:
+```cmd
+"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration Storage Logging LogFileCountLimit=5
+```
+
+It can also be used to add an entry to a collection configuration (for example, the 'Health Endpoints' facet in the 'System' component):
+```cmd
+"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration System HealthEndpoints Id=endpoint_1 Endpoint=endpointURL UserName=UserName Password=Password
+```
+- Note: if an entry with the specified id already exists, it will be updated based on the new key=value pairs
+
+### Configuring with JSON Files
+The Edge Data Store can also be configured by inputting a JSON into the edgecmd application. File imports will completely replace the existing configuration(s) that you are attempting to change. Therefore, it cannot be used to change certain values in a facet without modifying others.
+
+To import a bulk configuration:
+```cmd
+"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration file=PathToJsonFile
+```
+
+To import a configuration file for a specific component:
+```cmd
+"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration componentId file=PathToJsonFile
+
+```
+
+To import a facet specific configuration file for a component facet:
+```cmd
+"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration componentId facetName file=PathToJsonFile
+```
+
+To import a file with configuration for a single component, a bulk file import operation can be used, but the file must contain just payload for the given component id. For example, running the following command:
+```cmd
+"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration file="C:\JSON_files\Bulk_Storage_Runtime.json"
+```
+
+where the file 'Bulk_Storage_Runtime.json' contains:
+```JSON
+{
+	"Storage": {
+		"Runtime": {
+			"StreamStorageLimitMb": 66,
+			"StreamStorageTargetMb": 33,
+			"IngressDebugExpiration": "2020-07-08T01:00:00",
+			"CheckpointRateInSec": 6,
+			"TransactionLogLimitMB": 350,
+			"EnableTransactionLog": true
+		}
+	}
+}
+```
+will only affect the 'Runtime' facet in the 'Storage' component, it will not change any other components or facets. However, if a file containing the following was imported, the 'StreamStorageLimitMb' and 'StreamStorageTargetMb' values would be modified, resetting the remaining values in the facet to their default values:
+```JSON
+{
+	"Storage": {
+		"Runtime": {
+			"StreamStorageLimitMb": 66,
+			"StreamStorageTargetMb": 33,
+		}
+	}
+}
+```
 
 
 
 ## Deleting Configuration Data
+
+The edgecmd application can be used to delete configuration data from the Edge Data Store.
+To delete a configuration entry form a collection configuration (for example, 'PeriodicEgressEndpoints' facet within the 'Storage' component) the user must specify the component ID, facet, and ID of the entry to remove followed by the 'delete' keyword.
+Example:
+```cmd
+"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration Storage PeriodicEgressEndpoints id=endpoint_1 delete
+```
+
+To delete an entire configuration file, the user must specify the component ID and facet followed by the 'delete' keyword.
+Example:
+```cmd
+"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration Storage PeriodicEgressEndpoints delete
+```
+
+
+
