@@ -52,3 +52,146 @@ C:\msdn\MayflowerBeta2>"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" conf
   ]
 }
 ```
+
+## Getting Help
+
+The Edgecmd application provides a 'Help' utility. For general instructions about how to use the Edgecmd application, type:
+
+```
+"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Help
+```
+
+The utility can also be used to get help for any registered component in the Edge Data Store. Adding a specific component to the end of the previous command will provide help output for every configuration facet that the component supports, along with examples of commands that can be run to configure the component.
+
+An example of viewing help for the system component:
+
+```cmd
+C:\>"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Help System
+
+---------------------------------------------------------------------------------------------------------
+Component System command-line options => 'Logging'
+---------------------------------------------------------------------------------------------------------
+LogLevel                    [Required] Desired log level settings. Options: Verbose, Information, Warning, Error, Fatal.
+LogFileSizeLimitBytes       [Required] Maximum size in bytes of log files that the service will create for this component. Must be no less than 1000.
+LogFileCountLimit           [Required] Maximum number of log files that the service will create for this component. Must be a positive integer.
+
+Example: .\edgecmd.exe Configuration System Logging LogLevel=Warning
+Example: .\edgecmd.exe Configuration System Logging LogFileSizeLimitBytes=32768
+Example: .\edgecmd.exe Configuration System Logging LogFileCountLimit=5
+
+
+---------------------------------------------------------------------------------------------------------
+Component System command-line options => 'HealthEndpoints'
+---------------------------------------------------------------------------------------------------------
+Id                           [Optional] Id of existing configuration to be edited of removed.
+Endpoint                     [Required] URL of OMF destination
+UserName                     [Required group 1]  User name used for authentication to PI Web API OMF endpoint.
+Password                     [Required group 1]  Password used for authentication to PI Web API OMF endpoint.
+ClientId                     [Required group 2]  Client ID used for authentication to OSIsoft Cloud Services.
+ClientSecret                 [Required group 2]  Client Secret used for authentication to OSIsoft Cloud Services.
+Buffering                    [Optional] Set the buffering type for messages to this endpoint. Options are 'memory', 'disk' or 'none'. Defaults to 'none'.
+MaxBufferSizeMB              [Optional] If an integer >0, this is the limit on the maximum megabytes of data to buffer for messages to this endpoint. Useful for limiting memory or disk usage growth in the event of disconnection to the endpoint. If the buffer is full, old messages will be discarded for new messages. Defaults to 0.
+ValidateEndpointCertificate  [Optional] If true, endpoint certificate will be validated (recommended). If false, any endpoint certificate will be accepted. OSIsoft strongly recommends using disabled endpoint certificate validation for testing purposes only.
+
+Note: Only one Required group must be specified. Group 1 for PI Web API or Group 2 for OCS.
+Example: .\edgecmd.exe Configuration System HealthEndpoints Endpoint=endpointURL UserName=UserName Password=Password
+
+
+---------------------------------------------------------------------------------------------------------
+Component System command-line options => 'Port'
+---------------------------------------------------------------------------------------------------------
+Port                        [Required] The tcp port to bind this application host to (Range [1024,65535])
+
+Example: .\edgecmd.exe Configuration System Port Port=5590
+
+
+---------------------------------------------------------------------------------------------------------
+Component System command-line options => 'Components'
+---------------------------------------------------------------------------------------------------------
+ComponentId                        [Required] ID of the hosted component.
+ComponentType                      [Required] Type of the hosted component.
+
+Example: .\edgecmd.exe Configuration System Components ComponentId=Modus1 ComponentType=Modbus
+```
+
+For help regarding a specific facet within a component, add the facet name after the component ID.
+
+An example to get help for the port facet within the system component:
+
+```cmd
+C:\>"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Help System Port
+
+---------------------------------------------------------------------------------------------------------
+Component System command-line options => 'Port'
+---------------------------------------------------------------------------------------------------------
+Port                        [Required] The tcp port to bind this application host to (Range [1024,65535])
+
+Example: .\edgecmd.exe Configuration System Port Port=5590
+```
+
+## Viewing Edge Data Store Configuration Data
+
+The edgecmd utility can be used to view the configuration for each part of the Edge Data Store.
+
+To view the entire configuration of the Edge Data Store run the following command:
+
+```cmd
+"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration
+```
+
+To retrieve component (componentId) specific configuration:
+
+```cmd
+"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration componentId
+```
+
+To retrieve facet specific configuration of an Edge Data Store component:
+
+```cmd
+"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration componentId facetName
+```
+
+For facets that contain multiple entries, the configuration for a specific entry can be retrieved by its Id:
+
+```cmd
+"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration componentId facetName id=IndexToRetrieve
+```
+
+### Examples
+- Viewing the configuration of the 'System' component
+```cmd
+C:\>"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration System
+{
+  "Logging": {
+    "logLevel": "Information",
+    "logFileSizeLimitBytes": 34636833,
+    "logFileCountLimit": 31
+  },
+  "HealthEndpoints": [],
+  "Port": {
+    "port": 5590
+  },
+  "Components": [
+    {
+      "componentId": "Storage",
+      "componentType": "EDS.Component"
+    }
+  ]
+}
+```
+
+- Viewing configuration for the 'Logging' facet within the 'Storage' component
+```cmd
+C:\>"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration Storage Logging
+{
+  "logLevel": "Information",
+  "logFileSizeLimitBytes": 34636833,
+  "logFileCountLimit": 31
+}
+```
+
+## Configuring the Edge Data Store
+
+
+
+## Deleting Configuration Data
