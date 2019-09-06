@@ -24,8 +24,8 @@ Most configurations options that can be done using REST can also be done using t
 
 A simple example of viewing system configuration using edgecmd:
 
-```cmd
-C:\msdn\MayflowerBeta2>"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" configuration system
+```bash
+edgecmd Configuration System
 {
   "Logging": {
     "logLevel": "Information",
@@ -57,16 +57,16 @@ C:\msdn\MayflowerBeta2>"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" conf
 
 The Edgecmd application provides a 'Help' utility. For general instructions on how to use the Edgecmd application, type:
 
-```
-"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Help
+```bash
+edgecmd Help
 ```
 
 The utility can also be used to get help for any registered component in the Edge Data Store. Adding a specific component ID to the end of the previous command will provide help output for every configuration facet that the component supports, along with examples of commands that can be run to configure the component.
 
 An example of viewing help for the 'System' component:
 
-```cmd
-C:\>"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Help System
+```bash
+edgecmd Help System
 
 ---------------------------------------------------------------------------------------------------------
 Component System command-line options => 'Logging'
@@ -75,9 +75,9 @@ LogLevel                    [Required] Desired log level settings. Options: Verb
 LogFileSizeLimitBytes       [Required] Maximum size in bytes of log files that the service will create for this component. Must be no less than 1000.
 LogFileCountLimit           [Required] Maximum number of log files that the service will create for this component. Must be a positive integer.
 
-Example: .\edgecmd.exe Configuration System Logging LogLevel=Warning
-Example: .\edgecmd.exe Configuration System Logging LogFileSizeLimitBytes=32768
-Example: .\edgecmd.exe Configuration System Logging LogFileCountLimit=5
+Example: ./edgecmd Configuration System Logging LogLevel=Warning
+Example: ./edgecmd Configuration System Logging LogFileSizeLimitBytes=32768
+Example: ./edgecmd Configuration System Logging LogFileCountLimit=5
 
 
 ---------------------------------------------------------------------------------------------------------
@@ -94,7 +94,7 @@ MaxBufferSizeMB              [Optional] If an integer >0, this is the limit on t
 ValidateEndpointCertificate  [Optional] If true, endpoint certificate will be validated (recommended). If false, any endpoint certificate will be accepted. OSIsoft strongly recommends using disabled endpoint certificate validation for testing purposes only.
 
 Note: Only one Required group must be specified. Group 1 for PI Web API or Group 2 for OCS.
-Example: .\edgecmd.exe Configuration System HealthEndpoints Endpoint=endpointURL UserName=UserName Password=Password
+Example: ./edgecmd Configuration System HealthEndpoints Endpoint=endpointURL UserName=UserName Password=Password
 
 
 ---------------------------------------------------------------------------------------------------------
@@ -102,7 +102,7 @@ Component System command-line options => 'Port'
 ---------------------------------------------------------------------------------------------------------
 Port                        [Required] The tcp port to bind this application host to (Range [1024,65535])
 
-Example: .\edgecmd.exe Configuration System Port Port=5590
+Example: ./edgecmd Configuration System Port Port=5590
 
 
 ---------------------------------------------------------------------------------------------------------
@@ -111,22 +111,22 @@ Component System command-line options => 'Components'
 ComponentId                        [Required] ID of the hosted component.
 ComponentType                      [Required] Type of the hosted component.
 
-Example: .\edgecmd.exe Configuration System Components ComponentId=Modus1 ComponentType=Modbus
+Example: ./edgecmd Configuration System Components ComponentId=Modus1 ComponentType=Modbus
 ```
 
 For help regarding a specific facet within a component, add the facet name after the component ID.
 
 An example to get help regarding the 'Port' facet within the 'System' component:
 
-```cmd
-C:\>"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Help System Port
+```bash
+edgecmd Help System Port
 
 ---------------------------------------------------------------------------------------------------------
 Component System command-line options => 'Port'
 ---------------------------------------------------------------------------------------------------------
 Port                        [Required] The tcp port to bind this application host to (Range [1024,65535])
 
-Example: .\edgecmd.exe Configuration System Port Port=5590
+Example: ./edgecmd Configuration System Port Port=5590
 ```
 
 ## Retrieve Existing Edge Data Store Configurations
@@ -135,32 +135,32 @@ The edgecmd utility can be used to view the configuration for each part of the E
 
 To view the entire configuration for every Edge Data Store component run the following command:
 
-```cmd
-"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration
+```bash
+edgecmd Configuration
 ```
 
 To retrieve component specific configuration:
 
-```cmd
-"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration componentId
+```bash
+edgecmd Configuration componentId
 ```
 
 To retrieve facet specific configuration of an Edge Data Store component:
 
-```cmd
-"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration componentId facetName
+```bash
+edgecmd Configuration componentId facetName
 ```
 
 For facets that contain multiple entries, the configuration for a specific entry can be retrieved by its Id:
 
-```cmd
-"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration componentId facetName id=IndexToRetrieve
+```bash
+edgecmd Configuration componentId facetName id=IndexToRetrieve
 ```
 
 ### Examples
 - Viewing the configuration of the 'System' component
-```cmd
-C:\>"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration System
+```bash
+edgecmd Configuration System
 {
   "Logging": {
     "logLevel": "Information",
@@ -181,8 +181,8 @@ C:\>"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration System
 ```
 
 - Viewing configuration for the 'Logging' facet within the 'Storage' component
-```cmd
-C:\>"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration Storage Logging
+```bash
+edgecmd Configuration Storage Logging
 {
   "logLevel": "Information",
   "logFileSizeLimitBytes": 34636833,
@@ -191,8 +191,8 @@ C:\>"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration Storage L
 ```
 
 - Viewing the configuration of a specific entry in the 'PeriodicEgressEndpoint' facet within the 'Storage' component
-```cmd
-C:\>"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration Storage PeriodicEgressEndpoints id=Endpoint_1
+```bash
+edgecmd Configuration Storage PeriodicEgressEndpoints id=Endpoint_1
 {
   "id": "Endpoint_1",
   "executionPeriod": "2.00:00:00",
@@ -218,18 +218,18 @@ C:\>"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration Storage P
 ## Configuring the Edge Data Store
 
 To create a configuration a user must enter the component and facet where the configuration payload should go, followed by key=value pairs to specify which values are to be changed. Example, changing all values in the 'Logging' facet:
-```cmd
-"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration Storage Logging LogLevel=Warning LogFileSizeLimitBytes=32768 LogFileCountLimit=5
+```bash
+edgecmd Configuration Storage Logging LogLevel=Warning LogFileSizeLimitBytes=32768 LogFileCountLimit=5
 ```
 
 This can be used to configure any number of valid key=value pairs in a facet. Example, changing a single value in the 'Logging' facet:
-```cmd
-"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration Storage Logging LogFileCountLimit=5
+```bash
+edgecmd Configuration Storage Logging LogFileCountLimit=5
 ```
 
 It can also be used to add an entry to a collection configuration, for example, the 'Health Endpoints' facet in the 'System' component:
-```cmd
-"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration System HealthEndpoints Id=endpoint_1 Endpoint=endpointURL UserName=UserName Password=Password
+```bash
+edgecmd Configuration System HealthEndpoints Id=endpoint_1 Endpoint=endpointURL UserName=UserName Password=Password
 ```
 - Note: if an entry with the specified id already exists, it will be updated based on the new key=value pairs
 
@@ -237,24 +237,24 @@ It can also be used to add an entry to a collection configuration, for example, 
 The Edge Data Store can also be configured by inputting a JSON file into the edgecmd application. File imports will completely replace the existing configuration(s) that you are attempting to change. Therefore, it cannot be used to change certain values in a facet without modifying others.
 
 To import a bulk configuration:
-```cmd
-"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration file=PathToJsonFile
+```bash
+edgecmd Configuration file=PathToJsonFile
 ```
 
 To import a configuration file for a specific component:
-```cmd
-"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration componentId file=PathToJsonFile
+```bash
+edgecmd Configuration componentId file=PathToJsonFile
 
 ```
 
 To import a facet specific configuration file for a component facet:
-```cmd
-"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration componentId facetName file=PathToJsonFile
+```
+edgecmd Configuration componentId facetName file=PathToJsonFile
 ```
 
 To import a file with configuration for a single component, a bulk file import operation can be used, but the file must contain just payload for the given component ID. For example, running the following command:
-```cmd
-"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration file="C:\JSON_files\Bulk_Storage_Runtime.json"
+```bash
+edgecmd Configuration file="~/Bulk_Storage_Runtime.json"
 ```
 
 where the file 'Bulk_Storage_Runtime.json' contains:
@@ -291,14 +291,14 @@ will only affect the 'Runtime' facet in the 'Storage' component, it will not cha
 The edgecmd application can be used to delete configuration data from the Edge Data Store.
 To delete a configuration entry from a collection configuration (for example, 'PeriodicEgressEndpoints' facet within the 'Storage' component) the user must specify the component ID, facet, and ID of the entry to remove followed by the 'delete' keyword.
 Example:
-```cmd
-"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration System HealthEndpoints Id=endpoint_1 delete
+```bash
+edgecmd Configuration System HealthEndpoints Id=endpoint_1 delete
 ```
 
 To delete an entire configuration file, the user must specify the component ID and facet followed by the 'delete' keyword.
 Example:
-```cmd
-"c:\program files\OSIsoft\EdgeDataStore\edgecmd.exe" Configuration System HealthEndpoints delete
+```bash
+edgecmd Configuration System HealthEndpoints delete
 ```
 
 
