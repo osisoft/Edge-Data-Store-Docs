@@ -129,6 +129,48 @@ Port                        [Required] The tcp port to bind this application hos
 Example: ./edgecmd Configuration System Port Port=5590
 ```
 
+## Edge Data Store Components
+### Adding Components
+The following command can be used to view which components are currently configured on the Edge Data Store:
+
+```bash
+edgecmd Configuration System Components
+```
+
+To register a new component, use the following command:
+```bash
+edgecmd Configuration System Components componentId=<componentId> componentType=<componentType>
+```
+
+Valid component type's are "Modbus" and "OpcUa". Use "Modbus" if trying to register a Modbus EDS adapter and "OpcUa" if trying to register an OPC UA adapter. 
+
+Example of registering a new Modbus adapter component:
+
+```bash
+edgecmd Configuration System Components componentId=Modbus1 componentType=Modbus
+```
+
+### Configuring Components
+
+The EDS Modbus adapter and OPC UA adapter each have 3 configurable facets: Data Source, Data Selection, and Logging. These can be configured with edgecmd by specifying a component ID and facet name. An example of configuring the data source facet of a Modbus adapter:
+
+```bash
+edgecmd Configuration Modbus1 DataSource IpAddress=117.23.45.110 port=502 ConnectTimeout=15000 StreamIdPrefix="DataSource1"
+```
+
+For detailed information on how to configure each adapter see the [Modbus](xref:modbus_schema) and [OPC UA](xref:opcua_schema) schemas.
+
+### Deleting Components
+
+Components can be deleted from the Edge Data Store using the following command:
+
+```bash
+edgecmd Configuration System Components id=<componentId> delete
+```
+
+- Note: The "Storage" component cannot be deleted, as it is required for the Edge Data Store to operate.
+
+
 ## Retrieve Existing Edge Data Store Configurations
 
 The edgecmd utility can be used to view the configuration for each part of the Edge Data Store.
