@@ -276,25 +276,19 @@ edgecmd Configuration System HealthEndpoints Id=endpoint_1 Endpoint=endpointURL 
 - Note: if an entry with the specified id already exists, it will be updated based on the new key=value pairs
 
 ### Configuring with JSON Files
-The Edge Data Store can also be configured by inputting a JSON file into the edgecmd application. File imports will completely replace the existing configuration(s) that you are attempting to change. Therefore, it cannot be used to change certain values in a facet without modifying others.
+The Edge Data Store can also be configured by inputting a JSON file into the edgecmd application. File imports will completely replace the existing configuration(s) that you are attempting to change. Therefore, it cannot be used to change individual values in a facet without modifying others.
 
 To import a bulk configuration:
 ```bash
 edgecmd Configuration file=PathToJsonFile
 ```
 
-To import a configuration file for a specific component:
-```bash
-edgecmd Configuration componentId file=PathToJsonFile
-
-```
-
-To import a facet specific configuration file for a component facet:
+To import a facet specific configuration file for a component:
 ```
 edgecmd Configuration componentId facetName file=PathToJsonFile
 ```
 
-To import a file with configuration for a single component, a bulk file import operation can be used, but the file must contain just payload for the given component ID. For example, running the following command:
+To import a file with configuration for individual facets, a bulk file import operation can be used, but the file must contain just payload for the given component ID. For example, running the following command:
 ```bash
 edgecmd Configuration file="~/Bulk_Storage_Runtime.json"
 ```
@@ -331,7 +325,7 @@ will only affect the 'Runtime' facet in the 'Storage' component, it will not cha
 ## Deleting Configuration Data
 
 The edgecmd application can be used to delete configuration data from the Edge Data Store.
-To delete a configuration entry from a collection configuration (for example, 'PeriodicEgressEndpoints' facet within the 'Storage' component) the user must specify the component ID, facet, and ID of the entry to remove followed by the 'delete' keyword.
+To delete a configuration entry from a collection configuration (for example, 'HealthEndpoints' facet within the 'System' component) the user must specify the component ID, facet, and ID of the entry to remove followed by the 'delete' keyword.
 Example:
 ```bash
 edgecmd Configuration System HealthEndpoints Id=endpoint_1 delete
