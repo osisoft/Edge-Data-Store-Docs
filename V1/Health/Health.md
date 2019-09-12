@@ -15,7 +15,7 @@ Table 1. Configuration parameters for Edge Data Store health endpoints
 | Parameter         | Required | Description                      |
 |-------------------|----------------------------------|-------------|
 | Id | Optional    | The ID can be any alphanumeric string, for example Endpoint1. If you do not specify an ID, Edge Data Store generates one automatically. |
-| Endpoint | Required    | The URL of the ingress point which accepts OMF health messages. |
+| Endpoint | Required    | The URL of the ingress endpoint which accepts OMF health messages. |
 | UserName | Required for PI Web API endpoints  | The user name used for authentication to PI Web API OMF endpoint.  |
 | Password | Required for PI Web API endpoints | The password used for authentication to PI Web API OMF endpoint.  |
 | ClientId| Required for OSIsoft Cloud Services.  | The Client Id used for authentication to OSIsoft Cloud Services.|
