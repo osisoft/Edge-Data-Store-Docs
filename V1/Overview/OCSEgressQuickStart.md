@@ -22,7 +22,7 @@ Configure Edge Storage periodic egress for the Osisoft Cloud Services (OCS) endp
     "EgressFilter": "",
     "StreamPrefix": "ChangeMe",
     "TypePrefix": "ChangeMe",
-    "Endpoint": "https://<your OCS OMF end point endpoint>",
+    "Endpoint": "https://<your OCS OMF endpoint endpoint>",
     "ClientId": "<your OCS ClientId>",
     "ClientSecret": "<your OCS ClientSecret>",
     "UserName": null,
