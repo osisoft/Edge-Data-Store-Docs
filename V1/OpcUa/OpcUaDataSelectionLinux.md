@@ -9,13 +9,15 @@ A default OPC UA data source template file will be created if there is no OPC UA
 
 There are two necessary prerequisites for this template data selection to be generated:
 
-1. Add an [OPC UA component](xref:EdgeDataStoreConfiguration) with a unique ComponentId, unless one was added during Edge Data Store installation.
+1. Add an [OPC UA EDS adapter](xref:EdgeDataStoreConfiguration) with a unique ComponentId. During install of the Edge Data Store, enabling the OPC UA adapter results in addition of a unique component that also satisfies this condition.
 2. Configure a valid [OPC UA Data Source](xref:opcUaOverview)
 
-Once these steps are taken a template OPC UA data selection will be generated in the **Configuration** directory for the corresponding platform, see [Linux and Windows platform differences](xref:linuxWindows). The following is an example of the filename created - in this example it is assumed the ComponentId of the OPC UA component is the default OpcUa1:
+Once these steps are taken a template OPC UA data selection will be generated in the **Configuration** directory for the corresponding platform, see [Linux and Windows platform differences](xref:linuxWindows). The following are example locations of the file created - in this example it is assumed the ComponentId of the OPC UA component is the default OpcUa1:
 
-```cmd
-OpcUa1_DataSelection.json
+```bash
+Windows: %programdata%\OSIsoft\EdgeDataStore\Configuration\OpcUa1_DataSelection.json
+
+Linux: /usr/share/OSIsoft/EdgeDataStore/Configuration/OpcUa1_DataSelection.json
 ```
 
 Copy the file to a different directory to edit it. The contents of the file will look something like:
