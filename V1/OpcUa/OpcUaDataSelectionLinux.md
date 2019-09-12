@@ -1,9 +1,9 @@
 ---
-uid: opcUaDataSelectionLinux
+uid: opcUaDataSelection
 ---
-# Generating a template OPC UA data selection configuration file on Windows
+# Generating a template OPC UA data selection configuration file
 
-On startup, the OPC UA EDS adapter browses the entire OPC UA server address space and exports the available OPC UA variables into a .json file for data selection. Data is collected automatically based upon user demands.  OPC UA data from OPC UA variables is read through subscriptions (unsolicited reads).
+When a data source is added, the OPC UA EDS adapter browses the entire OPC UA server address space and exports the available OPC UA variables into a .json file for data selection. Data is collected automatically based upon user demands.  OPC UA data from OPC UA variables is read through subscriptions (unsolicited reads).
 
 A default OPC UA data source template file will be created if there is no OPC UA data selection configuration, but a valid OPC UA data source exists.
 
@@ -12,10 +12,10 @@ There are two necessary prerequisites for this template data selection to be gen
 1. Add an [OPC UA component](xref:EdgeDataStoreConfiguration) with a unique ComponentId, unless one was added during Edge Data Store installation.
 2. Configure a valid [OPC UA Data Source](xref:opcUaOverview)
 
-Once these steps are taken a template OPC UA data selection will be generated in the following directory. For the purpose of this example it is assumed the ComponentId of the OPC UA component is the default OpcUa1:
+Once these steps are taken a template OPC UA data selection will be generated in the **Configuration** directory for the corresponding platform, see [Linux and Windows platform differences](xref:linuxWindows). The following is an example of the filename created - in this example it is assumed the ComponentId of the OPC UA component is the default OpcUa1:
 
 ```cmd
-/usr/share/OSIsoft/EdgeDataStore/Configuration/OpcUa1_DataSelection.json
+OpcUa1_DataSelection.json
 ```
 
 Copy the file to a different directory to edit it. The contents of the file will look something like:
@@ -37,7 +37,7 @@ Copy the file to a different directory to edit it. The contents of the file will
 ]
 ```
 
-In a text editor edit the file and change any Selected : false, lines to Selected : true to transfer the OPC UA data to be stored in the Edge Data Store. After that is done, in the same directory where you edited the generated file, run the following curl command:
+In a text editor, edit the file and change the value of any **Selected** key from false to true in order to transfer the OPC UA data to be stored in the Edge Data Store. After that is done, in the same directory where you edited the generated file, run the following curl command:
 
 ```bash
 curl -i -d "@OpcUa1_DataSelection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
