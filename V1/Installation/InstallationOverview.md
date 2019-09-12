@@ -59,7 +59,7 @@ You must have administrative privileges to install the software, e.g. root or su
 Open a terminal window and type:
 
 ```bash
-sudo apt install ./EdgeDataStore_linux_<either x64 or arm depending upon processor>.deb
+sudo apt install ./EdgeDataStore_linux-<either x64 or arm depending upon processor>.deb
 ```
 
 ![alt text](https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/LinuxInstall1.jpg "Linux Installation")
@@ -89,7 +89,7 @@ Running this command will not delete the data, configuration, or log files.
 To remove data, configuration, and log files, remove the directory /usr/share/OSIsoft/EdgeDataStore/. This will result in deletion of all data stored in the Edge Storage component, in addition to configuration and log files. This can be done with the following command:
 
 ```bash
-sudo rm -r /usr/share/EdgeDataStore/
+sudo rm -r /usr/share/OSIsoft/EdgeDataStore/
 ```
 
 ## After Installation (Windows and Linux)
