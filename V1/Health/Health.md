@@ -4,7 +4,7 @@ uid: EdgeDataStoreHealth
 
 # Edge Data Store health
 
-Having insight into the health of the Edge Data Store and the components that make it up can be critical for ensuring that your needs for data collection are being met.  To that end, Edge Data Store and its components produce health information to be sent to OSIsoft Health Omf Endpoints. When enabled, Edge Data Store will transfer to configured Omf health endpoints the types and containers that represent available  health information.
+Having insight into the health of the Edge Data Store and the components that make it up can be critical for ensuring that your needs for data collection are being met. To that end, Edge Data Store and its components produce health information. When configured, Edge Data Store will transfer health information to OSIsoft Omf endpoints, including the types and containers that represent available health information.
 
 ## Configuring Edge Data Store health endpoints
 
@@ -30,7 +30,7 @@ The following health types and streams are created to reflect the health of EDS 
 
 The Connectors static type includes these properties and servers as a root AF element with the id Connectors.
 
-| Type         | Property |  Description     |
+| Type         | Property | Description      |
 |--------------|----------|------------------|
 | string | Id | Connectors - root AF element |
 | string | Description | Collection of Connector assets |
@@ -39,7 +39,7 @@ The Connectors static type includes these properties and servers as a root AF el
 
 The Connector Health static type includes the following properties, which are logged in a stream with the id {machinename}.{componentid}. The stream is linked to root AF element (Connectors).
 
-| Type         | Property |  Description     |
+| Type         | Property | Description      |
 |--------------|----------|------------------|
 | string | Id  | {machinename}.{componentId} |
 | string | Description | {productname} health |
@@ -50,7 +50,7 @@ The Connector Health static type includes the following properties, which are lo
 
 The DeviceStatus dynamic type includes the following values, which are logged in a stream with the id Connectors.{machinename}.{componentid}.DeviceStatus. The stream is linked to {machinename}.{componentid} static stream.
 
-| Type         | Property |  Description     |
+| Type         | Property | Description      |
 |--------------|----------|------------------|
 | string | Time | Timestamp of event |
 | string | DeviceStatus | Device status value |
@@ -59,7 +59,7 @@ The DeviceStatus dynamic type includes the following values, which are logged in
 
 The NextHealthMessageExpected dynamic type includes the following values, which are logged in a stream with the id Connectors.{machinename}.{componentid}.NextHealthMessageExpected. The stream is linked to {machinename}.{componentid} static stream. Heard beat message is expected once a minute.
 
-| Type         | Property |  Description     |
+| Type         | Property | Description      |
 |--------------|----------|------------------|
 | string | Time | Timestamp of event |
 | string | NextHealthMessageExpected | Time when next health message is expected. |
@@ -70,7 +70,7 @@ The following health types and streams are created to reflect the health of the 
 
 The Storage static type includes the following properties and servers as a root AF element with the id Storage.
 
-| Type         | Property |  Description     |
+| Type         | Property | Description      |
 |--------------|----------|------------------|
 | string | Id | Storage - root AF element |
 | string | Description | Storage Health |
@@ -79,7 +79,7 @@ The Storage static type includes the following properties and servers as a root 
 
 The Storage Health static type includes the following properties, which are logged in a stream with the id {machinename}.Storage. The stream is linked to root AF element (Storage).
 
-| Type         | Property |  Description     |
+| Type         | Property | Description      |
 |--------------|----------|------------------|
 | string | Id  | {machinename}.Storage |
 | string | Description | {productname} health |
@@ -90,7 +90,7 @@ The Storage Health static type includes the following properties, which are logg
 
 The DeviceStatus dynamic type includes the following values, which are logged in a stream with the id Storage.{machinename}.DeviceStatus. The stream is linked to {machinename}.Storage static stream.
 
-| Type         | Property |  Description     |
+| Type         | Property | Description      |
 |--------------|----------|------------------|
 | string | Time | Timestamp of event |
 | string | DeviceStatus | Device status value |
@@ -99,7 +99,7 @@ The DeviceStatus dynamic type includes the following values, which are logged in
 
 The NextHealthMessageExpected dynamic type includes the following values, which are logged in a stream with the id Storage.{machinename}.NextHealthMessageExpected. The stream is linked to {machinename}.Storage static stream. Heard beat message is expected once a minute.
 
-| Type         | Property |  Description     |
+| Type         | Property | Description      |
 |--------------|----------|------------------|
 | string | Time | Timestamp of event |
 | string | NextHealthMessageExpected | Time when next health message is expected. |
