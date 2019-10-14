@@ -25,7 +25,9 @@ This schema is used to configure data egress from Edge Data Store to a PI Server
         "ClientSecret": "<clientsecret>",
         "UserName": null,
         "Password": null,
-        "DebugExpiration": null
+        "DebugExpiration": null,
+        "TokenEndpoint": null,
+        "ValidateEndpointCertificate": true
     },
     {
         "Id": "PI Web API Data",
@@ -43,7 +45,9 @@ This schema is used to configure data egress from Edge Data Store to a PI Server
         "ClientSecret": null,
         "UserName": "<username>",
         "Password": "<password>",
-        "DebugExpiration": null
+        "DebugExpiration": null,
+        "TokenEndpoint": null,
+        "ValidateEndpointCertificate": true
     },
     {
         "Id": "OCS Diagnostics",
@@ -61,7 +65,9 @@ This schema is used to configure data egress from Edge Data Store to a PI Server
         "ClientSecret": "<clientsecret>",
         "UserName": null,
         "Password": null,
-        "DebugExpiration": null
+        "DebugExpiration": null,
+        "TokenEndpoint": null,
+        "ValidateEndpointCertificate": true
     },
     {
         "Id": "PI Web API Diagnostics",
@@ -79,7 +85,9 @@ This schema is used to configure data egress from Edge Data Store to a PI Server
         "ClientSecret": null,
         "UserName": "<username>",
         "Password": "<password>",
-        "DebugExpiration": null
+        "DebugExpiration": null,
+        "TokenEndpoint": null,
+        "ValidateEndpointCertificate": true
     }
 ]
 ```
@@ -101,13 +109,15 @@ This schema is used to configure data egress from Edge Data Store to a PI Server
 | [Enabled](#enabled)                 | `boolean` | Optional     | No       | PeriodicEgressConfiguration (this schema) |
 | [Endpoint](#endpoint)               | `string`  | **Required** | No       | PeriodicEgressConfiguration (this schema) |
 | [ExecutionPeriod](#executionperiod) | `string`  | **Required** | No       | PeriodicEgressConfiguration (this schema) |
-| [Id](#id)                           | `string`  | **Required** | No       | PeriodicEgressConfiguration (this schema) |
+| [Id](#id)                           | `string`  | Optional     | Yes      | PeriodicEgressConfiguration (this schema) |
 | [Name](#name)                       | `string`  | Optional     | Yes      | PeriodicEgressConfiguration (this schema) |
 | [NamespaceId](#namespaceid)         | `string`  | Optional     | Yes      | PeriodicEgressConfiguration (this schema) |
 | [Password](#password)               | `string`  | Optional     | Yes      | PeriodicEgressConfiguration (this schema) |
 | [StreamPrefix](#streamprefix)       | `string`  | Optional     | Yes      | PeriodicEgressConfiguration (this schema) |
+| [TokenEndpoint](#tokenendpoint)     | `string`  | Optional     | Yes      | PeriodicEgressConfiguration (this schema) |
 | [TypePrefix](#typeprefix)           | `string`  | Optional     | Yes      | PeriodicEgressConfiguration (this schema) |
 | [UserName](#username)               | `string`  | Optional     | Yes      | PeriodicEgressConfiguration (this schema) |
+| [ValidateEndpointCertificate](#validateendpointcertificate) | `boolean` | Optional | No | PeriodicEgressConfiguration (this schema) |
 
 ## Backfill
 
@@ -227,15 +237,13 @@ This schema is used to configure data egress from Edge Data Store to a PI Server
 
 `Id`
 
-- is **required**
+- is optional
 - type: `string`
 - defined in this schema
 
 ### Id type
 
-`string`
-
-- minimum length: 1 characters
+`string`, nullable
 
 ## Name
 
@@ -285,6 +293,18 @@ This schema is used to configure data egress from Edge Data Store to a PI Server
 
 `string`, nullable
 
+## TokenEndpoint
+
+`TokenEndpoint`
+
+- is optional
+- type: `string`
+- defined in this schema
+
+### TokenEndpoint type
+
+`string`, nullable
+
 ## TypePrefix
 
 `TypePrefix`
@@ -309,6 +329,18 @@ This schema is used to configure data egress from Edge Data Store to a PI Server
 
 `string`, nullable
 
+## ValidateEndpointCertificate
+
+`ValidateEndpointCertificate`
+
+- is optional
+- type: `boolean`
+- defined in this schema
+
+### ValidateEndpointCertificate type
+
+`boolean`
+
 **All** of the following _requirements_ need to be fulfilled.
 
 #### Requirement 1
@@ -319,24 +351,26 @@ This schema is used to configure data egress from Edge Data Store to a PI Server
 
 `object` with following properties:
 
-| Property          | Type    | Required     |
-| ----------------- | ------- | ------------ |
-| `Backfill`        | boolean | Optional     |
-| `ClientId`        | string  | Optional     |
-| `ClientSecret`    | string  | Optional     |
-| `DebugExpiration` | string  | Optional     |
-| `Description`     | string  | Optional     |
-| `EgressFilter`    | string  | Optional     |
-| `Enabled`         | boolean | Optional     |
-| `Endpoint`        | string  | **Required** |
-| `ExecutionPeriod` | string  | **Required** |
-| `Id`              | string  | **Required** |
-| `Name`            | string  | Optional     |
-| `NamespaceId`     | string  | Optional     |
-| `Password`        | string  | Optional     |
-| `StreamPrefix`    | string  | Optional     |
-| `TypePrefix`      | string  | Optional     |
-| `UserName`        | string  | Optional     |
+| Property                      | Type    | Required     |
+| ----------------------------- | ------- | ------------ |
+| `Backfill`                    | boolean | Optional     |
+| `ClientId`                    | string  | Optional     |
+| `ClientSecret`                | string  | Optional     |
+| `DebugExpiration`             | string  | Optional     |
+| `Description`                 | string  | Optional     |
+| `EgressFilter`                | string  | Optional     |
+| `Enabled`                     | boolean | Optional     |
+| `Endpoint`                    | string  | **Required** |
+| `ExecutionPeriod`             | string  | **Required** |
+| `Id`                          | string  | Optional     |
+| `Name`                        | string  | Optional     |
+| `NamespaceId`                 | string  | Optional     |
+| `Password`                    | string  | Optional     |
+| `StreamPrefix`                | string  | Optional     |
+| `TokenEndpoint`               | string  | Optional     |
+| `TypePrefix`                  | string  | Optional     |
+| `UserName`                    | string  | Optional     |
+| `ValidateEndpointCertificate` | boolean | Optional     |
 
 #### Backfill
 
@@ -447,14 +481,12 @@ This schema is used to configure data egress from Edge Data Store to a PI Server
 
 `Id`
 
-- is **required**
+- is optional
 - type: `string`
 
 ##### Id type
 
-`string`
-
-- minimum length: 1 characters
+`string`, nullable
 
 #### Name
 
@@ -500,6 +532,17 @@ This schema is used to configure data egress from Edge Data Store to a PI Server
 
 `string`, nullable
 
+#### TokenEndpoint
+
+`TokenEndpoint`
+
+- is optional
+- type: `string`
+
+##### TokenEndpoint type
+
+`string`, nullable
+
 #### TypePrefix
 
 `TypePrefix`
@@ -521,3 +564,14 @@ This schema is used to configure data egress from Edge Data Store to a PI Server
 ##### UserName type
 
 `string`, nullable
+
+#### ValidateEndpointCertificate
+
+`ValidateEndpointCertificate`
+
+- is optional
+- type: `boolean`
+
+##### ValidateEndpointCertificate type
+
+`boolean`
