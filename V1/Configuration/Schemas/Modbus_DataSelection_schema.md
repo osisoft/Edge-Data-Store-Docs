@@ -4,6 +4,8 @@ uid: modbus_DataSelection_schema
 
 # Sample Modbus TCP data selection configuration
 
+The Modbus TCP data selection configuration schema specifies how to formally describe the data selection parameters for Modbus TCP.
+
 ```json
 [{
         "Selected": "true",
