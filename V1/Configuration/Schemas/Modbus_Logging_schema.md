@@ -4,6 +4,8 @@ uid: modbus_Logging_schema
 
 # ModbusLoggerConfiguration Schema
 
+The Modbus TCP logger configuration schema specifies how to formally describe the Modbus TCP logging parameters. 
+
 | Abstract            | Extensible | Status       | Identifiable | Custom properties | Additional properties | Defined in                                               |
 | ------------------- | ---------- | ------------ | ------------ | ----------------- | --------------------- | -------------------------------------------------------- |
 | Can be instantiated | Yes        | Experimental | No           | Forbidden         | Forbidden |
