@@ -4,6 +4,8 @@ uid: edge_system_schema
 
 # Edge Data Store configuration schema
 
+The Edge Data Store configuration schema specifies how to formally describe the system parameters (logging, components, health endpoints, port). 
+
 ```json
    "System": {
         "Logging": {
