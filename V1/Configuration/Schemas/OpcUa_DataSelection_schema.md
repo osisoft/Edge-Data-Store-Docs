@@ -2,7 +2,9 @@
 uid: opcUa_DataSelection_schema
 ---
 
-# Sample Opc Ua data selection configuration
+# Sample Opc UA data selection configuration
+
+The OPC UA data selection configuration schema specifies how to formally describe the data selection parameters for OPC UA.
 
 ```json
 [{
@@ -38,7 +40,7 @@ uid: opcUa_DataSelection_schema
 ]
 ```
 
-```
+
 
 # OPC UA data collection item schema
 
