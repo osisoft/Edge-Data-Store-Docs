@@ -3,7 +3,9 @@ uid: opcUa_DataSource_Schema
 ---
 
 
-# Sample Opc Ua data source configuration
+# Sample OPC UA data source configuration
+
+The OPC UA data source configuration schema specifies how to formally describe the data source parameters for OPC UA.
 
 ```json
 {
