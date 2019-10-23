@@ -4,6 +4,9 @@ uid: opcUa_Logging_schema
 
 # OPC UA logger configuration schema
 
+The OPC UA logger configuration schema specifies how to formally describe the logging parameters for OPC UA.
+
+
 | Abstract            | Extensible | Status       | Identifiable | Custom properties | Additional properties | Defined in                                             |
 | ------------------- | ---------- | ------------ | ------------ | ----------------- | --------------------- | ------------------------------------------------------ |
 | Can be instantiated | Yes        | Experimental | No           | Forbidden         | Forbidden             | [OpcUa_Logging_schema.json](OpcUa_Logging_schema.json) |
