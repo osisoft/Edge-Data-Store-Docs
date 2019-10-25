@@ -2,9 +2,9 @@
 uid: edge_system_schema
 ---
 
-# Edge Data Store configuration schema
+# Sample Edge Data Store configuration
 
-The Edge Data Store configuration schema specifies how to formally describe the system parameters (logging, components, health endpoints, port). 
+The Edge Data Store configuration schema specifies how to formally describe the Edge Data Store parameters (logging, components, health endpoints, port). 
 
 ```json
    "System": {
@@ -33,29 +33,11 @@ The Edge Data Store configuration schema specifies how to formally describe the 
     }
 ```
 
-## Properties
+## Edge Data Store configuration properties
 
 | Property                                        | Type      | Required | Nullable | Defined by                            |
 | ----------------------------------------------- | --------- | -------- | -------- | ------------------------------------- |
-| [Storage](#storage)         | [`StorageConfiguration`](xref:storage_schema) | Optional | Yes      | StorageConfiguration |
-| [System](#system) | [`SystemConfiguration`](xref:system_schema) | Optional | Yes      | SystemConfiguration |
-| [{ComponentName}](#system) | [`{ComponentConfiguration}`](#system) | Optional | Yes      | {ComponentConfiguration} |
-
-## Storage
-
-- is optional
-- type: [`StorageConfiguration`](xref:storage_schema)
-
-## System
-
-- is optional
-- type: [`SystemConfiguration`](xref:system_schema)
-
-## {ComponentName}
-- [EdgeDataStoreConfiguration Schema](#EdgeDataStoreconfiguration-schema)
-- [Edge Data Store Configuration Schema](#edge-system-configuration-schema)
-  - [Properties](#properties)
-  - [Storage](#storage)
-  - [System](#system)
-  - [{ComponentName}](#componentname)
+| Storage         | `StorageConfiguration` | Optional | Yes      | StorageConfiguration |
+| System | `SystemConfiguration`| Optional | Yes      | SystemConfiguration |
+| {ComponentName} | `{ComponentConfiguration}` | Optional | Yes      | {ComponentConfiguration} |
 
