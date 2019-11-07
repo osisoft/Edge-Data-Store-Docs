@@ -2,7 +2,7 @@
 uid: EdgeDataStoreAdministration
 ---
 
-# Edge Data Store administration
+# Edge Data Store administration TEST
 
 Edge Data Store provides a number of administration level functions.
 
