@@ -80,4 +80,5 @@ uid: index
 - [Docker](xref:edgeDocker)
 - [Command Line](xref:commandLine)
 - [Troubleshooting](xref:troubleShooting)
+  - [Disaster Recovery](xref:disasterRecovery)
 - [Release Notes](xref:releaseNotes)
