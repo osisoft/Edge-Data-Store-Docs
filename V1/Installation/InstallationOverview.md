@@ -11,6 +11,7 @@ Edge Data Store is supported on a variety of platforms and processors. OSIsoft p
 * Windows 10 x64 - EdgeDataStore.msi (Intel/AMD 64 bit processors)
 * Debian 9 or later x64/AMD64 - EdgeDataStore_linux-x64.deb (Intel/AMD 64 bit processors)
 * Debian 9 or later ARM32 - EdgeDataStore_linux-arm.deb (Raspberry PI 2,3,4, BeagleBone devices, other ARM v7 and ARM v8 32 bit processors)
+* Debian 9 or later ARM64 - EdgeDataStore_linux-arm.deb (Other ARM v7 and ARM v8 64 bit processors)
 
 Additionally, OSIsoft also provides examples of how to create [Docker containers](xref:edgeDocker). For customers who want to build their own custom installers or containers for Linux, tar.gz files are provided with binaries.
 
@@ -58,7 +59,7 @@ You must have administrative privileges to install the software, for example roo
 - Open a terminal window and type:
 
 ```bash
-sudo apt install ./EdgeDataStore_linux-<either x64 or arm depending upon processor>.deb
+sudo apt install ./EdgeDataStore_linux-<either x64, arm, or arm64 depending upon processor>.deb
 ```
 
 ![alt text](https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/LinuxInstall1.jpg "Linux Installation")
