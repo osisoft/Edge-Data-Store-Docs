@@ -8,10 +8,16 @@ uid: installationOverview
 
 Edge Data Store is supported on a variety of platforms and processors. OSIsoft provides ready to use install kits for the following platforms:
 
-* Windows 10 x64 - EdgeDataStore.msi (Intel/AMD 64 bit processors)
-* Debian 9 or later x64/AMD64 - EdgeDataStore_linux-x64.deb (Intel/AMD 64 bit processors)
-* Debian 9 or later ARM32 - EdgeDataStore_linux-arm.deb (Raspberry PI 2,3,4, BeagleBone devices, other ARM v7 and ARM v8 32 bit processors)
-* Debian 9 or later ARM64 - EdgeDataStore_linux-arm.deb (Other ARM v7 and ARM v8 64 bit processors)
+| Operating System | Installation Kit | Processor(s) |
+|-------------------|----------------------------------|-------------|
+| Windows 10 x64  | EdgeDataStore.msi     | Intel/AMD 64 bit processors |
+| Debian 9 or later x64 | EdgeDataStore_linux-x64.deb     | Intel/AMD 64 bit processors |
+| Debian 9 or later arm32 | EdgeDataStore_linux-arm.deb  | ARM32  |
+|  |  | Raspberry PI 2,3,4 (Raspbian)  |
+| |  | BeagleBone|
+| Debian 9 or later arm64 | EdgeDataStore_linux-arm64.deb  | Raspberry PI 3,4 (Ubuntu ARM64 Server) |
+|  |    | Google Coral Dev Board |
+|  |     | Nvidia Nano Jetson |
 
 Additionally, OSIsoft also provides examples of how to create [Docker containers](xref:edgeDocker). For customers who want to build their own custom installers or containers for Linux, tar.gz files are provided with binaries.
 
@@ -52,15 +58,39 @@ To remove the EdgeDataStore program files from a computer, use the Windows Contr
 
 To remove data, configuration and log files, remove the directory C:\ProgramData\OSIsoft\EdgeDataStore\. This will result in deletion of all data stored in the Edge Storage component in addition to configuration and log files.
 
-### Debian 9 or later Linux (Ubuntu  Raspberry PI, BeagleBone, other Debian based Linux distros)
+### Linux installation
+
+1. Enter the sudo command for the appropriate installation kit below:
+
+#### Debian 9 or later x64	(Intel/AMD 64 bit processors)
 
 You must have administrative privileges to install the software, for example root or sudo privilege. The following examples assume a user with permission to use sudo.
 
 - Open a terminal window and type:
 
 ```bash
-sudo apt install ./EdgeDataStore_linux-<either x64, arm, or arm64 depending upon processor>.deb
+sudo apt install ./EdgeDataStore_linux-x64.deb
 ```
+
+#### Debian 9 or later arm32 (ARM32, Raspberry PI 2,3,4: Raspbian, BeagleBone)
+You must have administrative privileges to install the software, for example root or sudo privilege. The following examples assume a user with permission to use sudo.
+
+- Open a terminal window and type:
+
+```bash
+sudo apt install ./EdgeDataStore_linux-arm.deb
+```
+
+#### Debian 9 or later arm64 (Raspberry PI 3,4: Ubuntu ARM64 Server, Google Coral Dev Board, Nvidia Nano Jetson)
+You must have administrative privileges to install the software, for example root or sudo privilege. The following examples assume a user with permission to use sudo.
+
+- Open a terminal window and type:
+
+```bash
+sudo apt install ./EdgeDataStore_linux-arm64.deb
+```
+
+2. Complete the following steps for all types of Linux installations:
 
 ![alt text](https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/LinuxInstall1.jpg "Linux Installation")
 
