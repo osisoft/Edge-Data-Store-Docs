@@ -6,7 +6,7 @@ uid: installationOverview
 
 ## Overview
 
-Edge Data Store is supported on a variety of platforms and processors. OSIsoft provides ready to use install kits for the following platforms:
+Edge Data Store is supported on a variety of platforms and processors. OSIsoft provides ready to use installation kits for the following operating systems and processors. Installation instructions for each are providing in the following sections:
 
 | Operating System | Installation Kit | Processor(s) |
 |-------------------|----------------------------------|-------------|
@@ -60,9 +60,9 @@ To remove data, configuration and log files, remove the directory C:\ProgramData
 
 ### Linux installation
 
-1. Enter the sudo command for the appropriate installation kit below:
+1. Execute the sudo command for the installation kit appropriate to your operating system and processor below:
 
-#### Debian 9 or later x64	(Intel/AMD 64 bit processors)
+#### Debian 9 or later (Intel/AMD 64 bit processors)
 
 You must have administrative privileges to install the software, for example root or sudo privilege. The following examples assume a user with permission to use sudo.
 
@@ -72,7 +72,7 @@ You must have administrative privileges to install the software, for example roo
 sudo apt install ./EdgeDataStore_linux-x64.deb
 ```
 
-#### Debian 9 or later arm32 (ARM32, Raspberry PI 2,3,4: Raspbian, BeagleBone)
+#### Debian 9 or later (ARM32, Raspberry PI 2,3,4: Raspbian, BeagleBone)
 You must have administrative privileges to install the software, for example root or sudo privilege. The following examples assume a user with permission to use sudo.
 
 - Open a terminal window and type:
@@ -81,7 +81,7 @@ You must have administrative privileges to install the software, for example roo
 sudo apt install ./EdgeDataStore_linux-arm.deb
 ```
 
-#### Debian 9 or later arm64 (Raspberry PI 3,4: Ubuntu ARM64 Server, Google Coral Dev Board, Nvidia Nano Jetson)
+#### Debian 9 or later (Raspberry PI 3,4: Ubuntu ARM64 Server, Google Coral Dev Board, Nvidia Nano Jetson)
 You must have administrative privileges to install the software, for example root or sudo privilege. The following examples assume a user with permission to use sudo.
 
 - Open a terminal window and type:
