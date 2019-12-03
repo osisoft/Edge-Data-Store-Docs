@@ -2,11 +2,13 @@
 uid: analyticsQuickStart
 ---
 
+ANGELA PRODUCTION
+
 # Edge Data Store analytics quick start
 
 This topic provides a quick start for a very simple analytic that can written using the Edge Data Store. The intended input device for this example is a Modbus TCP or other sensor that outputs 4 boolean values. The normal range of operation is that the values are neither all true or all false. If all values are true, the exception condition High is triggered. If all values are false, the exception condition Low is triggered. Any other combination of boolean values is Normal. Three analytic streams are created to track these changes. The ValueRangeHigh stream is 1 when High and 0 when anything else. The ValueRangeLow stream is -1 when Low and 0 when anything else. The ValueRangeOut stream is -1 when Low, 0 when Normal, and 1 when High.
 
- This example assumes the Edge Data Store was installed with the default port (5590).
+ The following example assumes the Edge Data Store was installed with the default port (5590):
 
 ```csharp
 using System;
