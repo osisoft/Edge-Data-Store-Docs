@@ -2,7 +2,7 @@
 uid: EdgeDataStoreOverview
 ---
 
-# Edge Data Store overview
+# Overview
 
 Edge Data Store is an embedded data server that runs on Linux and Windows. It is designed for small devices and you can install and run it on 64-bit Intel/AMD compatible and 32-bit ARM v7/v8 compatible chips. It offers REST programming, configuration, administrative interfaces, and a command line tool that can be used for configuring and administering EDS.
 

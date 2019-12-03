@@ -2,9 +2,10 @@
 uid: installationOverview
 ---
 
-# Installation of Edge Data Store
+# Installation
 
-## Overview
+You can install Edge Data Store in one of two ways:
+
 
 Edge Data Store is supported on a variety of platforms and processors. OSIsoft provides ready to use installation kits for the following operating systems and processors. Installation instructions for each are providing in the following sections:
 
@@ -171,3 +172,7 @@ If the installation was successful, a JSON copy of the default system configurat
 ```
 
 If you receive an error, wait a few seconds and try it again. On a device with limited processor, memory, and slow storage, it may take some time before the Edge Data Store is fully initialized and running for the first time.
+=======
+- Using an install kit. For more information, see [Install Edge Data Store](xref:InstallEdgeDataStore).
+- Using Docker containers. For more information, see [Docker](xref:edgeDocker).
+

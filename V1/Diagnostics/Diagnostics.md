@@ -2,7 +2,7 @@
 uid: EdgeDataStoreDiagnostics
 ---
 
-# Edge Data Store diagnostics
+# Diagnostics configuration
 
 Edge Data Store and its components produce diagnostics data which is stored locally in the Storage component, and may be queried locally or egressed to PI Web API endpoints or the OSIsoft Cloud Services or both.
 
