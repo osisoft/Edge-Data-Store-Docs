@@ -10,7 +10,11 @@ protocols on different hardware platforms.
 
 Mean and Maximum CPU use and Memory (Working Set) are provided. The values are averaged over one minute for the maximum computations, so it is possible there may be momentary spikes in memory or CPU use. These tables are provided as an approximate guideline to what might be expected as an Edge Data Store platform is designed. It is strongly recommended that before production deployment of Edge Data Store performance testing is conducted.
 
-## OMF Ingress Performance
+## Ingress Performance
+
+Data in the Edge Data Store can be ingressed using OMF, OPC UA or Modbus TCP. Each of these methods has different performance profiles, so they are treated separately.
+
+### OMF Ingress Performance
 
 |ProgramSize|ComputerType|Storage|Processor|OS|Cores|TestType|EventsPerSecond|StreamCount|MeanWorkingSetMB|MaxWorkingSetMB|MeanCPU%|MaxCPU%|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|
@@ -27,7 +31,7 @@ Mean and Maximum CPU use and Memory (Working Set) are provided. The values are a
 |Large|Intel i5|HDD|X64|Windows 10|4|omf|1002|1006|353|404|7|7|
 |Large|Intel Celeron|EMMC|X64|Windows 10|4|omf|1919|3006|717|858|58|69|
 
-## Modbus TCP Ingress Performance
+### Modbus TCP Ingress Performance
 
 |ProgramSize|ComputerType|Storage|Processor|OS|Cores|TestType|EventsPerSecond|StreamCount|MeanWorkingSetMB|MaxWorkingSetMB|MeanCPU%|MaxCPU%|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|
@@ -37,7 +41,7 @@ Mean and Maximum CPU use and Memory (Working Set) are provided. The values are a
 |Medium|Raspberry PI 3|SD Card|ARM32|Linux|4|modbus|255|305|156|205|22|28|
 |Large|Xeon|SSD|X64|Linux|4|modbus|2953|3005|725|943|15|31|
 
-## OPC UA Ingress Performance
+### OPC UA Ingress Performance
 
 |ProgramSize|ComputerType|Storage|Processor|OS|Cores|TestType|EventsPerSecond|StreamCount|MeanWorkingSetMB|MaxWorkingSetMB|MeanCPU%|MaxCPU%|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|
@@ -53,3 +57,17 @@ Mean and Maximum CPU use and Memory (Working Set) are provided. The values are a
 |Large|Intel Celeron|HDD|X64|Linux|2|opcua|89|103|190|213|14|16|
 |Large|Intel i5|HDD|X64|Windows 10|4|opcua|8|13|116|148|1|2|
 |Large|Xeon|SSD|X64|Linux|4|opcua|2991|3003|754|1046|17|34|
+
+## Periodic Egress Performance
+
+An important part of periodic egress performance is the amount of network bandwidth available between the device hosting the Edge Data Store and the PI Web API or OCS endpoint. The performance numbers below reflect having access to a Gigabit Local Area Network connection and a high speed connection to the Internet. If the device is located in an location with limited network bandwidth a lower level of performance can be expected.
+
+Egress has a much lower performance impact on Edge Data Store than Ingress. Generally the peformance impact of egress on memory and CPU use is generally only a small percentage of the CPU and memory use of Ingress, so is not a major factor in system design.
+
+### Periodic Egress Performance to PI Web API
+
+Performance testing of Periodic Egress between Edge Data Store and PI Web API was done with a 1 GB network connection between the Edge Data Store computer and PI Web API with PI Web API hosted on a Xeon based server class machine that also included a local PI Data Archive installation. The Edge Data Store test device was set to backfill, and several million events were sent to the PI Web API. In all cases egress performance exceeded 10,000 events per second, which exceeds the maximum ingress rate for Edge Data Store of 3,000 events per second. In addition extended tests for several weeks with an egress rate of 3,000 events per second. 
+
+### Periodic Egress Performance to OSIsoft Cloud Services (OCS)
+
+Performance testing of Periodic Egress between Edge Data Store and OCS was done with a 1 GB network connection between the Edge Data Store computer and a high speed Internet connection. The Edge Data Store test device was set to backfill, and several million events were sent to OCS. In all cases egress performance exceeded 10,000 events per second, which exceeds the maximum ingress rate for Edge Data Store of 3,000 events per second. In addition extended tests for several weeks with a lower egress rate.
