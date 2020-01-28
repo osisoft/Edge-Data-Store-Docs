@@ -76,6 +76,5 @@ uid: index
     - [Units of measure](xref:unitsOfMeasure)
     - [Compression](xref:sdsCompression)
     - [Searching](xref:sdsSearching)
-    - [Stream metadata and tags](xref:sdsStreamExtra)
   - [EdgeCmd commands](xref:EdgecmdCommands)
   - [Release Notes](xref:releaseNotes)

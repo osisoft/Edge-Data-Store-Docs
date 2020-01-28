@@ -10,6 +10,14 @@ protocols on different hardware platforms.
 
 Mean and Maximum CPU use and Memory (Working Set) are provided. The values are averaged over one minute for the maximum computations, so it is possible there may be momentary spikes in memory or CPU use. These tables are provided as an approximate guideline to what might be expected as an Edge Data Store platform is designed. It is strongly recommended that before production deployment of Edge Data Store performance testing is conducted.
 
+## Edge Data Store Platforms
+
+For this release of Edge Data Store performance measurements platforms have been divided into three categories with the maximum supported Ingress rate for each category:
+
+* Small devices (e.g. 1 core CPU, 512 MB RAM): 30 events / sec
+* Medium devices (e.g. 1 - 2 core CPU, 1 – 2 GB RAM): 300 events / sec
+* Large devices (e.g. 2 – 4 core CPU, 4 GB RAM and larger): 3,000 events / sec
+
 ## Ingress Performance
 
 Data in the Edge Data Store can be ingressed using OMF, OPC UA or Modbus TCP. Each of these methods has different performance profiles, so they are treated separately.
@@ -66,7 +74,7 @@ Egress has a much lower performance impact on Edge Data Store than Ingress. Gene
 
 ### Periodic Egress Performance to PI Web API
 
-Performance testing of Periodic Egress between Edge Data Store and PI Web API was done with a 1 GB network connection between the Edge Data Store computer and PI Web API with PI Web API hosted on a Xeon based server class machine that also included a local PI Data Archive installation. The Edge Data Store test device was set to backfill, and several million events were sent to the PI Web API. In all cases egress performance exceeded 10,000 events per second, which exceeds the maximum ingress rate for Edge Data Store of 3,000 events per second. In addition extended tests for several weeks with an egress rate of 3,000 events per second. 
+Performance testing of Periodic Egress between Edge Data Store and PI Web API was done with a 1 GB network connection between the Edge Data Store computer and PI Web API with PI Web API hosted on a Xeon based server class machine that also included a local PI Data Archive installation. The Edge Data Store test device was set to backfill, and several million events were sent to the PI Web API. In all cases egress performance exceeded 10,000 events per second, which exceeds the maximum ingress rate for Edge Data Store of 3,000 events per second. In addition extended tests for several weeks with an egress rate of 3,000 events per second.
 
 ### Periodic Egress Performance to OSIsoft Cloud Services (OCS)
 
