@@ -10,7 +10,7 @@ Mean and Maximum CPU use and Memory (Working Set) are provided. The values are a
 
 ## OMF Ingress Performance
 
-|ProgramSize|ComputerType|Storage|Processor|OS|Cores|TestType|EventsPerSecond|StreamCount|MeanWorkingSetMB|MaxWorkingSetMB|MeanCPU%|MaxCPU%|
+|Program Size|Computer Type|Storage|Processor|OS|Cores|Test Type|Events Per Second|Stream Count|Mean Working Set (MB)|Max Working Set (MB)|Mean CPU (%)|Max CPU (%)|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|
 |Small|BeagleBone|SD Card|ARM32|Linux|1|omf|2|36|109|122|7|91|
 |Small|BeagleBone|SD Card|ARM32|Linux|1|omf|6|56|110|124|13|92|
@@ -27,7 +27,7 @@ Mean and Maximum CPU use and Memory (Working Set) are provided. The values are a
 
 ## Modbus TCP Ingress Performance
 
-|ProgramSize|ComputerType|Storage|Processor|OS|Cores|TestType|EventsPerSecond|StreamCount|MeanWorkingSetMB|MaxWorkingSetMB|MeanCPU%|MaxCPU%|
+|Program Size|Computer Type|Storage|Processor|OS|Cores|Test Type|Events Per Second|Stream Count|Mean Working Set (MB)|Max Working Set (MB)|Mean CPU (%)|Max CPU (%)|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|
 |Small|BeagleBone|SD Card|ARM32|Linux|1|modbus|1|15|112|118|20|62|
 |Small|BeagleBone|SD Card|ARM32|Linux|1|modbus|8|35|112|126|65|83|
@@ -37,7 +37,7 @@ Mean and Maximum CPU use and Memory (Working Set) are provided. The values are a
 
 ## OPC UA Ingress Performance
 
-|ProgramSize|ComputerType|Storage|Processor|OS|Cores|TestType|EventsPerSecond|StreamCount|MeanWorkingSetMB|MaxWorkingSetMB|MeanCPU%|MaxCPU%|
+|Program Size|Computer Type|Storage|Processor|OS|Cores|Test Type|Events Per Second|Stream Count|Mean Working Set (MB)|Max Working Set (MB)|Mean CPU (%)|Max CPU (%)|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|
 |Small|BeagleBone|SD Card|ARM32|Linux|1|opcua|52|53|130|146|77|95|
 |Small|BeagleBone|SD Card|ARM32|Linux|1|opcua|52|53|131|152|78|94|
