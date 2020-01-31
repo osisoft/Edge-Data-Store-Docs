@@ -4,11 +4,11 @@ uid: EdgeDataStoreSupport
 
 # Edge Data Store support
 
-## Edge Data Store documentation feedback
+## Documentation feedback
 
 If you have questions, comments, or other feedback about the Edge Data Store documentation, send an email to [Documentation](mailto:documentation@osisoft.com?subject=[DocFX]%20Edge%20Data%20Store).
 
-## Edge Data Store general feedback
+## General feedback
 
 If you have questions, comments, issues, and other feedback about the Edge Data Store software, send an email to [Edge support](mailto:edgesupport@osisoft.com).
 
