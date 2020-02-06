@@ -20,7 +20,7 @@ You must have administrative privileges to run the installer. Complete the follo
     Alternatively, you can start the installer from the command line with the following command:
 
     ```bash
-    msiexec /i EdgeDataStore.msi PORT=5590 INSTALLFOLDER="C:\otherdir"
+    msiexec /i EdgeDataStore.msi PORT=5590 INSTALLFOLDER=<file_path>
     ```
 
     **Note:** You can use the optional INSTALLFOLDER parameter (must be in all caps) to specify an alternate location for Edge Data Store's binary components. The default value is "C:\Program Files\OSISoft\EdgeDataStore". OSIsoft recommends you use the default value.
