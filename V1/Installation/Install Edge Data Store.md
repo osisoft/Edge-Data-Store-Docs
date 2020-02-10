@@ -17,13 +17,13 @@ You must have administrative privileges to run the installer. Complete the follo
 1. Copy the _EdgeDataStore.msi_ file to the file system of the device.
 2. To start the installer, double-click the _EdgeDataStore.msi_ file in Windows Explorer.
 
-    Alternatively, you can start the installer from the command line with the following command:
-
+    **Note:** To specify an alternate location for Edge Data Store's binary components from the default location of "C:\Program Files\OSISoft\EdgeDataStore", enter the following command in the command prompt and update the <file_path> with the path to the directory where you want to install the files. OSIsoft recommends you use the default value.
+    
     ```bash
     msiexec /i EdgeDataStore.msi PORT=5590 INSTALLFOLDER=<file_path>
     ```
 
-    **Note:** You can use the optional INSTALLFOLDER parameter (must be in all caps) to specify an alternate location for Edge Data Store's binary components. The default value is "C:\Program Files\OSISoft\EdgeDataStore". OSIsoft recommends you use the default value.
+    **Note:** INSTALLFOLDER must be in all caps as shown in the preceding example.
 
 3. In the OSIsoft Edge Data Store Setup window, click **Next**.
 4. Optional: Change the install folder and port number (default 5590) and select the Modbus or OpcUa component or both.
