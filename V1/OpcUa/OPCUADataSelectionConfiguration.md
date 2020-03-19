@@ -79,7 +79,7 @@ The following example shows the HTTPS request using curl (run this command from 
 **Note:** During installation, you can add a single OPC UA EDS adapter named OpcUA1. The following example uses this component name.
 
 ```bash
-curl -v -d "@DataSelection.config.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/OpcUa1/DataSelection"
+curl -v -d "@DataSelection.config.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/DataSelection
 ```
 
 ## Parameters for OPC UA data selection
