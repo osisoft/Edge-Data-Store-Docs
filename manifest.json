@@ -126,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "V1/CommandLine/Configure Edge Data Store components.html",
-          "hash": "B+1JXAk1w6zex5/cqUbeHQ=="
+          "hash": "BufMBdxhiwRkFgPVDBuQHw=="
         }
       },
       "is_incremental": false,
@@ -1766,6 +1766,13 @@
         "full_build_reason_code": "NoAvailableBuildCache"
       },
       "processors": {
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
         "TocDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
@@ -1777,13 +1784,6 @@
           "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 118,
-          "skipped_file_count": 0
-        },
-        "ResourceDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build",
-          "total_file_count": 0,
           "skipped_file_count": 0
         }
       }
