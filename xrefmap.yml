@@ -143,7 +143,7 @@ references:
   name: OCS egress quick start
   href: V1/Overview/OCSEgressQuickStart.html
 - uid: omfOverview
-  name: OSIsoft Message Format (OMF)
+  name: OSIsoft Message Format
   href: V1/OMF/OMFOverview.html
 - uid: omfQuickStart
   name: OMF quick start
