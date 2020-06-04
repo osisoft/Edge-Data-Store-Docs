@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Diagnostics configuration </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Diagnostics configuration ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../V1.1/index.html" width="46">
+                <img id="logo" src="../../V1.1/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge System"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="EdgeDataStoreDiagnostics1-0">
+<h1 id="diagnostics-configuration" sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="5" sourceendlinenumber="5">Diagnostics configuration</h1>
+
+<p sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="7" sourceendlinenumber="7">Edge Data Store and its components produce performance and system data for diagnostic purposes which is stored locally in the Storage component, and may be queried locally or egressed to PI Web API endpoints or the OSIsoft Cloud Services or both. Diagnostic data is always produced and saved; it cannot be disabled.</p>
+<p sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="9" sourceendlinenumber="9">Diagnostic data is stored within the <em>diagnostics</em> namespace in Edge Storage. Local access to this data is available through SDS. For more information, see <a class="xref" href="../SDS/Reading_Data_1-0.html" data-raw-source="[Reading data](xref:sdsReadingData1-0)" sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="9" sourceendlinenumber="9">Reading data</a>.</p>
+<h2 id="egress-diagnostics-data-through-periodicegressendpoints" sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="11" sourceendlinenumber="11">Egress diagnostics data through PeriodicEgressEndpoints</h2>
+<p sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="13" sourceendlinenumber="13">To egress diagnostics related data, Specify <code>diagnostics</code> as the NamespaceId in the periodic egress endpoint configuration. For details and instructions, see <a class="xref" href="../Egress/Egress_1-0.html" data-raw-source="[Data egress configuration](xref:egress1-0)" sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="13" sourceendlinenumber="13">Data egress configuration</a>.</p>
+<h2 id="edge-data-store-diagnostics" sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="15" sourceendlinenumber="15">Edge Data Store diagnostics</h2>
+<p sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="17" sourceendlinenumber="18">The Diagnostics.System dynamic type includes these values which are logged in a stream with the ID System.Diagnostics.
+This diagnostic stream contains system-level information related to the host platform that Edge Data Store is running on.</p>
+<table sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="20" sourceendlinenumber="35">
+<thead>
+<tr>
+<th>Type</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>timestamp </td>
+<td>Timestamp of event </td>
+</tr>
+<tr>
+<td>int</td>
+<td>ProcessIdentifier </td>
+<td>Process id of the host process </td>
+</tr>
+<tr>
+<td>string</td>
+<td>StartTime </td>
+<td>When the host process started </td>
+</tr>
+<tr>
+<td>long</td>
+<td>WorkingSet </td>
+<td>Amount of physical memory, in bytes, allocated for the host process </td>
+</tr>
+<tr>
+<td>double</td>
+<td>TotalProcessorTime (uom=s) </td>
+<td>Total processor time for the host process expressed in seconds </td>
+</tr>
+<tr>
+<td>double</td>
+<td>TotalUserProcessorTime (uom=s) </td>
+<td>User processor time for the host process expressed in seconds </td>
+</tr>
+<tr>
+<td>double</td>
+<td>TotalPrivilegedProcessorTime (uom=s) </td>
+<td>Privileged processor time for the host process expressed in seconds </td>
+</tr>
+<tr>
+<td>int</td>
+<td>ThreadCount</td>
+<td>Number of threads in the host process</td>
+</tr>
+<tr>
+<td>int</td>
+<td>HandleCount </td>
+<td>Number of handles opened by the host process </td>
+</tr>
+<tr>
+<td>double</td>
+<td>ManagedMemorySize (uom=MB) </td>
+<td>Number of bytes currently thought to be allocated in managed memory </td>
+</tr>
+<tr>
+<td>double</td>
+<td>PrivateMemorySize (uom=MB) </td>
+<td>Amount of paged memory, in bytes, allocated for the host process </td>
+</tr>
+<tr>
+<td>double</td>
+<td>PeakPagedMemorySize (uom=MB) </td>
+<td>Maximum amount of memory in the virtual memory paging file, in bytes, used by the host process. <br><br><strong>Note:</strong> On Linux platiforms, this value is always reported as 0.</td>
+</tr>
+<tr>
+<td>double</td>
+<td>StorageTotalSize (uom=MB) </td>
+<td>Total size of the storage medium in use by the Edge Data Store </td>
+</tr>
+<tr>
+<td>double</td>
+<td>StorageFreeSpace (uom=MB) </td>
+<td>Free space available </td>
+</tr>
+</tbody>
+</table>
+<h2 id="eds-adapter-diagnostics" sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="37" sourceendlinenumber="37">EDS adapter diagnostics</h2>
+<p sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="39" sourceendlinenumber="39">Each EDS adapter of the Edge Data Store produces its own diagnostics streams.</p>
+<h3 id="stream-count" sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="41" sourceendlinenumber="41">Stream count</h3>
+<p sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="43" sourceendlinenumber="43">The Diagnostics.StreamCountEvent dynamic type includes these values, which are logged in a stream with the id {componentid}.StreamCount. The stream count and type count include only types and streams created for sequential data received from a data source.</p>
+<table sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="45" sourceendlinenumber="49">
+<thead>
+<tr>
+<th>Type</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>timestamp</td>
+<td>Timestamp of event</td>
+</tr>
+<tr>
+<td>int</td>
+<td>StreamCount</td>
+<td>Number of streams created by the adapter instance</td>
+</tr>
+<tr>
+<td>int</td>
+<td>TypeCount</td>
+<td>Number of types created by the adapter instance</td>
+</tr>
+</tbody>
+</table>
+<h3 id="io-rate" sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="51" sourceendlinenumber="51">IO rate</h3>
+<p sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="53" sourceendlinenumber="53">The Diagnostics.Adapter.IORate dynamic type includes these values, which are logged in a stream with the id {componentid}.IORate. IO rate includes only sequential data collected from a data source.</p>
+<table sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="55" sourceendlinenumber="58">
+<thead>
+<tr>
+<th>Type</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>timestamp</td>
+<td>Timestamp of event</td>
+</tr>
+<tr>
+<td>double</td>
+<td>IORate</td>
+<td>10-minute rolling average of data rate (streams/second)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="error-rate" sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="60" sourceendlinenumber="60">Error rate</h3>
+<p sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="62" sourceendlinenumber="62">The Diagnostics.Adapter.ErrorRate dynamic type includes these values, and are logged in a stream with the id {componentid}.ErrorRate.</p>
+<table sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="64" sourceendlinenumber="67">
+<thead>
+<tr>
+<th>Type</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>timestamp</td>
+<td>Timestamp of event</td>
+</tr>
+<tr>
+<td>double</td>
+<td>ErrorRate</td>
+<td>10-minute rolling average of error rate (streams/second)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="edge-storage-diagnostics" sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="69" sourceendlinenumber="69">Edge Storage diagnostics</h2>
+<p sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="71" sourceendlinenumber="71">The Storage component of Edge Data Store produces the following diagnostics streams.</p>
+<h3 id="storagedefaultdefaultcounts" sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="73" sourceendlinenumber="73">Storage.default.default.Counts</h3>
+<p sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="75" sourceendlinenumber="75">The Storage.default.default.Counts stream includes counts of the types, streams, and stream views of the default namespace.</p>
+<table sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="77" sourceendlinenumber="82">
+<thead>
+<tr>
+<th>Type</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>timestamp</td>
+<td>Timestamp of event</td>
+</tr>
+<tr>
+<td>integer</td>
+<td>TypeCount</td>
+<td>Count of types</td>
+</tr>
+<tr>
+<td>integer</td>
+<td>StreamCount</td>
+<td>Count of streams</td>
+</tr>
+<tr>
+<td>integer</td>
+<td>StreamViewCount</td>
+<td>Count of stream views</td>
+</tr>
+</tbody>
+</table>
+<h3 id="storagedefaultdiagnosticscounts" sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="84" sourceendlinenumber="84">Storage.default.diagnostics.Counts</h3>
+<p sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="86" sourceendlinenumber="86">The Storage.default.default.Counts stream includes counts of the types, streams, and stream views of the diagnostics namespace.</p>
+<table sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="88" sourceendlinenumber="93">
+<thead>
+<tr>
+<th>Type</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>timestamp</td>
+<td>Timestamp of event</td>
+</tr>
+<tr>
+<td>integer</td>
+<td>TypeCount</td>
+<td>Count of types</td>
+</tr>
+<tr>
+<td>integer</td>
+<td>StreamCount</td>
+<td>Count of streams</td>
+</tr>
+<tr>
+<td>integer</td>
+<td>StreamViewCount</td>
+<td>Count of stream views</td>
+</tr>
+</tbody>
+</table>
+<h3 id="storagetotalcounts" sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="95" sourceendlinenumber="95">Storage.Total.Counts</h3>
+<p sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="97" sourceendlinenumber="97">The Storage.Totals.Counts stream includes counts of the types, streams, and stream views of all namespaces of the storage component.</p>
+<table sourcefile="V1/Diagnostics/Diagnostics_1-0.md" sourcestartlinenumber="99" sourceendlinenumber="104">
+<thead>
+<tr>
+<th>Type</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>timestamp</td>
+<td>Timestamp of event</td>
+</tr>
+<tr>
+<td>integer</td>
+<td>TypeCount</td>
+<td>Count of types</td>
+</tr>
+<tr>
+<td>integer</td>
+<td>StreamCount</td>
+<td>Count of streams</td>
+</tr>
+<tr>
+<td>integer</td>
+<td>StreamViewCount</td>
+<td>Count of stream views</td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/Diagnostics/Diagnostics_1-0.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>© 2020 - OSIsoft, LLC.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

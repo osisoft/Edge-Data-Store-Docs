@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Linux and Windows platform differences </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Linux and Windows platform differences ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../V1.1/index.html" width="46">
+                <img id="logo" src="../../V1.1/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge System"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="linuxWindows">
+<h1 id="linux-and-windows-platform-differences" sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="5" sourceendlinenumber="5">Linux and Windows platform differences</h1>
+
+<p sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="7" sourceendlinenumber="7">Edge Data Store is available on both Windows and Linux platforms and it works the same way on both platforms. There are a few differences to be aware of. Files are stored in different locations based on the platform and Linux systems have a file descriptor limit that can affect EDS function.</p>
+<h2 id="file-locations" sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="9" sourceendlinenumber="9">File locations</h2>
+<h3 id="windows" sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="11" sourceendlinenumber="11">Windows</h3>
+<p sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="13" sourceendlinenumber="13">Program binaries are located in the <em>C:\Program Files\OSIsoft\EdgeDataStore</em> directory by default. For information about changing this location, see <a class="xref" href="../Installation/Install%20Edge%20Data%20Store.html" data-raw-source="[Install Edge Data Store](xref:InstallEdgeDataStore)" sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="13" sourceendlinenumber="13">Install Edge Data Store</a>. </p>
+<p sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="15" sourceendlinenumber="15">Configuration, log, and data files are placed under <em>C:\ProgramData\OSIsoft\EdgeDataStore</em>. This is not configurable. If you unistall EDS, this folder structure is not automatically removed.  For information about clearing these files, see <a class="xref" href="../Installation/Uninstall%20Edge%20Data%20Store.html" data-raw-source="[Uninstall Edge Data Store](xref:UninstallEdgeDataStore)" sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="15" sourceendlinenumber="15">Uninstall Edge Data Store</a>.</p>
+<p sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="17" sourceendlinenumber="17">Key material for encrypted secrets of configuration files is stored using the Windows DPAPI in a secure Windows store. This is not configurable.</p>
+<h3 id="linux" sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="19" sourceendlinenumber="19">Linux</h3>
+<p sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="21" sourceendlinenumber="21">File locations for Linux cannot be configured. </p>
+<p sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="23" sourceendlinenumber="23">Program binaries are located in the /opt/OSIsoft/EdgeDataStore directory. Configuration, log, and data files are placed under <em>/usr/share/OSIsoft/EdgeDataStore</em>. If you uninstall EDS, this folder structure is not automatically removed. For information about clearing these files, see <a class="xref" href="../Installation/Uninstall%20Edge%20Data%20Store.html" data-raw-source="[Uninstall Edge Data Store](xref:UninstallEdgeDataStore)" sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="23" sourceendlinenumber="23">Uninstall Edge Data Store</a>.</p>
+<p sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="25" sourceendlinenumber="25">Key material for encrypted secrets of configuration files is stored using limited access files under <em>/usr/share/OSIsoft/EdgeDataStore</em>. </p>
+<p sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="27" sourceendlinenumber="27">When the Debian installer is used, Edge Data Store is installed using the service identity osisoft.edgedatastore.service. If you need to restart the service from the Linux command line, use the following command:</p>
+<pre sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="29" sourceendlinenumber="31"><code class="lang-bash">sudo systemctl restart osisoft.edgedatastore.service
+</code></pre><h2 id="file-descriptors-handles" sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="33" sourceendlinenumber="33">File descriptors (handles)</h2>
+<p sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="35" sourceendlinenumber="35">When installed on a Linux operating system, EDS is configured with a file descriptor limit that may be higher than the corresponding limit for most processes. The limit is controlled by the <em>LimitNOFILE</em> variable in the file <em>/lib/systemd/system/osisoft.edgedatastore.service</em>.</p>
+<p sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="37" sourceendlinenumber="37">Linux operating systems impose a limit on the number of file descriptors used in a process. The number of open file descriptors is directly related to the number of streams used in EDS (for example, data ingress). Every EDS stream uses two file descriptors. EDS will no longer function properly when it reaches the limit of available file descriptors. To ensure EDS functions properly, it is necessary to either limit the number of streams used in EDS or increase the maximum file descriptors allowed per process.</p>
+<p sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="39" sourceendlinenumber="39">File descriptor usage differs on different Linux operating systems and devices, and may differ slightly from execution to execution, so it is important to understand your system and adjust accordingly.</p>
+<p sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="41" sourceendlinenumber="41">For example, when tested on a Raspberry Pi 3 Model B+ using a Raspbian operating system, an installation of EDS with no user-defined streams had an average of 424 open file descriptors. The same installation with 250 streams had an average of 932 open file descriptors. The file descriptor limit per process for the operating system used was 1024.</p>
+<p sourcefile="V1/LinuxWindows/LinuxWindows.md" sourcestartlinenumber="43" sourceendlinenumber="43">Windows has an object called a handle that is used in much the same way that Linux uses file descriptors. However, Windows does not have a limitation on the number of handles.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/LinuxWindows/LinuxWindows.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>© 2020 - OSIsoft, LLC.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

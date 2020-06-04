@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SDS quick start </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SDS quick start ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../V1.1/index.html" width="46">
+                <img id="logo" src="../../V1.1/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge System"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="sdsQuickStart1-0">
+<h1 id="sds-quick-start">SDS quick start</h1>
+
+<p>Create a custom application using Sequential Data Store (SDS) REST API to send data to Edge Data Store from sources that cannot use Modbus or OPC UA protocols. </p>
+<p>The following diagram depicts the data flow from an SDS custom application into EDS:</p>
+<p><img src="https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/SDSApplicationExample.jpg" alt="SDS Application Example" title="SDS Application Example"></p>
+<p>The SDS application collects data from a data source and sends it to the EDS endpoint. The EDS endpoint sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or OSIsoft Cloud Services. All data from all sources on EDS (Modbus TCP, OPC UA, OMF, SDS) can be read using the SDS REST APIs on the local device, in the default tenant and the default namespace. </p>
+<p>To get started using the SDS REST API to ingress data into EDS, create an SDS type and stream and then write data events to the SDS stream. Use the Sequential Data Store (SDS) REST API to read the data back from EDS.</p>
+<h2 id="create-an-sds-type">Create an SDS type</h2>
+<p>Complete the following steps to create an SDS type that describes the format of the data to be stored in a container:</p>
+<ol>
+<li><p>Create a JSON file using the example below:</p>
+<pre><code class="lang-json">{
+    &quot;Id&quot;: &quot;Simple&quot;,
+    &quot;Name&quot;: &quot;Simple&quot;,
+    &quot;SdsTypeCode&quot;: 1,
+    &quot;Properties&quot;: [
+        {
+            &quot;Id&quot;: &quot;Time&quot;,
+            &quot;Name&quot;: &quot;Time&quot;,
+            &quot;IsKey&quot;: true,
+            &quot;SdsType&quot;: {
+                &quot;SdsTypeCode&quot;: 16
+            }
+        },
+        {
+            &quot;Id&quot;: &quot;Measurement&quot;,
+            &quot;Name&quot;: &quot;Measurement&quot;,
+            &quot;SdsType&quot;: {
+                &quot;SdsTypeCode&quot;: 14
+            }
+        }
+    ]
+}
+</code></pre><p><strong>Note:</strong> The data to be written is a timestamp and numeric value. It is indexed by a timestamp, and the numeric value that will be stored is a 64-bit floating point value. </p>
+</li>
+<li><p>Save the JSON file the name <em>SDSCreateType.json</em>.</p>
+</li>
+<li><p>Run the following curl script from the directory where the file is located:</p>
+<pre><code class="lang-bash">curl -d &quot;@SDSCreateType.json&quot; -H &quot;Content-Type: application/json&quot;  -X POST   http://localhost:5590/api/v1/tenants/default/namespaces/default/types/Simple
+</code></pre><p>When this script completes successfully, an SDS type with the same name is created on the server. You can create any number of containers from a single type, as long as they use a timestamp as an index and a 64-bit floating point value. The Type definition needs to be sent first before you send data with a custom application. It does not cause an error to resend the same definition at a later time.</p>
+</li>
+</ol>
+<h2 id="create-an-sds-stream">Create an SDS stream</h2>
+<p>Complete the following steps to create an SDS stream: </p>
+<ol>
+<li><p>Create a JSON file using the example below:</p>
+<pre><code class="lang-json">{
+    &quot;Id&quot;: &quot;Simple&quot;,
+    &quot;Name&quot;: &quot;Simple&quot;,
+    &quot;TypeId&quot;: &quot;Simple&quot;
+}
+</code></pre><p><strong>Note:</strong> This stream references the type you created earlier. An error occurs if the type does not exist when the stream is created. As with an SDS type, create a stream once before sending data events. Resending the same definition repeatedly does not cause an error.</p>
+</li>
+<li><p>Save the JSON file with the name <em>SDSCreateStream.json</em>.</p>
+</li>
+<li><p>Run the following curl script from the directory where the file is located:</p>
+<pre><code class="lang-bash">curl -d &quot;@SDSCreateStream.json&quot; -H &quot;Content-Type: application/json&quot;  -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/Simple
+</code></pre><p>When this script completes successfully, an SDS stream is created on the server to store data defined by the specified type.</p>
+</li>
+</ol>
+<h2 id="write-data-events-to-the-sds-stream">Write data events to the SDS stream</h2>
+<p>After you create a type and container, use SDS to write data to a stream.</p>
+<ol>
+<li><p>Create a JSON file using the example below:</p>
+<pre><code class="lang-json">[{
+    &quot;Time&quot;: &quot;2017-11-23T17:00:00Z&quot;,
+    &quot;Measurement&quot;: 50.0
+},
+{
+    &quot;Time&quot;: &quot;2017-11-23T18:00:00Z&quot;,
+    &quot;Measurement&quot;: 60.0
+}]
+</code></pre><p><strong>Note:</strong> This example includes two data events that will be stored in the SDS Stream created in the previous steps. For optimal performance, batch SDS values when writing them.</p>
+</li>
+<li><p>Save the JSON file with the name <em>SDSWriteData.json</em>.</p>
+</li>
+<li><p>Run the following curl script from the directory where the file is located:</p>
+<pre><code class="lang-bash">curl -d &quot;@SDSWriteData.json&quot; -H &quot;Content-Type: application/json&quot;  -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/Simple/Data
+</code></pre><p>When this script completes successfully, two values are written to the SDS stream.</p>
+</li>
+</ol>
+<h2 id="read-last-data-written-using-sds">Read last data written using SDS</h2>
+<p>Use the SDS REST API to read back the last data event written to the server. </p>
+<ol>
+<li>Start the curl command line tool.</li>
+<li><p>Run the following curl command to return the last value written:</p>
+<pre><code class="lang-bash">curl http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/MyCustomContainer/Data/Last
+</code></pre><p>Sample output:</p>
+<pre><code class="lang-json">{&quot;Timestamp&quot;: &quot;2019-07-16T15:18:25.9870136Z&quot;, &quot;Value&quot;: 12346.6789}
+</code></pre></li>
+</ol>
+<h2 id="read-a-range-of-data-events-written-using-sds">Read a range of data events written using SDS</h2>
+<p>Use the SDS REST API to read back the a range of data written to the server. </p>
+<ol>
+<li>Start the curl command line tool.</li>
+<li><p>Run the following curl command to return up to 100 values after the startIndex specified:</p>
+<pre><code class="lang-bash">curl &quot;http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/MyCustomContainer/Data?startIndex=2017-07-08T13:00:00Z&amp;count=100&quot;
+</code></pre><p>Sample output:</p>
+<pre><code class="lang-json">[{&quot;Timestamp&quot;: &quot;2019-07-16T15:18:24.9870136Z&quot;,&quot;Value&quot;: 12345.6789}, {&quot;Timestamp&quot;: &quot;2019-07-16T15:18:25.9870136Z&quot;, &quot;Value&quot;: 12346.6789}]
+</code></pre><p>Both values that were entered are returned. This command returns up to 100 values after the specified timestamp.</p>
+</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/Overview/SDSQuickStart_1-0.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>© 2020 - OSIsoft, LLC.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

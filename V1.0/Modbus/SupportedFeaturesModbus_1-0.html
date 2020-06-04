@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Supported features </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Supported features ">
+    <meta name="generator" content="docfx 2.52.0.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="SupportedFeaturesModbus1-0">
+<h1 id="supported-features">Supported features</h1>
+
+<p>The Modbus TCP EDS adapter collects data using register types and then converts the registers into data types. It can apply bitmaps and data conversion to values converted from reading the Modbus TCP devices.</p>
+<h2 id="register-types">Register types</h2>
+<p>The Modbus TCP EDS adapter supports 6 register types, corresponding to 4 function codes (1-4). Since one function code can return two types of registers, either 16-bit or 32-bit depending on the device, either the register type or the register type code is required when configuring the data selection for the adapter. The following table lists all the register types supported in the Modbus TCP EDS adapter.</p>
+<table>
+<thead>
+<tr>
+<th>Register Type</th>
+<th>Register Type Code</th>
+<th>Description</th>
+<th>Function Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coil</td>
+<td>1</td>
+<td>Read Coil Status</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Discrete</td>
+<td>2</td>
+<td>Read Discrete Input Status</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Holding16</td>
+<td>3</td>
+<td>Read 16-bit Holding Registers</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Holding32</td>
+<td>4</td>
+<td>Read 32-bit Holding Registers</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Input16</td>
+<td>6</td>
+<td>Read 16-bit Input Registers</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Input32</td>
+<td>7</td>
+<td>Read 32-bit Input Registers</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>When reading from function codes <strong>1</strong> and <strong>2</strong>, the adapter expects these to be returned as single bits. For function codes <strong>3</strong> and <strong>4</strong>, the adapter expects 16 bits to be returned from devices that contain 16-bit registers and 32 bits to be returned from devices that contain 32-bit registers.</p>
+<h2 id="data-types">Data types</h2>
+<p>The Modbus TCP EDS adapter converts readings from single or multiple registers into the data types specified by the data type code and populates the value into streams created in the Edge Data Store.</p>
+<p>The following table lists all data types with their corresponding type codes supported by the Modbus TCP EDS adapter.</p>
+<table>
+<thead>
+<tr>
+<th>Data type code</th>
+<th>Data type name</th>
+<th>Value type</th>
+<th>Register type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Boolean</td>
+<td>Boolean</td>
+<td>Bool</td>
+<td>0 = false <br> 1 = true</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Int16</td>
+<td>Int16</td>
+<td>Bool/16-bit</td>
+<td>Read 1 Modbus TCP register and interpret as a 16-bit integer. Bytes [BA] read from the device are stored as [AB].</td>
+</tr>
+<tr>
+<td>20</td>
+<td>UInt16</td>
+<td>UInt16</td>
+<td>Bool/16-bit</td>
+<td>Read 1 Modbus TCP register and interpret as an unsigned 16-bit integer. Bytes [BA] read from the device are stored as [AB].</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Int32</td>
+<td>Int32</td>
+<td>16-bit/32-bit</td>
+<td>Read 32 bits from the Modbus TCP device and interpret as a 32-bit integer. Bytes [DCBA] read from the device are stored as [ABCD].</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Int32ByteSwap</td>
+<td>Int32</td>
+<td>16-bit/32-bit</td>
+<td>Read 32 bits from the Modbus TCP device and interpret as a 32-bit integer. Bytes [BADC] read from the device are stored as [ABCD].</td>
+</tr>
+<tr>
+<td>100</td>
+<td>Float32</td>
+<td>Float32</td>
+<td>16-bit/32-bit</td>
+<td>Read 32 bits from the Modbus TCP device and interpret as a 32-bit float. Bytes [DCBA] read from the device are stored as [ABCD].</td>
+</tr>
+<tr>
+<td>101</td>
+<td>Float32ByteSwap</td>
+<td>Float32</td>
+<td>16-bit/32-bit</td>
+<td>Read 32 bits from the Modbus TCP device and interpret as a 32-bit float. Bytes [BADC] read from the device are stored as [ABCD].</td>
+</tr>
+<tr>
+<td>110</td>
+<td>Float64</td>
+<td>Float64</td>
+<td>16-bit/32-bit</td>
+<td>Read 64 bits from the Modbus TCP device and interpret as a 64-bit float. Bytes [HGFEDCBA] read from the device are stored as [ABCDEFGH].</td>
+</tr>
+<tr>
+<td>111</td>
+<td>Float64ByteSwap</td>
+<td>Float64</td>
+<td>16-bit/32-bit</td>
+<td>Read 64 bits from the Modbus TCP device and interpret as a 64-bit float. Bytes [BADCFEHG] read from the device are stored as [ABCDEFGH].</td>
+</tr>
+<tr>
+<td>1001 - 1250</td>
+<td>String</td>
+<td>String</td>
+<td>16-bit/32-bit</td>
+<td>1001 reads a one-character string, 1002 reads a two-character string, and 1003 reads a three-character string and so on. Bytes [AB] are interpreted as &quot;AB&quot;.</td>
+</tr>
+<tr>
+<td>2001 - 2250</td>
+<td>StringByteSwap</td>
+<td>String</td>
+<td>16-bit/32-bit</td>
+<td>2001 reads a one-character string, 2002 reads a two-character string, and 2003 reads a three-character string and so on. Bytes [BA] are interpreted as &quot;AB&quot;.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="apply-bitmap">Apply bitmap</h2>
+<p>The Modbus TCP EDS adapter supports applying bitmaps to the value converted from the readings from the Modbus TCP devices. A bitmap is a series of numbers used to extract and reorder bits from a word register. The format of the bitmap is uuvvwwxxyyzz, where uu, vv, ww, yy, and zz each refer to a single bit. A leading zero is required if the referenced bit is less than 10. The low-order bit is 01 and high-order bit is either 16 or 32. Up to 16 bits can be referenced for a 16-bit word (data types 10 and 20) and up to 32 bits can be referenced for a 32-bit word (data type 30 and 31). For example, the bitmap 0307120802 will map the second bit of the original word to the first bit of the new word, the eighth bit to the second bit, the twelfth bit to the third bit, and so on. The high-order bits of the new word are padded with zeros if they are not specified. </p>
+<p>Not all data types support applying bitmap. The data types supporting bitmap are: </p>
+<ul>
+<li>Int16 (Data type code 10) </li>
+<li>UInt16 (Data type code 20)</li>
+<li>Int32 (Data type code 30 and 31) </li>
+</ul>
+<h2 id="apply-data-conversion">Apply data conversion</h2>
+<p>The Modbus TCP EDS adapter supports applying data conversion to the value converted from reading the Modbus TCP devices. A conversion factor and conversion offset can be specified. The conversion factor is used for scaling the value up or down, and the conversion offset is used for shifting the value. The mathematical equation used in conversion is the following: </p>
+<pre><code>&lt;After Conversion&gt; = &lt;Before Conversion&gt; / Factor - Offset 
+</code></pre><p> Not all data types support applying data conversion. Data types that support data conversion are: </p>
+<ul>
+<li>Int16 (Data type code 10) </li>
+<li>UInt16 (Data type code 20) </li>
+<li>Int32 (Data type code 30 and 31) </li>
+<li><p>Float32 (Data type code 100 and 101) </p>
+<p>The value with data conversion applied will always be converted to the 32-bit float type to maintain the precision of the conversion factor and conversion offset.</p>
+</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

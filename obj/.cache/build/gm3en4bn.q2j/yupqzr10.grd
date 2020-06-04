@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Retrieve existing system configuration </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Retrieve existing system configuration ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../V1.1/index.html" width="46">
+                <img id="logo" src="../../V1.1/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge System"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="RetrieveExistingSystemConfiguration1-0">
+<h1 id="retrieve-existing-system-configuration" sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="5" sourceendlinenumber="5">Retrieve existing system configuration</h1>
+
+<p sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="7" sourceendlinenumber="7">Use the EdgeCmd utility to view the configuration for the components of Edge Data Store.</p>
+<h2 id="view-all-components-configuration" sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="9" sourceendlinenumber="9">View all components configuration</h2>
+<p sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="11" sourceendlinenumber="11">Complete the following steps to view the configuration of every component in Edge Data Store:</p>
+<ol sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="13" sourceendlinenumber="18">
+<li sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="13" sourceendlinenumber="13">Access the EdgeCmd utility through a command line tool.</li>
+<li sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="14" sourceendlinenumber="18"><p sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="14" sourceendlinenumber="14">Type the following command and press Enter.</p>
+<pre sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="16" sourceendlinenumber="18"><code class="lang-bash">edgecmd Configuration
+</code></pre></li>
+</ol>
+<h2 id="view-a-specific-component-configuration" sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="21" sourceendlinenumber="21">View a specific component configuration</h2>
+<p sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="23" sourceendlinenumber="23">Complete the following steps to view the configuration of a specific component:</p>
+<ol sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="25" sourceendlinenumber="32">
+<li sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="25" sourceendlinenumber="25">Access the EdgeCmd utility through a command line tool.</li>
+<li sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="26" sourceendlinenumber="32"><p sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="26" sourceendlinenumber="26">Type the following command, replacing <code>&lt;componentId&gt;</code> with the ID of the component, and press Enter.</p>
+<pre sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="28" sourceendlinenumber="30"><code class="lang-bash">edgecmd Configuration &lt;componentId&gt;
+</code></pre><p sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="32" sourceendlinenumber="32">For more information, see the example, <a href="#view-the-configuration-of-the-system-component" data-raw-source="[View the configuration of the System component](#view-the-configuration-of-the-system-component)" sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="32" sourceendlinenumber="32">View the configuration of the System component</a>.</p>
+</li>
+</ol>
+<h2 id="view-a-specific-facet-configuration" sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="34" sourceendlinenumber="34">View a specific facet configuration</h2>
+<p sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="36" sourceendlinenumber="36">Complete the following steps to view the configuration of a specific facet of a component:</p>
+<ol sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="38" sourceendlinenumber="44">
+<li sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="38" sourceendlinenumber="38">Access the EdgeCmd utility through a command line tool.</li>
+<li sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="39" sourceendlinenumber="44"><p sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="39" sourceendlinenumber="39">Type the following command, replacing <code>&lt;componentId&gt;</code> and <code>&lt;facetName&gt;</code> with the ID of the component and the facet name, and press Enter.</p>
+<pre sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="41" sourceendlinenumber="43"><code class="lang-bash">edgecmd Configuration &lt;componentId&gt; &lt;facetName&gt;
+</code></pre><p sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="44" sourceendlinenumber="44">For more information, see the example, <a href="#view-the-configuration-of-the-logging-facet-within-the-storage-component" data-raw-source="[View the configuration of the Logging facet within the Storage component](#view-the-configuration-of-the-logging-facet-within-the-storage-component)" sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="44" sourceendlinenumber="44">View the configuration of the Logging facet within the Storage component</a>.</p>
+</li>
+</ol>
+<h2 id="view-a-specific-facet-entry-configuration" sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="46" sourceendlinenumber="46">View a specific facet entry configuration</h2>
+<p sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="48" sourceendlinenumber="48">Complete the following steps to view the configuration of a specific facet entry of a component:</p>
+<ol sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="50" sourceendlinenumber="59">
+<li sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="50" sourceendlinenumber="50">Access the EdgeCmd utility through a command line tool.</li>
+<li sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="51" sourceendlinenumber="55"><p sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="51" sourceendlinenumber="51">Type the following command, replacing <code>&lt;componentId&gt;</code> and <code>&lt;facetName&gt;</code> with the ID of the component and the facet name.</p>
+<pre sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="53" sourceendlinenumber="55"><code class="lang-bash">edgecmd Configuration &lt;componentId&gt; &lt;facetName&gt; id=IndexToRetrieve
+</code></pre></li>
+<li sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="57" sourceendlinenumber="59"><p sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="57" sourceendlinenumber="57">Add the key=value pairs for the facet to configure, for example <code>id=IndexToRetrieve</code>, and press Enter.</p>
+<p sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="59" sourceendlinenumber="59">For more information, see the example, <a href="#view-the-configuration-of-a-specific-entry-in-the-periodicegressendpoint-facet-within-the-storage-component" data-raw-source="[View the configuration of a specific entry in the PeriodicEgressEndpoint facet within the Storage component](#view-the-configuration-of-a-specific-entry-in-the-periodicegressendpoint-facet-within-the-storage-component)" sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="59" sourceendlinenumber="59">View the configuration of a specific entry in the PeriodicEgressEndpoint facet within the Storage component</a>.</p>
+</li>
+</ol>
+<h3 id="examples" sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="61" sourceendlinenumber="61">Examples</h3>
+<h4 id="view-the-configuration-of-the-system-component" sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="63" sourceendlinenumber="63">View the configuration of the System component</h4>
+<pre sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="65" sourceendlinenumber="84"><code class="lang-bash">edgecmd Configuration System
+{
+  &quot;Logging&quot;: {
+    &quot;logLevel&quot;: &quot;Information&quot;,
+    &quot;logFileSizeLimitBytes&quot;: 34636833,
+    &quot;logFileCountLimit&quot;: 31
+  },
+  &quot;HealthEndpoints&quot;: [],
+  &quot;Port&quot;: {
+    &quot;port&quot;: 5590
+  },
+  &quot;Components&quot;: [
+    {
+      &quot;componentId&quot;: &quot;Storage&quot;,
+      &quot;componentType&quot;: &quot;EDS.Component&quot;
+    }
+  ]
+}
+</code></pre><h4 id="view-the-configuration-of-the-logging-facet-within-the-storage-component" sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="86" sourceendlinenumber="86">View the configuration of the Logging facet within the Storage component</h4>
+<pre sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="88" sourceendlinenumber="95"><code class="lang-bash">edgecmd Configuration Storage Logging
+{
+  &quot;logLevel&quot;: &quot;Information&quot;,
+  &quot;logFileSizeLimitBytes&quot;: 34636833,
+  &quot;logFileCountLimit&quot;: 31
+}
+</code></pre><h4 id="view-the-configuration-of-a-specific-entry-in-the-periodicegressendpoint-facet-within-the-storage-component" sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="97" sourceendlinenumber="97">View the configuration of a specific entry in the PeriodicEgressEndpoint facet within the Storage component</h4>
+<pre sourcefile="V1/CommandLine/Retrieve existing system configuration_1-0.md" sourcestartlinenumber="99" sourceendlinenumber="121"><code class="lang-bash">edgecmd Configuration Storage PeriodicEgressEndpoints id=Endpoint_1
+{
+  &quot;id&quot;: &quot;Endpoint_1&quot;,
+  &quot;executionPeriod&quot;: &quot;2.00:00:00&quot;,
+  &quot;name&quot;: null,
+  &quot;description&quot;: null,
+  &quot;enabled&quot;: true,
+  &quot;endpoint&quot;: &quot;http://localhost:5590&quot;,
+  &quot;clientId&quot;: null,
+  &quot;clientSecret&quot;: null,
+  &quot;userName&quot;: &quot;user_54&quot;,
+  &quot;password&quot;: &quot;***************&quot;,
+  &quot;validateEndpointCertificate&quot;: true,
+  &quot;tokenEndpoint&quot;: null,
+  &quot;debugExpiration&quot;: null,
+  &quot;namespaceId&quot;: &quot;default&quot;,
+  &quot;backfill&quot;: false,
+  &quot;egressFilter&quot;: null,
+  &quot;streamPrefix&quot;: null,
+  &quot;typePrefix&quot;: null
+}
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/CommandLine/Retrieve existing system configuration_1-0.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>© 2020 - OSIsoft, LLC.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

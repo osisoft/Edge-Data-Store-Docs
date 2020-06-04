@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Operational overview </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Operational overview ">
+    <meta name="generator" content="docfx 2.52.0.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PrinciplesOfOperationModbus1-0">
+<h1 id="operational-overview">Operational overview</h1>
+
+<p>Once an instance of the Modbus TCP EDS adapter is defined in the system components configuration, it must be configured for it to create streams and collect data.</p>
+<h2 id="adapter-configuration">Adapter configuration</h2>
+<p>For an Modbus TCP EDS adapter instance to start data collection, configure the adapter by defining the following:</p>
+<ul>
+<li>Data source: Provide the connection information for the Modbus data source.</li>
+<li>Data selection: Specify the Modbus TCP items to which the adapter instance should subscribe for data.</li>
+<li>Logging: Set up the logging behavior for the adapter instance.</li>
+</ul>
+<p>For more details, see <a class="xref" href="ModbusTCPDataSourceConfiguration_1-0.html">Data source configuration</a> and <a class="xref" href="ModbusTCPDataSelectionConfiguration_1-0.html">Data selection configuration</a>. For more information on how to configure logging, see <a class="xref" href="../Logging/ComponentLogging_1-0.html">Component-level logging configuration</a>.</p>
+<h2 id="connection">Connection</h2>
+<p>The Modbus TCP EDS adapter communicates with the Modbus TCP devices through the TCP/IP network by sending request packets that are constructed based on the data selection configurations, and collects the response packets returned by the devices. </p>
+<h2 id="stream-creation">Stream creation</h2>
+<p>From the parsed data selection configurations, the Modbus TCP EDS adapter creates types, streams, and data based on the information provided. For each measurement in the data selection configuration, a stream is created in EDS to store time series data.</p>
+<h2 id="data-collection">Data collection</h2>
+<p>The Modbus TCP EDS adapter collects data from the Modbus TCP devices at the polling rates specified in the configuration. The rates are set in each of the data selection configurations and can range from 0 milliseconds (as fast as possible) up to 1 day per polling. The adapter automatically optimizes the data collection process by grouping the requests to reduce the I/O load imposed on the Modbus TCP networks.</p>
+<h2 id="streams-by-modbus-tcp-eds-adapter">Streams by Modbus TCP EDS adapter</h2>
+<p>For each data selection configuration, the Modbus TCP EDS adapter creates a stream with two properties. The properties are described in the following table:</p>
+<table>
+<thead>
+<tr>
+<th>Property name</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Timestamp</td>
+<td>String</td>
+<td>The response time of the stream data from the Modbus TCP device.</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>Specified by the data selection</td>
+<td>The value of the stream data from the Modbus TCP device.</td>
+</tr>
+</tbody>
+</table>
+<p>Stream ID is a unique identifier for each stream created by the adapter for the selected measurement. If a custom stream ID is specified for the measurement in the data selection configuration, the Modbus TCP EDS adapter will use that stream ID to create the stream. Otherwise, the adapter constructs the stream ID using the following format: </p>
+<pre><code>&lt;Adapter Component ID&gt;.&lt;Unit ID&gt;.&lt;Register Type&gt;.&lt;Register Offset&gt; 
+</code></pre><p><strong>Note:</strong> Naming convention is affected by StreamIdPrefix and ApplyPrefixToStreamID settings in data source configuration. For more information, see <a class="xref" href="ModbusTCPDataSourceConfiguration_1-0.html">Data source configuration</a>.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

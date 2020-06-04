@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>EdgeCmd commands </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="EdgeCmd commands ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../V1.1/index.html" width="46">
+                <img id="logo" src="../../V1.1/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge System"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="EdgecmdCommands1-0">
+<h1 id="edgecmd-commands" sourcefile="V1/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="5" sourceendlinenumber="5">EdgeCmd commands</h1>
+
+<p sourcefile="V1/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="7" sourceendlinenumber="7">The following tables list the commands available in the EdgeCmd utility. Every EdgeCmd utility command has to be preceded by <code>edgecmd</code>.</p>
+<h2 id="help" sourcefile="V1/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="9" sourceendlinenumber="9">Help</h2>
+<table sourcefile="V1/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="11" sourceendlinenumber="15">
+<thead>
+<tr>
+<th>edgecmd command</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>edgecmd Help</code></td>
+<td>Display general instructions on how to use the EdgeCmd utility.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>edgecmd Help &lt;componentName&gt;</code></td>
+<td>Display help for a specific Edge Data Store component.</td>
+<td><code>edgecmd Help System</code></td>
+</tr>
+<tr>
+<td><code>edgecmd Help &lt;componentName&gt; &lt;facetName&gt;</code></td>
+<td>Display help for a specific facet of an Edge Data store component.</td>
+<td><code>edgecmd Help System Port</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="configuration" sourcefile="V1/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="18" sourceendlinenumber="18">Configuration</h2>
+<h3 id="system" sourcefile="V1/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="20" sourceendlinenumber="20">System</h3>
+<table sourcefile="V1/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="22" sourceendlinenumber="27">
+<thead>
+<tr>
+<th>edgecmd command</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>edgecmd Configuration</code></td>
+<td>Display the entire configuration for every Edge Data Store component.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>edgecmd Configuration System Components</code></td>
+<td>Display the components that are currently configured.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>edgecmd Configuration System Components componentId=&lt;componentId&gt; componentType=&lt;componentType&gt;</code></td>
+<td>Add a new component.</td>
+<td><code>edgecmd Configuration System Components componentId=Modbus1 componentType=Modbus</code></td>
+</tr>
+<tr>
+<td><code>edgecmd Configuration System Components id=&lt;componentId&gt; delete</code></td>
+<td>Delete a component.</td>
+<td><code>edgecmd Configuration System Components id=Modbus1 delete</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="components" sourcefile="V1/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="29" sourceendlinenumber="29">Components</h3>
+<table sourcefile="V1/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="30" sourceendlinenumber="37">
+<thead>
+<tr>
+<th>edgecmd command</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>edgecmd Configuration &lt;componentId&gt;</code></td>
+<td>Display component specific configuration.</td>
+<td><code>edgecmd Configuration System</code><br>or<br><code>edgecmd  Configuration OpcUa1</code></td>
+</tr>
+<tr>
+<td><code>edgecmd Configuration &lt;componentId&gt; &lt;facetName&gt;</code></td>
+<td>Display facet specific configuration of an Edge Data Store component.</td>
+<td><code>edgecmd Configuration Storage Logging</code></td>
+</tr>
+<tr>
+<td><code>edgecmd Configuration &lt;componentId&gt; &lt;facetName&gt; id=&lt;IndexToRetrieve&gt;</code></td>
+<td>Display the configuration of specific entry of a facet.</td>
+<td><code>edgecmd Configuration Storage PeriodicEgressEndpoints id=Endpoint1</code></td>
+</tr>
+<tr>
+<td><code>edgecmd Configuration &lt;componentId&gt; DataSource</code></td>
+<td>Configure the data source for a Modbus TCP EDS adapter component or an OPC UA EDS adapter component.</td>
+<td>For examples, see <a class="xref" href="../OpcUa/OPCUADataSourceConfiguration_1-0.html" data-raw-source="[OPC UA data source configuration](xref:OPCUADataSourceConfiguration1-0)" sourcefile="V1/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="35" sourceendlinenumber="35">OPC UA data source configuration</a> and <a class="xref" href="../Modbus/ModbusTCPDataSourceConfiguration_1-0.html" data-raw-source="[Modbus TCP data source configuration](xref:ModbusTCPDataSourceConfiguration1-0)" sourcefile="V1/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="35" sourceendlinenumber="35">Modbus TCP data source configuration</a>.</td>
+</tr>
+<tr>
+<td><code>edgecmd Configuration &lt;componentId&gt; DataSelection</code></td>
+<td>Configure the data selection for a Modbus TCP EDS adapter component or an OPC UA EDS adapter component.</td>
+<td>For examples, see <a class="xref" href="../OpcUa/OPCUADataSelectionConfiguration_1-0.html" data-raw-source="[OPC UA data selection configuration](xref:OPCUADataSelectionConfiguration1-0)" sourcefile="V1/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="36" sourceendlinenumber="36">OPC UA data selection configuration</a> and <a class="xref" href="../Modbus/ModbusTCPDataSelectionConfiguration_1-0.html" data-raw-source="[Modbus TCP data selection configuration](xref:ModbusTCPDataSelectionConfiguration1-0)" sourcefile="V1/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="36" sourceendlinenumber="36">Modbus TCP data selection configuration</a>.</td>
+</tr>
+<tr>
+<td><code>edgecmd Configuration &lt;componentId&gt; Logging</code></td>
+<td>Configure logging for a Modbus TCP EDS adapter component or an OPC UA EDS adapter component.</td>
+<td>For examples, see <a class="xref" href="../Logging/ComponentLogging_1-0.html" data-raw-source="[Component-level logging configuration](xref:ComponentLoggingConfiguration1-0)" sourcefile="V1/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="37" sourceendlinenumber="37">Component-level logging configuration</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="configuration-with-json-files" sourcefile="V1/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="39" sourceendlinenumber="39">Configuration with JSON files</h2>
+<table sourcefile="V1/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="40" sourceendlinenumber="43">
+<thead>
+<tr>
+<th>edgecmd command</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>edgecmd Configuration file=&lt;PathToJsonFile&gt;</code></td>
+<td>Import a bulk configuration through a JSON file.</td>
+<td><code>edgecmd Configuration file=&quot;~/Bulk_Storage_Runtime.json&quot;</code></td>
+</tr>
+<tr>
+<td><code>edgecmd Configuration &lt;componentId&gt; &lt;facetName&gt; file=&lt;PathToJsonFile&gt;</code></td>
+<td>Import a facet specific configuration file for a component.</td>
+<td><code>edgecmd Configuration Modbus1 DataSource file=&quot;~/Modbus_DataSource.json&quot;</code></td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/Reference/Edgecmd commands_1-0.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>© 2020 - OSIsoft, LLC.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Data source configuration </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Data source configuration ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../V1.1/index.html" width="46">
+                <img id="logo" src="../../V1.1/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge System"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ModbusTCPDataSourceConfiguration1-0">
+<h1 id="data-source-configuration">Data source configuration</h1>
+
+<p>For each instance of the Modbus TCP EDS adapter defined in system configuration, you must configure the data source from which it will poll data.</p>
+<h2 id="configure-modbus-tcp-data-source">Configure Modbus TCP data source</h2>
+<p><strong>Note:</strong> Modbus TCP data source configurations cannot be modified manually. You must use the REST endpoints to add or edit the configuration.</p>
+<p>Complete the following steps to configure the Modbus TCP data source:</p>
+<ol>
+<li>Using any text editor, create a file that contains a Modbus TCP data source in JSON form. <ul>
+<li>For content structure, see <a href="#modbus-tcp-data-source-examples">Modbus TCP data source examples</a>. </li>
+</ul>
+</li>
+<li>Modify the parameters in the example to match your environment. For a table of all available parameters, see <a href="#parameters-for-modbus-tcp-data-source">Parameters for Modbus TCP data source</a>. </li>
+<li>Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is MOdbus1, name the file <em>Modbus1Datasource.json</em>.</li>
+<li>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:&lt;port_number&gt;/api/v1/configuration/&lt;EDS adapterId&gt;/DataSource/</code>.</li>
+</ol>
+<p>The following example shows the HTTPS request using curl, which must be run from the same directory where the file is located, and uses the adapter instance created during installation, which is Modbus1:</p>
+<pre><code class="lang-bash">curl -v -d &quot;@Modbus1DataSource.config.json&quot; -H &quot;Content-Type: application/json&quot; &quot;http://localhost:5590/api/v1/configuration/Modbus1/DataSource&quot;
+</code></pre><h2 id="parameters-for-modbus-tcp-data-source">Parameters for Modbus TCP data source</h2>
+<p>The following parameters are available for configuring a Modbus TCP data source.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IpAddress</strong></td>
+<td>Required</td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The IP address of the device from which the data is to be collected using the Modbus TCP protocol. Host name is not supported.</td>
+</tr>
+<tr>
+<td><strong>Port</strong></td>
+<td>Optional</td>
+<td>number</td>
+<td>No</td>
+<td>The TCP port of the target device that listens for and responds to Modbus TCP requests. The value ranges from 0 to 65535. If not configured, the default TCP port is 502 (which is the default port for Modbus TCP protocol).</td>
+</tr>
+<tr>
+<td><strong>StreamIdPrefix</strong></td>
+<td>Optional</td>
+<td>number</td>
+<td>Yes</td>
+<td>Parameter applied to all data items collected from the data source. If not configured, the default value is the ID of the Modbus TCP EDS adapter. The custom StreamIdPrefix has the highest priority.</td>
+</tr>
+<tr>
+<td><strong>ApplyPrefixToStreamId</strong></td>
+<td>Optional</td>
+<td><code>Boolean</code></td>
+<td>No</td>
+<td>Parameter applied to all data items collected from the data source that have custom stream ID configured. If configured, the adapter will apply the StreamIdPrefix property to all the streams with custom ID configured. The property does not affect any streams with default ID configured</td>
+</tr>
+<tr>
+<td><strong>ConnectTimeout</strong></td>
+<td>Optional</td>
+<td>number</td>
+<td>No</td>
+<td>Parameter to specify the time (in milliseconds) to wait when Modbus TCP EDS adapter is trying to connect to the data source. The value ranges from 1000 ms to 30000 ms. The default value is 5000 ms.</td>
+</tr>
+<tr>
+<td><strong>ReconnectInterval</strong></td>
+<td>Optional</td>
+<td>number</td>
+<td>No</td>
+<td>Parameter to specify the time (in milliseconds) to wait before retrying to connect to the data source when the data source is offline. The value ranges from 100 ms to 30000 ms. The default value is 1000 ms.</td>
+</tr>
+<tr>
+<td><strong>RequestTimeout</strong></td>
+<td>Optional</td>
+<td>number</td>
+<td>No</td>
+<td>Parameter to specify the time (in milliseconds) that Modbus TCP EDS adapter waits for a pending request before marking it as timeout and dropping the request. The default value is 10000 ms. The value must be a positive integer, there is no value range.</td>
+</tr>
+<tr>
+<td><strong>DelayBetweenRequests</strong></td>
+<td>Optional</td>
+<td>number</td>
+<td>No</td>
+<td>Parameter to specify the minimum time (in milliseconds) between two successive requests sent to the data source. The value ranges from 0 ms to 1000 ms. The default value is 0 ms.</td>
+</tr>
+<tr>
+<td><strong>MaxResponseDataLength</strong></td>
+<td>Optional</td>
+<td>number</td>
+<td>No</td>
+<td>Parameter to limit the maximum length (in bytes) of data that can be read within one transaction. This feature is provided to support devices that limit the number of bytes that can be returned. If there is no device limitation, the request length should be the maximum length of 250 bytes. The value ranges from 2 to 250. The default value is 250 ms.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="modbus-tcp-data-source-examples">Modbus TCP data source examples</h2>
+<p>The following are examples of valid Modbus TCP data source configurations.</p>
+<p><strong>Minimum data source configuration:</strong></p>
+<pre><code class="lang-json">{
+    &quot;IpAddress&quot;: &quot;127.0.0.2&quot;, 
+}
+</code></pre><p><strong>Maximum data source configuration:</strong></p>
+<pre><code class="lang-json">{
+    &quot;IpAddress&quot;: &quot;127.0.0.4&quot;,
+    &quot;Port&quot;: 502,
+    &quot;StreamIdPrefix&quot;: &quot;my.prefix&quot;,
+    &quot;ApplyPrefixToStreamId&quot;: true,
+    &quot;ConnectTimeout&quot;: 5000,
+    &quot;ReconnectInterval&quot;: 1000,
+    &quot;RequestTimeout&quot;: 10000,
+    &quot;DelayBetweenRequests&quot;: 500,
+    &quot;MaxResponseDataLength&quot;: 125
+}
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/Modbus/ModbusTCPDataSourceConfiguration_1-0.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>© 2020 - OSIsoft, LLC.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
