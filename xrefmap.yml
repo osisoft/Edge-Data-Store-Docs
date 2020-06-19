@@ -142,6 +142,9 @@ references:
 - uid: ocsEgressQuickStart1-0
   name: OCS egress quick start
   href: V1/Overview/OCSEgressQuickStart_1-0.html
+- uid: OMFMessages1-0
+  name: OMF messages
+  href: V1/OMF/OMF_Messages_1-0.html
 - uid: omfOverview1-0
   name: OSIsoft Message Format
   href: V1/OMF/OMFOverview_1-0.html

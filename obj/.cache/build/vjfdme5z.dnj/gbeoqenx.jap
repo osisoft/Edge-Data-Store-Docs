@@ -186,7 +186,14 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="OMF/OMFOverview_1-0.html" name="" title="OSIsoft Message Format (OMF)">OSIsoft Message Format (OMF)</a>
+                                        <span class="expand-stub"></span>
+                                        <a>OSIsoft Message Format (OMF)</a>
+                                        
+                                        <ul class="nav level4">
+                                              <li>
+                                                  <a href="OMF/OMF_Messages_1-0.html" name="" title="OMF messages">OMF messages</a>
+                                              </li>
+                                        </ul>
                                     </li>
                               </ul>
                           </li>
