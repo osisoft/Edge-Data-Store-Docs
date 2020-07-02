@@ -91,9 +91,7 @@
 <li sourcefile="V1/Modbus/ModbusTCPDataSelectionConfiguration_1-0.md" sourcestartlinenumber="17" sourceendlinenumber="17">Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:&lt;port_number&gt;/api/v1/configuration/&lt;EDS adapterId&gt;/DataSelection/</code>.</li>
 </ol>
 <p sourcefile="V1/Modbus/ModbusTCPDataSelectionConfiguration_1-0.md" sourcestartlinenumber="19" sourceendlinenumber="19">The following example shows the HTTPS request using curl, which must be run from the same directory where the file is located, and uses the adapter instance created during installation, which is Modbus1:</p>
-<pre sourcefile="V1/Modbus/ModbusTCPDataSelectionConfiguration_1-0.md" sourcestartlinenumber="21" sourceendlinenumber="23"><code>```bash
-curl -v -d &quot;@DataSelection.config.json&quot; -H &quot;Content-Type: application/json&quot; &quot;http://localhost:5590/api/v1/configuration/Modbus1/DataSelection&quot;
-```
+<pre sourcefile="V1/Modbus/ModbusTCPDataSelectionConfiguration_1-0.md" sourcestartlinenumber="21" sourceendlinenumber="23"><code class="lang-bash">curl -v -d &quot;@DataSelection.config.json&quot; -H &quot;Content-Type: application/json&quot; &quot;http://localhost:5590/api/v1/configuration/Modbus1/DataSelection&quot;
 </code></pre><p sourcefile="V1/Modbus/ModbusTCPDataSelectionConfiguration_1-0.md" sourcestartlinenumber="25" sourceendlinenumber="25">To see the streams that have been created in EDS storage for the data specified in the configuration, run the following curl script:</p>
 <pre sourcefile="V1/Modbus/ModbusTCPDataSelectionConfiguration_1-0.md" sourcestartlinenumber="27" sourceendlinenumber="29"><code class="lang-bash">curl http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/
 </code></pre><h2 id="parameters-for-modbus-tcp-data-selection" sourcefile="V1/Modbus/ModbusTCPDataSelectionConfiguration_1-0.md" sourcestartlinenumber="31" sourceendlinenumber="31">Parameters for Modbus TCP data selection</h2>
