@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Configuration tools </title>
+    <title>Command line quick start - Windows </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Configuration tools ">
+    <meta name="title" content="Command line quick start - Windows ">
     <meta name="generator" content="docfx 2.43.2.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -75,22 +75,38 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ConfigurationTools1-0">
-<h1 id="configuration-tools" sourcefile="V1/Administration/ManagementTools_1-0.md" sourcestartlinenumber="5" sourceendlinenumber="5">Configuration tools</h1>
+            <article class="content wrap" id="_content" data-uid="commandLineWindowsQuickStart1-0">
+<h1 id="command-line-quick-start---windows" sourcefile="V1/Overview/CommandLineQuickStartWindows_1-0.md" sourcestartlinenumber="5" sourceendlinenumber="5">Command line quick start - Windows</h1>
 
-<p sourcefile="V1/Administration/ManagementTools_1-0.md" sourcestartlinenumber="7" sourceendlinenumber="7">Edge Data Store and adapters can be configured with either the EdgeCmd utility, OSIsoft&#39;s proprietary tool for configuring EDS and adapters, or commonly-used REST tools.</p>
-<h2 id="edgecmd-utility" sourcefile="V1/Administration/ManagementTools_1-0.md" sourcestartlinenumber="9" sourceendlinenumber="9">EdgeCmd utility</h2>
-<p sourcefile="V1/Administration/ManagementTools_1-0.md" sourcestartlinenumber="11" sourceendlinenumber="11">The EdgeCmd utility enables EDS and adapter configuration on both Linux and Windows operating systems. For more information on using the EdgeCmd utility, see <a class="xref" href="../CommandLine/EdgeCmd%20utility_1-0.html" data-raw-source="[EdgeCmd utility](xref:Installedgecmd1-0)" sourcefile="V1/Administration/ManagementTools_1-0.md" sourcestartlinenumber="11" sourceendlinenumber="11">EdgeCmd utility</a>.</p>
-<h2 id="rest-tools" sourcefile="V1/Administration/ManagementTools_1-0.md" sourcestartlinenumber="13" sourceendlinenumber="13">REST tools</h2>
-<p sourcefile="V1/Administration/ManagementTools_1-0.md" sourcestartlinenumber="15" sourceendlinenumber="15">The following tools can be used to make REST calls.</p>
-<h3 id="curl" sourcefile="V1/Administration/ManagementTools_1-0.md" sourcestartlinenumber="17" sourceendlinenumber="17">curl</h3>
-<p sourcefile="V1/Administration/ManagementTools_1-0.md" sourcestartlinenumber="19" sourceendlinenumber="19">curl is a command line tool used to make HTTP calls and is supported on both Windows and Linux operating systems. curl can be scripted using Bash or PowerShell on either Linux or Windows, and can be used to perform EDS administrative and programming tasks. curl commands are used in configuration and management examples throughout this documentation.</p>
-<h3 id="postman" sourcefile="V1/Administration/ManagementTools_1-0.md" sourcestartlinenumber="21" sourceendlinenumber="21">Postman</h3>
-<p sourcefile="V1/Administration/ManagementTools_1-0.md" sourcestartlinenumber="23" sourceendlinenumber="23">In instances where EDS is installed on a platform with a GUI component, Postman is a useful REST tool for learning more about EDS REST APIs and creating REST calls. </p>
-<h3 id="c-python-go" sourcefile="V1/Administration/ManagementTools_1-0.md" sourcestartlinenumber="25" sourceendlinenumber="25">C#, Python, Go</h3>
-<p sourcefile="V1/Administration/ManagementTools_1-0.md" sourcestartlinenumber="27" sourceendlinenumber="27">EDS is designed to use platform-independent programming, and any modern programming language can be used to make REST calls to administer and write programs for EDS. Since the administrative and programming interfaces use REST, applications can manage EDS and read and write data. For example, an application can access the Diagnostics namespace locally to monitor and act upon the local system state.</p>
-<h3 id="system-tools" sourcefile="V1/Administration/ManagementTools_1-0.md" sourcestartlinenumber="29" sourceendlinenumber="29">System Tools</h3>
-<p sourcefile="V1/Administration/ManagementTools_1-0.md" sourcestartlinenumber="31" sourceendlinenumber="31">Use Windows tools like PuTTY and WinSCP to facilitate working across platforms, such as to copy files and remotely access Linux command lines.</p>
+<p sourcefile="V1/Overview/CommandLineQuickStartWindows_1-0.md" sourcestartlinenumber="7" sourceendlinenumber="7">The EdgeCmd utility is OSIsoft&#39;s proprietary tool for configuring Edge Data Store from a command line. EdgeCmd must be installed on the device with Edge Data Store. For instructions on installing EdgeCmd, see the <a href="https://osisoft.github.io/Edgecmd-Docs/V1.0/EdgeCmd_utility_1-0.html" data-raw-source="[EdgeCmd utility help](https://osisoft.github.io/Edgecmd-Docs/V1.0/EdgeCmd_utility_1-0.html)" sourcefile="V1/Overview/CommandLineQuickStartWindows_1-0.md" sourcestartlinenumber="7" sourceendlinenumber="7">EdgeCmd utility help</a>.</p>
+<p sourcefile="V1/Overview/CommandLineQuickStartWindows_1-0.md" sourcestartlinenumber="9" sourceendlinenumber="9">Complete the following steps to access EdgeCmd on Windows:</p>
+<ol sourcefile="V1/Overview/CommandLineQuickStartWindows_1-0.md" sourcestartlinenumber="11" sourceendlinenumber="40">
+<li sourcefile="V1/Overview/CommandLineQuickStartWindows_1-0.md" sourcestartlinenumber="11" sourceendlinenumber="11"><p sourcefile="V1/Overview/CommandLineQuickStartWindows_1-0.md" sourcestartlinenumber="11" sourceendlinenumber="11">Open a command prompt.</p>
+</li>
+<li sourcefile="V1/Overview/CommandLineQuickStartWindows_1-0.md" sourcestartlinenumber="13" sourceendlinenumber="40"><p sourcefile="V1/Overview/CommandLineQuickStartWindows_1-0.md" sourcestartlinenumber="13" sourceendlinenumber="13">Type the following command and press Enter:</p>
+<pre sourcefile="V1/Overview/CommandLineQuickStartWindows_1-0.md" sourcestartlinenumber="15" sourceendlinenumber="17"><code class="lang-cmd">edgecmd Help
+</code></pre><p sourcefile="V1/Overview/CommandLineQuickStartWindows_1-0.md" sourcestartlinenumber="18" sourceendlinenumber="18">The EdgeCmd utility launches, displaying the introductory material followed by a command prompt:</p>
+<pre sourcefile="V1/Overview/CommandLineQuickStartWindows_1-0.md" sourcestartlinenumber="20" sourceendlinenumber="40"><code>************************************************************************************************************************
+  Welcome to OSIsoft Edge Data Store configuration utility. Utility version: 1.0.0.148
+
+************************************************************************************************************************
+---------------------------------------------------------------------------------------------------------
+            Command-line options =&gt; &#39;Configuration&#39;, &#39;Help&#39;
+---------------------------------------------------------------------------------------------------------
+Please enter ID of a component you would like to configure or to get component specific help output.
+Example:
+.\edgecmd.exe Help ComponentId
+.\edgecmd.exe Configuration ComponentId
+
+To get set of components registered to the Edge Data Store please run: .\edgecmd.exe Configuration System Components
+
+To configure the system, please use &#39;System&#39; as the ComponentId.
+Example of getting System help output: .\edgecmd.exe Help System
+Example of configuring System Logging level: .\edgecmd.exe Configuration System logging LogLevel=Warning
+
+C:\Users\John&gt;
+</code></pre></li>
+</ol>
 </article>
           </div>
           
@@ -99,7 +115,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/Administration/ManagementTools_1-0.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/Overview/CommandLineQuickStartWindows_1-0.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

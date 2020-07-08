@@ -1,15 +1,9 @@
 ### YamlMime:XRefMap
 sorted: true
 references:
-- uid: AccessEdgeCmdUtility1-0
-  name: Access EdgeCmd utility
-  href: V1/CommandLine/Access%20EdgeCmd%20utility_1-0.html
 - uid: analyticsQuickStart
   name: Edge Data Store analytics quick start
   href: V1/Overview/AnalyticsQuickStart.html
-- uid: commandLine1-0
-  name: Configure Edge Data Store with EdgeCmd
-  href: V1/CommandLine/CommandLine_1-0.html
 - uid: commandLineLinuxQuickStart1-0
   name: Command line quick start - Linux
   href: V1/Overview/CommandLineLinuxQuickStart_1-0.html
@@ -28,21 +22,9 @@ references:
 - uid: ConfigurationTools1-0
   name: Configuration tools
   href: V1/Administration/ManagementTools_1-0.html
-- uid: ConfigureEdgeDataStore1-0
-  name: Configure Edge Data Store
-  href: V1/CommandLine/Configure%20Edge%20Data%20Store_1-0.html
-- uid: ConfigureEdgeDataStoreComponents1-0
-  name: Configure Edge Data Store components
-  href: V1/CommandLine/Configure%20Edge%20Data%20Store%20components_1-0.html
 - uid: configureEgress1-0
   name: Configure data egress
   href: V1/Egress/Configure%20data%20egress_1-0.html
-- uid: ConfigurePort1-0
-  name: Configure port
-  href: V1/CommandLine/ConfigurePort_1-0.html
-- uid: DeleteConfiguration1-0
-  name: Delete configuration
-  href: V1/CommandLine/Delete%20configuration_1-0.html
 - uid: disasterRecovery1-0
   name: Disaster recovery
   href: V1/Troubleshooting/DisasterRecovery_1-0.html
@@ -103,9 +85,6 @@ references:
 - uid: installationOverview1-0
   name: Installation
   href: V1/Installation/InstallationOverview_1-0.html
-- uid: Installedgecmd1-0
-  name: EdgeCmd utility
-  href: V1/CommandLine/EdgeCmd%20utility_1-0.html
 - uid: InstallEdgeDataStore1-0
   name: Install Edge Data Store
   href: V1/Installation/Install%20Edge%20Data%20Store_1-0.html
@@ -214,12 +193,6 @@ references:
 - uid: RestCommands1-0
   name: REST commands
   href: V1/Reference/REST%20commands_1-0.html
-- uid: RetrieveEdgeCmdUtilityHelp1-0
-  name: Retrieve EdgeCmd utility help
-  href: V1/CommandLine/Retrieve%20EdgeCmd%20utility%20help_1-0.html
-- uid: RetrieveExistingSystemConfiguration1-0
-  name: Retrieve existing system configuration
-  href: V1/CommandLine/Retrieve%20existing%20system%20configuration_1-0.html
 - uid: RetrieveProductVersionInformation1-0
   name: Retrieve product version information
   href: V1/Administration/Retrieve%20product%20version%20information_1-0.html

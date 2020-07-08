@@ -133,8 +133,6 @@
     - [Docker](xref:edgeDocker1-0)
   - [Verify installation](xref:VerifyInstallation1-0)
   - [Uninstall Edge Data Store](xref:UninstallEdgeDataStore1-0)
-- [EdgeCmd utility](xref:commandLine1-0)
-  - [Install EdgeCmd utility](xref:Installedgecmd1-0)
 - [Configuration](xref:Configuration1-0)
   - [Configuration tools](xref:ConfigurationTools1-0)
   - [System configuration](xref:SystemConfiguration1-0)

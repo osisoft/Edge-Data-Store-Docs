@@ -86,37 +86,6 @@
                 </li>
                 <li>
                     <span class="expand-stub"></span>
-                    <a href="CommandLine/EdgeCmd%20utility_1-0.html" name="" title="EdgeCmd utility">EdgeCmd utility</a>
-                    
-                    <ul class="nav level2">
-                          <li>
-                              <a href="CommandLine/Access%20EdgeCmd%20utility_1-0.html" name="" title="Access EdgeCmd utility">Access EdgeCmd utility</a>
-                          </li>
-                          <li>
-                              <a href="CommandLine/Retrieve%20EdgeCmd%20utility%20help_1-0.html" name="" title="Retrieve EdgeCmd utility help">Retrieve EdgeCmd utility help</a>
-                          </li>
-                          <li>
-                              <a href="CommandLine/Retrieve%20existing%20system%20configuration_1-0.html" name="" title="Retrieve existing system configuration">Retrieve existing system configuration</a>
-                          </li>
-                          <li>
-                              <a href="CommandLine/Configure%20Edge%20Data%20Store_1-0.html" name="" title="Configure Edge Data Store">Configure Edge Data Store</a>
-                          </li>
-                          <li>
-                              <a href="CommandLine/Configure%20Edge%20Data%20Store%20components_1-0.html" name="" title="Configure Edge Data Store components">Configure Edge Data Store components</a>
-                          </li>
-                          <li>
-                              <a href="CommandLine/ConfigurePort_1-0.html" name="" title="Configure port">Configure port</a>
-                          </li>
-                          <li>
-                              <a href="CommandLine/Delete%20configuration_1-0.html" name="" title="Delete configuration">Delete configuration</a>
-                          </li>
-                          <li>
-                              <a href="Reference/Edgecmd%20commands_1-0.html" name="" title="EdgeCmd commands">EdgeCmd commands</a>
-                          </li>
-                    </ul>
-                </li>
-                <li>
-                    <span class="expand-stub"></span>
                     <a href="Configuration/Configuration_1-0.html" name="" title="Configuration">Configuration</a>
                     
                     <ul class="nav level2">

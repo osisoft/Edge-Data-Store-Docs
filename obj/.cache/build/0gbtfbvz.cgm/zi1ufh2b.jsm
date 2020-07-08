@@ -1,13 +1,13 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
   
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Delete configuration </title>
+    <title>Command line quick start - Linux </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Delete configuration ">
+    <meta name="title" content="Command line quick start - Linux ">
     <meta name="generator" content="docfx 2.43.2.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -75,28 +75,36 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="DeleteConfiguration1-0">
-<h1 id="delete-configuration">Delete configuration</h1>
+            <article class="content wrap" id="_content" data-uid="commandLineLinuxQuickStart1-0">
+<h1 id="command-line-quick-start---linux" sourcefile="V1/Overview/CommandLineLinuxQuickStart_1-0.md" sourcestartlinenumber="5" sourceendlinenumber="5">Command line quick start - Linux</h1>
 
-<p>Use the EdgeCMD utility to delete configuration entries for Edge Data Store.</p>
-<h2 id="delete-configuration-entry">Delete configuration entry</h2>
-<p>Complete the following to delete a configuration entry from a collection configuration in Edge Data Store. For example, you can delete a single health endpoint of the &#39;HealthEndpoints&#39; facet within the &#39;System&#39; component.</p>
-<ol>
-<li>Access the EdgeCmd utility through a command line tool.</li>
-<li><p>Type the following command, replacing the <code>componentId</code> and <code>facetName</code> followed by the ID of the entry to be removed, and press Enter.</p>
-<pre><code class="lang-bash">edgecmd Configuration `componentId` `facetName` delete
-</code></pre><p><strong>Example:</strong> Delete endpoint_1 of the HealthEndpoints facet from the System:</p>
-<pre><code class="lang-bash">edgecmd Configuration System HealthEndpoints Id=endpoint_1 delete
+<p sourcefile="V1/Overview/CommandLineLinuxQuickStart_1-0.md" sourcestartlinenumber="7" sourceendlinenumber="7">The EdgeCmd utility is OSIsoft&#39;s proprietary tool for configuring Edge Data Store from a command line. EdgeCmd must be installed on the device with Edge Data Store. For instructions on installing EdgeCmd, see the <a href="https://osisoft.github.io/Edgecmd-Docs/V1.0/EdgeCmd_utility_1-0.html" data-raw-source="[EdgeCmd utility help](https://osisoft.github.io/Edgecmd-Docs/V1.0/EdgeCmd_utility_1-0.html)" sourcefile="V1/Overview/CommandLineLinuxQuickStart_1-0.md" sourcestartlinenumber="7" sourceendlinenumber="7">EdgeCmd utility help</a>.</p>
+<p sourcefile="V1/Overview/CommandLineLinuxQuickStart_1-0.md" sourcestartlinenumber="9" sourceendlinenumber="9">Complete the following steps to access EdgeCmd on Linux:</p>
+<ol sourcefile="V1/Overview/CommandLineLinuxQuickStart_1-0.md" sourcestartlinenumber="11" sourceendlinenumber="41">
+<li sourcefile="V1/Overview/CommandLineLinuxQuickStart_1-0.md" sourcestartlinenumber="11" sourceendlinenumber="11">Open a command prompt. </li>
+<li sourcefile="V1/Overview/CommandLineLinuxQuickStart_1-0.md" sourcestartlinenumber="12" sourceendlinenumber="16"><p sourcefile="V1/Overview/CommandLineLinuxQuickStart_1-0.md" sourcestartlinenumber="12" sourceendlinenumber="12">Enter the following command to start the edgecmd.exe tool from any directory.</p>
+<pre sourcefile="V1/Overview/CommandLineLinuxQuickStart_1-0.md" sourcestartlinenumber="14" sourceendlinenumber="16"><code class="lang-bash">debian@beaglebone:~$ edgecmd help
 </code></pre></li>
-</ol>
-<h2 id="delete-configuration-file">Delete configuration file</h2>
-<p>Complete the following to delete a configuration file from Edge Data Store. For example, you can delete the configuration file of the &#39;HealthEndpoints&#39; facet within the &#39;System&#39; component.</p>
-<ol>
-<li>Access the EdgeCmd utility through a command line tool. </li>
-<li><p>Type the following command, replacing the <code>componentId</code> and <code>facetName</code> to delete, and press Enter.</p>
-<pre><code class="lang-bash">edgecmd Configuration `componentId` `facetName` delete
-</code></pre><p><strong>Example:</strong> Delete the HealthEndpoints facet configuration file:</p>
-<pre><code class="lang-bash">edgecmd Configuration System HealthEndpoints delete
+<li sourcefile="V1/Overview/CommandLineLinuxQuickStart_1-0.md" sourcestartlinenumber="18" sourceendlinenumber="41"><p sourcefile="V1/Overview/CommandLineLinuxQuickStart_1-0.md" sourcestartlinenumber="18" sourceendlinenumber="18">Type edgecmd help and press Enter.</p>
+<p sourcefile="V1/Overview/CommandLineLinuxQuickStart_1-0.md" sourcestartlinenumber="20" sourceendlinenumber="20">The EdgeCmd utility launches, displaying the following introductory material and a command prompt at the end:</p>
+<pre sourcefile="V1/Overview/CommandLineLinuxQuickStart_1-0.md" sourcestartlinenumber="22" sourceendlinenumber="41"><code>************************************************************************************************************************
+  Welcome to OSIsoft Edge Data Store configuration utility. Utility version: 1.0.0.148
+
+************************************************************************************************************************
+---------------------------------------------------------------------------------------------------------
+            Command-line options =&gt; &#39;Configuration&#39;, &#39;Help&#39;
+---------------------------------------------------------------------------------------------------------
+Please enter ID of a component you would like to configure or to get component specific help output.
+Example:
+./edgecmd Help ComponentId
+./edgecmd Configuration ComponentId
+
+To get set of components registered to the Edge Data Store please run: ./edgecmd Configuration System Components
+
+To configure the system, please use &#39;System&#39; as the ComponentId.
+Example of getting System help output: ./edgecmd Help System
+Example of configuring System Logging level: ./edgecmd Configuration System logging LogLevel=Warning
+debian@beaglebone:~$
 </code></pre></li>
 </ol>
 </article>
@@ -107,7 +115,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/CommandLine/Delete configuration_1-0.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/Overview/CommandLineLinuxQuickStart_1-0.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
