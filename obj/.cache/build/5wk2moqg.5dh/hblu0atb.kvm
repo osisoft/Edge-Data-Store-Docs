@@ -92,7 +92,7 @@
 <li sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="19" sourceendlinenumber="19">Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints/</code></li>
 </ol>
 <p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="21" sourceendlinenumber="21">Example using cURL, which must be run from the directory where the JSON file is saved:</p>
-<pre sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="23" sourceendlinenumber="25"><code class="lang-bash">curl -d &quot;@Storage_PeriodicEgressEndspoints.config.json&quot; -H &quot;Content-Type: application/json&quot; &quot;http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints&quot;
+<pre sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="23" sourceendlinenumber="25"><code class="lang-bash">curl -d &quot;@PeriodicEgressEndpoints.config.json&quot; -H &quot;Content-Type: application/json&quot; &quot;http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints&quot;
 </code></pre><p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="27" sourceendlinenumber="27"><strong>Note</strong> The @ symbol is a required prefix for the above command.</p>
 <h3 id="parameters" sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="29" sourceendlinenumber="29">Parameters</h3>
 <table sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="31" sourceendlinenumber="50">
