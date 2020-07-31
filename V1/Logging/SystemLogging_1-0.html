@@ -97,7 +97,7 @@ It is located in:</p>
 <h2 id="change-logging-configuration">Change logging configuration</h2>
 <p>Complete the following to change the logging configuration:</p>
 <ol>
-<li><p>Update the parameters of the message logging configuration JSON file that you want as needed. For example, the <em>Component_Logging.json</em> file:</p>
+<li><p>Update the parameters of the message logging configuration JSON file that you want as needed. For example, the <em>System_Logging.json</em> file:</p>
 <pre><code class="lang-json">{
   &quot;logLevel&quot;: &quot;Warning&quot;,
   &quot;logFileSizeLimitBytes&quot;: 16777216,
@@ -106,10 +106,9 @@ It is located in:</p>
 </code></pre></li>
 <li><p>Save the file.</p>
 </li>
-<li><p>Use any tool capable of making HTTP requests to execute a PUT command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/&lt;ComponentId&gt;/Logging</code>.</p>
-<p> <strong>Note:</strong>  Replace <code>&lt;ComponentId&gt;</code> with the ComponentId of the adapter instance or Storage component, for example <em>OpcUa1</em>.</p>
+<li><p>Use any tool capable of making HTTP requests to execute a PUT command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/System/Logging</code>.</p>
 <p>   Example using curl (run this command from the same directory where the file is located):</p>
-<pre><code class="lang-bash">curl -i -d &quot;@Component_Logging.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/&lt;ComponentId&gt;/Logging
+<pre><code class="lang-bash">curl -i -d &quot;@System_Logging.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/System/Logging
 </code></pre><p> On successful execution, the log level change takes effect immediately during runtime. The other configurations (log file size and file count) get updated after Edge Data Store is restarted. </p>
 <p> <strong>Note:</strong>  Any parameter not specified in the updated configuration file will revert to the default schema value.</p>
 </li>

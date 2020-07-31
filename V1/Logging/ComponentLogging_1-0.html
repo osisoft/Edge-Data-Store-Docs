@@ -92,10 +92,13 @@ If you have more than one OSIsoft Adapter of the same kind configured, the defau
 <ol>
 <li>Using any text editor, open the <em>componentId_Logging.json</em> file that you want.</li>
 <li>Change the values as needed, so it looks similar to the <a href="#logging-example">Logging example</a>.</li>
-<li>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the respective endpoint. <br><br> Example using curl for the EDS logging endpoint (run this command from the same directory where the file is located):</li>
+<li><p>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the respective endpoint.</p>
+<p> <strong>Note:</strong>  Replace <code>&lt;ComponentId&gt;</code> with the ComponentId of the adapter instance or Storage component, for example <em>OpcUa1</em>.</p>
+<p>   Example using curl (run this command from the same directory where the file is located):</p>
+<pre><code class="lang-bash">curl -i -d &quot;@componentId_Logging.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/&lt;ComponentId&gt;/Logging
+</code></pre></li>
 </ol>
-<pre><code class="lang-bash">curl -v -d &quot;@System_Logging.json&quot; -H &quot;Content-Type: application/json&quot; http://localhost:5590/api/v1/configuration/System/Logging
-</code></pre><p><strong>Note:</strong> The other endpoints are the following:<br></p>
+<p><strong>Note:</strong> The other endpoints are the following:<br></p>
 <ul>
 <li>Edge Data Store: <code>http://localhost:5590/api/v1/configuration/System/Logging</code></li>
 <li>Storage: <code>http://localhost:5590/api/v1/configuration/Storage/Logging</code></li>
