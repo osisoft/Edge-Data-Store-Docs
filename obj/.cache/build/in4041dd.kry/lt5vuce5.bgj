@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>OSIsoft Message Format </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="OSIsoft Message Format ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../V1/index.html" width="46">
+                <img id="logo" src="../../V1/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge Data Store"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="omfOverview1-0">
+<h1 id="osisoft-message-format" sourcefile="V1/OMF/OMFOverview_1-0.md" sourcestartlinenumber="5" sourceendlinenumber="5">OSIsoft Message Format</h1>
+
+<p sourcefile="V1/OMF/OMFOverview_1-0.md" sourcestartlinenumber="7" sourceendlinenumber="7">Create a custom application using OSIsoft Message Format (OMF) to send data to EDS from sources that cannot use Modbus or OPC UA protocols. The following diagram depicts the data flow from an OMF data collection application into EDS:</p>
+<p sourcefile="V1/OMF/OMFOverview_1-0.md" sourcestartlinenumber="9" sourceendlinenumber="9"><img src="https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/OMFIngressExample.jpg" alt="EDS OMF Ingress" title="OMF Ingress Example" sourcefile="V1/OMF/OMFOverview_1-0.md" sourcestartlinenumber="9" sourceendlinenumber="9"></p>
+<p sourcefile="V1/OMF/OMFOverview_1-0.md" sourcestartlinenumber="11" sourceendlinenumber="11">The OMF application collects data from a data source and sends it to the Edge Data Store endpoint. The EDS endpoint sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or OSIsoft Cloud Services. The OMF application must run on the same device as Edge Data Store and no authentication is needed. </p>
+<h2 id="omf-endpoint" sourcefile="V1/OMF/OMFOverview_1-0.md" sourcestartlinenumber="13" sourceendlinenumber="13">OMF endpoint</h2>
+<p sourcefile="V1/OMF/OMFOverview_1-0.md" sourcestartlinenumber="15" sourceendlinenumber="15">The route to the OMF endpoint to the Edge Storage component is shown below. Replace <em>&lt;port_number&gt;</em> with the port configured for your EDS system:</p>
+<pre sourcefile="V1/OMF/OMFOverview_1-0.md" sourcestartlinenumber="17" sourceendlinenumber="20"><code class="lang-http">Method: POST
+Endpoint: http://localhost:&lt;port_number&gt;/api/v1/tenants/default/namespaces/default/omf
+</code></pre><h2 id="supported-functionality" sourcefile="V1/OMF/OMFOverview_1-0.md" sourcestartlinenumber="22" sourceendlinenumber="22">Supported functionality</h2>
+<p sourcefile="V1/OMF/OMFOverview_1-0.md" sourcestartlinenumber="24" sourceendlinenumber="24">Edge Data Store supports OMF versions 1.0 and OMF version 1.1 for data ingress. For details on the difference versions of OMF, see the OMF specification, available here: <a href="https://omf-docs.osisoft.com/index.html" data-raw-source="[OSIsoft Message Format](https://omf-docs.osisoft.com/index.html)" sourcefile="V1/OMF/OMFOverview_1-0.md" sourcestartlinenumber="24" sourceendlinenumber="24">OSIsoft Message Format</a>. The OMF ingress functionality is the same technology that is used in OSIsoft Cloud Services (OCS) and writing an OMF application for EDS is very similar to writing an OMF application for OCS. </p>
+<p sourcefile="V1/OMF/OMFOverview_1-0.md" sourcestartlinenumber="26" sourceendlinenumber="26">The OMF endpoint for the Edge Storage component only supports the create action; it does not support the update action. If a create data message is sent with the same time index, the values will be replaced at that index value.</p>
+<p sourcefile="V1/OMF/OMFOverview_1-0.md" sourcestartlinenumber="28" sourceendlinenumber="28">Dynamic messages are supported, but static messages (usually used for creating PI AF assets) are not supported by EDS. Any static OMF messages sent to the EDS OMF REST endpoint will be ignored.</p>
+<p sourcefile="V1/OMF/OMFOverview_1-0.md" sourcestartlinenumber="30" sourceendlinenumber="30">For efficiency reasons, OSIsoft recommends batching OMF messages that are sent to the EDS endpoint. Sending single messages or a small number of messages to the OMF endpoint can be successful, but it is inefficient. When a single message or a small number of messages are sent at a time, the HTTP overhead of creating the request and processing the response on a small device requires more system resources than the processing of the OMF message itself. While a large number of OMF messages per second can be processed by EDS platforms, OSIsoft recommends keeping the number of HTTP calls per second low to increase efficiency.</p>
+<h2 id="https-status-codes" sourcefile="V1/OMF/OMFOverview_1-0.md" sourcestartlinenumber="32" sourceendlinenumber="32">HTTPS status codes</h2>
+<p sourcefile="V1/OMF/OMFOverview_1-0.md" sourcestartlinenumber="34" sourceendlinenumber="34">Edge Data Store returns the following status codes to provide feedback when an OMF ingress message is received. If an error occurs because of an issue with the server (408 Request Timeout or 503 Service Unavailable), the application can retry the request. It is up to the OMF application developer to determine how many times to retry a request.</p>
+<table sourcefile="V1/OMF/OMFOverview_1-0.md" sourcestartlinenumber="36" sourceendlinenumber="44">
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Description</th>
+<th>Common Causes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>204 No Content</td>
+<td>The OMF message was successfully processed, but there is no additional information to return.</td>
+<td></td>
+</tr>
+<tr>
+<td>400 Bad Request</td>
+<td>The OMF message was malformed or not understood. The client should not retry sending the message without modifications.</td>
+<td>The body or headers of the OMF message were incorrect. Verify the validity of the request contents and headers.</td>
+</tr>
+<tr>
+<td>408 Request Timeout</td>
+<td>The server did not reply to a request within the time that the client was prepared to wait. The client may repeat the request without modifications at any later time.</td>
+<td>Server busy or over-loaded with other requests.</td>
+</tr>
+<tr>
+<td>409 Conflict</td>
+<td>The request could not be completed due to a conflict with the current state of the server.</td>
+<td>The information in the OMF message contradicts the data currently stored in EDS.</td>
+</tr>
+<tr>
+<td>413 Payload Too Large</td>
+<td>Payload size exceeds OMF body size limit.</td>
+<td>The body of an OMF message has a maximum size of 192KB. A request with a body size exceeding the maximum will be rejected with this error code.</td>
+</tr>
+<tr>
+<td>500 Internal Server Error</td>
+<td>The server encountered an unexpected condition.</td>
+<td>Review EDS logs for more insight.</td>
+</tr>
+<tr>
+<td>503 Service Unavailable</td>
+<td>The server is currently unavailable, retry later.</td>
+<td>The EDS server is performing maintenance on one or more streams.</td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/OMF/OMFOverview_1-0.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>© 2020 - OSIsoft, LLC.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
