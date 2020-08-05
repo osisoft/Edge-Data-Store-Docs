@@ -86,7 +86,7 @@
 <p sourcefile="V1/Egress/Prepare egress destinations_1-0.md" sourcestartlinenumber="15" sourceendlinenumber="15">The <em>Client Id</em> and <em>Client Secret</em> will be used for the corresponding properties in the egress configuration.</p>
 </li>
 <li sourcefile="V1/Egress/Prepare egress destinations_1-0.md" sourcestartlinenumber="17" sourceendlinenumber="20"><p sourcefile="V1/Egress/Prepare egress destinations_1-0.md" sourcestartlinenumber="17" sourceendlinenumber="17">Create an <strong>OMF</strong> type <strong>Connection</strong>.</p>
-<p sourcefile="V1/Egress/Prepare egress destinations_1-0.md" sourcestartlinenumber="19" sourceendlinenumber="20">The connection should link the created client to an existing <a href="https://ocs-docs.osisoft.com/Documentation/Management/Account_Namespace_1.html" data-raw-source="[namespace](https://ocs-docs.osisoft.com/Documentation/Management/Account_Namespace_1.html)" sourcefile="V1/Egress/Prepare egress destinations_1-0.md" sourcestartlinenumber="19" sourceendlinenumber="19">namespace</a> where the data will be stored.
+<p sourcefile="V1/Egress/Prepare egress destinations_1-0.md" sourcestartlinenumber="19" sourceendlinenumber="20">The connection should link the created client to an existing <a href="https://ocs-docs.osisoft.com/Content_Portal/Documentation/Management/Account_Namespace_1.html" data-raw-source="[namespace](https://ocs-docs.osisoft.com/Content_Portal/Documentation/Management/Account_Namespace_1.html)" sourcefile="V1/Egress/Prepare egress destinations_1-0.md" sourcestartlinenumber="19" sourceendlinenumber="19">namespace</a> where the data will be stored.
 The <strong>OMF Endpoint</strong> URL for the connection will be used as the egress configuration <em>Endpoint</em> property.</p>
 </li>
 </ol>
