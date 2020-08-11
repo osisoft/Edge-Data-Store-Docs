@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>API calls for reading data </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="API calls for reading data ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../V1/index.html" width="46">
+                <img id="logo" src="../../V1/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge Data Store"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="sdsReadingDataApi1-0">
+<h1 id="api-calls-for-reading-data" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="5" sourceendlinenumber="5">API calls for reading data</h1>
+
+<h2 id="example-type-stream-and-data" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="7" sourceendlinenumber="7">Example type, stream, and data</h2>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="9" sourceendlinenumber="9">Many of the API methods described below contain example requests and responses in JSON to highlight usage and specific behaviors. The following type, stream, and data are used in the examples:</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="11" sourceendlinenumber="12"><strong>Example type</strong><br><code>SimpleType</code> is an SdsType with a single index. This type is defined in Python and Javascript:</p>
+<h6 id="python" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="14" sourceendlinenumber="14">Python</h6>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="16" sourceendlinenumber="40"><code class="lang-python">class State(Enum):
+  Ok = 0
+  Warning = 1
+  Alarm = 2
+
+class SimpleType(object):
+  Time = property(getTime, setTime)
+  def getTime(self):
+    return self.__time
+  def setTime(self, time):
+    self.__time = time
+
+  State = property(getState, setState)
+  def getState(self):
+    return self.__state
+  def setState(self, state):
+    self.__state = state
+
+  Measurement = property(getValue, setValue)
+  def getValue(self):
+    return self.__measurement
+  def setValue(self, measurement):
+    self.__measurement = measurement
+</code></pre><h6 id="javascript" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="42" sourceendlinenumber="42">JavaScript</h6>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="44" sourceendlinenumber="57"><code class="lang-javascript">var State =
+{
+  Ok: 0,
+  Warning: 1,
+  Alarm: 2,
+}
+
+var SimpleType = function () {
+  this.Time = null;
+  this.State = null;
+  this.Value = null;
+}
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="59" sourceendlinenumber="60"><strong>Example stream</strong><br><code>Simple</code> is an SdsStream of type <code>SimpleType</code>.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="62" sourceendlinenumber="68"><strong>Example data</strong><br><code>Simple</code> has stored values as follows:
+    11/23/2017 12:00:00 PM: Ok  0
+    11/23/2017  1:00:00 PM: Ok 10
+    11/23/2017  2:00:00 PM: Ok 20
+    11/23/2017  3:00:00 PM: Ok 30
+    11/23/2017  4:00:00 PM: Ok 40</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="70" sourceendlinenumber="70">All times are represented at offset 0, GMT.</p>
+<hr>
+<h2 id="get-first-value" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="73" sourceendlinenumber="73"><code>Get First Value</code></h2>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="75" sourceendlinenumber="75">Returns the first value in the stream. If no values exist in the stream, null is returned.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="77" sourceendlinenumber="77"><strong>Request</strong>  </p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="79" sourceendlinenumber="81"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/First
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="83" sourceendlinenumber="85"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="87" sourceendlinenumber="88"><code>string streamId</code><br>The stream identifier.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="90" sourceendlinenumber="91"><strong>Response</strong><br>The response includes a status code and a response body containing a serialized event.</p>
+<hr>
+<h2 id="get-last-value" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="94" sourceendlinenumber="94"><code>Get Last Value</code></h2>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="96" sourceendlinenumber="96">Returns the last value in the stream. If no values exist in the stream, null is returned.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="98" sourceendlinenumber="98"><strong>Request</strong>  </p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="100" sourceendlinenumber="102"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/Last
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="104" sourceendlinenumber="106"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="108" sourceendlinenumber="109"><code>string streamId</code><br>The stream identifier.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="111" sourceendlinenumber="112"><strong>Response</strong><br>The response includes a status code and a response body containing a serialized event.</p>
+<hr>
+<h2 id="find-distinct-value" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="115" sourceendlinenumber="115"><code>Find Distinct Value</code></h2>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="117" sourceendlinenumber="117">Returns a stored event based on the specified <code>index</code> and <code>searchMode</code>.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="119" sourceendlinenumber="119"><strong>Request</strong>  </p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="121" sourceendlinenumber="124"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
+    ?index={index}&amp;searchMode={searchMode}
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="126" sourceendlinenumber="128"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="130" sourceendlinenumber="131"><code>string streamId</code><br>The stream identifier.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="133" sourceendlinenumber="134"><code>string index</code><br>The index.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="136" sourceendlinenumber="137"><code>string searchMode</code><br>The <a class="xref" href="Reading_Data_1-0.html#sdssearchmode" data-raw-source="[SdsSearchMode](xref:sdsReadingData1-0#sdssearchmode)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="137" sourceendlinenumber="137">SdsSearchMode</a>; the default is <code>exact</code>.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="139" sourceendlinenumber="140"><strong>Response</strong><br>The response includes a status code and a response body containing a serialized collection with one event. Depending on the request <code>index</code> and <code>searchMode</code>, it is possible to have an empty collection returned.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="142" sourceendlinenumber="142"><strong>Example</strong>  </p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="144" sourceendlinenumber="147"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
+    ?index=2017-11-23T13:00:00Z&amp;searchMode=Next
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="149" sourceendlinenumber="149">The request has an index that matches the index of an existing event, but since a <code>SdsSearchMode</code> of <code>next</code> was specified, the response contains the next event in the stream after the specified index:</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="151" sourceendlinenumber="151"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="153" sourceendlinenumber="164"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 20
+    }
+]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="166" sourceendlinenumber="166"><strong>Example</strong>  </p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="168" sourceendlinenumber="171"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
+    ?index=2017-11-23T13:30:00Z&amp;searchMode=Next
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="173" sourceendlinenumber="173">The request specifies an index that does not match an index of an existing event. The next event in the stream is retrieved.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="175" sourceendlinenumber="175"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="177" sourceendlinenumber="188"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 20
+    }
+]
+</code></pre><hr>
+<h2 id="get-values" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="192" sourceendlinenumber="192"><code>Get Values</code></h2>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="194" sourceendlinenumber="195">Returns a collection of <em>stored</em> values at indexes based on request parameters.
+SDS supports three ways of specifying which stored events to return:</p>
+<ul sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="197" sourceendlinenumber="199">
+<li sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="197" sourceendlinenumber="197"><a href="#getvaluesfiltered" data-raw-source="[Filtered](#getvaluesfiltered)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="197" sourceendlinenumber="197">Filtered</a>: A filtered request accepts a filter expression.</li>
+<li sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="198" sourceendlinenumber="198"><a href="#getvaluesrange" data-raw-source="[Range](#getvaluesrange)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="198" sourceendlinenumber="198">Range</a>: A range request accepts a start index and a count.</li>
+<li sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="199" sourceendlinenumber="199"><a href="#getvalueswindow" data-raw-source="[Window](#getvalueswindow)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="199" sourceendlinenumber="199">Window</a>: A window request accepts a start index and end index. This request has an optional continuation token for large collections of events.</li>
+</ul>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="201" sourceendlinenumber="201"><a name="getvaluesfiltered"></a></p>
+<h3 id="filtered" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="203" sourceendlinenumber="203"><code>Filtered</code></h3>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="205" sourceendlinenumber="205">Returns a collection of stored values as determined by a <code>filter</code>. The <code>filter</code> limits results by applying an expression against event fields. For more information about filter expressions, see <a class="xref" href="Filter_Expressions_1-0.html" data-raw-source="[Filter expressions](xref:sdsFilterExpressions1-0)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="205" sourceendlinenumber="205">Filter expressions</a>.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="207" sourceendlinenumber="207"><strong>Request</strong>  </p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="209" sourceendlinenumber="212"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
+    ?filter={filter}
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="214" sourceendlinenumber="216"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="218" sourceendlinenumber="219"><code>string streamId</code><br>The stream identifier.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="221" sourceendlinenumber="222"><code>string filter</code><br>The filter expression (see <a class="xref" href="Filter_Expressions_1-0.html" data-raw-source="[Filter expressions](xref:sdsFilterExpressions1-0)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="222" sourceendlinenumber="222">Filter expressions</a>).</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="224" sourceendlinenumber="225"><strong>Response</strong><br>The response includes a status code and a response body containing a serialized collection of events.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="227" sourceendlinenumber="227"><strong>Example</strong>  </p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="229" sourceendlinenumber="232"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
+    ?filter=Measurement gt 10
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="234" sourceendlinenumber="234">The events in the stream with <code>Measurement</code> greater than 10 are returned.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="236" sourceendlinenumber="236"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="238" sourceendlinenumber="256"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+        &quot;Measurement&quot;: 20
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T15:00:00Z&quot;,
+        &quot;Measurement&quot;: 30
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T16:00:00Z&quot;,
+        &quot;Measurement&quot;: 40
+    }
+]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="258" sourceendlinenumber="258"><strong>Note:</strong> <code>State</code> is not included in the JSON as its value is the default value.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="260" sourceendlinenumber="260"><a name="getvaluesrange"></a></p>
+<h3 id="range" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="262" sourceendlinenumber="262"><code>Range</code></h3>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="264" sourceendlinenumber="264">Returns a collection of stored values as determined by a <code>startIndex</code> and <code>count</code>. Additional optional parameters specify the direction of the range, how to handle events near or at the start index, whether to skip a certain number of events at the start of the range, and how to filter the data.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="266" sourceendlinenumber="266"><strong>Request</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="268" sourceendlinenumber="272"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
+    ?startIndex={startIndex}&amp;count={count}[&amp;skip={skip}&amp;reversed={reversed}
+    &amp;boundaryType={boundaryType}&amp;filter={filter}]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="274" sourceendlinenumber="276"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="278" sourceendlinenumber="279"><code>string streamId</code><br>The stream identifier.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="281" sourceendlinenumber="282"><code>string startIndex</code><br>Index identifying the beginning of the series of events to return.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="284" sourceendlinenumber="285"><code>int count</code><br>The number of events to return.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="287" sourceendlinenumber="288"><code>int skip</code><br>Optional value specifying the number of events to skip at the beginning of the result.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="290" sourceendlinenumber="291"><code>bool reversed</code><br>Optional specification of the direction of the request. By default, range requests move forward from startIndex, collecting events after startIndex from the stream. A reversed request will collect events before startIndex from the stream.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="293" sourceendlinenumber="294"><code>SdsBoundaryType boundaryType</code><br>Optional SdsBoundaryType specifies the handling of events at or near startIndex.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="296" sourceendlinenumber="297"><code>string filter</code><br>Optional filter expression.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="299" sourceendlinenumber="300"><strong>Response</strong><br>The response includes a status code and a response body containing a serialized collection of events.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="302" sourceendlinenumber="302"><strong>Example</strong>  </p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="304" sourceendlinenumber="307"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
+    ?startIndex=2017-11-23T13:00:00Z&amp;count=100
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="309" sourceendlinenumber="309">This request will return a response with up to 100 events starting at 13:00 and extending forward toward the end of the stream:</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="311" sourceendlinenumber="311"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="313" sourceendlinenumber="335"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T13:00:00Z&quot;,
+        &quot;Measurement&quot;: 10
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+        &quot;Measurement&quot;: 20
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T15:00:00Z&quot;,
+        &quot;Measurement&quot;: 30
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T16:00:00Z&quot;,
+        &quot;Measurement&quot;: 40
+    }
+]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="337" sourceendlinenumber="337"><strong>Note:</strong> <code>State</code> is not included in the JSON as its value is the default value.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="339" sourceendlinenumber="340"><strong>Example</strong><br>To reverse the direction of the request, set reversed to true. The following request will return up to 100 events starting at 13:00 and extending back toward the start of the stream:</p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="342" sourceendlinenumber="345"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
+    ?startIndex=2017-11-23T13:00:00Z&amp;count=100&amp;reversed=true
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="347" sourceendlinenumber="347"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="349" sourceendlinenumber="362"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T13:00:00Z&quot;,
+        &quot;Measurement&quot;: 10
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T12:00:00Z&quot;
+    }
+]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="364" sourceendlinenumber="364"><strong>Note:</strong> <code>State</code> is not included in the JSON as its value is the default value.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="366" sourceendlinenumber="366">Further, <code>Measurement</code> is not included in the second, 12:00:00, event as zero is the default value for numbers.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="368" sourceendlinenumber="368">The following request specifies a boundary type of Outside for a reversed-direction range request. The response will contain up to 100 events. The boundary type Outside indicates that up to one event outside the boundary will be included in the response. For a reverse direction range request, this means one event forward of the specified start index. In a default direction range request, it would mean one event before the specified start index.</p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="370" sourceendlinenumber="373"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
+    ?startIndex=2017-11-23T13:00:00Z&amp;count=100&amp;reversed=true&amp;boundaryType=2
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="375" sourceendlinenumber="375"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="377" sourceendlinenumber="398"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 20
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T13:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 10
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T12:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 0
+    }
+]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="400" sourceendlinenumber="400">The event outside of the index is the next event or the event at 14:00 because the request operates in reverse.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="402" sourceendlinenumber="402">Adding a filter to the request means only events that meet the filter criteria are returned:</p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="404" sourceendlinenumber="407"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
+    ?startIndex=2017-11-23T13:00:00Z&amp;count=100&amp;reversed=true&amp;boundaryType=2&amp;filter=Measurement gt 10
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="409" sourceendlinenumber="409"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="411" sourceendlinenumber="422"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 20
+    }
+]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="424" sourceendlinenumber="424"><a name="getvalueswindow"></a></p>
+<h3 id="window" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="426" sourceendlinenumber="426"><code>Window</code></h3>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="428" sourceendlinenumber="428">Returns a collection of stored events based on the specified <code>startIndex</code> and <code>endIndex</code>.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="430" sourceendlinenumber="430">For handling events at and near the boundaries of the window, a single SdsBoundaryType that applies to both the start and end indexes can be passed with the request, or separate boundary types may be passed for the start and end individually.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="432" sourceendlinenumber="432">Paging is supported for window requests with a large number of events.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="434" sourceendlinenumber="434">To retrieve the next page of values, include the <code>continuationToken</code> from the results of the previous request. For the first request, specify a null or empty string for the <code>continuationToken</code>.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="436" sourceendlinenumber="436"><strong>Requests</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="438" sourceendlinenumber="457"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data?
+    ?startIndex={startIndex}&amp;endIndex={endIndex}
+
+GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data?
+    ?startIndex={startIndex}&amp;endIndex={endIndex}&amp;boundaryType={boundaryType}
+
+GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data?
+    ?startIndex={startIndex}&amp;startBoundaryType={startBoundaryType}
+    &amp;endIndex={endIndex}&amp;endBoundaryType={endBoundaryType}
+
+GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data?
+    ?startIndex={startIndex}&amp;endIndex={endIndex}
+    &amp;count={count}&amp;continuationToken={continuationToken}
+
+GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data?
+    ?startIndex={startIndex}&amp;startBoundaryType={startBoundaryType}
+    &amp;endIndex={endIndex}&amp;endBoundaryType={endBoundaryType}&amp;filter={filter}&amp;count={count}
+    &amp;continuationToken={continuationToken}
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="459" sourceendlinenumber="461"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="463" sourceendlinenumber="464"><code>string streamId</code><br>The stream identifier.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="466" sourceendlinenumber="467"><code>string startIndex</code><br>Index bounding the beginning of the series of events to return.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="469" sourceendlinenumber="470"><code>string endIndex</code><br>Index bounding the end of the series of events to return.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="472" sourceendlinenumber="473"><code>int count</code><br>Optional maximum number of events to return. If <code>count</code> is specified, a <code>continuationToken</code> must also be specified.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="475" sourceendlinenumber="476"><code>SdsBoundaryType boundaryType</code><br>Optional <a class="xref" href="Reading_Data_1-0.html#sdsboundarytype" data-raw-source="[SdsBoundaryType](xref:sdsReadingData1-0#sdsboundarytype)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="476" sourceendlinenumber="476">SdsBoundaryType</a> specifies handling of events at or near the start and end indexes.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="478" sourceendlinenumber="479"><code>SdsBoundaryType startBoundaryType</code><br>Optional <a class="xref" href="Reading_Data_1-0.html#sdsboundarytype" data-raw-source="[SdsBoundaryType](xref:sdsReadingData1-0#sdsboundarytype)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="479" sourceendlinenumber="479">SdsBoundaryType</a> specifies the first value in the result in relation to the start index. If <code>startBoundaryType</code> is specified, <code>endBoundaryType</code> must be specified.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="481" sourceendlinenumber="482"><code>SdsBoundaryType endBoundaryType</code><br>Optional <a class="xref" href="Reading_Data_1-0.html#sdsboundarytype" data-raw-source="[SdsBoundaryType](xref:sdsReadingData1-0#sdsboundarytype)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="482" sourceendlinenumber="482">SdsBoundaryType</a> specifies the last value in the result in relation to the end index. If <code>startBoundaryType</code> is specified, <code>endBoundaryType</code> must be specified.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="484" sourceendlinenumber="485"><code>string filter</code><br>Optional filter expression (see <a class="xref" href="Filter_Expressions_1-0.html" data-raw-source="[Filter expressions](xref:sdsFilterExpressions1-0)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="485" sourceendlinenumber="485">Filter expressions</a>).</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="487" sourceendlinenumber="488"><code>string continuationToken</code><br>Optional token used to retrieve the next page of data. If <code>count</code> is specified, a <code>continuationToken</code> must also be specified.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="490" sourceendlinenumber="491"><strong>Response</strong><br>The response includes a status code and a response body containing a serialized collection of events. A continuation token can be returned if specified in the request.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="493" sourceendlinenumber="494"><strong>Example</strong><br>The following requests all stored events between 12:30 and 15:30:</p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="496" sourceendlinenumber="499"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
+    ?startIndex=2017-11-23T12:30:00Z&amp;endIndex=2017-11-23T15:30:00Z
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="501" sourceendlinenumber="501">The response will contain the event stored at the specified index:</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="503" sourceendlinenumber="503"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="505" sourceendlinenumber="523"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T13:00:00Z&quot;,
+        &quot;Measurement&quot;: 10
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+        &quot;Measurement&quot;: 20
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T15:00:00Z&quot;,
+        &quot;Measurement&quot;: 30
+    }
+]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="525" sourceendlinenumber="525"><strong>Note:</strong> <code>State</code> is not included in the JSON as its value is the default value.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="527" sourceendlinenumber="528"><strong>Example</strong><br>When the request is modified to specify a boundary type of Outside, the value before 13:30 and the value after 15:30 are included:</p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="530" sourceendlinenumber="534"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
+    ?startIndex=2017-11-23T12:30:00Z&amp;endIndex=2017-11-23T15:30:00Z
+    &amp;boundaryType=2
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="536" sourceendlinenumber="536"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="538" sourceendlinenumber="563"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T12:00:00Z&quot;
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T13:00:00Z&quot;,
+        &quot;Measurement&quot;: 10
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+        &quot;Measurement&quot;: 20
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T15:00:00Z&quot;,
+        &quot;Measurement&quot;: 30
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T16:00:00Z&quot;,
+        &quot;Measurement&quot;: 40
+    }
+]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="565" sourceendlinenumber="565"><strong>Note:</strong> <code>State</code> is not included in the JSON as its value is the default value. Further, <code>Measurement</code> is not included in the second, 12:00:00, event as zero is the default value for numbers.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="567" sourceendlinenumber="567">If instead a start boundary of Inside, only values inside the start boundary (after 13:30) are included in the result. With an end boundary of Outside one value outside the end index (after 15:30) is included:</p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="569" sourceendlinenumber="573"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
+    ?startIndex=2017-11-23T12:30:00Z&amp;&amp;startBoundaryType=1
+    &amp;endIndex=2017-11-23T15:30:00Z&amp;endBoundaryType=2
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="575" sourceendlinenumber="575"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="577" sourceendlinenumber="603"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T13:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 10
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 20
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T15:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 30
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T16:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 40
+    }
+]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="605" sourceendlinenumber="605">To page the results of the request, a continuation token may be specified. This requests the first page of the first two stored events between start index and end index by indicating count is 2 and continuationToken is an empty string:</p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="607" sourceendlinenumber="611"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
+    ?startIndex=2017-11-23T12:30:00Z&amp;endIndex=2017-11-23T15:30:00Z
+    &amp;count=2&amp;continuationToken=
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="613" sourceendlinenumber="613"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="615" sourceendlinenumber="634"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+{
+    &quot;Results&quot;: [
+        {
+            &quot;Time&quot;: &quot;2017-11-23T13:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 10
+        },
+        {
+            &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 20
+        }
+    ],
+    &quot;ContinuationToken&quot;: &quot;2017-11-23T14:00:00.0000000Z&quot;
+}
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="636" sourceendlinenumber="636">This request uses the continuation token from the previous page to request the next page of stored events:</p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="638" sourceendlinenumber="642"><code class="lang-text">GET api/v1/Tenants/default}/Namespaces/{namespaceId}/Streams/Simple/Data
+    ?startIndex=2017-11-23T12:30:00Z&amp;endIndex=2017-11-23T15:30:00Z
+    &amp;count=2&amp;continuationToken=2017-11-23T14:00:00Z
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="644" sourceendlinenumber="644"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="646" sourceendlinenumber="660"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+{
+    &quot;Results&quot;: [
+        {
+            &quot;Time&quot;: &quot;2017-11-23T15:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 30
+        }
+    ],
+    &quot;ContinuationToken&quot;: null
+}
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="662" sourceendlinenumber="662">In this case, the results contain the final event. The returned continuation token is null.</p>
+<hr>
+<h2 id="get-interpolated-values" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="665" sourceendlinenumber="665"><code>Get Interpolated Values</code></h2>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="667" sourceendlinenumber="668">Returns a collection of values based on request parameters. The stream&#39;s read characteristics determine how events are calculated for indexes at which no stored event exists. Interpolation is not supported for streams with compound indexes.
+SDS supports two ways of specifying which interpolated events to return:  </p>
+<ul sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="670" sourceendlinenumber="671">
+<li sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="670" sourceendlinenumber="670"><a href="#getvaluesindexcollection" data-raw-source="[Index Collection](#getvaluesindexcollection)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="670" sourceendlinenumber="670">Index Collection</a>: One or more indexes can be passed to the request to retrieve events at specific indexes.</li>
+<li sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="671" sourceendlinenumber="671"><a href="#getvaluesinterpolatedinterval" data-raw-source="[Interval](#getvaluesinterpolatedinterval)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="671" sourceendlinenumber="671">Interval</a>: An interval can be specified with a start index, end index, and count. This will return the specified count of events evenly spaced from start index to end index.</li>
+</ul>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="673" sourceendlinenumber="673"><a name="getvaluesindexcollection"></a></p>
+<h3 id="index-collection" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="675" sourceendlinenumber="675"><code>Index Collection</code></h3>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="677" sourceendlinenumber="677">Returns events at the specified indexes. If no stored event exists at a specified index, the stream&#39;s read characteristics determine how the returned event is calculated.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="679" sourceendlinenumber="679"><strong>Request</strong>  </p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="681" sourceendlinenumber="684"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/
+    Interpolated?index={index}[&amp;index={index}...]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="686" sourceendlinenumber="688"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="690" sourceendlinenumber="691"><code>string streamId</code><br>The stream identifier.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="693" sourceendlinenumber="694"><code>string index</code><br>One or more indexes.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="696" sourceendlinenumber="697"><strong>Response</strong><br>The response includes a status code and a response body containing a serialized collection of events. Depending on the specified indexes and read characteristics of the stream, it is possible to have less events returned than specified indexes. An empty collection can also be returned.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="699" sourceendlinenumber="700"><strong>Example</strong><br>Consider a stream of type <code>Simple</code> with the default <code>InterpolationMode</code> of <code>Continuous</code> and <code>ExtrapolationMode</code> of <code>All</code>. In the following request, the specified index matches an existing stored event:</p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="702" sourceendlinenumber="705"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data/
+    Interpolated?index=2017-11-23T13:00:00Z
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="707" sourceendlinenumber="707">The response will contain the event stored at the specified index.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="709" sourceendlinenumber="709"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="711" sourceendlinenumber="722"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T13:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 10
+    }
+]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="724" sourceendlinenumber="724">The following request specifies an index for which no stored event exists:</p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="726" sourceendlinenumber="729"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data/
+    Interpolated?index=2017-11-23T13:30:00Z
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="731" sourceendlinenumber="731">Because the index is a valid type for interpolation and the stream has an <code>InterpolationMode</code> of <code>Continuous</code>, this request receives a response with an event interpolated at the specified index:</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="733" sourceendlinenumber="733"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="735" sourceendlinenumber="746"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T13:30:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 15
+    }
+]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="748" sourceendlinenumber="748">Consider a stream of type <code>Simple</code> with an <code>InterpolationMode</code> of <code>Discrete</code> and <code>ExtrapolationMode</code> of <code>All</code>. In the following request, the specified indexes only match two existing stored events:</p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="750" sourceendlinenumber="753"><code class="lang-text">GET api/v1/Tenants/default}/Namespaces/{namespaceId}/Streams/Simple/Data
+    Interpolated?index=2017-11-23T12:30:00Z&amp;index=2017-11-23T13:00:00Z&amp;index=2017-11-23T14:00:00Z
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="755" sourceendlinenumber="755">For this request, the response contains events for two of the three specified indexes.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="757" sourceendlinenumber="757"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="759" sourceendlinenumber="775"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T13:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 10
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 20
+    }
+]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="777" sourceendlinenumber="777"><a name="getvaluesinterpolatedinterval"></a></p>
+<h3 id="interval" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="779" sourceendlinenumber="779"><code>Interval</code></h3>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="781" sourceendlinenumber="781">Returns events at evenly spaced intervals based on the specified start index, end index, and count. If no stored event exists at an index interval, the stream&#39;s read characteristics determine how the returned event is calculated.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="783" sourceendlinenumber="783"><strong>Request</strong>  </p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="785" sourceendlinenumber="788"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/
+    Interpolated?startIndex={startIndex}&amp;endIndex={endIndex}&amp;count={count}
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="790" sourceendlinenumber="792"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="794" sourceendlinenumber="795"><code>string streamId</code><br>The stream identifier.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="797" sourceendlinenumber="798"><code>string startIndex</code><br>The index defining the beginning of the window.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="800" sourceendlinenumber="801"><code>string endIndex</code><br>The index defining the end of the window.  </p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="803" sourceendlinenumber="804"><code>int count</code><br>The number of events to return. Read characteristics of the stream determine how the events are constructed.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="806" sourceendlinenumber="807"><strong>Response</strong><br>The response includes a status code and a response body containing a serialized collection of events. Depending on the read characteristics and input parameters, it is possible for a collection to be returned with less events than specified in the count.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="809" sourceendlinenumber="809">For a stream, named Simple, of type <code>Simple</code> for the following request:</p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="811" sourceendlinenumber="814"><code class="lang-text">GET api/v1/Tenants/default}/Namespaces/{namespaceId}/Streams/Simple/Data/
+    Interpolated?startIndex=2017-11-23T13:00:00Z&amp;endIndex=2017-11-23T15:00:00Z&amp;count=3
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="816" sourceendlinenumber="816">The start and end fall exactly on event indexes, and the number of events from start to end match the count of three (3).</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="818" sourceendlinenumber="818"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="820" sourceendlinenumber="841"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T13:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 10
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 20
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T15:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 30
+    }
+]
+</code></pre><hr>
+<h2 id="get-summaries" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="845" sourceendlinenumber="845"><code>Get Summaries</code></h2>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="847" sourceendlinenumber="847">Returns summary intervals between a specified start and end index.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="849" sourceendlinenumber="849">Index types that cannot be interpolated do not support summary requests. Strings are an example of indexes that cannot be interpolated. Summaries are not supported for streams with compound indexes. Interpolating between two indexes that consist of multiple properties is not defined and results in non-determinant behavior.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="851" sourceendlinenumber="851">Summary values supported by <code>SdsSummaryType</code> enum:</p>
+<table sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="853" sourceendlinenumber="866">
+<thead>
+<tr>
+<th>Summary</th>
+<th>Enumeration value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Count</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Minimum</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Maximum</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Range</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Mean</td>
+<td>16</td>
+</tr>
+<tr>
+<td>StandardDeviation</td>
+<td>64</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>128</td>
+</tr>
+<tr>
+<td>Skewness</td>
+<td>256</td>
+</tr>
+<tr>
+<td>Kurtosis</td>
+<td>512</td>
+</tr>
+<tr>
+<td>WeightedMean</td>
+<td>1024</td>
+</tr>
+<tr>
+<td>WeightedStandardDeviation</td>
+<td>2048</td>
+</tr>
+<tr>
+<td>WeightedPopulationStandardDeviatio</td>
+<td>4096</td>
+</tr>
+</tbody>
+</table>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="868" sourceendlinenumber="868"><strong>Request</strong>  </p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="870" sourceendlinenumber="873"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/
+    Summaries?startIndex={startIndex}&amp;endIndex={endIndex}&amp;count={count}&amp;filter={filter}
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="875" sourceendlinenumber="877"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="879" sourceendlinenumber="880"><code>string streamId</code><br>The stream identifier.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="882" sourceendlinenumber="883"><code>string startIndex</code><br>The start index for the intervals.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="885" sourceendlinenumber="886"><code>string endIndex</code><br>The end index for the intervals.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="888" sourceendlinenumber="889"><code>int count</code><br>The number of intervals requested.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="891" sourceendlinenumber="892"><code>string filter</code><br>Optional filter expression (see <a class="xref" href="Filter_Expressions_1-0.html" data-raw-source="[Filter expressions](xref:sdsFilterExpressions1-0)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="892" sourceendlinenumber="892">Filter expressions</a>).</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="894" sourceendlinenumber="895"><code>string streamViewId</code><br>Optional stream view identifier.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="897" sourceendlinenumber="898"><strong>Response</strong><br>The response includes a status code and a response body containing a serialized collection of SdsIntervals.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="900" sourceendlinenumber="900">Each SdsInterval has a start, end, and collection of summary values.</p>
+<table sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="902" sourceendlinenumber="906">
+<thead>
+<tr>
+<th>Property</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start</td>
+<td>The start of the interval</td>
+</tr>
+<tr>
+<td>End</td>
+<td>The end of the interval</td>
+</tr>
+<tr>
+<td>Summaries</td>
+<td>The summary values for the interval, keyed by summary type. The nested dictionary contains property name keys and summary calculation result values.</td>
+</tr>
+</tbody>
+</table>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="908" sourceendlinenumber="909"><strong>Example</strong><br>The following request calculates two summary intervals between the <code>startIndex</code> and <code>endIndex</code>:</p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="911" sourceendlinenumber="914"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data/ 
+    Summaries?startIndex=2017-11-23T12:00:00Z&amp;endIndex=2017-11-23T16:00:00Z&amp;count=2
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="916" sourceendlinenumber="916"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="918" sourceendlinenumber="1030"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Start&quot;: {
+            &quot;Time&quot;: &quot;2017-11-23T12:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 0
+        },
+        &quot;End&quot;: {
+            &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 20
+        },
+        &quot;Summaries&quot;: {
+            &quot;Count&quot;: {
+                &quot;Measurement&quot;: 2
+            },
+            &quot;Minimum&quot;: {
+                &quot;Measurement&quot;: 0
+            },
+            &quot;Maximum&quot;: {
+                &quot;Measurement&quot;: 20
+            },
+            &quot;Range&quot;: {
+                &quot;Measurement&quot;: 20
+            },
+            &quot;Total&quot;: {
+                &quot;Measurement&quot;: 20
+            },
+            &quot;Mean&quot;: {
+                &quot;Measurement&quot;: 10
+            },
+            &quot;StandardDeviation&quot;: {
+                &quot;Measurement&quot;: 7.0710678118654755
+            },
+            &quot;PopulationStandardDeviation&quot;: {
+                &quot;Measurement&quot;: 5
+            },
+            &quot;WeightedMean&quot;: {
+                &quot;Measurement&quot;: 10
+            },
+            &quot;WeightedStandardDeviation&quot;: {
+                &quot;Measurement&quot;: 7.0710678118654755
+            },
+            &quot;WeightedPopulationStandardDeviation&quot;: {
+                &quot;Measurement&quot;: 5
+            },
+            &quot;Skewness&quot;: {
+                &quot;Measurement&quot;: 0
+            },
+            &quot;Kurtosis&quot;: {
+                &quot;Measurement&quot;: -2
+            }
+        }
+    },
+    {
+        &quot;Start&quot;: {
+            &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 20
+        },
+        &quot;End&quot;: {
+            &quot;Time&quot;: &quot;2017-11-23T16:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 40
+        },
+        &quot;Summaries&quot;: {
+            &quot;Count&quot;: {
+                &quot;Measurement&quot;: 2
+            },
+            &quot;Minimum&quot;: {
+                &quot;Measurement&quot;: 20
+            },
+            &quot;Maximum&quot;: {
+                &quot;Measurement&quot;: 40
+            },
+            &quot;Range&quot;: {
+                &quot;Measurement&quot;: 20
+            },
+            &quot;Total&quot;: {
+                &quot;Measurement&quot;: 60
+            },
+            &quot;Mean&quot;: {
+                &quot;Measurement&quot;: 30
+            },
+            &quot;StandardDeviation&quot;: {
+                &quot;Measurement&quot;: 7.0710678118654755
+            },
+            &quot;PopulationStandardDeviation&quot;: {
+                &quot;Measurement&quot;: 5
+            },
+            &quot;WeightedMean&quot;: {
+                &quot;Measurement&quot;: 30
+            },
+            &quot;WeightedStandardDeviation&quot;: {
+                &quot;Measurement&quot;: 7.0710678118654755
+            },
+            &quot;WeightedPopulationStandardDeviation&quot;: {
+                &quot;Measurement&quot;: 5
+            },
+            &quot;Skewness&quot;: {
+                &quot;Measurement&quot;: 0
+            },
+            &quot;Kurtosis&quot;: {
+                &quot;Measurement&quot;: -2
+            }
+        }
+    }
+]
+</code></pre><hr>
+<h2 id="get-sampled-values" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1034" sourceendlinenumber="1034"><code>Get Sampled Values</code></h2>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1036" sourceendlinenumber="1036">Returns data sampled by intervals between a specified start and end index.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1038" sourceendlinenumber="1038">Sampling is driven by a specified property or properties of the stream&#39;s SdsType. Property types that cannot be interpolated do not support sampling requests. Strings are an example of a property that cannot be interpolated. For more information, see <a class="xref" href="Reading_Data_1-0.html#interpolation" data-raw-source="[Interpolation.](xref:sdsReadingData1-0#interpolation)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1038" sourceendlinenumber="1038">Interpolation.</a></p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1040" sourceendlinenumber="1040"><strong>Request</strong>  </p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1042" sourceendlinenumber="1047"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/
+    Sampled?startIndex={startIndex}&amp;endIndex={endIndex}&amp;intervals={intervals}&amp;sampleBy={sampleBy}
+    &amp;boundaryType={boundaryType}&amp;startBoundaryType={startBoundaryType}
+    &amp;endBoundaryType={endBoundaryType}&amp;filter={filter}&amp;streamViewId={streamViewId}
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1049" sourceendlinenumber="1051"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1053" sourceendlinenumber="1054"><code>string streamId</code><br>The stream identifier.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1056" sourceendlinenumber="1057"><code>string startIndex</code><br>The start index for the intervals.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1059" sourceendlinenumber="1060"><code>string endIndex</code><br>The end index for the intervals.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1062" sourceendlinenumber="1063"><code>int intervals</code><br>The number of intervals requested.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1065" sourceendlinenumber="1066"><code>string sampleBy</code><br>Property or properties to use when sampling.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1068" sourceendlinenumber="1069"><code>SdsBoundaryType boundaryType</code><br>Optional SdsBoundaryType specifies the handling of events at or near the startIndex and endIndex.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1071" sourceendlinenumber="1072"><code>SdsBoundaryType startBoundaryType</code><br>Optional SdsBoundaryType specifies the handling of events at or near the startIndex.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1074" sourceendlinenumber="1075"><code>SdsBoundaryType endBoundaryType</code><br>Optional SdsBoundaryType specifies the handling of events at or near the endIndex.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1077" sourceendlinenumber="1078"><code>string filter</code><br>Optional filter expression (see <a class="xref" href="Filter_Expressions_1-0.html" data-raw-source="[Filter expressions](xref:sdsFilterExpressions1-0)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1078" sourceendlinenumber="1078">Filter expressions</a>).</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1080" sourceendlinenumber="1081"><strong>Response</strong><br>The response includes a status code and a response body containing a serialized collection of events.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1083" sourceendlinenumber="1084"><strong>Example</strong><br>The following request returns two sample intervals between the <code>startIndex</code> and <code>endIndex</code>:</p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1086" sourceendlinenumber="1089"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data/
+    Sampled?startIndex=2019-01-01T00:00:00Z&amp;endIndex=2019-01-02T00:00:00Z&amp;intervals=2&amp;sampleBy=Measurement
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1091" sourceendlinenumber="1091"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1093" sourceendlinenumber="1136"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2019-01-01T00:00:01Z&quot;,
+        &quot;State&quot;: 1,
+        &quot;Measurement&quot;: 1
+    },
+    {
+        &quot;Time&quot;: &quot;2019-01-01T00:11:50Z&quot;,
+        &quot;State&quot;: 2,
+        &quot;Measurement&quot;: 0.00006028870675578446
+    },
+    {
+        &quot;Time&quot;: &quot;2019-01-01T11:55:33Z&quot;,
+        &quot;Measurement&quot;: 6.277981349066863
+    },
+    {
+        &quot;Time&quot;: &quot;2019-01-01T12:00:00Z&quot;,
+        &quot;Measurement&quot;: 3.101013140344655
+    },
+    {
+        &quot;Time&quot;: &quot;2019-01-01T12:00:01Z&quot;,
+        &quot;State&quot;: 1,
+        &quot;Measurement&quot;: 4.101013140344655
+    },
+    {
+        &quot;Time&quot;: &quot;2019-01-01T12:01:50Z&quot;,
+        &quot;State&quot;: 2,
+        &quot;Measurement&quot;: 0.0036776111121028521
+    },
+    {
+        &quot;Time&quot;: &quot;2019-01-01T23:57:23Z&quot;,
+        &quot;State&quot;: 2,
+        &quot;Measurement&quot;: 6.2816589601789659
+    },
+    {
+        &quot;Time&quot;: &quot;2019-01-02T00:00:00Z&quot;,
+        &quot;Measurement&quot;: 6.20202628068931
+    }
+]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1138" sourceendlinenumber="1138"><strong>Note:</strong> <code>State</code> is not included in the JSON when its value is the default value.</p>
+<hr>
+<h2 id="join-values" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1141" sourceendlinenumber="1141"><code>Join Values</code></h2>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1143" sourceendlinenumber="1143">Returns data from multiple streams, which are joined based on the request specifications. The streams must be of the same SdsType.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1145" sourceendlinenumber="1145">SDS supports the following types of joins:</p>
+<table sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1147" sourceendlinenumber="1153">
+<thead>
+<tr>
+<th>SdsJoinMode</th>
+<th>Enumeration value</th>
+<th>Operation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inner</td>
+<td>0</td>
+<td>Results include the stored events with common indexes across specified streams.</td>
+</tr>
+<tr>
+<td>Outer</td>
+<td>1</td>
+<td>Results include the stored events for all indexes across all streams.</td>
+</tr>
+<tr>
+<td>Interpolated</td>
+<td>2</td>
+<td>Results include events for each index across all streams for the request index boundaries. Some events may be interpolated.</td>
+</tr>
+<tr>
+<td>MergeLeft</td>
+<td>3</td>
+<td>Results include events for each index across all streams selecting events at the indexes based on left to right order of the streams.</td>
+</tr>
+<tr>
+<td>MergeRight</td>
+<td>4</td>
+<td>Results include events for each index across all streams selecting events at the indexes based on right to left order of the streams.</td>
+</tr>
+</tbody>
+</table>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1155" sourceendlinenumber="1155">SDS supports two types of join requests:</p>
+<ul sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1157" sourceendlinenumber="1158">
+<li sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1157" sourceendlinenumber="1157"><a href="#getjoin" data-raw-source="[GET](#getjoin)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1157" sourceendlinenumber="1157">GET</a>: The stream, joinMode, start index, and end index are specified in the request URI path.</li>
+<li sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1158" sourceendlinenumber="1158"><a href="#postjoin" data-raw-source="[POST](#postjoin)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1158" sourceendlinenumber="1158">POST</a>: Only the SdsJoinMode is specified in the URI. The streams and read specification for each stream are specified in the body of the request.</li>
+</ul>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1160" sourceendlinenumber="1160"><a name="getjoin"></a></p>
+<h3 id="get-request" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1162" sourceendlinenumber="1162"><code>GET Request</code></h3>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1164" sourceendlinenumber="1168"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Bulk/Streams/Data/Joins
+    ?streams={streams}&amp;joinMode={joinMode}
+    &amp;startIndex={startIndex}&amp;endIndex={endIndex}
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1170" sourceendlinenumber="1172"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1174" sourceendlinenumber="1175"><code>string streams</code><br>Commas separated list of stream identifiers.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1177" sourceendlinenumber="1178"><code>SdsJoinMode joinMode</code><br>Type of join, that is inner, outer, and so on.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1180" sourceendlinenumber="1181"><code>string startIndex</code><br>Index identifying the beginning of the series of events to return.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1183" sourceendlinenumber="1184"><code>string endIndex</code><br>Index identifying the end of the series of events to return.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1186" sourceendlinenumber="1187"><strong>Response</strong><br>The response includes a status code and a response body containing multiple serialized events. See examples for specifics.</p>
+<h4 id="examples" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1189" sourceendlinenumber="1189">Examples</h4>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1191" sourceendlinenumber="1191">To join multiple streams, for example Simple1 and Simple2, assume that Simple1 presents the following data:</p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1193" sourceendlinenumber="1219"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T11:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 10
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T13:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 20
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 30
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T16:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 40
+    }
+]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1221" sourceendlinenumber="1221">And assume that Simple2 presents the following data:</p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1223" sourceendlinenumber="1249"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T12:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 50
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 60
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T15:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 70
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T17:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 80
+    }
+]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1251" sourceendlinenumber="1251">The following are responses for various Joins request options:</p>
+<h5 id="inner-join-example" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1253" sourceendlinenumber="1253">Inner join example</h5>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1255" sourceendlinenumber="1259"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Bulk/Streams/Data/Joins
+    ?streams=Simple1,Simple2&amp;joinMode=inner
+    &amp;startIndex=0001-01-01T00:00:00.0000000&amp;endIndex=9999-12-31T23:59:59.9999999
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1261" sourceendlinenumber="1262"><strong>Response</strong><br>Measurements from both streams with common indexes.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1264" sourceendlinenumber="1264"><strong>Response body</strong> </p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1266" sourceendlinenumber="1284"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    [
+        {
+            &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 30
+        },
+        {
+            &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 60
+        }
+    ]
+]
+</code></pre><h5 id="outer-join-example" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1286" sourceendlinenumber="1286">Outer join example</h5>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1288" sourceendlinenumber="1292"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Bulk/Streams/Data/Joins
+    ?streams=Simple1,Simple2&amp;joinMode=outer
+    &amp;startIndex=0001-01-01T00:00:00.0000000&amp;endIndex=9999-12-31T23:59:59.9999999
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1294" sourceendlinenumber="1295"><strong>Response</strong><br>All Measurements from both Streams, with default values at indexes where a Stream does not have a value.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1297" sourceendlinenumber="1297"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1299" sourceendlinenumber="1365"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    [
+        {
+            &quot;Time&quot;: &quot;2017-11-23T11:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 10
+        },
+        null
+    ],
+    [
+        null,
+        {
+            &quot;Time&quot;: &quot;2017-11-23T12:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 50
+        }
+    ],
+    [
+        {
+            &quot;Time&quot;: &quot;2017-11-23T13:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 20
+        },
+        null
+    ],
+    [
+        {
+            &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 30
+        },
+        {
+            &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 60
+        }
+    ],
+    [
+        null,
+        {
+            &quot;Time&quot;: &quot;2017-11-23T15:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 70
+        }
+    ],
+    [
+        {
+            &quot;Time&quot;: &quot;2017-11-23T16:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 40
+        },
+        null
+    ],
+    [
+        null,
+        {
+            &quot;Time&quot;: &quot;2017-11-23T17:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 80
+        }
+    ]
+]
+</code></pre><h5 id="interpolated-join-example" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1367" sourceendlinenumber="1367">Interpolated join example</h5>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1369" sourceendlinenumber="1373"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Bulk/Streams/Data/Joins
+    ?streams=Simple1,Simple2&amp;joinMode=interpolated
+    &amp;startIndex=0001-01-01T00:00:00.0000000&amp;endIndex=9999-12-31T23:59:59.9999999
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1375" sourceendlinenumber="1376"><strong>Response</strong><br>All measurements from both Streams with missing values interpolated. If the missing values are between valid measurements within a stream, they are interpolated. If the missing values are outside of the boundary values, they are extrapolated.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1378" sourceendlinenumber="1378"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1380" sourceendlinenumber="1470"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    [
+        {
+            &quot;Time&quot;: &quot;2017-11-23T11:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 10
+        },
+        {
+            &quot;Time&quot;: &quot;2017-11-23T11:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 50
+        }
+    ],
+    [
+        {
+            &quot;Time&quot;: &quot;2017-11-23T12:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 15
+        },
+        {
+            &quot;Time&quot;: &quot;2017-11-23T12:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 50
+        }
+    ],
+    [
+        {
+            &quot;Time&quot;: &quot;2017-11-23T13:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 20
+        },
+        {
+            &quot;Time&quot;: &quot;2017-11-23T13:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 55
+        }
+    ],
+    [
+        {
+            &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 30
+        },
+        {
+            &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 60
+        }
+    ],
+    [
+        {
+            &quot;Time&quot;: &quot;2017-11-23T15:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 35
+        },
+        {
+            &quot;Time&quot;: &quot;2017-11-23T15:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 70
+        }
+    ],
+    [
+        {
+            &quot;Time&quot;: &quot;2017-11-23T16:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 40
+        },
+        {
+            &quot;Time&quot;: &quot;2017-11-23T16:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 75
+        }
+    ],
+    [
+        {
+            &quot;Time&quot;: &quot;2017-11-23T17:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 40
+        },
+        {
+            &quot;Time&quot;: &quot;2017-11-23T17:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 80
+        }
+    ]
+]
+</code></pre><h5 id="mergeleft-join-example" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1472" sourceendlinenumber="1472">MergeLeft join example</h5>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1474" sourceendlinenumber="1478"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Bulk/Streams/Data/Joins
+    ?streams=Simple1,Simple2&amp;joinMode=mergeleft
+    &amp;startIndex=0001-01-01T00:00:00.0000000&amp;endIndex=9999-12-31T23:59:59.9999999
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1480" sourceendlinenumber="1481"><strong>Response</strong><br>This is similar to <a href="#outer-join-example" data-raw-source="[OuterJoin](#outer-join-example)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1481" sourceendlinenumber="1481">OuterJoin</a>, but the value at each index is the first available value at that index when iterating the given list of streams from left to right.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1483" sourceendlinenumber="1483"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1485" sourceendlinenumber="1526"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T11:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 10
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T12:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 50
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T13:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 20
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 30
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T15:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 70
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T16:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 40
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T17:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 80
+    }
+]
+</code></pre><h5 id="mergeright-join-example" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1528" sourceendlinenumber="1528">MergeRight join example</h5>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1530" sourceendlinenumber="1534"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Bulk/Streams/Data/Joins
+    ?streams=Simple1,Simple2&amp;joinMode=mergeright
+    &amp;startIndex=0001-01-01T00:00:00.0000000&amp;endIndex=9999-12-31T23:59:59.9999999
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1536" sourceendlinenumber="1537"><strong>Response</strong><br>This is similar to <a href="#outer-join-example" data-raw-source="[OuterJoin](#outer-join-example)" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1537" sourceendlinenumber="1537">OuterJoin</a>, but the value at each index is the first available value at that index when iterating the given list of streams from right to left.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1539" sourceendlinenumber="1539"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1541" sourceendlinenumber="1582"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T11:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 10
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T12:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 50
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T13:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 20
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 60
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T15:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 70
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T16:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 40
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T17:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 80
+    }
+]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1584" sourceendlinenumber="1584"><a name="postjoin"></a></p>
+<h3 id="post-request" sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1586" sourceendlinenumber="1586">POST request</h3>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1588" sourceendlinenumber="1591"><code class="lang-text">POST api/v1/Tenants/default/Namespaces/{namespaceId}/Bulk/Streams/Data/Joins
+    ?joinMode={joinMode}
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1593" sourceendlinenumber="1595"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1597" sourceendlinenumber="1598"><code>SdsJoinMode joinMode</code><br>Type of join, that is inner, outer, and so on.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1600" sourceendlinenumber="1601"><strong>Request body</strong><br>Read options specific to each stream.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1603" sourceendlinenumber="1604"><strong>Response</strong><br>The response includes a status code and a response body containing multiple serialized events.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1606" sourceendlinenumber="1606">Consider the following outer join request:</p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1608" sourceendlinenumber="1611"><code class="lang-text">    POST api/v1/Tenants/default/Namespaces/{namespaceId}/Bulk/Streams/Data/Joins
+        ?joinMode=outer
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1613" sourceendlinenumber="1613">where in the request body, different start indexes and end indexes are specified per stream:</p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1615" sourceendlinenumber="1642"><code class="lang-json">[  
+    {  
+        &quot;StreamId&quot;: &quot;Simple1&quot;,
+        &quot;Options&quot;:
+        {
+            &quot;StartIndex&quot;: &quot;2017-11-23T11:00:00Z&quot;,
+            &quot;EndIndex&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+            &quot;StartBoundaryType&quot;: &quot;Exact&quot;,
+            &quot;EndBoundaryType&quot;: &quot;Exact&quot;,
+            &quot;Count&quot;: 100,
+            &quot;Filter&quot;: &quot;&quot;
+        }
+    },
+    {
+        &quot;StreamId&quot;: &quot;Simple2&quot;,
+        &quot;Options&quot;:
+        {
+            &quot;StartIndex&quot;: &quot;2017-11-23T15:00:00Z&quot;,
+            &quot;EndIndex&quot;: &quot;2017-11-23T17:00:00Z&quot;,
+            &quot;StartBoundaryType&quot;: &quot;Exact&quot;,
+            &quot;EndBoundaryType&quot;: &quot;Exact&quot;,
+            &quot;Count&quot;: 100,
+            &quot;Filter&quot;: &quot;&quot;
+        }
+    }
+]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1644" sourceendlinenumber="1644">Only events within the stream&#39;s specified index boundaries are considered for the outer join operation.</p>
+<p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1646" sourceendlinenumber="1646"><strong>Response body</strong></p>
+<pre sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1648" sourceendlinenumber="1694"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+[
+    [
+        {
+            &quot;Time&quot;: &quot;2017-11-23T11:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 10
+        },
+        null
+    ],
+    [
+        {
+            &quot;Time&quot;: &quot;2017-11-23T13:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 20
+        },
+        null
+    ],
+    [
+        {
+            &quot;Time&quot;: &quot;2017-11-23T14:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 30
+        },
+        null
+    ],
+    [
+        null,
+        {
+            &quot;Time&quot;: &quot;2017-11-23T15:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 70
+        }
+    ],
+    [
+        null,
+        {
+            &quot;Time&quot;: &quot;2017-11-23T17:00:00Z&quot;,
+            &quot;State&quot;: 0,
+            &quot;Measurement&quot;: 80
+        }
+    ]
+]
+</code></pre><p sourcefile="V1/SDS/Reading_Data_API_1-0.md" sourcestartlinenumber="1696" sourceendlinenumber="1696"><strong>Note:</strong> Not all the values from streams were included since they are restricted by individual queries for each Stream.</p>
+<hr>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/SDS/Reading_Data_API_1-0.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>© 2020 - OSIsoft, LLC.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

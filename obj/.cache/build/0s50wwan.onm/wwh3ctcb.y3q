@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Modbus TCP EDS adapter quick start </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Modbus TCP EDS adapter quick start ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../V1/index.html" width="46">
+                <img id="logo" src="../../V1/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge Data Store"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="modbusQuickStart1-0">
+<h1 id="modbus-tcp-eds-adapter-quick-start" sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="5" sourceendlinenumber="5">Modbus TCP EDS adapter quick start</h1>
+
+<p sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="7" sourceendlinenumber="7">The Modbus TCP EDS adapter is a component of Edge Data Store that defines connections to and receives data from Modbus TCP capable devices. The Modbus TCP EDS adapter can connect to multiple devices by defining one instance of the adapter for each device. The EDS installation includes the Modbus TCP EDS adapter and the option to add a single Modbus TCP EDS adapter instance. Add additional instances after installation using the system components configuration. For more information about installation, see <a class="xref" href="../Installation/Install%20Edge%20Data%20Store_1-0.html" data-raw-source="[Install Edge Data Store](xref:InstallEdgeDataStore1-0)" sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="7" sourceendlinenumber="7">Install Edge Data Store</a>. To get started collecting data with an instance of the Modbus TCP EDS adapter, you need to configure the data source, which specifies the device connection, and the data selection, which specifies the data to collect.</p>
+<p sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="9" sourceendlinenumber="9">The following diagram depicts the data flow of a single instance of Modbus TCP EDS adapter:</p>
+<p sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="11" sourceendlinenumber="11"><img src="https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/ModbusTCP.jpg" alt="Modbus TCP EDS" title="Modbus TCP EDS" sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="11" sourceendlinenumber="11"></p>
+<p sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="13" sourceendlinenumber="13">The adapter instance requests data from the Modbus TCP device and then the device sends its data. The adapter sends the collected data to the storage component where it is held until it can be egressed to permanent storage in PI Server or OSIsoft Cloud Services. The adapter instance can be configured from the device where EDS is installed, and EDS collects health information about the adapter that can be egressed.</p>
+<h2 id="configure-a-modbus-tcp-data-source" sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="15" sourceendlinenumber="15">Configure a Modbus TCP data source</h2>
+<p sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="17" sourceendlinenumber="17">To configure a data source to connect a Modbus TCP device to the Modbus TCP EDS adapter instance, perform the following steps</p>
+<ol sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="19" sourceendlinenumber="35">
+<li sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="19" sourceendlinenumber="31"><p sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="19" sourceendlinenumber="19">Using a text editor, copy the example below to create a file in JSON format to describe the location of the Modbus TCP data source. </p>
+<pre sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="21" sourceendlinenumber="31"><code class="lang-json">{
+    &quot;IpAddress&quot;: &quot;&lt;Modbus IP Address&gt;&quot;,
+    &quot;Port&quot;: &lt;Port - usually 502&gt;,
+    &quot;ConnectTimeout&quot;: 15000,
+    &quot;ReconnectInterval&quot;: 5000,
+    &quot;RequestTimeout&quot;: 9000,
+    &quot;DelayBetweenRequests&quot;: 0,
+    &quot;MaxResponseDataLength&quot;: 250
+}
+</code></pre></li>
+<li sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="33" sourceendlinenumber="33"><p sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="33" sourceendlinenumber="33">Modify the values in the example to match your environment, including the IP address and port for the Modbus data source.</p>
+</li>
+<li sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="34" sourceendlinenumber="34">Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is Modbus1, name the file <em>Modbus1DataSource.json</em>. </li>
+<li sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="35" sourceendlinenumber="35">Run the following curl script from the same directory where the file is located, updating the file name and destination in the script if needed. </li>
+</ol>
+<pre sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="38" sourceendlinenumber="40"><code class="lang-bash">curl -d &quot;@Modbus1Datasource.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Datasource
+</code></pre><p sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="42" sourceendlinenumber="42">When the command completes successfully (a 204 is returned by curl), the Modbus TCP data source has been created. If you get a 400 error, check the JSON file for errors. If you receive a 404 or 500 error, check that EDS is running on the device.</p>
+<h2 id="configure-modbus-tcp-data-selection" sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="44" sourceendlinenumber="44">Configure Modbus TCP data selection</h2>
+<p sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="46" sourceendlinenumber="46">After you create the data source file, select the streams to store in EDS by configuring Modbus data selection. To configure the data selection file, complete the following steps:</p>
+<ol sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="48" sourceendlinenumber="110">
+<li sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="48" sourceendlinenumber="102"><p sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="48" sourceendlinenumber="48">Using a text editor, copy the example below to create a file in JSON format to define each stream to ingress to EDS. </p>
+<pre sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="50" sourceendlinenumber="102"><code class="lang-json">[{
+        &quot;Selected&quot;: &quot;true&quot;,
+        &quot;UnitId&quot;: 1,
+        &quot;RegisterType&quot;: 3,
+        &quot;RegisterOffset&quot;: 1,
+        &quot;DataTypeCode&quot;: 20,
+        &quot;ConversionFactor&quot;: 2,
+        &quot;ConversionOffset&quot;: 3.4,
+        &quot;ScanRate&quot;: 500
+    },
+    {
+        &quot;Selected&quot;: &quot;true&quot;,
+        &quot;UnitId&quot;: 1,
+        &quot;RegisterType&quot;: 3,
+        &quot;RegisterOffset&quot;: 2,
+        &quot;DataTypeCode&quot;: 20,
+        &quot;ConversionFactor&quot;: 2,
+        &quot;ConversionOffset&quot;: 3.4,
+        &quot;ScanRate&quot;: 500
+    },
+    {
+        &quot;Selected&quot;: &quot;true&quot;,
+        &quot;UnitId&quot;: 1,
+        &quot;RegisterType&quot;: 3,
+        &quot;RegisterOffset&quot;: 3,
+        &quot;DataTypeCode&quot;: 20,
+        &quot;ConversionFactor&quot;: 2,
+        &quot;ConversionOffset&quot;: 3.4,
+        &quot;ScanRate&quot;: 500
+    },
+    {
+        &quot;Selected&quot;: &quot;true&quot;,
+        &quot;UnitId&quot;: 1,
+        &quot;RegisterType&quot;: 3,
+        &quot;RegisterOffset&quot;: 4,
+        &quot;DataTypeCode&quot;: 20,
+        &quot;ConversionFactor&quot;: 2,
+        &quot;ConversionOffset&quot;: 3.4,
+        &quot;ScanRate&quot;: 500
+    },
+    {
+        &quot;Selected&quot;: &quot;true&quot;,
+        &quot;UnitId&quot;: 1,
+        &quot;RegisterType&quot;: 3,
+        &quot;RegisterOffset&quot;: 5,
+        &quot;DataTypeCode&quot;: 20,
+        &quot;ConversionFactor&quot;: 2,
+        &quot;ConversionOffset&quot;: 3.4,
+        &quot;ScanRate&quot;: 500
+    }
+]
+</code></pre></li>
+<li sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="104" sourceendlinenumber="104"><p sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="104" sourceendlinenumber="104">Modify the values in the example to match your environment.</p>
+</li>
+<li sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="105" sourceendlinenumber="105">Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is Modbus1, name the file <em>Modbus1DataSelection.json</em>. </li>
+<li sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="106" sourceendlinenumber="110"><p sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="106" sourceendlinenumber="106">Run the following curl script from the same directory where the file is located, updating the file name and the endpoint URL in the script if needed.</p>
+<pre sourcefile="V1/Overview/ModbusQuickStart_1-0.md" sourcestartlinenumber="108" sourceendlinenumber="110"><code class="lang-bash">curl -d &quot;@Modbus1Dataselection.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Dataselection
+</code></pre></li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/Overview/ModbusQuickStart_1-0.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>© 2020 - OSIsoft, LLC.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
