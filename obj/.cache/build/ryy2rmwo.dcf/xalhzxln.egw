@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>API calls for writing data </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="API calls for writing data ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../V1/index.html" width="46">
+                <img id="logo" src="../../V1/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge Data Store"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="sdsWritingDataApi1-0">
+<h1 id="api-calls-for-writing-data" sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="5" sourceendlinenumber="5">API calls for writing data</h1>
+
+<h2 id="example-type-stream-and-data" sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="7" sourceendlinenumber="7">Example type, stream, and data</h2>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="9" sourceendlinenumber="9">Many of the following API methods descriptions contain example requests and responses in JSON to highlight usage and specific behaviors. The following type, stream, and data are used in the examples:</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="11" sourceendlinenumber="12"><strong>Example type</strong><br><code>SimpleType</code> is an SdsType with a single index and two additional properties. This type is defined in Python and Javascript:</p>
+<h6 id="python" sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="14" sourceendlinenumber="14">Python</h6>
+<pre sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="16" sourceendlinenumber="40"><code class="lang-python">class State(Enum):
+  Ok = 0
+  Warning = 1
+  Alarm = 2
+
+class SimpleType(object):
+  Time = property(getTime, setTime)
+  def getTime(self):
+    return self.__time
+  def setTime(self, time):
+    self.__time = time
+
+  State = property(getState, setState)
+  def getState(self):
+    return self.__state
+  def setState(self, state):
+    self.__state = state
+
+  Measurement = property(getValue, setValue)
+  def getValue(self):
+    return self.__measurement
+  def setValue(self, measurement):
+    self.__measurement = measurement
+</code></pre><h6 id="javascript" sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="42" sourceendlinenumber="42">JavaScript</h6>
+<pre sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="44" sourceendlinenumber="57"><code class="lang-javascript">var State =
+{
+  Ok: 0,
+  Warning: 1,
+  Alarm: 2,
+}
+
+var SimpleType = function () {
+  this.Time = null;
+  this.State = null;
+  this.Value = null;
+}
+</code></pre><p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="59" sourceendlinenumber="60"><strong>Example stream</strong><br><code>Simple</code> is an SdsStream of type <code>SimpleType</code>.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="62" sourceendlinenumber="68"><strong>Example data</strong><br><code>Simple</code> has stored values as follows:
+      11/23/2017 12:00:00 PM: Ok  0
+      11/23/2017  1:00:00 PM: Ok 10
+      11/23/2017  2:00:00 PM: Ok 20
+      11/23/2017  3:00:00 PM: Ok 30
+      11/23/2017  4:00:00 PM: Ok 40</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="70" sourceendlinenumber="70">All times are represented at offset 0, GMT.</p>
+<hr>
+<h2 id="insert-values" sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="73" sourceendlinenumber="73"><code>Insert Values</code></h2>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="75" sourceendlinenumber="75">Inserts data into the specified stream. Returns an error if data is already present at the index of any event.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="77" sourceendlinenumber="77"><strong>Request</strong></p>
+<pre sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="79" sourceendlinenumber="81"><code class="lang-text">POST api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
+</code></pre><p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="83" sourceendlinenumber="85"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="87" sourceendlinenumber="88"><code>string streamId</code><br>The stream identifier. </p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="90" sourceendlinenumber="91"><strong>Request body</strong><br>A serialized list of one or more events of the stream type.  </p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="93" sourceendlinenumber="94"><strong>Response</strong><br>The response includes a status code.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="96" sourceendlinenumber="96"><strong>Note:</strong> This request will return an error if an event already exists for any index in the request. If any individual index encounters a problem, the entire operation is rolled back and no insertions are made. The <code>streamId</code> and <code>index</code> that caused the issue are included in the error response.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="98" sourceendlinenumber="99"><strong>Example</strong><br>The following request is used to insert events into stream <code>Simple</code> of <code>SimpleType</code>,</p>
+<pre sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="101" sourceendlinenumber="103"><code class="lang-text">POST api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
+</code></pre><p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="105" sourceendlinenumber="105">The request body specifies the values to insert:</p>
+<pre sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="107" sourceendlinenumber="120"><code class="lang-json">[
+    {
+        &quot;Time&quot;: &quot;2017-11-23T17:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 50
+    },
+    {
+        &quot;Time&quot;: &quot;2017-11-23T18:00:00Z&quot;,
+        &quot;State&quot;: 0,
+        &quot;Measurement&quot;: 60
+    }
+]
+</code></pre><hr>
+<h2 id="patch-values" sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="124" sourceendlinenumber="124"><code>Patch Values</code></h2>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="126" sourceendlinenumber="126">Modifies the specified stream event(s). Patching affects only the data item parameters that are included in the call.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="128" sourceendlinenumber="128"><strong>Request</strong></p>
+<pre sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="130" sourceendlinenumber="133"><code class="lang-text">PATCH api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
+  ?select={selectExpression}
+</code></pre><p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="135" sourceendlinenumber="137"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="139" sourceendlinenumber="140"><code>string streamId</code><br>The stream identifier.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="142" sourceendlinenumber="143"><code>string selectExpression</code><br>Comma-separated list of strings that indicates the event fields to be changed in stream events.  </p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="145" sourceendlinenumber="146"><strong>Request body</strong><br>A serialized collection of one or more patch property events.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="148" sourceendlinenumber="149"><strong>Response</strong><br>The response includes a status code.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="151" sourceendlinenumber="151">Consider you have a stream <code>Simple</code> of <code>SimpleType</code>, to change one property, <code>Measurement</code>, for one event specify the following request:</p>
+<pre sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="153" sourceendlinenumber="156"><code class="lang-text">PATCH api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
+  ?select=measurement
+</code></pre><p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="158" sourceendlinenumber="158">With the following request body,</p>
+<pre sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="160" sourceendlinenumber="167"><code class="lang-json">[
+  {  
+    &quot;Time&quot;:&quot;2017-11-23T12:00:00Z&quot;,
+    &quot;Measurement&quot;:500.0
+  }
+]
+</code></pre><p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="169" sourceendlinenumber="169">This request will only change the <code>Measurement</code> value at the specified event index.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="171" sourceendlinenumber="172"><strong>Note:</strong><br>Patching is used to patch the events of the selected fields for one or more events in the stream. Only the fields indicated in <code>selectExpression</code> are modified. The events to be modified are indicated by the index value of each entry in the collection. If there is a problem patching any individual event, the entire operation is rolled back and the error will indicate the <code>streamId</code> and <code>index</code> of the problem.  </p>
+<hr>
+<h2 id="remove-values" sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="175" sourceendlinenumber="175"><code>Remove Values</code></h2>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="177" sourceendlinenumber="177">There are two options for specifying which events to remove from a stream:</p>
+<ul sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="179" sourceendlinenumber="180">
+<li sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="179" sourceendlinenumber="179"><a href="#removeindexcollection" data-raw-source="[Index Collection](#removeindexcollection)" sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="179" sourceendlinenumber="179">Index Collection</a>: One or more indexes can be specified in the request.</li>
+<li sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="180" sourceendlinenumber="180"><a href="#removewindow" data-raw-source="[Window](#removewindow)" sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="180" sourceendlinenumber="180">Window</a>: A window can be specified with a start index and end index.</li>
+</ul>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="182" sourceendlinenumber="182"><a name="removeindexcollection"></a></p>
+<h3 id="index-collection" sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="184" sourceendlinenumber="184"><code>Index Collection</code></h3>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="186" sourceendlinenumber="186">Removes the event at each index from the specified stream. Different overloads are available to make it easier to indicate the index where you want to remove a data event.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="188" sourceendlinenumber="188"><strong>Request</strong>  </p>
+<pre sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="190" sourceendlinenumber="193"><code class="lang-text">DELETE api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
+  ?index={index}[&amp;index={index}…]
+</code></pre><p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="195" sourceendlinenumber="197"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="199" sourceendlinenumber="200"><code>string streamId</code><br>The stream identifier.  </p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="202" sourceendlinenumber="203"><code>string index</code><br>One or more indexes of events to remove.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="205" sourceendlinenumber="206"><strong>Response</strong><br>The response includes a status code.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="208" sourceendlinenumber="209"><strong>Note:</strong><br>If any individual event fails to be removed, the entire operation is rolled back and no events are removed. The streamId and index that caused the issue are included in the error response. If you attempt to remove events at indexes that have no events, an error is returned. If this occurs, you can use <a href="#removewindow" data-raw-source="[Window](#removewindow)" sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="209" sourceendlinenumber="209">Window</a> request format to remove any events from a specified ‘window’ of indexes, which will not return an error if no data is found.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="211" sourceendlinenumber="211"><a name="removewindow"></a></p>
+<h3 id="window" sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="213" sourceendlinenumber="213"><code>Window</code></h3>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="215" sourceendlinenumber="215">Removes events at and between the start index and end index.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="217" sourceendlinenumber="217"><strong>Request</strong></p>
+<pre sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="219" sourceendlinenumber="222"><code class="lang-text">DELETE api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
+  ?startIndex={startIndex}&amp;endIndex={endIndex}
+</code></pre><p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="224" sourceendlinenumber="226"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="228" sourceendlinenumber="229"><code>string streamId</code><br>The stream identifier.  </p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="231" sourceendlinenumber="232"><code>string startIndex</code><br>The index defining the beginning of the window.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="234" sourceendlinenumber="235"><code>string endIndex</code><br>The index defining the end of the window.  </p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="237" sourceendlinenumber="238"><strong>Response</strong><br>The response includes a status code.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="240" sourceendlinenumber="240"><strong>Note:</strong> If any individual event fails to be removed, the entire operation is rolled back and no removes are done.</p>
+<hr>
+<h2 id="replace-values" sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="243" sourceendlinenumber="243"><code>Replace Values</code></h2>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="245" sourceendlinenumber="245">Writes one or more events over existing events in the specified stream.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="247" sourceendlinenumber="247"><strong>Request</strong></p>
+<pre sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="249" sourceendlinenumber="252"><code class="lang-text">PUT api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
+  ?allowCreate=false
+</code></pre><p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="254" sourceendlinenumber="256"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="258" sourceendlinenumber="259"><code>string streamId</code><br>The stream identifier.  </p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="261" sourceendlinenumber="262"><strong>Request body</strong>
+A serialized list of one or more events of the stream type.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="264" sourceendlinenumber="265"><strong>Response</strong><br>The response includes a status code.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="267" sourceendlinenumber="267"><strong>Note:</strong> This request returns an error if the stream does not have an event to be replaced at the specified index. If any individual event fails to be replaced, the entire operation is rolled back and no replaces are performed. The index that caused the issue and the streamId are included in the error response.</p>
+<hr>
+<h2 id="update-values" sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="270" sourceendlinenumber="270"><code>Update Values</code></h2>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="272" sourceendlinenumber="272">Writes one or more events to the specified stream.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="274" sourceendlinenumber="274"><strong>Request</strong></p>
+<pre sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="276" sourceendlinenumber="278"><code class="lang-text">PUT api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
+</code></pre><p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="280" sourceendlinenumber="282"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="284" sourceendlinenumber="285"><code>string streamId</code><br>The stream identifier.  </p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="287" sourceendlinenumber="288"><strong>Request body</strong><br>A serialized list of one or more events of the stream type.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="290" sourceendlinenumber="291"><strong>Response</strong><br>The response includes a status code.</p>
+<p sourcefile="V1/SDS/Writing_Data_API_1-0.md" sourcestartlinenumber="293" sourceendlinenumber="293"><strong>Note:</strong> This request performs an insert or a replace depending on whether an event already exists at the event indexes. If any item fails to write, the entire operation is rolled back and no events are written to the stream. The index that caused the issue is included in the error response.</p>
+<hr>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/SDS/Writing_Data_API_1-0.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span><a href="https://www.osisoft.com/copyright/">© 2019 - 2020 OSIsoft, LLC. All rights reserved.</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
