@@ -135,83 +135,84 @@
 <h2 id="linux" sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="74" sourceendlinenumber="74">Linux</h2>
 <p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="76" sourceendlinenumber="76">You must have administrative privileges to install the software, for example root or sudo privilege, and the Linux OS must be up to date for the install to succeed. </p>
 <p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="78" sourceendlinenumber="78">For instructions on how to verify the Edge Data Store installation, see <a class="xref" href="Verify%20installation_1-0.html" data-raw-source="[Verify installation](xref:VerifyInstallation1-0)" sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="78" sourceendlinenumber="78">Verify installation</a>.</p>
-<h3 id="download-the-distribution-file" sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="80" sourceendlinenumber="80">Download the distribution file</h3>
-<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="82" sourceendlinenumber="82">Complete the following steps to download the appropriate file for your device:</p>
-<ol sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="84" sourceendlinenumber="88">
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="84" sourceendlinenumber="86"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="84" sourceendlinenumber="84">Download the Linux distribution file from the <a href="https://customers.osisoft.com/s/products" data-raw-source="[OSIsoft Customer portal (https://customers.osisoft.com/s/products)](https://customers.osisoft.com/s/products)" sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="84" sourceendlinenumber="84">OSIsoft Customer portal (https://customers.osisoft.com/s/products)</a>.</p>
-<pre sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="86" sourceendlinenumber="86"><code>**Note:** Customer login credentials are required to access the portal.
+<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="80" sourceendlinenumber="80"><strong>Note:</strong> For devices using Ubuntu 20.04 or higher, install the libicu63 package prior to installing Edge Data Store.</p>
+<h3 id="download-the-distribution-file" sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="82" sourceendlinenumber="82">Download the distribution file</h3>
+<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="84" sourceendlinenumber="84">Complete the following steps to download the appropriate file for your device:</p>
+<ol sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="86" sourceendlinenumber="90">
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="86" sourceendlinenumber="88"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="86" sourceendlinenumber="86">Download the Linux distribution file from the <a href="https://customers.osisoft.com/s/products" data-raw-source="[OSIsoft Customer portal (https://customers.osisoft.com/s/products)](https://customers.osisoft.com/s/products)" sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="86" sourceendlinenumber="86">OSIsoft Customer portal (https://customers.osisoft.com/s/products)</a>.</p>
+<pre sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="88" sourceendlinenumber="88"><code>**Note:** Customer login credentials are required to access the portal.
 </code></pre></li>
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="88" sourceendlinenumber="88"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="88" sourceendlinenumber="88">Copy the Linux distribution file to the file system of the device.</p>
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="90" sourceendlinenumber="90"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="90" sourceendlinenumber="90">Copy the Linux distribution file to the file system of the device.</p>
 </li>
 </ol>
-<h3 id="install-on-a-linux-device" sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="90" sourceendlinenumber="90">Install on a Linux device</h3>
-<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="92" sourceendlinenumber="92">Complete the following steps to install EDS on Linux:</p>
-<ol sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="94" sourceendlinenumber="133">
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="94" sourceendlinenumber="94"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="94" sourceendlinenumber="94">Open a terminal window and change the working directory to the location of the distribution file.</p>
+<h3 id="install-on-a-linux-device" sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="92" sourceendlinenumber="92">Install on a Linux device</h3>
+<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="94" sourceendlinenumber="94">Complete the following steps to install EDS on Linux:</p>
+<ol sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="96" sourceendlinenumber="135">
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="96" sourceendlinenumber="96"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="96" sourceendlinenumber="96">Open a terminal window and change the working directory to the location of the distribution file.</p>
 </li>
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="96" sourceendlinenumber="118"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="96" sourceendlinenumber="96">Run the apt install command for the distribution file appropriate to your operating system and processor. </p>
-<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="98" sourceendlinenumber="98"> <strong>Debian 9 or later (Intel/AMD 64-bit processors)</strong></p>
-<pre sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="100" sourceendlinenumber="102"><code class="lang-bash">sudo apt install ./EdgeDataStore_linux-x64.deb
-</code></pre><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="104" sourceendlinenumber="104"> <strong>Debian 9 or later (ARM32, Raspberry PI 2,3,4: Raspbian, BeagleBone)</strong></p>
-<pre sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="106" sourceendlinenumber="108"><code class="lang-bash">sudo apt install ./EdgeDataStore_linux-arm.deb
-</code></pre><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="110" sourceendlinenumber="110"> <img src="https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/LinuxInstall1.jpg" alt="alt text" title="Linux Installation" sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="110" sourceendlinenumber="110"></p>
-<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="112" sourceendlinenumber="112"> <strong>Debian 9 or later (Raspberry PI 3,4: Ubuntu ARM64 Server, Google Coral Dev Board, Nvidia Nano Jetson)</strong></p>
-<pre sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="114" sourceendlinenumber="116"><code class="lang-bash">sudo apt install ./EdgeDataStore_linux-arm64.deb
-</code></pre><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="118" sourceendlinenumber="118"> A validation check for prerequisites is performed. </p>
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="98" sourceendlinenumber="120"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="98" sourceendlinenumber="98">Run the apt install command for the distribution file appropriate to your operating system and processor. </p>
+<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="100" sourceendlinenumber="100"> <strong>Debian 9 or later (Intel/AMD 64-bit processors)</strong></p>
+<pre sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="102" sourceendlinenumber="104"><code class="lang-bash">sudo apt install ./EdgeDataStore_linux-x64.deb
+</code></pre><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="106" sourceendlinenumber="106"> <strong>Debian 9 or later (ARM32, Raspberry PI 2,3,4: Raspbian, BeagleBone)</strong></p>
+<pre sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="108" sourceendlinenumber="110"><code class="lang-bash">sudo apt install ./EdgeDataStore_linux-arm.deb
+</code></pre><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="112" sourceendlinenumber="112"> <img src="https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/LinuxInstall1.jpg" alt="alt text" title="Linux Installation" sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="112" sourceendlinenumber="112"></p>
+<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="114" sourceendlinenumber="114"> <strong>Debian 9 or later (Raspberry PI 3,4: Ubuntu ARM64 Server, Google Coral Dev Board, Nvidia Nano Jetson)</strong></p>
+<pre sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="116" sourceendlinenumber="118"><code class="lang-bash">sudo apt install ./EdgeDataStore_linux-arm64.deb
+</code></pre><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="120" sourceendlinenumber="120"> A validation check for prerequisites is performed. </p>
 </li>
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="120" sourceendlinenumber="125"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="120" sourceendlinenumber="120">If the install fails, run the following commands from the terminal window and try the install again:</p>
-<pre sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="122" sourceendlinenumber="125"><code class="lang-bash">sudo apt update
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="122" sourceendlinenumber="127"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="122" sourceendlinenumber="122">If the install fails, run the following commands from the terminal window and try the install again:</p>
+<pre sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="124" sourceendlinenumber="127"><code class="lang-bash">sudo apt update
 sudo apt upgrade
 </code></pre></li>
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="127" sourceendlinenumber="129"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="127" sourceendlinenumber="127">Optional: Change the port number (default port is 5590) and press Enter. </p>
-<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="129" sourceendlinenumber="129"><strong>Note:</strong> If you specify an invalid value for the port, the install will proceed with the default value of 5590.</p>
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="129" sourceendlinenumber="131"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="129" sourceendlinenumber="129">Optional: Change the port number (default port is 5590) and press Enter. </p>
+<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="131" sourceendlinenumber="131"><strong>Note:</strong> If you specify an invalid value for the port, the install will proceed with the default value of 5590.</p>
 </li>
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="131" sourceendlinenumber="133"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="131" sourceendlinenumber="131">Optional: Add a system component for a Modbus TCP EDS adapter instance, an OPC UA EDS adapter instance, or both, and press Enter.</p>
-<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="133" sourceendlinenumber="133"> <strong>Note:</strong> The Modus TCP EDS adapter and the OPC UA EDS adapter are both installed, regardless of whether system components are added. Additional system components can be added for each adapter after installation.</p>
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="133" sourceendlinenumber="135"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="133" sourceendlinenumber="133">Optional: Add a system component for a Modbus TCP EDS adapter instance, an OPC UA EDS adapter instance, or both, and press Enter.</p>
+<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="135" sourceendlinenumber="135"> <strong>Note:</strong> The Modus TCP EDS adapter and the OPC UA EDS adapter are both installed, regardless of whether system components are added. Additional system components can be added for each adapter after installation.</p>
 </li>
 </ol>
-<h3 id="silent-install-on-a-linux-device" sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="135" sourceendlinenumber="135">Silent install on a Linux device</h3>
-<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="137" sourceendlinenumber="137">Complete the following steps to perform a silent install EDS on Linux with all default options:</p>
-<ol sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="139" sourceendlinenumber="151">
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="139" sourceendlinenumber="139"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="139" sourceendlinenumber="139">Open a terminal window and change the working directory to the location of the distribution file.</p>
+<h3 id="silent-install-on-a-linux-device" sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="137" sourceendlinenumber="137">Silent install on a Linux device</h3>
+<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="139" sourceendlinenumber="139">Complete the following steps to perform a silent install EDS on Linux with all default options:</p>
+<ol sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="141" sourceendlinenumber="153">
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="141" sourceendlinenumber="141"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="141" sourceendlinenumber="141">Open a terminal window and change the working directory to the location of the distribution file.</p>
 </li>
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="141" sourceendlinenumber="151"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="141" sourceendlinenumber="141">Run the apt-get install command for the distribution file appropriate to your operating system and processor.</p>
-<pre sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="143" sourceendlinenumber="145"><code class="lang-bash">sudo apt-get install -q -y ./Edgeinstallfile.deb &lt; /dev/null
-</code></pre><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="146" sourceendlinenumber="146">Parameters:</p>
-<ul sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="148" sourceendlinenumber="151">
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="148" sourceendlinenumber="148">-q – Specifies a silent install.</li>
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="149" sourceendlinenumber="149">-y – Responds Yes to installing prerequisites.</li>
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="150" sourceendlinenumber="150"><em>Edgeinstallfile.deb</em> – The name of the distribution file.</li>
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="151" sourceendlinenumber="151">&lt; /dev/null – All defaults are used in the installation.</li>
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="143" sourceendlinenumber="153"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="143" sourceendlinenumber="143">Run the apt-get install command for the distribution file appropriate to your operating system and processor.</p>
+<pre sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="145" sourceendlinenumber="147"><code class="lang-bash">sudo apt-get install -q -y ./Edgeinstallfile.deb &lt; /dev/null
+</code></pre><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="148" sourceendlinenumber="148">Parameters:</p>
+<ul sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="150" sourceendlinenumber="153">
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="150" sourceendlinenumber="150">-q – Specifies a silent install.</li>
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="151" sourceendlinenumber="151">-y – Responds Yes to installing prerequisites.</li>
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="152" sourceendlinenumber="152"><em>Edgeinstallfile.deb</em> – The name of the distribution file.</li>
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="153" sourceendlinenumber="153">&lt; /dev/null – All defaults are used in the installation.</li>
 </ul>
 </li>
 </ol>
-<h3 id="silent-install-on-a-linux-device-with-specified-parameters" sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="153" sourceendlinenumber="153">Silent install on a Linux device with specified parameters</h3>
-<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="155" sourceendlinenumber="155"> Complete the following steps to perform a silent install EDS on Linux using a parameter file to customize the installation:</p>
-<ol sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="157" sourceendlinenumber="182">
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="157" sourceendlinenumber="168"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="157" sourceendlinenumber="157">Create a file called <em>silent.ini</em> with the following parameters on separate lines:</p>
-<ul sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="158" sourceendlinenumber="160">
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="158" sourceendlinenumber="158">&lt;port_number&gt;</li>
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="159" sourceendlinenumber="159">&lt;Y/N&gt; - Specifies whether to create a Modbus TCP EDS component.</li>
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="160" sourceendlinenumber="160">&lt;Y/N&gt; - Specifies whether to create an OPCUA EDS component.</li>
+<h3 id="silent-install-on-a-linux-device-with-specified-parameters" sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="155" sourceendlinenumber="155">Silent install on a Linux device with specified parameters</h3>
+<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="157" sourceendlinenumber="157"> Complete the following steps to perform a silent install EDS on Linux using a parameter file to customize the installation:</p>
+<ol sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="159" sourceendlinenumber="184">
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="159" sourceendlinenumber="170"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="159" sourceendlinenumber="159">Create a file called <em>silent.ini</em> with the following parameters on separate lines:</p>
+<ul sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="160" sourceendlinenumber="162">
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="160" sourceendlinenumber="160">&lt;port_number&gt;</li>
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="161" sourceendlinenumber="161">&lt;Y/N&gt; - Specifies whether to create a Modbus TCP EDS component.</li>
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="162" sourceendlinenumber="162">&lt;Y/N&gt; - Specifies whether to create an OPCUA EDS component.</li>
 </ul>
-<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="162" sourceendlinenumber="162">For example:</p>
-<pre sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="164" sourceendlinenumber="168"><code>```
+<p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="164" sourceendlinenumber="164">For example:</p>
+<pre sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="166" sourceendlinenumber="170"><code>```
 4567
 Y
 N
 ```
 </code></pre></li>
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="170" sourceendlinenumber="170"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="170" sourceendlinenumber="170">Open a terminal window and change the working directory to the location of the distribution file.</p>
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="172" sourceendlinenumber="172"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="172" sourceendlinenumber="172">Open a terminal window and change the working directory to the location of the distribution file.</p>
 </li>
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="172" sourceendlinenumber="182"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="172" sourceendlinenumber="172">Run the apt-get install command for the distribution file appropriate to your operating system and processor.</p>
-<pre sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="174" sourceendlinenumber="176"><code class="lang-bash">sudo apt-get install -q -y ./Edgeinstallfile.deb &lt; silent.ini
-</code></pre><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="177" sourceendlinenumber="177">Parameters:</p>
-<ul sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="179" sourceendlinenumber="182">
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="179" sourceendlinenumber="179">-q – Specifies a silent install.</li>
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="180" sourceendlinenumber="180">-y – Responds Yes to installing prerequisites.</li>
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="181" sourceendlinenumber="181"><em>Edgeinstallfile.deb</em> – The name of the distribution file.</li>
-<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="182" sourceendlinenumber="182">&lt; <em>silent.ini</em> – The file with the installation properties.</li>
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="174" sourceendlinenumber="184"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="174" sourceendlinenumber="174">Run the apt-get install command for the distribution file appropriate to your operating system and processor.</p>
+<pre sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="176" sourceendlinenumber="178"><code class="lang-bash">sudo apt-get install -q -y ./Edgeinstallfile.deb &lt; silent.ini
+</code></pre><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="179" sourceendlinenumber="179">Parameters:</p>
+<ul sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="181" sourceendlinenumber="184">
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="181" sourceendlinenumber="181">-q – Specifies a silent install.</li>
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="182" sourceendlinenumber="182">-y – Responds Yes to installing prerequisites.</li>
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="183" sourceendlinenumber="183"><em>Edgeinstallfile.deb</em> – The name of the distribution file.</li>
+<li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="184" sourceendlinenumber="184">&lt; <em>silent.ini</em> – The file with the installation properties.</li>
 </ul>
 </li>
 </ol>
