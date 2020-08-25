@@ -80,6 +80,7 @@
 
 <p>Once the OCS or PI Server destinations are prepared to receive OMF messages, configure data egress endpoints to create the connection to the destination and specify the details of the data transfer.</p>
 <p><strong>Note:</strong> You cannot add egress configurations manually because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit egress configuration. For additional endpoints, see <a href="#rest-urls">REST URLs</a>.</p>
+<p><strong>Warning:</strong> If a periodic egress endpoint is deleted/removed and then recreated with backfilling set to true, duplicate data will appear on any stream that was previously egressed successfully. New streams will not see duplicate data.</p>
 <h2 id="create-egress-endpoints">Create egress endpoints</h2>
 <p>Complete the following procedure to create new egress endpoints:</p>
 <ol>

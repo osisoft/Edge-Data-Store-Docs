@@ -80,22 +80,23 @@
 
 <p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="7" sourceendlinenumber="7">Once the OCS or PI Server destinations are prepared to receive OMF messages, configure data egress endpoints to create the connection to the destination and specify the details of the data transfer.</p>
 <p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="9" sourceendlinenumber="9"><strong>Note:</strong> You cannot add egress configurations manually because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit egress configuration. For additional endpoints, see <a href="#rest-urls" data-raw-source="[REST URLs](#rest-urls)" sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="9" sourceendlinenumber="9">REST URLs</a>.</p>
-<h2 id="create-egress-endpoints" sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="11" sourceendlinenumber="11">Create egress endpoints</h2>
-<p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="13" sourceendlinenumber="13">Complete the following procedure to create new egress endpoints:</p>
-<ol sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="15" sourceendlinenumber="19">
-<li sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="15" sourceendlinenumber="16">Create a JSON file containing one or more egress endpoints.<ul sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="16" sourceendlinenumber="16">
-<li sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="16" sourceendlinenumber="16">For content structure, see the following <a href="#examples" data-raw-source="[Examples](#examples)" sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="16" sourceendlinenumber="16">Examples</a>. </li>
+<p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="11" sourceendlinenumber="11"><strong>Warning:</strong> If a periodic egress endpoint is deleted/removed and then recreated with backfilling set to true, duplicate data will appear on any stream that was previously egressed successfully. New streams will not see duplicate data.</p>
+<h2 id="create-egress-endpoints" sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="13" sourceendlinenumber="13">Create egress endpoints</h2>
+<p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="15" sourceendlinenumber="15">Complete the following procedure to create new egress endpoints:</p>
+<ol sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="17" sourceendlinenumber="21">
+<li sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="17" sourceendlinenumber="18">Create a JSON file containing one or more egress endpoints.<ul sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="18" sourceendlinenumber="18">
+<li sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="18" sourceendlinenumber="18">For content structure, see the following <a href="#examples" data-raw-source="[Examples](#examples)" sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="18" sourceendlinenumber="18">Examples</a>. </li>
 </ul>
 </li>
-<li sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="17" sourceendlinenumber="17">Update the parameters as needed. For a table of all available parameters, see <a href="#parameters" data-raw-source="[Parameters](#parameters)" sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="17" sourceendlinenumber="17">Parameters</a>.</li>
-<li sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="18" sourceendlinenumber="18">Save the JSON file with the name <em>PeriodicEgressEndpoints.json</em> to any directory on the device where Edge Data Store is installed.</li>
-<li sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="19" sourceendlinenumber="19">Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints/</code></li>
+<li sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="19" sourceendlinenumber="19">Update the parameters as needed. For a table of all available parameters, see <a href="#parameters" data-raw-source="[Parameters](#parameters)" sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="19" sourceendlinenumber="19">Parameters</a>.</li>
+<li sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="20" sourceendlinenumber="20">Save the JSON file with the name <em>PeriodicEgressEndpoints.json</em> to any directory on the device where Edge Data Store is installed.</li>
+<li sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="21" sourceendlinenumber="21">Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints/</code></li>
 </ol>
-<p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="21" sourceendlinenumber="21">Example using cURL, which must be run from the directory where the JSON file is saved:</p>
-<pre sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="23" sourceendlinenumber="25"><code class="lang-bash">curl -d &quot;@PeriodicEgressEndpoints.config.json&quot; -H &quot;Content-Type: application/json&quot; &quot;http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints&quot;
-</code></pre><p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="27" sourceendlinenumber="27"><strong>Note</strong> The @ symbol is a required prefix for the above command.</p>
-<h3 id="parameters" sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="29" sourceendlinenumber="29">Parameters</h3>
-<table sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="31" sourceendlinenumber="50">
+<p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="23" sourceendlinenumber="23">Example using cURL, which must be run from the directory where the JSON file is saved:</p>
+<pre sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="25" sourceendlinenumber="27"><code class="lang-bash">curl -d &quot;@PeriodicEgressEndpoints.config.json&quot; -H &quot;Content-Type: application/json&quot; &quot;http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints&quot;
+</code></pre><p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="29" sourceendlinenumber="29"><strong>Note</strong> The @ symbol is a required prefix for the above command.</p>
+<h3 id="parameters" sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="31" sourceendlinenumber="31">Parameters</h3>
+<table sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="33" sourceendlinenumber="52">
 <thead>
 <tr>
 <th>Parameter</th>
@@ -127,7 +128,7 @@
 <td><strong>DebugExpiration</strong></td>
 <td>Optional</td>
 <td>string</td>
-<td>Enables logging of detailed information, for each outbound HTTP request pertaining to this egress endpoint, to disk. The value represents the date and time this detailed information should stop being saved. Examples of valid strings representing date and time:  UTC: “yyyy-mm-ddThh:mm:ssZ”, Local: “mm-dd-yyyy hh:mm:ss”. For more information, see <a href="../Troubleshooting/Troubleshooting_1-0.html" data-raw-source="[Troubleshoot Edge Data Store](../Troubleshooting/Troubleshooting_1-0.md)" sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="36" sourceendlinenumber="36">Troubleshoot Edge Data Store</a>.</td>
+<td>Enables logging of detailed information, for each outbound HTTP request pertaining to this egress endpoint, to disk. The value represents the date and time this detailed information should stop being saved. Examples of valid strings representing date and time:  UTC: “yyyy-mm-ddThh:mm:ssZ”, Local: “mm-dd-yyyy hh:mm:ss”. For more information, see <a href="../Troubleshooting/Troubleshooting_1-0.html" data-raw-source="[Troubleshoot Edge Data Store](../Troubleshooting/Troubleshooting_1-0.md)" sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="38" sourceendlinenumber="38">Troubleshoot Edge Data Store</a>.</td>
 </tr>
 <tr>
 <td><strong>Description</strong></td>
@@ -139,7 +140,7 @@
 <td><strong>EgressFilter</strong></td>
 <td>Optional</td>
 <td>string</td>
-<td>A filter used to determine which streams and types are egressed. For more information on valid filters, see <a href="../SDS/Searching_1-0.html" data-raw-source="[Searching](../Sds/Searching_1-0.md)" sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="38" sourceendlinenumber="38">Searching</a>.</td>
+<td>A filter used to determine which streams and types are egressed. For more information on valid filters, see <a href="../SDS/Searching_1-0.html" data-raw-source="[Searching](../Sds/Searching_1-0.md)" sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="40" sourceendlinenumber="40">Searching</a>.</td>
 </tr>
 <tr>
 <td><strong>Enabled</strong></td>
@@ -215,18 +216,18 @@
 </tr>
 </tbody>
 </table>
-<h3 id="examples" sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="52" sourceendlinenumber="52">Examples</h3>
-<p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="54" sourceendlinenumber="54">The following are valid egress configuration examples.</p>
-<p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="56" sourceendlinenumber="56"><strong>Egress data to OCS. All streams, every 15 seconds.</strong></p>
-<pre sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="58" sourceendlinenumber="66"><code class="lang-json">[{
+<h3 id="examples" sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="54" sourceendlinenumber="54">Examples</h3>
+<p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="56" sourceendlinenumber="56">The following are valid egress configuration examples.</p>
+<p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="58" sourceendlinenumber="58"><strong>Egress data to OCS. All streams, every 15 seconds.</strong></p>
+<pre sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="60" sourceendlinenumber="68"><code class="lang-json">[{
     &quot;Id&quot;: &quot;OCS&quot;,
     &quot;ExecutionPeriod&quot; : &quot;00:00:15&quot;,
     &quot;Endpoint&quot; : &quot;https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf&quot;,
     &quot;ClientId&quot; : &quot;{clientId}&quot;,
     &quot;ClientSecret&quot; : &quot;{clientSecret}&quot;
 }]
-</code></pre><p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="68" sourceendlinenumber="68"><strong>Egress data to OCS - streams with a specific TypeId value, every 15 seconds.</strong></p>
-<pre sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="70" sourceendlinenumber="79"><code class="lang-json">[{
+</code></pre><p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="70" sourceendlinenumber="70"><strong>Egress data to OCS - streams with a specific TypeId value, every 15 seconds.</strong></p>
+<pre sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="72" sourceendlinenumber="81"><code class="lang-json">[{
     &quot;Id&quot;: &quot;OCS&quot;,
     &quot;ExecutionPeriod&quot; : &quot;00:00:15&quot;,
     &quot;EgressFilter&quot; : &quot;TypeId:myType&quot;,
@@ -234,8 +235,8 @@
     &quot;ClientId&quot; : &quot;{clientId}&quot;,
     &quot;ClientSecret&quot; : &quot;{clientSecret}&quot;
 }]
-</code></pre><p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="81" sourceendlinenumber="81"><strong>Egress data to OCS - all streams, every 15 seconds, including backfilling.</strong></p>
-<pre sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="83" sourceendlinenumber="92"><code class="lang-json">[{
+</code></pre><p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="83" sourceendlinenumber="83"><strong>Egress data to OCS - all streams, every 15 seconds, including backfilling.</strong></p>
+<pre sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="85" sourceendlinenumber="94"><code class="lang-json">[{
     &quot;Id&quot;: &quot;OCS&quot;,
     &quot;ExecutionPeriod&quot; : &quot;00:00:15&quot;,
     &quot;Backfill&quot; : true,
@@ -243,8 +244,8 @@
     &quot;ClientId&quot; : &quot;{clientId}&quot;,
     &quot;ClientSecret&quot; : &quot;{clientSecret}&quot;
 }]
-</code></pre><p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="94" sourceendlinenumber="94"><strong>Egress diagnostic data to OCS - every 1 hour.</strong></p>
-<pre sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="96" sourceendlinenumber="105"><code class="lang-json">[{
+</code></pre><p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="96" sourceendlinenumber="96"><strong>Egress diagnostic data to OCS - every 1 hour.</strong></p>
+<pre sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="98" sourceendlinenumber="107"><code class="lang-json">[{
     &quot;Id&quot;: &quot;OCS&quot;,
     &quot;ExecutionPeriod&quot; : &quot;01:00:00&quot;,
     &quot;Endpoint&quot; : &quot;https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf&quot;,
@@ -252,8 +253,8 @@
     &quot;ClientSecret&quot; : &quot;{clientSecret}&quot;,
     &quot;NamespaceId&quot; : &quot;diagnostics&quot;
 }]
-</code></pre><p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="107" sourceendlinenumber="107"><strong>Egress data to PI - all streams, every 15 seconds, including both type and stream prefix. All properties explicitly listed.</strong></p>
-<pre sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="109" sourceendlinenumber="130"><code class="lang-json">[{
+</code></pre><p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="109" sourceendlinenumber="109"><strong>Egress data to PI - all streams, every 15 seconds, including both type and stream prefix. All properties explicitly listed.</strong></p>
+<pre sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="111" sourceendlinenumber="132"><code class="lang-json">[{
     &quot;Id&quot;: &quot;PI&quot;,
     &quot;Name&quot; : null,
     &quot;Description&quot; : null,
@@ -273,8 +274,8 @@
     &quot;TokenEndpoint&quot; : null,
     &quot;ValidateEndpointCertificate&quot; : true
 }]
-</code></pre><p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="132" sourceendlinenumber="132"><strong>Egress data to PI - streams whose Id contains &quot;Modbus&quot; or &quot;Opc&quot;, every 1 minute. Includes use of domain for username.</strong></p>
-<pre sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="134" sourceendlinenumber="143"><code class="lang-json">[{
+</code></pre><p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="134" sourceendlinenumber="134"><strong>Egress data to PI - streams whose Id contains &quot;Modbus&quot; or &quot;Opc&quot;, every 1 minute. Includes use of domain for username.</strong></p>
+<pre sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="136" sourceendlinenumber="145"><code class="lang-json">[{
     &quot;Id&quot;: &quot;PI&quot;,
     &quot;ExecutionPeriod&quot; : &quot;00:01:00&quot;,
     &quot;EgressFilter&quot; : &quot;Id:*Modbus* OR Id:*Opc*&quot;,
@@ -282,8 +283,8 @@
     &quot;Username&quot; : &quot;{domain}\\{username}&quot;,
     &quot;Password&quot; : &quot;{password}&quot;
 }]
-</code></pre><p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="145" sourceendlinenumber="145"><strong>Egress data to PI - streams containing a field that begins with &quot;Unique&quot;, every 1 hour.</strong></p>
-<pre sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="147" sourceendlinenumber="156"><code class="lang-json">[{
+</code></pre><p sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="147" sourceendlinenumber="147"><strong>Egress data to PI - streams containing a field that begins with &quot;Unique&quot;, every 1 hour.</strong></p>
+<pre sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="149" sourceendlinenumber="158"><code class="lang-json">[{
     &quot;Id&quot;: &quot;PI&quot;,
     &quot;ExecutionPeriod&quot; : &quot;01:00:00&quot;,
     &quot;EgressFilter&quot; : &quot;Unique*&quot;,
@@ -291,8 +292,8 @@
     &quot;Username&quot; : &quot;{username}&quot;,
     &quot;Password&quot; : &quot;{password}&quot;
 }]
-</code></pre><h3 id="rest-urls" sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="158" sourceendlinenumber="158">REST URLs</h3>
-<table sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="160" sourceendlinenumber="170">
+</code></pre><h3 id="rest-urls" sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="160" sourceendlinenumber="160">REST URLs</h3>
+<table sourcefile="V1/Egress/Configure data egress_1-0.md" sourcestartlinenumber="162" sourceendlinenumber="172">
 <thead>
 <tr>
 <th>Relative URL</th>
