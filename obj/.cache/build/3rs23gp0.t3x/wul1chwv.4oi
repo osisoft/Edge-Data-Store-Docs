@@ -257,7 +257,7 @@ Content-Type: application/json
    {  
       &quot;Id&quot;:&quot;Compound&quot;,
       &quot;TypeId&quot;:&quot;Compound&quot;
-   },
+   }
 ]
 </code></pre><hr>
 <h2 id="get-stream-type" sourcefile="V1/SDS/SDS_Streams_1-0.md" sourcestartlinenumber="165" sourceendlinenumber="165"><code>Get Stream Type</code></h2>

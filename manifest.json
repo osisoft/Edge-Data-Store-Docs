@@ -1149,7 +1149,7 @@
       "output": {
         ".html": {
           "relative_path": "V1/SDS/SDS_Streams_1-0.html",
-          "hash": "iRkdmkFqY0wxazYvc7O+Ew=="
+          "hash": "EJbyIfMcfq13THxALhevaw=="
         }
       },
       "is_incremental": false,
@@ -1682,6 +1682,13 @@
         "full_build_reason_code": "NoAvailableBuildCache"
       },
       "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
@@ -1693,13 +1700,6 @@
           "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 110,
-          "skipped_file_count": 0
-        },
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build",
-          "total_file_count": 0,
           "skipped_file_count": 0
         }
       }
