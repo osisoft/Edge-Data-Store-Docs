@@ -103,6 +103,7 @@ The <strong>OMF Endpoint</strong> URL for the connection will be used as the egr
 </li>
 </ol>
 <p sourcefile="V1/Egress/Prepare egress destinations_1-0.md" sourcestartlinenumber="33" sourceendlinenumber="33"><strong>Note:</strong>  The certificate used by PI Web API must be trusted by the device running EDS, otherwise the egress configuration <em>ValidateEndpointCertificate</em> property needs to be set to false (this can be the case with a <strong>self-signed certificate</strong> but should only be used for testing purposes).</p>
+<p sourcefile="V1/Egress/Prepare egress destinations_1-0.md" sourcestartlinenumber="35" sourceendlinenumber="35"><strong>Note:</strong>  To continue to send OMF egress messages to the PI Web API endpoint after upgrading PI Web API, restart the EDS service.</p>
 </article>
           </div>
           
