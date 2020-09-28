@@ -78,18 +78,19 @@
             <article class="content wrap" id="_content" data-uid="sdsStreamViews1-0">
 <h1 id="stream-views">Stream views</h1>
 
-<p>An SdsStreamView provides a way to map stream data requests from one data type to another. You can apply a stream View to any read or GET operation. SdsStreamView is used to specify the mapping between source and target types.</p>
-<p>SDS attempts to determine how to map Properties from the source to the destination. When the mapping is straightforward, such as when the properties are in the same position and of the same data type, or when the properties have the same name, SDS will map the properties automatically.</p>
-<p>When SDS is unable to determine how to map a source property, the property is removed. If SDS encounters a target property that it cannot map to, the property is added and configured with a default value.</p>
-<p>To map a property that is beyond the ability of SDS to map on its own, you should define an SdsStreamViewProperty and add it to the SdsStreamView’s Properties collection.</p>
-<p>The following table shows the required and optional SdsStreamView fields. Fields that are not included are reserved for internal SDS use. For more information on search limitations, see <a class="xref" href="Searching_1-0.html">Searching</a>.</p>
+<p>SdsStreamViews (or stream views) provide flexibility in the use of SdsTypes. While you cannot actually change the properties of SdsTypes themselves, use the stream views feature to create a view of a selected SdsStream that appears as if you had changed the SdsType on which it is based. Create a stream view by choosing a source and target type then a set of mappings between properties of those two types. Using a stream view to leverage existing SdsType properties is preferable to creating a new SdsType, because the SdsStream that is based on the SdsType continues to function with its previously archived stream data intact.</p>
+<p>See the impact of the stream view on a stream either in an ad hoc manner through a GET method or by assigning the stream view to a stream with a PUT method.</p>
+<p>An SdsStreamView provides a way to map stream data requests from one data type to another. You can apply a stream view to any read or GET operation. SdsStreamView is used to specify the mapping between source and target types.</p>
+<p>SDS attempts to map properties from the source to the destination. When the mapping is straightforward, such as when the properties are in the same position and of the same data type, or when the properties have the same name, SDS will map the properties automatically.</p>
+<p>When SDS is unable to determine how to map a source property, the property is removed. If SDS encounters a target property that it cannot map to, the property is added and configured with a default value. To map a property that SDS cannot map automatically, define an SdsStreamViewProperty and add it to the SdsStreamView’s Properties collection.</p>
+<p>The following table shows the SdsStreamView fields. Fields that are not included are reserved for internal SDS use. For more information on search limitations, see <a class="xref" href="Search_1-0.html">Search in SDS</a>.</p>
 <table>
 <thead>
 <tr>
 <th>Property</th>
 <th>Type</th>
 <th>Optionality</th>
-<th>Searchability</th>
+<th>Searchable</th>
 <th>Details</th>
 </tr>
 </thead>
@@ -138,15 +139,16 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Rules for the stream view identifier (SdsStreamView.Id)</strong></p>
-<ol>
+<h2 id="rules-for-the-stream-view-identifier-sdsstreamviewid">Rules for the stream view identifier (SdsStreamView.Id)</h2>
+<p>The type identifier, SdsStreamView.ID, has the following requirements:</p>
+<ul>
 <li>Is not case sensitive.</li>
 <li>Can contain spaces.</li>
 <li>Cannot contain forward slash (&quot;/&quot;).</li>
-<li>Can contain a maximum of 100 characters.</li>
-</ol>
+<li>Contains a maximum of 100 characters.</li>
+</ul>
 <h2 id="properties--sdsstreamviewproperty">Properties / SdsStreamViewProperty</h2>
-<p>The SdsStreamView Properties collection provides detailed instructions for specifying the mapping of event properties. Each SdsStreamViewProperty in the properties collection defines the mapping of an event’s property. SdsStreamView properties are required only when property mapping is not straightforward. Additionally, if you do not want a type property mapped, it is not necessary to create an SdsStreamView property for it.</p>
+<p>The SdsStreamView Properties collection provides detailed instructions for mapping of event properties. Each SdsStreamViewProperty in the properties collection defines the mapping of an event’s property. SdsStreamView properties are required only when property mapping is not straightforward. Additionally, if you do not want a type property mapped, it is not necessary to create an SdsStreamView property for it.</p>
 <p>The following table shows the required and optional SdsStreamViewProperty fields.</p>
 <table>
 <thead>
@@ -180,8 +182,9 @@
 </table>
 <p>The SdsStreamView field supports nested properties.</p>
 <h2 id="sdsstreamviewmap">SdsStreamViewMap</h2>
-<p>When an SdsStreamView is added, SDS defines a plan mapping. Plan details are retrieved as an SdsStreamViewMap. The SdsStreamViewMap provides a detailed property-by-property definition of the mapping.</p>
-<p>The following table shows the SdsStreamViewMap fields. The SdsStreamViewMap cannot be written to SDS, so required and optional have no meaning.</p>
+<p>When an SdsStreamView is added, SDS defines a plan mappingand stores it as an SdsStreamViewMap. The SdsStreamViewMap provides a detailed property-by-property definition of the mapping.</p>
+<p>The following table shows the SdsStreamViewMap fields. The SdsStreamViewMap cannot be written to SDS, it can only be
+retrieved from SDS, so required and optional have no meaning.</p>
 <table>
 <thead>
 <tr>
@@ -215,7 +218,7 @@
 <h3 id="properties--sdsstreamviewmapproperty">Properties / SdsStreamViewMapProperty</h3>
 <p>The SdsStreamViewMapProperty is similar an SdsStreamViewProperty but adds a mode detailing one or more actions taken on
 the property.</p>
-<p>The following table shows the SdsStreamViewMapProperty fields. The SdsStreamViewMap cannot be written; it can only be
+<p>The following table shows the SdsStreamViewMapProperty fields. The SdsStreamViewMap cannot be written to SDS; it can only be
 retrieved from SDS, so required and optional have no meaning.</p>
 <table>
 <thead>
@@ -296,12 +299,12 @@ retrieved from SDS, so required and optional have no meaning.</p>
 </tbody>
 </table>
 <h2 id="changing-stream-type">Changing stream type</h2>
-<p>Stream Views can be used to change the type defining a stream. You cannot modify the SdsType; types are immutable. But you can map a stream from its current type to a new type.</p>
+<p>Stream views can be used to change the type defining a stream. You cannot modify the SdsType; types are immutable. But you can map a stream from its current type to a new type.</p>
 <p>To update a stream&#39;s type, define an SdsStreamView and PUT the stream view to the following:</p>
 <pre><code class="lang-text">PUT api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Type?streamViewId={streamViewId}
-</code></pre><p>For details, see <a class="xref" href="SDS_Streams_1-0.html#update-stream-type">Update Stream Type</a>.</p>
+</code></pre><p>For details, see <a class="xref" href="Streams/Sds_Streams_API_1-0.html#update-stream-type">Update Stream Type</a>.</p>
 <h2 id="working-with-sdsstreamviews">Working with SdsStreamViews</h2>
-<p>When working with Stream Views either invoke HTTP directly or use some of the sample code. Both Python and JavaScript samples have SdsStreamView definitions.</p>
+<p>When working with stream views, either invoke HTTP directly or use some of the sample code. Both Python and JavaScript samples have SdsStreamView definitions.</p>
 <p>The JSON for a simple mapping between a source type with identifier Sample and a target type with identifier Sample1 would appear as follows.</p>
 <pre><code class="lang-json">{  
   &quot;Id&quot;:&quot;StreamView&quot;,
@@ -329,153 +332,7 @@ retrieved from SDS, so required and optional have no meaning.</p>
       }
   ]
 }
-</code></pre><h1 id="sdsstreamview-api">SdsStreamView API</h1>
-<p>The REST APIs provide programmatic access to read and write SDS data. The APIs in this section interact with SdsStreamViews. For general SdsStreamView information, see <a href="#stream-views">Stream views</a>.</p>
-<hr>
-<h2 id="get-stream-view"><code>Get Stream View</code></h2>
-<p>Returns the stream view corresponding to the specified streamViewId within a given namespace.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews/{streamViewId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamViewId</code><br>The stream view identifier.  </p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>The requested SdsStreamView.</p>
-<p>Example response body:</p>
-<pre><code class="lang-json">HTTP/1.1 200
-Content-Type: application/json
-{  
-   &quot;Id&quot;:&quot;StreamView&quot;,
-   &quot;Name&quot;:&quot;StreamView&quot;,
-   &quot;SourceTypeId&quot;:&quot;Simple&quot;,
-   &quot;TargetTypeId&quot;:&quot;Simple3&quot;,
-   &quot;Properties&quot;:[  
-      {  
-         &quot;SourceId&quot;:&quot;Time&quot;,
-         &quot;TargetId&quot;:&quot;Time&quot;
-      },
-      {  
-         &quot;SourceId&quot;:&quot;State&quot;,
-         &quot;TargetId&quot;:&quot;State&quot;
-      },
-      {  
-         &quot;SourceId&quot;:&quot;Measurement&quot;,
-         &quot;TargetId&quot;:&quot;Value&quot;
-      }
-   ]
-}
-</code></pre><hr>
-<h2 id="get-stream-view-map"><code>Get Stream View Map</code></h2>
-<p>Returns the stream view map corresponding to the specified streamViewId within a given namespace.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews/{streamViewId}/Map
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamViewId</code><br>The stream view identifier.  </p>
-<p><strong>Response</strong><br> The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>The requested SdsStreamView.</p>
-<p>Example response body:</p>
-<pre><code class="lang-json">HTTP/1.1 200
-Content-Type: application/json
-
-{  
-   &quot;SourceTypeId&quot;:&quot;Simple&quot;,
-   &quot;TargetTypeId&quot;:&quot;Simple3&quot;,
-   &quot;Properties&quot;:[  
-      {  
-         &quot;SourceId&quot;:&quot;Time&quot;,
-         &quot;TargetId&quot;:&quot;Time&quot;
-      },
-      {  
-         &quot;SourceId&quot;:&quot;Measurement&quot;,
-         &quot;TargetId&quot;:&quot;Value&quot;,
-         &quot;Mode&quot;:20
-      },
-      {  
-         &quot;SourceId&quot;:&quot;State&quot;,
-         &quot;Mode&quot;:2
-      },
-      {  
-         &quot;TargetId&quot;:&quot;State&quot;,
-         &quot;Mode&quot;:1
-      }
-   ]
-}
-</code></pre><hr>
-<h2 id="get-stream-views"><code>Get Stream Views</code></h2>
-<p>Returns a list of stream views within a given namespace.</p>
-<p>If specifying the optional search query parameter, the list of stream views returned will match
-the search criteria. If the search query parameter is not specified, the list will include
-all stream views in the Namespace. See <a class="xref" href="Searching_1-0.html">Searching</a> for information about specifying those respective parameters.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews?query={query}&amp;skip={skip}&amp;count={count}&amp;orderby={orderby}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string query</code><br>An optional parameter representing a string search. For information about specifying the search parameter, see <a class="xref" href="Searching_1-0.html">Searching</a>.</p>
-<p><code>int skip</code><br>An optional parameter representing the zero-based offset of the first SdsStreamView to retrieve. If not specified, a default value of 0 is used.</p>
-<p><code>int count</code><br>An optional parameter representing the maximum number of SdsStreamViews to retrieve. If not specified, a default value of 100 is used.</p>
-<p><code>string orderby</code><br>An optional parameter representing sorted order which SdsStreamViews will be returned. A field name is required. The sorting is based   on the stored values for the given field (of type string). For example, <code>orderby=name</code> would sort the returned results by the <code>name</code> values (ascending by default). Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values <code>asc</code> or <code>desc</code>, respectively. For example, <code>orderby=name desc</code> would sort the returned results by the <code>name</code> values, descending. If no value is specified, there is no sorting of results.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>A collection of zero or more SdsStreamViews.</p>
-<p>Example response body:</p>
-<pre><code class="lang-json">HTTP/1.1 200
-Content-Type: application/json
-[  
-  {  
-     &quot;Id&quot;:&quot;StreamView&quot;,
-     &quot;Name&quot;:&quot;StreamView&quot;,
-     &quot;SourceTypeId&quot;:&quot;Simple&quot;,
-     &quot;TargetTypeId&quot;:&quot;Simple3&quot;
-  },
-  {  
-     &quot;Id&quot;:&quot;StreamViewWithProperties&quot;,
-     &quot;Name&quot;:&quot;StreamViewWithProperties&quot;,
-     &quot;SourceTypeId&quot;:&quot;Simple&quot;,
-     &quot;TargetTypeId&quot;:&quot;Simple3&quot;,
-     &quot;Properties&quot;:[  
-        {  
-           &quot;SourceId&quot;:&quot;Time&quot;,
-           &quot;TargetId&quot;:&quot;Time&quot;
-        },
-        {
-           &quot;SourceId&quot;:&quot;State&quot;,
-           &quot;TargetId&quot;:&quot;State&quot;
-        },
-        {
-           &quot;SourceId&quot;:&quot;Measurement&quot;,
-           &quot;TargetId&quot;:&quot;Value&quot;
-        }
-     ]
-  }
-]
-</code></pre><hr>
-<h2 id="get-or-create-stream-view"><code>Get or Create Stream View</code></h2>
-<p>If a stream view with a matching identifier already exists, the stream view passed in is compared with the existing stream view. If the stream views are identical, a Found (302) status is returned and the stream view. If the stream views are different, the Conflict (409) error is returned.</p>
-<p>If no matching identifier is found, the specified stream view is created.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">POST api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews/{streamViewId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamViewId</code><br>The stream view identifier. The identifier must match the <code>SdsStreamView.Id</code> field.</p>
-<p><strong>Request body</strong><br>The request content is the serialized SdsStreamView.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>The newly created or matching SdsStreamView.</p>
-<hr>
-<h2 id="create-or-update-stream-view"><code>Create or Update Stream View</code></h2>
-<p>Creates or updates the definition of a stream view.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">PUT api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews/{streamViewId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamViewId</code><br>The stream view identifier.</p>
-<p><strong>Request body</strong><br>The request content is the serialized SdsStreamView.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>The newly created or updated SdsStreamView.</p>
-<hr>
-<h2 id="delete-stream-view"><code>Delete Stream View</code></h2>
-<p>Deletes a stream view from the specified tenant and namespace.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">DELETE api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews/{streamViewId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamViewId</code><br>The stream view identifier.</p>
-<p><strong>Response</strong><br>The response includes a status code.</p>
-<hr>
-</article>
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

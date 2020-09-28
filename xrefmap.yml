@@ -18,19 +18,22 @@ references:
   href: V1/Configuration/Configuration_1-0.html
 - uid: configurationSchemaList
   name: Configuration schemas
-  href: V1/Configuration/Schemas/ConfigurationSchemaList.html
+  href: zArchive/Schemas/ConfigurationSchemaList.html
 - uid: ConfigurationTools1-0
   name: Configuration tools
   href: V1/Administration/ManagementTools_1-0.html
 - uid: configureEgress1-0
   name: Configure data egress
   href: V1/Egress/Configure%20data%20egress_1-0.html
+- uid: DataTransformations1-0
+  name: Data transformations
+  href: V1/SDS/Read%20data/Data_transformations_1-0.html
 - uid: disasterRecovery1-0
   name: Disaster recovery
   href: V1/Troubleshooting/DisasterRecovery_1-0.html
 - uid: edge_system_schema
   name: Sample Edge Data Store configuration
-  href: V1/Configuration/Schemas/EdgeSystem_schema.html
+  href: zArchive/Schemas/EdgeSystem_schema.html
 - uid: EdgecmdCommands1-0
   name: EdgeCmd commands
   href: V1/Reference/Edgecmd%20commands_1-0.html
@@ -61,18 +64,15 @@ references:
 - uid: EDSDataIngress1-0
   name: Data ingress configuration
   href: V1/DataIngress/EDSDataIngress_1-0.html
-- uid: edsmodbustcpadapter1-0
-  name: Edge Data Store Modbus TCP adapter
-  href: V1/Configuration/EDSModbusTCPAdapter_1-0.html
-- uid: edsopcuaadapter
-  name: Edge Data Store OPC UA adapter
-  href: V1/Configuration/EDSOPCUAAdapter_1-0.html
 - uid: egress1-0
   name: Data egress configuration
   href: V1/Egress/Egress_1-0.html
 - uid: EgressExecutionDetails1-0
   name: Egress execution details
   href: V1/Egress/Egress%20execution%20details_1-0.html
+- uid: Enums1-0
+  name: Enums
+  href: V1/SDS/Read%20data/Enums_1-0.html
 - uid: Feedback1-0
   name: Technical support and feedback
   href: V1/Feedback_1-0.html
@@ -96,16 +96,16 @@ references:
   href: V1/Logging/LoggingConfiguration_1-0.html
 - uid: modbus_DataSelection_schema
   name: Sample Modbus TCP data selection configuration
-  href: V1/Configuration/Schemas/Modbus_DataSelection_schema.html
+  href: zArchive/Schemas/Modbus_DataSelection_schema.html
 - uid: modbus_DataSource_schema
   name: Sample Modbus TCP data source configuration
-  href: V1/Configuration/Schemas/Modbus_DataSource_schema.html
+  href: zArchive/Schemas/Modbus_DataSource_schema.html
 - uid: modbus_Logging_schema
   name: ModbusLoggerConfiguration Properties
-  href: V1/Configuration/Schemas/Modbus_Logging_schema.html
+  href: zArchive/Schemas/Modbus_Logging_schema.html
 - uid: modbus_schema
   name: Modbus TCP configuration properties
-  href: V1/Configuration/Schemas/Modbus_schema.html
+  href: zArchive/Schemas/Modbus_schema.html
 - uid: modbusOverview1-0
   name: Modbus TCP EDS adapter
   href: V1/Modbus/ModbusOverview_1-0.html
@@ -132,16 +132,16 @@ references:
   href: V1/Overview/OMFQuickStart_1-0.html
 - uid: opcUa_DataSelection_schema
   name: Sample OPC UA data selection configuration
-  href: V1/Configuration/Schemas/OpcUa_DataSelection_schema.html
+  href: zArchive/Schemas/OpcUa_DataSelection_schema.html
 - uid: opcUa_DataSource_Schema
   name: Sample OPC UA data source configuration
-  href: V1/Configuration/Schemas/OpcUa_DataSource_schema.html
+  href: zArchive/Schemas/OpcUa_DataSource_schema.html
 - uid: opcUa_Logging_schema
   name: OPC UA logging configuration properties
-  href: V1/Configuration/Schemas/OpcUa_Logging_schema.html
+  href: zArchive/Schemas/OpcUa_Logging_schema.html
 - uid: opcua_schema
   name: OPC UA configuration properties
-  href: V1/Configuration/Schemas/OpcUa_schema.html
+  href: zArchive/Schemas/OpcUa_schema.html
 - uid: OPCUAAdapterSecurityConfiguration1-0
   name: Adapter security
   href: V1/OpcUa/OPCUAAdapterSecurityConfiguration_1-0.html
@@ -178,6 +178,9 @@ references:
 - uid: QuickStartGuides1-0
   name: Quick start guides
   href: V1/Overview/Quick%20start%20guides_1-0.html
+- uid: ReadCharacteristics1-0
+  name: Read characteristics
+  href: V1/SDS/Read%20data/Read_characteristics_1-0.html
 - uid: Reference1-0
   name: Reference
   href: V1/Reference/Reference_1-0.html
@@ -190,6 +193,12 @@ references:
 - uid: ResetTheStorageComponent1-0
   name: Reset the Storage component
   href: V1/Administration/Reset%20the%20Storage%20component_1-0.html
+- uid: ResponseFormat1-0
+  name: Response format
+  href: V1/SDS/Read%20data/Response_format_1-0.html
+- uid: ResponseFormatWriteAPIs1-0
+  name: Response format for write APIs
+  href: V1/SDS/Write%20data/Response-format-write_1-0.html
 - uid: RestCommands1-0
   name: REST commands
   href: V1/Reference/REST%20commands_1-0.html
@@ -204,10 +213,13 @@ references:
   href: V1/SDS/Compression_1-0.html
 - uid: sdsFilterExpressions1-0
   name: Filter expressions
-  href: V1/SDS/Filter_Expressions_1-0.html
+  href: V1/SDS/Read%20data/Filter_Expressions_1-0.html
 - uid: sdsIndexes1-0
   name: Indexes
   href: V1/SDS/indexes_1-0.html
+- uid: sdsIndexExamples1-0
+  name: Index examples
+  href: V1/SDS/Indexes/Indexes_examples_1-0.html
 - uid: sdsOverview1-0
   name: SDS reference
   href: V1/SDS/SequentialDataStore_1-0.html
@@ -215,32 +227,62 @@ references:
   name: SDS quick start
   href: V1/Overview/SDSQuickStart_1-0.html
 - uid: sdsReadingData1-0
-  name: Reading data
-  href: V1/SDS/Reading_Data_1-0.html
+  name: Read data
+  href: V1/SDS/Read_Data_1-0.html
 - uid: sdsReadingDataApi1-0
   name: API calls for reading data
-  href: V1/SDS/Reading_Data_API_1-0.html
+  href: V1/SDS/Read%20data/Reading_Data_API_1-0.html
 - uid: sdsSearching1-0
-  name: Searching
-  href: V1/SDS/Searching_1-0.html
+  name: Search in SDS
+  href: V1/SDS/Search_1-0.html
 - uid: sdsStreams1-0
   name: Streams
   href: V1/SDS/SDS_Streams_1-0.html
+- uid: sdsStreamsAPI1-0
+  name: SdsStream API
+  href: V1/SDS/Streams/Sds_Streams_API_1-0.html
 - uid: sdsStreamViews1-0
   name: Stream views
   href: V1/SDS/SDS_Views_1-0.html
+- uid: sdsStreamViewsAPI1-0
+  name: SdsStreamView API
+  href: V1/SDS/Views/SDS_Stream_View_API_1-0.html
 - uid: sdsTableFormat1-0
   name: Table format
-  href: V1/SDS/table_format_1-0.html
+  href: V1/SDS/Read%20data/table_format_1-0.html
+- uid: sdsTypeAPI1-0
+  name: SdsType API
+  href: V1/SDS/Types/SDSType_API_1-0.html
+- uid: sdsTypeCode1-0
+  name: SdsTypeCode
+  href: V1/SDS/Types/SdsTypeCode_1-0.html
+- uid: sdsTypeExamples1-0
+  name: Examples of SdsTypes
+  href: V1/SDS/Types/SDS_Type_Examples_1-0.html
+- uid: sdsTypeProperty1-0
+  name: SdsTypeProperty
+  href: V1/SDS/Types/SdsTypeProperty_1-0.html
+- uid: sdsTypeReusability1-0
+  name: SdsType reusability
+  href: V1/SDS/Types/SDS_Type_reusability_1-0.html
 - uid: sdsTypes1-0
   name: Types
   href: V1/SDS/SDS_Types_1-0.html
+- uid: SdsUOMAPI1-0
+  name: SdsUom API
+  href: V1/SDS/UOM/SdsUOMAPI_1-0.html
+- uid: SdsUOMQuantityAPI1-0
+  name: SdsUomQuantity API
+  href: V1/SDS/UOM/SdsUOMQuantity_API_1-0.html
 - uid: sdsWritingData1-0
-  name: Writing data
-  href: V1/SDS/Writing_Data_1-0.html
+  name: Write data
+  href: V1/SDS/Write_Data_1-0.html
 - uid: sdsWritingDataApi1-0
   name: API calls for writing data
-  href: V1/SDS/Writing_Data_API_1-0.html
+  href: V1/SDS/Write%20data/Writing_Data_API_1-0.html
+- uid: SearchOperators1-0
+  name: Search operators
+  href: V1/SDS/Search/Search_operators_1-0.html
 - uid: security1-0
   name: Security
   href: V1/Security/SecurityOverview_1-0.html
@@ -249,16 +291,16 @@ references:
   href: V1/Administration/Stop%20and%20start%20an%20EDS%20adapter_1-0.html
 - uid: Storage_Logging_schema
   name: Storage logging configuration properties
-  href: V1/Configuration/Schemas/Storage_Logging_schema.html
+  href: zArchive/Schemas/Storage_Logging_schema.html
 - uid: storage_PeriodicEgressEndpoints_schema
   name: Sample periodic egress configuration
-  href: V1/Configuration/Schemas/Storage_PeriodicEgressEndpoints_schema.html
+  href: zArchive/Schemas/Storage_PeriodicEgressEndpoints_schema.html
 - uid: storage_Runtime_schema
   name: Sample storage runtime configuration
-  href: V1/Configuration/Schemas/Storage_Runtime_schema.html
+  href: zArchive/Schemas/Storage_Runtime_schema.html
 - uid: storage_schema
   name: Sample Storage configuration
-  href: V1/Configuration/Schemas/Storage_schema.html
+  href: zArchive/Schemas/Storage_schema.html
 - uid: storage1-0
   name: Storage
   href: V1/Configuration/Storage_1-0.html
@@ -271,24 +313,24 @@ references:
 - uid: SupportedFeaturesOPCUA1-0
   name: Data type mapping
   href: V1/OpcUa/SupportedFeaturesOPCUA_1-0.html
+- uid: SupportedUOM1-0
+  name: Supported units of measure
+  href: V1/SDS/UOM/Supported_UOM_1-0.html
 - uid: system_Components_schema
   name: Sample Edge Data Store components configuration
-  href: V1/Configuration/Schemas/System_Components_schema.html
+  href: zArchive/Schemas/System_Components_schema.html
 - uid: system_HealthEndpoints_schema
   name: Sample OMF health endpoint configuration
-  href: V1/Configuration/Schemas/System_HealthEndpoints_schema.html
+  href: zArchive/Schemas/System_HealthEndpoints_schema.html
 - uid: system_Logging_schema
   name: System logging configuration properties
-  href: V1/Configuration/Schemas/System_Logging_schema.html
+  href: zArchive/Schemas/System_Logging_schema.html
 - uid: system_Port_schema
   name: Sample system port configuration
-  href: V1/Configuration/Schemas/System_Port_schema.html
+  href: zArchive/Schemas/System_Port_schema.html
 - uid: system_schema
   name: Sample system configuration
-  href: V1/Configuration/Schemas/System_schema.html
-- uid: system1-0
-  name: Edge Data Store system component
-  href: V1/Configuration/System_1-0.html
+  href: zArchive/Schemas/System_schema.html
 - uid: SystemComponentsConfiguration1-0
   name: System components configuration
   href: V1/Configuration/System%20components%20configuration_1-0.html
@@ -313,6 +355,9 @@ references:
 - uid: unitsOfMeasure1-0
   name: Units of measure
   href: V1/SDS/Units_of_Measure_1-0.html
+- uid: UomQuantities1-0
+  name: Supported quantities
+  href: V1/SDS/UOM/Supported_Uom_Quantities_1-0.html
 - uid: VerifyInstallation1-0
   name: Verify installation
   href: V1/Installation/Verify%20installation_1-0.html

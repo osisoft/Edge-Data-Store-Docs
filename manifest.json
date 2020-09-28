@@ -13,15 +13,12 @@
       "is_incremental": false
     },
     {
-      "log_codes": [
-        "UidNotFound"
-      ],
       "type": "Conceptual",
       "source_relative_path": "README.md",
       "output": {
         ".html": {
           "relative_path": "README.html",
-          "hash": "sqaZ4Z+nXaOKz9Z6pcCpuA=="
+          "hash": "uX+ylo3mM+lySLHiWP6XQw=="
         }
       },
       "is_incremental": false,
@@ -112,270 +109,12 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "UidNotFound"
-      ],
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/EDSModbusTCPAdapter_1-0.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/EDSModbusTCPAdapter_1-0.html",
-          "hash": "M8ITuabYahgL1iLOrgtd5A=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/EDSOPCUAAdapter_1-0.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/EDSOPCUAAdapter_1-0.html",
-          "hash": "ougv9zzbiLL9M5ibT6Ok9g=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
       "type": "Conceptual",
       "source_relative_path": "V1/Configuration/EdgeSystemConfiguration_1-0.md",
       "output": {
         ".html": {
           "relative_path": "V1/Configuration/EdgeSystemConfiguration_1-0.html",
           "hash": "Z+QhWxLJo0k3rIvX4eDkAw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/ConfigurationSchemaList.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/ConfigurationSchemaList.html",
-          "hash": "pu8joZjy+CbgqdGg1AdbPQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/EdgeSystem_schema.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/EdgeSystem_schema.html",
-          "hash": "v/RZ9qdibjs302I7osC2ww=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/Modbus_DataSelection_schema.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/Modbus_DataSelection_schema.html",
-          "hash": "XsWYCIWRRgvBsENY8MOROA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/Modbus_DataSource_schema.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/Modbus_DataSource_schema.html",
-          "hash": "j/3UsTXX0V/Nq6bDPbMCHw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/Modbus_Logging_schema.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/Modbus_Logging_schema.html",
-          "hash": "vWEd49iGBweYN/GXsjeUfQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/Modbus_schema.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/Modbus_schema.html",
-          "hash": "ursRqIUSY0PLKzsH9iTesA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/OpcUa_DataSelection_schema.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/OpcUa_DataSelection_schema.html",
-          "hash": "ZeOoUROLkwZJ632zHl1muA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/OpcUa_DataSource_schema.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/OpcUa_DataSource_schema.html",
-          "hash": "DjlugIOEyQ6Nrj286ZAO5Q=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/OpcUa_Logging_schema.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/OpcUa_Logging_schema.html",
-          "hash": "d6AqpgDkraDUH+WPWuVuVg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/OpcUa_schema.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/OpcUa_schema.html",
-          "hash": "T5csItorbLA350j2j0KmLw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/Storage_Logging_schema.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/Storage_Logging_schema.html",
-          "hash": "HOZMtAsNRrC4G/zw7wYVCQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/Storage_PeriodicEgressEndpoints_schema.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/Storage_PeriodicEgressEndpoints_schema.html",
-          "hash": "1DnpX89Gn2PE0v6Hw3vnIA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/Storage_Runtime_schema.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/Storage_Runtime_schema.html",
-          "hash": "6TWsRSE5tyCWUaYogXXWMA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/Storage_schema.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/Storage_schema.html",
-          "hash": "bx8Rv1A1Z7E451BG7c4uSA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/System_Components_schema.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/System_Components_schema.html",
-          "hash": "uucJfzgMphAPoG6LY93rYw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/System_HealthEndpoints_schema.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/System_HealthEndpoints_schema.html",
-          "hash": "E4txv817Cb09YWTo7Zoe2g=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/System_Logging_schema.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/System_Logging_schema.html",
-          "hash": "SuXcssxR8rMnHRvOOp8N3w=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/System_Port_schema.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/System_Port_schema.html",
-          "hash": "X+UoL/QCbH/xmGp+v02msw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/Schemas/System_schema.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/Schemas/System_schema.html",
-          "hash": "Ffijxy2rvThGTtsjIFrxyA=="
         }
       },
       "is_incremental": false,
@@ -454,27 +193,12 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "UidNotFound"
-      ],
-      "type": "Conceptual",
-      "source_relative_path": "V1/Configuration/System_1-0.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/Configuration/System_1-0.html",
-          "hash": "gUYkVW20pBGi8G3r6R8X0A=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
       "type": "Conceptual",
       "source_relative_path": "V1/DataIngress/EDSDataIngress_1-0.md",
       "output": {
         ".html": {
           "relative_path": "V1/DataIngress/EDSDataIngress_1-0.html",
-          "hash": "uiYqUBajJQaEt1mjBdx64g=="
+          "hash": "r7kjGUDQ1SzXx6Db078TiQ=="
         }
       },
       "is_incremental": false,
@@ -498,7 +222,7 @@
       "output": {
         ".html": {
           "relative_path": "V1/Diagnostics/Diagnostics_1-0.html",
-          "hash": "7mDCgApvQrNBebrAqTHz/Q=="
+          "hash": "BVQnxsIfnDC1RGUkXtdQiA=="
         }
       },
       "is_incremental": false,
@@ -534,7 +258,7 @@
       "output": {
         ".html": {
           "relative_path": "V1/Egress/Configure data egress_1-0.html",
-          "hash": "+LcP3aOwhLNbmn07gZDwNw=="
+          "hash": "SZXyFd6og/CQs6A42S4P5A=="
         }
       },
       "is_incremental": false,
@@ -817,15 +541,12 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "UidNotFound"
-      ],
       "type": "Conceptual",
       "source_relative_path": "V1/OpcUa/OPCUADataSourceConfiguration_1-0.md",
       "output": {
         ".html": {
           "relative_path": "V1/OpcUa/OPCUADataSourceConfiguration_1-0.html",
-          "hash": "htY+pNg5sXFQ2sO48dWlKw=="
+          "hash": "0a+PLoqDrYi6l3UQn1kU1A=="
         }
       },
       "is_incremental": false,
@@ -921,7 +642,7 @@
       "output": {
         ".html": {
           "relative_path": "V1/Overview/EdgeSystemOverview_1-0.html",
-          "hash": "QGr9fBlkCZQzVy5rIVoWww=="
+          "hash": "M897oF3Gtsq7r2tbQ4M6Lg=="
         }
       },
       "is_incremental": false,
@@ -1077,7 +798,7 @@
       "output": {
         ".html": {
           "relative_path": "V1/Reference/toc.html",
-          "hash": "I+o2jB8Vp8DUf9Cue6ZGtw=="
+          "hash": "QtLdFiA1Y7iLYefkePqj5A=="
         }
       },
       "is_incremental": false,
@@ -1101,7 +822,7 @@
       "output": {
         ".html": {
           "relative_path": "V1/SDS/Compression_1-0.html",
-          "hash": "HULVNAzk+B9fl19KhmU/XQ=="
+          "hash": "/XxmqeQWDyn5PBWLoYOC3Q=="
         }
       },
       "is_incremental": false,
@@ -1109,11 +830,23 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "V1/SDS/Filter_Expressions_1-0.md",
+      "source_relative_path": "V1/SDS/Indexes/Indexes_examples_1-0.md",
       "output": {
         ".html": {
-          "relative_path": "V1/SDS/Filter_Expressions_1-0.html",
-          "hash": "qC4Y/mUn4oafBMDujJZNXA=="
+          "relative_path": "V1/SDS/Indexes/Indexes_examples_1-0.html",
+          "hash": "493k1m5QPum8fLEIX0BjRg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "V1/SDS/Indexes/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/Indexes/toc.html",
+          "hash": "rmLbcQfAbNB6YU0u3IMwPw=="
         }
       },
       "is_incremental": false,
@@ -1121,11 +854,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "V1/SDS/Reading_Data_1-0.md",
+      "source_relative_path": "V1/SDS/Read data/Data_transformations_1-0.md",
       "output": {
         ".html": {
-          "relative_path": "V1/SDS/Reading_Data_1-0.html",
-          "hash": "ZsHzkQSHe60wAIAaQO+SkQ=="
+          "relative_path": "V1/SDS/Read data/Data_transformations_1-0.html",
+          "hash": "9WJryEJTTsAjMW4xgIieJg=="
         }
       },
       "is_incremental": false,
@@ -1133,11 +866,83 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "V1/SDS/Reading_Data_API_1-0.md",
+      "source_relative_path": "V1/SDS/Read data/Enums_1-0.md",
       "output": {
         ".html": {
-          "relative_path": "V1/SDS/Reading_Data_API_1-0.html",
-          "hash": "lhkYN1dsj2hsfTDrcXjieQ=="
+          "relative_path": "V1/SDS/Read data/Enums_1-0.html",
+          "hash": "nDLU78BuIRG3Bfp41i5COA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/Read data/Filter_Expressions_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/Read data/Filter_Expressions_1-0.html",
+          "hash": "lSjerS4C//rGw5NYGp2sNg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/Read data/Read_characteristics_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/Read data/Read_characteristics_1-0.html",
+          "hash": "DFFm0lzftIBXHfVyCzQlww=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/Read data/Reading_Data_API_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/Read data/Reading_Data_API_1-0.html",
+          "hash": "PE1Uqy6gqSu11gnjeipZaQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/Read data/Response_format_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/Read data/Response_format_1-0.html",
+          "hash": "pQhsw9Pw3t48Uj/CZ+4rjQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/Read data/table_format_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/Read data/table_format_1-0.html",
+          "hash": "reaj8Ho1vMdfg8F/ajutUw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/Read_Data_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/Read_Data_1-0.html",
+          "hash": "qKM0D38MEptpyQzeipDOgQ=="
         }
       },
       "is_incremental": false,
@@ -1149,7 +954,7 @@
       "output": {
         ".html": {
           "relative_path": "V1/SDS/SDS_Streams_1-0.html",
-          "hash": "EJbyIfMcfq13THxALhevaw=="
+          "hash": "bSNXH5FOJxg/6ckVQZpFdg=="
         }
       },
       "is_incremental": false,
@@ -1161,7 +966,7 @@
       "output": {
         ".html": {
           "relative_path": "V1/SDS/SDS_Types_1-0.html",
-          "hash": "LgVSTozV+ufU619potwDCg=="
+          "hash": "sNgAsHtH6dFoT9BFIbuXzQ=="
         }
       },
       "is_incremental": false,
@@ -1173,7 +978,7 @@
       "output": {
         ".html": {
           "relative_path": "V1/SDS/SDS_Views_1-0.html",
-          "hash": "aCOuICcgrSOsuNHLHW6InQ=="
+          "hash": "Sp4mzfdKwnRm8RoKEld+mA=="
         }
       },
       "is_incremental": false,
@@ -1181,11 +986,35 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "V1/SDS/Searching_1-0.md",
+      "source_relative_path": "V1/SDS/Search/Search_operators_1-0.md",
       "output": {
         ".html": {
-          "relative_path": "V1/SDS/Searching_1-0.html",
-          "hash": "o+wOZ9FXPsgOidFs1J2eZg=="
+          "relative_path": "V1/SDS/Search/Search_operators_1-0.html",
+          "hash": "mpkL6+qx3LfdDEylpkQOrA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "V1/SDS/Search/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/Search/toc.html",
+          "hash": "LrprniMQxT5CtIjDamHAqQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/Search_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/Search_1-0.html",
+          "hash": "MHrGr7QBL6G5LQGlWI7cZA=="
         }
       },
       "is_incremental": false,
@@ -1197,7 +1026,127 @@
       "output": {
         ".html": {
           "relative_path": "V1/SDS/SequentialDataStore_1-0.html",
-          "hash": "nx3/z7nyybkDXJ8UhyJGaw=="
+          "hash": "t1cupxvnDvH38jvY7WLD0A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/Streams/Sds_Streams_API_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/Streams/Sds_Streams_API_1-0.html",
+          "hash": "7aGNZTdWB887GCJmGggqzg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/Types/SDSType_API_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/Types/SDSType_API_1-0.html",
+          "hash": "97lTKmUGLR1C/LNnSl8/yQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/Types/SDS_Type_Examples_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/Types/SDS_Type_Examples_1-0.html",
+          "hash": "011yvYy6kTbEFCkBwWG2Xg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/Types/SDS_Type_reusability_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/Types/SDS_Type_reusability_1-0.html",
+          "hash": "JaRALdIImP/1wvtBpvsCCQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/Types/SdsTypeCode_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/Types/SdsTypeCode_1-0.html",
+          "hash": "/eOJrmgzHCRvD6KaqAT/4w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/Types/SdsTypeProperty_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/Types/SdsTypeProperty_1-0.html",
+          "hash": "FtZ0UFSfRFscMOEmHwcH3g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/UOM/SdsUOMAPI_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/UOM/SdsUOMAPI_1-0.html",
+          "hash": "Y2Df6234MmL6N+D8N44ziA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/UOM/SdsUOMQuantity_API_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/UOM/SdsUOMQuantity_API_1-0.html",
+          "hash": "DysgyT4SxSxQUxblhaRxCA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/UOM/Supported_UOM_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/UOM/Supported_UOM_1-0.html",
+          "hash": "zpho0QBsVjzQ+1DoI2aQQw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/UOM/Supported_Uom_Quantities_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/UOM/Supported_Uom_Quantities_1-0.html",
+          "hash": "R+kOcOVuE+AS9npDdc2QJw=="
         }
       },
       "is_incremental": false,
@@ -1209,7 +1158,7 @@
       "output": {
         ".html": {
           "relative_path": "V1/SDS/Units_of_Measure_1-0.html",
-          "hash": "2bB5jb1tjCmoecs+ALQBqQ=="
+          "hash": "r5OcDFIPtsIrmsSI8OhIlw=="
         }
       },
       "is_incremental": false,
@@ -1217,11 +1166,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "V1/SDS/Writing_Data_1-0.md",
+      "source_relative_path": "V1/SDS/Views/SDS_Stream_View_API_1-0.md",
       "output": {
         ".html": {
-          "relative_path": "V1/SDS/Writing_Data_1-0.html",
-          "hash": "MhhSpk3tAGjuD+pYyojlGA=="
+          "relative_path": "V1/SDS/Views/SDS_Stream_View_API_1-0.html",
+          "hash": "GTkYt5BVrQhmdJ7lA2pa0g=="
         }
       },
       "is_incremental": false,
@@ -1229,11 +1178,35 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "V1/SDS/Writing_Data_API_1-0.md",
+      "source_relative_path": "V1/SDS/Write data/Response-format-write_1-0.md",
       "output": {
         ".html": {
-          "relative_path": "V1/SDS/Writing_Data_API_1-0.html",
-          "hash": "pZkfwaqHrYQFPr6xNWt1vg=="
+          "relative_path": "V1/SDS/Write data/Response-format-write_1-0.html",
+          "hash": "hMlZPiFKpbKd1JE/a/j5oQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/Write data/Writing_Data_API_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/Write data/Writing_Data_API_1-0.html",
+          "hash": "zcIJgVUN0tm0t9Bb4PSQpg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "V1/SDS/Write_Data_1-0.md",
+      "output": {
+        ".html": {
+          "relative_path": "V1/SDS/Write_Data_1-0.html",
+          "hash": "LDVLBCIXl1VKa4/jd7xK8w=="
         }
       },
       "is_incremental": false,
@@ -1245,19 +1218,7 @@
       "output": {
         ".html": {
           "relative_path": "V1/SDS/indexes_1-0.html",
-          "hash": "rbGqIaqke0DFxUYebZF5eg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "V1/SDS/table_format_1-0.md",
-      "output": {
-        ".html": {
-          "relative_path": "V1/SDS/table_format_1-0.html",
-          "hash": "e/SDbALI5Bhyj6wrkSIdzA=="
+          "hash": "o78y+3GD2lmQ+ZFhjdV3Mw=="
         }
       },
       "is_incremental": false,
@@ -1604,7 +1565,7 @@
       "output": {
         ".html": {
           "relative_path": "V1/toc.html",
-          "hash": "cBdreuIPn2wD4JyP56S47w=="
+          "hash": "CLLK9PkO5uUxdBP9MfI7Ig=="
         }
       },
       "is_incremental": false,
@@ -1669,6 +1630,234 @@
       },
       "is_incremental": false,
       "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/ConfigurationSchemaList.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/ConfigurationSchemaList.html",
+          "hash": "Ch+d5aXNW/yt04fW4DAqLQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/EdgeSystem_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/EdgeSystem_schema.html",
+          "hash": "+k75NikzCBFMx9G8mZLTBg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/Modbus_DataSelection_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/Modbus_DataSelection_schema.html",
+          "hash": "kQ255DVNeko728hn3O4T5Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/Modbus_DataSource_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/Modbus_DataSource_schema.html",
+          "hash": "S0hZr97p0ggmnFOQW/pwgA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/Modbus_Logging_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/Modbus_Logging_schema.html",
+          "hash": "KY+XLFMm1QkOj5QZO/k7aA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/Modbus_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/Modbus_schema.html",
+          "hash": "HBPH+wocHeh5usLRpNzl4w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/OpcUa_DataSelection_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/OpcUa_DataSelection_schema.html",
+          "hash": "kHh7UGa4kfj1DCUGQnpjWA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/OpcUa_DataSource_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/OpcUa_DataSource_schema.html",
+          "hash": "+G6dQ1wuZc0UyYIx/zgWWA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/OpcUa_Logging_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/OpcUa_Logging_schema.html",
+          "hash": "jrm+ZEo0SSV8rlaqhhHgbA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/OpcUa_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/OpcUa_schema.html",
+          "hash": "GI3HD1+RXmQkTbMivfE+Xg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/Storage_Logging_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/Storage_Logging_schema.html",
+          "hash": "1tx9DegtsbSd/xcBEsUJaQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/Storage_PeriodicEgressEndpoints_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/Storage_PeriodicEgressEndpoints_schema.html",
+          "hash": "PWaNAAAwbZDh9NkwubAvKA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/Storage_Runtime_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/Storage_Runtime_schema.html",
+          "hash": "JBvGjZY9ZXiPDQh6irqqxQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/Storage_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/Storage_schema.html",
+          "hash": "Y2eAdARLbaFO0bSDVEXqLQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/System_Components_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/System_Components_schema.html",
+          "hash": "3Idi1N8qFBpdVrBQ87S5mQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/System_HealthEndpoints_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/System_HealthEndpoints_schema.html",
+          "hash": "aDTcUvIlcHmCYQE9uFE8qQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/System_Logging_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/System_Logging_schema.html",
+          "hash": "sG/U0CIH/7voFMxeazVOcA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/System_Port_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/System_Port_schema.html",
+          "hash": "q4Mjp8Dhq5xu+eRhkkwGtg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "zArchive/Schemas/System_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "zArchive/Schemas/System_schema.html",
+          "hash": "szXkuNPS87gFrHmOKDD/Cg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
     }
   ],
   "incremental_info": [
@@ -1692,7 +1881,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 110,
+          "total_file_count": 125,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

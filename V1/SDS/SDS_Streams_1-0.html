@@ -78,17 +78,16 @@
             <article class="content wrap" id="_content" data-uid="sdsStreams1-0">
 <h1 id="streams">Streams</h1>
 
-<p>SDS stores collections of events and provides convenient ways to find and associating events. Events of consistent structure are stored in streams, called SdsStreams. An SdsType defines the structure of events in an SdsStream.</p>
-<p>SdsStreams are referenced by their identifier or Id field. SdsStream identifiers must be unique within a namespace.</p>
-<p>An SdsStream must include a TypeId that references the identifier of an existing SdsType. When an SdsStream contains data, you must use a stream view to update the stream type.</p>
-<p>The following table shows the required and optional SdsStream fields. Fields not listed are reserved for internal SDS use.</p>
+<p>SdsStreams are collections of sequentially occurring values indexed by a single property, typically time series data. You define SdsStreams to organize incoming data from another system into the OCS. To define an SdsStream, you must first define an SdsType, which defines the structure of the data you want to stream into a selected namespace.</p>
+<p>SdsStreams are referenced by their identifier, which is the <code>Id</code> field. SdsStream identifiers must be unique within a namespace. An SdsStream must include a <code>TypeId</code> that references the identifier of an existing SdsType. When an SdsStream contains data, you must use a stream view to update the stream type.</p>
+<p>The following table shows the SdsStream fields. Fields not listed are reserved for internal SDS use.</p>
 <table>
 <thead>
 <tr>
 <th>Property</th>
 <th>Type</th>
 <th>Optionality</th>
-<th>Searchability</th>
+<th>Searchable</th>
 <th>Details</th>
 </tr>
 </thead>
@@ -151,26 +150,21 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Rules for the stream identifier (SdsStream.Id)</strong></p>
-<ol>
+<h2 id="rules-for-the-stream-identifier-sdsstreamid">Rules for the stream identifier (SdsStream.Id)</h2>
+<p>The stream identifier, SdsStream.Id, has the following requirements:</p>
+<ul>
 <li>Is not case sensitive.</li>
 <li>Can contain spaces.</li>
 <li>Cannot contain forward slash (&quot;/&quot;).</li>
-<li>Can contain a maximum of 100 characters.</li>
-</ol>
-<h2 id="indexes">Indexes</h2>
-<ul>
-<li><p>The Key or Primary Index is defined at the SdsType. Secondary Indexes are defined at the SdsStream.</p>
-</li>
-<li><p>Secondary indexes are applied to a single property; there are no compound secondary indexes. Only SdsTypeCodes that can be ordered are supported for use in a secondary index.</p>
-</li>
-<li><p>For more information about indexes, see <a class="xref" href="indexes_1-0.html">Indexes</a>.</p>
-</li>
+<li>Contains a maximum of 100 characters.</li>
 </ul>
+<h2 id="indexes">Indexes</h2>
+<p>The key or primary index is defined at the SdsType. Secondary indexes are defined at the SdsStream. Secondary indexes are applied to a single property; there are no compound secondary indexes. Only SdsTypeCodes that can be ordered are supported for use in a secondary index.</p>
+<p>For more information about indexes, see <a class="xref" href="indexes_1-0.html">Indexes</a>.</p>
 <h2 id="interpolation-and-extrapolation">Interpolation and extrapolation</h2>
 <p>The InterpolationMode, ExtrapolationMode, and <a href="#propertyoverrides">PropertyOverrides</a> can be used to determine how a specific stream reads data. These read characteristics are inherited from the type if they are not defined at the stream level. For more information about type read characteristics and how these characteristics dictate how events are read, see <a class="xref" href="SDS_Types_1-0.html">Types</a>.</p>
 <h2 id="propertyoverrides">PropertyOverrides</h2>
-<p>PropertyOverrides provide a way to override interpolation behavior and unit of measure for individual SdsType properties for a specific stream.</p>
+<p>PropertyOverrides are used to override interpolation behavior and unit of measure for individual SdsType Properties for a specific SdsStream.</p>
 <p>The <code>SdsStreamPropertyOverride</code> object has the following structure:</p>
 <table>
 <thead>
@@ -204,122 +198,7 @@
 </table>
 <p>The unit of measure can be overridden for any type property defined by the stream type, including primary keys and secondary indexes. For more information about type property units of measure, see <a class="xref" href="SDS_Types_1-0.html">Types</a>.</p>
 <p>Read characteristics of the stream are determined by the type and the PropertyOverrides of the stream. The interpolation mode for non-index properties can be defined and overridden at the stream level. For more information about type read characteristics, see <a class="xref" href="SDS_Types_1-0.html">Types</a>.</p>
-<p>When specifying property interpolation overrides, if the SdsType InterpolationMode is <code>Discrete</code>, it cannot be overridden at any level. When InterpolationMode is set to <code>Discrete</code> and an event it not defined for that index, a null value is returned for the entire event.</p>
-<h1 id="sdsstream-api">SdsStream API</h1>
-<p>The REST APIs provide programmatic access to read and write SDS data. The APIs in this section interact with SdsStreams. For general SdsStream information, see <a href="#streams">Streams</a>.</p>
-<hr>
-<h2 id="get-stream"><code>Get Stream</code></h2>
-<p>Returns the specified stream.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamId</code><br>The stream identifier.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>The requested SdsStream. Example response body:</p>
-<pre><code class="lang-json">HTTP/1.1 200
-Content-Type: application/json
-
-{  
-   &quot;Id&quot;:&quot;Simple&quot;,
-   &quot;Name&quot;:&quot;Simple&quot;,
-   &quot;TypeId&quot;:&quot;Simple&quot;,
-}
-</code></pre><hr>
-<h2 id="get-streams"><code>Get Streams</code></h2>
-<p>Returns a list of streams.</p>
-<p>If the optional search query parameter is specified, the list of streams returned will match the search criteria. If the search query parameter is not specified, the list will include all streams in the namespace. See <a class="xref" href="Searching_1-0.html">Searching</a> for information about specifying those respective parameters.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams?query={query}&amp;skip={skip}&amp;count={count}&amp;orderby={orderby}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string query</code><br>An optional parameter representing a string search. For information about specifying the search parameter, see <a class="xref" href="Searching_1-0.html">Searching</a>.</p>
-<p><code>int skip</code><br>An optional parameter representing the zero-based offset of the first SdsStream to retrieve. If not specified, a default value of 0 is used.</p>
-<p><code>int count</code><br>An optional parameter representing the maximum number of SdsStreams to retrieve. If not specified, a default value of 100 is used.</p>
-<p><code>string orderby</code><br>An optional parameter representing sorted order which SdsStreams will be returned. A field name is required. The sorting is based on the stored values for the given field (of type string). For example, <code>orderby=name</code> would sort the returned results by the <code>name</code> values (ascending by default). Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values <code>asc</code> or <code>desc</code>, respectively. For example, <code>orderby=name desc</code> would sort the returned results by the <code>name</code> values, descending. If no value is specified, there is no sorting of results.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>A collection of zero or more SdsStreams. Example response body:</p>
-<pre><code class="lang-json">HTTP/1.1 200
-Content-Type: application/json
-
-[  
-   {  
-      &quot;Id&quot;:&quot;Simple&quot;,
-      &quot;TypeId&quot;:&quot;Simple&quot;
-   },
-   {  
-      &quot;Id&quot;:&quot;Simple with Secondary&quot;,
-      &quot;TypeId&quot;:&quot;Simple&quot;,
-      &quot;Indexes&quot;:[  
-         {  
-            &quot;SdsTypePropertyId&quot;:&quot;Measurement&quot;
-         }
-      ]
-   },
-   {  
-      &quot;Id&quot;:&quot;Compound&quot;,
-      &quot;TypeId&quot;:&quot;Compound&quot;
-   }
-]
-</code></pre><hr>
-<h2 id="get-stream-type"><code>Get Stream Type</code></h2>
-<p>Returns the type definition that is associated with a given stream.</p>
-<p><strong>Request</strong>  </p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Type
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamId</code><br>The stream identifier.  </p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>The requested SdsType.</p>
-<hr>
-<h2 id="get-or-create-stream"><code>Get or Create Stream</code></h2>
-<p>Creates the specified stream. If a stream with a matching identifier already exists, SDS compares the existing stream with the stream that was sent. If the streams are identical, a <code>Found</code> (302) error is returned with the Location header set to the URI where the stream may be retrieved using a Get function. If the streams do not match, a <code>Conflict</code> (409) error is returned.</p>
-<p>For a matching stream (Found), clients that are capable of performing a redirect that includes the authorization header can automatically redirect to retrieve the stream. However, most clients, including the .NET HttpClient, consider redirecting with the authorization token to be a security vulnerability.</p>
-<p>When a client performs a redirect and strips the authorization header, SDS cannot authorize the request and returns <code>Unauthorized</code> (401). For this reason, it is recommended that when using clients that do not redirect with the authorization header, you should disable automatic redirect.</p>
-<p><strong>Request</strong>  </p>
-<pre><code class="lang-text">POST api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamId</code><br>The stream identifier. The stream identifier must match the identifier in content.</p>
-<p><strong>Request body</strong><br>The request content is the serialized SdsStream.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>The newly created SdsStream.</p>
-<hr>
-<h2 id="create-or-update-stream"><code>Create or Update Stream</code></h2>
-<p>Creates the specified stream. If a stream with the same Id already exists, the definition of the stream is updated. The following changes are permitted:</p>
-<ul>
-<li>Name  </li>
-<li>Description  </li>
-<li>Indexes  </li>
-<li>InterpolationMode  </li>
-<li>ExtrapolationMode  </li>
-<li>PropertyOverrides  </li>
-</ul>
-<p>Note that modifying Indexes will result in re-indexing all of the stream&#39;s data for each additional secondary index.</p>
-<p>For more information on secondary indexes, see <a href="#indexes">Indexes</a>.</p>
-<p>Unpermitted changes result in an error.</p>
-<p><strong>Request</strong>  </p>
-<pre><code class="lang-text">PUT api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamId</code><br>The stream identifier.</p>
-<p><strong>Request body</strong><br>The request content is the serialized SdsStream.</p>
-<p><strong>Response</strong><br>The response includes a status code.</p>
-<hr>
-<h2 id="update-stream-type"><code>Update Stream Type</code></h2>
-<p>Updates a stream’s type. The type is modified to match the specified stream view. Defined Indexes and PropertyOverrides are removed when updating a stream type.</p>
-<p><strong>Request</strong>  </p>
-<pre><code class="lang-text">  PUT api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Type?streamViewId={streamViewId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamId</code><br>The stream identifier.</p>
-<p><code>string streamViewId</code><br>The stream view identifier.  </p>
-<p><strong>Request body</strong><br>The request content is the serialized SdsStream.</p>
-<p><strong>Response</strong><br>The response includes a status code.</p>
-<p><strong>Response body</strong><br>On failure, the content contains a message describing the issue.</p>
-<hr>
-<h2 id="delete-stream"><code>Delete Stream</code></h2>
-<p>Deletes a stream.</p>
-<p><strong>Request</strong>  </p>
-<pre><code class="lang-text">  DELETE api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamId</code><br>The stream identifier.</p>
-<p><strong>Response</strong><br>The response includes a status code.</p>
-<hr>
+<p>If the SdsType InterpolationMode is <code>Discrete</code>, it cannot be overridden at any level. When InterpolationMode is set to <code>Discrete</code> and an event is not defined for that index, a null value is returned for the entire event.</p>
 </article>
           </div>
           
