@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
   
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../../styles/docfx.css">
     <link rel="stylesheet" href="../../styles/main.css">
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
     
     <meta property="docfx:rel" content="../../">
     
@@ -66,21 +66,14 @@
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
-        </div>
-        <div class="article row grid-right">
+        <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="EdgecmdCommands1-0">
-<h1 id="edgecmd-commands">EdgeCmd commands</h1>
+<h1 id="edgecmd-commands" sourcefile="zArchive/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="5" sourceendlinenumber="5">EdgeCmd commands</h1>
 
-<p>The following tables list the commands available in the EdgeCmd utility. Every EdgeCmd utility command has to be preceded by <code>edgecmd</code>.</p>
-<h2 id="help">Help</h2>
-<table>
+<p sourcefile="zArchive/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="7" sourceendlinenumber="7">The following tables list the commands available in the EdgeCmd utility. Every EdgeCmd utility command has to be preceded by <code>edgecmd</code>.</p>
+<h2 id="help" sourcefile="zArchive/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="9" sourceendlinenumber="9">Help</h2>
+<table sourcefile="zArchive/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="11" sourceendlinenumber="15">
 <thead>
 <tr>
 <th>edgecmd command</th>
@@ -106,9 +99,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="configuration">Configuration</h2>
-<h3 id="system">System</h3>
-<table>
+<h2 id="configuration" sourcefile="zArchive/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="18" sourceendlinenumber="18">Configuration</h2>
+<h3 id="system" sourcefile="zArchive/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="20" sourceendlinenumber="20">System</h3>
+<table sourcefile="zArchive/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="22" sourceendlinenumber="27">
 <thead>
 <tr>
 <th>edgecmd command</th>
@@ -139,8 +132,8 @@
 </tr>
 </tbody>
 </table>
-<h3 id="components">Components</h3>
-<table>
+<h3 id="components" sourcefile="zArchive/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="29" sourceendlinenumber="29">Components</h3>
+<table sourcefile="zArchive/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="30" sourceendlinenumber="37">
 <thead>
 <tr>
 <th>edgecmd command</th>
@@ -167,22 +160,22 @@
 <tr>
 <td><code>edgecmd Configuration &lt;componentId&gt; DataSource</code></td>
 <td>Configure the data source for a Modbus TCP EDS adapter component or an OPC UA EDS adapter component.</td>
-<td>For examples, see <a class="xref" href="../OpcUa/OPCUADataSourceConfiguration_1-0.html">OPC UA data source configuration</a> and <a class="xref" href="../Modbus/ModbusTCPDataSourceConfiguration_1-0.html">Modbus TCP data source configuration</a>.</td>
+<td>For examples, see <a class="xref" href="../../V1/OpcUa/OPCUADataSourceConfiguration_1-0.html" data-raw-source="[OPC UA data source configuration](xref:OPCUADataSourceConfiguration1-0)" sourcefile="zArchive/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="35" sourceendlinenumber="35">OPC UA data source configuration</a> and <a class="xref" href="../../V1/Modbus/ModbusTCPDataSourceConfiguration_1-0.html" data-raw-source="[Modbus TCP data source configuration](xref:ModbusTCPDataSourceConfiguration1-0)" sourcefile="zArchive/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="35" sourceendlinenumber="35">Modbus TCP data source configuration</a>.</td>
 </tr>
 <tr>
 <td><code>edgecmd Configuration &lt;componentId&gt; DataSelection</code></td>
 <td>Configure the data selection for a Modbus TCP EDS adapter component or an OPC UA EDS adapter component.</td>
-<td>For examples, see <a class="xref" href="../OpcUa/OPCUADataSelectionConfiguration_1-0.html">OPC UA data selection configuration</a> and <a class="xref" href="../Modbus/ModbusTCPDataSelectionConfiguration_1-0.html">Modbus TCP data selection configuration</a>.</td>
+<td>For examples, see <a class="xref" href="../../V1/OpcUa/OPCUADataSelectionConfiguration_1-0.html" data-raw-source="[OPC UA data selection configuration](xref:OPCUADataSelectionConfiguration1-0)" sourcefile="zArchive/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="36" sourceendlinenumber="36">OPC UA data selection configuration</a> and <a class="xref" href="../../V1/Modbus/ModbusTCPDataSelectionConfiguration_1-0.html" data-raw-source="[Modbus TCP data selection configuration](xref:ModbusTCPDataSelectionConfiguration1-0)" sourcefile="zArchive/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="36" sourceendlinenumber="36">Modbus TCP data selection configuration</a>.</td>
 </tr>
 <tr>
 <td><code>edgecmd Configuration &lt;componentId&gt; Logging</code></td>
 <td>Configure logging for a Modbus TCP EDS adapter component or an OPC UA EDS adapter component.</td>
-<td>For examples, see <a class="xref" href="../Logging/ComponentLogging_1-0.html">Component-level logging configuration</a>.</td>
+<td>For examples, see <a class="xref" href="../../V1/Logging/ComponentLogging_1-0.html" data-raw-source="[Component-level logging configuration](xref:ComponentLoggingConfiguration1-0)" sourcefile="zArchive/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="37" sourceendlinenumber="37">Component-level logging configuration</a>.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="configuration-with-json-files">Configuration with JSON files</h2>
-<table>
+<h2 id="configuration-with-json-files" sourcefile="zArchive/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="39" sourceendlinenumber="39">Configuration with JSON files</h2>
+<table sourcefile="zArchive/Reference/Edgecmd commands_1-0.md" sourcestartlinenumber="40" sourceendlinenumber="43">
 <thead>
 <tr>
 <th>edgecmd command</th>
@@ -211,7 +204,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/Reference/Edgecmd commands_1-0.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/zArchive/Reference/Edgecmd commands_1-0.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

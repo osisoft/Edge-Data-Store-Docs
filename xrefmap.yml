@@ -36,7 +36,7 @@ references:
   href: zArchive/Schemas/EdgeSystem_schema.html
 - uid: EdgecmdCommands1-0
   name: EdgeCmd commands
-  href: V1/Reference/Edgecmd%20commands_1-0.html
+  href: zArchive/Reference/Edgecmd%20commands_1-0.html
 - uid: EdgeDataStore1-0
   name: Edge Data Store
   href: V1/Edge_Data_Store_1-0.html
@@ -183,7 +183,7 @@ references:
   href: V1/SDS/Read%20data/Read_characteristics_1-0.html
 - uid: Reference1-0
   name: Reference
-  href: V1/Reference/Reference_1-0.html
+  href: zArchive/Reference/Reference_1-0.html
 - uid: releaseNotes1-0
   name: Release notes
   href: V1/ReleaseNotes/ReleaseNotes_1-0.html
@@ -201,7 +201,7 @@ references:
   href: V1/SDS/Write%20data/Response-format-write_1-0.html
 - uid: RestCommands1-0
   name: REST commands
-  href: V1/Reference/REST%20commands_1-0.html
+  href: zArchive/Reference/REST%20commands_1-0.html
 - uid: RetrieveProductVersionInformation1-0
   name: Retrieve product version information
   href: V1/Administration/Retrieve%20product%20version%20information_1-0.html
@@ -230,7 +230,7 @@ references:
   name: Read data
   href: V1/SDS/Read_Data_1-0.html
 - uid: sdsReadingDataApi1-0
-  name: API calls for reading data
+  name: Read data API
   href: V1/SDS/Read%20data/Reading_Data_API_1-0.html
 - uid: sdsSearching1-0
   name: Search in SDS
@@ -278,7 +278,7 @@ references:
   name: Write data
   href: V1/SDS/Write_Data_1-0.html
 - uid: sdsWritingDataApi1-0
-  name: API calls for writing data
+  name: Write data API
   href: V1/SDS/Write%20data/Writing_Data_API_1-0.html
 - uid: SearchOperators1-0
   name: Search operators

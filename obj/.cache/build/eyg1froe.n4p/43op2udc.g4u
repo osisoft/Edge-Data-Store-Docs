@@ -262,7 +262,7 @@
 </tbody>
 </table>
 <p sourcefile="V1/SDS/Read data/Read_characteristics_1-0.md" sourcestartlinenumber="70" sourceendlinenumber="70">If the ExtrapolationMode is not assigned, the events are extrapolated in the default manner, unless the extrapolation mode is overridden on the SdsStream. For more information on overriding the extrapolation mode on a specific stream, see <a class="xref" href="../SDS_Streams_1-0.html" data-raw-source="[Streams](xref:sdsStreams1-0)" sourcefile="V1/SDS/Read data/Read_characteristics_1-0.md" sourcestartlinenumber="70" sourceendlinenumber="70">Streams</a>.</p>
-<p sourcefile="V1/SDS/Read data/Read_characteristics_1-0.md" sourcestartlinenumber="72" sourceendlinenumber="72">For additional information about the effect of read characteristics for the available read methods, see <a class="xref" href="Reading_Data_API_1-0.html" data-raw-source="[API calls for reading data](xref:sdsReadingDataApi1-0)" sourcefile="V1/SDS/Read data/Read_characteristics_1-0.md" sourcestartlinenumber="72" sourceendlinenumber="72">API calls for reading data</a>.</p>
+<p sourcefile="V1/SDS/Read data/Read_characteristics_1-0.md" sourcestartlinenumber="72" sourceendlinenumber="72">For additional information about the effect of read characteristics for the available read methods, see <a class="xref" href="Reading_Data_API_1-0.html" data-raw-source="[Read data API](xref:sdsReadingDataApi1-0)" sourcefile="V1/SDS/Read data/Read_characteristics_1-0.md" sourcestartlinenumber="72" sourceendlinenumber="72">Read data API</a>.</p>
 </article>
           </div>
           
