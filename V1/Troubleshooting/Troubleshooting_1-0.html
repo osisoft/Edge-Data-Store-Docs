@@ -105,8 +105,8 @@
 </li>
 </ol>
 <p>Examples of valid strings representing date and time:</p>
-<pre><code>UTC: “yyyy-mm-ddThh:mm:ssZ”
-Local: “mm-dd-yyyy hh:mm:ss”
+<pre><code>UTC: &quot;yyyy-mm-ddThh:mm:ssZ&quot;
+Local: &quot;mm-dd-yyyy hh:mm:ss&quot;
 </code></pre><h2 id="periodic-egress">Periodic egress</h2>
 <p>EDS periodic egress extracts data from SDS streams and sends the appropriate sequences of type, container, and data OMF messages on startup.  </p>
 <p><strong>Note:</strong> If unexpected data appears in an OCS or PI System, check if multiple devices are writing to the same SDS stream. </p>
@@ -132,8 +132,8 @@ Local: “mm-dd-yyyy hh:mm:ss”
 </li>
 </ol>
 <p>Examples of valid strings representing date and time:</p>
-<pre><code>UTC: “yyyy-mm-ddThh:mm:ssZ”
-Local: “mm-dd-yyyy hh:mm:ss”
+<pre><code>UTC: &quot;yyyy-mm-ddThh:mm:ssZ&quot;
+Local: &quot;mm-dd-yyyy hh:mm:ss&quot;
 </code></pre><h3 id="debugging-folderfile-structure">Debugging folder/file structure</h3>
 <p>Because the overall number and content length of each request/response pair captured by debugging can be quite large, debugging information is stored to disk in a separate location from other log messages. Debug folders and files are created under the Edge Data Store data folder as follows: </p>
 <pre><code>Windows: %programdata%\OSIsoft\EdgeDataStore\Storage\egressdump\{tenantId}\{namespaceId}\{egressId}\{omfType}\{Ticks}-{Guid}-{Req/Res}.txt

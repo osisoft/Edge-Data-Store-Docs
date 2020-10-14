@@ -105,8 +105,8 @@
 </li>
 </ol>
 <p sourcefile="V1/Troubleshooting/Troubleshooting_1-0.md" sourcestartlinenumber="39" sourceendlinenumber="39">Examples of valid strings representing date and time:</p>
-<pre sourcefile="V1/Troubleshooting/Troubleshooting_1-0.md" sourcestartlinenumber="41" sourceendlinenumber="42"><code>UTC: “yyyy-mm-ddThh:mm:ssZ”
-Local: “mm-dd-yyyy hh:mm:ss”
+<pre sourcefile="V1/Troubleshooting/Troubleshooting_1-0.md" sourcestartlinenumber="41" sourceendlinenumber="42"><code>UTC: &quot;yyyy-mm-ddThh:mm:ssZ&quot;
+Local: &quot;mm-dd-yyyy hh:mm:ss&quot;
 </code></pre><h2 id="periodic-egress" sourcefile="V1/Troubleshooting/Troubleshooting_1-0.md" sourcestartlinenumber="44" sourceendlinenumber="44">Periodic egress</h2>
 <p sourcefile="V1/Troubleshooting/Troubleshooting_1-0.md" sourcestartlinenumber="46" sourceendlinenumber="46">EDS periodic egress extracts data from SDS streams and sends the appropriate sequences of type, container, and data OMF messages on startup.  </p>
 <p sourcefile="V1/Troubleshooting/Troubleshooting_1-0.md" sourcestartlinenumber="48" sourceendlinenumber="48"><strong>Note:</strong> If unexpected data appears in an OCS or PI System, check if multiple devices are writing to the same SDS stream. </p>
@@ -132,8 +132,8 @@ Local: “mm-dd-yyyy hh:mm:ss”
 </li>
 </ol>
 <p sourcefile="V1/Troubleshooting/Troubleshooting_1-0.md" sourcestartlinenumber="72" sourceendlinenumber="72">Examples of valid strings representing date and time:</p>
-<pre sourcefile="V1/Troubleshooting/Troubleshooting_1-0.md" sourcestartlinenumber="74" sourceendlinenumber="75"><code>UTC: “yyyy-mm-ddThh:mm:ssZ”
-Local: “mm-dd-yyyy hh:mm:ss”
+<pre sourcefile="V1/Troubleshooting/Troubleshooting_1-0.md" sourcestartlinenumber="74" sourceendlinenumber="75"><code>UTC: &quot;yyyy-mm-ddThh:mm:ssZ&quot;
+Local: &quot;mm-dd-yyyy hh:mm:ss&quot;
 </code></pre><h3 id="debugging-folderfile-structure" sourcefile="V1/Troubleshooting/Troubleshooting_1-0.md" sourcestartlinenumber="77" sourceendlinenumber="77">Debugging folder/file structure</h3>
 <p sourcefile="V1/Troubleshooting/Troubleshooting_1-0.md" sourcestartlinenumber="79" sourceendlinenumber="79">Because the overall number and content length of each request/response pair captured by debugging can be quite large, debugging information is stored to disk in a separate location from other log messages. Debug folders and files are created under the Edge Data Store data folder as follows: </p>
 <pre sourcefile="V1/Troubleshooting/Troubleshooting_1-0.md" sourcestartlinenumber="81" sourceendlinenumber="83"><code>Windows: %programdata%\OSIsoft\EdgeDataStore\Storage\egressdump\{tenantId}\{namespaceId}\{egressId}\{omfType}\{Ticks}-{Guid}-{Req/Res}.txt
