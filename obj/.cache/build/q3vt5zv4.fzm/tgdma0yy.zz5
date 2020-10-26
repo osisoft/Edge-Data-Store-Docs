@@ -1,0 +1,1 @@
+{"V1/toc.yml":[{"File":"V1/toc.yml","LogLevel":"warning","Message":"Homepage is deprecated in TOC. Homepage index.md is overwritten with topicHref index.md","Phase":"BuildCommand.BuildCore.Build Document.CompilePhaseHandlerWithIncremental.TocDocumentProcessor.Prebuild.BuildTocDocument"}]}
