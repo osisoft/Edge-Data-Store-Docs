@@ -212,9 +212,9 @@
 <h3 id="ingressdebugexpiration" sourcefile="V1/Configuration/Storage runtime config_1-0.md" sourcestartlinenumber="67" sourceendlinenumber="67">IngressDebugExpiration</h3>
 <p sourcefile="V1/Configuration/Storage runtime config_1-0.md" sourcestartlinenumber="69" sourceendlinenumber="69">Use the Ingress Debug Expiration property when debugging OMF to set the date and time when debugging should be disabled. If a future date and time is is specified, incoming OMF messages are logged and HTTP request and response content is stored to disk for review. The debug logging stops at the data and time specified. Set the value to <em>null</em> to disable logging.</p>
 <p sourcefile="V1/Configuration/Storage runtime config_1-0.md" sourcestartlinenumber="71" sourceendlinenumber="71">Examples of valid strings representing date and time:</p>
-<pre sourcefile="V1/Configuration/Storage runtime config_1-0.md" sourcestartlinenumber="73" sourceendlinenumber="75"><code>UTC: “yyyy-mm-ddThh:mm:ssZ”
+<pre sourcefile="V1/Configuration/Storage runtime config_1-0.md" sourcestartlinenumber="73" sourceendlinenumber="75"><code>UTC: &quot;yyyy-mm-ddThh:mm:ssZ&quot;
 
-Local: “mm-dd-yyyy hh:mm:ss”
+Local: &quot;mm-dd-yyyy hh:mm:ss&quot;
 </code></pre><p sourcefile="V1/Configuration/Storage runtime config_1-0.md" sourcestartlinenumber="77" sourceendlinenumber="77">When logging is activated, the content of an incoming OMF message, including the headers, is written to a file in the Logs directory. For an active application, this file can become quite large. As a result, debug information is stored to disk in another format than usual log messages. A single file is written to the usual logs directory for every incoming OMF type, container, and data message.</p>
 <h4 id="ingressdebugexpiration-type" sourcefile="V1/Configuration/Storage runtime config_1-0.md" sourcestartlinenumber="79" sourceendlinenumber="79">IngressDebugExpiration type</h4>
 <p sourcefile="V1/Configuration/Storage runtime config_1-0.md" sourcestartlinenumber="81" sourceendlinenumber="81"><code>string</code></p>

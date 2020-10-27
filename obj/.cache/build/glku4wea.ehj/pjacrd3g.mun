@@ -120,7 +120,7 @@
 <li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="57" sourceendlinenumber="57"><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="57" sourceendlinenumber="57">Enter the msiexec command and specify parameters to run the installation, using the following example as a guide.</p>
 </li>
 </ol>
-<pre sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="59" sourceendlinenumber="61"><code>Msiexec /quiet /i EdgeDataStore.msi PORT=”&lt;number&gt;” INSTALLFOLDER=”&lt;file_path&gt;” WIXUI_ENABLEMODBUS=”1” WIXUI_ENABLEOPCUA=”1”
+<pre sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="59" sourceendlinenumber="61"><code>Msiexec /quiet /i EdgeDataStore.msi PORT=&quot;&lt;number&gt;&quot; INSTALLFOLDER=&quot;&lt;file_path&gt;&quot; WIXUI_ENABLEMODBUS=&quot;1&quot; WIXUI_ENABLEOPCUA=&quot;1&quot;
 </code></pre><p sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="63" sourceendlinenumber="63">   Parameters:</p>
 <ul sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="65" sourceendlinenumber="72">
 <li sourcefile="V1/Installation/Install Edge Data Store_1-0.md" sourcestartlinenumber="65" sourceendlinenumber="65">/quiet – The installation runs in silent mode.</li>

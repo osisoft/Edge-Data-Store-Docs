@@ -126,7 +126,7 @@ If you have more than one OSIsoft Adapter of the same kind configured, the defau
 </tr>
 <tr>
 <td>Information</td>
-<td>Logs that track the general flow of the application. Any non-repetitive general information (like version information relating to the software at startup, what external services are being used, data source connection string, number of measurements, egress URL, change of state “Starting”, “Stopping”, or configuration) can be useful for diagnosing potential application errors.</td>
+<td>Logs that track the general flow of the application. Any non-repetitive general information (like version information relating to the software at startup, what external services are being used, data source connection string, number of measurements, egress URL, change of state &quot;Starting&quot;, &quot;Stopping&quot;, or configuration) can be useful for diagnosing potential application errors.</td>
 </tr>
 <tr>
 <td>Warning</td>
