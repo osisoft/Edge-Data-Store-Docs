@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SdsUom API </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SdsUom API ">
+    <meta name="generator" content="docfx 2.43.2.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../V1/index.html" width="46">
+                <img id="logo" src="../../../V1/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge Data Store"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="SdsUOMAPI1-0">
+<h1 id="sdsuom-api" sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="5" sourceendlinenumber="5">SdsUom API</h1>
+
+<p sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="7" sourceendlinenumber="7">The REST APIs provide programmatic access to read and write SDS data. The APIs in this section interact with SdsUoms. For more information, see <a class="xref" href="../Units_of_Measure_1-0.html#sdsuom" data-raw-source="[SdsUom](xref:unitsOfMeasure1-0#sdsuom)" sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="7" sourceendlinenumber="7">SdsUom</a>.</p>
+<hr>
+<h2 id="get-uom" sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="10" sourceendlinenumber="10"><code>Get Uom</code></h2>
+<p sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="12" sourceendlinenumber="12">Returns the unit of measure corresponding to the specified uomId within a given namespace.</p>
+<p sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="14" sourceendlinenumber="14"><strong>Request</strong></p>
+<pre sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="16" sourceendlinenumber="18"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Units/{uomId}
+</code></pre><p sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="20" sourceendlinenumber="22"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="24" sourceendlinenumber="25"><code>string uomId</code><br>The unit of measure identifier.</p>
+<p sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="27" sourceendlinenumber="28"><strong>Response</strong><br>The response includes a status code and a response body.</p>
+<p sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="30" sourceendlinenumber="31"><strong>Response body</strong><br>The requested SdsUom.</p>
+<p sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="33" sourceendlinenumber="33">Example response body for uomId = &quot;ounce&quot;:</p>
+<pre sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="35" sourceendlinenumber="47"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+
+{
+    &quot;Id&quot;: &quot;ounce&quot;,
+    &quot;Abbreviation&quot;: &quot;oz&quot;,
+    &quot;Name&quot;: &quot;ounce&quot;,
+    &quot;DisplayName&quot;: &quot;ounce&quot;,
+    &quot;QuantityId&quot;: &quot;Mass&quot;,
+    &quot;ConversionFactor&quot;: 0.028349523
+}
+</code></pre><hr>
+<h2 id="get-uoms" sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="51" sourceendlinenumber="51"><code>Get Uoms</code></h2>
+<p sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="53" sourceendlinenumber="53">Returns a list of all available units of measure in the system.</p>
+<p sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="55" sourceendlinenumber="55"><strong>Request</strong></p>
+<pre sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="57" sourceendlinenumber="59"><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Units?skip={skip}&amp;count={count}
+</code></pre><p sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="61" sourceendlinenumber="63"><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
+<p sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="65" sourceendlinenumber="66"><code>int skip</code><br>An optional parameter representing the zero-based offset of the first SdsUomQuantity to retrieve. If not specified, a default value of 0 is used.</p>
+<p sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="68" sourceendlinenumber="69"><code>int count</code><br>An optional parameter representing the maximum number of SdsUomQuantity to retrieve. If not specified, a default value of 100 is used.</p>
+<p sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="71" sourceendlinenumber="72"><strong>Response</strong><br>The response includes a status code and a response body.</p>
+<p sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="74" sourceendlinenumber="75"><strong>Response body</strong><br>A list of SdsUom objects.</p>
+<p sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="77" sourceendlinenumber="77">Example response body:</p>
+<pre sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="79" sourceendlinenumber="108"><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+[
+    {
+        &quot;Id&quot;: &quot;count&quot;,
+        &quot;Abbreviation&quot;: &quot;count&quot;,
+        &quot;Name&quot;: &quot;count&quot;,
+        &quot;DisplayName&quot;: &quot;count&quot;,
+        &quot;QuantityId&quot;: &quot;Quantity&quot;,
+        &quot;ConversionFactor&quot;: 1
+    },
+    {
+        &quot;Id&quot;: &quot;Ampere hour&quot;,
+        &quot;Abbreviation&quot;: &quot;Ah&quot;,
+        &quot;Name&quot;: &quot;Ampere hour&quot;,
+        &quot;DisplayName&quot;: &quot;Ampere hour&quot;,
+        &quot;QuantityId&quot;: &quot;Electric Charge&quot;,
+        &quot;ConversionFactor&quot;: 3600
+    },
+    {
+        &quot;Id&quot;: &quot;coulomb&quot;,
+        &quot;Abbreviation&quot;: &quot;C&quot;,
+        &quot;Name&quot;: &quot;coulomb&quot;,
+        &quot;DisplayName&quot;: &quot;coulomb&quot;,
+        &quot;QuantityId&quot;: &quot;Electric Charge&quot;,
+        &quot;ConversionFactor&quot;: 1
+    }
+]
+</code></pre><hr>
+<h2 id="associate-a-unit-of-measure-with-an-sdstype" sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="112" sourceendlinenumber="112">Associate a unit of measure with an SdsType</h2>
+<p sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="114" sourceendlinenumber="114">At SdsType creation, you can associate an SdsUom with an SdsTypeProperty. For more information, see <a class="xref" href="../Types/SdsTypeProperty_1-0.html" data-raw-source="[SdsTypeProperty](xref:sdsTypeProperty1-0)" sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="114" sourceendlinenumber="114">SdsTypeProperty</a>.</p>
+<h2 id="associate-a-unit-of-measure-with-an-sdsstream" sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="116" sourceendlinenumber="116">Associate a unit of measure with an SdsStream</h2>
+<p sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="118" sourceendlinenumber="118">At SdsStream creation, you can override any unit of measure associated with an SdsTypeProperty belonging to the SdsType of the stream. This enables the reuse of an SdsType that may have default unit information associated with it already. For more information, see <a class="xref" href="../SDS_Streams_1-0.html" data-raw-source="[SdsStream](xref:sdsStreams1-0)" sourcefile="V1/SDS/UOM/SdsUOMAPI_1-0.md" sourcestartlinenumber="118" sourceendlinenumber="118">SdsStream</a>.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/SDS/UOM/SdsUOMAPI_1-0.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span><a href="https://www.osisoft.com/copyright/">© 2019 - 2020 OSIsoft, LLC. All rights reserved.</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>
