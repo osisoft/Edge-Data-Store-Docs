@@ -121,6 +121,13 @@
 </code></pre><p><strong>Note:</strong> The naming convention is affected by StreamIdPrefix and ApplyPrefixToStreamID settings in data source configuration. For more information, see <a class="xref" href="OPCUADataSourceConfiguration_1-0.html">Data source configuration</a>.</p>
 <h2 id="export-operation">Export operation</h2>
 <p>The OPC UA EDS adapter is able to export available OPC UA dynamic variables by browsing the OPC UA hierarchies or sub-hierarchies as part of the data source configuration process. For more information, see <a class="xref" href="OPCUADataSourceConfiguration_1-0.html">Data source configuration</a>.</p>
+<h2 id="buffering">Buffering</h2>
+<p>Because the OPC UA EDS adapter sends data directly to EDS, buffering capability is not provided. EDS acts as a buffer before the data is egressed to either a PI Server or OCS. The amount of data stored in EDS is controlled by the following storage parameters:</p>
+<ul>
+<li><code>StreamStorageLimitMb</code></li>
+<li><code>StreamStorageTargetMb</code></li>
+</ul>
+<p>For more information about configuring data storage in EDS, see <a class="xref" href="../Configuration/Storage%20runtime%20config_1-0.html">Storage runtime configuration</a>.</p>
 </article>
           </div>
           
