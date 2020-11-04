@@ -786,19 +786,7 @@
       "output": {
         ".html": {
           "relative_path": "V1/SDS/Indexes/Indexes_examples_1-0.html",
-          "hash": "oXU0lz7miM8g0ag6Jh9pnw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Toc",
-      "source_relative_path": "V1/SDS/Indexes/toc.yml",
-      "output": {
-        ".html": {
-          "relative_path": "V1/SDS/Indexes/toc.html",
-          "hash": "WxJWwcrxcr4gHISRygTx3Q=="
+          "hash": "tCyjZhGb80LHxKOYTd4w3A=="
         }
       },
       "is_incremental": false,
@@ -1517,7 +1505,7 @@
       "output": {
         ".html": {
           "relative_path": "V1/toc.html",
-          "hash": "aYnpAuGfRd045VGbRmbMCA=="
+          "hash": "X7KL4ijM+MOSa1HNba4FEQ=="
         }
       },
       "is_incremental": false,
