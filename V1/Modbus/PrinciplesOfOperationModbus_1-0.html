@@ -119,13 +119,6 @@
 <p>Stream ID is a unique identifier for each stream created by the adapter for the selected measurement. If a custom stream ID is specified for the measurement in the data selection configuration, the Modbus TCP EDS adapter will use that stream ID to create the stream. Otherwise, the adapter constructs the stream ID using the following format: </p>
 <pre><code>&lt;Adapter Component ID&gt;.&lt;Unit ID&gt;.&lt;Register Type&gt;.&lt;Register Offset&gt; 
 </code></pre><p><strong>Note:</strong> Naming convention is affected by StreamIdPrefix and ApplyPrefixToStreamID settings in data source configuration. For more information, see <a class="xref" href="ModbusTCPDataSourceConfiguration_1-0.html">Data source configuration</a>.</p>
-<h2 id="buffering">Buffering</h2>
-<p>Because the Modbus TCP EDS adapter sends data directly to EDS, buffering capability is not provided. EDS acts as a buffer before the data is egressed to either a PI Server or OCS. The amount of data stored in EDS is controlled by the following storage parameters:</p>
-<ul>
-<li><code>StreamStorageLimitMb</code></li>
-<li><code>StreamStorageTargetMb</code></li>
-</ul>
-<p>For more information about configuring data storage in EDS, see <a class="xref" href="../Configuration/Storage%20runtime%20config_1-0.html">Storage runtime configuration</a>.</p>
 </article>
           </div>
           
