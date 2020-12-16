@@ -114,7 +114,7 @@ Linux: /usr/share/OSIsoft/EdgeDataStore/Configuration/OpcUa1_DataSelection.json
 </code></pre></li>
 <li><p>To ingress a stream to Edge Data Store, change the value of the <strong>Selected</strong> key from <code>false</code> to <code>true</code>. All streams in the auto generated data selection file are initially set to <code>false</code>.</p>
 </li>
-<li>Save the the file.</li>
+<li>Save the file.</li>
 <li><p>Run the following curl script from the directory where the file is located, updating the file name and destination in the script if needed:</p>
 <pre><code class="lang-bash">curl -d &quot;@OpcUa1_DataSelection.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
 </code></pre></li>
