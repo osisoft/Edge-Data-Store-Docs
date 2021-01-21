@@ -108,7 +108,7 @@ It is located in:</p>
 </li>
 <li><p>Use any tool capable of making HTTP requests to execute a PUT command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/System/Logging</code>.</p>
 <p>   Example using curl (run this command from the same directory where the file is located):</p>
-<pre><code class="lang-bash">curl -i -d &quot;@System_Logging.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/System/Logging
+<pre><code class="lang-bash">curl -d &quot;@System_Logging.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/System/Logging
 </code></pre><p> On successful execution, the log level change takes effect immediately during runtime. The other configurations (log file size and file count) get updated after Edge Data Store is restarted. </p>
 <p> <strong>Note:</strong>  Any parameter not specified in the updated configuration file will revert to the default schema value.</p>
 </li>

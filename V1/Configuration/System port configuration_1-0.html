@@ -90,7 +90,7 @@
 <li><p>Save the JSON file with the name <em>EdgePort.json</em> </p>
 </li>
 <li><p>Run the following script:</p>
-<pre><code class="lang-bash">curl -i -d &quot;@EdgePort.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/system/port
+<pre><code class="lang-bash">curl -d &quot;@EdgePort.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/system/port
 </code></pre><p> <strong>Note:</strong> The port number in the script must be the current port number, not the new port number in the file.</p>
 </li>
 <li><p>After the REST command completes, restart EDS for the change to take effect.</p>

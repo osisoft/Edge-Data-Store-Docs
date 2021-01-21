@@ -91,7 +91,7 @@
 <li>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:&lt;port_number&gt;/api/v1/configuration/&lt;EDS adapterId&gt;/DataSelection/</code>.</li>
 </ol>
 <p>The following example shows the HTTPS request using curl, which must be run from the same directory where the file is located, and uses the adapter instance created during installation, which is Modbus1:</p>
-<pre><code class="lang-bash">curl -v -d &quot;@DataSelection.config.json&quot; -H &quot;Content-Type: application/json&quot; &quot;http://localhost:5590/api/v1/configuration/Modbus1/DataSelection&quot;
+<pre><code class="lang-bash">curl -d &quot;@DataSelection.config.json&quot; -H &quot;Content-Type: application/json&quot; &quot;http://localhost:5590/api/v1/configuration/Modbus1/DataSelection&quot;
 </code></pre><p>To see the streams that have been created in EDS storage for the data specified in the configuration, run the following curl script:</p>
 <pre><code class="lang-bash">curl http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/
 </code></pre><h2 id="parameters-for-modbus-tcp-data-selection">Parameters for Modbus TCP data selection</h2>

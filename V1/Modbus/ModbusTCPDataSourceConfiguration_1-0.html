@@ -92,7 +92,7 @@
 <li>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:&lt;port_number&gt;/api/v1/configuration/&lt;EDS adapterId&gt;/DataSource/</code>.</li>
 </ol>
 <p>The following example shows the HTTPS request using curl, which must be run from the same directory where the file is located, and uses the adapter instance created during installation, which is Modbus1:</p>
-<pre><code class="lang-bash">curl -v -d &quot;@Modbus1DataSource.config.json&quot; -H &quot;Content-Type: application/json&quot; &quot;http://localhost:5590/api/v1/configuration/Modbus1/DataSource&quot;
+<pre><code class="lang-bash">curl -d &quot;@Modbus1DataSource.config.json&quot; -H &quot;Content-Type: application/json&quot; &quot;http://localhost:5590/api/v1/configuration/Modbus1/DataSource&quot;
 </code></pre><h2 id="parameters-for-modbus-tcp-data-source">Parameters for Modbus TCP data source</h2>
 <p>The following parameters are available for configuring a Modbus TCP data source.</p>
 <table>

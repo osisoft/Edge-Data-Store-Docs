@@ -95,7 +95,7 @@ If you have more than one OSIsoft Adapter of the same kind configured, the defau
 <li><p>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the respective endpoint.</p>
 <p> <strong>Note:</strong>  Replace <code>&lt;ComponentId&gt;</code> with the ComponentId of the adapter instance or Storage component, for example <em>OpcUa1</em>.</p>
 <p>   Example using curl (run this command from the same directory where the file is located):</p>
-<pre><code class="lang-bash">curl -i -d &quot;@componentId_Logging.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/&lt;ComponentId&gt;/Logging
+<pre><code class="lang-bash">curl -d &quot;@componentId_Logging.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/&lt;ComponentId&gt;/Logging
 </code></pre></li>
 </ol>
 <p><strong>Note:</strong> The other endpoints are the following:<br></p>

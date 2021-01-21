@@ -84,7 +84,7 @@
 <ol>
 <li>Save or copy the example JSON in a file named <em>EdgeMinimumConfiguration.json</em> in any directory on a device with Edge Data Store installed.</li>
 <li><p>Run the following curl command from the directory where the file is located: </p>
-<pre><code class="lang-bash">curl -i -d &quot;@EdgeMinimumConfiguration.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration
+<pre><code class="lang-bash">curl -d &quot;@EdgeMinimumConfiguration.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration
 </code></pre><p>The following will be set as the configuration of a running Edge Data Store. The configuration takes effect immediately after the command completes.</p>
 <pre><code class="lang-json">{
  &quot;Storage&quot;: {
@@ -130,7 +130,7 @@
 <li>Using any text editor, create a JSON file using the following example. Fill in any credentials or IP addresses with appropriate values for your environment.</li>
 <li>Save the edited JSON in a file named <em>EdgeMaximumConfiguration.json</em> in any directory. </li>
 <li><p>Run the following curl command from the same directory where the file is located:</p>
-<pre><code class="lang-bash">curl -i -d &quot;@EdgeMaximumConfiguration.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration
+<pre><code class="lang-bash">curl -d &quot;@EdgeMaximumConfiguration.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration
 </code></pre><p>The following will be set as the configuration for the running Edge Data Store. The configuration takes effect immediately after the command completes.</p>
 <pre><code class="lang-json">{
    &quot;Modbus1&quot;: {

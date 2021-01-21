@@ -90,7 +90,7 @@
 <li><p>Save the JSON file with the name Storage_Runtime.config.json.</p>
 </li>
 <li><p>From the same directory where the file exists, run the following curl script:</p>
-<pre><code class="lang-bash">curl -i -d &quot;@Storage_Runtime.config.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/storage/Runtime
+<pre><code class="lang-bash">curl -d &quot;@Storage_Runtime.config.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/storage/Runtime
 </code></pre><p><strong>Note:</strong> The @ symbol is a required prefix for the above command.</p>
 </li>
 </ol>

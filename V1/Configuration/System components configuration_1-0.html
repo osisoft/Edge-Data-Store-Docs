@@ -99,7 +99,7 @@
 <li><p>Save the JSON file with the name <em>AddComponent.json</em>. </p>
 </li>
 <li><p>From the same directory where the file exists, run the following curl script:</p>
-<pre><code class="lang-bash">curl -i -d &quot;@AddComponent.json&quot; -H &quot;Content-Type: application/json&quot; http://localhost:5590/api/v1/configuration/system/components
+<pre><code class="lang-bash">curl -d &quot;@AddComponent.json&quot; -H &quot;Content-Type: application/json&quot; http://localhost:5590/api/v1/configuration/system/components
 </code></pre></li>
 </ol>
 <p>After the curl command completes successfully, the new component is available for configuration and use.</p>

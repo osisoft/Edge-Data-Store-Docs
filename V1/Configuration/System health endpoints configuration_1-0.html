@@ -90,7 +90,7 @@
 <li>Save the file with the name <em>System_HealthEndpoints.config.json</em>.</li>
 <li><p>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/System/HealthEndpoints</code>, updating the port number if needed.</p>
 <p> Example using curl (run this command from the same directory where the file is located):</p>
-<pre><code class="lang-bash">curl -v -d &quot;@System_HealthEndpoints.json&quot; -H &quot;Content-Type: application/json&quot; http://localhost:5590/api/v1/configuration/System/HealthEndpoints
+<pre><code class="lang-bash">curl -d &quot;@System_HealthEndpoints.json&quot; -H &quot;Content-Type: application/json&quot; http://localhost:5590/api/v1/configuration/System/HealthEndpoints
 </code></pre></li>
 </ol>
 <h2 id="parameters">Parameters</h2>
