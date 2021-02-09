@@ -51,7 +51,7 @@ Complete the following to change the logging configuration:
       Example using curl (run this command from the same directory where the file is located):
 
       ```bash
-      curl -d "@System_Logging.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/System/Logging
+      curl -d "@System_Logging.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration/System/Logging
       ```
 
     On successful execution, the log level change takes effect immediately during runtime. The other configurations (log file size and file count) get updated after Edge Data Store is restarted. 

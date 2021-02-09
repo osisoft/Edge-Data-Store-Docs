@@ -26,7 +26,7 @@ To adjust the message logging behavior, complete the following:
       Example using curl (run this command from the same directory where the file is located):
 
       ```bash
-      curl -d "@componentId_Logging.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/<ComponentId>/Logging
+      curl -d "@componentId_Logging.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration/<ComponentId>/Logging
       ```
 
 **Note:** The other endpoints are the following:<br>

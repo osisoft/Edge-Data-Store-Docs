@@ -14,7 +14,7 @@ The following JSON file represents minimal configuration of an Edge Data Store. 
 2. Run the following curl command from the directory where the file is located: 
 
   ```bash
-  curl -d "@EdgeMinimumConfiguration.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration
+  curl -d "@EdgeMinimumConfiguration.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration
   ```
 
   The following will be set as the configuration of a running Edge Data Store. The configuration takes effect immediately after the command completes.
@@ -69,7 +69,7 @@ The following JSON file represents maximum configuration of an Edge Data Store. 
 3. Run the following curl command from the same directory where the file is located:
 
   ```bash
-  curl -d "@EdgeMaximumConfiguration.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration
+  curl -d "@EdgeMaximumConfiguration.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration
   ```
 
   The following will be set as the configuration for the running Edge Data Store. The configuration takes effect immediately after the command completes.

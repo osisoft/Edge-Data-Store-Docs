@@ -57,7 +57,7 @@ Complete the following steps to configure Edge Storage periodic egress for the P
 5. To configure Edge Storage to send data to the PI System, run the following curl script from the directory where the JSON file is located. 
 
 ```bash
-curl -d "@PeriodicEgressEndpoints.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/storage/PeriodicEgressEndpoints/
+curl -d "@PeriodicEgressEndpoints.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration/storage/PeriodicEgressEndpoints/
 ```
 
 When the command completes successfully, data egress to the PI System begins.

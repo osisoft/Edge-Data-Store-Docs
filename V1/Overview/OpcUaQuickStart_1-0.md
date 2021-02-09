@@ -35,7 +35,7 @@ To configure a data source to connect an OPC UA device to an OPC UA EDS adapter 
 4. Run the following curl script from the directory where the file is located, updating the file name and the destination in the script if needed. 
 
 ```bash
-curl -d "@OpcUa1Datasource.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Datasource
+curl -d "@OpcUa1Datasource.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration/OpcUa1/Datasource
 ```
 
 When the command completes successfully (a 204 message is returned by curl), the OPC UA data source has been created. If you receive a 400 error, check the data source JSON file for errors. If you receive a 404 or 500 error, check that Edge Data Store is running on the device.
@@ -79,12 +79,11 @@ When you create the data source file, the OPC UA adapter auto generates the data
            "StreamId": null
        }
    ]
-   ```
-   
+   ```  
 3. To ingress a stream to Edge Data Store, change the value of the **Selected** key from `false` to `true`. All streams in the auto generated data selection file are initially set to `false`.
 4. Save the the file.
 5. Run the following curl script from the directory where the file is located, updating the file name and destination in the script if needed:
 
    ```bash
-   curl -d "@OpcUa1Dataselection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
+   curl -d "@OpcUa1Dataselection.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
    ```

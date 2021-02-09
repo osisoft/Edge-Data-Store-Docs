@@ -22,7 +22,7 @@ Before changing the port, ensure that no other service or application on the dev
 3. Run the following script:
 
     ```bash
-    curl -d "@EdgePort.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/system/port
+    curl -d "@EdgePort.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration/system/port
     ```
 
     **Note:** The port number in the script must be the current port number, not the new port number in the file.

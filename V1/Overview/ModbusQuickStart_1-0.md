@@ -34,9 +34,8 @@ To configure a data source to connect a Modbus TCP device to the Modbus TCP EDS 
 3. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is Modbus1, name the file _Modbus1DataSource.json_. 
 4. Run the following curl script from the same directory where the file is located, updating the file name and destination in the script if needed. 
 
-
    ```bash
-   curl -d "@Modbus1Datasource.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Datasource
+   curl -d "@Modbus1Datasource.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration/Modbus1/Datasource
    ```
 
 When the command completes successfully (a 204 is returned by curl), the Modbus TCP data source has been created. If you get a 400 error, check the JSON file for errors. If you receive a 404 or 500 error, check that EDS is running on the device.
@@ -106,6 +105,5 @@ After you create the data source file, select the streams to store in EDS by con
 4. Run the following curl script from the same directory where the file is located, updating the file name and the endpoint URL in the script if needed.
 
    ```bash
-   curl -d "@Modbus1Dataselection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Dataselection
+   curl -d "@Modbus1Dataselection.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration/Modbus1/Dataselection
    ```
-

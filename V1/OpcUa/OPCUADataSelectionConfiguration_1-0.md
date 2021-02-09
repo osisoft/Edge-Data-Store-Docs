@@ -58,7 +58,7 @@ Complete the following steps to generate the default data selection file and use
 6. Run the following curl script from the directory where the file is located, updating the file name and destination in the script if needed:
 
   ```bash
-  curl -d "@OpcUa1_DataSelection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
+  curl -d "@OpcUa1_DataSelection.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
   ```
 
 ## Configure OPC UA data selection by manually creating the file 
@@ -116,4 +116,3 @@ The following is an example of valid OPC UA data selection configuration:
   }
 ]
 ```
-
