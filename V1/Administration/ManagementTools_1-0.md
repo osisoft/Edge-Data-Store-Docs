@@ -16,7 +16,9 @@ The following tools can be used to make REST calls.
 
 ### curl
 
-curl is a command line tool used to make HTTP calls and is supported on both Windows and Linux operating systems. curl can be scripted using Bash or PowerShell on either Linux or Windows, and can be used to perform EDS administrative and programming tasks. curl commands are used in configuration and management examples throughout this documentation.
+curl is a command line tool used to make HTTP calls and is supported on both Windows and Linux operating systems. curl can be scripted using Bash or PowerShell on either Linux or Windows, and can be used to perform EDS administrative and programming tasks.
+
+The examples in this documentation use the `POST` curl method, which adds the new configuration or updates the existing configuration. There are many other commands available that may better suit your needs. For example, the `PUT` method adds the new configuration or replaces the existing configuration. For more information about curl and the available methods, see the curl documentation at [curl (https://curl.haxx.se/)](https://curl.haxx.se/). 
 
 ### Postman
 

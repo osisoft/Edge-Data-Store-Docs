@@ -1,6 +1,5 @@
 - name: Configuration tools
-  href: Tools/toc.yml
-  TopicHref: ../Administration/ManagementTools_1-0.md
+  href: ../Administration/ManagementTools_1-0.md
 - name: System configuration
   href: System Configuration/toc.yml
   topicHref: System configuration_1-0.md
@@ -19,4 +18,3 @@
 - name: Logging configuration
   href: ../Logging/toc.yml
   topicHref: ../Logging/LoggingConfiguration_1-0.md
-
