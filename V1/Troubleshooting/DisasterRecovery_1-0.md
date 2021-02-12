@@ -30,6 +30,12 @@ To create a backup of data from the failed device, perform the following steps:
 	_C:\ProgramData\OSIsoft\EdgeDataStore\Configuration_
    
 	_C:\ProgramData\OSIsoft\EdgeDataStore\Storage_
+
+	Stream data files are stored in the following locations:
+
+	Default namespace: _C:\ProgramData\OSIsoft\EdgeDataStore\Storage\data\default\default_
+	
+    Diagnostics namespace: _C:\ProgramData\OSIsoft\EdgeDataStore\Storage\data\default\diagnostics_
    
 	The ProgramData folder is typically hidden; to view it, go to the **View** tab in **Windows Explorer** and select the **Hidden Items** check box.
 
@@ -85,6 +91,12 @@ To create a backup of data from the failed device, perform the following steps:
 	
 	_/usr/share/OSIsoft/EdgeDataStore/Storage_
 
+	Stream data files are stored in the following locations:
+
+	Default namespace: _/usr/share/OSIsoft/EdgeDataStore/Storage/data/default/default_
+
+    Diagnostics namespace: _/usr/share/OSIsoft/EdgeDataStore/Storage/data/default/diagnostics_
+
 3. Create a zip or tar file containing the storage and configuration directories, and move it to a USB device or other safe location. Use WinSCP, SFTP, or the external device to transfer the file.
 
    **Note:** Using the _cp_ command may result in a change in file ownership to the current user. 
@@ -122,12 +134,11 @@ To restore the data files on the new device, perform the following steps:
 
    **Note:** Default directory permissions are set to 755, and each subsequent file is 644. If you do not use tar it is possible to have permission issues with the recovery files. Tar matches via string name rather than the account ID/UID.
  
-
 ### Reenter credentials
 
 All credentials are encrypted for security purposes, so they cannot be copied or transferred. After the the storage and configuration files are copied to the new system, and the service has started, perform the following steps to enter credentials:
 
 1. Re-enter the credentials for the operating system using API calls. 
 2. After updating, restart the Edge Data Store service. 
-	
+
 The new EDS device runs as the previous device, and contains all the data up to the point when the previous device failed.
