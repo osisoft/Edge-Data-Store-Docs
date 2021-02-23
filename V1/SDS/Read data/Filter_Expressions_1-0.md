@@ -35,8 +35,6 @@ The following types are not supported for use within a filter expression:
 - ``IEnumerable``
 - ``IDictionary``
 - ``IList``
-- ``SdsType``
-- ``SdsTypeProperty``
 - ``Nullable Types``
 
 ## Logical operators
