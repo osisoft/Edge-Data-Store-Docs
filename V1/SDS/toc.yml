@@ -1,12 +1,12 @@
 - name: Types
   href: types/toc.yml
-  topicHref: sds_Types.md
+  topicHref: sds-types.md
 - name: Streams
   href: streams/toc.yml
-  topicHref: sds_streams.md
+  topicHref: sds-streams.md
 - name: Stream views
   href: views/toc.yml
-  topicHref: sds_views.md
+  topicHref: sds-views.md
 - name: Indexes
   href: indexes/toc.yml
   topicHref: indexes.md

@@ -1,7 +1,7 @@
 - name: Supported units of measure
   href: supported-uom.md
 - name: Supported quantities
-  href: supported-uomquantities.md
+  href: supported-uom-quantities.md
 - name: SdsUom API
   href: sds-uom-api.md
 - name: SdsUomQuantity API

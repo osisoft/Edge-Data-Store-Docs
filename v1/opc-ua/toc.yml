@@ -5,6 +5,6 @@
 - name: Data source configuration
   href: opc-ua-data-source-configuration.md
 - name: Adapter security
-  href: opc-ua-adapter-securityC-configuration.md
+  href: opc-ua-adapter-security-configuration.md
 - name: Data selection configuration
   href: opc-ua-data-selection-configuration.md 

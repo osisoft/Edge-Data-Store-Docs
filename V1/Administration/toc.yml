@@ -1,7 +1,7 @@
 - name: Retrieve product version information
   href: retrieve-product-version-information.md
 - name: Reset Edge Data Store
-  href: reset-edge-data-dtore.md
+  href: reset-edge-data-store.md
 - name: Reset the Storage component
   href: reset-storage-component.md
 - name: Stop and start an EDS adapter

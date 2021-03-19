@@ -1,6 +1,6 @@
 - name: System requirements
   href: ../linux-windows/toc.yml
-  topicHref: system-equirements.md
+  topicHref: system-requirements.md
 - name: Install Edge Data Store using Docker
   href: ../docker/edge-docker.md
 - name: Verify installation
