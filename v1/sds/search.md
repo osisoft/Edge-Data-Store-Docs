@@ -66,7 +66,7 @@ The searchable properties for SdsStreamViews are shown in the following table.
 | TargetTypeId | Yes        |
 | Properties   | Yes, with limitations |
 
-The Stream View fields valid for search are identified in the fields table located on the [Stream Views](xref:sdsStreamViews) page. The Properties field is searchable with limitations because SdsStreamViewProperty objects are not searchable. Only the SdsStreamViewProperty's SdsStreamView is searchable by Id, SourceTypeId, and TargetTypeId, which are used to return the top-level SdsStreamView object. This includes nested SdsStreamViewProperties.
+The Stream View fields valid for search are identified in the fields table located on the [Stream views](xref:sdsStreamViews) page. The Properties field is searchable with limitations because SdsStreamViewProperty objects are not searchable. Only the SdsStreamViewProperty's SdsStreamView is searchable by Id, SourceTypeId, and TargetTypeId, which are used to return the top-level SdsStreamView object. This includes nested SdsStreamViewProperties.
 
 ## Search operation
 

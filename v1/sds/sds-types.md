@@ -12,7 +12,7 @@ SdsTypes can define simple atomic types, such as integers, floats, strings, arra
 
 An SdsType used to define an SdsStream must have a key, which is a property, or a combination of properties that constitute an ordered, unique identity. Because the key is ordered, it functions as an index. It is known as the primary index. While a timestamp (DateTime) is a very common key, any data that can be ordered is permitted. Other indexes (secondary indexes), are defined in the SdsStream. For more details on indexes, see [Indexes](xref:sdsIndexes).
 
-An SdsType is referenced by its identifier or Id field. SdsType identifiers must be unique within a Namespace. An SdsType can also refer other SdsTypes by using their identifiers. This enables type reusability. Nested types and base types are automatically created as separate types. For further information, see [Type reusability](xref:sdsTypeReusability).
+An SdsType is referenced by its identifier or Id field. SdsType identifiers must be unique within a Namespace. An SdsType can also refer other SdsTypes by using their identifiers. This enables type reusability. Nested types and base types are automatically created as separate types. For further information, see [SdsType reusability](xref:sdsTypeReusability).
 
 Once an SdsType is created, it is immutable and its definition cannot be changed. If the SdsType definition is incorrect, you must delete and recreate it, and it can only be deleted if no streams, stream views, or types reference it.
 

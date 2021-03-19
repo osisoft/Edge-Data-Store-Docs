@@ -16,7 +16,7 @@ EDS suuports versions 1.0 and 1.1 of the OMF specification.
 ## Message types
 
 OMF message types fall into three categories: Type, Container, and Data, which are described below. 
-Each message type creates a different type of data and contains keywords that define characteristics of the data. Most of the message types are used to create the structure of the data and give it meaning. Data messages contain time-series data for which the PI System is known. The message types and the data they create are described in detail in this section. For details about the keywords supported by OCS, see the OCS topic, [Use OSIsoft Message Format with OSIsoft Cloud Service](https://ocs-docs.osisoft.com/Documentation/DataIngress/OMF_Ingress_Specification.html).
+Each message type creates a different type of data and contains keywords that define characteristics of the data. Most of the message types are used to create the structure of the data and give it meaning. Data messages contain time-series data for which the PI System is known. The message types and the data they create are described in detail in this section. For details about the keywords supported by OCS, see the OCS documentation, [OSIsoft Cloud Services](https://ocs-docs.osisoft.com/Content_Portal/Documentation/OSIsoft_Cloud_Services.html).
 
 All messages should only be sent from the OMF application one time, but resending the same definition again does not cause an error.
 
