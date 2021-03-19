@@ -14,7 +14,7 @@
   href: read-data/toc.yml
   topicHref: read-data.md
 - name: Write data
-  href: write-data/toc.yml
+  href: write/toc.yml
   topicHref: write-data.md
 - name: Units of measure
   href: uom/toc.yml
