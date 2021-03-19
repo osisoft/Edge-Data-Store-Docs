@@ -1,26 +1,26 @@
 - name: Edge Data Store
-  href: Overview/toc.yml
+  href: overview/toc.yml
   topicHref: index.md
   homepage: index.md
 - name: Quick start guides
-  href: Overview/Quick start guides/toc.yml
-  topicHref: Overview/Quick start guides_1-0.md
+  href: overview/quick-start-guides/toc.yml
+  topicHref: Overview/quick-start-guides.md
 - name: Install Edge Data Store
-  href: Installation/toc.yml
-  topicHref: Installation/Install Edge Data Store_1-0.md
+  href: installation/toc.yml
+  topicHref: installation/install-edge-data-store.md
 - name: Configuration
-  href: Configuration/toc.yml
-  topicHref: Configuration/Configuration_1-0.md
+  href: configuration/toc.yml
+  topicHref: configuration/configuration.md
 - name: Administration
-  href: Administration/toc.yml
-  topicHref: Administration/Administration_1-0.md
+  href: administration/toc.yml
+  topicHref: administration/administration.md
 - name: Troubleshoot Edge Data Store
-  href: Troubleshooting/toc.yml
-  topicHref: Troubleshooting/Troubleshooting_1-0.md
+  href: troubleshooting/toc.yml
+  topicHref: troubleshooting/troubleshooting.md
 - name: SDS reference
-  href: SDS/toc.yml
-  topicHref: SDS/SequentialDataStore_1-0.md
+  href: sds/toc.yml
+  topicHref: sds/sequential-data-store.md
 - name: Release notes
-  href: ReleaseNotes/ReleaseNotes_1-0.md
+  href: release-notes/release-notes.md
 - name: Technical support and feedback
-  href: Feedback_1-0.md
+  href: feedback.md

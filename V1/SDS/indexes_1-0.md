@@ -1,5 +1,5 @@
 ---
-uid: sdsIndexes1-0
+uid: sdsIndexes
 ---
 
 # Indexes

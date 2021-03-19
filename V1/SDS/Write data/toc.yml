@@ -1,5 +1,5 @@
   
 - name: Response format
-  href: Response-format-write_1-0.md
+  href: response-format-write.md
 - name: Write data API
-  href: Writing_Data_API_1-0.md
+  href: writing-data-api.md
