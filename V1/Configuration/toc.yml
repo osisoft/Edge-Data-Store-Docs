@@ -8,7 +8,7 @@
   topicHref: ../data-ingress/eds-data-ingress.md
 - name: Storage
   href: storage/toc.yml
-  topicHref: Storage.md
+  topicHref: storage.md
 - name: Data egress configuration
   href: ../egress/toc.yml
   topicHref: ../egress/egress.md
@@ -18,4 +18,3 @@
 - name: Logging configuration
   href: ../logging/toc.yml
   topicHref: ../logging/logging-configuration.md
-
