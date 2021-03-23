@@ -1,4 +1,4 @@
 - name: System-level logging configuration
-  href: SystemLogging_1-0.md
+  href: system-logging.md
 - name: Component-level logging configuration
-  href: ComponentLogging_1-0.md
+  href: component-logging.md

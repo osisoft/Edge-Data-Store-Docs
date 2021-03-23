@@ -1,10 +1,10 @@
 - name: SdsTypeCode
-  href: SdsTypeCode_1-0.md
+  href: sds-type-code.md
 - name: SdsTypeProperty
-  href: SdsTypeProperty_1-0.md
+  href: sds-type-property.md
 - name: Examples of SdsTypes
-  href: SDS_Type_Examples_1-0.md
+  href: sds-type-examples.md
 - name: SdsType Reusability
-  href: Sds_Type_reusability_1-0.md
+  href: sds-type-reusability.md
 - name: SdsType API
-  href: SdsType_API_1-0.md
+  href: sds-type-api.md

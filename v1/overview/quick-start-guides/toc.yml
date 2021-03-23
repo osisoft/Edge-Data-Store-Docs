@@ -1,0 +1,16 @@
+- name: OPC UA EDS adapter quick start
+  href: ../opc-ua-quick-start.md
+- name: Modbus TCP EDS adapter quick start
+  href: ../modbus-quick-start.md
+- name: OMF quick start
+  href: ../omf-quick-start.md
+- name: OCS egress quick start
+  href: ../ocs-egress-quick-start.md
+- name: PI egress quick start
+  href: ../pi-egress-quick-start.md
+- name: SDS quick start
+  href: ../sds-quick-start.md
+- name: Command line quick start - Linux
+  href: ../command-line-linux-quick-start.md
+- name: Command line quick start - Windows
+  href: ../command-line-quick-start-windows.md

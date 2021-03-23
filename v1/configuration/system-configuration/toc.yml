@@ -1,0 +1,7 @@
+  
+- name: System components configuration
+  href: ../system-components-configuration.md
+- name: System port configuration
+  href: ../system-port-configuration.md
+- name: Edge Data Store configuration
+  href: ../eds-configuration.md
