@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Operational overview </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Operational overview ">
+    <meta name="generator" content="docfx 2.56.5.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../V1/index.html" width="46">
+                <img id="logo" src="../../V1/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge Data Store"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PrinciplesOfOperationOPCUA">
+<h1 id="operational-overview">Operational overview</h1>
+
+<p>The OPC UA EDS adapter conforms to the OPC UA specification for operation. Once an instance of the adapter is defined in the system components configuration, it must be configured for it to create streams and collect data.</p>
+<h2 id="adapter-configuration">Adapter configuration</h2>
+<p>For an OPC UA EDS adapter instance to start data collection, configure the adapter by defining the following:</p>
+<ul>
+<li>Data source: Provide the connection information for the OPC UA data source.</li>
+<li>Data selection: Specify the OPC UA items to which the adapter instance should subscribe for data.</li>
+<li>Logging: Set up the logging behavior for the adapter instance.</li>
+</ul>
+<p>For more information, see <a class="xref" href="opc-ua-data-source-configuration.html">Data source configuration</a> and <a class="xref" href="opc-ua-data-selection-configuration.html">Data selection configuration</a>. For more information on how to configure logging, see <a class="xref" href="../Logging/component-logging.html">Component-level logging configuration</a>.</p>
+<h2 id="connection">Connection</h2>
+<p>The OPC UA EDS adapter uses the binary opc.tcp protocol to communicate with the OPC UA servers. A secured connection is enabled by default where the X.509-type client and server certificates are exchanged and verified and the connection between the OPC UA EDS adapter and the configured OPC UA server is established.</p>
+<h2 id="stream-creation">Stream creation</h2>
+<p>The OPC UA EDS adapter creates types upon receiving the value update for a stream. One stream is created in Edge Data Store for every selected OPC UA item in the data selection configuration.</p>
+<h2 id="data-collection">Data collection</h2>
+<p>The OPC UA EDS adapter collects time-series data from selected OPC UA dynamic variables through OPC UA subscriptions (unsolicited reads). The adapter supports the Data Access (DA) part of OPC UA specification.</p>
+<h2 id="stream-properties">Stream properties</h2>
+<p>The OPC UA EDS adapter creates a stream with two properties per selected OPC UA item. The properties are described in the following table:</p>
+<table>
+<thead>
+<tr>
+<th>Property name</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Timestamp</td>
+<td>DateTime</td>
+<td>Timestamp of the given OPC UA item value update.</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>Based on type of incoming OPC UA value</td>
+<td>Value of the given OPC UA item update.</td>
+</tr>
+</tbody>
+</table>
+<p>Stream ID is a unique identifier for each stream created by the adapter for a given OPC UA item. If the Custom Stream ID is specified for the OPC UA item in data selection configuration, the OPC UA EDS adapter uses that as a stream ID for the stream. Otherwise, the adapter constructs the stream ID using the following format constructed from the OPC UA item node ID:</p>
+<pre><code>&lt;Adapter Component ID&gt;.&lt;Namespace&gt;.&lt;Identifier&gt;
+</code></pre><p><strong>Note:</strong> The naming convention is affected by StreamIdPrefix and ApplyPrefixToStreamID settings in data source configuration. For more information, see <a class="xref" href="opc-ua-data-source-configuration.html">Data source configuration</a>.</p>
+<h2 id="export-operation">Export operation</h2>
+<p>The OPC UA EDS adapter is able to export available OPC UA dynamic variables by browsing the OPC UA hierarchies or sub-hierarchies as part of the data source configuration process. For more information, see <a class="xref" href="opc-ua-data-source-configuration.html">Data source configuration</a>.</p>
+<h2 id="buffering">Buffering</h2>
+<p>Because the OPC UA EDS adapter sends data directly to EDS, buffering capability is not provided. EDS acts as a buffer before the data is egressed to either a PI Server or OCS. The amount of data stored in EDS is controlled by the following storage parameters:</p>
+<ul>
+<li><code>StreamStorageLimitMb</code></li>
+<li><code>StreamStorageTargetMb</code></li>
+</ul>
+<p>For more information about configuring data storage in EDS, see <a class="xref" href="../Configuration/storage-runtime-config.html">Storage runtime configuration</a>.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/opc-ua/operational-overview-opc-ua.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span><a href="https://www.osisoft.com/copyright/">© 2019 - 2021 OSIsoft, LLC. All rights reserved.</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
