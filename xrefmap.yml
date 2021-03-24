@@ -3,34 +3,34 @@ sorted: true
 references:
 - uid: analyticsQuickStart
   name: Edge Data Store analytics quick start
-  href: V1/Overview/analytics-quick-start.html
+  href: content/overview/analytics-quick-start.html
 - uid: commandLineLinuxQuickStart
   name: Command line quick start - Linux
-  href: V1/Overview/command-line-linux-quick-start.html
+  href: content/overview/command-line-linux-quick-start.html
 - uid: commandLineWindowsQuickStart
   name: Command line quick start - Windows
-  href: V1/Overview/command-line-quick-start-windows.html
+  href: content/overview/command-line-quick-start-windows.html
 - uid: ComponentLoggingConfiguration
   name: Component-level logging configuration
-  href: V1/Logging/component-logging.html
+  href: content/logging/component-logging.html
 - uid: Configuration
   name: Configuration
-  href: V1/Configuration/configuration.html
+  href: content/configuration/configuration.html
 - uid: configurationSchemaList
   name: Configuration schemas
   href: z-archive/Schemas/ConfigurationSchemaList.html
 - uid: ConfigurationTools
   name: Configuration tools
-  href: V1/Administration/management-tools.html
+  href: content/administration/management-tools.html
 - uid: configureEgress
   name: Configure data egress
-  href: V1/Egress/configure-data-egress.html
+  href: content/egress/configure-data-egress.html
 - uid: DataTransformations
   name: Data transformations
-  href: V1/SDS/read-data/data-transformations.html
+  href: content/sds/read-data/data-transformations.html
 - uid: disasterRecovery
   name: Disaster recovery
-  href: V1/Troubleshooting/disaster-recovery.html
+  href: content/troubleshooting/disaster-recovery.html
 - uid: edge_system_schema
   name: Sample Edge Data Store configuration
   href: z-archive/Schemas/EdgeSystem_schema.html
@@ -39,61 +39,61 @@ references:
   href: z-archive/Reference/Edgecmd%20commands_1-0.html
 - uid: EdgeDataStore
   name: Edge Data Store
-  href: V1/edge-data-store.html
+  href: content/edge-data-store.html
 - uid: EdgeDataStoreAdministration
   name: Administration
-  href: V1/Administration/administration.html
+  href: content/administration/administration.html
 - uid: EdgeDataStoreConfiguration
   name: Edge Data Store configuration
-  href: V1/Configuration/eds-configuration.html
+  href: content/configuration/eds-configuration.html
 - uid: EdgeDataStoreDiagnostics
   name: Diagnostics configuration
-  href: V1/diagnostics/diagnostics.html
+  href: content/diagnostics/diagnostics.html
 - uid: EdgeDataStoreHealth
   name: Edge Data Store health
-  href: V1/Health/health.html
+  href: content/health/health.html
 - uid: EdgeDataStoreOverview
   name: Edge Data Store
-  href: V1/Overview/eds-overview.html
+  href: content/overview/eds-overview.html
 - uid: EdgeDataStoreSupport
   name: Edge Data Store support
-  href: V1/support/edge-data-store-support.html
+  href: content/support/edge-data-store-support.html
 - uid: edgeDocker
   name: Install Edge Data Store using Docker
-  href: V1/docker/edge-docker.html
+  href: content/docker/edge-docker.html
 - uid: EDSDataIngress
   name: Data ingress configuration
-  href: V1/data-ingress/eds-data-ingress.html
+  href: content/data-ingress/eds-data-ingress.html
 - uid: egress
   name: Data egress configuration
-  href: V1/Egress/egress.html
+  href: content/egress/egress.html
 - uid: EgressExecutionDetails
   name: Egress execution details
-  href: V1/Egress/egress-execution-details.html
+  href: content/egress/egress-execution-details.html
 - uid: Enums
   name: Enums
-  href: V1/SDS/read-data/enums.html
+  href: content/sds/read-data/enums.html
 - uid: Feedback
   name: Technical support and feedback
-  href: V1/feedback.html
+  href: content/feedback.html
 - uid: HealthEndpointsConfiguration
   name: Health endpoints configuration
-  href: V1/Configuration/system-health-endpoints-configuration.html
+  href: content/configuration/system-health-endpoints-configuration.html
 - uid: index
   name: Edge Data Store
-  href: V1/index.html
+  href: content/index.html
 - uid: installationOverview
   name: Installation
-  href: V1/Installation/installation-overview.html
+  href: content/installation/installation-overview.html
 - uid: InstallEdgeDataStore
   name: Install Edge Data Store
-  href: V1/Installation/install-edge-data-store.html
+  href: content/installation/install-edge-data-store.html
 - uid: linuxWindows
   name: Linux and Windows platform differences
-  href: V1/linux-windows/linux-windows.html
+  href: content/linux-windows/linux-windows.html
 - uid: LoggingConfig
   name: Logging configuration
-  href: V1/Logging/logging-configuration.html
+  href: content/logging/logging-configuration.html
 - uid: modbus_DataSelection_schema
   name: Sample Modbus TCP data selection configuration
   href: z-archive/Schemas/Modbus_DataSelection_schema.html
@@ -108,28 +108,28 @@ references:
   href: z-archive/Schemas/Modbus_schema.html
 - uid: modbusOverview
   name: Modbus TCP EDS adapter
-  href: V1/Modbus/modbus-overview.html
+  href: content/modbus/modbus-overview.html
 - uid: modbusQuickStart
   name: Modbus TCP EDS adapter quick start
-  href: V1/Overview/modbus-quick-start.html
+  href: content/overview/modbus-quick-start.html
 - uid: ModbusTCPDataSelectionConfiguration
   name: Data selection configuration
-  href: V1/Modbus/modbus-data-selection-configuration.html
+  href: content/modbus/modbus-data-selection-configuration.html
 - uid: ModbusTCPDataSourceConfiguration
   name: Data source configuration
-  href: V1/Modbus/modbus-data-source-configuration.html
+  href: content/modbus/modbus-data-source-configuration.html
 - uid: ocsEgressQuickStart
   name: OCS egress quick start
-  href: V1/Overview/ocs-egress-quick-start.html
+  href: content/overview/ocs-egress-quick-start.html
 - uid: OMFMessages
   name: OMF messages
-  href: V1/OMF/omf-messages.html
+  href: content/omf/omf-messages.html
 - uid: omfOverview
   name: OSIsoft Message Format
-  href: V1/OMF/omf-overview.html
+  href: content/omf/omf-overview.html
 - uid: omfQuickStart
   name: OMF quick start
-  href: V1/Overview/omf-quick-start.html
+  href: content/overview/omf-quick-start.html
 - uid: opcUa_DataSelection_schema
   name: Sample OPC UA data selection configuration
   href: z-archive/Schemas/OpcUa_DataSelection_schema.html
@@ -144,154 +144,154 @@ references:
   href: z-archive/Schemas/OpcUa_schema.html
 - uid: OPCUAAdapterSecurityConfiguration
   name: Adapter security
-  href: V1/opc-ua/opc-ua-adapter-security-configuration.html
+  href: content/opc-ua/opc-ua-adapter-security-configuration.html
 - uid: opcUaDataSelection
   name: Generate default OPC UA data selection configuration file
-  href: V1/opc-ua/opc-ua-data-selection.html
+  href: content/opc-ua/opc-ua-data-selection.html
 - uid: OPCUADataSelectionConfiguration
   name: Data selection configuration
-  href: V1/opc-ua/opc-ua-data-selection-configuration.html
+  href: content/opc-ua/opc-ua-data-selection-configuration.html
 - uid: OPCUADataSourceConfiguration
   name: Data source configuration
-  href: V1/opc-ua/opc-ua-data-source-configuration.html
+  href: content/opc-ua/opc-ua-data-source-configuration.html
 - uid: opcUaOverview
   name: OPC UA EDS adapter
-  href: V1/opc-ua/opc-ua-overview.html
+  href: content/opc-ua/opc-ua-overview.html
 - uid: opcUaQuickStart
   name: OPC UA EDS adapter quick start
-  href: V1/Overview/opc-ua-quick-start.html
+  href: content/overview/opc-ua-quick-start.html
 - uid: Performance
   name: Performance
-  href: V1/Overview/performance.html
+  href: content/overview/performance.html
 - uid: piEgressQuickStart
   name: PI egress quick start
-  href: V1/Overview/pi-egress-quick-start.html
+  href: content/overview/pi-egress-quick-start.html
 - uid: PrepareEgressDestinations
   name: Prepare egress destinations
-  href: V1/Egress/prepare-egress-destinations.html
+  href: content/egress/prepare-egress-destinations.html
 - uid: PrinciplesOfOperationModbus
   name: Operational overview
-  href: V1/Modbus/operational-overview.html
+  href: content/modbus/operational-overview.html
 - uid: PrinciplesOfOperationOPCUA
   name: Operational overview
-  href: V1/opc-ua/operational-overview-opc-ua.html
+  href: content/opc-ua/operational-overview-opc-ua.html
 - uid: QuickStartGuides
   name: Quick start guides
-  href: V1/Overview/quick-start-guides.html
+  href: content/overview/quick-start-guides.html
 - uid: ReadCharacteristics
   name: Read characteristics
-  href: V1/SDS/read-data/read-characteristics.html
+  href: content/sds/read-data/read-characteristics.html
 - uid: Reference
   name: Reference
   href: z-archive/Reference/Reference_1-0.html
 - uid: releaseNotes
   name: Release notes
-  href: V1/release-notes/release-notes.html
+  href: content/release-notes/release-notes.html
 - uid: ResetEdgeDataStore
   name: Reset Edge Data Store
-  href: V1/Administration/reset-edge-data-store.html
+  href: content/administration/reset-edge-data-store.html
 - uid: ResetTheStorageComponent
   name: Reset the Storage component
-  href: V1/Administration/reset-storage-component.html
+  href: content/administration/reset-storage-component.html
 - uid: ResponseFormat
   name: Response format
-  href: V1/SDS/read-data/response-format.html
+  href: content/sds/read-data/response-format.html
 - uid: ResponseFormatWriteAPIs
   name: Response format for write APIs
-  href: V1/SDS/write-data/response-format-write.html
+  href: content/sds/write-data/response-format-write.html
 - uid: RestCommands
   name: REST commands
   href: z-archive/Reference/REST%20commands_1-0.html
 - uid: RetrieveProductVersionInformation
   name: Retrieve product version information
-  href: V1/Administration/retrieve-product-version-information.html
+  href: content/administration/retrieve-product-version-information.html
 - uid: scalePerformance
   name: Design considerations
-  href: V1/Overview/scale-performance.html
+  href: content/overview/scale-performance.html
 - uid: sdsCompression
   name: Compression
-  href: V1/SDS/compression.html
+  href: content/sds/compression.html
 - uid: sdsFilterExpressions
   name: Filter expressions
-  href: V1/SDS/read-data/filter-expressions.html
+  href: content/sds/read-data/filter-expressions.html
 - uid: sdsIndexes
   name: Indexes
-  href: V1/SDS/indexes.html
+  href: content/sds/indexes.html
 - uid: sdsIndexExamples
   name: Index examples
-  href: V1/SDS/Indexes/indexes-examples.html
+  href: content/sds/indexes/indexes-examples.html
 - uid: sdsOverview
   name: SDS reference
-  href: V1/SDS/sequential-data-store.html
+  href: content/sds/sequential-data-store.html
 - uid: sdsQuickStart
   name: SDS quick start
-  href: V1/Overview/sds-quick-start.html
+  href: content/overview/sds-quick-start.html
 - uid: sdsReadingData
   name: Read data
-  href: V1/SDS/read-data.html
+  href: content/sds/read-data.html
 - uid: sdsReadingDataApi
   name: Read data API
-  href: V1/SDS/read-data/reading-data-api.html
+  href: content/sds/read-data/reading-data-api.html
 - uid: sdsSearching
   name: Search in SDS
-  href: V1/SDS/search.html
+  href: content/sds/search.html
 - uid: sdsStreams
   name: Streams
-  href: V1/SDS/sds-streams.html
+  href: content/sds/sds-streams.html
 - uid: sdsStreamsAPI
   name: SdsStream API
-  href: V1/SDS/Streams/sds-streams-api.html
+  href: content/sds/streams/sds-streams-api.html
 - uid: sdsStreamViews
   name: Stream views
-  href: V1/SDS/sds-views.html
+  href: content/sds/sds-views.html
 - uid: sdsStreamViewsAPI
   name: SdsStreamView API
-  href: V1/SDS/Views/sds-stream-view-api.html
+  href: content/sds/views/sds-stream-view-api.html
 - uid: sdsTableFormat
   name: Table format
-  href: V1/SDS/read-data/table-format.html
+  href: content/sds/read-data/table-format.html
 - uid: sdsTypeAPI
   name: SdsType API
-  href: V1/SDS/Types/sds-type-api.html
+  href: content/sds/types/sds-type-api.html
 - uid: sdsTypeCode
   name: SdsTypeCode
-  href: V1/SDS/Types/sds-type-code.html
+  href: content/sds/types/sds-type-code.html
 - uid: sdsTypeExamples
   name: Examples of SdsTypes
-  href: V1/SDS/Types/sds-type-examples.html
+  href: content/sds/types/sds-type-examples.html
 - uid: sdsTypeProperty
   name: SdsTypeProperty
-  href: V1/SDS/Types/sds-type-property.html
+  href: content/sds/types/sds-type-property.html
 - uid: sdsTypeReusability
   name: SdsType reusability
-  href: V1/SDS/Types/sds-type-reusability.html
+  href: content/sds/types/sds-type-reusability.html
 - uid: sdsTypes
   name: Types
-  href: V1/SDS/sds-types.html
+  href: content/sds/sds-types.html
 - uid: SdsUOMAPI
   name: SdsUom API
-  href: V1/SDS/UOM/sds-uom-api.html
+  href: content/sds/uom/sds-uom-api.html
 - uid: SdsUOMQuantityAPI
   name: SdsUomQuantity API
-  href: V1/SDS/UOM/sds-uom-quantity-api.html
+  href: content/sds/uom/sds-uom-quantity-api.html
 - uid: sdsWritingData
   name: Write data
-  href: V1/SDS/write-data.html
+  href: content/sds/write-data.html
 - uid: sdsWritingDataApi
   name: Write data API
-  href: V1/SDS/write-data/writing-data-api.html
+  href: content/sds/write-data/writing-data-api.html
 - uid: SearchOperators
   name: Search operators
-  href: V1/SDS/Search/search-operators.html
+  href: content/sds/search/search-operators.html
 - uid: security
   name: Security
-  href: V1/security/security-overview.html
+  href: content/security/security-overview.html
 - uid: StopAndStartAnEDSAdapter
   name: Stop and start an EDS adapter
-  href: V1/Administration/stop-and-start-eds-adapter.html
+  href: content/administration/stop-and-start-eds-adapter.html
 - uid: storage
   name: Storage
-  href: V1/Configuration/storage.html
+  href: content/configuration/storage.html
 - uid: Storage_Logging_schema
   name: Storage logging configuration properties
   href: z-archive/Schemas/Storage_Logging_schema.html
@@ -306,16 +306,16 @@ references:
   href: z-archive/Schemas/Storage_schema.html
 - uid: storageruntime
   name: Storage runtime configuration
-  href: V1/Configuration/storage-runtime-config.html
+  href: content/configuration/storage-runtime-config.html
 - uid: SupportedFeaturesModbus
   name: Supported features
-  href: V1/Modbus/supported-features-modbus.html
+  href: content/modbus/supported-features-modbus.html
 - uid: SupportedFeaturesOPCUA
   name: Data type mapping
-  href: V1/opc-ua/supported-features-opc-ua.html
+  href: content/opc-ua/supported-features-opc-ua.html
 - uid: SupportedUOM
   name: Supported units of measure
-  href: V1/SDS/UOM/supported-uom.html
+  href: content/sds/uom/supported-uom.html
 - uid: system_Components_schema
   name: Sample Edge Data Store components configuration
   href: z-archive/Schemas/System_Components_schema.html
@@ -333,34 +333,34 @@ references:
   href: z-archive/Schemas/System_schema.html
 - uid: SystemComponentsConfiguration
   name: System components configuration
-  href: V1/Configuration/system-components-configuration.html
+  href: content/configuration/system-components-configuration.html
 - uid: SystemConfiguration
   name: System configuration
-  href: V1/Configuration/system-configuration.html
+  href: content/configuration/system-configuration.html
 - uid: systemloggingConfiguration
   name: System-level logging configuration
-  href: V1/Logging/system-logging.html
+  href: content/logging/system-logging.html
 - uid: SystemPortConfiguration
   name: System port configuration
-  href: V1/Configuration/system-port-configuration.html
+  href: content/configuration/system-port-configuration.html
 - uid: SystemRequirements
   name: System requirements
-  href: V1/Installation/system-requirements.html
+  href: content/installation/system-requirements.html
 - uid: troubleShooting
   name: Troubleshoot Edge Data Store
-  href: V1/Troubleshooting/troubleshooting.html
+  href: content/troubleshooting/troubleshooting.html
 - uid: UninstallEdgeDataStore
   name: Uninstall Edge Data Store
-  href: V1/Installation/uninstall-edge-data-store.html
+  href: content/installation/uninstall-edge-data-store.html
 - uid: unitsOfMeasure
   name: Units of measure
-  href: V1/SDS/units-of-measure.html
+  href: content/sds/units-of-measure.html
 - uid: UomQuantities
   name: Supported quantities
-  href: V1/SDS/UOM/supported-uom-quantities.html
+  href: content/sds/uom/supported-uom-quantities.html
 - uid: VerifyInstallation
   name: Verify installation
-  href: V1/Installation/verify-installation.html
+  href: content/installation/verify-installation.html
 - uid: visualizationQuickStart
   name: Edge Data Store visualization quick start
-  href: V1/Overview/visualization-quick-start.html
+  href: content/overview/visualization-quick-start.html

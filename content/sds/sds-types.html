@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Types </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Types ">
+    <meta name="generator" content="docfx 2.56.5.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../V1/index.html" width="46">
+                <img id="logo" src="../../V1/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge Data Store"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="sdsTypes">
+<h1 id="types">Types</h1>
+
+<p>An SdsType (used interchangeably with type throughout documentation) defines the shape of a single measured event or object. A type gives structure to the data. For example, if a device measures three things, such as longitude, latitude, and speed, at the same time, then the SdsType should include those three properties. </p>
+<p>An SdsType defines the structure of an event stored in an SdsStream and how to associate events within the SdsStream. An event is a single unit whose properties have values that relate to the index; that is, each property of an SdsType event is related to the event’s index. Each event is a single unit.</p>
+<p>SdsTypes can define simple atomic types, such as integers, floats, strings, arrays, and dictionaries, or complex types with nested SdsTypes using the Properties collection of an SdsType.</p>
+<p>An SdsType used to define an SdsStream must have a key, which is a property, or a combination of properties that constitute an ordered, unique identity. Because the key is ordered, it functions as an index. It is known as the primary index. While a timestamp (DateTime) is a very common key, any data that can be ordered is permitted. Other indexes (secondary indexes), are defined in the SdsStream. For more details on indexes, see <a class="xref" href="indexes.html">Indexes</a>.</p>
+<p>An SdsType is referenced by its identifier or Id field. SdsType identifiers must be unique within a Namespace. An SdsType can also refer other SdsTypes by using their identifiers. This enables type reusability. Nested types and base types are automatically created as separate types. For further information, see <a class="xref" href="types/sds-type-reusability.html">SdsType reusability</a>.</p>
+<p>Once an SdsType is created, it is immutable and its definition cannot be changed. If the SdsType definition is incorrect, you must delete and recreate it, and it can only be deleted if no streams, stream views, or types reference it.</p>
+<p>Only the SdsTypes used to define SdsStreams or SdsStreamViews are required to be added to the Sequential Data Store. SdsTypes that define properties or base types are contained within the parent SdsType do not need to be added to the Data Store separately.</p>
+<p>SdsTypes define how events are associated and read within an SdsStream. When attempting to read non-existent indexes, indexes that fall between, before or after existing indexes, the results are determined by the interpolation and extrapolation settings of the SdsType. For more information about interpolation and extrapolation, see <a class="xref" href="read-data/read-characteristics.html">Read characteristics</a>.</p>
+<p>The following table shows the SdsType fields. Fields that are not included are reserved for internal SDS use.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Optionality</th>
+<th>Searchable</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID</td>
+<td>String</td>
+<td>Required</td>
+<td>Yes</td>
+<td>Identifier for referencing the type.</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>String</td>
+<td>Optional</td>
+<td>Yes</td>
+<td>Friendly name.</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>String</td>
+<td>Optional</td>
+<td>Yes</td>
+<td>Description text.</td>
+</tr>
+<tr>
+<td>SdsTypeCode</td>
+<td>SdsTypeCode</td>
+<td>Required</td>
+<td>No</td>
+<td>Numeric code identifying the base SdsType.</td>
+</tr>
+<tr>
+<td>InterpolationMode</td>
+<td>SdsInterpolationMode</td>
+<td>Optional</td>
+<td>No</td>
+<td>Interpolation setting of the type. Default is Continuous.</td>
+</tr>
+<tr>
+<td>ExtrapolationMode</td>
+<td>SdsExtrapolationMode</td>
+<td>Optional</td>
+<td>No</td>
+<td>Extrapolation setting of the type. Default is All.</td>
+</tr>
+<tr>
+<td>Properties</td>
+<td>IList&lt;SdsTypeProperty></td>
+<td>Required</td>
+<td>Yes, with limitations</td>
+<td>List of SdsTypeProperty items. See <a class="xref" href="types/sds-type-property.html">SdsTypeProperty</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>For search limitations, see <a class="xref" href="search.html">Search in SDS</a>.</p>
+<h2 id="rules-for-the-type-identifier-sdstypeid">Rules for the type identifier (SdsType.ID)</h2>
+<p>The type identifier, SdsType.ID, has the following requirements:</p>
+<ul>
+<li>Is not case sensitive.</li>
+<li>Can contain spaces.</li>
+<li>Cannot contain forward slash (&quot;/&quot;).</li>
+<li>Contains a maximum of 100 characters. </li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/sds-types.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span><a href="https://www.osisoft.com/copyright/">© 2019 - 2021 OSIsoft, LLC. All rights reserved.</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

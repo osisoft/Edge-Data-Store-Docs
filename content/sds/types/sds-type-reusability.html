@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SdsType reusability </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SdsType reusability ">
+    <meta name="generator" content="docfx 2.56.5.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../V1/index.html" width="46">
+                <img id="logo" src="../../../V1/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge Data Store"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="sdsTypeReusability">
+<h1 id="sdstype-reusability">SdsType reusability</h1>
+
+<p>An SdsType can also refer other SdsTypes by using their identifiers, which enables type reusability.</p>
+<p>For example, if there is a common index and value property for a group of types that may have additional properties, a base type can be created with those properties.</p>
+<pre><code class="lang-json">{
+    &quot;Id&quot;: &quot;Simple&quot;,
+    &quot;Name&quot;: &quot;Simple&quot;,
+    &quot;SdsTypeCode&quot;: 1,
+    &quot;Properties&quot;: [
+        {
+            &quot;Id&quot;: &quot;Time&quot;,
+            &quot;Name&quot;: &quot;Time&quot;,
+            &quot;IsKey&quot;: true,
+            &quot;SdsType&quot;: {
+                &quot;SdsTypeCode&quot;: 16
+            }
+        },
+        {
+            &quot;Id&quot;: &quot;Measurement&quot;,
+            &quot;Name&quot;: &quot;Measurement&quot;,
+            &quot;SdsType&quot;: {
+                &quot;SdsTypeCode&quot;: 14
+            }
+        }
+    ]
+}
+</code></pre><p>If a new type should be created with additional properties to the ones above, add a reference to the base type by specifying the base type&#39;s Id.</p>
+<pre><code class="lang-json">{
+    &quot;Id&quot;: &quot;Complex&quot;,
+    &quot;Name&quot;: &quot;Complex&quot;,
+    &quot;SdsTypeCode&quot;: 1,
+    &quot;BaseType&quot;:{
+        &quot;Id&quot;:&quot;Simple&quot;
+    },
+    &quot;Properties&quot;: [
+        {
+            &quot;Id&quot;: &quot;Depth&quot;,
+            &quot;Name&quot;: &quot;Depth&quot;,
+            &quot;SdsType&quot;: {
+                &quot;SdsTypeCode&quot;: 14
+            }
+        }
+    ]
+}
+</code></pre><p>The new type may also include the full type definition of the reference type instead of specifying only the Id. For example:</p>
+<pre><code class="lang-json">{
+    &quot;Id&quot;: &quot;Complex&quot;,
+    &quot;Name&quot;: &quot;Complex&quot;,
+    &quot;SdsTypeCode&quot;: 1,
+    &quot;BaseType&quot;:{
+        &quot;Id&quot;: &quot;Simple&quot;,
+        &quot;Name&quot;: &quot;Simple&quot;,
+        &quot;SdsTypeCode&quot;: 1,
+        &quot;Properties&quot;: [
+            {
+                &quot;Id&quot;: &quot;Time&quot;,
+                &quot;Name&quot;: &quot;Time&quot;,
+                &quot;IsKey&quot;: true,
+                &quot;SdsType&quot;: {
+                    &quot;SdsTypeCode&quot;: 16
+                }
+            },
+            {
+                &quot;Id&quot;: &quot;Measurement&quot;,
+                &quot;Name&quot;: &quot;Measurement&quot;,
+                &quot;SdsType&quot;: {
+                    &quot;SdsTypeCode&quot;: 14
+                }
+            }
+        ]
+    },
+    &quot;Properties&quot;: [
+        {
+            &quot;Id&quot;: &quot;Depth&quot;,
+            &quot;Name&quot;: &quot;Depth&quot;,
+            &quot;SdsType&quot;: {
+                &quot;SdsTypeCode&quot;: 14
+            }
+        }
+    ]
+}
+</code></pre><p>If the full definition is sent, the referenced types (base type &quot;Simple&quot; in the example above) should match the actual type initially created. If the full definition is sent and the referenced types do not exist, SDS creates them automatically. Further type creations can reference them as demonstrated above. </p>
+<p><strong>Note:</strong> When trying to get types back from SDS, the results will also include types that were automatically created by SDS.</p>
+<p>Base types and properties of type Object, Enum, and user-defined collections such as Array, List, and Dictionary will be treated as referenced types. Note that streams cannot be created using these referenced types. If a stream of particular type is to be created, the type should contain at least one property with a valid index type as described in <a class="xref" href="../indexes.html">Indexes</a>. The index property may also be in the base type as shown in the example above.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/types/sds-type-reusability.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span><a href="https://www.osisoft.com/copyright/">© 2019 - 2021 OSIsoft, LLC. All rights reserved.</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

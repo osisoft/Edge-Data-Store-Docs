@@ -1,0 +1,438 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SdsTypeCode </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SdsTypeCode ">
+    <meta name="generator" content="docfx 2.56.5.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../V1/index.html" width="46">
+                <img id="logo" src="../../../V1/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge Data Store"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="sdsTypeCode">
+<h1 id="sdstypecode">SdsTypeCode</h1>
+
+<p>The SdsTypeCode is a numeric identifier used by SDS to identify SdsTypes. An SdsTypeCode exists for every supported type.</p>
+<p>Atomic types, such as strings, floats, and arrays, are defined entirely by the SdsTypeCode. Atomic types do not need fields to define the type.</p>
+<p>Types requiring additional definition, such as enums and objects, are identified using a generic SdsTypeCode, such as ByteEnum, Int32Enum, NullableInt32Enum, or Object, plus additional SdsProperty fields.</p>
+<p><strong>Supported Types</strong><br>The following types are supported and defined by the SdsTypeCode:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>SdsTypeCode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Array</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>3</td>
+</tr>
+<tr>
+<td>BooleanArray</td>
+<td>203</td>
+</tr>
+<tr>
+<td>Byte</td>
+<td>6</td>
+</tr>
+<tr>
+<td>ByteArray</td>
+<td>206</td>
+</tr>
+<tr>
+<td>ByteEnum</td>
+<td>606</td>
+</tr>
+<tr>
+<td>Char</td>
+<td>4</td>
+</tr>
+<tr>
+<td>CharArray</td>
+<td>204</td>
+</tr>
+<tr>
+<td>DateTime</td>
+<td>16</td>
+</tr>
+<tr>
+<td>DateTimeArray</td>
+<td>216</td>
+</tr>
+<tr>
+<td>DateTimeOffset</td>
+<td>20</td>
+</tr>
+<tr>
+<td>DateTimeOffsetArray</td>
+<td>220</td>
+</tr>
+<tr>
+<td>DBNull</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Decimal</td>
+<td>15</td>
+</tr>
+<tr>
+<td>DecimalArray</td>
+<td>215</td>
+</tr>
+<tr>
+<td>Double</td>
+<td>14</td>
+</tr>
+<tr>
+<td>DoubleArray</td>
+<td>214</td>
+</tr>
+<tr>
+<td>Empty</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Guid</td>
+<td>19</td>
+</tr>
+<tr>
+<td>GuidArray</td>
+<td>219</td>
+</tr>
+<tr>
+<td>IDictionary</td>
+<td>402</td>
+</tr>
+<tr>
+<td>IEnumerable</td>
+<td>403</td>
+</tr>
+<tr>
+<td>IList</td>
+<td>401</td>
+</tr>
+<tr>
+<td>Int16</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Int16Array</td>
+<td>207</td>
+</tr>
+<tr>
+<td>Int16Enum</td>
+<td>607</td>
+</tr>
+<tr>
+<td>Int32</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Int32Array</td>
+<td>209</td>
+</tr>
+<tr>
+<td>Int32Enum</td>
+<td>609</td>
+</tr>
+<tr>
+<td>Int64</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Int64Array</td>
+<td>211</td>
+</tr>
+<tr>
+<td>Int64Enum</td>
+<td>611</td>
+</tr>
+<tr>
+<td>NullableBoolean</td>
+<td>103</td>
+</tr>
+<tr>
+<td>NullableByte</td>
+<td>106</td>
+</tr>
+<tr>
+<td>NullableByteEnum</td>
+<td>706</td>
+</tr>
+<tr>
+<td>NullableChar</td>
+<td>104</td>
+</tr>
+<tr>
+<td>NullableDateTime</td>
+<td>116</td>
+</tr>
+<tr>
+<td>NullableDateTimeOffset</td>
+<td>120</td>
+</tr>
+<tr>
+<td>NullableDecimal</td>
+<td>115</td>
+</tr>
+<tr>
+<td>NullableDouble</td>
+<td>114</td>
+</tr>
+<tr>
+<td>NullableGuid</td>
+<td>119</td>
+</tr>
+<tr>
+<td>NullableInt16</td>
+<td>107</td>
+</tr>
+<tr>
+<td>NullableInt16Enum</td>
+<td>707</td>
+</tr>
+<tr>
+<td>NullableInt32</td>
+<td>109</td>
+</tr>
+<tr>
+<td>NullableInt32Enum</td>
+<td>709</td>
+</tr>
+<tr>
+<td>NullableInt64</td>
+<td>111</td>
+</tr>
+<tr>
+<td>NullableInt64Enum</td>
+<td>711</td>
+</tr>
+<tr>
+<td>NullableSByte</td>
+<td>105</td>
+</tr>
+<tr>
+<td>NullableSByteEnum</td>
+<td>705</td>
+</tr>
+<tr>
+<td>NullableSingle</td>
+<td>113</td>
+</tr>
+<tr>
+<td>NullableTimeSpan</td>
+<td>121</td>
+</tr>
+<tr>
+<td>NullableUInt16</td>
+<td>108</td>
+</tr>
+<tr>
+<td>NullableUInt16Enum</td>
+<td>708</td>
+</tr>
+<tr>
+<td>NullableUInt32</td>
+<td>110</td>
+</tr>
+<tr>
+<td>NullableUInt32Enum</td>
+<td>710</td>
+</tr>
+<tr>
+<td>NullableUInt64</td>
+<td>112</td>
+</tr>
+<tr>
+<td>NullableUInt64Enum</td>
+<td>712</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>1</td>
+</tr>
+<tr>
+<td>SByte</td>
+<td>5</td>
+</tr>
+<tr>
+<td>SByteArray</td>
+<td>205</td>
+</tr>
+<tr>
+<td>SByteEnum</td>
+<td>605</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>13</td>
+</tr>
+<tr>
+<td>SingleArray</td>
+<td>213</td>
+</tr>
+<tr>
+<td>String</td>
+<td>18</td>
+</tr>
+<tr>
+<td>StringArray</td>
+<td>218</td>
+</tr>
+<tr>
+<td>TimeSpan</td>
+<td>21</td>
+</tr>
+<tr>
+<td>TimeSpanArray</td>
+<td>221</td>
+</tr>
+<tr>
+<td>UInt16</td>
+<td>8</td>
+</tr>
+<tr>
+<td>UInt16Array</td>
+<td>208</td>
+</tr>
+<tr>
+<td>UInt16Enum</td>
+<td>608</td>
+</tr>
+<tr>
+<td>UInt32</td>
+<td>10</td>
+</tr>
+<tr>
+<td>UInt32Array</td>
+<td>210</td>
+</tr>
+<tr>
+<td>UInt32Enum</td>
+<td>610</td>
+</tr>
+<tr>
+<td>UInt64</td>
+<td>12</td>
+</tr>
+<tr>
+<td>UInt64Array</td>
+<td>212</td>
+</tr>
+<tr>
+<td>UInt64Enum</td>
+<td>612</td>
+</tr>
+<tr>
+<td>Version</td>
+<td>22</td>
+</tr>
+<tr>
+<td>VersionArray</td>
+<td>222</td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/types/sds-type-code.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span><a href="https://www.osisoft.com/copyright/">© 2019 - 2021 OSIsoft, LLC. All rights reserved.</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>
