@@ -81,7 +81,7 @@
 <h2 id="overview">Overview</h2>
 <p>The OPC UA EDS adapter is a component of Edge Data Store that transfers time-series data from an OPC UA capable device to EDS. OPC Unified Architecture (OPC UA) is a machine to machine communication protocol for industrial automation developed by the OPC Foundation. The OPC UA EDS adapter can connect to any device that uses the OPC UA communication protocol, and uses subscriptions to reduce the amount of data transferred by only reading data changes and events. </p>
 <p>The following diagram depicts the data flow for a single instance of OPC UA EDS adapter instance:</p>
-<p><img src="https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/OPCUAConfiguration.jpg" alt="OPC UA EDS" title="OPC UA Configuration"></p>
+<p><img src="https://osisoft.github.io/Edge-Data-Store-Docs/content/images/OPCUAConfiguration.jpg" alt="OPC UA EDS" title="OPC UA Configuration"></p>
 <p>The adapter instance polls the OPC UA device and then collects data from the device. The adapter then sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or OSIsoft Cloud Services. The adapter instance can be configured from the device where EDS is installed, and EDS collects health information about the adapter that can be egressed.</p>
 <p>The OPC UA EDS adapter can connect to multiple devices by defining one instance of the adapter for each device. The EDS installation includes the OPC UA EDS adapter and the option to add a single OPC UA EDS adapter instance. Add additional instances after installation using system components configuration.</p>
 <p>Once an adapter instance is defined, manually configure it with JSON documents that specify the following:</p>

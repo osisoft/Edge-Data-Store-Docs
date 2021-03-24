@@ -79,7 +79,7 @@
 <h1 id="osisoft-message-format">OSIsoft Message Format</h1>
 
 <p>Create a custom application using OSIsoft Message Format (OMF) to send data to EDS from sources that cannot use Modbus or OPC UA protocols. The following diagram depicts the data flow from an OMF data collection application into EDS:</p>
-<p><img src="https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/OMFIngressExample.jpg" alt="EDS OMF Ingress" title="OMF Ingress Example"></p>
+<p><img src="https://osisoft.github.io/Edge-Data-Store-Docs/content/images/OMFIngressExample.jpg" alt="EDS OMF Ingress" title="OMF Ingress Example"></p>
 <p>The OMF application collects data from a data source and sends it to the Edge Data Store endpoint. The EDS endpoint sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or OSIsoft Cloud Services. The OMF application must run on the same device as Edge Data Store and no authentication is needed. </p>
 <h2 id="omf-endpoint">OMF endpoint</h2>
 <p>The route to the OMF endpoint to the Edge Storage component is shown below. Replace <em>&lt;port_number&gt;</em> with the port configured for your EDS system:</p>
