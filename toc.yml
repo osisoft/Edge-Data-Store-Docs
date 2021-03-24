@@ -2,5 +2,5 @@
   dropdown: true
   items:
   - name: Edge Data Store 1.0
-    href: V1/
-    topicHref: V1/index.md
+    href: content/
+    topicHref: content/index.md
