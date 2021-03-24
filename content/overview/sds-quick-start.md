@@ -8,7 +8,7 @@ Create a custom application using Sequential Data Store (SDS) REST API to send d
 
 The following diagram depicts the data flow from an SDS custom application into EDS:
 
-![SDS Application Example](https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/SDSApplicationExample.jpg "SDS Application Example")
+![SDS Application Example](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/SDSApplicationExample.jpg "SDS Application Example")
 
 The SDS application collects data from a data source and sends it to the EDS endpoint. The EDS endpoint sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or OSIsoft Cloud Services. All data from all sources on EDS (Modbus TCP, OPC UA, OMF, SDS) can be read using the SDS REST APIs on the local device, in the default tenant and the default namespace. 
 

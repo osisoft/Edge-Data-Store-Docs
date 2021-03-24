@@ -10,7 +10,7 @@ The OPC UA EDS adapter is a component of Edge Data Store that transfers time-ser
 
 The following diagram depicts the data flow for a single instance of OPC UA EDS adapter instance:
 
-![OPC UA EDS](https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/OPCUAConfiguration.jpg "OPC UA Configuration")
+![OPC UA EDS](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/OPCUAConfiguration.jpg "OPC UA Configuration")
 
 The adapter instance polls the OPC UA device and then collects data from the device. The adapter then sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or OSIsoft Cloud Services. The adapter instance can be configured from the device where EDS is installed, and EDS collects health information about the adapter that can be egressed.
 

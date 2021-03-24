@@ -8,7 +8,7 @@ Edge Data Store (EDS) is a lightweight data collection and storage application d
 
 The following diagram shows conceptually how EDS captures data and sends to permanent storage:
 
-![EDS conceptual diagram](https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/EDSConceptualDiag.jpg "EDS conecptual diagram")
+![EDS conceptual diagram](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/EDSConceptualDiag.jpg "EDS conecptual diagram")
 
 EDS collects data using any of the following methods:
 
@@ -22,7 +22,7 @@ Once collected, the data is stored locally in configurable data storage within E
 ## Edge Data Store architecture
 EDS runs on both Linux and Windows platforms and is comprised of separate components that each perform a specific function within EDS. The following diagram shows Edge Data Store architecture with all of its components and how the data flow through those components:
 
-![EDS architecture](https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/EDSArchitecturalDiag.jpg "EDS architecture")
+![EDS architecture](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/EDSArchitecturalDiag.jpg "EDS architecture")
 
 EDS components are shown in grey within the Edge Data Store in the diagram:
 
