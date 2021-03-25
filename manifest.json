@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/agent/_work/1/s",
+  "source_base_path": "C:/Agent/_work/1/s",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "content/administration/management-tools.html",
-          "hash": "xou/UQUKDaAQiTJ63nxCHQ=="
+          "hash": "x6J8owWHKWCdtqj76MRTUg=="
         }
       },
       "is_incremental": false,
