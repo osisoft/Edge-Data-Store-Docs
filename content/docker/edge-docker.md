@@ -23,7 +23,7 @@ docker build -t edgedatastore .
 ```bash
 FROM ubuntu:18.04
 WORKDIR /
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends libicu60 libssl1.0.0
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates libicu60 libssl1.0.0
 ADD ./EdgeDataStore_linux-arm.tar.gz .
 ENTRYPOINT ["./EdgeDataStore_linux-arm/OSIsoft.Data.System.Host"]
 ```
@@ -33,7 +33,7 @@ ENTRYPOINT ["./EdgeDataStore_linux-arm/OSIsoft.Data.System.Host"]
 ```bash
 FROM ubuntu:18.04
 WORKDIR /
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends libicu60 libssl1.0.0
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates libicu60 libssl1.0.0
 ADD ./EdgeDataStore_linux-arm64.tar.gz .
 ENTRYPOINT ["./EdgeDataStore_linux-arm64/OSIsoft.Data.System.Host"]
 ```
@@ -43,7 +43,7 @@ ENTRYPOINT ["./EdgeDataStore_linux-arm64/OSIsoft.Data.System.Host"]
 ```bash
 FROM ubuntu:18.04
 WORKDIR /
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends libicu60 libssl1.0.0
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates libicu60 libssl1.0.0
 ADD ./EdgeDataStore_linux-x64.tar.gz .
 ENTRYPOINT ["./EdgeDataStore_linux-x64/OSIsoft.Data.System.Host"]
 ```
