@@ -90,19 +90,19 @@
 </code></pre><h3 id="arm32-example">ARM32 example</h3>
 <pre><code class="lang-bash">FROM ubuntu:18.04
 WORKDIR /
-RUN apt-get update &amp;&amp; DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends libicu60 libssl1.0.0
+RUN apt-get update &amp;&amp; DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates libicu60 libssl1.0.0
 ADD ./EdgeDataStore_linux-arm.tar.gz .
 ENTRYPOINT [&quot;./EdgeDataStore_linux-arm/OSIsoft.Data.System.Host&quot;]
 </code></pre><h3 id="arm64-example">ARM64 example</h3>
 <pre><code class="lang-bash">FROM ubuntu:18.04
 WORKDIR /
-RUN apt-get update &amp;&amp; DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends libicu60 libssl1.0.0
+RUN apt-get update &amp;&amp; DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates libicu60 libssl1.0.0
 ADD ./EdgeDataStore_linux-arm64.tar.gz .
 ENTRYPOINT [&quot;./EdgeDataStore_linux-arm64/OSIsoft.Data.System.Host&quot;]
 </code></pre><h3 id="amd64-x64-example">AMD64 (x64) example</h3>
 <pre><code class="lang-bash">FROM ubuntu:18.04
 WORKDIR /
-RUN apt-get update &amp;&amp; DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends libicu60 libssl1.0.0
+RUN apt-get update &amp;&amp; DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates libicu60 libssl1.0.0
 ADD ./EdgeDataStore_linux-x64.tar.gz .
 ENTRYPOINT [&quot;./EdgeDataStore_linux-x64/OSIsoft.Data.System.Host&quot;]
 </code></pre><h2 id="run-the-eds-docker-container">Run the EDS Docker container</h2>
