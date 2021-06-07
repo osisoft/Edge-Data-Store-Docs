@@ -2,7 +2,7 @@
 
 Edge Data Store (EDS) is a lightweight data collection and storage application designed to capture data at the edge of networks for historical storage and analysis.
 
-This repository contains the documentation for Edge Data Store. You can access a readable version of this documentation [here](https://osisoft.github.io/Edge-Data-Store-Docs/content/).
+This repository contains the documentation for Edge Data Store. You can access a readable version of this documentation [here](https://docs.osisoft.com/bundle/edge-data-store/page/index.html).
 
 ## License
 
