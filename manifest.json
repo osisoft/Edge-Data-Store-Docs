@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/agent/_work/1/s",
+  "source_base_path": "C:/Agent/_work/1/s",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "README.html",
-          "hash": "7JkpuVUBvfLX7MiA/gOD9w=="
+          "hash": "gyKS3FXaTAi08UMHhoKMqg=="
         }
       },
       "is_incremental": false,
