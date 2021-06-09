@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Indexes </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Indexes ">
+    <meta name="generator" content="docfx 2.50.0.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="sdsIndexes">
+<h1 id="indexes" sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="5" sourceendlinenumber="6">Indexes</h1>
+
+<p sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="8" sourceendlinenumber="8">Indexes speed up and order the results of searches. A key uniquely identifies a record within a collection of records. Keys are unique within the collection.</p>
+<p sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="10" sourceendlinenumber="10">In SDS, the key of an SdsType is also an index. The key is often referred to as the <em>primary index,</em> while all other indexes are referred to as <em>secondary indexes</em> or <em>secondaries</em>.</p>
+<p sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="12" sourceendlinenumber="12">An SdsType that is used to define an SdsStream must specify a key. When inserting data into an SdsStream, every key value must be unique. SDS will not store more than a single event for a given key. An event with a particular key may be deleted or updated, but two events with the same key cannot exist.</p>
+<p sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="14" sourceendlinenumber="14">Secondary indexes are defined on SdsStreams and are applied to a single property. You can define many secondary indexes. Secondary index values do not need to be unique.</p>
+<p sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="16" sourceendlinenumber="16">The following table contains supported index types:</p>
+<table sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="18" sourceendlinenumber="37">
+<thead>
+<tr>
+<th>Type</th>
+<th>SdsTypeCode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Byte</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Char</td>
+<td>4</td>
+</tr>
+<tr>
+<td>DateTime</td>
+<td>16</td>
+</tr>
+<tr>
+<td>DateTimeOffset</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Decimal</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Double</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Guid</td>
+<td>19</td>
+</tr>
+<tr>
+<td>Int16</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Int32</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Int64</td>
+<td>11</td>
+</tr>
+<tr>
+<td>SByte</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>13</td>
+</tr>
+<tr>
+<td>String</td>
+<td>18</td>
+</tr>
+<tr>
+<td>TimeSpan</td>
+<td>21</td>
+</tr>
+<tr>
+<td>UInt16</td>
+<td>8</td>
+</tr>
+<tr>
+<td>UInt32</td>
+<td>10</td>
+</tr>
+<tr>
+<td>UInt64</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<h2 id="working-with-indexes" sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="39" sourceendlinenumber="40">Working with indexes</h2>
+<p sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="42" sourceendlinenumber="42">The following discusses the types defined in the Python and Java Script samples. </p>
+<p sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="44" sourceendlinenumber="44">To build an SdsType representation of the following sample class, see <a href="#sample" data-raw-source="[Sample](#sample)" sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="44" sourceendlinenumber="44">Sample</a>:</p>
+<p sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="46" sourceendlinenumber="46"><em>Python</em></p>
+<pre sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="48" sourceendlinenumber="72"><code class="lang-python">class State(Enum):
+  Ok = 0
+  Warning = 1
+  Alarm = 2
+
+class Simple(object):
+  Time = property(getTime, setTime)
+  def getTime(self):
+    return self.__time
+  def setTime(self, time):
+    self.__time = time
+
+  State = property(getState, setState)
+  def getState(self):
+    return self.__state
+  def setState(self, state):
+    self.__state = state
+
+  Measurement = property(getValue, setValue)
+  def getValue(self):
+    return self.__measurement
+  def setValue(self, measurement):
+    self.__measurement = measurement
+</code></pre><p sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="74" sourceendlinenumber="74"><em>JavaScript</em></p>
+<pre sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="76" sourceendlinenumber="89"><code class="lang-javascript">var State =
+{
+  Ok: 0,
+  Warning: 1,
+  Alarm: 2
+}
+
+var Simple = function () {
+  this.Time = null;
+  this.State = null;
+  this.Value = null;
+}
+</code></pre><h3 id="sample" sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="91" sourceendlinenumber="91">Sample</h3>
+<p sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="93" sourceendlinenumber="93">The following code is used to build an SdsType representation of the sample class above:</p>
+<p sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="95" sourceendlinenumber="95"><em>Python</em></p>
+<pre sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="97" sourceendlinenumber="146"><code class="lang-python"># Create the properties
+
+# Time is the primary key
+time = SdsTypeProperty()
+time.Id = &quot;Time&quot;
+time.Name = &quot;Time&quot;
+time.IsKey = True
+time.SdsType = SdsType()
+time.SdsType.Id = &quot;DateTime&quot;
+time.SdsType.Name = &quot;DateTime&quot;
+time.SdsType.SdsTypeCode = SdsTypeCode.DateTime
+
+# State is not a pre-defined type. An SdsType must be defined to represent the enum
+stateTypePropertyOk = SdsTypeProperty()
+stateTypePropertyOk.Id = &quot;Ok&quot;
+stateTypePropertyOk.Measurement = State.Ok
+stateTypePropertyWarning = SdsTypeProperty()
+stateTypePropertyWarning.Id = &quot;Warning&quot;
+stateTypePropertyWarning.Measurement = State.Warning
+stateTypePropertyAlarm = SdsTypeProperty()
+stateTypePropertyAlarm.Id = &quot;Alarm&quot;
+stateTypePropertyAlarm.Measurement = State.Alarm
+
+stateType = SdsType()
+stateType.Id = &quot;State&quot;
+stateType.Name = &quot;State&quot;
+stateType.Properties = [ stateTypePropertyOk, stateTypePropertyWarning,\
+                        stateTypePropertyAlarm ]
+state = SdsTypeProperty()
+state.Id = &quot;State&quot;
+state.Name = &quot;State&quot;
+state.SdsType = stateType
+
+# Measurement property is a simple non-indexed, pre-defined type
+measurement = SdsTypeProperty()
+measurement.Id = &quot;Measurement&quot;
+measurement.Name = &quot;Measurement&quot;
+measurement.SdsType = SdsType()
+measurement.SdsType.Id = &quot;Double&quot;
+measurement.SdsType.Name = &quot;Double&quot;
+
+# Create the Simple SdsType
+simple = SdsType()
+simple.Id = str(uuid.uuid4())
+simple.Name = &quot;Simple&quot;
+simple.Description = &quot;Basic sample type&quot;
+simple.SdsTypeCode = SdsTypeCode.Object
+simple.Properties = [ time, state, measurement ]
+</code></pre><p sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="148" sourceendlinenumber="148"><em>JavaScript</em></p>
+<pre sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="150" sourceendlinenumber="202"><code class="lang-javascript">// Time is the primary key
+var timeProperty = new SdsObjects.SdsTypeProperty({
+  &quot;Id&quot;: &quot;Time&quot;,
+  &quot;IsKey&quot;: true,
+  &quot;SdsType&quot;: new SdsObjects.SdsType({
+    &quot;Id&quot;: &quot;dateType&quot;,
+    &quot;SdsTypeCode&quot;: SdsObjects.SdsTypeCodeMap.DateTime
+  })
+});
+
+// State is not a pre-defined type. A SdsType must be defined to represent the enum
+var stateTypePropertyOk = new SdsObjects.SdsTypeProperty({
+  &quot;Id&quot;: &quot;Ok&quot;,
+  &quot;Value&quot;: State.Ok
+});
+
+var stateTypePropertyWarning = new SdsObjects.SdsTypeProperty({
+  &quot;Id&quot;: &quot;Warning&quot;,
+  &quot;Value&quot;: State.Warning
+});
+
+var stateTypePropertyAlarm = new SdsObjects.SdsTypeProperty({
+  &quot;Id&quot;: &quot;Alarm&quot;,
+  &quot;Value&quot;: State.Alarm
+});
+
+var stateType = new SdsObjects.SdsType({
+  &quot;Id&quot;: &quot;State&quot;,
+  &quot;Name&quot;: &quot;State&quot;,
+  &quot;SdsTypeCode&quot;: SdsObjects.SdsTypeCodeMap.Int32Enum,
+  &quot;Properties&quot;: [stateTypePropertyOk, stateTypePropertyWarning,
+    stateTypePropertyAlarm, stateTypePropertyRed]
+});
+
+// Value property is a simple non-indexed, pre-defined type
+var valueProperty = new SdsObjects.SdsTypeProperty({
+  &quot;Id&quot;: &quot;Value&quot;,
+  &quot;SdsType&quot;: new SdsObjects.SdsType({
+    &quot;Id&quot;: &quot;doubleType&quot;,
+    &quot;SdsTypeCode&quot;: SdsObjects.SdsTypeCodeMap.Double
+  })
+});
+
+// Create the Simple SdsType
+var simpleType = new SdsObjects.SdsType({
+  &quot;Id&quot;: &quot;Simple&quot;,
+  &quot;Name&quot;: &quot;Simple&quot;,
+  &quot;Description&quot;: &quot;This is a simple Sds type&quot;,
+  &quot;SdsTypeCode&quot;: SdsObjects.SdsTypeCodeMap.Object,
+  &quot;Properties&quot;: [timeProperty, stateProperty, valueProperty]
+});
+</code></pre><p sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="204" sourceendlinenumber="204">The Time property is identified as the Key by defining its SdsTypeProperty as follows:</p>
+<p sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="206" sourceendlinenumber="206"><em>Python</em></p>
+<pre sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="208" sourceendlinenumber="218"><code class="lang-python"># Time is the primary key
+time = SdsTypeProperty()
+time.Id = &quot;Time&quot;
+time.Name = &quot;Time&quot;
+time.IsKey = True
+time.SdsType = SdsType()
+time.SdsType.Id = &quot;DateTime&quot;
+time.SdsType.Name = &quot;DateTime&quot;
+time.SdsType.SdsTypeCode = SdsTypeCode.DateTime
+</code></pre><p sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="220" sourceendlinenumber="220"><em>JavaScript</em></p>
+<pre sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="222" sourceendlinenumber="232"><code class="lang-javascript">// Time is the primary key
+var timeProperty = new SdsObjects.SdsTypeProperty({
+  &quot;Id&quot;: &quot;Time&quot;,
+  &quot;IsKey&quot;: true,
+  &quot;SdsType&quot;: new SdsObjects.SdsType({
+    &quot;Id&quot;: &quot;dateType&quot;,
+    &quot;SdsTypeCode&quot;: SdsObjects.SdsTypeCodeMap.DateTime
+  })
+});
+</code></pre><p sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="234" sourceendlinenumber="234"><strong>Note:</strong> The time.IsKey field is set to true.</p>
+<p sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="236" sourceendlinenumber="236">To read data using the key, you define a start index and an end index. For DateTime, use ISO 8601 representation of dates and times. To query for a window of values between January 1, 2010 and February 1, 2010, you would define indexes as “2010-01-01T08:00:00.000Z” and “2010-02-01T08:00:00.000Z”, respectively.</p>
+<p sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="238" sourceendlinenumber="238">For additional information, see <a class="xref" href="Reading_Data.html" data-raw-source="[Reading data](xref:sdsReadingData)" sourcefile="V1/SDS/indexes.md" sourcestartlinenumber="238" sourceendlinenumber="238">Reading data</a>.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/SDS/indexes.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Sample Modbus TCP data selection configuration </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Sample Modbus TCP data selection configuration ">
+    <meta name="generator" content="docfx 2.50.0.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="modbus_DataSelection_schema">
+<h1 id="sample-modbus-tcp-data-selection-configuration">Sample Modbus TCP data selection configuration</h1>
+
+<pre><code class="lang-json">[{
+        &quot;Selected&quot;: &quot;true&quot;,
+        &quot;UnitId&quot;: 1,
+        &quot;RegisterType&quot;: 3,
+        &quot;RegisterOffset&quot;: 1,
+        &quot;DataTypeCode&quot;: 20,
+        &quot;BitMap&quot;: &quot;16151413&quot;,
+        &quot;ConversionFactor&quot;: 2,
+        &quot;ConversionOffset&quot;: 3.4,
+        &quot;ScanRate&quot;: 500
+    },
+    {
+        &quot;Selected&quot;: &quot;true&quot;,
+        &quot;UnitId&quot;: 1,
+        &quot;RegisterType&quot;: 3,
+        &quot;RegisterOffset&quot;: 2,
+        &quot;DataTypeCode&quot;: 20,
+        &quot;BitMap&quot;: &quot;16151413&quot;,
+        &quot;ConversionFactor&quot;: 2,
+        &quot;ConversionOffset&quot;: 3.4,
+        &quot;ScanRate&quot;: 500
+    },
+    {
+        &quot;Selected&quot;: &quot;true&quot;,
+        &quot;UnitId&quot;: 1,
+        &quot;RegisterType&quot;: 3,
+        &quot;RegisterOffset&quot;: 3,
+        &quot;DataTypeCode&quot;: 20,
+        &quot;BitMap&quot;: &quot;16151413&quot;,
+        &quot;ConversionFactor&quot;: 2,
+        &quot;ConversionOffset&quot;: 3.4,
+        &quot;ScanRate&quot;: 500
+    },
+    {
+        &quot;Selected&quot;: &quot;true&quot;,
+        &quot;UnitId&quot;: 1,
+        &quot;RegisterType&quot;: 3,
+        &quot;RegisterOffset&quot;: 4,
+        &quot;DataTypeCode&quot;: 20,
+        &quot;BitMap&quot;: &quot;16151413&quot;,
+        &quot;ConversionFactor&quot;: 2,
+        &quot;ConversionOffset&quot;: 3.4,
+        &quot;ScanRate&quot;: 500
+    },
+    {
+        &quot;Selected&quot;: &quot;true&quot;,
+        &quot;UnitId&quot;: 1,
+        &quot;RegisterType&quot;: 3,
+        &quot;RegisterOffset&quot;: 5,
+        &quot;DataTypeCode&quot;: 20,
+        &quot;BitMap&quot;: &quot;16151413&quot;,
+        &quot;ConversionFactor&quot;: 2,
+        &quot;ConversionOffset&quot;: 3.4,
+        &quot;ScanRate&quot;: 500
+    }
+]
+</code></pre><h1 id="modbus-tcp-data-selection-configuration-properties">Modbus TCP data selection configuration properties</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Defined by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#bitmap">BitMap</a></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td>Yes</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#conversionfactor">ConversionFactor</a></td>
+<td><code>number</code></td>
+<td>Optional</td>
+<td>Yes</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#conversionoffset">ConversionOffset</a></td>
+<td><code>number</code></td>
+<td>Optional</td>
+<td>Yes</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#datatypecode">DataTypeCode</a></td>
+<td><code>integer</code></td>
+<td>Optional</td>
+<td>No</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#name">Name</a></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td>Yes</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#registeroffset">RegisterOffset</a></td>
+<td><code>integer</code></td>
+<td>Optional</td>
+<td>No</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#registertype">RegisterType</a></td>
+<td>reference <br> <code>#/definitions/ModbusRegisterType</code></td>
+<td>Optional</td>
+<td>No</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#scanrate">ScanRate</a></td>
+<td><code>integer</code></td>
+<td>Optional</td>
+<td>No</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#selected">Selected</a></td>
+<td><code>boolean</code></td>
+<td>Optional</td>
+<td>No</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#streamid">StreamId</a></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td>Yes</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+<tr>
+<td><a href="#unitid">UnitId</a></td>
+<td><code>integer</code></td>
+<td>Optional</td>
+<td>No</td>
+<td>DataSelectionConfiguration (this schema)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> All of the following <em>requirements</em> need to be fulfilled.</p>
+<h2 id="requirement-1">Requirement 1</h2>
+<ul>
+<li><a href=""></a> – <code>#/definitions/EdgeConfigurationBase</code></li>
+</ul>
+<h2 id="requirement-2">Requirement 2</h2>
+<p><code>object</code> with following properties:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BitMap</code></td>
+<td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>ConversionFactor</code></td>
+<td>number</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>ConversionOffset</code></td>
+<td>number</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>DataTypeCode</code></td>
+<td>integer</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>RegisterOffset</code></td>
+<td>integer</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>RegisterType</code></td>
+<td></td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>ScanRate</code></td>
+<td>integer</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>Selected</code></td>
+<td>boolean</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>StreamId</code></td>
+<td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>UnitId</code></td>
+<td>integer</td>
+<td>Optional</td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/Configuration/Schemas/Modbus_DataSelection_schema.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

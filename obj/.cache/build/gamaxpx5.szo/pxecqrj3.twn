@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Disaster recovery </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Disaster recovery ">
+    <meta name="generator" content="docfx 2.50.0.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="disasterRecovery">
+<h1 id="disaster-recovery" sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="5" sourceendlinenumber="5">Disaster recovery</h1>
+
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="7" sourceendlinenumber="7">If a device with Edge Data Store installed fails, use the following procedures to recover data from the failed device and restore it to a new device. The disaster recovery process is similar for both Windows and Linux systems and includes the following steps:</p>
+<ul sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="9" sourceendlinenumber="13">
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="9" sourceendlinenumber="9">Back up the EDS data from the failed device to another location</li>
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="10" sourceendlinenumber="10">Install EDS on a new device. For instructions, see <a class="xref" href="../Installation/Install%20Edge%20Data%20Store.html" data-raw-source="[Install Edge Data Store](xref:InstallEdgeDataStore)" sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="10" sourceendlinenumber="10">Install Edge Data Store</a>.</li>
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="11" sourceendlinenumber="11">Move the backed-up data to the new device</li>
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="12" sourceendlinenumber="12">Restore the backed-up data files to the new device</li>
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="13" sourceendlinenumber="13">Reenter credentials</li>
+</ul>
+<h2 id="windows-recovery" sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="15" sourceendlinenumber="15">Windows recovery</h2>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="17" sourceendlinenumber="17">Use the following procedures to recover EDS data from a Windows device.</p>
+<h3 id="create-a-backup-of-eds-data-from-the-failed-device" sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="19" sourceendlinenumber="19">Create a backup of EDS data from the failed device</h3>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="21" sourceendlinenumber="21"><strong>Prerequisite:</strong> Administrative access on the device is needed to successfully restore on Windows system.</p>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="23" sourceendlinenumber="23">To create a backup of data from the failed device, perform the following steps:</p>
+<ol sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="25" sourceendlinenumber="36">
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="25" sourceendlinenumber="25">If your device is still able to boot, verify that Edge Data Store service has stopped. Use the Windows Task Manager to stop the Edge Data Store service.</li>
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="26" sourceendlinenumber="34"><p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="26" sourceendlinenumber="26">Locate the storage and configuration files.</p>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="28" sourceendlinenumber="28"><strong>Note:</strong> Windows storage and configuration files are stored in the following locations:</p>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="30" sourceendlinenumber="30"> <em>C:\ProgramData\OSIsoft\EdgeDataStore\Configuration</em></p>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="32" sourceendlinenumber="32"> <em>C:\ProgramData\OSIsoft\EdgeDataStore\Storage</em></p>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="34" sourceendlinenumber="34"> The ProgramData folder is typically hidden; to view it, go to the <strong>View</strong> tab in <strong>Windows Explorer</strong> and select the <strong>Hidden Items</strong> check box.</p>
+</li>
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="36" sourceendlinenumber="36"><p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="36" sourceendlinenumber="36">Create a zip or tar file containing the storage and configuration directories, and move it to a USB device or other safe location. File transfer can be done with WinSCP, SFTP, or external device.</p>
+</li>
+</ol>
+<h3 id="delete-default-storage-and-configuration-folders" sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="38" sourceendlinenumber="38">Delete default storage and configuration folders</h3>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="40" sourceendlinenumber="40">When EDS is installed on the new device, the new system has a default configuration. Perform the following steps to delete the default storage and configuration folders on the new device:</p>
+<ol sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="42" sourceendlinenumber="43">
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="42" sourceendlinenumber="42">Use the Windows Task Manager to stop the Edge Data Store service.    </li>
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="43" sourceendlinenumber="43">Once the service has stopped, navigate to the <em>C:\ProgramData\OSIsoft\EdgeDataStore</em> directory, and delete the default storage and configuration folders from the new device.</li>
+</ol>
+<h3 id="restore-backed-up-data-files" sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="45" sourceendlinenumber="45">Restore backed up data files</h3>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="47" sourceendlinenumber="47">To restore the data files on the new device, perform the following steps:</p>
+<ol sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="49" sourceendlinenumber="53">
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="49" sourceendlinenumber="51"><p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="49" sourceendlinenumber="49">Copy or unzip the backup storage and configuration files into the <em>C:\ProgramData\OSIsoft\EdgeDataStore</em> directory.</p>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="51" sourceendlinenumber="51"><strong>Note:</strong> The C: drive may not be the default drive letter of your system. Refer to My Computer, This PC, or open a command prompt to verify the default drive letter.</p>
+</li>
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="53" sourceendlinenumber="53"><p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="53" sourceendlinenumber="53">Use the Windows Task Manager to restart the Edge Data Store service.</p>
+</li>
+</ol>
+<h3 id="reenter-credentials" sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="55" sourceendlinenumber="55">Reenter credentials</h3>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="57" sourceendlinenumber="57">All credentials are encrypted for security purposes, so they cannot be copied or transferred. After the the storage and configuration files are copied to the new system, and the service has started, perform the following steps to enter credentials:</p>
+<ol sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="59" sourceendlinenumber="60">
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="59" sourceendlinenumber="59">Reenter the credentials for the operating system using API calls. </li>
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="60" sourceendlinenumber="60">After updating, restart the Edge Data Store service. </li>
+</ol>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="62" sourceendlinenumber="62">The new EDS device runs as the previous device, and contains all the data up to the point when the previous device failed.</p>
+<h2 id="linux-recovery" sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="64" sourceendlinenumber="64">Linux recovery</h2>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="66" sourceendlinenumber="66">Use the following procedures to recover EDS data from a Linux device.</p>
+<h3 id="create-a-backup-of-eds-data-from-the-failed-device-1" sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="68" sourceendlinenumber="68">Create a backup of EDS data from the failed device</h3>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="70" sourceendlinenumber="70">To create a backup of data from the failed device, perform the following steps:</p>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="72" sourceendlinenumber="72"><strong>Prerequisite:</strong> Root access on the Linux device is required.</p>
+<ol sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="74" sourceendlinenumber="90">
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="74" sourceendlinenumber="78"><p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="74" sourceendlinenumber="74">If your device is still able to boot, open a terminal window and verify that Edge Data Store service has stopped using the following command: </p>
+<pre sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="76" sourceendlinenumber="78"><code>sudo systemctl stop osisoft.edgedatastore
+</code></pre></li>
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="80" sourceendlinenumber="86"><p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="80" sourceendlinenumber="80">Locate the storage and configuration files.</p>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="82" sourceendlinenumber="82"><strong>Note:</strong> Linux storage and configuration files are stored in the following locations:</p>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="84" sourceendlinenumber="84"> <em>/usr/share/OSIsoft/EdgeDataStore/Configuration</em></p>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="86" sourceendlinenumber="86"> <em>/usr/share/OSIsoft/EdgeDataStore/Storage</em></p>
+</li>
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="88" sourceendlinenumber="90"><p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="88" sourceendlinenumber="88">Create a zip or tar file containing the storage and configuration directories, and move it to a USB device or other safe location. Use WinSCP, SFTP, or the external device to transfer the file.</p>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="90" sourceendlinenumber="90"><strong>Note:</strong> Using the <em>cp</em> command may result in a change in file ownership to the current user. </p>
+</li>
+</ol>
+<h3 id="move-the-files-to-the-new-device" sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="92" sourceendlinenumber="92">Move the files to the new device</h3>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="94" sourceendlinenumber="94">When EDS is installed on the new device, the new system has a default configuration. Perform the following steps to copy the backed up storage and configuration folders to the new device: </p>
+<ol sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="96" sourceendlinenumber="102">
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="96" sourceendlinenumber="100"><p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="96" sourceendlinenumber="96">Open a terminal window and stop the Edge Data Store service using the following command:</p>
+<pre sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="98" sourceendlinenumber="100"><code>sudo systemctl stop osisoft.edgedatastore
+</code></pre></li>
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="102" sourceendlinenumber="102"><p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="102" sourceendlinenumber="102">Once the service has stopped, navigate to the <em>/usr/share/OSIsoft/EdgeDataStore</em> directory and extract the zip or tar file in that directory using WinSCP, SFTP, or external device.</p>
+</li>
+</ol>
+<h3 id="restore-backed-up-data-files-1" sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="104" sourceendlinenumber="104">Restore backed up data files</h3>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="106" sourceendlinenumber="106">To restore the data files on the new device, perform the following steps:</p>
+<ol sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="108" sourceendlinenumber="123">
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="108" sourceendlinenumber="108">Delete the default storage and configuration folders from the <em>/usr/share/OSIsoft/EdgeDataStore</em> directory.</li>
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="109" sourceendlinenumber="109">Copy or unzip the backup storage and configuration files into the EdgeDataStore directory.</li>
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="110" sourceendlinenumber="110">If the ownership of the two directories does not match, update it to <em>edgedatastore</em> for the user and group. </li>
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="111" sourceendlinenumber="115"><p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="111" sourceendlinenumber="111">Start the Edge Data Store service with the following command:</p>
+<pre sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="113" sourceendlinenumber="115"><code>sudo systemctl start osisoft.edgedatastore
+</code></pre></li>
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="117" sourceendlinenumber="123"><p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="117" sourceendlinenumber="117">Verify that EDS is running with the following command:</p>
+<pre sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="119" sourceendlinenumber="121"><code>sudo systemctl status osisoft.edgedatastore
+</code></pre><p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="123" sourceendlinenumber="123"><strong>Note:</strong> Default directory permissions are set to 755, and each subsequent file is 644. If you do not use tar it is possible to have permission issues with the recovery files. Tar matches via string name rather than the account ID/UID.</p>
+</li>
+</ol>
+<h3 id="reenter-credentials-1" sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="126" sourceendlinenumber="126">Reenter credentials</h3>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="128" sourceendlinenumber="128">All credentials are encrypted for security purposes, so they cannot be copied or transferred. After the the storage and configuration files are copied to the new system, and the service has started, perform the following steps to enter credentials:</p>
+<ol sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="130" sourceendlinenumber="131">
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="130" sourceendlinenumber="130">Re-enter the credentials for the operating system using API calls. </li>
+<li sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="131" sourceendlinenumber="131">After updating, restart the Edge Data Store service. </li>
+</ol>
+<p sourcefile="V1/Troubleshooting/DisasterRecovery.md" sourcestartlinenumber="133" sourceendlinenumber="133">The new EDS device runs as the previous device, and contains all the data up to the point when the previous device failed.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/Troubleshooting/DisasterRecovery.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Health endpoints configuration </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Health endpoints configuration ">
+    <meta name="generator" content="docfx 2.50.0.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="HealthEndpointsConfiguration1-0">
+<h1 id="health-endpoints-configuration">Health endpoints configuration</h1>
+
+<p>To monitor the status of Edge Data Store, configure health information egress for its components to an OMF endpoint capable of receiving health messages. Health data is transmitted at a one minute interval.</p>
+<h2 id="configure-system-health-endpoints">Configure system health endpoints</h2>
+<p>Complete the following steps to configure system health endpoints:</p>
+<ol>
+<li>Using any text editor, create a JSON file containing system health endpoints.<ul>
+<li>For content structure, see <a href="#system-health-endpoints-example">System health endpoints example</a>.  </li>
+</ul>
+</li>
+<li>Update the parameters as needed. For a table of all available parameters, see <a href="#parameters">Parameters</a>.</li>
+<li>Save the file with the name <em>System_HealthEndpoints.config.json</em>.</li>
+<li><p>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/System/HealthEndpoints</code>, updating the port number if needed.</p>
+<p> Example using curl (run this command from the same directory where the file is located):</p>
+<pre><code class="lang-bash">curl -v -d &quot;@System_HealthEndpoints.json&quot; -H &quot;Content-Type: application/json&quot; http://localhost:5590/api/v1/configuration/System/HealthEndpoints
+</code></pre></li>
+</ol>
+<h2 id="parameters">Parameters</h2>
+<p>The following parameters are available for configuring system health endpoints.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Buffering</strong></td>
+<td>Optional</td>
+<td>reference</td>
+<td>No</td>
+<td>Sets the buffering type for messages to this endpoint. <br> Options are memory, disk, or none. The default is none.</td>
+</tr>
+<tr>
+<td><strong>ClientId</strong></td>
+<td>Optional</td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The Client ID used for authentication to OSIsoft Cloud Services.</td>
+</tr>
+<tr>
+<td><strong>ClientSecret</strong></td>
+<td>Optional</td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The Client Secret used for authentication to OSIsoft Cloud Services.</td>
+</tr>
+<tr>
+<td><strong>Endpoint</strong></td>
+<td>Required</td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The URL of the ingress point which accepts OMF health messages.</td>
+</tr>
+<tr>
+<td><strong>Id</strong></td>
+<td>Optional</td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the health endpoint configuration. <br> The ID can be any alphanumeric string; for example, Endpoint1. If you do not specify an ID, Edge Data Store generates one automatically.</td>
+</tr>
+<tr>
+<td><strong>MaxBufferSizeMB</strong></td>
+<td>Optional</td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The limit on the maximum megabytes of data to buffer for messages to this endpoint if an integer is &gt; 0. This parameter is useful if you want to limit memory or disk usage growth in the event of disconnection to the endpoint. If the buffer is full, old messages will be discarded for new messages. The default is 0.</td>
+</tr>
+<tr>
+<td><strong>Password</strong></td>
+<td>Optional</td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The password used for authentication to PI Web API OMF endpoint.</td>
+</tr>
+<tr>
+<td><strong>UserName</strong></td>
+<td>Optional</td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The user name used for authentication to PI Web API OMF endpoint.</td>
+</tr>
+<tr>
+<td><strong>ValidateEndpointCertificate</strong></td>
+<td>Optional</td>
+<td><code>Boolean</code></td>
+<td>No</td>
+<td>The OSIsoft Adapter validates the endpoint certificate if set to true (recommended). If set to false, the OSIsoft Adapter accepts any endpoint certificate. OSIsoft strongly recommends using disabled endpoint certificate validation for testing purposes only.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="system-health-endpoints-example">System health endpoints example</h2>
+<pre><code class="lang-json">[{
+        &quot;endpoint&quot;: &quot;https://&lt;pi web api server&gt;/piwebapi/omf/&quot;,
+        &quot;UserName&quot;: &quot;&lt;username&gt;&quot;,
+        &quot;Password&quot;: &quot;&lt;password&gt;&quot;,
+        &quot;buffering&quot;: &quot;none&quot;,
+        &quot;maxBufferSizeMB&quot;: 0
+    },
+    {
+        &quot;Endpoint&quot;: &quot;https://&lt;OCS OMF endpoint&gt;&quot;,
+        &quot;ClientId&quot;: &quot;&lt;clientid&gt;&quot;,
+        &quot;ClientSecret&quot;: &quot;&lt;clientsecret&gt;&quot;,
+        &quot;buffering&quot;: &quot;disk&quot;,
+        &quot;maxBufferSizeMB&quot;: 0
+    }
+]
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/V1/Configuration/System health endpoints configuration_1-0.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
