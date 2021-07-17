@@ -94,3 +94,7 @@ The OMF specific elements of the file structure are defined in the following tab
 | *Ticks*    | The time in milliseconds (tick count) for UTC DateTime when determined message would be written to disk.  |
 | *Guid*     | The unique GUID for each request/response pair.     |
 | *Req/Res*  | Whether the message was HTTP request or response.   |
+
+## Additional resources
+
+For information about specific log messages and possible resolutions, refer to the [OSIsoft Customer Portal](https://my.osisoft.com/).
