@@ -6,11 +6,15 @@ uid: disasterRecovery
 
 If a device with Edge Data Store installed fails, use the following procedures to recover data from the failed device and restore it to a new device. The disaster recovery process is similar for both Windows and Linux systems and includes the following steps:
 
-- Back up the EDS data from the failed device to another location
+- Back up the EDS data from the failed device to another location.
+
 - Install EDS on a new device. For instructions, see [Install Edge Data Store](xref:InstallEdgeDataStore).
-- Move the backed-up data to the new device
-- Restore the backed-up data files to the new device
-- Reenter credentials
+
+- Move the backed-up data to the new device.
+
+- Restore the backed-up data files to the new device.
+
+- Reenter credentials.
 
 ## Windows recovery
 
@@ -23,6 +27,7 @@ Use the following procedures to recover EDS data from a Windows device.
 To create a backup of data from the failed device, perform the following steps:
 
 1. If your device is still able to boot, verify that Edge Data Store service has stopped. Use the Windows Task Manager to stop the Edge Data Store service.
+
 2. Locate the storage and configuration files.
 
    **Note:** Windows storage and configuration files are stored in the following locations:
@@ -46,6 +51,7 @@ To create a backup of data from the failed device, perform the following steps:
 When EDS is installed on the new device, the new system has a default configuration. Perform the following steps to delete the default storage and configuration folders on the new device:
 
 1. Use the Windows Task Manager to stop the Edge Data Store service.	
+
 2. Once the service has stopped, navigate to the _C:\ProgramData\OSIsoft\EdgeDataStore_ directory, and delete the default storage and configuration folders from the new device.
 
 ### Restore backed up data files
@@ -63,6 +69,7 @@ To restore the data files on the new device, perform the following steps:
 All credentials are encrypted for security purposes, so they cannot be copied or transferred. After the the storage and configuration files are copied to the new system, and the service has started, perform the following steps to enter credentials:
 
 1. Reenter the credentials for the operating system using API calls. 
+
 2. After updating, restart the Edge Data Store service. 
 	
 The new EDS device runs as the previous device, and contains all the data up to the point when the previous device failed.
@@ -118,8 +125,11 @@ When EDS is installed on the new device, the new system has a default configurat
 To restore the data files on the new device, perform the following steps:
 
 1. Delete the default storage and configuration folders from the _/usr/share/OSIsoft/EdgeDataStore_ directory.
+
 2. Copy or unzip the backup storage and configuration files into the EdgeDataStore directory.
+
 3. If the ownership of the two directories does not match, update it to _edgedatastore_ for the user and group. 
+
 4. Start the Edge Data Store service with the following command:
 
 	  ```
@@ -139,6 +149,7 @@ To restore the data files on the new device, perform the following steps:
 All credentials are encrypted for security purposes, so they cannot be copied or transferred. After the the storage and configuration files are copied to the new system, and the service has started, perform the following steps to enter credentials:
 
 1. Re-enter the credentials for the operating system using API calls. 
+
 2. After updating, restart the Edge Data Store service. 
 
 The new EDS device runs as the previous device, and contains all the data up to the point when the previous device failed.

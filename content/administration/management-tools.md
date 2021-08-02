@@ -8,7 +8,7 @@ Edge Data Store and adapters can be configured with either the EdgeCmd utility, 
 
 ## EdgeCmd utility
 
-The EdgeCmd utility enables EDS and adapter configuration on both Linux and Windows operating systems. For more information on using the EdgeCmd utility, see the [EdgeCmd utility help](https://osisoft.github.io/EdgeCmd-Docs/content/index.html).
+The EdgeCmd utility enables EDS and adapter configuration on both Linux and Windows operating systems. For more information on using the EdgeCmd utility, see the [EdgeCmd utility help](https://docs.osisoft.com/bundle/edgecmd/page/index.html).
 
 ## REST tools
 

@@ -16,7 +16,7 @@ To prepare OCS to receive OMF messages from EDS, create an OMF connection in OCS
    
 2. Create an **OMF** type **Connection**.
    
-   The connection should link the created client to an existing [namespace](https://ocs-docs.osisoft.com/Content_Portal/Documentation/Management/Account_Namespace_1.html) where the data will be stored.
+   The connection should link the created client to an existing [namespace](https://docs.osisoft.com/bundle/ocs/page/set-up/namespaces/namespaces-concept.html)) where the data will be stored.
    The **OMF Endpoint** URL for the connection will be used as the egress configuration *Endpoint* property.
 
 ## PI Server
@@ -28,7 +28,7 @@ To prepare a PI Server to receive OMF messages from EDS, a PI Web API OMF endpoi
     - The account used in an egress configuration needs permissions to create AF elements, element templates, and PI points.
 2. Configure PI Web API to use *Basic* authentication.
 
- For complete steps, as well as best practices and recommendations, see the [PI Web API User Guide](https://livelibrary.osisoft.com/LiveLibrary/web/pub.xql?c=t&action=home&pub=web-api-v12&lang=en#addHistory=true&filename=GUID-D49D9A09-B47E-4FF7-A9D3-B7C1FEA5E681.xml&docid=GUID-D807EF71-7F37-43DB-A357-EF03CCD001F1&inner_id=&tid=&query=&scope=&resource=&toc=false&eventType=lcContent.loadDocGUID-D807EF71-7F37-43DB-A357-EF03CCD001F1) on Live Library.
+ For complete steps, as well as best practices and recommendations, see the [PI Web API User Guide](https://docs.osisoft.com/bundle/pi-web-api/page/pi-web-api.html) on Live Library.
 
 **Note:**  The certificate used by PI Web API must be trusted by the device running EDS, otherwise the egress configuration *ValidateEndpointCertificate* property needs to be set to `false`. This can be the case with a **self-signed certificate**, which should only be used for testing purposes.
 
