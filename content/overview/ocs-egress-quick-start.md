@@ -18,7 +18,7 @@ Complete the following steps to create an OMF connection in OCS:
 
   The connection should link the client to an existing namespace where the data will be stored. The **OMF Endpoint** URL for the connection is used as the value for the _Endpoint_ property in the egress configuration.
 
-  For complete steps, as well as best practices and recommendations, see the [OSIsoft Cloud Services documentation](https://ocs-docs.osisoft.com/Content_Portal/Documentation/OSIsoft_Cloud_Services.html).
+  For complete steps, as well as best practices and recommendations, see the [OSIsoft Cloud Services documentation](https://docs.osisoft.com/bundle/ocs/page/ocs-content-portal-overview.html).
 
 ## Create a periodic egress configuration
 
