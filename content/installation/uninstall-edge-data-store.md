@@ -14,7 +14,7 @@ Perform the following steps to remove EDS from a Windows device:
 
     The configuration, data, and log files are not removed by the uninstall process.
 
-2. Optional: To remove all data stored in the Edge Storage component, all configuration files, and all log files, delete the directory _C:\ProgramData\OSIsoft\EdgeDataStore_.
+1. Optional: To remove all data stored in the Edge Storage component, all configuration files, and all log files, delete the directory _C:\ProgramData\OSIsoft\EdgeDataStore_.
 
 ## Uninstall from Linux
 
@@ -29,7 +29,7 @@ Perform the following steps to remove EDS from a Linux device:
     
     The configuration, data, and log files are not removed by the uninstall process.
 
-2. Optional: To remove all data stored in the Edge Storage component, all configuration files, and all log files, delete the directory _/usr/share/OSIsoft/EdgeDataStore/_.
+1. Optional: To remove all data stored in the Edge Storage component, all configuration files, and all log files, delete the directory _/usr/share/OSIsoft/EdgeDataStore/_.
 
     Alternatively, run the following command:
 
