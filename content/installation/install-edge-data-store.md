@@ -26,7 +26,7 @@ Complete the following steps to download the Windows installation file:
 
        **Note:** Customer login credentials are required to access the portal.
 
-2. Copy the _EdgeDataStore.msi_ file to the file system of the device.
+1. Copy the _EdgeDataStore.msi_ file to the file system of the device.
 
 ### Run the installation wizard
 
@@ -34,19 +34,19 @@ Complete the following steps to install EDS on Windows using the installation wi
 
 1. To start the installer, double-click the _EdgeDataStore.msi_ file in Windows Explorer.
 
-2. In the OSIsoft Edge Data Store Setup window, click **Next**.
+1. In the OSIsoft Edge Data Store Setup window, click **Next**.
 
-3. Optional: Change the installation folder and port number (default port is 5590).
+1. Optional: Change the installation folder and port number (default port is 5590).
 
    **Note:** OSIsoft recommends you use the default installation path. Valid values for the port number are in the range of 1024 to 65535 and only an unused port number should be entered.  
     
-4. Optional: Add a system component for a Modbus TCP EDS adapter instance, an OPC UA EDS adapter instance, or both.
+1. Optional: Add a system component for a Modbus TCP EDS adapter instance, an OPC UA EDS adapter instance, or both.
 
     **Note:** The Modus TCP EDS adapter and the OPC UA EDS adapter are both installed, regardless of whether system components are added. Additional system components can be added for each adapter after installation.
 
-5. Click **Next** > **Install**.
+1. Click **Next** > **Install**.
     
-6. Click **Finish**.
+1. Click **Finish**.
 
 ### Run the installation from a command line
 
@@ -54,7 +54,7 @@ Complete the following steps to install EDS on Windows from the command line:
 
 1. Open a command window, by running as an administrator, and change the working directory to the location of the EdgeDataStore.msi file.
 
-2. Enter the msiexec command and specify parameters to run the installation, using the following example as a guide.
+1. Enter the msiexec command and specify parameters to run the installation, using the following example as a guide.
 
 ```
 Msiexec /quiet /i EdgeDataStore.msi PORT="<number>" INSTALLFOLDER="<file_path>" WIXUI_ENABLEMODBUS="1" WIXUI_ENABLEOPCUA="1"
@@ -63,10 +63,15 @@ Msiexec /quiet /i EdgeDataStore.msi PORT="<number>" INSTALLFOLDER="<file_path>" 
    Parameters:
    
    - /quiet – The installation runs in silent mode.
+
    - /i – This is the install flag.
+
    - PORT – Specify a port other than the default of 5590. If the "quiet" or "no ui" flag for msiexec is specified and the PORT value on the command line is not valid, the install will proceed with the default 5590 value.
+
    - INSTALLFOLDER – Specify an alternate location for the binary components other than the default location of "%PROGRAMFILES%\OSISoft\EdgeDataStore". OSIsoft recommends you use the default installation path.
+
    - WIXUI_ENABLEMODBUS – Add a system component to create a Modbus TCP EDS adapter instance. The value must be 1 for the component to be added.
+
    - WIXUI_ENABLEOPCUA - Add a system component to create a OPC UA EDS adapter instance. The value must be 1, for the component to be added.
 
     **Note:** If you do not use a parameter, the default value for the parameter is used. Property names must be in all capital letters, for example, PORT.
@@ -87,7 +92,7 @@ Complete the following steps to download the appropriate file for your device:
 
        **Note:** Customer login credentials are required to access the portal.
        
-2. Copy the Linux distribution file to the file system of the device.
+1. Copy the Linux distribution file to the file system of the device.
 
 ### Install on a Linux device
 
@@ -95,7 +100,7 @@ Complete the following steps to install EDS on Linux:
 
 1. Open a terminal window and change the working directory to the location of the distribution file.
 
-2. Run the apt install command for the distribution file appropriate to your operating system and processor. 
+1. Run the apt install command for the distribution file appropriate to your operating system and processor. 
 
     **Debian 9 or later (Intel/AMD 64-bit processors)**
 
@@ -119,18 +124,18 @@ Complete the following steps to install EDS on Linux:
 
     A validation check for prerequisites is performed. 
 
-3. If the install fails, run the following commands from the terminal window and try the install again:
+1. If the install fails, run the following commands from the terminal window and try the install again:
 
     ```bash
     sudo apt update
     sudo apt upgrade
     ```
 
-4. Optional: Change the port number (default port is 5590) and press Enter. 
+1. Optional: Change the port number (default port is 5590) and press Enter. 
 
    **Note:** If you specify an invalid value for the port, the install will proceed with the default value of 5590.
 
-5. Optional: Add a system component for a Modbus TCP EDS adapter instance, an OPC UA EDS adapter instance, or both, and press Enter.
+1. Optional: Add a system component for a Modbus TCP EDS adapter instance, an OPC UA EDS adapter instance, or both, and press Enter.
 
     **Note:** The Modus TCP EDS adapter and the OPC UA EDS adapter are both installed, regardless of whether system components are added. Additional system components can be added for each adapter after installation.
 
@@ -140,16 +145,20 @@ Complete the following steps to perform a silent install EDS on Linux with all d
 
 1. Open a terminal window and change the working directory to the location of the distribution file.
 
-2. Run the apt-get install command for the distribution file appropriate to your operating system and processor.
+1. Run the apt-get install command for the distribution file appropriate to your operating system and processor.
 
     ```bash
     sudo apt-get install -q -y ./Edgeinstallfile.deb < /dev/null
     ```
+
    Parameters:
    
    - -q – Specifies a silent install.
+
    - -y – Responds Yes to installing prerequisites.
+
    - _Edgeinstallfile.deb_ – The name of the distribution file.
+
    - < /dev/null – All defaults are used in the installation.
    
 ### Silent install on a Linux device with specified parameters
@@ -157,21 +166,24 @@ Complete the following steps to perform a silent install EDS on Linux with all d
  Complete the following steps to perform a silent install EDS on Linux using a parameter file to customize the installation:
  
  1. Create a file called _silent.ini_ with the following parameters on separate lines:
+
     - <port_number>
+
     - <Y/N> - Specifies whether to create a Modbus TCP EDS component.
+
     - <Y/N> - Specifies whether to create an OPCUA EDS component.
 
     For example:
 
-        ```
-        4567
-        Y
-        N
-        ```
+    ```
+    4567
+    Y
+    N
+    ```
  
- 2. Open a terminal window and change the working directory to the location of the distribution file.
+ 1. Open a terminal window and change the working directory to the location of the distribution file.
  
- 3. Run the apt-get install command for the distribution file appropriate to your operating system and processor.
+ 1. Run the apt-get install command for the distribution file appropriate to your operating system and processor.
 
     ```bash
     sudo apt-get install -q -y ./Edgeinstallfile.deb < silent.ini
@@ -179,7 +191,10 @@ Complete the following steps to perform a silent install EDS on Linux with all d
    Parameters:
    
    - -q – Specifies a silent install.
+
    - -y – Responds Yes to installing prerequisites.
+
    - _Edgeinstallfile.deb_ – The name of the distribution file.
+
    - < _silent.ini_ – The file with the installation properties.
 
