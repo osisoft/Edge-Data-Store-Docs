@@ -6,13 +6,17 @@ uid: edgeDocker
 
 Docker is a set of tools that can be used on Linux to manage application deployments. To use Docker, you must be familiar with the underlying technology and have determined that it is appropriate for your planned use of Edge Data Store. Docker is not a requirement to use EDS.
 
-The following examples describe how to create a Docker container for EDS. 
+Installing EDS using Docker is a two step process. First, create the docker image that includes EDS. Then run the container.
 
-## Create a Docker container for EDS
+## Create a Docker image for EDS
+
+The following procedure and examples describe how to create a Docker image for EDS. 
 
 1. Using the example appropriate for your operating system and processor, create the Dockerfile in the directory where you want to create and run the container. The file must be named Dockerfile.
-2. Copy the appropriate .tar.gz file to the same directory as the Dockerfile.
-3. Run the following command line in the same directory (sudo may be necessary):
+
+1. Copy the appropriate .tar.gz file to the same directory as the Dockerfile.
+
+1. Run the following command line in the same directory (sudo may be necessary):
 
 ```bash
 docker build -t edgedatastore .
@@ -57,7 +61,8 @@ Before running the Docker container, determine whether to store the data in the 
 Complete the following steps to run the container:
 
 1. Open command line.
-2. Type the following in the command line (sudo may be necessary):
+
+1. Type the following in the command line (sudo may be necessary):
 
 ```bash
 docker run -d --network host edgedatastore
@@ -70,7 +75,8 @@ Port 5590 is accessible from the host and you can make REST calls to EDS from ap
 Complete the following steps to run the container:
 
 1. Open a terminal window.
-2. Type the following in the command line (sudo may be necessary):
+
+1. Type the following in the command line (sudo may be necessary):
 
 ```bash
 docker run -d --network host -v /edgeds:/usr/share/OSIsoft/ edgedatastore
