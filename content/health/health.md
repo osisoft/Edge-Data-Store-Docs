@@ -6,6 +6,8 @@ uid: EdgeDataStoreHealth
 
 Edge Data Store and its components produce health information to provide insight into their status, which is critical for monitoring data collection. When configured, EDS transfers health information to OMF endpoints, including the types and containers that represent available health information. To enable this functionality, configure one or more health endpoints.
 
+EDS also produces diagnostic data. You can use diagnostic data to find more information about a particular component instance. Diagnostic data lives alongside the health data and you can egress it using a health endpoint and setting `EnableDiagnostics` to `true`. You can configure `EnableDiagnostics` in the system configuration. For more information on available adapter diagnostics data, see diagnostics.
+
 ## EDS adapter health
 
 The following health types and streams are created to reflect the health of EDS adapters.
