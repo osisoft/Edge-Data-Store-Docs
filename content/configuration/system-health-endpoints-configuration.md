@@ -24,10 +24,10 @@ Complete the following steps to configure system health endpoints:
 
 ## Parameters
 
-NOTE: 
-Parameters "Buffering" and "MaxBufferSizeMb" have been removed from the JSON. Configure buffering at (xref:BufferingConfiguration).
-(To Editor, this page should be very similar to this now https://github.com/osisoft/PI-Adapter/blob/main/shared-content/configuration/health-endpoints.md)
 The following parameters are available for configuring system health endpoints.
+
+NOTE: Parameters "Buffering" and "MaxBufferSizeMb" have been removed from the JSON. Configure buffering at (xref:BufferingConfiguration).
+(To Editor, this page should be very similar to this now https://github.com/osisoft/PI-Adapter/blob/main/shared-content/configuration/health-endpoints.md)
 
 | Parameter                                                   | Required  | Type     | Nullable | Description                                   |
 | ----------------------------------------------------------- | --------- | -------- | -------- | -------------------------------------------- |
