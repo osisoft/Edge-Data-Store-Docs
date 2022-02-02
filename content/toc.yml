@@ -56,7 +56,7 @@
     - topicUid: EdgeDataStoreDiagnostics
   - topicUid: EdgeDataStoreHealth
     items:
-    topicUid: HealthEndpointsConfiguration
+    - topicUid: HealthEndpointsConfiguration
   - topicUid: LoggingConfig
     items: 
     - topicUid: systemloggingConfiguration
