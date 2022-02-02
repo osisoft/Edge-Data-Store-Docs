@@ -104,7 +104,7 @@
   - topicUid: unitsOfMeasure
     items:
     - topicUid: SupportedUOM
-    - topicUid: Supported quantities
+    - topicUid: UomQuantities
     - topicUid: SdsUOMAPI
     - topicUid: SdsUOMQuantityAPI
   - topicUid: sdsCompression
