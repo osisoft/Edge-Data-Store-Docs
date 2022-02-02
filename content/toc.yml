@@ -49,7 +49,7 @@
     items:
     - topicUid: storageruntime
   - topicUid: egress
-     items:
+    items:
     - topicUid: PrepareEgressDestinations
     - topicUid: configureEgress
     - topicUid: EgressExecutionDetails
