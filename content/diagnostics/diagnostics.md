@@ -6,6 +6,8 @@ uid: EdgeDataStoreDiagnostics
 
 Edge Data Store and its components produce performance and system data for diagnostic purposes which is stored locally in the Storage component, and may be queried locally or egressed to PI Web API endpoints or the OSIsoft Cloud Services or both. Diagnostic data is always produced and saved; it cannot be disabled.
 
+All diagnostics streams will have an ID format of {prefix}{DeviceName}.{StreamId}. For example: APrefixLocalhost.Storage.default.default.Counts.
+
 Diagnostic data is stored within the _diagnostics_ namespace in Edge Storage. Local access to this data is available through SDS. For more information, see [Read data](xref:sdsReadingData).
 
 ## Egress diagnostics data through PeriodicEgressEndpoints
