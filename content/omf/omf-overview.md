@@ -12,7 +12,7 @@ The OMF application collects data from a data source and sends it to the Edge Da
 
 ## OMF endpoint
 
-The route to the OMF endpoint to the Edge Storage component is shown below. Replace _<port_number>_ with the port configured for your EDS system:
+The route to the OMF endpoint to the Edge Storage component is shown below. Replace `<port_number>` with the port configured for your EDS system:
 
 ```http
 Method: POST

@@ -4,7 +4,6 @@ uid: EgressExecutionDetails
 
 # Egress execution details
 
-
 After an egress endpoint is configured, data egress occurs periodically for that endpoint based on its configuration and independently from other endpoints. 
 
 **Note:** Only streams with a single, timeseries-based index can be egressed. 
@@ -16,10 +15,15 @@ Type, container, and data items are batched into one or more OMF messages for eg
 If egress fails with one of the following errors, EDS will retry the request up to five times:
 
 - TimeoutException
+
 - HttpRequestException
+
 - HttpStatusCode RequestTimeout (408)
+
 - HttpStatusCode BadGateway (502)
+
 - HttpStatusCode ServiceUnavailable (503)
+
 - HttpStatusCode GatewayTimeout (504)
 
 There is an increasing delay before each retry. The total time for all five retries is one minute; during which time, all other egress messages for this definition are queued. If a TimeoutException or HttpRequestException error still occurs at the fifth retry, the egress fails, and EDS waits five minutes before trying the whole process again. If one of the other errors still occurs at the fifth retry, the message fails and EDS sends the next message in the queue.

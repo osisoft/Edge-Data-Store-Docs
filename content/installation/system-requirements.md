@@ -4,7 +4,7 @@ uid: SystemRequirements
 
 # System requirements
 
-Edge Data Store is supported on a variety of platforms and processors. Install kits are available for the following platforms:
+Edge Data Store is supported on a variety of platforms and processors. Install kits are available for the  platforms listed in the following table.
 
 | Operating System | Installation Kit | Processor(s) |
 |-------------------|----------------------------------|-------------|

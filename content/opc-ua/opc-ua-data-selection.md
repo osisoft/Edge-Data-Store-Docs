@@ -8,15 +8,15 @@ When you add a data source, the OPC UA EDS adapter browses the entire OPC UA ser
 
 A default OPC UA data selection file will be created if there is no OPC UA data selection configuration, but a valid OPC UA data source exists.
 
-> **Note:** To avoid possibly expensive browse operations, OSIsoft recommends that you manually create a data selection file instead of generating the default data selection file. For more information, see [Data selection configuration](xref:OPCUADataSelectionConfiguration).
+ **Note:** Generating the default data selection file can tax system resources. To avoid possibly expensive browse operations, OSIsoft recommends that you manually create a data selection file instead of generating the default data selection file. For more information, see [Data selection configuration](xref:OPCUADataSelectionConfiguration).
 
-Complete the following steps in order for this default data selection file to be generated:
+To generate the default data selection file, follow these steps:
 
 1. Add an [OPC UA EDS adapter](xref:EdgeDataStoreConfiguration) with a unique ComponentId. 
 
   During the installation of Edge Data Store, enabling the OPC UA EDS adapter results in addition of a unique component that also satisfies this condition.
   
-2. Configure a valid [OPC UA data source](xref:opcUaOverview).
+1. Configure a valid [OPC UA data source](xref:opcUaOverview).
 
   Once you complete these steps, a default OPC UA data selection configuration file will be generated in the configuration directory for the corresponding platform.
   
@@ -28,7 +28,7 @@ Complete the following steps in order for this default data selection file to be
   Linux: /usr/share/OSIsoft/EdgeDataStore/Configuration/OpcUa1_DataSelection.json
   ```
 
-3. Copy the file to a different directory.
+1. Copy the file to a different directory.
 
   The contents of the file will look something like:
 
@@ -49,8 +49,9 @@ Complete the following steps in order for this default data selection file to be
   ]
   ```
 
-4. In a text editor, edit the file and change the value of any Selected key from false to true in order to transfer the OPC UA data to be stored in Edge Data Store. 
-5. In the same directory where you edited the file, run the following curl command:
+1. In a text editor, edit the file and change the value of any Selected key from false to true in order to transfer the OPC UA data to be stored in Edge Data Store. 
+
+1. In the same directory where you edited the file, run the following curl command:
 
   ```bash
   curl -i -d "@OpcUa1_DataSelection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection

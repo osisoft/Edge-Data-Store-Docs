@@ -10,13 +10,17 @@ For each instance of the Modbus TCP EDS adapter defined in system configuration,
 
 **Note:** Modbus TCP data source configurations cannot be modified manually. You must use the REST endpoints to add or edit the configuration.
 
-Complete the following steps to configure the Modbus TCP data source:
+To configure the Modbus TCP data source, follow these steps:
 
-1. Using any text editor, create a file that contains a Modbus TCP data source in JSON form. 
+1. Using any text editor, create a file that contains a Modbus TCP data source in JSON form.
+
     - For content structure, see [Modbus TCP data source examples](#modbus-tcp-data-source-examples). 
-2. Modify the parameters in the example to match your environment. For a table of all available parameters, see [Parameters for Modbus TCP data source](#parameters-for-modbus-tcp-data-source). 
-3. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is Modbus1, name the file _Modbus1Datasource.json_.
-4. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:<port_number>/api/v1/configuration/<EDS adapterId>/DataSource/`.
+
+1. Modify the parameters in the example to match your environment. For a table of all available parameters, see [Parameters for Modbus TCP data source](#parameters-for-modbus-tcp-data-source). 
+
+1. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is Modbus1, name the file `Modbus1Datasource.json`.
+
+1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:<port_number>/api/v1/configuration/<EDS adapterId>/DataSource/`.
 
 The following example shows the HTTPS request using curl, which must be run from the same directory where the file is located, and uses the adapter instance created during installation, which is Modbus1:
 
@@ -39,7 +43,6 @@ The following parameters are available for configuring a Modbus TCP data source.
 |**RequestTimeout**         | Optional          | number | No | Parameter to specify the time (in milliseconds) that Modbus TCP EDS adapter waits for a pending request before marking it as timeout and dropping the request. The default value is 10000 ms. The value must be a positive integer, there is no value range.|
 |**DelayBetweenRequests**   | Optional          | number | No | Parameter to specify the minimum time (in milliseconds) between two successive requests sent to the data source. The value ranges from 0 ms to 1000 ms. The default value is 0 ms.|
 |**MaxResponseDataLength**  | Optional          | number | No | Parameter to limit the maximum length (in bytes) of data that can be read within one transaction. This feature is provided to support devices that limit the number of bytes that can be returned. If there is no device limitation, the request length should be the maximum length of 250 bytes. The value ranges from 2 to 250. The default value is 250 ms.|
-
 
 ## Modbus TCP data source examples
 
