@@ -49,7 +49,7 @@ After you create the data source file, select the streams to store in EDS by con
 
    ```json
    [{
-           "Selected": "true",
+           "Selected": true,
            "UnitId": 1,
            "RegisterType": 3,
            "RegisterOffset": 1,
@@ -59,7 +59,7 @@ After you create the data source file, select the streams to store in EDS by con
            "ScanRate": 500
        },
        {
-           "Selected": "true",
+           "Selected": true,
            "UnitId": 1,
            "RegisterType": 3,
            "RegisterOffset": 2,
@@ -69,7 +69,7 @@ After you create the data source file, select the streams to store in EDS by con
            "ScanRate": 500
        },
        {
-           "Selected": "true",
+           "Selected": true,
            "UnitId": 1,
            "RegisterType": 3,
            "RegisterOffset": 3,
@@ -79,7 +79,7 @@ After you create the data source file, select the streams to store in EDS by con
            "ScanRate": 500
        },
        {
-           "Selected": "true",
+           "Selected": true,
            "UnitId": 1,
            "RegisterType": 3,
            "RegisterOffset": 4,
@@ -89,7 +89,7 @@ After you create the data source file, select the streams to store in EDS by con
            "ScanRate": 500
        },
        {
-           "Selected": "true",
+           "Selected": true,
            "UnitId": 1,
            "RegisterType": 3,
            "RegisterOffset": 5,
