@@ -6,16 +6,15 @@ uid: EdgeDataStoreDiagnostics
 
 Edge Data Store and its components produce performance and system data for diagnostic purposes which is stored locally in the Storage component, and may be queried locally or egressed to PI Web API endpoints or the OSIsoft Cloud Services or both. Diagnostic data is always produced and saved; it cannot be disabled.
 
-Diagnostic data is stored within the _diagnostics_ namespace in Edge Storage. Local access to this data is available through SDS. For more information, see [Read data](xref:sdsReadingData).
+Diagnostic data is stored within the `diagnostics` namespace in Edge Storage. Local access to this data is available through SDS. For more information, see [Read data](xref:sdsReadingData).
 
 ## Egress diagnostics data through PeriodicEgressEndpoints
 
-To egress diagnostics related data, Specify `diagnostics` as the NamespaceId in the periodic egress endpoint configuration. For details and instructions, see [Data egress configuration](xref:egress).
+To egress diagnostics related data, specify `diagnostics` as the NamespaceId in the periodic egress endpoint configuration. For details and instructions, see [Data egress configuration](xref:egress).
 
 ## Edge Data Store diagnostics
 
-The Diagnostics.System dynamic type includes these values which are logged in a stream with the ID System.Diagnostics.
-This diagnostic stream contains system-level information related to the host platform that Edge Data Store is running on.
+The `Diagnostics.System` dynamic type includes these values which are logged in a stream with the ID `System.Diagnostics`. This diagnostic stream contains system-level information related to the host platform that Edge Data Store is running on.
 
 | Type         | Property |  Description     |
 |--------|--------------|-----------------------------------|
@@ -40,7 +39,7 @@ Each EDS adapter of the Edge Data Store produces its own diagnostics streams.
 
 ### Stream count
 
-The Diagnostics.StreamCountEvent dynamic type includes these values, which are logged in a stream with the id {componentid}.StreamCount. The stream count and type count include only types and streams created for sequential data received from a data source.
+The `Diagnostics.StreamCountEvent` dynamic type includes these values, which are logged in a stream with the id `{DeviceName}.{componentid}.StreamCount`. The stream count and type count include only types and streams created for sequential data received from a data source.
 
 | Type         | Property |  Description     |
 |--------|--------------|-----------------------------------|
@@ -50,7 +49,7 @@ The Diagnostics.StreamCountEvent dynamic type includes these values, which are l
 
 ### IO rate
 
-The Diagnostics.Adapter.IORate dynamic type includes these values, which are logged in a stream with the id {componentid}.IORate. IO rate includes only sequential data collected from a data source.
+The `Diagnostics.Adapter.IORate` dynamic type includes these values, which are logged in a stream with the id `{DeviceName}.{componentid}.IORate`. IO rate includes only sequential data collected from a data source.
 
 | Type         | Property |  Description     |
 |--------|--------------|-----------------------------------|
@@ -59,7 +58,7 @@ The Diagnostics.Adapter.IORate dynamic type includes these values, which are log
 
 ### Error rate
 
-The Diagnostics.Adapter.ErrorRate dynamic type includes these values, and are logged in a stream with the id {componentid}.ErrorRate.
+The `Diagnostics.Adapter.ErrorRate` dynamic type includes these values, and are logged in a stream with the id `{DeviceName}.{componentid}.ErrorRate`.
 
 | Type         | Property |  Description     |
 |--------|--------------|-----------------------------------|
@@ -83,7 +82,7 @@ The Storage.default.default.Counts stream includes counts of the types, streams,
 
 ### Storage.default.diagnostics.Counts
 
-The Storage.default.default.Counts stream includes counts of the types, streams, and stream views of the diagnostics namespace.
+The `Storage.default.default.Counts` stream includes counts of the types, streams, and stream views of the diagnostics namespace.
 
 | Type         | Property |  Description     |
 |--------|--------------|-----------------------------------|
@@ -94,7 +93,7 @@ The Storage.default.default.Counts stream includes counts of the types, streams,
 
 ### Storage.Total.Counts
 
-The Storage.Totals.Counts stream includes counts of the types, streams, and stream views of all namespaces of the storage component.
+The `Storage.Totals.Counts` stream includes counts of the types, streams, and stream views of all namespaces of the storage component.
 
 | Type         | Property |  Description     |
 |--------|--------------|-----------------------------------|
