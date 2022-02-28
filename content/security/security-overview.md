@@ -7,11 +7,11 @@ Consider the following when determining Edge Data Store security practices.
 
 ## REST APIs
 
-EDS supports REST APIs for configuration, data reading (through SDS), and data writing (through OMF and SDS). EDS provides only localhost access to REST APIs, which means any code that reads or writes to the REST APIs must reside on the computer or device on which EDS is running. 
+EDS supports REST APIs for configuration, data reading through SDS, and data writing through OMF and SDS. EDS provides only localhost access to REST APIs, which means any code that reads or writes to the REST APIs must reside on the computer or device on which EDS is running. 
 
-REST access is through HTTP. The default port is 5590. The port number can be changed during installation, or during configuration after installation. URLs must be of the form http://<i></i>localhost:{port}/ or http://<i></i>127.0.0.1:{port}/. 
+REST access is through HTTP. The default port is 5590. The port number can be changed during installation, or during configuration after installation. URLs must be of the form `http://localhost:{port}/` or `http://127.0.0.1:{port}/`. 
 
-**Note:** Do not use the host's name or IP Address in the URL.
+**Note:** Do not use the host name or IP Address in the URL.
 
 **Note:** Docker users must use the "host" networking mode for the container. For information about using EDS with Docker, see [Install Edge Data Store using Docker](xref:edgeDocker).
 

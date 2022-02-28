@@ -7,11 +7,12 @@ uid: Enums
 Enums, or enumerated types, are variable types that have a limited set of possible values. The SDS read APIs support the following enums:
 
  - `SdsBoundaryType`
+
  - `SdsSearchMode`
 
 ## SdsBoundaryType
 
-The `SdsBoundaryType` enum defines how data on the boundary of queries is handled: around the start index for range value queries, and around the start and end index for window values. The following are valid `SdsBoundaryType` values:
+The `SdsBoundaryType` enum defines how data on the boundary of queries is handled: around the start index for range value queries, and around the start and end index for window values. The following table describes valid `SdsBoundaryType` values.
 
 | Boundary | Enumeration value | Operation |
 | -------  | ----------------- | --------- |
@@ -22,7 +23,7 @@ The `SdsBoundaryType` enum defines how data on the boundary of queries is handle
 
 ## SdsSearchMode
 
-The `SdsSearchMode` enum defines search behavior when seeking a stored event near a specified index. The following are valid values for `SdsSearchMode`:
+The `SdsSearchMode` enum defines search behavior when seeking a stored event near a specified index. The following table describes valid values for `SdsSearchMode`.
 
 | Mode  | Enumeration value | Operation |
 | ----- | ----------------- | --------- |

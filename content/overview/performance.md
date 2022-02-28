@@ -13,7 +13,9 @@ Use the following performance testing information to determine the appropriate h
 EDS performance test cases were divided into three categories based on commonly available, consumer grade and industrial grade devices. Several devices in each category were tested to validate performance expectations and the results of these tests are summarized below in terms of the maximum supported data stream count and data ingress rate for each category. 
 
 * Small devices (e.g., 1 core ARM CPU, 512 MB RAM, Linux): 30 data streams, 30 events / sec
+
 * Medium devices (e.g., 2 core ARM or Intel CPU, 2 GB RAM, Linux or Windows): 300 data streams, 300 events / sec
+
 * Large devices (e.g., 4 core ARM or Intel CPU, 4 GB RAM, Linux or Windows): 3,000 data streams, 3,000 events / sec
 
 It is possible that lower performance results may be realized on other devices with similar hardware and software configurations. Other applications running on the same device may also affect actual performance of EDS. The data stream counts and throughput rates shown above are the upper limits of what is supported for EDS for each device category.
@@ -25,9 +27,12 @@ EDS can ingress data using the EDS Modbus TCP adapter, the EDS OPC UA adapter, a
 When selecting the device to host EDS, there are a few general principles that arose from the performance testing:
 
 1. EDS adapters use less CPU than custom OMF applications when using the Edge Data Store OMF endpoint. In general, across all hardware platforms, CPU usage for EDS Modbus TCP and EDS OPC UA adapters is roughly half of that used by custom OMF applications at the same event rates.
-2. RAM usage is largely determined by the number of data streams written to. More data streams collected in EDS by any data ingress method require additional RAM (in addition to requiring more storage space).
-3. EDS is slightly more efficient running on Windows than Linux on similar devices. Both CPU and RAM usage are slightly lower when EDS is running on Windows 10 than on Linux when comparing them on the AMD64/Intel x64 devices, which support both operating systems. 
-4. SSD storage is recommended for maximum performance and reliability. EDS performance testing was completed on a variety of storage media - SSDs, HDDs, eMMC, and SD cards. EDS performance testing was successful using all storage technologies but for maximum performance and reliability, SSD storage is the best choice.
+
+1. RAM usage is largely determined by the number of data streams written to. More data streams collected in EDS by any data ingress method require additional RAM (in addition to requiring more storage space).
+
+1. EDS is slightly more efficient running on Windows than Linux on similar devices. Both CPU and RAM usage are slightly lower when EDS is running on Windows 10 than on Linux when comparing them on the AMD64/Intel x64 devices, which support both operating systems. 
+
+1. SSD storage is recommended for maximum performance and reliability. EDS performance testing was completed on a variety of storage media - SSDs, HDDs, eMMC, and SD cards. EDS performance testing was successful using all storage technologies but for maximum performance and reliability, SSD storage is the best choice.
 
 ## Periodic Egress Performance
 

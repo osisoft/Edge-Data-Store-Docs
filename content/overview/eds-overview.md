@@ -11,17 +11,23 @@ While not a replacement for a PI System, EDS augments the PI System by providing
 EDS provides the following capabilities:
 
 - OMF data ingress
+
 - Edge connectivity through Modbus TCP and OPC UA
+
 - Configurable data storage
+
 - Data egress to PI Web API and OCS
+
 - REST API to enable custom applications for visualization and analytics on Edge Data Store on either Linux, Windows, or both in a variety of programming languages
 
 ## Edge Data Store architecture
+
 The following diagram depicts the relationships of architectural components to one another in the Edge Data Store:
 
 ![EDS architecture](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/EDSArchitecture.jpg "EDS architecture")
 
 ## Edge Data Store data flow
+
 Edge Data Store can egress data to both PI Data Archive and OSIsoft Cloud Services. For more information, see [PI egress quick start](xref:piEgressQuickStart) and [OCS egress quick start](xref:ocsEgressQuickStart).
 
 The following diagram depicts the flow of data in Edge Data Store:
@@ -29,6 +35,7 @@ The following diagram depicts the flow of data in Edge Data Store:
 ![EDS data flow](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/EDSOverview1.jpg "EDS data flow")
 
 ## Edge Data Store components
+
 The following diagram depicts the relationship of key functions to relevant components of the Edge Data Store:
 
 ![EDS components](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/EDSOverview2.jpg "EDS components")
@@ -45,17 +52,18 @@ During installation of Edge Data Store, you can choose to install either an EDS 
 
 Edge Data Store is composed of components, and is designed to allow additional EDS adapters at a later point.
 
-
 ## Local data read and write access
 
 You can access all data in Edge Data Store by using the Sequential Data Store REST API. You can use this data for local applications that perform analytics or visualization. For more information, see [SDS quick start](xref:sdsQuickStart).
 
 ### Example EDS visualization application
+
 The following diagram depicts the flow of data from a customer visualization application into Edge Data Store, via either OMF or SDS REST calls:
 
 ![EDS Visualization](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/EDSVisualization.jpg "EDS Visualization")
 
 ### Example EDS analytics application
+
 The following diagram depicts the flow of data from a customer analytics application into Edge Data Store, via either OMF or SDS REST calls:
 
 ![EDS Analytics](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/EDSAnalytics.jpg "EDS Analytics")
