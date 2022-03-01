@@ -19,7 +19,7 @@ The Adapters static type includes these properties and servers as a root AF elem
 
 ### EDS adapter component health
 
-The Adapter Health static type includes the following properties, which are logged in a stream with the ID {machinename}.{componentid}. The stream is linked to root AF element (Adapters).
+The Adapter Health static type includes the following properties, which are logged in a stream with the ID `{machinename}.{componentid}`. The stream is linked to root AF element (Adapters).
 
 | Property     | Type     | Description      |
 |--------------|----------|------------------|
@@ -30,7 +30,7 @@ The Adapter Health static type includes the following properties, which are logg
 
 ### Device status
 
-The DeviceStatus dynamic type includes the following values, which are logged in a stream with the ID Adapters.{machinename}.{componentid}.DeviceStatus. The stream is linked to {machinename}.{componentid} static stream.
+The DeviceStatus dynamic type includes the following values, which are logged in a stream with the ID Adapters.`{machinename}.{componentid}.DeviceStatus`. The stream is linked to `{machinename}.{componentid}` static stream.
 
 | Property     | Type     | Description      |
 |--------------|----------|------------------|
@@ -39,7 +39,7 @@ The DeviceStatus dynamic type includes the following values, which are logged in
 
 ### Next health message expected
 
-The NextHealthMessageExpected dynamic type includes the following values, which are logged in a stream with the ID Adapters.{machinename}.{componentid}.NextHealthMessageExpected. The stream is linked to {machinename}.{componentid} static stream. Heart beat message is expected once a minute.
+The NextHealthMessageExpected dynamic type includes the following values, which are logged in a stream with the ID `Adapters.{machinename}.{componentid}.NextHealthMessageExpected`. The stream is linked to `{machinename}.{componentid}` static stream. Heart beat message is expected once a minute.
 
 | Property     | Type     | Description      |
 |--------------|----------|------------------|
@@ -59,7 +59,7 @@ The Storage static type includes the following properties and servers as a root 
 
 ### Storage health
 
-The Storage Health static type includes the following properties, which are logged in a stream with the ID {machinename}.Storage. The stream is linked to root AF element (Storage).
+The Storage Health static type includes the following properties, which are logged in a stream with the ID `{machinename}.Storage`. The stream is linked to root AF element (Storage).
 
 | Property     | Type     | Description      |
 |--------------|----------|------------------|
@@ -70,7 +70,7 @@ The Storage Health static type includes the following properties, which are logg
 
 ### Storage device status
 
-The DeviceStatus dynamic type includes the following values, which are logged in a stream with the ID Storage.{machinename}.DeviceStatus. The stream is linked to {machinename}.Storage static stream.
+The DeviceStatus dynamic type includes the following values, which are logged in a stream with the ID Storage.`{machinename}.DeviceStatus`. The stream is linked to `{machinename}.Storage` static stream.
 
 | Property     | Type     | Description      |
 |--------------|----------|------------------|
@@ -79,7 +79,7 @@ The DeviceStatus dynamic type includes the following values, which are logged in
 
 ### Storage next health message expected
 
-The NextHealthMessageExpected dynamic type includes the following values, which are logged in a stream with the ID Storage.{machinename}.NextHealthMessageExpected. The stream is linked to {machinename}.Storage static stream. Heart beat message is expected once a minute.
+The NextHealthMessageExpected dynamic type includes the following values, which are logged in a stream with the ID `Storage.{machinename}.NextHealthMessageExpected`. The stream is linked to `{machinename}.Storage` static stream. Heart beat message is expected once a minute.
 
 | Property     | Type     | Description      |
 |--------------|----------|------------------|

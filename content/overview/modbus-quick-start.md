@@ -14,7 +14,7 @@ The adapter instance requests data from the Modbus TCP device and then the devic
 
 ## Configure a Modbus TCP data source
 
-To configure a data source to connect a Modbus TCP device to the Modbus TCP EDS adapter instance, perform the following steps
+To configure a data source to connect a Modbus TCP device to the Modbus TCP EDS adapter instance, follow these steps:
 
 1. Using a text editor, copy the example below to create a file in JSON format to describe the location of the Modbus TCP data source. 
 
@@ -30,9 +30,11 @@ To configure a data source to connect a Modbus TCP device to the Modbus TCP EDS 
    }
    ```
 
-2. Modify the values in the example to match your environment, including the IP address and port for the Modbus data source.
-3. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is Modbus1, name the file _Modbus1DataSource.json_. 
-4. Run the following curl script from the same directory where the file is located, updating the file name and destination in the script if needed. 
+1. Modify the values in the example to match your environment, including the IP address and port for the Modbus data source.
+
+1. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is `Modbus1`, name the file `Modbus1DataSource.json`. 
+
+1. Run the following curl script from the same directory where the file is located, updating the file name and destination in the script if needed. 
 
 
    ```bash
@@ -101,11 +103,12 @@ After you create the data source file, select the streams to store in EDS by con
    ]
    ```
 
-2. Modify the values in the example to match your environment.
-3. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is Modbus1, name the file _Modbus1DataSelection.json_. 
-4. Run the following curl script from the same directory where the file is located, updating the file name and the endpoint URL in the script if needed.
+1. Modify the values in the example to match your environment.
+
+1. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is 1, name the file `Modbus1DataSelection.json`. 
+
+1. Run the following curl script from the same directory where the file is located, updating the file name and the endpoint URL in the script if needed.
 
    ```bash
    curl -d "@Modbus1Dataselection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Dataselection
    ```
-

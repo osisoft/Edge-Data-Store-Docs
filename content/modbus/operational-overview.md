@@ -10,9 +10,11 @@ Once an instance of the Modbus TCP EDS adapter is defined in the system componen
 
 For an Modbus TCP EDS adapter instance to start data collection, configure the adapter by defining the following:
 
-- Data source: Provide the connection information for the Modbus data source.
-- Data selection: Specify the Modbus TCP items to which the adapter instance should subscribe for data.
-- Logging: Set up the logging behavior for the adapter instance.
+- Data source - Provide the connection information for the Modbus data source.
+
+- Data selection - Specify the Modbus TCP items to which the adapter instance should subscribe for data.
+
+- Logging - Set up the logging behavior for the adapter instance.
 
 For more details, see [Data source configuration](xref:ModbusTCPDataSourceConfiguration) and [Data selection configuration](xref:ModbusTCPDataSelectionConfiguration). For more information on how to configure logging, see [Component-level logging configuration](xref:ComponentLoggingConfiguration).
 
@@ -30,7 +32,7 @@ The Modbus TCP EDS adapter collects data from the Modbus TCP devices at the poll
 
 ## Streams by Modbus TCP EDS adapter
 
-For each data selection configuration, the Modbus TCP EDS adapter creates a stream with two properties. The properties are described in the following table:
+For each data selection configuration, the Modbus TCP EDS adapter creates a stream with two properties. The properties are described in the following table.
 
 | Property name | Data type | Description |
 |---------------|-----------|-------------|
@@ -49,7 +51,8 @@ Stream ID is a unique identifier for each stream created by the adapter for the 
 
 Because the Modbus TCP EDS adapter sends data directly to EDS, buffering capability is not provided. EDS acts as a buffer before the data is egressed to either a PI Server or OCS. The amount of data stored in EDS is controlled by the following storage parameters:
 
- - `StreamStorageLimitMb`
- - `StreamStorageTargetMb`
+ - **StreamStorageLimitMb**
+
+ - **StreamStorageTargetMb**
 
 For more information about configuring data storage in EDS, see [Storage runtime configuration](xref:storageruntime).

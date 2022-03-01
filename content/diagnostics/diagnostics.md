@@ -14,8 +14,7 @@ To egress diagnostics related data, Specify `diagnostics` as the NamespaceId in 
 
 ## Edge Data Store diagnostics
 
-The Diagnostics.System dynamic type includes these values which are logged in a stream with the ID System.Diagnostics.
-This diagnostic stream contains system-level information related to the host platform that Edge Data Store is running on.
+The Diagnostics.System dynamic type includes these values which are logged in a stream with the ID System.Diagnostics. This diagnostic stream contains system-level information related to the host platform that Edge Data Store is running on.
 
 | Type         | Property |  Description     |
 |--------|--------------|-----------------------------------|

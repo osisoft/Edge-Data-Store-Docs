@@ -6,9 +6,9 @@ uid: sdsTableFormat
 
 Results of a query can be organized into tables by directing the form parameter to return a table. Two forms of table are available: table and header table. Apply the table format to any read that returns multiple values and summaries by setting the form variable to specify a table or a table with headers.
 
-When the form parameter is specified as ``table``, ``?form=table``, events are returned in row column form. Results include a collection named Columns that lists column name and type and a collection named Rows containing a collection of rows matching the order of the columns.
+When the form parameter is specified as `table`, `?form=table`, events are returned in row column form. Results include a collection named Columns that lists column name and type and a collection named Rows containing a collection of rows matching the order of the columns.
 
-Specifying a form of type ``table-headers``, ``?form=tableh``, results in a collection where the Rows collection contains a column header list.
+Specifying a form of type `table-headers`, `?form=tableh`, results in a collection where the Rows collection contains a column header list.
 
 The following is a request to retrieve values using the window parameters:
 
@@ -17,7 +17,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
    ?startIndex=2017-04-01T07:00:00Z&endIndex=2017-04-01T07:10:00Z
  ```
 
-The following response would be returned from the above code:
+The following is an example of a response for the code above:
 
 ```json
 Content-Type: application/json
@@ -75,7 +75,7 @@ Content-Type: application/json
 ]
 ```
 
-* To retrieve the results in table format, add the form variable and specify ``table``.
+* To retrieve the results in table format, add the form variable and specify `table`.
 
 ```text
 GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
@@ -159,7 +159,7 @@ Content-Type: application/json
 }
 ```
 
-* To retrieve the results in table format with column headers, add the form variable and specify ``tableh``.
+* To retrieve the results in table format with column headers, add the form variable and specify `tableh`.
 
 ```text
 GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data

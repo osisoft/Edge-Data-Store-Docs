@@ -8,13 +8,17 @@ To monitor the status of Edge Data Store, configure health information egress fo
 
 ## Configure system health endpoints
 
-Complete the following steps to configure system health endpoints:
+To configure system health endpoints, follow these steps:
 
 1. Using any text editor, create a JSON file containing system health endpoints.
-    - For content structure, see [System health endpoints example](#system-health-endpoints-example).  
-2. Update the parameters as needed. For a table of all available parameters, see [Parameters](#parameters).
-3. Save the file with the name _System_HealthEndpoints.config.json_.
-4. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/System/HealthEndpoints`, updating the port number if needed.
+
+    - For content structure, see [System health endpoints example](#system-health-endpoints-example).
+
+1. Update the parameters as needed. For a table of all available parameters, see [Parameters](#parameters).
+
+1. Save the file with the name _System_HealthEndpoints.config.json_.
+
+1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/System/HealthEndpoints`, updating the port number if needed.
 
     Example using curl (run this command from the same directory where the file is located):
 

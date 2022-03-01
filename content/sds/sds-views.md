@@ -18,65 +18,66 @@ The following table shows the SdsStreamView fields. Fields that are not included
 
 | Property     | Type                   | Optionality | Searchable | Details |
 |--------------|------------------------|-------------|------------|---------|
-| Id           | String                 | Required    | Yes        |Identifier for referencing the stream view. |
-| Name         | String                 | Optional    | Yes        |Friendly name. |
-| Description  | String                 | Optional    | Yes        |Description text. |
-| SourceTypeId | String                 | Required    | Yes        |Identifier of the SdsType of the SdsStream. |
-| TargetTypeId | String                 | Required    | Yes        |Identifier of the SdsType to convert events to. |
-| Properties   | IList\<SdsStreamViewProperty\> | Optional    | Yes, with limitations  |Property level mapping. |
+| `Id`           | String                 | Required    | Yes        |Identifier for referencing the stream view. |
+| `Name`         | String                 | Optional    | Yes        |Friendly name. |
+| `Description`  | String                 | Optional    | Yes        |Description text. |
+| `SourceTypeId` | String                 | Required    | Yes        |Identifier of the SdsType of the SdsStream. |
+| `TargetTypeId` | String                 | Required    | Yes        |Identifier of the SdsType to convert events to. |
+| `Properties`   | IList\<SdsStreamViewProperty\> | Optional    | Yes, with limitations  |Property level mapping. |
 
 ## Rules for the stream view identifier (SdsStreamView.Id)
 
-The type identifier, SdsStreamView.ID, has the following requirements:
+The type identifier, `SdsStreamView.ID`, has the following requirements:
 
- - Is not case sensitive.
- - Can contain spaces.
- - Cannot contain forward slash ("/").
- - Contains a maximum of 100 characters.
+- Is not case sensitive.
 
-## Properties / SdsStreamViewProperty
+- Can contain spaces.
 
-The SdsStreamView Properties collection provides detailed instructions for mapping of event properties. Each SdsStreamViewProperty in the properties collection defines the mapping of an event’s property. SdsStreamView properties are required only when property mapping is not straightforward. Additionally, if you do not want a type property mapped, it is not necessary to create an SdsStreamView property for it.
+- Cannot contain forward slash ("/").
 
-The following table shows the required and optional SdsStreamViewProperty fields.
+- Contains a maximum of 100 characters.
+
+## Properties / `SdsStreamViewProperty`
+
+The SdsStreamView Properties collection provides detailed instructions for mapping of event properties. Each `SdsStreamViewProperty` in the properties collection defines the mapping of an event’s property. `SdsStreamView` properties are required only when property mapping is not straightforward. Additionally, if you do not want a type property mapped, it is not necessary to create an `SdsStreamView` property for it.
+
+The following table shows the required and optional `SdsStreamViewProperty` fields.
 
 | Property | Type    | Optionality | Details |
 |----------|---------|-------------|---------|
-| SourceId | String  | Required    | Identifier of the SdsTypeProperty from the source SdsType Properties list. |
-| TargetId | String  | Required    | Identifier of the SdsTypeProperty from the target SdsType Properties list. |
-| SdsStreamView  | SdsStreamView | Optional    | Additional mapping instructions for derived types. |
+| `SourceId` | String  | Required    | Identifier of the `SdsTypeProperty` from the source SdsType Properties list. |
+| `TargetId` | String  | Required    | Identifier of the `SdsTypeProperty` from the target SdsType Properties list. |
+| `SdsStreamView`  | SdsStreamView | Optional    | Additional mapping instructions for derived types. |
 
 The SdsStreamView field supports nested properties.
 
-## SdsStreamViewMap
+## `SdsStreamViewMap`
 
-When an SdsStreamView is added, SDS defines a plan mappingand stores it as an SdsStreamViewMap. The SdsStreamViewMap provides a detailed property-by-property definition of the mapping.
+When an SdsStreamView is added, SDS defines a plan mapping and stores it as an `SdsStreamViewMap`. The SdsStreamViewMap provides a detailed property-by-property definition of the mapping.
 
-The following table shows the SdsStreamViewMap fields. The SdsStreamViewMap cannot be written to SDS, it can only be
+The following table shows the `SdsStreamViewMap` fields. The `SdsStreamViewMap` cannot be written to SDS, it can only be
 retrieved from SDS, so required and optional have no meaning.
 
 | Property     | Type                     | Optionality  | Details |
 |--------------|--------------------------|--------------|---------|
-| SourceTypeId | String                   | Required     | Identifier of the SdsType of the SdsStream. |
-| TargetTypeId | String                   | Required     | Identifier of the SdsType to convert events to. |
-| Properties   | IList\<SdsStreamViewMapProperty\>| Optional     | Property level mapping. |
+| `SourceTypeId` | String                   | Required     | Identifier of the SdsType of the SdsStream. |
+| `TargetTypeId` | String                   | Required     | Identifier of the SdsType to convert events to. |
+| `Properties`   | IList\<SdsStreamViewMapProperty\>| Optional     | Property level mapping. |
 
-### Properties / SdsStreamViewMapProperty
+### Properties / `SdsStreamViewMapProperty`
 
-The SdsStreamViewMapProperty is similar an SdsStreamViewProperty but adds a mode detailing one or more actions taken on
-the property.
+The `SdsStreamViewMapProperty` is similar an `SdsStreamViewProperty` but adds a mode detailing one or more actions taken on the property.
 
-The following table shows the SdsStreamViewMapProperty fields. The SdsStreamViewMap cannot be written to SDS; it can only be
-retrieved from SDS, so required and optional have no meaning.
+The following table shows the `SdsStreamViewMapProperty` fields. The `SdsStreamViewMap` cannot be written to SDS; it can only be retrieved from SDS, so required and optional have no meaning.
 
 | Property     | Type        | Details |
 |--------------|-------------|---------|
-| SourceTypeId | String      | Identifier of the SdsType of the SdsStream. |
-| TargetTypeId | String      | Identifier of the SdsType to convert events to. |
-| Mode         | SdsStreamViewMode | Aggregate of actions applied to the properties. SdsStreamViewModes are combined via binary arithmetic. |
-| SdsStreamViewMap   | SdsStreamViewMap  | Mapping for derived types. |
+| `SourceTypeId` | String      | Identifier of the SdsType of the SdsStream. |
+| `TargetTypeId` | String      | Identifier of the SdsType to convert events to. |
+| `Mode`         | SdsStreamViewMode | Aggregate of actions applied to the properties. `SdsStreamViewModes` are combined via binary arithmetic. |
+| `SdsStreamViewMap`   | SdsStreamViewMap  | Mapping for derived types. |
 
-The available SdsStreamViewModes are shown in the following table.
+The available `SdsStreamViewModes` are shown in the following table.
 
 | Name                   | Value  | Description |
 |------------------------|--------|-------------|
@@ -92,7 +93,7 @@ The available SdsStreamViewModes are shown in the following table.
 
 Stream views can be used to change the type defining a stream. You cannot modify the SdsType; types are immutable. But you can map a stream from its current type to a new type.
 
-To update a stream's type, define an SdsStreamView and PUT the stream view to the following:
+To update a stream's type, define an `SdsStreamView` and PUT the stream view to the following:
 
 ```text
 PUT api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Type?streamViewId={streamViewId}

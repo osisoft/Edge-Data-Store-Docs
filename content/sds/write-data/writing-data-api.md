@@ -8,12 +8,12 @@ The following example API calls show different methods for writing data.
 
 ## Example type, stream, and data
 
-The descriptions of the following API methods contain example requests and responses in JSON to highlight usage and specific behaviors. The following type, stream, and data are used in the examples:
+The descriptions of the following API methods contain example requests and responses in JSON to highlight usage and specific behaviors. The following type, stream, and data are used in the examples.
 
 **Example type**  
-``SimpleType`` is an SdsType with a single index and two additional properties. This type is defined in Python and Javascript:
+`SimpleType` is an SdsType with a single index and two additional properties. This type is defined in Python and Javascript:
 
-###### Python
+### Python
 
 ```python
 class State(Enum):
@@ -41,7 +41,7 @@ class SimpleType(object):
     self.__measurement = measurement
 ```
 
-###### JavaScript
+### JavaScript
 
 ```javascript
 var State =
@@ -59,10 +59,10 @@ var SimpleType = function () {
 ```
 
 **Example stream**  
-``Simple`` is an SdsStream of type ``SimpleType``.
+`Simple` is an SdsStream of type `SimpleType`.
 
 **Example data**  
-``Simple`` has stored values as follows:
+`Simple` has stored values as follows:
       11/23/2017 12:00:00 PM: Ok  0
       11/23/2017  1:00:00 PM: Ok 10
       11/23/2017  2:00:00 PM: Ok 20
@@ -83,10 +83,10 @@ POST api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``string streamId``  
+`string streamId`  
 The stream identifier. 
 
 **Request body**  
@@ -135,13 +135,13 @@ PATCH api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``string streamId``  
+`string streamId`  
 The stream identifier.
 
-``string selectExpression``  
+`string selectExpression`  
 Comma-separated list of strings that indicates the event fields to be changed in stream events.  
 
 **Request body**  
@@ -174,11 +174,12 @@ This request will only change the `Measurement` value at the specified event ind
 Patching is used to patch the events of the selected fields for one or more events in the stream. Only the fields indicated in `selectExpression` are modified. The events to be modified are indicated by the index value of each entry in the collection. If there is a problem patching any individual event, the entire operation is rolled back and the error will indicate the `streamId` and `index` of the problem.  
 *****
 
-## ``Remove Values``
+## `Remove Values`
 
 There are two options for specifying which events to remove from a stream:
 
 * [Index Collection](#removeindexcollection): One or more indexes can be specified in the request.
+
 * [Window](#removewindow): A window can be specified with a start index and end index.
 
 <a name="removeindexcollection"></a>
@@ -195,20 +196,19 @@ DELETE api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``string streamId``  
+`string streamId`  
 The stream identifier.  
 
-``string index``  
+`string index`  
 One or more indexes of events to remove.
 
 **Response**  
 The response includes a status code.
 
-**Note:**  
-If any individual event fails to be removed, the entire operation is rolled back and no events are removed. The streamId and index that caused the issue are included in the error response. If you attempt to remove events at indexes that have no events, an error is returned. If this occurs, you can use [Window](#removewindow) request format to remove any events from a specified ‘window’ of indexes, which will not return an error if no data is found.
+**Note:** If any individual event fails to be removed, the entire operation is rolled back and no events are removed. The streamId and index that caused the issue are included in the error response. If you attempt to remove events at indexes that have no events, an error is returned. If this occurs, you can use [Window](#removewindow) request format to remove any events from a specified window of indexes, which will not return an error if no data is found.
 
 <a name="removewindow"></a>
 
@@ -224,16 +224,16 @@ DELETE api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``string streamId``  
+`string streamId`  
 The stream identifier.  
 
-``string startIndex``  
+`string startIndex`  
 The index defining the beginning of the window.
 
-``string endIndex``  
+`string endIndex`  
 The index defining the end of the window.  
 
 **Response**  
@@ -242,7 +242,7 @@ The response includes a status code.
 **Note:** If any individual event fails to be removed, the entire operation is rolled back and no removes are done.
 *****
 
-## ``Replace Values``
+## `Replace Values`
 
 Writes one or more events over existing events in the specified stream.
 
@@ -254,10 +254,10 @@ PUT api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``string streamId``  
+`string streamId`  
 The stream identifier.  
 
 **Request body**
@@ -280,10 +280,10 @@ PUT api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``string streamId``  
+`string streamId`  
 The stream identifier.  
 
 **Request body**  
@@ -292,6 +292,4 @@ A serialized list of one or more events of the stream type.
 **Response**  
 The response includes a status code.
 
-**Note:** This request performs an insert or a replace depending on whether an event already exists at the event indexes. If any item fails to write, the entire operation is rolled back and no events are written to the stream. The index that caused the issue is included in the error response.
-*****
-  
+**Note:** This request performs an insert or a replace depending on whether an event already exists at the event indexes. If any item fails to write, the entire operation is rolled back and no events are written to the stream. The index that caused the issue is included in the error response. 

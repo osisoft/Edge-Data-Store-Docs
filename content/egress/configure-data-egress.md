@@ -12,13 +12,17 @@ Once the OCS or PI Server destinations are prepared to receive OMF messages, con
 
 ## Create egress endpoints
 
-Complete the following procedure to create new egress endpoints:
+To create new egress endpoints, follow these steps:
 
 1. Create a JSON file containing one or more egress endpoints.
+
     - For content structure, see the following [Examples](#examples). 
-2. Update the parameters as needed. For a table of all available parameters, see [Parameters](#parameters).
-3. Save the JSON file with the name _PeriodicEgressEndpoints.json_ to any directory on the device where Edge Data Store is installed.
-4. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints/`
+
+1. Update the parameters as needed. For a table of all available parameters, see [Parameters](#parameters).
+
+1. Save the JSON file with the name `PeriodicEgressEndpoints.json` to any directory on the device where Edge Data Store is installed.
+
+1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints/`
 
 Example using cURL, which must be run from the directory where the JSON file is saved:
 
@@ -26,9 +30,11 @@ Example using cURL, which must be run from the directory where the JSON file is 
 curl -d "@PeriodicEgressEndpoints.config.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints"
 ```
 
-**Note** The @ symbol is a required prefix for the above command.
+**Note** The @ symbol is a required prefix for this command.
 
 ### Parameters
+
+The following table lists egress parameters.
 
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
@@ -158,6 +164,8 @@ The following are valid egress configuration examples.
 ```
 
 ### REST URLs
+
+The following table shows examples of REST URLS.
 
 | Relative URL                                              | HTTP verb | Action               |
 |-----------------------------------------------------------|-----------|----------------------|

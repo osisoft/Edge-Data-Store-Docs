@@ -3,6 +3,7 @@ uid: scalePerformance
 ---
 
 # Design considerations
+
 Before installing Edge Data Store, determine your storage and throughput needs and select devices that meet those needs.
 
 ## Edge Storage role
@@ -21,14 +22,14 @@ The Edge Storage component provides an appropriate level of storage performance 
 
 * For larger devices with faster processors, memory and storage, this could increase up to 3,000 events per second. The Edge Storage component is designed for small devices in Edge scenarios: if high throughput or large stream counts are required, OSIsoft Cloud Services or PI Data Archive are more appropriate choices.
 
-
 ## Sizing of Edge devices
 
 For EDS, there are three supported tiers of performance:
 
-
 * Small Devices: 1 Core CPU, 512 MB RAM. 30 events/second, 200 streams total.
+
 * Medium Devices: 2 Core CPU, 1 GB RAM. 300 events/second, 2000 streams total.
+
 * Large Devices: 4 Core CPU, 4 GB RAM, SSD storage. 3000 events/second, 3000 streams total.
 
 These performance metrics assume solid state storage, which is commonly used in Edge devices.
