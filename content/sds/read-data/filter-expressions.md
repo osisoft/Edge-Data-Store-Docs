@@ -215,7 +215,11 @@ The following table shows supported TimeSpan functions for use within a filter e
 For the following examples, assume that the SDS Type event includes a field named **TimeSpanValue** of type `TimeSpan`:
 
 - `years(TimeSpanValue) eq 1`
+
 - `days(TimeSpanValue) eq 22`
+
 - `hours(TimeSpanValue) eq 1`
+
 - `minutes(TimeSpanValue) eq 1`
+
 - `seconds(TimeSpanValue) eq 2`

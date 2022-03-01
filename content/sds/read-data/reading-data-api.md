@@ -11,9 +11,9 @@ The following example API calls show different methods for reading data.
 Many of the API methods described below contain example requests and responses in JSON to highlight usage and specific behaviors. The following type, stream, and data are used in the examples:
 
 **Example type**  
-``SimpleType`` is an SdsType with a single index. This type is defined in Python and Javascript:
+`SimpleType` is an SdsType with a single index. This type is defined in Python and Javascript:
 
-###### Python
+### Python
 
 ```python
 class State(Enum):
@@ -41,7 +41,7 @@ class SimpleType(object):
     self.__measurement = measurement
 ```
 
-###### JavaScript
+### JavaScript
 
 ```javascript
 var State =
@@ -59,10 +59,10 @@ var SimpleType = function () {
 ```
 
 **Example stream**  
-``Simple`` is an SdsStream of type ``SimpleType``.
+`Simple` is an SdsStream of type `SimpleType`.
 
 **Example data**  
-``Simple`` has stored values as follows:
+`Simple` has stored values as follows:
     11/23/2017 12:00:00 PM: Ok  0
     11/23/2017  1:00:00 PM: Ok 10
     11/23/2017  2:00:00 PM: Ok 20
@@ -72,7 +72,7 @@ var SimpleType = function () {
 All times are represented at offset 0, GMT.
 *****
 
-## ``Get First Value``
+## `Get First Value`
 
 Returns the first value in the stream. If no values exist in the stream, null is returned.
 
@@ -83,17 +83,17 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/Firs
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``string streamId``  
+`string streamId`  
 The stream identifier.
 
 **Response**  
 The response includes a status code and a response body containing a serialized event.
 *****
 
-## ``Get Last Value``
+## `Get Last Value`
 
 Returns the last value in the stream. If no values exist in the stream, null is returned.
 
@@ -104,17 +104,17 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/Last
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``string streamId``  
+`string streamId`  
 The stream identifier.
 
 **Response**  
 The response includes a status code and a response body containing a serialized event.
 *****
 
-## ``Find Distinct Value``
+## `Find Distinct Value`
 
 Returns a stored event based on the specified `index` and `searchMode`.
 
@@ -126,17 +126,17 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``string streamId``  
+`string streamId`  
 The stream identifier.
 
-``string index``  
+`string index`  
 The index.
 
-``string searchMode``  
-The [SdsSearchMode](xref:Enums#sdssearchmode); the default is ``exact``.
+`string searchMode`  
+The [SdsSearchMode](xref:Enums#sdssearchmode); the default is `exact`.
 
 **Response**  
 The response includes a status code and a response body containing a serialized collection with one event. Depending on the request `index` and `searchMode`, it is possible to have an empty collection returned.
@@ -148,7 +148,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
     ?index=2017-11-23T13:00:00Z&searchMode=Next
 ```
 
-The request has an index that matches the index of an existing event, but since a `SdsSearchMode` of ``next`` was specified, the response contains the next event in the stream after the specified index:
+The request has an index that matches the index of an existing event, but since a `SdsSearchMode` of `next` was specified, the response contains the next event in the stream after the specified index:
 
 **Response body**
 
@@ -191,7 +191,7 @@ Content-Type: application/json
 
 *****
 
-## ``Get Values``
+## `Get Values`
 
 Returns a collection of *stored* values at indexes based on request parameters.
 SDS supports three ways of specifying which stored events to return:
@@ -214,13 +214,13 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``string streamId``  
+`string streamId`  
 The stream identifier.
 
-``string filter``  
+`string filter`  
 The filter expression (see [Filter expressions](xref:sdsFilterExpressions)).
 
 **Response**  
@@ -263,7 +263,7 @@ Content-Type: application/json
 
 ### `Range`
 
-Returns a collection of stored values as determined by a ``startIndex`` and ``count``. Additional optional parameters specify the direction of the range, how to handle events near or at the start index, whether to skip a certain number of events at the start of the range, and how to filter the data.
+Returns a collection of stored values as determined by a `startIndex` and `count`. Additional optional parameters specify the direction of the range, how to handle events near or at the start index, whether to skip a certain number of events at the start of the range, and how to filter the data.
 
 **Request**
 
@@ -274,28 +274,28 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``string streamId``  
+`string streamId`  
 The stream identifier.
 
-``string startIndex``  
+`string startIndex`  
 Index identifying the beginning of the series of events to return.
 
-``int count``  
+`int count`  
 The number of events to return.
 
-``int skip``  
+`int skip`  
 Optional value specifying the number of events to skip at the beginning of the result.
 
-``bool reversed``  
+`bool reversed`  
 Optional specification of the direction of the request. By default, range requests move forward from startIndex, collecting events after startIndex from the stream. A reversed request will collect events before startIndex from the stream.
 
-``SdsBoundaryType boundaryType``  
+`SdsBoundaryType boundaryType`  
 Optional SdsBoundaryType specifies the handling of events at or near startIndex.
 
-``string filter``  
+`string filter`  
 Optional filter expression.
 
 **Response**  
@@ -459,34 +459,34 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data?
  ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``string streamId``  
+`string streamId`  
 The stream identifier.
 
-``string startIndex``  
+`string startIndex`  
 Index bounding the beginning of the series of events to return.
 
-``string endIndex``  
+`string endIndex`  
 Index bounding the end of the series of events to return.
 
-``int count``  
+`int count`  
 Optional maximum number of events to return. If `count` is specified, a `continuationToken` must also be specified.
 
-``SdsBoundaryType boundaryType``  
+`SdsBoundaryType boundaryType`  
 Optional [SdsBoundaryType](xref:Enums#sdsboundarytype) specifies handling of events at or near the start and end indexes.
 
-``SdsBoundaryType startBoundaryType``  
+`SdsBoundaryType startBoundaryType`  
 Optional [SdsBoundaryType](xref:Enums#sdsboundarytype) specifies the first value in the result in relation to the start index. If `startBoundaryType` is specified, `endBoundaryType` must be specified.
 
-``SdsBoundaryType endBoundaryType``  
+`SdsBoundaryType endBoundaryType`  
 Optional [SdsBoundaryType](xref:Enums#sdsboundarytype) specifies the last value in the result in relation to the end index. If `startBoundaryType` is specified, `endBoundaryType` must be specified.
 
-``string filter``  
+`string filter`  
 Optional filter expression (see [Filter expressions](xref:sdsFilterExpressions)).
 
-``string continuationToken``  
+`string continuationToken`  
 Optional token used to retrieve the next page of data. If `count` is specified, a `continuationToken` must also be specified.
 
 **Response**  
@@ -670,6 +670,7 @@ Returns a collection of values based on request parameters. The stream's read ch
 SDS supports two ways of specifying which interpolated events to return:  
 
 * [Index Collection](#getvaluesindexcollection): One or more indexes can be passed to the request to retrieve events at specific indexes.
+
 * [Interval](#getvaluesinterpolatedinterval): An interval can be specified with a start index, end index, and count. This will return the specified count of events evenly spaced from start index to end index.
 
 <a name="getvaluesindexcollection"></a>
@@ -686,20 +687,20 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``string streamId``  
+`string streamId`  
 The stream identifier.
 
-``string index``  
+`string index`  
 One or more indexes.
 
 **Response**  
 The response includes a status code and a response body containing a serialized collection of events. Depending on the specified indexes and read characteristics of the stream, it is possible to have less events returned than specified indexes. An empty collection can also be returned.
 
 **Example**  
-Consider a stream of type ``Simple`` with the default ``InterpolationMode`` of ``Continuous`` and ``ExtrapolationMode`` of ``All``. In the following request, the specified index matches an existing stored event:
+Consider a stream of type `Simple` with the default `InterpolationMode` of `Continuous` and `ExtrapolationMode` of `All`. In the following request, the specified index matches an existing stored event:
 
 ```text
 GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data/
@@ -730,7 +731,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data/
     Interpolated?index=2017-11-23T13:30:00Z
 ```
 
-Because the index is a valid type for interpolation and the stream has an ``InterpolationMode`` of ``Continuous``, this request receives a response with an event interpolated at the specified index:
+Because the index is a valid type for interpolation and the stream has an `InterpolationMode` of `Continuous`, this request receives a response with an event interpolated at the specified index:
 
 **Response body**
   
@@ -747,7 +748,7 @@ Content-Type: application/json
 ]
 ```
 
-Consider a stream of type ``Simple`` with an ``InterpolationMode`` of ``Discrete`` and ``ExtrapolationMode`` of ``All``. In the following request, the specified indexes only match two existing stored events:
+Consider a stream of type `Simple` with an `InterpolationMode` of `Discrete` and `ExtrapolationMode` of `All`. In the following request, the specified indexes only match two existing stored events:
 
 ```text
 GET api/v1/Tenants/default}/Namespaces/{namespaceId}/Streams/Simple/Data
@@ -790,25 +791,25 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``string streamId``  
+`string streamId`  
 The stream identifier.
 
-``string startIndex``  
+`string startIndex`  
 The index defining the beginning of the window.
 
-``string endIndex``  
+`string endIndex`  
 The index defining the end of the window.  
 
-``int count``  
+`int count`  
 The number of events to return. Read characteristics of the stream determine how the events are constructed.
 
 **Response**  
 The response includes a status code and a response body containing a serialized collection of events. Depending on the read characteristics and input parameters, it is possible for a collection to be returned with less events than specified in the count.
 
-For a stream, named Simple, of type ``Simple`` for the following request:
+For a stream, named Simple, of type `Simple` for the following request:
 
 ```text
 GET api/v1/Tenants/default}/Namespaces/{namespaceId}/Streams/Simple/Data/
@@ -844,13 +845,13 @@ Content-Type: application/json
 
 *****
 
-## ``Get Summaries``
+## `Get Summaries`
 
 Returns summary intervals between a specified start and end index.
 
 Index types that cannot be interpolated do not support summary requests. Strings are an example of indexes that cannot be interpolated. Summaries are not supported for streams with compound indexes. Interpolating between two indexes that consist of multiple properties is not defined and results in non-determinant behavior.
 
-Summary values supported by `SdsSummaryType` enum:
+The following table shows summary values supported by `SdsSummaryType` enum.
 
 | Summary                            | Enumeration value |
 | ---------------------------------- | ----------------- |
@@ -875,25 +876,25 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``string streamId``  
+`string streamId`  
 The stream identifier.
 
-``string startIndex``  
+`string startIndex`  
 The start index for the intervals.
 
-``string endIndex``  
+`string endIndex`  
 The end index for the intervals.
 
-``int count``  
+`int count`  
 The number of intervals requested.
 
-``string filter``  
+`string filter`  
 Optional filter expression (see [Filter expressions](xref:sdsFilterExpressions)).
 
-``string streamViewId``  
+`string streamViewId`  
 Optional stream view identifier.
 
 **Response**  
@@ -1033,7 +1034,7 @@ Content-Type: application/json
 
 *****
 
-## ``Get Sampled Values``
+## `Get Sampled Values`
 
 Returns data sampled by intervals between a specified start and end index.
 
@@ -1049,34 +1050,34 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``string streamId``  
+`string streamId`  
 The stream identifier.
 
-``string startIndex``  
+`string startIndex`  
 The start index for the intervals.
 
-``string endIndex``  
+`string endIndex`  
 The end index for the intervals.
 
-``int intervals``  
+`int intervals`  
 The number of intervals requested.
 
-``string sampleBy``  
+`string sampleBy`  
 Property or properties to use when sampling.
 
-``SdsBoundaryType boundaryType``  
+`SdsBoundaryType boundaryType`  
 Optional SdsBoundaryType specifies the handling of events at or near the startIndex and endIndex.
 
-``SdsBoundaryType startBoundaryType``  
+`SdsBoundaryType startBoundaryType`  
 Optional SdsBoundaryType specifies the handling of events at or near the startIndex.
 
-``SdsBoundaryType endBoundaryType``  
+`SdsBoundaryType endBoundaryType`  
 Optional SdsBoundaryType specifies the handling of events at or near the endIndex.
 
-``string filter``  
+`string filter`  
 Optional filter expression (see [Filter expressions](xref:sdsFilterExpressions)).
 
 **Response**  
@@ -1140,11 +1141,11 @@ Content-Type: application/json
 **Note:** `State` is not included in the JSON when its value is the default value.
 *****
 
-## ``Join Values``
+## `Join Values`
 
 Returns data from multiple streams, which are joined based on the request specifications. The streams must be of the same SdsType.
 
-SDS supports the following types of joins:
+SDS supports the joins listed in the following table.
 
 | SdsJoinMode  | Enumeration value | Operation |
 | -------      | ----------------- | --------- |
@@ -1157,6 +1158,7 @@ SDS supports the following types of joins:
 SDS supports two types of join requests:
 
 * [GET](#getjoin): The stream, joinMode, start index, and end index are specified in the request URI path.
+
 * [POST](#postjoin): Only the SdsJoinMode is specified in the URI. The streams and read specification for each stream are specified in the body of the request.
 
 <a name="getjoin"></a>
@@ -1170,19 +1172,19 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Bulk/Streams/Data/Joins
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``string streams``  
+`string streams`  
 Commas separated list of stream identifiers.
 
-``SdsJoinMode joinMode``  
+`SdsJoinMode joinMode`  
 Type of join, that is inner, outer, and so on.
 
-``string startIndex``  
+`string startIndex`  
 Index identifying the beginning of the series of events to return.
 
-``string endIndex``  
+`string endIndex`  
 Index identifying the end of the series of events to return.
 
 **Response**  
@@ -1593,10 +1595,10 @@ POST api/v1/Tenants/default/Namespaces/{namespaceId}/Bulk/Streams/Data/Joins
  ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``SdsJoinMode joinMode``  
+`SdsJoinMode joinMode`  
 Type of join, that is inner, outer, and so on.
 
 **Request body**  
@@ -1696,5 +1698,4 @@ Content-Type: application/json
 ```
 
 **Note:** Not all the values from streams were included since they are restricted by individual queries for each Stream.
-*****
   

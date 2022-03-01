@@ -11,7 +11,7 @@ Atomic types, such as strings, floats, and arrays, are defined entirely by the S
 Types requiring additional definition, such as enums and objects, are identified using a generic SdsTypeCode, such as ByteEnum, Int32Enum, NullableInt32Enum, or Object, plus additional SdsProperty fields.
 
 **Supported Types**  
-The following types are supported and defined by the SdsTypeCode:
+The following tables lists types that are supported and defined by the SdsTypeCode.
 
 Type                    | SdsTypeCode
 ----------------------- | -----

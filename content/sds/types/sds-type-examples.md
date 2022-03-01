@@ -5,7 +5,7 @@ uid: sdsTypeExamples
 # Examples of SdsTypes
 
 The examples in this section refer to the following types and are defined in Python and JavaScript samples. 
-In the sample code, ``SdsType``, ``SdsTypeProperty``, and ``SdsTypeCode`` are defined as in the code snippets shown here:
+In the sample code, `SdsType`, `SdsTypeProperty`, and `SdsTypeCode` are defined as in the code snippets shown here:
 
 **Python**
 
