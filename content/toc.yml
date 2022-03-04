@@ -76,7 +76,8 @@
     items:
     - topicUid: sdsTypeCode
     - topicUid: sdsTypeProperty
-    - topicUid: sdsTypeExamples
+    - topicUid: SdsTypesInDotNet
+    - topicUid: SdsTypesOutsideDotNet
     - topicUid: sdsTypeReusability
     - topicUid: sdsTypeAPI
   - topicUid: sdsStreams
@@ -87,7 +88,8 @@
     - topicUid: sdsStreamViewsAPI
   - topicUid: sdsIndexes
     items:
-    - topicUid: sdsIndexExamples
+    - topicUid: IndexesInDotNet
+    - topicUid: IndexesOutsideDotNet
   - topicUid: sdsReadingData
     items:
     - topicUid: ResponseFormat
