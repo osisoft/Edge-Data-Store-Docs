@@ -4,11 +4,11 @@ uid: ModbusTCPDataSourceConfiguration
 
 # Data source configuration
 
-For each instance of the Modbus TCP EDS adapter defined in system configuration, you must configure the data source from which it will poll data.
+For each instance of the Modbus TCP EDS adapter defined in system configuration, you must configure the data source from which it polls data.
 
 ## Configure Modbus TCP data source
 
-**Note:** Modbus TCP data source configurations cannot be modified manually. You must use the REST endpoints to add or edit the configuration.
+Modbus TCP data source configurations cannot be modified manually. You must use the REST endpoints to add or edit the configuration.
 
 To configure the Modbus TCP data source, follow these steps:
 
