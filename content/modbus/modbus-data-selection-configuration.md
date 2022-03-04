@@ -8,7 +8,7 @@ Once a data source is configured for a Modbus TCP instance, create a data select
 
 ## Configure Modbus TCP data selection
 
-To configure Modbus TCP data selectio, follow these steps:
+To configure Modbus TCP data selection, follow these steps:
 
 1. Using any text editor, create a file that contains a Modbus TCP data selection in JSON form.
 

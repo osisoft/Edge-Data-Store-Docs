@@ -18,7 +18,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Quantities/{quantityId}
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string quantityId`  
@@ -72,7 +72,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Quantities?skip={skip}&count
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `int skip`  
@@ -152,7 +152,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Quantities/{quantityId}/Unit
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string quantityId`  
@@ -196,7 +196,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Quantities/{quantityId}/Unit
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string quantityId`  

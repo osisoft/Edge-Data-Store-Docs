@@ -5,7 +5,6 @@ uid: sdsStreamsAPI
 # SdsStream API
 
 The REST APIs provide programmatic access to read and write SDS data. The APIs in this section interact with SdsStreams. For general SdsStream information, see [Streams](xref:sdsStreams).
-*****
 
 ## `Get Stream`
 
@@ -18,7 +17,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string streamId`  
@@ -56,7 +55,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams?query={query}&skip={
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string query`  
@@ -69,7 +68,7 @@ An optional parameter representing the zero-based offset of the first SdsStream 
 An optional parameter representing the maximum number of SdsStreams to retrieve. If not specified, a default value of 100 is used.
 
 `string orderby`  
-An optional parameter representing sorted order which SdsStreams will be returned. A field name is required. The sorting is based on the stored values for the given field (of type string). For example, ``orderby=name`` would sort the returned results by the ``name`` values (ascending by default). Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values ``asc`` or ``desc``, respectively. For example, ``orderby=name desc`` would sort the returned results by the ``name`` values, descending. If no value is specified, there is no sorting of results.
+An optional parameter representing sorted order which SdsStreams will be returned. A field name is required. The sorting is based on the stored values for the given field (of type string). For example, `orderby=name` would sort the returned results by the `name` values (ascending by default). Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values `asc` or `desc`, respectively. For example, `orderby=name desc` would sort the returned results by the `name` values, descending. If no value is specified, there is no sorting of results.
 
 **Response**  
 The response includes a status code and a response body.
@@ -115,10 +114,10 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Type
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``string streamId``  
+`string streamId`  
 The stream identifier.  
 
 **Response**  
@@ -130,11 +129,11 @@ The requested SdsType.
 
 ## `Get or Create Stream`
 
-Creates the specified stream. If a stream with a matching identifier already exists, SDS compares the existing stream with the stream that was sent. If the streams are identical, a ``Found`` (302) error is returned with the Location header set to the URI where the stream may be retrieved using a Get function. If the streams do not match, a ``Conflict`` (409) error is returned.
+Creates the specified stream. If a stream with a matching identifier already exists, SDS compares the existing stream with the stream that was sent. If the streams are identical, a `Found` (302) error is returned with the Location header set to the URI where the stream may be retrieved using a Get function. If the streams do not match, a `Conflict` (409) error is returned.
 
 For a matching stream (Found), clients that are capable of performing a redirect that includes the authorization header can automatically redirect to retrieve the stream. However, most clients, including the .NET HttpClient, consider redirecting with the authorization token to be a security vulnerability.
 
-When a client performs a redirect and strips the authorization header, SDS cannot authorize the request and returns ``Unauthorized`` (401). For this reason, it is recommended that when using clients that do not redirect with the authorization header, you should disable automatic redirect.
+When a client performs a redirect and strips the authorization header, SDS cannot authorize the request and returns `Unauthorized` (401). For this reason, it is recommended that when using clients that do not redirect with the authorization header, you should disable automatic redirect.
 
 **Request** 
 
@@ -143,7 +142,7 @@ POST api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string streamId`  
@@ -164,13 +163,18 @@ The newly created SdsStream.
 Creates the specified stream. If a stream with the same Id already exists, the definition of the stream is updated. The following changes are permitted:
 
 - Name  
-- Description  
+
+- Description 
+
 - Indexes  
+
 - InterpolationMode  
-- ExtrapolationMode  
+
+- ExtrapolationMode 
+
 - PropertyOverrides  
 
-Note that modifying Indexes will result in re-indexing all of the stream's data for each additional secondary index.
+**Note:** Modifying Indexes will result in re-indexing all of the stream's data for each additional secondary index.
 
 For more information on secondary indexes, see [Indexes](xref:sdsStreams#indexes).
 
@@ -183,7 +187,7 @@ PUT api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId` 
 The namespace; either default or diagnostics.
 
 `string streamId`  
@@ -207,7 +211,7 @@ Updates a stream’s type. The type is modified to match the specified stream vi
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId` 
 The namespace; either default or diagnostics.
 
 `string streamId`  
@@ -237,7 +241,7 @@ Deletes a stream.
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string streamId`  
@@ -245,4 +249,3 @@ The stream identifier.
 
 **Response**  
 The response includes a status code.
-*****

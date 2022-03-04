@@ -200,6 +200,6 @@ var timeProperty = new SdsObjects.SdsTypeProperty({
 
 **Note:** The time.IsKey field is set to true.
 
-To read data using the key, define a start index and an end index. For DateTime, use ISO 8601 representation of dates and times. To query for a window of values between January 1, 2020 and February 1, 2020, define indexes as "2020-01-01T08:00:00.000Z" and "2020-02-01T08:00:00.000Z", respectively.
+To read data using the key, define a start index and an end index. For DateTime, use ISO 8601 representation of dates and times. To query for a window of values between January 1, 2022 and February 1, 2022, define indexes as *2022-01-01T08:00:00.000Z* and *2022-02-01T08:00:00.000Z*, respectively.
 
 For additional information, see [Reading data](xref:sdsReadingData).

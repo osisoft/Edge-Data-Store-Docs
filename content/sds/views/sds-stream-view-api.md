@@ -5,7 +5,6 @@ uid: sdsStreamViewsAPI
 # SdsStreamView API
 
 The REST APIs provide programmatic access to read and write SDS data. The APIs in this section interact with SdsStreamViews. For general SdsStreamView information, see [Stream views](xref:sdsStreamViews).
-*****
 
 ## `Get Stream View`
 
@@ -18,7 +17,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews/{streamViewId}
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string streamViewId`  
@@ -70,7 +69,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews/{streamViewId}/M
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string streamViewId`  
@@ -130,7 +129,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews?query={query}&sk
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string query`  
@@ -143,7 +142,7 @@ An optional parameter representing the zero-based offset of the first SdsStreamV
 An optional parameter representing the maximum number of SdsStreamViews to retrieve. If not specified, a default value of 100 is used.
 
 `string orderby`  
-An optional parameter representing sorted order which SdsStreamViews will be returned. A field name is required. The sorting is based   on the stored values for the given field (of type string). For example, ``orderby=name`` would sort the returned results by the ``name`` values (ascending by default). Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values ``asc`` or ``desc``, respectively. For example, ``orderby=name desc`` would sort the returned results by the ``name`` values, descending. If no value is specified, there is no sorting of results.
+An optional parameter representing sorted order which SdsStreamViews will be returned. A field name is required. The sorting is based   on the stored values for the given field (of type string). For example, `orderby=name` would sort the returned results by the `name` values (ascending by default). Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values `asc` or `desc`, respectively. For example, `orderby=name desc` would sort the returned results by the `name` values, descending. If no value is specified, there is no sorting of results.
 
 **Response**  
 The response includes a status code and a response body.
@@ -201,11 +200,11 @@ POST api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews/{streamViewId}
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string streamViewId`  
-The stream view identifier. The identifier must match the ``SdsStreamView.Id`` field.
+The stream view identifier. The identifier must match the **SdsStreamView.Id** field.
 
 **Request body**  
 The request content is the serialized SdsStreamView.
@@ -228,7 +227,7 @@ PUT api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews/{streamViewId}
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string streamViewId`  
@@ -255,7 +254,7 @@ DELETE api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews/{streamViewId
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string streamViewId`  
@@ -263,4 +262,3 @@ The stream view identifier.
 
 **Response**  
 The response includes a status code.
-*****

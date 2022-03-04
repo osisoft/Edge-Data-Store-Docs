@@ -5,7 +5,6 @@ uid: sdsTypeAPI
 # SdsType API
 
 The REST APIs provide programmatic access to read and write SDS data. The following APIs interact with SdsTypes. See [Types](xref:sdsTypes) for general SdsType information.
-*****
 
 ## `Get Type`
 
@@ -18,7 +17,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Types/{typeId}
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string typeId`  
@@ -100,7 +99,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Types/{typeId}/ReferenceCoun
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string typeId`  
@@ -139,7 +138,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Types?query={query}&skip={sk
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string query`  
@@ -152,7 +151,7 @@ An optional value representing the zero-based offset of the first SdsType to ret
 An optional value representing the maximum number of SdsTypes to retrieve. If not specified, a default value of 100 is used.
 
 `string orderby`  
-An optional parameter representing sorted order which SdsTypes will be returned. A field name is required. The sorting is based on the stored values for the given field (of type string). For example, ``orderby=name`` would sort the returned results by the ``name`` values (ascending by default). Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values ``asc`` or ``desc``, respectively. For example, ``orderby=name desc`` would sort the returned results by the ``name`` values, descending. If no value is specified, there is no sorting of results.
+An optional parameter representing sorted order which SdsTypes will be returned. A field name is required. The sorting is based on the stored values for the given field (of type string). For example, `orderby=name` would sort the returned results by the `name` values (ascending by default). Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values `asc` or `desc`, respectively. For example, `orderby=name desc` would sort the returned results by the `name` values, descending. If no value is specified, there is no sorting of results.
 
 **Response**  
 The response includes a status code and a response body.
@@ -225,13 +224,15 @@ Content-Type: application/json
 
 Creates the specified type. If a type with a matching identifier already exists, SDS compares the existing type with the type that was sent.
 
-If the types are identical, a ``Found`` (302) error is returned with the Location header set to the URI where the type may be retrieved using a Get function.
+If the types are identical, a `Found` (302) error is returned with the Location header set to the URI where the type may be retrieved using a Get function.
 
-If the types do not match, a ``Conflict`` (409) error is returned. **Note:** A ``Conflict`` (409) error will also be returned if the type contains reference to any existing type, but the referenced type definition in the body does not match the existing type. You may reference an existing type without including the reference type definition in the body by using only the Ids. For further details about type referencing, see [Type reusability](xref:sdsTypeReusability).
+If the types do not match, a `Conflict` (409) error is returned. 
 
-For a matching type (``Found``), clients that are capable of performing a redirect that includes the authorization header can automatically redirect to retrieve the type. However, most clients, including the .NET HttpClient, consider redirecting with the authorization token to be a security vulnerability.
+**Note:** A `Conflict` (409) error will also be returned if the type contains reference to any existing type, but the referenced type definition in the body does not match the existing type. You may reference an existing type without including the reference type definition in the body by using only the Ids. For further details about type referencing, see [Type reusability](xref:sdsTypeReusability).
 
-When a client performs a redirect and strips the authorization header, SDS cannot authorize the request and returns ``Unauthorized`` (401). For this reason, OSIsoft recommends that when using clients that do not redirect with the authorization header, you should disable automatic redirect and perform the redirect manually.
+For a matching type (`Found`), clients that are capable of performing a redirect that includes the authorization header can automatically redirect to retrieve the type. However, most clients, including the .NET HttpClient, consider redirecting with the authorization token to be a security vulnerability.
+
+When a client performs a redirect and strips the authorization header, SDS cannot authorize the request and returns `Unauthorized` (401). For this reason, OSIsoft recommends that when using clients that do not redirect with the authorization header, you should disable automatic redirect and perform the redirect manually.
 
 **Request**  
 
@@ -240,7 +241,7 @@ POST api/v1/Tenants/default/Namespaces/{namespaceId}/Types/{typeId}
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string typeId`  
@@ -457,7 +458,7 @@ DELETE api/v1/Tenants/default/Namespaces/{namespaceId}/Types/{typeId}
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string typeId`  
@@ -465,4 +466,3 @@ The type identifier.
 
 **Response**  
 The response includes a status code.
-*****

@@ -1,26 +1,114 @@
-- name: Edge Data Store
-  href: overview/toc.yml
-  topicHref: index.md
-  homepage: index.md
-- name: Quick start guides
-  href: overview/quick-start-guides/toc.yml
-  topicHref: Overview/quick-start-guides.md
-- name: Install Edge Data Store
-  href: installation/toc.yml
-  topicHref: installation/install-edge-data-store.md
-- name: Configuration
-  href: configuration/toc.yml
-  topicHref: configuration/configuration.md
-- name: Administration
-  href: administration/toc.yml
-  topicHref: administration/administration.md
-- name: Troubleshoot Edge Data Store
-  href: troubleshooting/toc.yml
-  topicHref: troubleshooting/troubleshooting.md
-- name: SDS reference
-  href: sds/toc.yml
-  topicHref: sds/sequential-data-store.md
-- name: Release notes
-  href: release-notes/release-notes.md
-- name: Technical support and feedback
-  href: feedback.md
+- topicUid: EdgeDataStore
+  items:
+  - topicUid: scalePerformance
+  - topicUid: security
+- topicUid: QuickStartGuides
+  items:
+  - topicUid: opcUaQuickStart
+  - topicUid: modbusQuickStart
+  - topicUid: omfQuickStart
+  - topicUid: piEgressQuickStart
+  - topicUid: sdsQuickStart
+  - topicUid: commandLineLinuxQuickStart
+  - topicUid: commandLineWindowsQuickStart
+- topicUid: InstallEdgeDataStore
+  items:
+    - topicUid: SystemRequirements
+      items:
+      - topicUid: linuxWindows
+    - topicUid: edgeDocker
+    - topicUid: VerifyInstallation
+    - topicUid: UninstallEdgeDataStore
+- topicUid: Configuration
+  items:
+  - topicUid: ConfigurationTools
+  - topicUid: SystemConfiguration
+    items:
+    - topicUid: SystemComponentsConfiguration
+    - topicUid: SystemPortConfiguration
+    - topicUid: EdgeDataStoreConfiguration
+  - topicUid: EDSDataIngress
+    items:
+    - topicUid: opcUaOverview
+      items:
+      - topicUid: PrinciplesOfOperationOPCUA
+      - topicUid: SupportedFeaturesOPCUA
+      - topicUid: OPCUADataSourceConfiguration
+      - topicUid: OPCUAAdapterSecurityConfiguration
+      - topicUid: OPCUADataSelectionConfiguration
+    - topicUid: modbusOverview
+      items:
+      - topicUid: PrinciplesOfOperationModbus
+      - topicUid: SupportedFeaturesModbus
+      - topicUid: ModbusTCPDataSourceConfiguration
+      - topicUid: ModbusTCPDataSelectionConfiguration
+    - topicUid: omfOverview
+      items:
+      - topicUid: OMFMessages
+  - topicUid: storage
+    items:
+    - topicUid: storageruntime
+  - topicUid: egress
+    items:
+    - topicUid: PrepareEgressDestinations
+    - topicUid: configureEgress
+    - topicUid: EgressExecutionDetails
+    - topicUid: EdgeDataStoreDiagnostics
+  - topicUid: EdgeDataStoreHealth
+    items:
+    - topicUid: HealthEndpointsConfiguration
+  - topicUid: LoggingConfig
+    items: 
+    - topicUid: systemloggingConfiguration
+    - topicUid: ComponentLoggingConfiguration
+- topicUid: EdgeDataStoreAdministration
+  items:
+  - topicUid: RetrieveProductVersionInformation
+  - topicUid: ResetEdgeDataStore
+  - topicUid: ResetTheStorageComponent
+  - topicUid: StopAndStartAnEDSAdapter
+- topicUid: troubleShooting
+  items:
+  - topicUid: disasterRecovery 
+- topicUid: sdsOverview
+  items:
+  - topicUid: sdsTypes
+    items:
+    - topicUid: sdsTypeCode
+    - topicUid: sdsTypeProperty
+    - topicUid: sdsTypeExamples
+    - topicUid: sdsTypeReusability
+    - topicUid: sdsTypeAPI
+  - topicUid: sdsStreams
+    items:
+    - topicUid: sdsStreamsAPI
+  - topicUid: sdsStreamViews
+    items:
+    - topicUid: sdsStreamViewsAPI
+  - topicUid: sdsIndexes
+    items:
+    - topicUid: sdsIndexExamples
+  - topicUid: sdsReadingData
+    items:
+    - topicUid: ResponseFormat
+    - topicUid: ReadCharacteristics
+    - topicUid: sdsFilterExpressions
+    - topicUid: sdsTableFormat
+    - topicUid: Enums
+    - topicUid: DataTransformations
+    - topicUid: sdsReadingDataApi
+  - topicUid: sdsWritingData
+    items:
+    - topicUid: ResponseFormatWriteAPIs
+    - topicUid: sdsWritingDataApi
+  - topicUid: unitsOfMeasure
+    items:
+    - topicUid: SupportedUOM
+    - topicUid: UomQuantities
+    - topicUid: SdsUOMAPI
+    - topicUid: SdsUOMQuantityAPI
+  - topicUid: sdsCompression
+  - topicUid: sdsSearching
+- topicUid: releaseNotes
+- topicUid: Feedback
+

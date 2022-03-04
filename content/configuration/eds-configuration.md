@@ -8,10 +8,11 @@ Edge Data Store requires configuration, which can be performed either for each i
 
 ## Configure minimum Edge Data Store
 
-The following JSON file represents minimal configuration of an Edge Data Store. There are no Modbus TCP EDS adapter or OPC UA EDS adapter components, and the Storage component configurations are set to the default. If you configure a system with this JSON file, any existing Modbus TCP EDS adapter or OPC UA EDS adapter components will be disabled and removed. No storage data will be deleted or modified, and OMF and SDS data access will not be impacted.
+The following JSON file represents minimal configuration of an Edge Data Store. There are no Modbus TCP EDS adapter or OPC UA EDS adapter components, and the Storage component configurations are set to the default. If you configure a system with this JSON file, any existing Modbus TCP EDS adapter or OPC UA EDS adapter components will be disabled and removed. No storage data will be deleted or modified, and OMF and SDS data access will not be impacted. 
 
 1. Save or copy the example JSON in a file named _EdgeMinimumConfiguration.json_ in any directory on a device with Edge Data Store installed.
-2. Run the following curl command from the directory where the file is located: 
+
+1. Run the following curl command from the directory where the file is located: 
 
   ```bash
   curl -d "@EdgeMinimumConfiguration.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration

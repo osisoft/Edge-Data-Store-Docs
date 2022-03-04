@@ -10,13 +10,13 @@ The following diagram depicts the data flow from an SDS custom application into 
 
 ![SDS Application Example](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/SDSApplicationExample.jpg "SDS Application Example")
 
-The SDS application collects data from a data source and sends it to the EDS endpoint. The EDS endpoint sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or OSIsoft Cloud Services. All data from all sources on EDS (Modbus TCP, OPC UA, OMF, SDS) can be read using the SDS REST APIs on the local device, in the default tenant and the default namespace. 
+The SDS application collects data from a data source and sends it to the EDS endpoint. The EDS endpoint sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or OSIsoft Cloud Services. All data from all sources on EDS can be read using the SDS REST APIs on the local device, in the default tenant and the default namespace. 
 
 To get started using the SDS REST API to ingress data into EDS, create an SDS type and stream and then write data events to the SDS stream. Use the Sequential Data Store (SDS) REST API to read the data back from EDS.
 
 ## Create an SDS type
 
-Complete the following steps to create an SDS type that describes the format of the data to be stored in a container:
+To create an SDS type that describes the format of the data to be stored in a container, follow these steps:
 
 1. Create a JSON file using the example below:
 
@@ -47,8 +47,9 @@ Complete the following steps to create an SDS type that describes the format of 
 
    **Note:** The data to be written is a timestamp and numeric value. It is indexed by a timestamp, and the numeric value that will be stored is a 64-bit floating point value. 
 
-2. Save the JSON file the name _SDSCreateType.json_.
-3. Run the following curl script from the directory where the file is located:
+1. Save the JSON file the name `SDSCreateType.json`.
+
+1. Run the following curl script from the directory where the file is located:
 
    ```bash
    curl -d "@SDSCreateType.json" -H "Content-Type: application/json"  -X POST   http://localhost:5590/api/v1/tenants/default/namespaces/default/types/Simple
@@ -58,7 +59,7 @@ Complete the following steps to create an SDS type that describes the format of 
 
 ## Create an SDS stream
 
-Complete the following steps to create an SDS stream: 
+To create an SDS stream, follow these steps: 
 
 1. Create a JSON file using the example below:
 
@@ -72,8 +73,9 @@ Complete the following steps to create an SDS stream:
 
    **Note:** This stream references the type you created earlier. An error occurs if the type does not exist when the stream is created. As with an SDS type, create a stream once before sending data events. Resending the same definition repeatedly does not cause an error.
 
-2. Save the JSON file with the name _SDSCreateStream.json_.
-3. Run the following curl script from the directory where the file is located:
+1. Save the JSON file with the name `SDSCreateStream.json`.
+
+1. Run the following curl script from the directory where the file is located:
 
    ```bash
    curl -d "@SDSCreateStream.json" -H "Content-Type: application/json"  -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/Simple
@@ -83,7 +85,7 @@ Complete the following steps to create an SDS stream:
 
 ## Write data events to the SDS stream
 
-After you create a type and container, use SDS to write data to a stream.
+After you create a type and container, follow these steps to use SDS to write data to a stream:
 
 1. Create a JSON file using the example below:
 
@@ -100,8 +102,9 @@ After you create a type and container, use SDS to write data to a stream.
 
    **Note:** This example includes two data events that will be stored in the SDS Stream created in the previous steps. For optimal performance, batch SDS values when writing them.
 
-2. Save the JSON file with the name _SDSWriteData.json_.
-3. Run the following curl script from the directory where the file is located:
+1. Save the JSON file with the name `SDSWriteData.json`.
+
+1. Run the following curl script from the directory where the file is located:
 
    ```bash
    curl -d "@SDSWriteData.json" -H "Content-Type: application/json"  -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/Simple/Data
@@ -111,10 +114,11 @@ After you create a type and container, use SDS to write data to a stream.
 
 ## Read last data written using SDS
 
-Use the SDS REST API to read back the last data event written to the server. 
+To use the SDS REST API to read back the last data event written to the server, follow these steps: 
 
 1. Start the curl command line tool.
-2. Run the following curl command to return the last value written:
+
+1. Run the following curl command to return the last value written:
 
    ```bash
    curl http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/MyCustomContainer/Data/Last
@@ -126,13 +130,13 @@ Use the SDS REST API to read back the last data event written to the server.
    {"Timestamp": "2019-07-16T15:18:25.9870136Z", "Value": 12346.6789}
    ```
 
-
 ## Read a range of data events written using SDS
 
-Use the SDS REST API to read back the a range of data written to the server. 
+To use the SDS REST API to read back the a range of data written to the server, follow these steps: 
 
 1. Start the curl command line tool.
-2. Run the following curl command to return up to 100 values after the startIndex specified:
+
+1. Run the following curl command to return up to 100 values after the startIndex specified:
 
    ```bash
    curl "http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/MyCustomContainer/Data?startIndex=2017-07-08T13:00:00Z&count=100"

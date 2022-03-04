@@ -23,8 +23,11 @@ The following table shows the required and optional SdsTypeProperty fields. Fiel
 The SdsTypeProperty identifier has the same requirements as the SdsType identifier, which are:
 
 - Is not case sensitive.
+
 - Can contain spaces.
+
 - Cannot contain forward slash ("/").
+
 - Contains a maximum of 100 characters. 
 
 The Boolean value, `IsKey` identifies the SdsType Key. Each SdsType needs a Key to function as the primary index. A key defined by more than one property is called a compound key. A compound key can be defined by a maximum of three properties. In a compound key, each property that is included in the key is specified as `IsKey`. The `Order` field defines the precedence of fields applied to the index.
@@ -33,7 +36,7 @@ The `Value` field is used for properties that represent a value. For example, th
 
 `InterpolationMode` is assigned when the property of the event should be interpolated in a specific way that differs from the `InterpolationMode` of the SdsType. `InterpolationMode` is only applied to a property that is not part of the Index. If the `InterpolationMode` is not set, the property inherits the `IntepolationMode` of the SdsType.
 
-An SdsType with the `InterpolationMode` set to ``Discrete`` cannot have a property with an `InteroplationMode`. For more information on interpolation of events, see [Interpolation](xref:ReadCharacteristics#interpolation).
+An SdsType with the `InterpolationMode` set to `Discrete` cannot have a property with an `InteroplationMode`. For more information on interpolation of events, see [Interpolation](xref:ReadCharacteristics#interpolation).
 
 `Uom` is the unit of measure for the property. The `Uom` of a property may be specified by the name or the abbreviation. The names and abbreviations of Uoms are case sensitive.
 

@@ -10,7 +10,7 @@ uid: OMFMessages
 
 Message headers allow you to pass additional information with the message. The message header is where you specify the action for the message, such as CREATE. For a description of each of the headers, see the [OMF specification](https://docs.osisoft.com/bundle/omf/page/headers.html). 
 
-The ``omfversion`` header must match the version of the OMF spec used to construct the message.
+The `omfversion` header must match the version of the OMF spec used to construct the message.
 EDS suports versions 1.0 and 1.1 of the OMF specification. 
 
 ## Message types
@@ -27,6 +27,8 @@ An OMF type message describes the format of the data to be stored. A type messag
 ### Create an OMF type
 
 The first step in OMF data ingress is to create an OMF type that describes the format of the data to be stored. In this example, the data to be written is a timestamp and a numeric value.
+
+To create an OMF type, follow these steps:
 
 1. Create an OMF JSON file that defines the type as follows:
 
@@ -51,9 +53,9 @@ The first step in OMF data ingress is to create an OMF type that describes the f
 
    The value is indexed by a timestamp, and the numeric value that will be stored is a 32-bit floating point value.
    
-2. To create the OMF type in Edge Storage, store the JSON file with the name _OmfCreateType.json_ on the local device.
+1. To create the OMF type in Edge Storage, store the JSON file with the name `OmfCreateType.json` on the local device.
 
-3. Run the following curl command:
+1. Run the following curl command:
 
    ```bash
    curl -d "@OmfCreateType.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: type" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
@@ -67,7 +69,7 @@ An OMF container message uses an OMF type as a template to create a way to colle
 
 ### Create an OMF container
 
-The next step in writing OMF data is to create an OMF container. 
+The next step in writing OMF data is to create an OMF container. To create an OMF container, follow these steps: 
 
 1. Create an OMF JSON file that defines the container as follows:
 
@@ -80,9 +82,9 @@ The next step in writing OMF data is to create an OMF container.
 
    This container references the OMF type that was created earlier, and an error will occur if the type does not exist when the container is created. 
    
-2. To create the OMF container in Edge Storage, store the JSON file with the name _OmfCreateContainer.json_ on the local device.
+1. To create the OMF container in Edge Storage, store the JSON file with the name `OmfCreateContainer.json` on the local device.
 
-3. To create the SDS stream to store data defined by the type, run the following curl command:
+1. To create the SDS stream to store data defined by the type, run the following curl command:
 
    ```bash
    curl -d "@OmfCreateContainer.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: container" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
@@ -94,7 +96,9 @@ An OMF data message sends actual data events, like time-series data, to be store
 
 ### Write data events to the OMF container
 
-Once a type and container are defined, complete the following steps to write data to the container:
+Once a type and container are defined, you can send data messages to write data to the container.
+
+To writer data to the container, follow these steps:
 
 1. Create an OMF JSON file to define data events to be stored in the SdsStreams created in the previous steps. For best performance, batch OMF messages together, as in the following example: 
 
@@ -113,9 +117,9 @@ Once a type and container are defined, complete the following steps to write dat
    }]
    ```
 
-2. To write the data to EDS, store the JSON file with the name _OmfCreateDataEvents.json_ on the local device.
+1. Save the JSON file with the name `OmfCreateDataEvents.json` on the local device.
 
-3. To write data values to the SDS stream, run the following curl command:
+1. To write data values to the SDS stream, run the following curl command:
 
    ```bash
    curl -d "@OmfCreateDataEvents.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: data" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/

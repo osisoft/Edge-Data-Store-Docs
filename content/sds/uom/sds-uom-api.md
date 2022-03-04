@@ -5,9 +5,8 @@ uid: SdsUOMAPI
 # SdsUom API
 
 The REST APIs provide programmatic access to read and write SDS data. The APIs in this section interact with SdsUoms. For more information, see [SdsUom](xref:unitsOfMeasure#sdsuom).
-*****
 
-## ``Get Uom``
+## `Get Uom`
 
 Returns the unit of measure corresponding to the specified uomId within a given namespace.
 
@@ -18,7 +17,7 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Units/{uomId}
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
 `string uomId`  
@@ -48,7 +47,7 @@ Content-Type: application/json
 
 *****
 
-## ``Get Uoms``
+## `Get Uoms`
 
 Returns a list of all available units of measure in the system.
 
@@ -59,13 +58,13 @@ GET api/v1/Tenants/default/Namespaces/{namespaceId}/Units?skip={skip}&count={cou
 ```
 
 **Parameters**  
-``string namespaceId``  
+`string namespaceId`  
 The namespace; either default or diagnostics.
 
-``int skip``  
+`int skip`  
 An optional parameter representing the zero-based offset of the first SdsUomQuantity to retrieve. If not specified, a default value of 0 is used.
 
-``int count``  
+`int count`  
 An optional parameter representing the maximum number of SdsUomQuantity to retrieve. If not specified, a default value of 100 is used.
 
 **Response**  

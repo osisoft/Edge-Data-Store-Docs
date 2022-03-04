@@ -8,10 +8,11 @@ By default, when Edge Data Store starts, all currently configured EDS adapter in
 
 ## Stop an EDS adapter
 
-Complete the following steps to stop an EDS adapter instance:
+To stop an EDS adapter instance, follow these steps:
 
 1. Open a tool capable of making HTTP requests.
-2. Run a POST command to the following endpoint, replacing `<adapterId>` with the adapter instance to stop and `<port_number>` with the port specified for EDS:
+
+1. Run a POST command to the following endpoint, replacing `<adapterId>` with the adapter instance to stop and `<port_number>` with the port specified for EDS:
 
     ```http
     http://localhost:<port_number>/api/v1/administration/<adapterId>/Stop
@@ -27,10 +28,11 @@ Complete the following steps to stop an EDS adapter instance:
 
 ## Start an EDS adapter
 
-Complete the following steps to start an EDS adapter instance:
+To start an EDS adapter instance, follow these steps:
 
 1. Open a tool capable of making HTTP requests.
-2. Run a POST command to the following endpoint, replacing `<adapterId>` with the adapter instance to start and `<port_number>` with the port specified for EDS:
+
+1. Run a POST command to the following endpoint, replacing `<adapterId>` with the adapter instance to start and `<port_number>` with the port specified for EDS:
 
     ```http
     http://localhost:<port_number>/api/v1/administration/<adapterId>/Start

@@ -10,6 +10,8 @@ The _System_Port.json_ file specifies the port on which Edge Data Store is liste
 
 Before changing the port, ensure that no other service or application on the device running EDS is using that port because only one application or service can use a port. If you change the port number through the REST API, you must restart EDS.
 
+To configure the system port, follow these steps:
+
 1. Using any text editor, create a JSON file based on the following example and enter the new port number:
 
    ```json
@@ -18,8 +20,9 @@ Before changing the port, ensure that no other service or application on the dev
    }
    ```
 
-2. Save the JSON file with the name _EdgePort.json_ 
-3. Run the following script:
+1. Save the JSON file with the name _EdgePort.json_ 
+
+1. Run the following script:
 
     ```bash
     curl -d "@EdgePort.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/system/port
@@ -27,7 +30,7 @@ Before changing the port, ensure that no other service or application on the dev
 
     **Note:** The port number in the script must be the current port number, not the new port number in the file.
 
-4. After the REST command completes, restart EDS for the change to take effect.
+1. After the REST command completes, restart EDS for the change to take effect.
 
 ## Parameters for system port
 

@@ -20,6 +20,8 @@ The Storage component is required for Edge Data Store to run and only one Storag
 
 ## Add system components
 
+To add system component, follow these steps:
+
 1. Using any text editor, create a JSON file with the ComponentId and ComponentType. The following example adds a Modbus TCP EDS adapter instance. 
 
     ```json
@@ -30,8 +32,9 @@ The Storage component is required for Edge Data Store to run and only one Storag
     ```
    **Note:** The ComponentId must be a unique value. This example uses the ComponentId Modbus1, since it is the first Modbus TCP EDS adapter.
 
-2. Save the JSON file with the name _AddComponent.json_. 
-3. From the same directory where the file exists, run the following curl script:
+1. Save the JSON file with the name _AddComponent.json_. 
+
+1. From the same directory where the file exists, run the following curl script:
 
     ```bash
     curl -d "@AddComponent.json" -H "Content-Type: application/json" http://localhost:5590/api/v1/configuration/system/components

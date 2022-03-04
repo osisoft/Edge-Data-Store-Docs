@@ -6,9 +6,9 @@ uid: systemloggingConfiguration
 
 Edge Data Store writes daily log messages to flat text files in the following locations:
 
-• Windows: *%ProgramData%/OSIsoft/EdgeDataStore/Logs*
+- Windows: `%ProgramData%/OSIsoft/EdgeDataStore/Logs`
 
-• Linux: */usr/share/OSIsoft/EdgeDataStore/Logs*
+- Linux: `/usr/share/OSIsoft/EdgeDataStore/Logs`
 
 Each message in the log displays the message severity level, timestamp, and the message itself.
 
@@ -16,6 +16,7 @@ Each message in the log displays the message severity level, timestamp, and the 
 
 By default, logging captures Information, Warning, Error, and Critical messages in the message logs.
 The following logging configuration is the default for a component on install:
+
 ```json
 {
   "logLevel": "Information",
@@ -27,15 +28,15 @@ The following logging configuration is the default for a component on install:
 The schema file specifies how to formally describe the configuration parameters for message logging. 
 It is located in:
 
-• Windows: *%ProgramFiles%/OSIsoft/EdgeDataStore/Schema*
+- Windows: `%ProgramFiles%/OSIsoft/EdgeDataStore/Schema`
 
-• Linux: */opt/OSIsoft/EdgeDataStore/Schema*
+- Linux: `/opt/OSIsoft/EdgeDataStore/Schema`
 
 ## Change logging configuration
 
-Complete the following to change the logging configuration:
+To change the logging configuration, follow these steps:
 
-1. Update the parameters of the message logging configuration JSON file that you want as needed. For example, the _System_Logging.json_ file:
+1. Edit the message logging configuration JSON file that you want to update the parameters as needed. For example, the `System_Logging.json` file:
 
     ```json
     {
@@ -44,9 +45,10 @@ Complete the following to change the logging configuration:
       "logFileCountLimit": 30   
     }
     ```
-2. Save the file.
 
-3. Use any tool capable of making HTTP requests to execute a PUT command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/System/Logging`.
+1. Save the file.
+
+1. Use any tool capable of making HTTP requests to execute a PUT command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/System/Logging`.
 
       Example using curl (run this command from the same directory where the file is located):
 
@@ -60,9 +62,9 @@ Complete the following to change the logging configuration:
 
 ### Log levels
 
-The logLevel sets the minimum severity for messages to be included in the logs. Messages with a severity below the level set are not included. The log levels in their increasing order of severity are as follows: Trace, Debug, Information, Warning, Error, Critical.
+The logLevel sets the minimum severity for messages to be included in the logs. Messages with a severity below the level set are not included. The log levels in their increasing order of severity are as follows: `Trace`, `Debug`, `Information`, `Warning`, `Error`, `Critical`.
 
-Table: General guidelines for setting the log level.
+The following table has general guidelines for setting the log level.
 
 | **Level**                | **Description**|      
 |--------------------------|-----------|

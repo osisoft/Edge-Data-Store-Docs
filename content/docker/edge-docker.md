@@ -10,11 +10,11 @@ Installing EDS using Docker is a two step process. First, create the docker imag
 
 ## Create a Docker image for EDS
 
-The following procedure and examples describe how to create a Docker image for EDS. 
+To create a Docker image for EDS, follow these steps: 
 
-1. Using the example appropriate for your operating system and processor, create the Dockerfile in the directory where you want to create and run the container. The file must be named Dockerfile.
+1. Using the example appropriate for your operating system and processor, create the Dockerfile in the directory where you want to create and run the container. The file must be named `Dockerfile`.
 
-1. Copy the appropriate .tar.gz file to the same directory as the Dockerfile.
+1. Copy the appropriate `.tar.gz` file to the same directory as the Dockerfile.
 
 1. Run the following command line in the same directory (sudo may be necessary):
 
@@ -58,7 +58,7 @@ Before running the Docker container, determine whether to store the data in the 
 
 ### REST access from the local machine from Docker
 
-Complete the following steps to run the container:
+To run the container, follow these steps:
 
 1. Open command line.
 
@@ -72,7 +72,7 @@ Port 5590 is accessible from the host and you can make REST calls to EDS from ap
 
 ### Persistent storage on the local file system from Docker
 
-Complete the following steps to run the container:
+To run the container, follow these steps:
 
 1. Open a terminal window.
 
@@ -82,7 +82,7 @@ Complete the following steps to run the container:
 docker run -d --network host -v /edgeds:/usr/share/OSIsoft/ edgedatastore
 ```
 
-Port 5590 is accessible from the host and you can make REST calls to EDS from applications on the local host computer. In this example, all data is written to the host directory, and the host directory is a directory on the local machine, /edgeds. You can specify any directory.
+Port 5590 is accessible from the host and you can make REST calls to EDS from applications on the local host computer. In this example, all data is written to the host directory, and the host directory is a directory on the local machine, `/edgeds`. You can specify any directory.
 
 ### Port number change
 

@@ -14,7 +14,7 @@ To egress diagnostics related data, specify `diagnostics` as the NamespaceId in 
 
 ## Edge Data Store diagnostics
 
-The `Diagnostics.System` dynamic type includes these values which are logged in a stream with the ID `System.Diagnostics`. This diagnostic stream contains system-level information related to the host platform that Edge Data Store is running on.
+The Diagnostics.System dynamic type includes these values which are logged in a stream with the ID System.Diagnostics. This diagnostic stream contains system-level information related to the host platform that Edge Data Store is running on.
 
 | Type         | Property |  Description     |
 |--------|--------------|-----------------------------------|
@@ -71,7 +71,7 @@ The Storage component of Edge Data Store produces the following diagnostics stre
 
 ### Storage.default.default.Counts
 
-The Storage.default.default.Counts stream includes counts of the types, streams, and stream views of the default namespace.
+The `Storage.default.default.Counts` stream includes counts of the types, streams, and stream views of the default namespace.
 
 | Type         | Property |  Description     |
 |--------|--------------|-----------------------------------|
