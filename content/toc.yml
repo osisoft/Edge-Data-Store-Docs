@@ -85,6 +85,7 @@
     - topicUid: sdsStreamsAPI
   - topicUid: sdsStreamViews
     items:
+    - topicUid: sdsGSStreamViews
     - topicUid: sdsStreamViewsAPI
   - topicUid: sdsIndexes
     items:
