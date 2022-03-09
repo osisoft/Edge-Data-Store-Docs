@@ -26,13 +26,13 @@ The following table shows the SdsType fields. Fields that are not included are r
 
 | Property          | Type                   | Optionality | Searchable | Details |
 |-------------------|------------------------|-------------|---------|---------|
-| ID               | String                 | Required    | Yes | Identifier for referencing the type. |
-| Name              | String                 | Optional    | Yes | Friendly name. |
-| Descriptio`       | String                 | Optional    | Yes | Description text. |
-| SdsTypeCode       | SdsTypeCode            | Required    | No | Numeric code identifying the base SdsType. |
-| InterpolationMode | SdsInterpolationMode   | Optional    | No | Interpolation setting of the type. Default is Continuous. |
-| ExtrapolationMode | SdsExtrapolationMode   | Optional    | No | Extrapolation setting of the type. Default is All. |
-| Properties        | IList\<SdsTypeProperty\> | Required    | Yes, with limitations | List of SdsTypeProperty items. See [SdsTypeProperty](xref:sdsTypeProperty). |
+| `ID`               | String                 | Required    | Yes | Identifier for referencing the type. |
+| `Name`              | String                 | Optional    | Yes | Friendly name. |
+| `Description`       | String                 | Optional    | Yes | Description text. |
+| `SdsTypeCode`       | SdsTypeCode            | Required    | No | Numeric code identifying the base SdsType. |
+| `InterpolationMode` | SdsInterpolationMode   | Optional    | No | Interpolation setting of the type. Default is Continuous. |
+| `ExtrapolationMode` | SdsExtrapolationMode   | Optional    | No | Extrapolation setting of the type. Default is All. |
+| `Properties`        | IList\<SdsTypeProperty\> | Required    | Yes, with limitations | List of SdsTypeProperty items. See [SdsTypeProperty](xref:sdsTypeProperty). |
 
 For search limitations, see [Search in SDS](xref:sdsSearching).
 

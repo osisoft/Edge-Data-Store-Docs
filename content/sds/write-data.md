@@ -6,6 +6,8 @@ uid: sdsWritingData
 
 The SDS REST APIs provide programmatic access to write data to SDS. All writes rely on a stream’s key or primary index. The primary index determines the order of events in the stream. Secondary indexes are updated, but they do not contribute to the request. All references to indexes are to the primary index.
 
+When working in .NET, convenient SDS Client libraries are available. The `ISdsDataService` interface, accessed using the `SdsService.GetDataService()` helper, defines the available functions.
+
 ## Single stream writes
 
 The following methods support writing a single or multiple values:
@@ -19,19 +21,6 @@ The following methods support writing a single or multiple values:
 * [Remove Values](xref:sdsWritingDataApi#remove-values) deletes the events based on the request parameters.
 
 * [Update Values](xref:sdsWritingDataApi#update-values) add or replaces a collection of events.
-
-The base URI for writing SDS data to a single stream is:
-
-```text
-api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data  
-```
-
-**Parameters**  
-`string namespaceId`  
-The namespace; either default or diagnostics.
-
-`string streamId`  
-The stream identifier.
 
 ## Request body format
 
@@ -79,7 +68,7 @@ You can serialize your data using one of many available JSON serializers availab
 
 ## Indexes
 
-SDS writes rely on the primary index for positioning within streams and locating existing events. Most writes use the index as specified by the value; however, for deletes, indexes are specified as strings in the URI. For more details about working with indexes, see [Indexes](xref:sdsIndexes).
+SDS writes rely on the primary index for positioning within streams and locating existing events. Most writes use the index as specified by the value; however, for deletes, indexes are specified as strings in the URI, or, when using the SDS Client Libraries, the index may be passed as-is to DELETE methods that take the index type as a generic argument. For more details about working with indexes, see [Indexes](xref:sdsIndexes).
 
 To specify compound indexes in the URI, specify each field that composes the index, in the specified order, separated by the pipe character, ‘|’.
   

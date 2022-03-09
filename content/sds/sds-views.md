@@ -16,12 +16,12 @@ The following table shows the SdsStreamView fields. Fields that are not included
 
 | Property     | Type                   | Optionality | Searchable | Details |
 |--------------|------------------------|-------------|------------|---------|
-| Id           | String                 | Required    | Yes        |Identifier for referencing the stream view. |
-| Name         | String                 | Optional    | Yes        |Friendly name. |
-| Description | String                 | Optional    | Yes        |Description text. |
-| SourceTypeId | String                 | Required    | Yes        |Identifier of the SdsType of the SdsStream. |
-| TargetTypeId | String                 | Required    | Yes        |Identifier of the SdsType to convert events to. |
-| Properties   | IList\<SdsStreamViewProperty\> | Optional    | Yes, with limitations  |Property level mapping. |
+| `Id`           | String                 | Required    | Yes        |Identifier for referencing the stream view. |
+| `Name`         | String                 | Optional    | Yes        |Friendly name. |
+| `Description` | String                 | Optional    | Yes        |Description text. |
+| `SourceTypeId` | String                 | Required    | Yes        |Identifier of the SdsType of the SdsStream. |
+| `TargetTypeId` | String                 | Required    | Yes        |Identifier of the SdsType to convert events to. |
+| `Properties`   | IList\<SdsStreamViewProperty\> | Optional    | Yes, with limitations  |Property level mapping. |
 
 **Note:**  SdsStreamViewProperty objects are not searchable. Only the SdsStreamViewProperty's SdsStreamView is searchable by its `Id`, `SourceTypeId`, and `TargetTypeId`, which are used to return the top level SdsStreamView object when searching. The same is true for nested SdsStreamViewProperties.
 
@@ -69,9 +69,9 @@ The following table shows the required and optional `SdsStreamViewProperty` fiel
 
 | Property | Type    | Optionality | Details |
 |----------|---------|-------------|---------|
-| SourceId | String  | Required    | Identifier of the `SdsTypeProperty` from the source SdsType Properties list. |
-| TargetId | String  | Required    | Identifier of the `SdsTypeProperty` from the target SdsType Properties list. |
-| SdsStreamView  | SdsStreamView | Optional    | Additional mapping instructions for derived types. Supports nested properties.|
+| `SourceId` | String  | Required    | Identifier of the `SdsTypeProperty` from the source SdsType Properties list. |
+| `TargetId` | String  | Required    | Identifier of the `SdsTypeProperty` from the target SdsType Properties list. |
+| `SdsStreamView`  | SdsStreamView | Optional    | Additional mapping instructions for derived types. Supports nested properties.|
 
 ## `SdsStreamViewMap`
 
@@ -81,9 +81,9 @@ The following table shows the `SdsStreamViewMap` fields. The `SdsStreamViewMap` 
 
 | Property     | Type                     | Optionality  | Details |
 |--------------|--------------------------|--------------|---------|
-| SourceTypeId | String                   | Required     | Identifier of the SdsType of the SdsStream. |
-| TargetTypeId | String                   | Required     | Identifier of the SdsType to convert events to. |
-| Properties   | IList\<SdsStreamViewMapProperty\>| Optional     | Property level mapping. |
+| `SourceTypeId` | String                   | Required     | Identifier of the SdsType of the SdsStream. |
+| `TargetTypeId` | String                   | Required     | Identifier of the SdsType to convert events to. |
+| `Properties`   | IList\<SdsStreamViewMapProperty\>| Optional     | Property level mapping. |
 
 ### Properties / `SdsStreamViewMapProperty`
 
@@ -93,10 +93,10 @@ The following table shows the `SdsStreamViewMapProperty` fields. The `SdsStreamV
 
 | Property     | Type        | Details |
 |--------------|-------------|---------|
-| SourceTypeId | String      | Identifier of the SdsType of the SdsStream. |
-| TargetTypeId | String      | Identifier of the SdsType to convert events to. |
-| Mode         | SdsStreamViewMode | Aggregate of actions applied to the properties. `SdsStreamViewModes` are combined via binary arithmetic. |
-| SdsStreamViewMap   | SdsStreamViewMap  | Mapping for derived types. |
+| `SourceTypeId` | String      | Identifier of the SdsType of the SdsStream. |
+| `TargetTypeId` | String      | Identifier of the SdsType to convert events to. |
+| `Mode`         | SdsStreamViewMode | Aggregate of actions applied to the properties. `SdsStreamViewModes` are combined via binary arithmetic. |
+| `SdsStreamViewMap`   | SdsStreamViewMap  | Mapping for derived types. |
 
 The available `SdsStreamViewModes` are shown in the following table.
 

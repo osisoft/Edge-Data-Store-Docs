@@ -13,6 +13,7 @@ The REST APIs provide programmatic access to read and write SDS data. The follow
 Gets a list of `SdsType` objects. If the optional parameters are not set, this call will return up to the first 100 SdsTypes
 
 ### Request
+
 ```text 
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types?query={query}&skip={skip}&count={count}&orderby={orderby}
 ```
@@ -20,18 +21,21 @@ GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types?query={query}&skip
 #### Parameters
 
 `string tenantId`
-<br/>Tenant identifier.<br/><br/><br/>`string namespaceId`
-<br/>Namespace identifier.<br/><br/><br/>
+Tenant identifier.
+
+`string namespaceId`
+Namespace identifier.
+
 `[Optional] string query`  
 Query identifier. 
 See [Search in SDS](xref:sdsSearching) for information about specifying the search parameter.
-<br/><br/>
+
 `[Optional] int skip`  
-Parameter representing the zero-based offset of the first object to retrieve.  If unspecified, a default value of 0 is used.
-<br/><br/>
+Parameter representing the zero-based offset of the first object to retrieve. If unspecified, a default value of 0 is used.
+
 `[Optional] int count`  
 Parameter representing the maximum number of objects to retrieve. If unspecified, a default value of 100 is used.
-<br/><br/>
+
 `[Optional] string orderby`  
 Parameter representing sorted order.
 A field name is required.
@@ -40,7 +44,7 @@ For example, ``orderby=name`` would sort the returned results by the ``name`` va
 Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values ``asc`` or ``desc``, respectively.
 For example, ``orderby=name desc`` would sort the returned results by the ``name`` values, descending. 
 If no value is specified, there is no sorting of results.
-<br/><br/>
+
 ### Response
 
 |Status Code|Body Type|Description|
@@ -133,6 +137,7 @@ Content-Type: application/json
 Gets the specified `SdsType`.
 
 ### Request
+
 ```text 
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}
 ```
@@ -140,9 +145,13 @@ GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}
 #### Parameters
 
 `string tenantId`
-<br/>Tenant identifier.<br/><br/><br/>`string namespaceId`
-<br/>Namespace identifier.<br/><br/><br/>`string typeId`
-<br/>Type identifier.<br/><br/><br/>
+Tenant identifier.
+
+`string namespaceId`
+Namespace identifier.
+
+`string typeId`
+Type identifier.
 
 ### Response
 
@@ -157,6 +166,7 @@ GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
+
 > 200 Response
 ```json
 HTTP/1.1 200
@@ -211,6 +221,7 @@ Content-Type: application/json
 ]
 }
 ```
+
 > 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
 ```json
 {
@@ -234,6 +245,7 @@ Content-Type: application/json
 Creates the specified type. If a type with a matching identifier already exists, SDS compares the existing type with the type that was sent.
 
 ### Request
+
 ```text 
 POST /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}
 ```
@@ -241,9 +253,13 @@ POST /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}
 #### Parameters
 
 `string tenantId`
-<br/>Tenant identifier.<br/><br/><br/>`string namespaceId`
-<br/>Namespace identifier.<br/><br/><br/>`string typeId`
-<br/>Type identifier.<br/><br/><br/>
+Tenant identifier.
+
+`string namespaceId`
+Namespace identifier.
+
+`string typeId`
+Type identifier.
 
 ### Response
 
@@ -261,6 +277,7 @@ POST /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
+
 > 200 Response ([SdsType](#schemasdstype))
 ```json
 {
@@ -575,6 +592,7 @@ POST /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}
 ```
 
 > 201 Response
+
 ```json
 HTTP/1.1 201
 Content-Type: application/json
@@ -716,6 +734,7 @@ Content-Type: application/json
 Deletes a type from the specified tenant and namespace. Note that a type cannot be deleted if any streams, stream views, or other types reference it.
 
 ### Request
+
 ```text 
 DELETE /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}
 ```
@@ -723,9 +742,13 @@ DELETE /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}
 #### Parameters
 
 `string tenantId`
-<br/>Tenant identifier.<br/><br/><br/>`string namespaceId`
-<br/>Namespace identifier.<br/><br/><br/>`string typeId`
-<br/>Type identifier.<br/><br/><br/>
+Tenant identifier.
+
+`string namespaceId`
+Namespace identifier.
+
+`string typeId`
+Type identifier.
 
 ### Response
 
@@ -741,7 +764,9 @@ DELETE /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
+
 > 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -765,15 +790,20 @@ Returns a dictionary mapping the object name to the number of references held by
 
 ### Request
 ```text 
+
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}/ReferenceCount
 ```
 
 #### Parameters
 
 `string tenantId`
-<br/>Tenant identifier.<br/><br/><br/>`string namespaceId`
-<br/>Namespace identifier.<br/><br/><br/>`string typeId`
-<br/>Type identifier.<br/><br/><br/>
+Tenant identifier.
+
+`string namespaceId`
+Namespace identifier.
+
+`string typeId`
+Type identifier.
 
 ### Response
 
@@ -788,7 +818,9 @@ GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}/Reference
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
+
 > 200 Response
+
 ```json
  {
 "SdsStream":3,
@@ -1411,7 +1443,7 @@ Interpolation modes that can be applied to SdsType, SdsTypeProperty, SdsStream, 
 <a id="tocSsdsextrapolationmode"></a>
 <a id="tocssdsextrapolationmode"></a>
 
-Defines how a stream responds to requests with indexes that precede or follow all data in the stream. Behavior also depends on the SdsInterpolationMode for a stream. If SdsInterpolationMode is set to Discrete, extrapolation won't occur. If SdsInterpolationMode is set to ContinuousNullableLeading or ContinuousNullableTrailing, default values will be returned instead of actual data.
+Defines how a stream responds to requests with indexes that precede or follow all data in the stream. Behavior also depends on the SdsInterpolationMode for a stream. If SdsInterpolationMode is set to Discrete, extrapolation will not occur. If SdsInterpolationMode is set to ContinuousNullableLeading or ContinuousNullableTrailing, default values will be returned instead of actual data.
 
 #### Enumerated Values
 

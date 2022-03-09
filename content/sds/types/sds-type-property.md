@@ -10,15 +10,15 @@ The following table shows the required and optional SdsTypeProperty fields. Fiel
 
 |          Property         | Type                    | Optionality | Details |
 |---------------------------|-------------------------|-------------|---------|
-| Id                        | String                  | Required    | Identifier for referencing the type. |
-| Name                      | String                  | Optional    | Friendly name. |
-| Description               | String                  | Optional    | Description text. |
-| SdsType                   | SdsType                 | Required    | Field defining the property's Type. |
-| IsKey                     | Boolean                 | Required    | Identifies the property as the Key (Primary Index). |
-| Value                     | Object                  | Optional    | Value of the property. |
-| Order                     | Int                     | Optional    | Order of comparison within a compound index. |
-| InterpolationMode         | SdsInterpolationMode    | Optional    | Interpolation setting of the property. Default is null. |
-| Uom                       | String                  | Optional    | Unit of Measure of the property. For a list of units of measures that are supported for an SdsTypeProperty, see [Units of measure](xref:SupportedUOM). |
+| `Id`                        | String                  | Required    | Identifier for referencing the type. |
+| `Name`                      | String                  | Optional    | Friendly name. |
+| `Description`               | String                  | Optional    | Description text. |
+| `SdsType`                   | SdsType                 | Required    | Field defining the property's Type. |
+| `IsKey`                     | Boolean                 | Required    | Identifies the property as the Key (Primary Index). |
+| `Value`                     | Object                  | Optional    | Value of the property. |
+| `Order`                     | Int                     | Optional    | Order of comparison within a compound index. |
+| `InterpolationMode`         | SdsInterpolationMode    | Optional    | Interpolation setting of the property. Default is null. |
+| `Uom`                       | String                  | Optional    | Unit of Measure of the property. For a list of units of measures that are supported for an SdsTypeProperty, see [Units of measure](xref:SupportedUOM). |
 
 The SdsTypeProperty identifier has the same requirements as the SdsType identifier, which are:
 

@@ -8,9 +8,11 @@ The following table shows supported quantities and their base unit of measures. 
 
 | Quantity Id                                 | Base Uom Id               |
 | ------------------------------------------- | ------------------------- |
+| Acceleration	                              | meter per square second   |
 | Angular Velocity                            | radian per second         |
 | Area                                        | square meter              |
 | Computer Storage                            | byte                      |
+| Conductivity	                              | siemens per meter         |
 | Density                                     | kilogram per cubic meter  |
 | Dynamic Viscosity                           | pascal second             |
 | Electric Charge                             | coulomb                   |
@@ -18,9 +20,12 @@ The following table shows supported quantities and their base unit of measures. 
 | Electric Potential                          | volt                      |
 | Electric Resistance                         | ohm                       |
 | Energy                                      | joule                     |
+| Energy per Length	                          | joule per meter           |
 | Entropy and Heat Capacity                   | joule per kelvin          |
 | Force                                       | newton                    |
 | Frequency                                   | hertz                     |
+| Illuminance	                              | lux                       |
+| Irradiance	                              | watt per square meter     |
 | Length                                      | meter                     |
 | Luminous Intensity                          | candela                   |
 | Mass                                        | kilogram                  |
@@ -32,7 +37,9 @@ The following table shows supported quantities and their base unit of measures. 
 | Power                                       | watt                      |
 | Pressure                                    | pascal                    |
 | Quantity                                    | count                     |
+| Quantity per Volume	                      | count per cubic meter     |
 | Ratio                                       | percent                   |
+| Reciprocal length	                          | inverse meter             |
 | Specific Energy                             | joule per kilogram        |
 | Specific Entropy and Specific Heat Capacity | joule per kilogram kelvin |
 | Specific Volume                             | cubic meter per kilogram  |

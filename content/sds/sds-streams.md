@@ -15,14 +15,14 @@ for internal SDS use.
 
 | Property          | Type                             | Optionality | Searchable | Details |
 |-------------------|----------------------------------|-------------|------------|---------|
-| Id                | String                           | Required    | Yes		  | An identifier for referencing the stream |
-| TypeId            | String                           | Required    | Yes		  | The SdsType identifier of the type to be used for this stream |
-| Name              | String                           | Optional    | Yes		  | Friendly name |
-| Description       | String                           | Optional    | Yes		  | Description text |
-| Indexes           | IList\<SdsStreamIndex\>            | Optional    | No		  | Used to define secondary indexes for stream |
-| InterpolationMode | SdsInterpolationMode             | Optional    | No		  | Interpolation setting of the stream. Default is null. |
-| ExtrapolationMode | SdsExtrapolationMode             | Optional    | No		  | Extrapolation setting of the stream. Default is null. |
-| PropertyOverrides | IList\<SdsStreamPropertyOverride\> | Optional    | No		  | Used to define unit of measure and interpolation mode overrides for a stream. |
+| `Id`                | String                           | Required    | Yes		  | An identifier for referencing the stream |
+| `TypeId`            | String                           | Required    | Yes		  | The SdsType identifier of the type to be used for this stream |
+| `Name`              | String                           | Optional    | Yes		  | Friendly name |
+| `Description`       | String                           | Optional    | Yes		  | Description text |
+| `Indexes`           | IList\<SdsStreamIndex\>            | Optional    | No		  | Used to define secondary indexes for stream |
+| `InterpolationMode` | SdsInterpolationMode             | Optional    | No		  | Interpolation setting of the stream. Default is null. |
+| `ExtrapolationMode` | SdsExtrapolationMode             | Optional    | No		  | Extrapolation setting of the stream. Default is null. |
+| `PropertyOverrides` | IList\<SdsStreamPropertyOverride\> | Optional    | No		  | Used to define unit of measure and interpolation mode overrides for a stream. |
 | [Tags](xref:sds-streams-tags)*		| IList\<String\>					| Optional    | Yes		  | A list of tags denoting special attributes or categories.|
 | [Metadata](xref:sds-streams-metadata)*	| IDictionary\<String, String\>	| Optional    | Yes		  | A dictionary of string keys and associated string values.  |
 

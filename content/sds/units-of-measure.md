@@ -4,9 +4,9 @@ uid: unitsOfMeasure
 
 # Units of measure
 
-The Sequential Data Store (SDS) provides a collection of built-in units of measure (Uom). These units of measure can be associated with SdsStreams and SdsTypes to provide unit information for stream data that model measurable quantities. If data has unit information associated with it, SDS supports unit conversions when retrieving data. For more information, see [Read data](xref:sdsReadingData).
+SDS provides a collection of built-in units of measure (Uom). These units of measure can be associated with SdsStreams and SdsTypes to provide unit information for stream data that model measurable quantities. If data has unit information associated with it, SDS supports unit conversions when retrieving data. For more information, see [Read data](xref:sdsReadingData).
 
-Since a unit of measurement (such as meter) defines the magnitude of a quantity (such as Length), SDS represents this through two objects: SdsUom and SdsUomQuantity.
+Since a unit of measurement (such as meter) defines the magnitude of a quantity (such as Length), SDS represents this through two objects: `SdsUom` and `SdsUomQuantity`.
 
 ## SdsUom
 
@@ -32,3 +32,11 @@ An SdsUomQuantity represents a single measurable quantity, such as length. The f
 | `Name`       | String  | Optional    | Full name for the quantity. | Velocity |
 | `BaseUom`    | SdsUom  | Required    | The base unit of measure for this quantity. All other Uoms measuring this quantity will have `ConversionFactors` and `ConversionOffsets` relative to the `BaseUom`.  | SdsUom representing "meters per second" |
 | `Dimensions` | short[] | Optional    | Reserved for internal use. Represents the seven base SI dimensions: Length, Mass, Time, Electric Current, Thermodynamic Temperature, Amount of Substance, and Luminous Density. | [1,0,-1,0,0,0,0] |
+
+## Associating a unit of measure with a type
+
+At [type](xref:sdsTypes) creation, SdsUom can be associated with an [SdsTypeProperty](xref:sdsTypes#sdstypeproperty). For types API, see [Types](xref:sdsTypeAPI).
+
+## Associating a unit of measure with a stream
+
+At [stream](xref:sdsStreams) creation, you can override any unit of measure associated with an SdsTypeProperty belonging to the type of the stream. This enables the reuse of a type that may have default unit information associated with it already. For streams API, see [Streams](xref:sdsStreamsAPI).
