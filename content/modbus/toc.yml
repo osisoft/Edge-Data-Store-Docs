@@ -3,6 +3,6 @@
 - name: Supported features
   href: supported-features-modbus.md
 - name: Data source configuration
-  href: modbus-data-source-configuration.md
+  topicUid: ModbusTCPDataSourceConfiguration
 - name: Data selection configuration
   href: modbus-data-selection-configuration.md
