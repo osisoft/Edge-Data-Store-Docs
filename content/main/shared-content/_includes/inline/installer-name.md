@@ -1,0 +1,1 @@
+PI-Adapter-for-OpcUa-1.2.0.136

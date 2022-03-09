@@ -1,0 +1,62 @@
+- topicUid: index
+  items: 
+  - topicUid: PIAdapterForOPCUAPrinciplesOfOperation
+- topicUid: Installation
+  items:
+  - topicUid: SystemRequirements
+  - topicUid: InstallTheAdapter
+  - topicUid: InstallUsingDocker
+  - topicUid: UpgradeTheAdapter
+  - topicUid: UninstallTheAdapter
+- topicUid: OPCUAConfiguration
+  items:
+  - topicUid: ConfigurationTools
+  - topicUid: PIAdapterForOPCUASystemComponentsConfiguration
+    items:
+    - topicUid: SystemAndAdapterConfiguration
+  - topicUid: PIAdapterForOPCUADataSourceConfiguration
+  - topicUid: DiscoveryConfiguration
+    items:
+    - topicUid: DataSourceDiscovery
+  - topicUid: PIAdapterForOPCUAClientSettingsConfiguration
+  - topicUid: HistoryRecovery
+    items:
+    - topicUid: OnDemandHistoryRecoveryConfiguration
+    - topicUid: AutomaticHistoryRecovery
+  - topicUid: PIAdapterForOPCUADataSelectionConfiguration
+  - topicUid: DataFiltersConfiguration
+  - topicUid: PIAdapterForOPCUASecurityConfiguration
+  - topicUid: GeneralConfiguration
+    items:
+    - topicUid: AdapterMetadata
+  - topicUid: BufferingConfiguration
+  - topicUid: LoggingConfiguration
+  - topicUid: EgressEndpointsConfiguration
+    items:
+    - topicUid: PrepareEgressDestinations
+  - topicUid: HealthEndpointConfiguration 
+  - topicUid: PIAdapterForOPCUAConfigurationExamples
+- topicUid: Administration
+  items:
+  - topicUid: StartAndStopAnAdapter
+  - topicUid: StartAndStopIngressComponent
+  - topicUid: DeleteAnAdapterComponent
+  - topicUid: RetrieveProductVersionInformation
+- topicUid: HealthAndDiagnostics
+  items:
+  - topicUid: AdapterHealth
+    items:
+    - topicUid: DeviceStatus
+    - topicUid: NextHealthMessageExpected
+  - topicUid: AdapterDiagnostics
+    items:
+    - topicUid: System
+    - topicUid: StreamCount
+    - topicUid: IORate
+    - topicUid: ErrorRate
+    - topicUid: EgressDiagnostics
+- topicUid: TroubleshootTheAdapter
+  items:
+  - topicUid: TroubleshootPIAdapterForOPCUA
+- topicUid: ReleaseNotes
+- topicUid: TechnicalSupportAndFeedback
