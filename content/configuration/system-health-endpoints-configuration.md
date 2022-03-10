@@ -41,6 +41,7 @@ The following parameters are available for configuring system health endpoints.
 | **Password**                                                    | Optional  | `string` | Yes      | The password used for authentication to PI Web API OMF endpoint. |
 | **UserName**                                                    | Optional  | `string` | Yes      | The user name used for authentication to PI Web API OMF endpoint. |
 | **ValidateEndpointCertificate**                                 | Optional  | `Boolean`| No       | The OSIsoft Adapter validates the endpoint certificate if set to true (recommended). If set to false, the OSIsoft Adapter accepts any endpoint certificate. OSIsoft strongly recommends using disabled endpoint certificate validation for testing purposes only. |
+| **EnableDiagnostics**                                    | Optional | `Boolean`| No    | Determines if diagnostics are enabled.  |
 
 ## System health endpoints example
 
