@@ -3,8 +3,8 @@
 - name: Data type mapping
   href: supported-features-opc-ua.md
 - name: Data source configuration
-  href: opc-ua-data-source-configuration.md
+  topicUid: OPCUADataSourceConfiguration
 - name: Adapter security
   href: opc-ua-adapter-security-configuration.md
 - name: Data selection configuration
-  href: opc-ua-data-selection-configuration.md 
+  topicUid: OPCUADataSelectionConfiguration
