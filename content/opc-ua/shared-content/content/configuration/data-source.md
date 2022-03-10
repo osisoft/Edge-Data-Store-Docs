@@ -1,56 +1,50 @@
 ---
-uid: PIAdapterForOPCUADataSourceConfiguration
+uid: OPCUADataSourceConfiguration
 ---
 
-# Data source
+# Data source configuration
 
-To use the adapter, you must configure the data source from which it gets data.
+For each instance of the OPC UA EDS adapter defined in system configuration, you must configure the data source from which it will receive data.
 
 ## Configure OPC UA data source
 
-Complete the following steps to configure an OPC UA data source. Use the `PUT` method in conjunction with the `api/v1/configuration/<ComponentId>/DataSource` REST endpoint to initialize the configuration.
+**Note:** OPC UA data source configurations cannot be modified manually. You must use the REST endpoints to add or edit the configuration.
 
-1. Using a text editor, create an empty text file.
+To configure the OPC UA data source, follow these steps:
 
-2. Copy and paste an example configuration for an OPC UA data source into the file.
+1. Using any text editor, create a file that contains an OPC UA data source in JSON form.
+    
+    - For content structure, see [OPC UA data source examples](#opc-ua-data-source-examples).
 
-    For sample JSON, see [OPC UA data source examples](#opc-ua-data-source-examples).
+1. Modify the parameters in the example to match your environment. For a table of all available parameters, see [Parameters for OPC UA data source](#parameters-for-opc-ua-data-source).
 
-3. Update the example JSON parameters for your environment.
+1. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is OpcUa1, name the file `OpcUa1Datasource.json`.
 
-    For a table of all available parameters, see [OPC UA data source parameters](#opc-ua-data-source-parameters).
+1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:<port_number>/api/v1/configuration/<EDS_adapterId>/DataSource/`. 
 
-4. Save the file. For example, as `ConfigureDataSource.json`.
+The following example shows the HTTPS request using curl, which must be run from the same directory where the file is located, and uses the adapter instance created during installation, which is OpcUa1:
 
-5. Open a command line session. Change directory to the location of `ConfigureDataSource.json`.
+```bash
+curl -d "@OpcUa1DataSource.config.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/OpcUa1/DataSource"
+```
 
-6. Enter the following cURL command (which uses the `PUT` method) to initialize the data source configuration.
+**Note:** After completing data source configuration, the next step is to configure data selection. You can either generate a default data selection file or create the data selection file manually. For more information, see [Data selection configuration](xref:OPCUADataSelectionConfiguration).
 
-    ```bash
-    curl -d "@ConfigureDataSource.json" -H "Content-Type: application/json" -X PUT "http://localhost:5590/api/v1/configuration/OpcUa1/DataSource"
-    ```
+## Export OPC UA dynamic variables
 
-    **Notes:**
+The OPC UA EDS adapter is able to export available OPC UA dynamic variables by browsing the OPC UA hierarchies or sub-hierarchies as part of the data source configuration process. 
+
+1. To limit browsing, specify a comma-separated collection of nodeIds in data source configuration file using the **RootNodeIds** parameter.
+   
+   **Note:** The nodeIds are treated as roots from which the adapter starts the browse operation.
+   
+   The adapter triggers an export operation after a successful connection to the OPC UA server when the data selection file does not exist in configuration directory.
   
-    * If you installed the adapter to listen on a non-default port, update `5590` to the port number in use.
-    * If you use a component ID other than `OpcUa1`, update the endpoint with your chosen component ID.
-    * For a list of other REST operations you can perform, like updating or deleting a data source configuration, see [REST URLs](#rest-urls).
-    <br/>
-    <br/>
+1. Copy the exported data selection JSON file from the directory or retrieve it using a REST API call.
 
-7. Configure data selection.
+1. (Optional) To avoid a potentially long and resource-intensive browse operation, create the data selection file manually. Configure it before you configure the data source or push both in one configuration call together.
 
-    For more information, see [PI Adapter for OPC UA data selection configuration](xref:PIAdapterForOPCUADataSelectionConfiguration).
-
-## OPC UA data source schema
-
-The full schema definition for the OPC UA data source configuration is in the `OpcUa_DataSource_schema.json` file located in one of the following folders:
-
-Windows: `%ProgramFiles%\OSIsoft\Adapters\OpcUa\Schemas`
-
-Linux: `/opt/OSIsoft/Adapters/OpcUa/Schemas`
-
-## OPC UA data source parameters
+## Parameters for OPC UA data source
 
 The following parameters are available for configuring an OPC UA data source:
 

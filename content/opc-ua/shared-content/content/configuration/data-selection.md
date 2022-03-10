@@ -1,54 +1,91 @@
 ---
-uid: PIAdapterForOPCUADataSelectionConfiguration
+uid: OPCUADataSelectionConfiguration
 ---
 
-# Data selection
+# Data selection configuration
 
-In addition to the data source configuration, you need to provide a data selection configuration to specify the data you want the adapter to collect from the data sources. OPC UA data from OPC UA items is read through subscriptions (unsolicited reads).
+After configuring the data source, create a data selection configuration file to specify the data for the OPC UA EDS adapter instance to collect from the data source.
 
-You can decide to create the data selection configuration file yourself or you can perform a data source discovery to find available items. For more information, see [Discovery](xref:DataSourceDiscovery).
+When you add a data source, the OPC UA EDS adapter browses the OPC UA server address space and exports the available OPC UA variables into a JSON file for data selection. If RootNodeIds are specified in the data source configuration, only those nodeIds are browsed. Data is collected automatically based upon user demands. OPC UA data from OPC UA variables is read through subscriptions (unsolicited reads).
 
-## Configure OPC UA data selection
+You can either have the data selection configuration file generated for you or you can create it manually yourself.
 
-Complete the following steps to configure an OPC UA data selection. Use the `PUT` method in conjunction with the `api/v1/configuration/<ComponentId>/DataSelection` REST endpoint to initialize the configuration.
+## Configure OPC UA data selection using a generated file
 
-1. Using a text editor, create an empty text file.
+A default OPC UA data selection file will be created if there is no OPC UA data selection configuration, but a valid OPC UA data source exists.
 
-2. Copy and paste an example configuration for an OPC UA data selection into the file.
+**Note:** To avoid resource-intensive browse operations, OSIsoft recommends that you manually create a data selection file instead of generating the default data selection file.
 
-    For sample JSON, see [OPC UA data selection examples](#opc-ua-data-selection-examples).
+To generate the default data selection file and use it to configure data selection, follow these steps:
 
-3. Update the example JSON parameters for your environment.
-
-    For a table of all available parameters, see [OPC UA data selection parameters](#opc-ua-data-selection-parameters).
-
-4. Save the file. For example, as `ConfigureDataSelection.json`.
-
-5. Open a command line session. Change directory to the location of `ConfigureDataSelection.json`.
-
-6. Enter the following cURL command (which uses the `PUT` method) to initialize the data selection configuration.
-
-    ```bash
-    curl -d "@ConfigureDataSelection.json" -H "Content-Type: application/json" -X PUT "http://localhost:5590/api/v1/configuration/OpcUa1/DataSelection"
-    ```
-
-    **Notes:**
+1. Add an OPC UA EDS adapter instance with a unique `ComponentId` either manually or during the EDS installation. For details, see [Edge Data Store configuration](xref:EdgeDataStoreConfiguration).
   
-    * If you installed the adapter to listen on a non-default port, update `5590` to the port number in use.
-    * If you use a component ID other than `OpcUa1`, update the endpoint with your chosen component ID.
-    * For a list of other REST operations you can perform, like updating or deleting a data selection configuration, see [REST URLs](#rest-urls).
-    <br/>
-    <br/>
+1. Configure a valid OPC UA data source. For details, see [Data source configuration](xref:OPCUADataSourceConfiguration).
 
-## OPC UA data selection schema
+  Once you complete these steps, a default OPC UA data selection configuration file is generated in the configuration directory with   the file name based on the ComponentId.
+  
+  The following are example locations of the file created using the adapter instance created during installation, which is OpcUa1:
 
-The full schema definition for the OPC UA data selection configuration is in the `OpcUa_DataSelection_schema.json` file located in one of the following folders:
+  ```bash
+  Windows: %programdata%\OSIsoft\EdgeDataStore\Configuration\OpcUa1_DataSelection.json
+   
+  Linux: /usr/share/OSIsoft/EdgeDataStore/Configuration/OpcUa1_DataSelection.json
+  ```
 
-Windows: `%ProgramFiles%\OSIsoft\Adapters\OpcUa\Schemas`
+1. Copy the file to a different directory and open it using any text editor.
 
-Linux: `/opt/OSIsoft/Adapters/OpcUa/Schemas`
+  It will look similar to the following example:
 
-## OPC UA data selection parameters
+  ```json
+  [
+   {
+     "Selected": false,
+     "Name": "Cold Side Inlet Temperature",
+     "NodeId": "ns=2;s=Line1.HeatExchanger1001.ColdSideInletTemperature",
+     "StreamId": null
+    },
+    {
+     "Selected": false,
+     "Name": "Cold Side Outlet Temperature",
+     "NodeId": "ns=2;s=Line1.HeatExchanger1001.ColdSideOutletTemperature",
+     "StreamId": null
+    }
+  ]
+  ```
+
+1. To ingress a stream to Edge Data Store, change the value of the **Selected** key from `false` to `true`. All streams in the auto generated data selection file are initially set to `false`.
+
+1. Save the file.
+
+1. Run the following curl script from the directory where the file is located, updating the file name and destination in the script if needed:
+
+  ```bash
+  curl -d "@OpcUa1_DataSelection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
+  ```
+
+## Configure OPC UA data selection by manually creating the file 
+
+**Note:** OPC UA data selection configurations cannot be modified manually. Use the REST endpoints to add or edit the configuration.
+
+To configure the OPC UA data selection, follow these steps:
+
+1. Using any text editor, create a file that contains an OPC UA data selection in JSON form.
+
+    - For content structure, see [OPC UA data selection examples](#opc-ua-data-selection-examples).
+
+1. Update the parameters as needed. For a table of all available parameters, see [Parameters for OPC UA data selection](#parameters-for-opc-ua-data-selection).
+
+1. Save the file to the device with Edge Data Store installed with the name `DataSelection.config.json`.
+
+1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:<port_number>/api/v1/configuration/<EDS adapterId>/DataSelection/`
+
+The following example shows the HTTPS request using curl, which must be run from the same directory where the file is located, and uses the adapter instance created during installation, which is OpcUa1:
+
+```bash
+curl -d "@DataSelection.config.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/OpcUa1/DataSelection"
+```
+
+## Parameters for OPC UA data selection
 
 The following parameters are available for configuring an OPC UA data selection:
 
