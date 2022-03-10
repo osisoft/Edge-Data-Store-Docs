@@ -5,4 +5,4 @@
 - name: Data source configuration
   topicUid: ModbusTCPDataSourceConfiguration
 - name: Data selection configuration
-  href: modbus-data-selection-configuration.md
+  topicUid: ModbusTCPDataSelectionConfiguration
