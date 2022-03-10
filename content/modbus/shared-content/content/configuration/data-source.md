@@ -38,7 +38,7 @@ curl -d "@Modbus1DataSource.config.json" -H "Content-Type: application/json" "ht
     <br/>
     <br/>
 
-## Modbus TCP data source parameters
+## Parameters for Modbus TCP data source
 
 The following parameters are available for configuring a Modbus TCP data source.
 
