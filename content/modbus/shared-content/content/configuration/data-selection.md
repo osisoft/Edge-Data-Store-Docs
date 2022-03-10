@@ -38,7 +38,7 @@ The following parameters are available to configure a Modbus TCP data selection:
 
 | Parameter | Required | Type | Description |
 |-----------|----------|------|-------------|
-| **DeviceId** | Required | `string` | Specifies the DataSource device that this data selection item is read from. The value must match one of the `<Id>` values specified in the DataSource [Devices](xref:PIAdapterForModbusTCPDataSourceConfiguration#devices) configuration.
+| **DeviceId** | Required | `string` | Specifies the DataSource device that this data selection item is read from. The value must match one of the `<Id>` values specified in the DataSource [Devices](xref:ModbusTCPDataSourceConfiguration#devices) configuration.
 | **Selected** | Optional | `boolean` | Selects or clears a measurement. To select an item, set to `true`. To remove an item, leave the field empty or set to `false`.  <br><br>Allowed value: `true` or `false`<br>Default value: `true`|
 | **Name** | Optional | `string` | The optional friendly name of the data item collected from the data source. <br><br>Default value: stream ID |
 | **UnitId** | Required | number | Modbus TCP slave device unit ID. <br><br>Minimum value: `0`<br> Maximum value: `247` |
