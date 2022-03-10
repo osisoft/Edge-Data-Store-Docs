@@ -14,7 +14,7 @@ Complete the following steps to generate the default client settings file:
 
 1. Add an OPC UA adapter with a unique `ComponentId`. For more information, see [System components configuration](xref:SystemComponentsConfiguration).
   
-2. Configure a valid OPC UA data source. For more information, see [PI Adapter for OPC UA data source configuration](xref:PIAdapterForOPCUADataSourceConfiguration).
+2. Configure a valid OPC UA data source. For more information, see [PI Adapter for OPC UA data source configuration](xref:OPCUADataSourceConfiguration).
 
    Once you complete these steps, a default OPC UA client settings configuration file is generated in the configuration directory for the corresponding platform.
   
