@@ -5,6 +5,7 @@
 - name: Data source configuration
   topicUid: OPCUADataSourceConfiguration
   items:
+  - topicUid: PIAdapterForOPCUAClientSettingsConfiguration
   - topicUid: HistoryRecovery
     items: 
     - topicUid: OnDemandHistoryRecoveryConfiguration
@@ -13,3 +14,6 @@
   href: opc-ua-adapter-security-configuration.md
 - name: Data selection configuration
   topicUid: OPCUADataSelectionConfiguration
+  items: 
+  - topicUid: DataFiltersConfiguration
+  - topicUid: SchedulesConfiguration
