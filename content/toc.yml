@@ -34,12 +34,12 @@
       - topicUid: PrinciplesOfOperationOPCUA
       - topicUid: SupportedFeaturesOPCUA
       - topicUid: OPCUADataSourceConfiguration
-          items:
-          - topicUid: PIAdapterForOPCUAClientSettingsConfiguration
-          - topicUid: HistoryRecovery
-            items: 
-            - topicUid: OnDemandHistoryRecoveryConfiguration
-            - topicUid: AutomaticHistoryRecovery  
+        items:
+        - topicUid: PIAdapterForOPCUAClientSettingsConfiguration
+        - topicUid: HistoryRecovery
+          items: 
+          - topicUid: OnDemandHistoryRecoveryConfiguration
+          - topicUid: AutomaticHistoryRecovery  
       - topicUid: OPCUAAdapterSecurityConfiguration
       - topicUid: OPCUADataSelectionConfiguration
         items: 
