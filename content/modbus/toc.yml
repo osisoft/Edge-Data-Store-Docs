@@ -6,3 +6,6 @@
   topicUid: ModbusTCPDataSourceConfiguration
 - name: Data selection configuration
   topicUid: ModbusTCPDataSelectionConfiguration
+  items: 
+  - topicUid: DataFiltersConfiguration
+  - topicUid: SchedulesConfiguration
