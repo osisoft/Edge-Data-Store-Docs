@@ -4,7 +4,16 @@
   href: supported-features-opc-ua.md
 - name: Data source configuration
   topicUid: OPCUADataSourceConfiguration
+  items:
+  - topicUid: PIAdapterForOPCUAClientSettingsConfiguration
+  - topicUid: HistoryRecovery
+    items: 
+    - topicUid: OnDemandHistoryRecoveryConfiguration
+    - topicUid: AutomaticHistoryRecovery  
 - name: Adapter security
   href: opc-ua-adapter-security-configuration.md
 - name: Data selection configuration
   topicUid: OPCUADataSelectionConfiguration
+  items: 
+  - topicUid: DataFiltersConfiguration
+  - topicUid: SchedulesConfiguration

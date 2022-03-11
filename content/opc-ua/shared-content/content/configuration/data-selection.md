@@ -94,7 +94,7 @@ The following parameters are available for configuring an OPC UA data selection:
 | **selected** | Optional | `boolean` | Use this field to select or clear a measurement. To select an item, set to true. To remove an item, leave the field empty or set to false. <br><br>Allowed value: `true` or `false` <br>Default value: `true`|
 | **name**      | Optional | `string` | Name of the data item collected from the data source. <br><br>Default value: `null` <br>results in **StreamId** value being used also as a **Name** |
 | **nodeId**    | Required | `string` | The NodeId of the variable.<br><br>Examples<br>`"ns=5;AString"`<br>`"ns=2;i=203"`<br>`"ns=<NamespaceIndex>;<IdentifierType>=<Identifer>"` |
-| **streamID** | Optional | `string` | The custom stream ID used to create the streams. If not specified, the adapter will generate a default stream ID based on the measurement configuration. The StreamId serves as the unique identifier of a data selection item. A properly configured custom stream ID follows these rules:<br><br>Is not case-sensitive.<br>Can contain spaces.<br>Cannot start with two underscores ("__").<br>Can contain a maximum of 2000 characters.<br>Cannot use the following characters: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % < > &#124;<br>Cannot start or end with a period.<br>Cannot contain consecutive periods.<br>Cannot consist of only periods.<br><br>For more information on how the adapter encodes special characters in the **StreamId**, see [Egress endpoints](xref:EgressEndpointsConfiguration#special-characters-encoding). |
+| **streamID** | Optional | `string` | The custom stream ID used to create the streams. If not specified, the adapter will generate a default stream ID based on the measurement configuration. The StreamId serves as the unique identifier of a data selection item. A properly configured custom stream ID follows these rules:<br><br>Is not case-sensitive.<br>Can contain spaces.<br>Cannot start with two underscores ("__").<br>Can contain a maximum of 2000 characters.<br>Cannot use the following characters: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % < > &#124;<br>Cannot start or end with a period.<br>Cannot contain consecutive periods.<br>Cannot consist of only periods.<br><br>For more information on how the adapter encodes special characters in the **StreamId**, see [Special characters encoding](#special-characters-encoding). |
 | **dataFilterId** | Optional | `string` | Enables data filtering for this data selection item if the ID of a data filter is specified.<br>**Note:** If the specified **DataFilterId** does not exist, unfiltered data is sent until that **DataFilterId** is created. |
 
 ## OPC UA data selection examples
@@ -145,6 +145,25 @@ The following are examples of valid OPC UA data selection configurations:
 ]
 ```
 
+### Special characters encoding
+
+The adapter encodes special characters used in the data selection **StreamId** parameter string before sending it to configured endpoints. The encoded characters look as follows:
+
+| Special character | Encoded character |
+|-------------------|-------------------|
+| &#42;             | `%2a`             |
+| &#39;             | `%27`             |
+| &#96;             | `%60`             |
+| &#34;             | `%22`             |
+| &#63;             | `%3f`             |
+| &#59;             | `%3b`             |
+| &#124;            | `%7c`             |
+| &#92;             | `%5c`             |
+| &#123;            | `%7b`             |
+| &#125;            | `%7d`             |
+| &#91;             | `%5b`             |
+| &#93;             | `%5d`             |
+
 ## REST URLs
 
 | Relative URL | HTTP verb | Action |
@@ -157,3 +176,4 @@ The following are examples of valid OPC UA data selection configurations:
 | api/v1/configuration/\<ComponentId\>/DataSelection/\<StreamId\> | `DELETE` | Deletes a data selection item from the configuration by **StreamId**. The adapter stops collecting data for the deleted item. |
 
 **Note:** Replace \<ComponentId\> with the Id of your OPC UA component, for example _OpcUa1_.
+
