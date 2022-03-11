@@ -6,7 +6,7 @@ uid: HealthEndpointConfiguration
 
 You can configure PI adapters to produce and store health data at a designated health endpoint. You can use health data to ensure that your adapters are running properly and that data flows to the configured OMF endpoints.
 
-For more information about adapter health, see [Adapter health](xref:AdapterHealth).
+For more information about health, see <xref:EdgeDataStoreHealth>.
 
 ## Configure health endpoint
 

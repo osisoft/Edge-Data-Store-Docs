@@ -15,7 +15,7 @@ If the metadataLevel is set to `Low`, `Medium`, or `High` in the [General config
 
 ## Metadata for health and diagnostics streams
 
-If you configure a health endpoint and enable metadata, they are included in the health streams ([Device status](xref:DeviceStatus) and [Next health message expected](xref:NextHealthMessageExpected)) together with `ComponentId` and `ComponentType`.
+If you configure a health endpoint and enable metadata, they are included in the health streams ([Device status](xref:EdgeDataStoreHealth#device-status) and [Next health message expected](xref:EdgeDataStoreHealth#next-health-message-expected)) together with `ComponentId` and `ComponentType`.
 
 If you enable diagnostics in [General configuration](xref:GeneralConfiguration), metadata are included in the diagnostics streams ([Stream count](xref:StreamCount), [IO rate](xref:IORate), [Error rate](xref:ErrorRate)) together with `ComponentId` and `ComponentType`.
 
