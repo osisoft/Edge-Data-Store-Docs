@@ -4,7 +4,7 @@ uid: IndexesInDotNet
 
 # Indexes in .NET framework
 
-The following examples are in csharp, but you can apply the concepts such as simple, compound, and secondary indexes to any language. For more information on indexes in JavaScript and Python, see [Indexes outside of .NET framework](#indexes-outside-of-net-framework). 
+The following examples are in csharp, but you can apply the concepts such as simple, compound, and secondary indexes to any language. For more information on indexes in JavaScript and Python, see [Indexes outside of .NET framework](xref:IndexesOutsideDotNet). 
 
 ## Simple indexes
 

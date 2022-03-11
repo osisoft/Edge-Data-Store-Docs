@@ -22,7 +22,7 @@ While SDS is a robust data storage, it performs best if you follow certain guide
 
 ### Maximum limit for events in read data calls 
 
-Read data API is limited to retrieve less than 250,000 events per request. An error message is returned when the maximum limit is reached. This maximum limit applies to [List Values](xref:sds-stream-data#list-values), [List Summaries](xref:sds-stream-data#list-summaries), [List Sampled Values](xref:sds-stream-data#list-sampled-values).
+Read data API is limited to retrieve less than 250,000 events per request. An error message is returned when the maximum limit is reached. This maximum limit applies to [List Values](xref:sdsStreamsAPI#list-streams), [List Summaries](xref:sdsStreamsAPI#list-summaries), [List Sampled Values](xref:sdsStreamsAPI#list-sampled-values).
 
 ```text
 400 bad request error

@@ -49,7 +49,7 @@ If the primary index defined on the type is a compound index, secondary indexes 
 
 ## Interpolation and extrapolation
 
-The `InterpolationMode`, `ExtrapolationMode`, and [PropertyOverrides](#propertyoverrides) can be used to determine how a specific stream reads data. These read characteristics are inherited from the type if they are not defined at the stream level. For more information about type read characteristics and how these characteristics dictate how events are read, see [Types](xref:sdsTypes).
+The `InterpolationMode`, `ExtrapolationMode`, and `PropertyOverrides` can be used to determine how a specific stream reads data. These read characteristics are inherited from the type if they are not defined at the stream level. For more information about type read characteristics and how these characteristics dictate how events are read, see [Types](xref:sdsTypes).
 
 ## SdsStreamPropertyOverride
 

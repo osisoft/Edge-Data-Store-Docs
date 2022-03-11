@@ -4,7 +4,7 @@ uid: sdsGSStreamViews
 
 # Get started with SdsStreamViews
 
-To work with stream views, you first need to have types, streams, and streams data defined. The following is  simplified procedure for working with a stream view. For code examples, see [Work with SdsStreamViews outside of .NET framework](#work-with-sdsstreamviews-outside-of-net-framework) and [Work with SdsStreamViews in .NET framework](#work-with-sdsstreamviews-in-net-framework) below. 
+To work with stream views, you first need to have types, streams, and streams data defined. The following is  simplified procedure for working with a stream view. For code examples, see [Work with SdsStreamViews outside of .NET framework](xref:IndexesOutsideDotNet) and [Work with SdsStreamViews in .NET framework](xref:IndexesInDotNet). 
 
 1. Create a type that will be the source type. 
 
@@ -18,9 +18,9 @@ To work with stream views, you first need to have types, streams, and streams da
 
 1. Create a stream view using the source type (step 1) and the target type (step 5). 
 
-    - The mapping between the source and the target type happens automatically if you do not specify it in [SdsStreamViewProperty](#sdsstreamviewproperty).
+    - The mapping between the source and the target type happens automatically if you do not specify it in [SdsStreamViewProperty](xref:sdsStreamViews#SdsStreamViewProperty).
 
-1. Get [SdsStreamViewMap](xref:sds-stream-views#get-stream-view-map) to see how properties are mapped.
+1. Get [SdsStreamViewMap](xref:sdsStreamViews) to see how properties are mapped.
 
 1. Read data from the stream with the stream view to verify. For more information, see [Reading with SdsStreamViews](xref:sdsReadingData#reading-with-sdsstreamviews).
 

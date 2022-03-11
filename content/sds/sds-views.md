@@ -61,7 +61,7 @@ The following table show mapping compatibilities. SDS largely supports mapping w
 
 \* Mappable if `typeId` matches between the source and the target type.
 
-## Properties / `SdsStreamViewProperty`
+## `SdsStreamViewProperty`
 
 The SdsStreamView properties collection provides detailed instructions for mapping of event properties. Each `SdsStreamViewProperty` in the properties collection defines the mapping of an event’s property. `SdsStreamView` properties are required only when property mapping is not straightforward. Additionally, if you do not want a type property mapped, it is not necessary to create an `SdsStreamView` property for it.
 

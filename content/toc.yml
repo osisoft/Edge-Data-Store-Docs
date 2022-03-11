@@ -75,7 +75,6 @@
   - topicUid: sdsTypes
     items:
     - topicUid: sdsTypeCode
-    - topicUid: sdsTypeProperty
     - topicUid: SdsTypesInDotNet
     - topicUid: SdsTypesOutsideDotNet
     - topicUid: sdsTypeReusability
