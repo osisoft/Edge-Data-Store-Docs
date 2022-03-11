@@ -3,8 +3,17 @@
 - name: Data type mapping
   href: supported-features-opc-ua.md
 - name: Data source configuration
-  href: opc-ua-data-source-configuration.md
+  topicUid: OPCUADataSourceConfiguration
+  items:
+  - topicUid: PIAdapterForOPCUAClientSettingsConfiguration
+  - topicUid: HistoryRecovery
+    items: 
+    - topicUid: OnDemandHistoryRecoveryConfiguration
+    - topicUid: AutomaticHistoryRecovery  
 - name: Adapter security
   href: opc-ua-adapter-security-configuration.md
 - name: Data selection configuration
-  href: opc-ua-data-selection-configuration.md 
+  topicUid: OPCUADataSelectionConfiguration
+  items: 
+  - topicUid: DataFiltersConfiguration
+  - topicUid: SchedulesConfiguration

@@ -32,7 +32,7 @@ The following table lists all available runtime parameters for EDS storage confi
 |---------------------------------|----------|----------|----------------------------------------------------|
 | [IngressDebugExpiration](#ingressdebugexpiration)      | Required | string   | If set, defines how long OMF ingress debug files should be produced. |
 | [StreamStorageLimitMb](#streamstoragelimitmb)        | Required | integer  | The maximum size in megabytes that a stream can reach. |
-| [StreamStorageTargetMb](#StreamStorageTargetMb)       | Required | integer  | The size in megabytes that a stream will be reduced to after StreamStorageLimitMb size is reached for a single stream. |
+| [StreamStorageTargetMb](#streamstoragetargetmb)       | Required | integer  | The size in megabytes that a stream will be reduced to after StreamStorageLimitMb size is reached for a single stream. |
 | [EnableTransactionLog](#enabletransactionlog)        | No       | Boolean     | Enables or disables the transaction log. The transaction log helps to ensure no data is lost should a device lose power. |
 | [TransactionLogLimitMB](#transactionloglimitmb)     | No       | integer  | Maximum size for transaction log file. Transaction log files larger than this size will be deleted, resulting is loss of data should the device lose power. |
 | [CheckpointRateInSec](#checkpointrateinsec)         | No       | integer  | How often to flush new data to store.  |
