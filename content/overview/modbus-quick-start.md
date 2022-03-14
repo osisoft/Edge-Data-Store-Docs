@@ -20,13 +20,19 @@ To configure a data source to connect a Modbus TCP device to the Modbus TCP EDS 
 
    ```json
    {
-       "IpAddress": "<Modbus IP Address>",
-       "Port": <Port - usually 502>,
-       "ConnectTimeout": 15000,
-       "ReconnectInterval": 5000,
-       "RequestTimeout": 9000,
-       "DelayBetweenRequests": 0,
-       "MaxResponseDataLength": 250
+       "Devices":
+        [
+            {
+                "Id": "Device1",
+                "IpAddress": "<Modbus IP Address>",
+                "Port": <Port - usually 502>,
+            }
+        ],
+        "ConnectTimeout": "00:00:05",
+        "ReconnectInterval": "00:00:01",
+        "RequestTimeout": "00:00:10",
+        "DelayBetweenRequests": "00:00:00.5",
+        "MaxResponseDataLength": 125
    }
    ```
 
@@ -50,7 +56,9 @@ After you create the data source file, select the streams to store in EDS by con
 1. Using a text editor, copy the example below to create a file in JSON format to define each stream to ingress to EDS. 
 
    ```json
-   [{
+   [
+       {
+           "DeviceId" : "Device1",
            "Selected": true,
            "UnitId": 1,
            "RegisterType": 3,
@@ -61,40 +69,11 @@ After you create the data source file, select the streams to store in EDS by con
            "ScanRate": 500
        },
        {
+           "DeviceId" : "Device1",
            "Selected": true,
            "UnitId": 1,
            "RegisterType": 3,
            "RegisterOffset": 2,
-           "DataTypeCode": 20,
-           "ConversionFactor": 2,
-           "ConversionOffset": 3.4,
-           "ScanRate": 500
-       },
-       {
-           "Selected": true,
-           "UnitId": 1,
-           "RegisterType": 3,
-           "RegisterOffset": 3,
-           "DataTypeCode": 20,
-           "ConversionFactor": 2,
-           "ConversionOffset": 3.4,
-           "ScanRate": 500
-       },
-       {
-           "Selected": true,
-           "UnitId": 1,
-           "RegisterType": 3,
-           "RegisterOffset": 4,
-           "DataTypeCode": 20,
-           "ConversionFactor": 2,
-           "ConversionOffset": 3.4,
-           "ScanRate": 500
-       },
-       {
-           "Selected": true,
-           "UnitId": 1,
-           "RegisterType": 3,
-           "RegisterOffset": 5,
            "DataTypeCode": 20,
            "ConversionFactor": 2,
            "ConversionOffset": 3.4,
