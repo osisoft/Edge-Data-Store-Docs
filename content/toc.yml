@@ -34,12 +34,6 @@
       - topicUid: PrinciplesOfOperationOPCUA
       - topicUid: SupportedFeaturesOPCUA
       - topicUid: OPCUADataSourceConfiguration
-        items:
-        - topicUid: PIAdapterForOPCUAClientSettingsConfiguration
-        - topicUid: HistoryRecovery
-          items: 
-          - topicUid: OnDemandHistoryRecoveryConfiguration
-          - topicUid: AutomaticHistoryRecovery  
       - topicUid: OPCUAAdapterSecurityConfiguration
       - topicUid: OPCUADataSelectionConfiguration
         items: 
@@ -51,9 +45,6 @@
       - topicUid: SupportedFeaturesModbus
       - topicUid: ModbusTCPDataSourceConfiguration
       - topicUid: ModbusTCPDataSelectionConfiguration
-        items: 
-        - topicUid: DataFiltersConfiguration
-        - topicUid: SchedulesConfiguration
     - topicUid: omfOverview
       items:
       - topicUid: OMFMessages
