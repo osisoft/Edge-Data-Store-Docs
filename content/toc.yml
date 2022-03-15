@@ -36,12 +36,16 @@
       - topicUid: OPCUADataSourceConfiguration
       - topicUid: OPCUAAdapterSecurityConfiguration
       - topicUid: OPCUADataSelectionConfiguration
+        items:
+        - topicUid: DataFiltersConfiguration
     - topicUid: modbusOverview
       items:
       - topicUid: PrinciplesOfOperationModbus
       - topicUid: SupportedFeaturesModbus
       - topicUid: ModbusTCPDataSourceConfiguration
       - topicUid: ModbusTCPDataSelectionConfiguration
+        items:
+        - topicUid: DataFiltersConfiguration
     - topicUid: omfOverview
       items:
       - topicUid: OMFMessages

@@ -1,9 +1,0 @@
-- name: OPC UA EDS adapter
-  href: ../opc-ua/toc.yml
-  topicHref: ../opc-ua/opc-ua-overview.md
-- name: Modbus TCP EDS adapter
-  href: ../modbus/toc.yml
-  topicHref: ../modbus/modbus-overview.md
-- name: OSIsoft Message Format (OMF)
-  href: ../omf/toc.yml
-  topicHref: ../omf/omf-overview.md
