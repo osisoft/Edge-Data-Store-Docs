@@ -42,6 +42,8 @@
       - topicUid: SupportedFeaturesModbus
       - topicUid: ModbusTCPDataSourceConfiguration
       - topicUid: ModbusTCPDataSelectionConfiguration
+        items:
+        - topicUid: DataFiltersConfiguration
     - topicUid: omfOverview
       items:
       - topicUid: OMFMessages
