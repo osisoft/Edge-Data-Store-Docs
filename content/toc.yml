@@ -36,6 +36,8 @@
       - topicUid: OPCUADataSourceConfiguration
       - topicUid: OPCUAAdapterSecurityConfiguration
       - topicUid: OPCUADataSelectionConfiguration
+        items:
+        - topicUid: DataFiltersConfiguration
     - topicUid: modbusOverview
       items:
       - topicUid: PrinciplesOfOperationModbus
