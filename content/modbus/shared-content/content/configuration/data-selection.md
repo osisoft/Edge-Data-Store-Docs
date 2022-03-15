@@ -1,5 +1,5 @@
 ---
-uid: ModbusTCPDataSelectionConfiguration
+uid: DataSelectionConfiguration
 ---
 
 # Data selection configuration
