@@ -41,14 +41,6 @@ Complete the following steps to configure data filters. Use the `PUT` method in 
 
 On successful execution, the change that you have made to data filters takes effect immediately during runtime.
 
-## Data filters schema
-
-The full schema definition for the data filters configuration is in the  `AdapterName_DataFilters_schema.json` file located in one of the following folders:
-
-Windows: `%ProgramFiles%\OSIsoft\Adapters\<AdapterName>\Schemas`
-
-Linux: `/opt/OSIsoft/Adapters/<AdapterName>/Schemas`
-
 ## Data filters parameters
 
 The following parameters are available for configuring data filters:
