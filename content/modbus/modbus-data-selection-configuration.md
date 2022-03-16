@@ -38,7 +38,7 @@ The following parameters are available for configuring Modbus TCP data selection
 
 | Parameter | Required | Type | Nullable | Description |
 |-----------|----------|------|----------|-------------|
-| **Id** | Optional | `string` | Yes | Used to update an existing measurement. The ID automatically updates when there are changes to the measurement and will follow the format of `<UnitId`>.`<RegisterType`>.`<RegisterOffset`>.
+| **DeviceId** | Required | `string` | No | Specifies the DataSource device that this data selection item is read from. The value must match one of the `<Id>` values specified in the DataSource Devices configuration.
 | **Selected** | Optional | `Boolean` | No | Used to select or clear a measurement. To select an item, set to true. To remove an item, leave the field empty or set to false.  If not configured, the default value is true.|
 | **Name** | Optional | `string` | Yes | The optional friendly name of the data item collected from the data source. If not configured, the default value will be the stream ID. |
 | **UnitId** | Required | number | No | Modbus TCP slave device unit ID. This must be a value between 0 and 247, inclusively. |
@@ -62,6 +62,7 @@ The following are examples of valid Modbus TCP data selection configurations.
 ```json
 [
     {
+        "DeviceId": "Device1",
         "UnitId": 1,
         "RegisterType": 3,
         "RegisterOffset": 122,
@@ -76,7 +77,7 @@ The following are examples of valid Modbus TCP data selection configurations.
 ```json
 [
     {
-        "Id": "DataItem1",
+        "DeviceId": "Device1",
         "Selected": true,
         "Name": "MyDataItem",
         "UnitId": 1,
