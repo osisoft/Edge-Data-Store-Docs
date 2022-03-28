@@ -53,7 +53,7 @@ When the command completes successfully (a 204 is returned by curl), the Modbus 
 
 Data selection items will use schedules to perform their scans for data. To configure the schedule file, complete the following steps:
 
-1.  Using a text editor, copy the example below to create a file in JSON format to describe the location of the Modbus TCP data source.
+1.  Using a text editor, copy the example below to create a file in JSON format to define the schedule.
 
     ```json
     [
@@ -72,7 +72,7 @@ Data selection items will use schedules to perform their scans for data. To conf
 1. Run the following curl script from the same directory where the file is located, updating the file name and the endpoint URL in the script if needed.
 
    ```bash
-   curl -d "@Modbus1Schedules.json.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Schedules
+   curl -d "@Modbus1Schedules.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Schedules
    ```
 
 ## Configure Modbus TCP data selection
