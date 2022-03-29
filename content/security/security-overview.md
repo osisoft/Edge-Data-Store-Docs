@@ -7,9 +7,9 @@ Consider the following when determining Edge Data Store security practices.
 
 ## REST APIs
 
-EDS supports REST APIs for configuration, data reading through SDS, and data writing through OMF and SDS. EDS provides only localhost access to REST APIs, which means any code that reads or writes to the REST APIs must reside on the computer or device on which EDS is running. 
+EDS supports REST APIs for configuration, data reading through SDS, and data writing through OMF and SDS. EDS provides only localhost access to REST APIs, which means any code that reads or writes to the REST APIs must reside on the device on which EDS is running. To keep EDS secure, only administrators should have access to devices where EDS is installed. 
 
-REST access is through HTTP. The default port is 5590. The port number can be changed during installation, or during configuration after installation. URLs must be of the form `http://localhost:{port}/` or `http://127.0.0.1:{port}/`. 
+REST access is through HTTP. The default port is 5590. The port number can be changed during installation or  configuration. URLs must be of the form `http://localhost:{port}/` or `http://127.0.0.1:{port}/`. 
 
 **Note:** Do not use the host name or IP Address in the URL.
 
@@ -17,11 +17,13 @@ REST access is through HTTP. The default port is 5590. The port number can be ch
 
 ## Data egress
 
-Use HTTPS to write data to OSIsoft Cloud Services or OSIsoft PI Web API; writing to either of these destinations is not limited to the local machine.
+Use HTTPS to write data to OSIsoft Cloud Services or OSIsoft PI Web API; writing to either of these destinations is not limited to the local device.
 
 ## EDS adapters
 
 The Modbus TCP EDS adapter and the OPC UA EDS adapter access remote data sources through binary protocols.
+
+The Modbus TCP EDS adapter does not currently support transport layer security between the adapter and the data source, which means that the Modbus traffic will be unprotected. If needed, use other measures to secure this traffic such as air-gapped control network, VPN connection, SSH tunnel, etc.
 
 ## Secure storage
 
