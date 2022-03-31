@@ -49,9 +49,35 @@ To configure a data source to connect a Modbus TCP device to the Modbus TCP EDS 
 
 When the command completes successfully (a 204 is returned by curl), the Modbus TCP data source has been created. If you get a 400 error, check the JSON file for errors. If you receive a 404 or 500 error, check that EDS is running on the device.
 
+## Configure a Schedule
+
+Data selection items will use schedules to perform their scans for data. To configure the schedule file, complete the following steps:
+
+1.  Using a text editor, copy the example below to create a file in JSON format to define the schedule.
+
+    ```json
+    [
+        {
+            "Id": "Schedule1",
+            "Period": "00:00:01.500",
+            "Offset": "00:02:03"
+        }
+    ]
+    ```
+
+1. Modify the values in the example to match your environment.
+
+1. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is `Modbus1`, name the file `Modbus1Schedules.json`. 
+
+1. Run the following curl script from the same directory where the file is located, updating the file name and the endpoint URL in the script if needed.
+
+   ```bash
+   curl -d "@Modbus1Schedules.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Schedules
+   ```
+
 ## Configure Modbus TCP data selection
 
-After you create the data source file, select the streams to store in EDS by configuring Modbus data selection. To configure the data selection file, complete the following steps:
+After you create the data source file and schedule file, select the streams to store in EDS by configuring Modbus data selection. To configure the data selection file, complete the following steps:
 
 1. Using a text editor, copy the example below to create a file in JSON format to define each stream to ingress to EDS. 
 
@@ -66,7 +92,7 @@ After you create the data source file, select the streams to store in EDS by con
            "DataTypeCode": 20,
            "ConversionFactor": 2,
            "ConversionOffset": 3.4,
-           "ScanRate": 500
+           "ScheduleId": "Schedule1"
        },
        {
            "DeviceId" : "Device1",
@@ -77,14 +103,14 @@ After you create the data source file, select the streams to store in EDS by con
            "DataTypeCode": 20,
            "ConversionFactor": 2,
            "ConversionOffset": 3.4,
-           "ScanRate": 500
+           "ScheduleId": "Schedule1"
        }
    ]
    ```
 
 1. Modify the values in the example to match your environment.
 
-1. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is 1, name the file `Modbus1DataSelection.json`. 
+1. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is `Modbus1`, name the file `Modbus1DataSelection.json`. 
 
 1. Run the following curl script from the same directory where the file is located, updating the file name and the endpoint URL in the script if needed.
 
