@@ -46,6 +46,7 @@
       - topicUid: ModbusTCPDataSelectionConfiguration
         items:
         - topicUid: DataFiltersConfiguration
+        - topicUid: SchedulesConfiguration
     - topicUid: omfOverview
       items:
       - topicUid: OMFMessages
