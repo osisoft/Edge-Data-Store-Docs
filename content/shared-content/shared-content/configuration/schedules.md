@@ -36,14 +36,6 @@ Complete the following steps to change the schedules configuration:
 
 On successful execution, the schedules change takes effect immediately during runtime.
 
-## Schedules schema
-
-The full schema definition for the schedules configuration is in the  `AdapterName_Schedules_schema.json` file located in one of the following folders:
-
-Windows: `%ProgramFiles%\OSIsoft\Adapters\<AdapterName>\Schemas`
-
-Linux: `/opt/OSIsoft/Adapters/<AdapterName>/Schemas`
-
 ## Schedules parameters
 
 The following parameters are available for configuring schedules:
