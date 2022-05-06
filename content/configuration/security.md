@@ -8,6 +8,8 @@ The OPC UA security standard is concerned with the authentication of client and 
 
 The adapter generates a self-signed certificate when the first secure connection attempt is made. The adapter's certificates and those of the server are stored in the certificate store, which is shared between all adapter instances.
 
+When determining OPC UA security practices with regards to REST APIs, you should consider the following practice. To keep the adapter secure, only administrators should have access to machines where the adapter is installed. REST APIs are bound to localhost, meaning that only requests coming from within the machine will be accepted.
+
 ## Configure OPC UA adapter security
 
 Complete the following steps to configure adapter security:
