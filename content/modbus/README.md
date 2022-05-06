@@ -16,6 +16,8 @@ To update content in `content/modbus/shared-content`, perform the following acti
 
 1. Resolve any conflicts and complete the merge.
 
+    **Remember:** The Modbus docs include the PI Adapter framework. Delete any files that are not unique to Modbus and are redundant to the framework.
+
 ## Which branch of the PI Adapter Modbus docs is EDS consuming?
 
 It's currently consuming `main`. It should continue to consume `main` until another use case arises.

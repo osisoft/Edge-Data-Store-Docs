@@ -16,6 +16,8 @@ To update content in `content/opc-ua/shared-content`, perform the following acti
 
 1. Resolve any conflicts and complete the merge.
 
+    **Remember:** The OPC-UA docs include the PI Adapter framework. Delete any files that are not unique to OPC-UA and are redundant to the framework.   
+
 ## Which branch of the PI Adapter OPC-UA docs is EDS consuming?
 
 It's currently consuming `main`. It should continue to consume `main` until another use case arises.
