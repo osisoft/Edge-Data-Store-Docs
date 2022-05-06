@@ -11,6 +11,7 @@
   - topicUid: UninstallTheAdapter
 - topicUid: ModbusConfiguration
   items:
+  - topicUid: PIAdapterForModbusSecurity
   - topicUid: ConfigurationTools
   - topicUid: PIAdapterForModbusTCPSystemComponentsConfiguration
     items:
@@ -19,14 +20,15 @@
   - topicUid: SchedulesConfiguration
   - topicUid: PIAdapterForModbusTCPDataSelectionConfiguration
   - topicUid: DataFiltersConfiguration
+  - topicUid: EgressEndpointsConfiguration
+    items:
+    - topicUid: PrepareEgressDestinations
+    - topicUid: ConfigureANetworkProxy
   - topicUid: GeneralConfiguration
     items:
     - topicUid: AdapterMetadata
   - topicUid: BufferingConfiguration
   - topicUid: LoggingConfiguration
-  - topicUid: EgressEndpointsConfiguration
-    items:
-    - topicUid: PrepareEgressDestinations 
   - topicUid: HealthEndpointConfiguration
   - topicUid: PIAdapterForModbusTCPConfigurationExamples
 - topicUid: Administration
