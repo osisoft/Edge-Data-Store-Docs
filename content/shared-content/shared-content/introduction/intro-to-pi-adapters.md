@@ -6,6 +6,8 @@ uid: IntroToPiAdapters
 
 [!include[product-name](../_includes/inline/product-name.md)] is a  data collection technology that collects time-series operations data from a data source over the [!include[product-protocol](../_includes/inline/product-protocol.md)] protocol and then sends it to a supported storage location in the Open Message Format (OMF).
 
+[Subtree wiki article](https://dev.azure.com/osieng/engineering/_wiki/wikis/team-content/25155/Documentation-Frameworks?anchor=how-do-i-use-a-documentation-framework-in-my-new-document%3F)
+
 <!-- Add content about the protocol here -->
 
 ## [!include[product-name](../_includes/inline/product-name.md)] data flow
