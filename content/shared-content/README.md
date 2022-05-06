@@ -8,8 +8,6 @@ All content in this directory is consumed from the [PI Adapter](https://github.c
 
 To update content in `content/shared-content`, perform the following actions from a command prompt session:
 
-1. Change directory to `content/shared-content`.
-
 1. Enter the following command. 
 
     ```bash
@@ -22,7 +20,7 @@ To update content in `content/shared-content`, perform the following actions fro
 
 It's currently consuming `main`. It should continue to consume `main` until another use case arises.
 
-## What if I want to consume a different branch?
+## What if I want to consume a different branch of the framework?
 
 If you want to swap out the most recent version of the PI Adapter framework for a specific version, update the branch parameter in the `git subtree pull` command:
 
