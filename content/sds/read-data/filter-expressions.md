@@ -81,7 +81,7 @@ The following tables shows supported math functions within a filter expression.
 | `mul`   | Multiplication          |
 | `div`   | Division                |
 | `mod`   | Modulo                  |
-| `round` | Rounds to the nearest numeric component without a decimal, with the midpoint rounded away from 0. For example, 0.5 rounds to 1; -0.5 rounds to -1) |
+| `round` | Rounds to the nearest numeric component without a decimal, with the midpoint rounded away from 0. For example, 0.5 rounds to 1; -0.5 rounds to -1). |
 | `floor` | Rounds down to the nearest numeric component without a decimal |
 |`ceiling`| Rounds up to the nearest numeric component without a decimal |
 
