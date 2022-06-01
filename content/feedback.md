@@ -40,4 +40,4 @@ To submit documentation feedback, send an email to [documentation@aveva.com](mai
 
 - Details of the issue
 
-The OSIsoft technical documentation team will review and address your feedback in future documentation updates.
+The technical documentation team will review and address your feedback in future documentation updates.
