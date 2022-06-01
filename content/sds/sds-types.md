@@ -18,7 +18,7 @@ Once an SdsType is created, it is immutable and its definition cannot be changed
 
 Only the SdsTypes used to define SdsStreams or SdsStreamViews are required to be added to the Sequential Data Store. SdsTypes that define properties or base types are contained within the parent SdsType do not need to be added to the Data Store separately.
 
-SdsTypes define how events are associated and read within an SdsStream. When attempting to read non-existent indexes, indexes that fall between, before or after existing indexes, the results are determined by the interpolation and extrapolation settings of the SdsType. For more information about interpolation and extrapolation, see [Read characteristics](xref:ReadCharacteristics).
+SdsTypes define how events are associated and read within an SdsStream. When attempting to read non-existent indexes, indexes that fall between, before, or after existing indexes, the results are determined by the interpolation and extrapolation settings of the SdsType. For more information about interpolation and extrapolation, see [Read characteristics](xref:ReadCharacteristics).
 
 ## SdsType fields and properties
 
@@ -26,10 +26,10 @@ The following table shows the SdsType fields. Fields that are not included are r
 
 | Property          | Type                   | Optionality | Searchable | Details |
 |-------------------|------------------------|-------------|---------|---------|
-| `ID`               | String                 | Required    | Yes | Identifier for referencing the type. |
-| `Name`              | String                 | Optional    | Yes | Friendly name. |
-| `Description`       | String                 | Optional    | Yes | Description text. |
-| `SdsTypeCode`       | SdsTypeCode            | Required    | No | Numeric code identifying the base SdsType. |
+| `ID`               | String                 | Required    | Yes | Identifier for referencing the type |
+| `Name`              | String                 | Optional    | Yes | Friendly name |
+| `Description`       | String                 | Optional    | Yes | Description text |
+| `SdsTypeCode`       | SdsTypeCode            | Required    | No | Numeric code identifying the base SdsType |
 | `InterpolationMode` | SdsInterpolationMode   | Optional    | No | Interpolation setting of the type. Default is Continuous. |
 | `ExtrapolationMode` | SdsExtrapolationMode   | Optional    | No | Extrapolation setting of the type. Default is All. |
 | `Properties`        | IList\<SdsTypeProperty\> | Required    | Yes, with limitations | List of `SdsTypeProperty` items. See [SdsTypeProperty](xref:#SdsTypeProperty)
@@ -39,13 +39,13 @@ For search limitations, see [Search in SDS](xref:sdsSearching).
 
 The type identifier, `SdsType.ID`, has the following requirements:
 
-- Is not case sensitive.
+- Is not case sensitive
 
-- Can contain spaces.
+- Can contain spaces
 
-- Cannot contain forward slash ("/").
+- Cannot contain forward slash ("/")
 
-- Contains a maximum of 100 characters. 
+- Contains a maximum of 100 characters 
 
 Type management using the .NET SDS client libraries methods is performed through `ISdsMetadataService`. You can create `ISdsMetadataService` using one of the `SdsService.GetMetadataService()` factory methods. .NET client libraries provide `SdsTypeBuilder` to help build SdsTypes from .NET types. 
 
@@ -57,25 +57,25 @@ The following table shows the required and optional `SdsTypeProperty` fields. Fi
 
 |          Property         | Type                    | Optionality | Details |
 |---------------------------|-------------------------|-------------|---------|
-| `Id`                        | String                  | Required    | Identifier for referencing the type. |
-| `Name`                      | String                  | Optional    | Friendly name. |
-| `Description`               | String                  | Optional    | Description text. |
-| `SdsType`                   | SdsType                 | Required    | Field defining the property's Type. |
-| `IsKey`                     | Boolean                 | Required    | Identifies the property as the Key (Primary Index). |
-| `Value`                     | Object                  | Optional    | Value of the property. |
-| `Order`                     | Int                     | Optional    | Order of comparison within a compound index. |
+| `Id`                        | String                  | Required    | Identifier for referencing the type |
+| `Name`                      | String                  | Optional    | Friendly name |
+| `Description`               | String                  | Optional    | Description text |
+| `SdsType`                   | SdsType                 | Required    | Field defining the property's Type |
+| `IsKey`                     | Boolean                 | Required    | Identifies the property as the Key (Primary Index) |
+| `Value`                     | Object                  | Optional    | Value of the property |
+| `Order`                     | Int                     | Optional    | Order of comparison within a compound index |
 | `InterpolationMode`         | SdsInterpolationMode    | Optional    | Interpolation setting of the property. Default is null. |
 | `Uom`                       | String                  | Optional    | Unit of Measure of the property. For a list of units of measures that are supported for an SdsTypeProperty, see [Units of measure](xref:SupportedUOM). |
 
 The `SdsTypeProperty` identifier has the same requirements as the `SdsType` identifier, which are:
 
-- Is not case sensitive.
+- Is not case sensitive
 
-- Can contain spaces.
+- Can contain spaces
 
-- Cannot contain forward slash ("/").
+- Cannot contain forward slash ("/")
 
-- Contains a maximum of 100 characters. 
+- Contains a maximum of 100 characters 
 
 ### `IsKey`
 
