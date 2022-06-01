@@ -8,11 +8,11 @@ For each instance of the Modbus TCP EDS adapter defined in system configuration,
 
 ## Configure Modbus TCP data source
 
-Modbus TCP data source configurations cannot be modified manually. You must use the REST endpoints to add or edit the configuration.
+You cannot manually modify Modbus TCP data source configurations. You must use the REST endpoints to add or edit the configuration.
 
 To configure the Modbus TCP data source, follow these steps:
 
-1. Using any text editor, create a file that contains a Modbus TCP data source in JSON form.
+1. Using any text editor, create a file that contains a Modbus TCP data source in JSON format.
 
     - For content structure, see [Modbus TCP data source examples](#modbus-tcp-data-source-examples). 
 
