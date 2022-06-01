@@ -32,9 +32,9 @@ simpleType.Name = "Simple";
 simpleType.Description = "Basic sample type";
 ```
 
-`SdsTypeBuilder` recognizes the ``System.ComponentModel.DataAnnotations.KeyAttribute`` and 
-its own ``OSIsoft.Sds.SdsMemberAttribute``. When using the ``SdsMemberAttribute`` to specify 
-the primary index, set the ``IsKey`` to true.
+`SdsTypeBuilder` recognizes the `System.ComponentModel.DataAnnotations.KeyAttribute` and 
+its own `OSIsoft.Sds.SdsMemberAttribute`. When using the `SdsMemberAttribute` to specify 
+the primary index, set the `IsKey` to `true`.
 
 The SdsType is created with the following parameters. `SdsTypeBuilder` automatically generates 
 unique identifiers. Note that the following table contains only a partial list of fields.
