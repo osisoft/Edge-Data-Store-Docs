@@ -8,7 +8,7 @@ SdsStreams are collections of sequentially occurring values indexed by a single 
 
 SDS stores collections of events and provides convenient ways to find and associate events. Events of consistent structure are stored in streams. Streams are referenced by their identifier or `Id` field. Stream identifiers must be unique within a namespace.
 
-A stream must include a `TypeId` that references the identifier of an existing type. Stream management using the .NET SDS client libraries is performed through `ISdsMetadataService`. Create the `ISdsMetadataService`, using one of the `SdsService.GetMetadataService()` factory methods.
+A stream must include a `TypeId` that references the identifier of an existing type. Stream management using the .NET SDS client libraries is performed through `ISdsMetadataService`. Create the `ISdsMetadataService` using one of the `SdsService.GetMetadataService()` factory methods.
 
 The following table shows the required and optional stream fields. Fields not listed are reserved
 for internal SDS use.
@@ -59,9 +59,9 @@ The `SdsStreamPropertyOverride` object has the following structure.
 
 | Property          | Type                 | Optionality | Details |
 |-------------------|----------------------|-------------|---------|
-| `SdsTypePropertyId` | String               | Required    | SdsTypeProperty identifier. |
-| `InterpolationMode` | SdsInterpolationMode | Optional    | Interpolation setting. Default is null. |
-| `Uom`               | String               | Optional    | Unit of measure. |
+| `SdsTypePropertyId` | String               | Required    | SdsTypeProperty identifier |
+| `InterpolationMode` | SdsInterpolationMode | Optional    | Interpolation setting. Default is null |
+| `Uom`               | String               | Optional    | Unit of measure |
 
 The unit of measure can be overridden for any type property defined by the stream type, including primary keys and secondary indexes. For more information about type property units of measure, see [Types](xref:sdsTypes).
 
