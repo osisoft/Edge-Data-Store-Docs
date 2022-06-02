@@ -4,7 +4,7 @@ uid: AdapterMetadata
 
 # Metadata
 
-If the metadataLevel is set to `Low`, `Medium`, or `High` in the [General configuration](xref:GeneralConfiguration), adapter streams created by the ingress components include the following metadata:
+If you set the `metadataLevel` to `Low`, `Medium`, or `High` in the [General configuration](xref:GeneralConfiguration), adapter streams created by the ingress components include the following metadata:
 
 ```code
   Datasource: {ComponentId}
@@ -19,7 +19,7 @@ If you configure a health endpoint and enable metadata, they are included in the
 
 If you enable diagnostics in [General configuration](xref:GeneralConfiguration), metadata are included in the diagnostics streams ([Stream count](xref:StreamCount), [IO rate](xref:IORate), [Error rate](xref:ErrorRate)) together with `ComponentId` and `ComponentType`.
 
-The adapter may also send its own stream metadata not including health and diagnostics streams. For more information about what custom metadata is included in each stream, see the user guide for your adapter.
+The adapter may also send its own stream metadata that does not include health and diagnostics streams. For more information about what custom metadata is included in each stream, see the user guide for your adapter.
 
 **Note:**
 
