@@ -54,7 +54,7 @@ Special character | Replacement character |
 
 ## Culture support
 
-Some numeric values and datetimes support cultures when they are being parsed. The default culture is `en-US (US English)` (InvariantCulture). OSIsoft recommends that you leave the adapter at the default unless you expect culturally variant input.
+Some numeric values and datetimes support cultures when they are parsed. The default culture is `en-US (US English)` (InvariantCulture). OSIsoft recommends that you leave the adapter at the default unless you expect culturally variant input.
 
 **Note:** Installed cultures vary by machine with both Linux and Windows. If the specified culture is not installed, the text parser fails to parse input that requires that culture.
 
