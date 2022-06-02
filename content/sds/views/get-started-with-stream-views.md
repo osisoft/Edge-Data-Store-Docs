@@ -4,7 +4,7 @@ uid: sdsGSStreamViews
 
 # Get started with SdsStreamViews
 
-To work with stream views, you first need to have types, streams, and streams data defined. The following is  simplified procedure for working with a stream view. For code examples, see [Work with SdsStreamViews outside of .NET framework](xref:IndexesOutsideDotNet) and [Work with SdsStreamViews in .NET framework](xref:IndexesInDotNet). 
+To work with stream views, you first need to have types, streams, and streams data defined. The following is a simplified procedure for working with a stream view. For code examples, see [Work with SdsStreamViews outside of .NET framework](xref:IndexesOutsideDotNet) and [Work with SdsStreamViews in .NET framework](xref:IndexesInDotNet). 
 
 1. Create a type that will be the source type. 
 
@@ -26,7 +26,7 @@ To work with stream views, you first need to have types, streams, and streams da
 
 ## Work with SdsStreamViews outside of .NET framework
 
-When working with stream views, either invoke HTTP directly or use some of the sample code. Both Python and JavaScript use SdsStreamView definitions.
+When working with stream views, invoke HTTP directly or use some of the sample code. Both Python and JavaScript use SdsStreamView definitions.
 
 The following JSON is a simple mapping between a source type with identifier `Simple` and a target type with identifier `Simple1`.
 
@@ -121,7 +121,7 @@ foreach (Simple value in simpleValues)
 //  4 / 1 / 2017 7:09:00 AM: Warning, 9
 ```
 
-To map the ``Measurement`` property to a property in the same location of the same type, allow SDS to 
+To map the `Measurement` property to a property in the same location of the same type, allow SDS to 
 automatically determine mapping.
 
 ```csharp
@@ -173,7 +173,7 @@ foreach (Simple1 value in simple1Values)
 
 The `SdsStreamViewMap` shows that SDS was able to determine that mapping from `Measurement` to `Value` resulted in renaming.
 
-SDS can also determine mapping of properties of the same name but different type. Note that the location of the `Measurement` property is different, yet it is still mapped.
+SDS can also determine property mapping of the same name but different type. Note that the location of the `Measurement` property is different, yet it is still mapped.
 
 ```csharp
 public class Simple2
@@ -224,7 +224,7 @@ foreach (Simple2 value in simple2Values)
 
 The `SdsStreamViewMap` shows that the source `Measurement` floating point is converted to integer in the target.
 
-When neither the field name, the field type or location matches, SDS does not determine mapping. The source is eliminated, target is added and assigned the default value.
+When neither the field name, the field type, or location matches, SDS does not determine mapping. The source is eliminated and the target is added and assigned the default value.
 
 ```csharp
 public class Simple3
