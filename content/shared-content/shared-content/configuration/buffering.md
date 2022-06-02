@@ -4,7 +4,7 @@ uid: BufferingConfiguration
 
 # Buffering
 
-You can configure PI adapters to buffer data egressed from the adapter to endpoints. Buffering is configured through the buffering configuration parameters in the system configuration.
+You can configure PI adapters to buffer data egressed from the adapter to endpoints. Configure buffering through the buffering configuration parameters in the system configuration.
 
 **Note:** OSIsoft recommends that you do not modify the default buffering location unless it is necessary. Changes to the buffering configuration parameters only take effect during adapter service startup.
 
@@ -32,10 +32,7 @@ Complete the following steps to configure buffering. Use the `PUT` method in con
     curl -d "@ConfigureBuffering.json" -H "Content-Type: application/json" -X PUT "http://localhost:5590/api/v1/configuration/system/buffering"
     ```
 
-    **Notes:**
-  
-    * If you installed the adapter to listen on a non-default port, update `5590` to the port number in use.
-    * For a list of other REST operations you can perform, like updating or replacing a buffering configuration, see [REST URLs](#rest-urls).
+**Note**: If you installed the adapter to listen on a non-default port, update `5590` to the port number in use. For a list of other REST operations you can perform, like updating or replacing a buffering configuration, see [REST URLs](#rest-urls).
     <br/>
     <br/>
 
@@ -43,9 +40,9 @@ Complete the following steps to configure buffering. Use the `PUT` method in con
 
 The full schema definition for the system buffering is in the `System_Buffering_schema.json` file located in one of the following folders:
 
-Windows: `%ProgramFiles%\OSIsoft\Adapters\<AdapterName>\Schemas`
+* **Windows**: `%ProgramFiles%\OSIsoft\Adapters\<AdapterName>\Schemas`
 
-Linux: `/opt/OSIsoft/Adapters/<AdapterName>/Schemas`
+* **Linux**: `/opt/OSIsoft/Adapters/<AdapterName>/Schemas`
 
 ## Buffering parameters
 
@@ -59,8 +56,8 @@ The following parameters are available for configuring buffering:
 
 <sup>1</sup> **Buffering to disk** - disk is only used if required; <br>
 
-- Data is only written to the disk buffer if queued in the memory buffer for more than 5 seconds.
-- The **MaxBufferSizeMB** is applied per configured endpoint except the health endpoint.<br>
+- Data is only written to the disk buffer if it is queued in the memory buffer for more than 5 seconds.
+- The **MaxBufferSizeMB** is applied per configured endpoint, except the health endpoint.<br>
 - An adapter creates 20 MB buffer files that are stored in **BufferLocation**.<br>
 - When **MaxBufferSizeMB** is reached, the oldest buffer file is deleted and a new buffer file is created.<br>
 - The health endpoint is fixed at 20 MB. When the health endpoint buffer file becomes full, a new buffer file is created and the previous buffer file is deleted.
