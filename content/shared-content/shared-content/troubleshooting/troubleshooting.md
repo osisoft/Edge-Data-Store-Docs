@@ -4,7 +4,7 @@ uid: TroubleshootTheAdapter
 
 # Troubleshooting
 
-PI adapters provide features for troubleshooting issues related to connectivity, data flow, and configuration. Resources include adapter logs and the Wireshark troubleshooting tool . If you are still unable to resolve issues or need additional guidance, contact OSIsoft Technical Support through the [OSIsoft Customer Portal](https://my.osisoft.com/).
+PI adapters provide features for troubleshooting issues related to connectivity, data flow, and configuration. Resources include adapter logs and the Wireshark troubleshooting tool. If you are still unable to resolve issues or need additional guidance, contact OSIsoft Technical Support through the [OSIsoft Customer Portal](https://my.osisoft.com/).
 
 **Note:** Make sure to also check the troubleshooting information specific to your adapter in this user guide.
 
@@ -15,8 +15,8 @@ Messages from the System and OmfEgress logs provide information on the status of
 Perform the following steps to view the System and OmfEgress logs:
 
 1. Navigate to the logs directory:<br>
-    Windows: `%ProgramData%\OSIsoft\Adapters\<AdapterName>\Logs`<br>
-    Linux: `/usr/share/OSIsoft/Adapters/<AdapterName>/Logs`.<br><br>
+    **Windows**: `%ProgramData%\OSIsoft\Adapters\<AdapterName>\Logs`<br>
+    **Linux**: `/usr/share/OSIsoft/Adapters/<AdapterName>/Logs`.<br><br>
     **Example:**<br> A successful connection to a PI Web API egress endpoint displays the following message in the OmfEgress log:
 
     ```json
@@ -44,7 +44,7 @@ Wireshark is a protocol-specific troubleshooting tool that supports all current 
 
 ## Health and diagnostics egress to PI Web API
 
-The adapter sends health and diagnostics data to PI Web API; in some cases, conflicts may occur that are due to changes or perceived changes in PI Web API. For example, a `409 - Conflict` error message displays if you upgrade your adapter version and the PI points do not match in  the upgraded version. However, data is continued to be sent as long as containers are created, so buffering only starts if no containers are created.
+The adapter sends health and diagnostics data to PI Web API; in some cases, conflicts may occur that are due to changes or perceived changes in PI Web API. For example, a `409 - Conflict` error message displays if you upgrade your adapter version and the PI points do not match in  the upgraded version; however, data continues to be sent as long as containers are created so buffering only starts if no containers are created.
 
 To resolve the conflict, perform the following steps:
 
