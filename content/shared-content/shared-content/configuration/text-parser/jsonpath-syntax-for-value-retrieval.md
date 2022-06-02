@@ -481,10 +481,10 @@ The following JSONPath configuration reads Sunday Average Indoor Temperature. Th
 
 ## Error handling
 
-If you encounter text parser related errors that is errors for the **ValueField** or **IndexField**, check the StreamId associated with the error message.
+If you encounter text parser related errors, errors for the **ValueField** or **IndexField**, check the StreamId associated with the error message.
 
 Possible errors include the following:
 
-- The JSONPath expression of **ValueField** or **IndexField** is pointing to a non-existing value
-- The JSONPath expression of **ValueField** or **IndexField** is missing a value altogether
-- **DataType** does not match the value
+- The JSONPath expression of **ValueField** or **IndexField** is pointing to a non-existing value.
+- The JSONPath expression of **ValueField** or **IndexField** is missing a value altogether.
+- **DataType** does not match the value.
