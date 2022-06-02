@@ -1995,24 +1995,24 @@ A contract defining resolution of `SdsStream`
 <a id="tocSsdsresolvedtype"></a>
 <a id="tocssdsresolvedtype"></a>
 
-A contract defining the type of data to read or write in a SdsResolvedStream
+A contract defining the type of data to read or write in a `SdsResolvedStream`
 
 #### Properties
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|Id|string|false|true|A unique identifier for the SdsType object|
-|Name|string|false|true|An optional user-friendly name for the SdsType object|
-|Description|string|false|true|A brief description of the SdsType object|
-|SdsTypeCode|[SdsTypeCode2](#schemasdstypecode2)|false|false|None|
-|IsGenericType|boolean|false|false|A boolean value indicating whether the current SdsType is a generic type This property is only used when using templates or generics. It will be automatically set if the SdsType is generated using SdsTypeBuilder. For further information on generics, please refer, https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/index|
-|IsReferenceType|boolean|false|false|Enabling this property preserves objects as references during serialization/de-serialization of the SdsType data while using the SdsFormatter This property behaves similar to IsReference property for DataContractSerializer and is only valid for serialization if SdsFormatter is used.|
-|GenericArguments|[[SdsType](#schemasdstype)]|false|true|Contains the parameterized SdsTypes of the current generic SdsType This property is only used when using templates or generics. It will be automatically set if the SdsType is generated using SdsTypeBuilder. For further information on generics, please refer to https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/index|
-|Properties|[[SdsResolvedTypeProperty](#schemasdsresolvedtypeproperty)]|false|true|[A contract defining the type of data to read or write in a SdsResolvedType]|
-|BaseType|[SdsType](#schemasdstype)|false|true|Defines the base type of the SdsType Commonly used by SdsTypeBuilder to generate SdsType from contracts not explicitly defined and maintained by the user.|
-|DerivedTypes|[[SdsType](#schemasdstype)]|false|true|List of SdsTypes that should be recognized by SdsFormatter during serialization/de-serialization. This property behaves similar to KnownTypeAttribute attribute for DataContractSerializer and only valid for serialization if SdsFormatter is used.|
-|InterpolationMode|[SdsInterpolationMode2](#schemasdsinterpolationmode2)|false|false|Interpolation modes that can be applied to SdsType, SdsTypeProperty, SdsStream, and SdsStreamPropertyOverride objects|
-|ExtrapolationMode|[SdsExtrapolationMode2](#schemasdsextrapolationmode2)|false|false|Defines how a stream responds to requests with indexes that precede or follow all data in the stream. Behavior also depends on the SdsInterpolationMode for a stream. If SdsInterpolationMode is set to Discrete, extrapolation will not occur. If SdsInterpolationMode is set to ContinuousNullableLeading or ContinuousNullableTrailing, default values will be returned instead of actual data.|
+|`Id`|string|false|true|A unique identifier for the `SdsType` object|
+|`Name`|string|false|true|An optional user-friendly name for the `SdsType` object|
+|`Description`|string|false|true|A brief description of the `SdsType` object|
+|`SdsTypeCode`|[SdsTypeCode2](#schemasdstypecode2)|false|false|None|
+|`IsGenericType`|boolean|false|false|A boolean value indicating whether the current `SdsType` is a generic type This property is only used when using templates or generics. It will be automatically set if the `SdsType` is generated using `SdsTypeBuilder`. For further information on generics, please refer, https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/index|
+|`IsReferenceType`|boolean|false|false|Enabling this property preserves objects as references during serialization/de-serialization of the `SdsType` data while using the `SdsFormatter` This property behaves similar to `IsReference` property for `DataContractSerializer` and is only valid for serialization if `SdsFormatter` is used.|
+|`GenericArguments`|[[SdsType](#schemasdstype)]|false|true|Contains the parameterized `SdsTypes` of the current generic `SdsType` This property is only used when using templates or generics. It will be automatically set if the `SdsType` is generated using `SdsTypeBuilder`. For further information on generics, please refer to https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/index|
+|`Properties`|[[SdsResolvedTypeProperty](#schemasdsresolvedtypeproperty)]|false|true|[A contract defining the type of data to read or write in a `SdsResolvedType`]|
+|`BaseType`|[SdsType](#schemasdstype)|false|true|Defines the base type of the `SdsType` Commonly used by `SdsTypeBuilder` to generate `SdsType` from contracts not explicitly defined and maintained by the user.|
+|`DerivedTypes`|[[SdsType](#schemasdstype)]|false|true|List of `SdsTypes` that should be recognized by `SdsFormatter` during serialization/de-serialization. This property behaves similar to `KnownTypeAttribute` attribute for `DataContractSerializer` and only valid for serialization if `SdsFormatter` is used.|
+|`InterpolationMode`|[SdsInterpolationMode2](#schemasdsinterpolationmode2)|false|false|Interpolation modes that can be applied to `SdsType`, `SdsTypeProperty`, `SdsStream`, and `SdsStreamPropertyOverride` objects|
+|`ExtrapolationMode`|[SdsExtrapolationMode2](#schemasdsextrapolationmode2)|false|false|Defines how a stream responds to requests with indexes that precede or follow all data in the stream. Behavior also depends on the `SdsInterpolationMode` for a stream. If `SdsInterpolationMode` is set to `Discrete`, extrapolation will not occur. If `SdsInterpolationMode` is set to `ContinuousNullableLeading` or `ContinuousNullableTrailing`, default values will be returned instead of actual data.|
 
 ```json
 {
@@ -2145,16 +2145,16 @@ A contract defining the type of data to read or write in a SdsResolvedType
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|Id|string|false|true|A unique identifier for the SdsTypeProperty object|
-|Name|string|false|true|An optional user-friendly name for the SdsTypeProperty object|
-|Description|string|false|true|A brief description of the SdsTypeProperty object|
-|Order|int32|false|false|The order used for comparison among SdsTypePropertys if a compound index is specified for SdsType|
-|IsKey|boolean|false|false|A boolean value indicating whether the current SdsTypeProperty must be used for indexing Used in combination with property to enable compound indexing|
-|FixedSize|int32|false|false|An optional property specifying the length of string Exclusively used for that is of|
-|SdsType|[SdsResolvedType](#schemasdsresolvedtype)|false|true|A contract defining the type of data to read or write in a SdsResolvedStream|
-|Value|any|false|true|An enum value of the current SdsTypeProperty. Exclusively used for a of an enum|
-|Uom|string|false|true|Indicates the Unit of Measure of the current SdsTypeProperty|
-|InterpolationMode|[SdsInterpolationMode2](#schemasdsinterpolationmode2)|false|true|Interpolation modes that can be applied to SdsType, SdsTypeProperty, SdsStream, and SdsStreamPropertyOverride objects|
+|`Id`|string|false|true|A unique identifier for the `SdsTypeProperty` object|
+|`Name`|string|false|true|An optional user-friendly name for the `SdsTypeProperty` object|
+|`Description`|string|false|true|A brief description of the SdsTypeProperty object|
+|`Order`|int32|false|false|The order used for comparison among `SdsTypeProperty`s if a compound index is specified for `SdsType`|
+|`IsKey`|boolean|false|false|A boolean value indicating whether the current `SdsTypeProperty` must be used for indexing. Used in combination with property to enable compound indexing.|
+|`FixedSize`|int32|false|false|An optional property specifying the length of string. Exclusively used for that is of|
+|`SdsType`|[SdsResolvedType](#schemasdsresolvedtype)|false|true|A contract defining the type of data to read or write in a SdsResolvedStream|
+|`Value`|any|false|true|An enum value of the current SdsTypeProperty. Exclusively used for a of an enum|
+|`Uom`|string|false|true|Indicates the Unit of Measure of the current `SdsTypeProperty`|
+|`InterpolationMode`|[SdsInterpolationMode2](#schemasdsinterpolationmode2)|false|true|Interpolation modes that can be applied to `SdsType`, `SdsTypeProperty`, `SdsStream`, and `SdsStreamPropertyOverride` objects|
 |IsQuality|boolean|false|false|Indicates whether this property marks data quality|
 
 ```json
@@ -2280,19 +2280,19 @@ A contract defining the type of data to read or write in a SdsResolvedType
 <a id="tocSsdsinterpolationmode2"></a>
 <a id="tocssdsinterpolationmode2"></a>
 
-Interpolation modes that can be applied to SdsType, SdsTypeProperty, SdsStream, and SdsStreamPropertyOverride objects
+Interpolation modes that can be applied to `SdsType`, `SdsTypeProperty`, `SdsStream`, and `SdsStreamPropertyOverride` objects
 
 #### Enumerated Values
 
 |Property|Value|
 |---|---|
-|Default|Continuous|
-|Continuous|Continuous|
-|StepwiseContinuousLeading|StepwiseContinuousLeading|
-|StepwiseContinuousTrailing|StepwiseContinuousTrailing|
-|Discrete|Discrete|
-|ContinuousNullableLeading|ContinuousNullableLeading|
-|ContinuousNullableTrailing|ContinuousNullableTrailing|
+|`Default`|Continuous|
+|`Continuous`|Continuous|
+|`StepwiseContinuousLeading`|StepwiseContinuousLeading|
+|`StepwiseContinuousTrailing`|StepwiseContinuousTrailing|
+|`Discrete`|Discrete|
+|`ContinuousNullableLeading`|ContinuousNullableLeading|
+|`ContinuousNullableTrailing`|ContinuousNullableTrailing|
 
 ---
 
@@ -2406,7 +2406,7 @@ Interpolation modes that can be applied to SdsType, SdsTypeProperty, SdsStream, 
 <a id="tocSsdsextrapolationmode2"></a>
 <a id="tocssdsextrapolationmode2"></a>
 
-Defines how a stream responds to requests with indexes that precede or follow all data in the stream. Behavior also depends on the SdsInterpolationMode for a stream. If SdsInterpolationMode is set to Discrete, extrapolation will not occur. If SdsInterpolationMode is set to ContinuousNullableLeading or ContinuousNullableTrailing, default values will be returned instead of actual data.
+Defines how a stream responds to requests with indexes that precede or follow all data in the stream. Behavior also depends on the `SdsInterpolationMode` for a stream. If `SdsInterpolationMode` is set to `Discrete`, extrapolation will not occur. If `SdsInterpolationMode` is set to `ContinuousNullableLeading` or `ContinuousNullableTrailing`, default values will be returned instead of actual data.
 
 #### Enumerated Values
 
@@ -2426,14 +2426,14 @@ Defines how a stream responds to requests with indexes that precede or follow al
 <a id="tocSsdsresolvedstreamsresponse"></a>
 <a id="tocssdsresolvedstreamsresponse"></a>
 
-A contract defining bulk response of SdsResolvedStream
+A contract defining bulk response of `SdsResolvedStream`
 
 #### Properties
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|Data|[[SdsResolvedStream](#schemasdsresolvedstream)]|false|true|[A contract defining resolution of SdsStream]|
-|ChildErrors|[[SdsResolvedStreamErrorResponseBody](#schemasdsresolvedstreamerrorresponsebody)]|false|true|[The error response contains details on the cause of stream resolution failure and resolution of the error.]|
+|`Data`|[[SdsResolvedStream](#schemasdsresolvedstream)]|false|true|[A contract defining resolution of `SdsStream`]|
+|`ChildErrors`|[[SdsResolvedStreamErrorResponseBody](#schemasdsresolvedstreamerrorresponsebody)]|false|true|[The error response contains details on the cause of stream resolution failure and resolution of the error.]|
 
 ```json
 {
@@ -2605,13 +2605,13 @@ The error response contains details on the cause of stream resolution failure an
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|OperationId|string|false|true|Operation unique identifier of action that caused the error|
-|Error|string|false|true|Error description|
-|Reason|string|false|true|Reason for the error|
-|Resolution|string|false|true|Resolution to resolve the error|
-|Parameters|object|false|true|IDs or values that are creating or are affected by the error|
-|StreamId|string|false|true|None|
-|StatusCode|[HttpStatusCode](#schemahttpstatuscode)|false|false|None|
+|`OperationId`|string|false|true|Operation unique identifier of action that caused the error|
+|`Error`|string|false|true|Error description|
+|`Reason`|string|false|true|Reason for the error|
+|`Resolution`|string|false|true|Resolution to resolve the error|
+|`Parameters`|object|false|true|`Id`s or values that are creating or are affected by the error|
+|`StreamId`|string|false|true|None|
+|`StatusCode`|[HttpStatusCode](#schemahttpstatuscode)|false|false|None|
 
 ```json
 {
