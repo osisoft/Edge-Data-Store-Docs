@@ -4,9 +4,9 @@ uid: DataFiltersConfiguration
 
 # Data filters
 
-PI adapters can be configured to perform data filtering to save network bandwidth. Every data item in the data selection configuration can be assigned the Id of a data filter. The adapter will then filter data for those data items based on the data filter configuration.
+You can configure PI adapters to perform data filtering to save network bandwidth. Every data item in the data selection configuration can be assigned the `Id` of a data filter. The adapter filters data for those data items based on the data filter configuration.
 
-**Note:** If data filters are enabled and data quality changes, both the old and current data quality values are passed on.
+**Note:** If you enable data filters and data quality changes, both the old and current data quality values are passed on.
 
 ## Configure data filters
 
@@ -32,10 +32,7 @@ Complete the following steps to configure data filters. Use the `PUT` method in 
     curl -d "@ConfigureDataFilters.json" -H "Content-Type: application/json" -X PUT "http://localhost:5590/api/v1/configuration/<ComponentId>/DataFilters"
     ```
 
-    **Notes:**
-  
-    * If you installed the adapter to listen on a non-default port, update `5590` to the port number in use.
-    * For a list of other REST operations you can perform, like updating or deleting a data filters configuration, see [REST URLs](#rest-urls).
+    **Note**: If you installed the adapter to listen on a non-default port, update `5590` to the port number in use. For a list of other REST operations you can perform, like updating or deleting a data filters configuration, see [REST URLs](#rest-urls).
     <br/>
     <br/>
 
@@ -71,13 +68,13 @@ The following parameters are available for configuring data filters:
 
 | Relative URL | HTTP verb | Action |
 | ------------ | --------- | ------ |
-| api/v1/configuration/_ComponentId_/DataFilters      | GET       | Gets all configured data filters. |
-| api/v1/configuration/_ComponentId_/DataFilters      | DELETE    | Deletes all configured data filters. |
-| api/v1/configuration/_ComponentId_/DataFilters      | POST      | Adds an array of data filters or a single data filter. Fails if any data filter already exists. |
-| api/v1/configuration/_ComponentId_/DataFilters      | PUT       | Replaces all data. |
-| api/v1/configuration/_ComponentId_/DataFilters      | PATCH     | Allows partial updating of configured data filter. |
-| api/v1/configuration/_ComponentId_/DataFilters/*id* | GET       | Gets configured data filter by *id*. |
-| api/v1/configuration/_ComponentId_/DataFilters/*id*| DELETE     | Deletes configured data filter by *id*. |
-| api/v1/configuration/_ComponentId_/DataFilters/*id* | PUT       | Replaces data filter by *id*. Fails if data filter does not exist. |
+| api/v1/configuration/_ComponentId_/DataFilters      | `GET`       | Gets all configured data filters. |
+| api/v1/configuration/_ComponentId_/DataFilters      | `DELETE`    | Deletes all configured data filters. |
+| api/v1/configuration/_ComponentId_/DataFilters      | `POST`      | Adds an array of data filters or a single data filter. Fails if any data filter already exists. |
+| api/v1/configuration/_ComponentId_/DataFilters      | `PUT`       | Replaces all data. |
+| api/v1/configuration/_ComponentId_/DataFilters      | `PATCH`     | Allows partial updating of configured data filter. |
+| api/v1/configuration/_ComponentId_/DataFilters/*id* | `GET`       | Gets configured data filter by `Id`. |
+| api/v1/configuration/_ComponentId_/DataFilters/*id*| `DELETE`     | Deletes configured data filter by `Id`. |
+| api/v1/configuration/_ComponentId_/DataFilters/*id* | `PUT`       | Replaces data filter by `Id`. Fails if data filter does not exist. |
 
-**Note:** Replace *ComponentId* with the Id of your adapter component.
+**Note:** Replace *ComponentId* with the `Id` of your adapter component.
