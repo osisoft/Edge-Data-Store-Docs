@@ -4,7 +4,7 @@ uid: DiscoveryConfiguration
 
 # Discovery
 
-You can perform a data discovery for existing data items on demand. Data discovery is initiated through REST calls and it is tied to a specific discovery Id, which you can either specify or let the adapter generate it.
+You can perform data discovery for existing data items on demand. Data discovery is initiated through REST calls and it is tied to a specific discovery `Id`, which you can either specify or let the adapter generate it.
 
 Data discovery includes different routes. For example, you can choose to do the following:
 
