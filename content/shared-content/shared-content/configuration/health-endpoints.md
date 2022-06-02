@@ -34,10 +34,7 @@ Complete the following steps to configure health endpoints. Use the `PUT` method
     curl -d "@ConfigureHealthEndpoints.json" -H "Content-Type: application/json" -X PUT "http://localhost:5590/api/v1/configuration/system/healthendpoints"
     ```
 
-    **Notes:**
-  
-    * If you installed the adapter to listen on a non-default port, update `5590` to the port number in use.
-    * For a list of other REST operations you can perform, like updating or replacing a health endpoints configuration, see [REST URLs](#rest-urls).
+    **Note**: If you installed the adapter to listen on a non-default port, update `5590` to the port number in use. For a list of other REST operations you can perform, like updating or replacing a health endpoints configuration, see [REST URLs](#rest-urls).
     <br/>
     <br/>
 
@@ -45,9 +42,8 @@ Complete the following steps to configure health endpoints. Use the `PUT` method
 
 The full schema definition for the health endpoint configuration is in the `System_HealthEndpoints_schema.json` file located in one of the following folders:
 
-Windows: `%ProgramFiles%\OSIsoft\Adapters\<AdapterName>\Schemas`
-
-Linux: `/opt/OSIsoft/Adapters/<AdapterName>/Schemas`
+* **Windows**: `%ProgramFiles%\OSIsoft\Adapters\<AdapterName>\Schemas`
+* **Linux**: `/opt/OSIsoft/Adapters/<AdapterName>/Schemas`
 
 ## Health endpoint parameters
 
@@ -94,14 +90,14 @@ The following parameters are available for configuring health endpoints:
 
 | Relative URL                                              | HTTP verb | Action               |
 |-----------------------------------------------------------|-----------|----------------------|
-| api/v1/configuration/system/healthEndpoints      | GET       | Gets all configured health endpoints |
-| api/v1/configuration/system/healthEndpoints      | DELETE    | Deletes all configured health endpoints |
-| api/v1/configuration/system/healthEndpoints      | POST      | Adds an array of health endpoints or a single endpoint. Fails if any endpoint already exists |
-| api/v1/configuration/system/healthEndpoints      | PUT       | Replaces all health endpoints. **Note:** Requires an array of endpoints |
-| api/v1/configuration/system/healthEndpoints     | PATCH     | Allows partial updating of configured health endpoints<br>**Note:** The request must be an array containing one or more health endpoints. Each health endpoint in the array must include its *Id*.  |
-| api/v1/configuration/system/healthEndpoints/*Id* | GET       | Gets configured health endpoint by *Id* |
-| api/v1/configuration/system/healthEndpoints/*Id*| DELETE     | Deletes configured health endpoint by *Id* |
-| api/v1/configuration/system/healthEndpoints/*Id* | PUT       | Updates or creates a new health endpoint with the specified *Id* |
-| api/v1/configuration/system/healthEndpoints/*Id* | PATCH     | Allows partial updating of configured health endpoint by *Id* |
+| api/v1/configuration/system/healthEndpoints      | `GET`       | Gets all configured health endpoints |
+| api/v1/configuration/system/healthEndpoints      | `DELETE`    | Deletes all configured health endpoints |
+| api/v1/configuration/system/healthEndpoints      | `POST`      | Adds an array of health endpoints or a single endpoint. Fails if any endpoint already exists |
+| api/v1/configuration/system/healthEndpoints      | `PUT`       | Replaces all health endpoints. **Note:** Requires an array of endpoints |
+| api/v1/configuration/system/healthEndpoints     | `PATCH`     | Allows partial updating of configured health endpoints<br>**Note:** The request must be an array containing one or more health endpoints. Each health endpoint in the array must include its *Id*.  |
+| api/v1/configuration/system/healthEndpoints/*Id* | `GET`       | Gets configured health endpoint by *Id* |
+| api/v1/configuration/system/healthEndpoints/*Id*| `DELETE`     | Deletes configured health endpoint by *Id* |
+| api/v1/configuration/system/healthEndpoints/*Id* | `PUT`       | Updates or creates a new health endpoint with the specified *Id* |
+| api/v1/configuration/system/healthEndpoints/*Id* | `PATCH`     | Allows partial updating of configured health endpoint by *Id* |
 
 **Note:** Replace *Id* with the Id of the health endpoint.
