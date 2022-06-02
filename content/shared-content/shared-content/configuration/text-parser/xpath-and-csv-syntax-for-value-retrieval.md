@@ -9,7 +9,7 @@ For information on which semantics are used for retrieving values from XML and C
 - XML - [XML Path Language (XPath)](https://www.w3.org/TR/1999/REC-xpath-19991116/)
 - CSV - Column Index (1 based) or Header value (if header defined)
 
-The following syntaxes are used to extract values from XML or CSV documents.
+Use the following syntaxes to extract values from XML or CSV documents.
 
 ### XML - Simple XPath example
 
@@ -79,7 +79,7 @@ The following XPath configuration reads a series of values:
 2020-08-10T12:10:53.0928791Z,123456789.0
 ```
 
-The following CSV column index configuration requires the text parser be configured with `HasHeader=false`. The column indexes are 1 based and configured as strings.
+The following CSV column index configuration requires you to configure the text parser with `HasHeader=false`. The column indexes are 1 based and configured as strings.
 
 ```json
 {
@@ -109,7 +109,7 @@ Date,Value
 2020-08-10T12:10:53.0928791Z,123456789.0
 ```
 
-The following CSV column header configuration requires the text parser be configured with `HasHeader=true`.
+The following CSV column header configuration requires you to configure the text parser with `HasHeader=true`.
 
 ```json
 {
