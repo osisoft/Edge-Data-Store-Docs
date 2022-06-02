@@ -21,10 +21,10 @@ GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Quantities?skip={skip}&c
 #### Parameters
 
 `string tenantId`
-Tenant identifier.
+Tenant identifier
 
 `string namespaceId`
-Namespace identifier.
+Namespace identifier
 
 `[Optional] int skip`  
 Parameter representing the zero-based offset of the first object to retrieve.  If unspecified, a default value of 0 is used.
@@ -42,8 +42,8 @@ Parameter representing the maximum number of objects to retrieve. If unspecified
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
@@ -129,10 +129,10 @@ GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Quantities/{quantityId}
 #### Parameters
 
 `string tenantId`
-Tenant identifier.
+Tenant identifier
 
 `string namespaceId`
-Namespace identifier.
+Namespace identifier
 
 `string quantityId`
 The quantity identifier
@@ -145,8 +145,8 @@ The quantity identifier
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
@@ -208,16 +208,16 @@ GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Quantities/{quantityId}/
 #### Parameters
 
 `string tenantId`
-Tenant identifier.
+Tenant identifier
 
 `string namespaceId`
-Namespace identifier.
+Namespace identifier
 
 `string quantityId`
-The quantity identifier.
+The quantity identifier
 
 `string uomId`
-The unit of measure identifier.
+The unit of measure identifier
 
 ### Response
 
@@ -227,8 +227,8 @@ The unit of measure identifier.
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
@@ -277,13 +277,13 @@ GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Quantities/{quantityId}/
 #### Parameters
 
 `string tenantId`
-Tenant identifier.
+Tenant identifier
 
 `string namespaceId`
-Namespace identifier.
+Namespace identifier
 
 `string quantityId`
-The quantity identifier.
+The quantity identifier
 
 ### Response
 
@@ -293,8 +293,8 @@ The quantity identifier.
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
@@ -431,7 +431,7 @@ Contains the error message format that follows the OCS error standards
 |Error|string|false|true|Error description|
 |Reason|string|false|true|Reason for the error|
 |Resolution|string|false|true|Resolution to resolve the error|
-|Parameters|object|false|true|IDs or values that are creating or are affected by the error|
+|Parameters|object|false|true|IDs or values that are creating or are affected by the error.|
 
 ```json
 {
