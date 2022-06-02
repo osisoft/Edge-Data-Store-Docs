@@ -48,9 +48,9 @@ Complete the following steps to upgrade a PI adapter on a Linux computer:
 
     Platform | Command
     --|--
-    **Linux x64** |<code>sudo apt upgrade ./[!include[installer](../_includes/inline/installer-name.md)]-x64_.deb</code> 
-    **Linux ARM32 Debian** |<code>sudo apt upgrade ./[!include[installer](../_includes/inline/installer-name.md)]-arm_.deb</code> 
-    **Linux ARM64 Debian** |<code>sudo apt upgrade ./[!include[installer](../_includes/inline/installer-name.md)]-arm64_.deb</code> 
+   *  **Linux x64** |<code>sudo apt upgrade ./[!include[installer](../_includes/inline/installer-name.md)]-x64_.deb</code> 
+   * **Linux ARM32 Debian** |<code>sudo apt upgrade ./[!include[installer](../_includes/inline/installer-name.md)]-arm_.deb</code> 
+   *  **Linux ARM64 Debian** |<code>sudo apt upgrade ./[!include[installer](../_includes/inline/installer-name.md)]-arm64_.deb</code> 
 
 4. Optional: To verify the upgrade, run the following `curl` command with the port number that you specified:
 
