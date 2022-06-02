@@ -6,9 +6,9 @@ uid: LoggingConfiguration
 
 PI adapters write daily log messages for the adapter, the system, and OMF egress to flat text files in the following locations:
 
-• Windows: *%ProgramData%\OSIsoft\Adapters\{AdapterInstance}\Logs*
+• Windows: `%ProgramData%\OSIsoft\Adapters\{AdapterInstance}\Logs`
 
-• Linux: */usr/share/OSIsoft/Adapters/{AdapterInstance}/Logs*
+• Linux: `/usr/share/OSIsoft/Adapters/{AdapterInstance}/Logs`
 
 Each message in the log displays the message severity level, timestamp, and the message itself.
 
@@ -50,9 +50,8 @@ On successful execution, the log-level change takes effect immediately during ru
 
 The full schema definition for the logging configuration is in the component specific logging file: `AdapterName_Logging_schema.json`, `OmfEgress_Logging_schema.json`, or `System_Logging_schema.json` file located in one of the following folders:
 
-Windows: `%ProgramFiles%\OSIsoft\Adapters\<AdapterName>\Schemas`
-
-Linux: `/opt/OSIsoft/Adapters/<AdapterName>/Schemas`
+* **Windows**: `%ProgramFiles%\OSIsoft\Adapters\<AdapterName>\Schemas`
+* **Linux**: `/opt/OSIsoft/Adapters/<AdapterName>/Schemas`
 
 ## Logging parameters
 
@@ -73,7 +72,7 @@ The following parameters are available for configuring logging:
 | Information | Logs that track the general flow of the application. Any non-repetitive general information like the following can be useful for diagnosing potential application errors: <br> - Version information related to the software at startup <br> - External services used <br> - Data source connection string <br> - Number of measurements <br> - Egress URL <br> - Change of state “Starting” or “Stopping” <br> - Configuration |
 | Warning | Logs that highlight an abnormal or unexpected event in the application flow that does not otherwise cause the application execution to stop. Warning messages can indicate an unconfigured data source state, an insecure communication channel in use, or any other event that could require attention but that does not impact data flow. |
 | Error | Logs that highlight when the current flow of execution is stopped due to a failure. These should indicate a failure in the current activity and not an application-wide failure. It can indicate an invalid configuration, unavailable external endpoint, internal flow error, and so on. |
-| Critical | Logs that describe an unrecoverable application or system crash or a catastrophic failure that requires immediate attention. This can indicate application wide failures like beta timeout expired, unable to start self-hosted endpoint, unable to access vital resource (for example, Data Protection key file), and so on.<br><br>**Note:** Critical is translated to *Fatal* in the log file. |
+| Critical | Logs that describe an unrecoverable application or system crash or a catastrophic failure that requires immediate attention. This can indicate application wide failures like beta timeout expired, unable to start self-hosted endpoint, unable to access vital resource (for example, Data Protection key file), and so on.<br><br>**Note:** Critical is translated to `Fatal` in the log file. |
 | None | Logging is disabled for the given component. |
 
 ## Example
@@ -95,9 +94,9 @@ The following logging configuration is the installation default for a component:
 
 | Relative URL | HTTP verb | Action |
 | ------------ | --------- | ------ |
-| api/v1/configuration/System/Logging | GET | Retrieves the system logging configuration |
-| api/v1/configuration/System/Logging | PUT | Updates the system logging configuration |
-| api/v1/configuration/_ComponentId_/Logging | GET | Retrieves the logging configuration of the specified adapter component |
-| api/v1/configuration/_ComponentId_/Logging | PUT | Updates the logging configuration of the specified adapter component |
+| api/v1/configuration/System/Logging | `GET` | Retrieves the system logging configuration |
+| api/v1/configuration/System/Logging | `PUT` | Updates the system logging configuration |
+| api/v1/configuration/_ComponentId_/Logging | `GET` | Retrieves the logging configuration of the specified adapter component |
+| api/v1/configuration/_ComponentId_/Logging | `PUT` | Updates the logging configuration of the specified adapter component |
 
-**Note:** Replace *ComponentId* with the Id of your adapter component.
+**Note:** Replace *ComponentId* with the `Id` of your adapter component.
