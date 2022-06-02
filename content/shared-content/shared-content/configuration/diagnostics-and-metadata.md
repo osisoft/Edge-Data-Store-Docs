@@ -4,7 +4,7 @@ uid: GeneralConfiguration
 
 # Diagnostics and metadata
 
-You can configure PI adapters to produce and store diagnostics data at a designated health endpoint, and to send metadata for created streams.
+You can configure PI adapters to produce and store diagnostics data at a designated health endpoint and to send metadata for created streams.
 For more information about available diagnostics data, see [Adapter diagnostics](xref:AdapterDiagnostics) and [Egress diagnostics](xref:EgressDiagnostics).
 For more information about available metadata and what metadata are sent per metadata level, see [Adapter Metadata](xref:AdapterMetadata).
 
@@ -15,7 +15,7 @@ For more information about available metadata and what metadata are sent per met
 
    **Note:** `5590` is the default port number. If you selected a different port number, replace it with that value.
 
-   Example using `curl`:
+   **Example using `curl`**:
 
    ```bash
    curl -d "{ \"EnableDiagnostics\":true, \"MetadataLevel\":Medium, \"HealthPrefix\":\"Machine1\" }" -X PUT "http://localhost:5590/api/v1/configuration/system/general"
@@ -25,9 +25,8 @@ For more information about available metadata and what metadata are sent per met
 
 The full schema definition for the general configuration is in the `System_General_schema.json` file located in one of the following folders:
 
-Windows: `%ProgramFiles%\OSIsoft\Adapters\<AdapterName>\Schemas`
-
-Linux: `/opt/OSIsoft/Adapters/<AdapterName>/Schemas`
+* **Windows**: `%ProgramFiles%\OSIsoft\Adapters\<AdapterName>\Schemas`
+* **Linux**: `/opt/OSIsoft/Adapters/<AdapterName>/Schemas`
 
 ## General parameters
 
@@ -63,6 +62,6 @@ Sample output:
 
 | Relative URL                            | HTTP verb | Action                                          |
 | --------------------------------------- | --------- | ----------------------------------------------- |
-| api/v1/configuration/system/General  | GET       | Gets the general configuration             |
-| api/v1/configuration/system/General  | PUT       | Replaces the existing general configuration |
-| api/v1/configuration/system/General  | PATCH       | Allows partial updating of general configuration
+| api/v1/configuration/system/General  | `GET`       | Gets the general configuration             |
+| api/v1/configuration/system/General  | `PUT`       | Replaces the existing general configuration |
+| api/v1/configuration/system/General  | `PATCH`       | Allows partial updating of general configuration
