@@ -14,7 +14,7 @@ Complete the procedure corresponding to your specific operating system to uninst
 
 2. Optional: To delete data, configuration, and log files, delete the directory:
 
-    _%ProgramData%\OSIsoft\Adapters\\[!include[product-name](../_includes/inline/component-type.md)]_
+    `%ProgramData%\OSIsoft\Adapters\\[!include[product-name](../_includes/inline/component-type.md)]`
    
    This deletes all data processed by the adapter, in addition to the configuration and log files.
 
@@ -36,4 +36,4 @@ Complete the procedure corresponding to your specific operating system to uninst
     sudo rm -r /usr/share/OSIsoft/Adapters/{adapter-name}
     ```
     
-    This deletes all data processed by the adapter, in addition to the configuration and log files.
+    This deletes all data processed by the adapter in addition to the configuration and log files.
