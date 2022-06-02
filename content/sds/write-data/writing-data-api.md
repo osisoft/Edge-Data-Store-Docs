@@ -11,7 +11,7 @@ The following example API calls show different methods for writing data.
 Many of the API methods described below contain example requests and responses in JSON to highlight usage and specific behaviors. The following type, stream, and data are used in the examples.
 
 **Example type**  
-`SimpleType` is an SdsType with a single index and two additional properties. This type is defined below in .NET, Python, and Javascript:
+`SimpleType` is an SdsType with a single index and two additional properties. This type is defined below in .NET, Python, and JavaScript:
 
 #### [.NET](#tab/tabid-1)
 
@@ -76,7 +76,7 @@ var SimpleType = function () {
 ***
 
 **Example stream**  
-`Simple` is an SdsStream of type `SimpleType`.
+`Simple` is an `SdsStream` of type `SimpleType`.
 
 **Example data**  
 `Simple` has stored values as follows:
@@ -101,13 +101,13 @@ Inserts data into the specified stream. Returns an error if data is already pres
 
 ##### Parameters 
 `string tenantId`  
-Tenant identifier.  
+Tenant identifier  
 
 `string namespaceId`  
-Namespace identifier. 
+Namespace identifier 
 
 `string streamId`  
-Stream identifier. 
+Stream identifier 
 
 ##### Request body  
 A serialized list of one or more events of the stream type  
@@ -145,9 +145,9 @@ The request body specifies the values to insert.
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
 |409|[ErrorResponseBody](#schemaerrorresponsebody)|Conflict|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
@@ -170,7 +170,7 @@ The request body specifies the values to insert.
 
 ## `Update Values`
 
-Writes one or more events to the specified stream.
+Writes one or more events to the specified stream
 
 #### Request
 
@@ -181,13 +181,13 @@ Writes one or more events to the specified stream.
 ##### Parameters
 
 `string tenantId`  
-Tenant identifier.  
+Tenant identifier  
 
 `string namespaceId`  
-Namespace identifier.  
+Namespace identifier  
 
 `string streamId`  
-Stream identifier. 
+Stream identifier 
 
 ##### Request body
 
@@ -201,8 +201,8 @@ A serialized list of one or more events of the stream type
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
@@ -227,7 +227,7 @@ A serialized list of one or more events of the stream type
 ---
 ## `Replace Values`
 
-Writes one or more events over existing events in the specified stream.
+Writes one or more events over existing events in the specified stream
 
 #### Request
 
@@ -239,13 +239,13 @@ Writes one or more events over existing events in the specified stream.
 ##### Parameters 
 
 `string tenantId`  
-Tenant identifier.  
+Tenant identifier  
 
 `string namespaceId`  
-Namespace identifier.  
+Namespace identifier  
 
 `string streamId`  
-Stream identifier. 
+Stream identifier 
 
 ##### Request Body
 
@@ -259,8 +259,8 @@ A serialized list of one or more events of the stream type
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
@@ -298,13 +298,13 @@ Modifies the specified stream event(s). Patching affects only the data item para
 ##### Parameters 
 
 `string tenantId`  
-Tenant identifier.
+Tenant identifier
 
 `string namespaceId`  
-Namespace identifier. 
+Namespace identifier 
 
 `string streamId`  
-Stream identifier.
+Stream identifier
 
 `string selectExpression`  
 Comma separated list of strings that indicates the event fields that will be changed in stream events  
@@ -337,7 +337,7 @@ Let's say that you have a stream `Simple` of `SimpleType`. To change one propert
 ]
 ```
 
-This request will only change the `Measurement` value at the specified event index. 
+This request only changes the `Measurement` value at the specified event index. 
 
 **Note:** Patching is used to patch the events of the selected fields for one or more events in the stream. Only the fields indicated in `selectExpression` are modified. The events to be modified are indicated by the index value of each entry in the collection. 
 
@@ -366,16 +366,16 @@ Removes the event at each index from the specified stream. Different overloads a
 ##### Parameters 
 
 `string tenantId`  
-Tenant identifier.  
+Tenant identifier  
 
 `string namespaceId`  
-Namespace identifier.  
+Namespace identifier  
 
 `string streamId`  
-Stream identifier. 
+Stream identifier 
 
 `string index`  
-One or more indexes of events to remove.
+One or more indexes of events to remove
 
 ### Response
 
@@ -385,8 +385,8 @@ One or more indexes of events to remove.
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
@@ -406,14 +406,14 @@ One or more indexes of events to remove.
 }
 ```
 
-**Note:** If any individual event fails to be removed, the entire operation is rolled back and no events are removed. The streamId and index that caused the issue are included in the error response. 
+**Note:** If any individual event fails to be removed, the entire operation is rolled back and no events are removed. The `streamId` and index that caused the issue are included in the error response. 
 
-If you attempt to remove events at indexes that have no events, an error is returned. If this occurs, you can use [Window](#removewindow) request format to remove any events from a specified ‘window’ of indexes, which will not return an error if no data is found.
+If you attempt to remove events at indexes that have no events, an error is returned. If this occurs, you can use [Window](#removewindow) request format to remove any events from a specified "window" of indexes, which will not return an error if no data is found.
 
 <a name="removewindow"></a>
 ### `Window`
 
-Removes events at and between the start index and end index.
+Removes events at and between the start index and end index
 
 #### Request
 
@@ -425,19 +425,19 @@ Removes events at and between the start index and end index.
 ##### Parameters 
 
 `string tenantId`  
-Tenant identifier.  
+Tenant identifier  
 
 `string namespaceId`  
-Namespace identifier.  
+Namespace identifier  
 
 `string streamId`  
-Stream identifier. 
+Stream identifier 
 
 `string startIndex`  
-The index defining the beginning of the window.
+The index defining the beginning of the window
 
 `string endIndex`  
-The index defining the end of the window.  
+The index defining the end of the window  
 
 ### Response
 
@@ -447,8 +447,8 @@ The index defining the end of the window.
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
@@ -491,7 +491,7 @@ Contains the error message format that follows the OCS error standards
 |Error|string|false|true|Error description|
 |Reason|string|false|true|Reason for the error|
 |Resolution|string|false|true|Resolution to resolve the error|
-|Parameters|object|false|true|IDs or values that are creating or are affected by the error|
+|Parameters|object|false|true|`Ids` or values that are creating or are affected by the error|
 
 ```json
 {
