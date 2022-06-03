@@ -1718,9 +1718,9 @@ A contract defining a property of a `SdsType`
 |`Description`|string|false|true|A brief description of the `SdsTypeProperty` object|
 |`Order`|int32|false|false|The order used for comparison among `SdsTypeProperty`s if a compound index is specified for `SdsType`|
 |`IsKey`|boolean|false|false|A boolean value indicating whether the current `SdsTypeProperty` must be used for indexing Used in combination with property to enable compound indexing|
-|`FixedSize`|int32|false|false|An optional property specifying the length of string. Exclusively used for that is of|
+|`FixedSize`|int32|false|false|An optional property specifying the length of string.|
 |`SdsType`|[SdsType](#schemasdstype)|false|true|`SdsType` of the current `SdsTypeProperty`|
-|`Value`|any|false|true|An enum value of the current `SdsTypeProperty`. Exclusively used for a of an enum|
+|`Value`|any|false|true|An enum value of the current `SdsTypeProperty`.|
 |`Uom`|string|false|true|Indicates the Unit of Measure of the current `SdsTypeProperty`|
 |`InterpolationMode`|[SdsInterpolationMode](#schemasdsinterpolationmode)|false|true|An `InterpolationMode` that overrides the root `SdsType`'s `InterpolationMode` for this `SdsTypeProperty`|
 |`IsQuality`|boolean|false|false|Indicates whether this property marks data quality|
@@ -2150,9 +2150,9 @@ A contract defining the type of data to read or write in a SdsResolvedType
 |`Description`|string|false|true|A brief description of the SdsTypeProperty object|
 |`Order`|int32|false|false|The order used for comparison among `SdsTypeProperty`s if a compound index is specified for `SdsType`|
 |`IsKey`|boolean|false|false|A boolean value indicating whether the current `SdsTypeProperty` must be used for indexing. Used in combination with property to enable compound indexing.|
-|`FixedSize`|int32|false|false|An optional property specifying the length of string. Exclusively used for that is of|
+|`FixedSize`|int32|false|false|An optional property specifying the length of string. |
 |`SdsType`|[SdsResolvedType](#schemasdsresolvedtype)|false|true|A contract defining the type of data to read or write in a SdsResolvedStream|
-|`Value`|any|false|true|An enum value of the current SdsTypeProperty. Exclusively used for a of an enum|
+|`Value`|any|false|true|An enum value of the current SdsTypeProperty. |
 |`Uom`|string|false|true|Indicates the Unit of Measure of the current `SdsTypeProperty`|
 |`InterpolationMode`|[SdsInterpolationMode2](#schemasdsinterpolationmode2)|false|true|Interpolation modes that can be applied to `SdsType`, `SdsTypeProperty`, `SdsStream`, and `SdsStreamPropertyOverride` objects|
 |IsQuality|boolean|false|false|Indicates whether this property marks data quality|
