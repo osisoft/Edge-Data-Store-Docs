@@ -111,12 +111,15 @@ GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Units/{uomId}
 #### Parameters
 
 `string tenantId`
+
 Tenant identifier
 
 `string namespaceId`
+
 Namespace identifier
 
 `string uomId`
+
 The unit of measure identifier
 
 ### Response

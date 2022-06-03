@@ -24,7 +24,7 @@ To download the Windows installation file, follow these steps:
 
 1. Download the Windows `EdgeDataStore.msi` file from the [OSIsoft Customer portal (https://customers.osisoft.com/s/products)](https://customers.osisoft.com/s/products).
 
-       **Note:** Customer login credentials are required to access the portal.
+**Note:** Customer login credentials are required to access the portal.
 
 1. Copy the `EdgeDataStore.msi` file to the file system of the device.
 
@@ -90,9 +90,9 @@ To download the appropriate file for your device, follow these steps:
 
 1. Download the Linux distribution file from the [OSIsoft Customer portal (https://customers.osisoft.com/s/products)](https://customers.osisoft.com/s/products).
 
-       **Note:** Customer login credentials are required to access the portal.
+**Note:** Customer login credentials are required to access the portal.
 
-2. Copy the Linux distribution file to the file system of the device.
+1. Copy the Linux distribution file to the file system of the device.
 
 ### Install on a Linux device
 

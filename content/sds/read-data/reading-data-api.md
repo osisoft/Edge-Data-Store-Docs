@@ -74,7 +74,7 @@ var SimpleType = function () {
 ```
 
 **Example Stream**  
-`Simple` is an SdsStream of type `SimpleType`.
+`Simple` is an `SdsStream` of type `SimpleType`.
 
 **Example Data**  
 `Simple` has stored values as follows:
@@ -93,7 +93,7 @@ All times are represented at offset 0, GMT.
 
 ## ``Get First Value``
 
-Returns the first value in the stream. If no values exist in the stream, null is returned.
+Returns the first value in the stream. If no values exist in the stream, null is returned
 
 ### Request
 
@@ -116,8 +116,8 @@ GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data/
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
@@ -164,8 +164,8 @@ GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data/
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
@@ -189,7 +189,7 @@ GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data/
 
 ## ``Find Distinct Value``
 
-Returns a stored event based on the specified `index` and `searchMode`.
+Returns a stored event based on the specified `index` and `searchMode`
 
 ### Request  
 
@@ -1217,7 +1217,7 @@ Content-Type: application/json
 ]
 ```
 
-SDS also supports summary requests for nullable SdsTypes. It means an SdsType has at least a nullable SdsTypeProperty.
+SDS also supports summary requests for nullable `SdsType`s. It means an `SdsType` has at least a nullable `SdsTypeProperty`.
 
 #### Example
 
