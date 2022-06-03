@@ -30,7 +30,7 @@ When contacting OSIsoft Technical Support, provide the following information to 
 
 ## Product feedback
 
-To submit product feedback, including enhancement requests, visit the [Edge Data Store feedback page](https://feedback.osisoft.com/forums/906877-edge-data-store). The OSIsoft product team will review and address feedback for potential inclusion in future product updates. 
+To submit product feedback, including enhancement requests, visit the [Edge Data Store feedback page](https://feedback.osisoft.com/forums/906877-edge-data-store). The OSIsoft product team will review and address feedback for potential inclusion in future product updates.
 
 ## Documentation feedback
 

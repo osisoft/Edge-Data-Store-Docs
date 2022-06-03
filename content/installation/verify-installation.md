@@ -4,7 +4,7 @@ uid: VerifyInstallation
 
 # Verify installation
 
-Depending on the device capabilities, it may take some time before the Edge Data Store is fully initialized and running for the first time. Allow time for start up before verifying that Edge Data Store is correctly installed. 
+Depending on the device capabilities, it may take some time before the Edge Data Store is fully initialized and running for the first time. Allow time for start up before verifying that Edge Data Store is correctly installed.
 
 To verify the Edge Data Store installation, follow these steps.
 

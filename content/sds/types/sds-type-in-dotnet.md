@@ -4,8 +4,7 @@ uid: SdsTypesInDotNet
 
 # SdsTypes in .NET framework
 
-When working in .NET, use the `SdsTypeBuilder` to create SdsTypes. The `SdsTypeBuilder` eliminates 
-potential errors that can occur when working with SdsTypes manually.
+When working in .NET, use the `SdsTypeBuilder` to create `SdsType`s. The `SdsTypeBuilder` eliminates potential errors that can occur when working with SdsTypes manually.
 
 There are several ways to work with the `SdsTypeBuilder`. One is to use the static methods for convenience:
 
@@ -32,12 +31,10 @@ simpleType.Name = "Simple";
 simpleType.Description = "Basic sample type";
 ```
 
-`SdsTypeBuilder` recognizes the `System.ComponentModel.DataAnnotations.KeyAttribute` and 
-its own `OSIsoft.Sds.SdsMemberAttribute`. When using the `SdsMemberAttribute` to specify 
+`SdsTypeBuilder` recognizes the `System.ComponentModel.DataAnnotations.KeyAttribute` and its own `OSIsoft.Sds.SdsMemberAttribute`. When using the `SdsMemberAttribute` to specify
 the primary index, set the `IsKey` to `true`.
 
-The SdsType is created with the following parameters. `SdsTypeBuilder` automatically generates 
-unique identifiers. Note that the following table contains only a partial list of fields.
+The `SdsType` is created with the following parameters. `SdsTypeBuilder` automatically generates unique identifiers. Note that the following table contains only a partial list of fields.
 
 | Field            | Values                  |             |                                      |
 |------------------|-------------------------|-------------|--------------------------------------|
@@ -93,6 +90,5 @@ unique identifiers. Note that the following table contains only a partial list o
 |                  |                         | Description | null                                 |
 |                  |                         | Properties  | null                                 |
 |                  | Value                   | null                                               |
-
 
 The `SdsTypeBuilder` also supports derived types. You need not add the base types to SDS before using `SdsTypeBuilder`. Base types are maintained within the SdsType.

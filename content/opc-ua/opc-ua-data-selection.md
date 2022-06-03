@@ -12,7 +12,7 @@ A default OPC UA data selection file will be created if there is no OPC UA data 
 
 To generate the default data selection file, follow these steps:
 
-1. Add an [OPC UA EDS adapter](xref:EdgeDataStoreConfiguration) with a unique ComponentId. 
+1. Add an [OPC UA EDS adapter](xref:EdgeDataStoreConfiguration) with a unique ComponentId.
 
   During the installation of Edge Data Store, enabling the OPC UA EDS adapter results in addition of a unique component that also satisfies this condition.
   
@@ -49,7 +49,7 @@ To generate the default data selection file, follow these steps:
   ]
   ```
 
-1. In a text editor, edit the file and change the value of any Selected key from false to true in order to transfer the OPC UA data to be stored in Edge Data Store. 
+1. In a text editor, edit the file and change the value of any Selected key from false to true in order to transfer the OPC UA data to be stored in Edge Data Store.
 
 1. In the same directory where you edited the file, run the following curl command:
 

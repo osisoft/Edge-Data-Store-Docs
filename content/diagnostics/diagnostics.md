@@ -29,7 +29,7 @@ The Diagnostics.System dynamic type includes these values which are logged in a 
 | int | HandleCount  | Number of handles opened by the host process  |
 | double | ManagedMemorySize (uom=MB)  | Number of bytes currently thought to be allocated in managed memory  |
 | double | PrivateMemorySize (uom=MB)  | Amount of paged memory, in bytes, allocated for the host process  |
-| double | PeakPagedMemorySize (uom=MB)  | Maximum amount of memory in the virtual memory paging file, in bytes, used by the host process. <br><br>**Note:** On Linux platiforms, this value is always reported as 0.|
+| double | PeakPagedMemorySize (uom=MB)  | Maximum amount of memory in the virtual memory paging file, in bytes, used by the host process. <br><br>**Note:** On Linux platforms, this value is always reported as 0.|
 | double | StorageTotalSize (uom=MB)  | Total size of the storage medium in use by the Edge Data Store  |
 | double | StorageFreeSpace (uom=MB)  | Free space available  |
 

@@ -8,7 +8,7 @@ Create a custom application using OSIsoft Message Format to send data to Edge Da
 
 ![EDS OMF Ingress](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/OMFIngressExample.jpg "OMF Ingress Example")
 
-The OMF application collects data from a data source and sends it to the EDS endpoint. The EDS endpoint sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or OSIsoft Cloud Services. The OMF application must run on the same device as EDS and no authentication is needed. 
+The OMF application collects data from a data source and sends it to the EDS endpoint. The EDS endpoint sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or OSIsoft Cloud Services. The OMF application must run on the same device as EDS and no authentication is needed.
 
 To get started using OMF messages to ingress data into EDS, create an OMF type and container and then write data events to the container using REST APIs. Use the Sequential Data Store (SDS) REST API to read the data back from EDS.
 
@@ -40,10 +40,10 @@ To create an OMF type, follow these steps:
    ```
 
    The value is indexed by a timestamp, and the numeric value that will be stored is a 32-bit floating point value.
-   
-1. To create the OMF type in Edge Storage, store the JSON file with the name `OmfCreateType.json` on the local device.
 
-1. Run the following curl command:
+2. To create the OMF type in Edge Storage, store the JSON file with the name `OmfCreateType.json` on the local device.
+
+3. Run the following curl command:
 
    ```bash
    curl -d "@OmfCreateType.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: type" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
@@ -66,11 +66,11 @@ To create an OMF container, follow these steps:
    }]
    ```
 
-   This container references the OMF type that was created earlier, and an error will occur if the type does not exist when the container is created. 
-   
-1. To create the OMF container in Edge Storage, store the JSON file with the name `OmfCreateContainer.json` on the local device.
+   This container references the OMF type that was created earlier, and an error will occur if the type does not exist when the container is created.
 
-1. To create the SDS stream to store data defined by the type, run the following curl command:
+2. To create the OMF container in Edge Storage, store the JSON file with the name `OmfCreateContainer.json` on the local device.
+
+3. To create the SDS stream to store data defined by the type, run the following curl command:
 
    ```bash
    curl -d "@OmfCreateContainer.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: container" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
@@ -80,7 +80,7 @@ To create an OMF container, follow these steps:
 
 Once a type and container are defined, follow these steps to write data to the container:
 
-1. Create an OMF JSON file to define data events to be stored in the SDS Stream created in the previous steps. For best performance, batch OMF values together, as in the following example: 
+1. Create an OMF JSON file to define data events to be stored in the SDS Stream created in the previous steps. For best performance, batch OMF values together, as in the following example:
 
    ```json
    [{
@@ -107,7 +107,7 @@ Once a type and container are defined, follow these steps to write data to the c
 
 ## Use SDS to read last data written
 
-To use the SDS REST API to read back the last data event written to the server, follow these steps: 
+To use the SDS REST API to read back the last data event written to the server, follow these steps:
 
 1. Start the curl command line tool.
 
@@ -118,7 +118,7 @@ To use the SDS REST API to read back the last data event written to the server, 
    ```
 
    Sample output:
-   
+
    ```json
    {"Timestamp": "2019-07-16T15:18:25.9870136Z", "Value": 12346.6789}
    ```
@@ -136,7 +136,7 @@ To use the SDS REST API to read back the a range of data written to the server, 
    ```
 
    Sample output:
-   
+
    ```json
    [{"Timestamp": "2019-07-16T15:18:24.9870136Z","Value": 12345.6789}, {"Timestamp": "2019-07-16T15:18:25.9870136Z", "Value": 12346.6789}]
    ```

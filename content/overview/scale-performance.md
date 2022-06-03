@@ -8,7 +8,7 @@ Before installing Edge Data Store, determine your storage and throughput needs a
 
 ## Edge Storage role
 
-The Edge Storage component is integrated with the EDS and does not replace any existing storage technology produced by OSIsoft. The Edge Storage component is a resilient and reliable data store, but is limited in the duration and scope of the data it retains. 
+The Edge Storage component is integrated with the EDS and does not replace any existing storage technology produced by OSIsoft. The Edge Storage component is a resilient and reliable data store, but is limited in the duration and scope of the data it retains.
 
 * By default, the storage component processes data in a FIFO (first in first out) method: as new data comes in and the size of streams exceeds the configured limits, older data is purged.
 
@@ -16,9 +16,9 @@ The Edge Storage component is integrated with the EDS and does not replace any e
 
 ## Edge Storage scale
 
-The Edge Storage component provides an appropriate level of storage performance for small devices. 
+The Edge Storage component provides an appropriate level of storage performance for small devices.
 
-* For the smallest of these devices, throughput may be limited to tens of events per second. 
+* For the smallest of these devices, throughput may be limited to tens of events per second.
 
 * For larger devices with faster processors, memory and storage, this could increase up to 3,000 events per second. The Edge Storage component is designed for small devices in Edge scenarios: if high throughput or large stream counts are required, OSIsoft Cloud Services or PI Data Archive are more appropriate choices.
 

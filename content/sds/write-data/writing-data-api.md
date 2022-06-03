@@ -13,7 +13,7 @@ Many of the API methods described below contain example requests and responses i
 **Example type**  
 `SimpleType` is an SdsType with a single index and two additional properties. This type is defined below in .NET, Python, and JavaScript:
 
-#### [.NET](#tab/tabid-1)
+### [.NET](#tab/tabid-1)
 
 ```csharp
 public enum State
@@ -81,38 +81,45 @@ var SimpleType = function () {
 **Example data**  
 `Simple` has stored values as follows:
 
+```
       11/23/2017 12:00:00 PM: Ok  0
       11/23/2017  1:00:00 PM: Ok 10
       11/23/2017  2:00:00 PM: Ok 20
       11/23/2017  3:00:00 PM: Ok 30
       11/23/2017  4:00:00 PM: Ok 40
+```
 
 All times are represented at offset 0, GMT.
 
-*****
+***
+
 ## `Insert Values`
 
 Inserts data into the specified stream. Returns an error if data is already present at the index of any event.
 
-#### Request
+### Request
+
  ```text
     POST api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data
  ```
 
-##### Parameters 
+#### Parameters
+
 `string tenantId`  
 Tenant identifier  
 
 `string namespaceId`  
-Namespace identifier 
+Namespace identifier
 
 `string streamId`  
-Stream identifier 
+Stream identifier
 
-##### Request body  
+##### Request body
+
 A serialized list of one or more events of the stream type  
 
 ##### Example request  
+
 The following request is used to insert events into stream `Simple` of `SimpleType`:
 
  ```text
@@ -120,7 +127,8 @@ The following request is used to insert events into stream `Simple` of `SimpleTy
  ```
 
 ##### Example request body
-The request body specifies the values to insert. 
+
+The request body specifies the values to insert.
 
 ```json
 [
@@ -151,6 +159,7 @@ The request body specifies the values to insert.
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
+
 > 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
 
 ```json
@@ -172,13 +181,13 @@ The request body specifies the values to insert.
 
 Writes one or more events to the specified stream
 
-#### Request
+### Request
 
  ```text
     PUT api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data
  ```
 
-##### Parameters
+#### Parameters
 
 `string tenantId`  
 Tenant identifier  
@@ -187,7 +196,7 @@ Tenant identifier
 Namespace identifier  
 
 `string streamId`  
-Stream identifier 
+Stream identifier
 
 ##### Request body
 
@@ -224,19 +233,20 @@ A serialized list of one or more events of the stream type
 
 **Note:** This request performs an insert or a replace depending on whether an event already exists at the event indexes. If any item fails to write, the entire operation is rolled back and no events are written to the stream. The index that caused the issue is included in the error response.
 
----
+***
+
 ## `Replace Values`
 
 Writes one or more events over existing events in the specified stream
 
-#### Request
+### Request
 
  ```text
     PUT api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data
 		?allowCreate=false
  ```
 
-##### Parameters 
+#### Parameters
 
 `string tenantId`  
 Tenant identifier  
@@ -245,9 +255,9 @@ Tenant identifier
 Namespace identifier  
 
 `string streamId`  
-Stream identifier 
+Stream identifier
 
-##### Request Body
+#### Request Body
 
 A serialized list of one or more events of the stream type
 
@@ -282,26 +292,26 @@ A serialized list of one or more events of the stream type
 
 **Note:** This request returns an error if the stream does not have an event to be replaced at the specified index. If any individual event fails to be replaced, the entire operation is rolled back and no replaces are performed. The index that caused the issue and the streamId are included in the error response.
 
----
+***
 
 ## `Patch Values`
 
 Modifies the specified stream event(s). Patching affects only the data item parameters that are included in the call.
 
-#### Request
+### Request
 
  ```text
     PATCH api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data
 		 ?select={selectExpression}
  ```
 
-##### Parameters 
+#### Parameters
 
 `string tenantId`  
 Tenant identifier
 
 `string namespaceId`  
-Namespace identifier 
+Namespace identifier
 
 `string streamId`  
 Stream identifier
@@ -309,19 +319,19 @@ Stream identifier
 `string selectExpression`  
 Comma separated list of strings that indicates the event fields that will be changed in stream events  
 
-##### Request body
+#### Request body
 
 A serialized collection of one or more patch property events
 
-#### Response
+### Response
 
 The response includes a status code
 
-##### Example request
+#### Example request
 
 Let's say that you have a stream `Simple` of `SimpleType`. To change one property (`Measurement`) for one event, you can use the request with the body below:
 
- ```text        
+ ```text
     PATCH api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/Simple/Data
 		?select=measurement
  ```
@@ -337,9 +347,9 @@ Let's say that you have a stream `Simple` of `SimpleType`. To change one propert
 ]
 ```
 
-This request only changes the `Measurement` value at the specified event index. 
+This request only changes the `Measurement` value at the specified event index.
 
-**Note:** Patching is used to patch the events of the selected fields for one or more events in the stream. Only the fields indicated in `selectExpression` are modified. The events to be modified are indicated by the index value of each entry in the collection. 
+**Note:** Patching is used to patch the events of the selected fields for one or more events in the stream. Only the fields indicated in `selectExpression` are modified. The events to be modified are indicated by the index value of each entry in the collection.
 
 If there is a problem patching any individual event, the entire operation is rolled back and the error will indicate the `streamId` and `index` of the problem.  
 
@@ -347,14 +357,15 @@ If there is a problem patching any individual event, the entire operation is rol
 
 There are two options for specifying which events to remove from a stream:
 
-* [Index Collection](#removeindexcollection): One or more indexes can be specified in the request. 
+* [Index Collection](#removeindexcollection): One or more indexes can be specified in the request.
 
 * [Window](#window): A window can be specified with a start index and end index.
 
 <a name="removeindexcollection"></a>
+
 ### `Index Collection`
 
-Removes the event at each index from the specified stream. Different overloads are available to make it easier to indicate the index where you want to remove a data event. 
+Removes the event at each index from the specified stream. Different overloads are available to make it easier to indicate the index where you want to remove a data event.
 
 #### Request
 
@@ -363,7 +374,7 @@ Removes the event at each index from the specified stream. Different overloads a
 		?index={index}[&index={index}…]
  ```
 
-##### Parameters 
+##### Parameters
 
 `string tenantId`  
 Tenant identifier  
@@ -372,7 +383,7 @@ Tenant identifier
 Namespace identifier  
 
 `string streamId`  
-Stream identifier 
+Stream identifier
 
 `string index`  
 One or more indexes of events to remove
@@ -411,6 +422,7 @@ One or more indexes of events to remove
 If you attempt to remove events at indexes that have no events, an error is returned. If this occurs, you can use [Window](#removewindow) request format to remove any events from a specified "window" of indexes, which will not return an error if no data is found.
 
 <a name="removewindow"></a>
+
 ### `Window`
 
 Removes events at and between the start index and end index
@@ -422,7 +434,7 @@ Removes events at and between the start index and end index
 		?startIndex={startIndex}&endIndex={endIndex}
  ```
 
-##### Parameters 
+##### Parameters
 
 `string tenantId`  
 Tenant identifier  
@@ -431,7 +443,7 @@ Tenant identifier
 Namespace identifier  
 
 `string streamId`  
-Stream identifier 
+Stream identifier
 
 `string startIndex`  
 The index defining the beginning of the window
@@ -470,7 +482,7 @@ The index defining the end of the window
 
 **Note:** If any individual event fails to be removed, the entire operation is rolled back and no removes are done.
 
----
+***
 
 ## Definitions
 

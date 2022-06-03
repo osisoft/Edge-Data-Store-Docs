@@ -4,13 +4,13 @@ uid: Performance
 
 # Performance
 
-Edge Data Store is designed to run on a variety of low powered devices and to serve data to custom applications that run on the same platform. To assist in determining the appropriate hardware and software configuration for a specific use, EDS was tested on a variety of different devices, from single board computers to industrial edge gateways, on Linux and Windows operating systems, with different data stream counts and with the supported ingress methods collecting data at different event rates. 
+Edge Data Store is designed to run on a variety of low powered devices and to serve data to custom applications that run on the same platform. To assist in determining the appropriate hardware and software configuration for a specific use, EDS was tested on a variety of different devices, from single board computers to industrial edge gateways, on Linux and Windows operating systems, with different data stream counts and with the supported ingress methods collecting data at different event rates.
 
 Use the following performance testing information to determine the appropriate hardware and software to use with EDS in your scenarios.
 
 ## Edge Data Store Performance Testing Hardware
 
-EDS performance test cases were divided into three categories based on commonly available, consumer grade and industrial grade devices. Several devices in each category were tested to validate performance expectations and the results of these tests are summarized below in terms of the maximum supported data stream count and data ingress rate for each category. 
+EDS performance test cases were divided into three categories based on commonly available, consumer grade and industrial grade devices. Several devices in each category were tested to validate performance expectations and the results of these tests are summarized below in terms of the maximum supported data stream count and data ingress rate for each category.
 
 * Small devices (e.g., 1 core ARM CPU, 512 MB RAM, Linux): 30 data streams, 30 events / sec
 
@@ -22,7 +22,7 @@ It is possible that lower performance results may be realized on other devices w
 
 ## Ingress Performance
 
-EDS can ingress data using the EDS Modbus TCP adapter, the EDS OPC UA adapter, and/or a custom OMF application developed by others. Each of these data ingress methods have a different performance profile, so the performance of EDS using these different methods will vary. 
+EDS can ingress data using the EDS Modbus TCP adapter, the EDS OPC UA adapter, and/or a custom OMF application developed by others. Each of these data ingress methods have a different performance profile, so the performance of EDS using these different methods will vary.
 
 When selecting the device to host EDS, there are a few general principles that arose from the performance testing:
 
@@ -30,7 +30,7 @@ When selecting the device to host EDS, there are a few general principles that a
 
 1. RAM usage is largely determined by the number of data streams written to. More data streams collected in EDS by any data ingress method require additional RAM (in addition to requiring more storage space).
 
-1. EDS is slightly more efficient running on Windows than Linux on similar devices. Both CPU and RAM usage are slightly lower when EDS is running on Windows 10 than on Linux when comparing them on the AMD64/Intel x64 devices, which support both operating systems. 
+1. EDS is slightly more efficient running on Windows than Linux on similar devices. Both CPU and RAM usage are slightly lower when EDS is running on Windows 10 than on Linux when comparing them on the AMD64/Intel x64 devices, which support both operating systems.
 
 1. SSD storage is recommended for maximum performance and reliability. EDS performance testing was completed on a variety of storage media - SSDs, HDDs, eMMC, and SD cards. EDS performance testing was successful using all storage technologies but for maximum performance and reliability, SSD storage is the best choice.
 

@@ -24,7 +24,7 @@ Interpolation determines how a stream behaves when asked to return an event at a
 
 The following table describes how the `Continuous` interpolation mode affects indexes that occur between data in a stream.
 
-**InterpolationMode = Continuous or Default**
+### InterpolationMode = Continuous or Default
 
 | Type                      | Result for an index between data in a stream  | Comment |
 |---------------------------|-----------------------------------------------|---------|
@@ -55,7 +55,7 @@ Extrapolation defines how a stream responds to requests with indexes that preced
 
 If the `ExtrapolationMode` is not assigned, the events are extrapolated in the default manner, unless the extrapolation mode is overridden on the SdsStream. For more information on overriding the extrapolation mode on a specific stream, see [Streams](xref:sdsStreams).
 
-**ExtrapolationMode with InterpolationMode = Default (or Continuous), StepwiseContinuousLeading and StepwiseContinuousTrailing**
+### ExtrapolationMode with InterpolationMode = Default (or Continuous), StepwiseContinuousLeading and StepwiseContinuousTrailing
 
 | ExtrapolationMode   | Enumeration value   | Index before data          | Index after data          |
 |---------------------|---------------------|----------------------------|---------------------------|
@@ -64,7 +64,7 @@ If the `ExtrapolationMode` is not assigned, the events are extrapolated in the d
 | Forward             | 2                   | No event is returned       | Returns last data value.  |
 | Backward            | 3                   | Returns first data value   | No event is returned.     |
 
-**ExtrapolationMode with InterpolationMode = Discrete**  
+### ExtrapolationMode with InterpolationMode = Discrete  
 
 | ExtrapolationMode   | Enumeration value   | Index before data    | Index after data     |
 |---------------------|---------------------|----------------------|----------------------|

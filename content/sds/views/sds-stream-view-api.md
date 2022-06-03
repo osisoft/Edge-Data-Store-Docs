@@ -14,7 +14,7 @@ Returns a list of `SdsStreamView`
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/StreamViews?query={query}&skip={skip}&count={count}&orderby={orderby}
 ```
 
@@ -54,7 +54,8 @@ The sorting is based on the stored values for a given field (of type `string`). 
 
 #### Example response body
 
-> 200 Response
+200 Response
+
 ```json
 HTTP/1.1 200
 Content-Type: application/json
@@ -88,7 +89,8 @@ Content-Type: application/json
 ]
 ```
 
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -112,7 +114,7 @@ Returns the `SdsStreamView`
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/StreamViews/{streamViewId}
 ```
 
@@ -141,7 +143,8 @@ Stream view identifier
 
 #### Example response body
 
-> 200 Response
+200 Response
+
 ```json
 HTTP/1.1 200
 Content-Type: application/json
@@ -167,7 +170,8 @@ Content-Type: application/json
 }
 ```
 
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -191,7 +195,7 @@ If an `SdsStreamView` with a matching identifier already exists, the stream view
 
 ### Request
 
-```text 
+```text
 POST /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/StreamViews/{streamViewId}
 ```
 
@@ -222,7 +226,8 @@ Stream view identifier
 
 #### Example response body
 
-> 200 Response ([SdsStreamView](#schemasdsstreamview))
+200 Response ([SdsStreamView](#schemasdsstreamview))
+
 ```json
 {
   "Id": "string",
@@ -259,7 +264,7 @@ Creates or updates the definition of a `SdsStreamView`
 
 ### Request
 
-```text 
+```text
 PUT /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/StreamViews/{streamViewId}
 ```
 
@@ -326,7 +331,7 @@ Deletes a stream view from the specified tenant and namespace
 
 ### Request
 
-```text 
+```text
 DELETE /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/StreamViews/{streamViewId}
 ```
 
@@ -355,7 +360,8 @@ Stream view identifier
 
 #### Example response body
 
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -379,7 +385,7 @@ Returns the `SdsStreamViewMap` corresponding to the specified streamViewId
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/StreamViews/{streamViewId}/Map
 ```
 
@@ -408,7 +414,8 @@ Stream view identifier
 
 #### Example response body
 
-> 200 Response
+200 Response
+
 ```json
 HTTP/1.1 200
 Content-Type: application/json
@@ -437,7 +444,8 @@ Content-Type: application/json
 }
 ```
 
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -452,6 +460,7 @@ Content-Type: application/json
 ```
 
 ---
+
 ## Definitions
 
 ### SdsStreamView

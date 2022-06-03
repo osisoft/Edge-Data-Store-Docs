@@ -17,7 +17,7 @@ To create a startup script for the adapter, follow the instructions below.
     **Note:** The script varies slightly by processor.
 
     <!-- PRERELEASE REMINDER: Update {adapter} and {version} placeholders. Example: bacnet, 1.1.0.192 -->
-    
+
     **ARM32**
 
     ```bash
@@ -41,7 +41,7 @@ To create a startup script for the adapter, follow the instructions below.
     ```
 
     **AMD64**
-            
+
     ```bash
     #!/bin/sh
     if [ -z $portnum ] ; then
@@ -66,7 +66,7 @@ To create a Docker container that runs the adapter, follow the instructions belo
     <!-- PRERELEASE REMINDER: Update {adapter} and {version} placeholders. Example: bacnet, 1.1.0.192 -->
 
     **ARM32**
-    
+
     ```dockerfile
     FROM ubuntu
     WORKDIR /
@@ -88,7 +88,7 @@ To create a Docker container that runs the adapter, follow the instructions belo
     ADD ./PI-Adapter-for-{adapter}_{version}-arm64_.tar.gz .
     ENTRYPOINT ["/{adapter}dockerstart.sh"]
     ```
-    
+
 	**AMD64 (x64)**
 
     ```dockerfile

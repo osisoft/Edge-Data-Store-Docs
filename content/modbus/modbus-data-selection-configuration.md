@@ -14,7 +14,7 @@ To configure Modbus TCP data selection, follow these steps:
 
     - For content structure, see [Modbus TCP data selection examples](#modbus-tcp-data-selection-examples).
 
-1. Update the parameters as needed. For a table of all available parameters, see [Parameters for Modbus TCP data selection](#parameters-for-modbus-tcp-data-selection). 
+1. Update the parameters as needed. For a table of all available parameters, see [Parameters for Modbus TCP data selection](#parameters-for-modbus-tcp-data-selection).
 
 1. Save the file to the device with EDS installed with the name `DataSelection.config.json`.
 

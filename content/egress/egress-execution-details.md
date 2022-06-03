@@ -4,9 +4,9 @@ uid: EgressExecutionDetails
 
 # Egress execution details
 
-After an egress endpoint is configured, data egress occurs periodically for that endpoint based on its configuration and independently from other endpoints. 
+After an egress endpoint is configured, data egress occurs periodically for that endpoint based on its configuration and independently from other endpoints.
 
-**Note:** Only streams with a single, timeseries-based index can be egressed. 
+**Note:** Only streams with a single, timeseries-based index can be egressed.
 
 EDS uses OMF messages to egress data and understanding how those messages are constructed can help with understanding how data is egressed. OMF defines three types of messages: types, containers, and data. Types and containers define the data being egressed and data is the actual timeseries data. For EDS, types and containers are sent only on the first egress for an endpoint; subsequently, only new or changed types and containers are egressed. Type creation must be successful to perform container creation, and container creation must be successful to perform data egress.
 

@@ -4,7 +4,7 @@ uid: IndexesOutsideDotNet
 
 # Indexes outside of .NET framework
 
-The following examples are in Python and JavaScript. 
+The following examples are in Python and JavaScript.
 
 ## Simple indexes
 
@@ -15,6 +15,7 @@ The following examples show SdsTypes defined in [Python](https://github.com/osis
 To build an SdsType representation of sample classes in Python and Java Script, see [Sample](#sample) below:
 
 ##### [Python](#tab/tabid-1)
+
 ```python
       class State(Enum):
         Ok = 0
@@ -42,6 +43,7 @@ To build an SdsType representation of sample classes in Python and Java Script, 
 ```
 
 ##### [JavaScript](#tab/tabid-2)
+
 ```javascript
       var State =
       {
@@ -214,8 +216,7 @@ For additional information, see [Read data](xref:sdsReadingData).
 
 ## Secondary indexes
 
-Secondary indexes are defined at the stream level. To create a stream using the `Simple` class and adding a secondary index on the `Measurement`, use the previously defined type. Then create `SdsStreamIndex` 
-specifying the `Measurement` property and define a stream identifying the `Measurement` as the secondary index as shown in the following example.
+Secondary indexes are defined at the stream level. To create a stream using the `Simple` class and adding a secondary index on the `Measurement`, use the previously defined type. Then create `SdsStreamIndex` specifying the `Measurement` property and define a stream identifying the `Measurement` as the secondary index as shown in the following example.
 
 ##### [Python](#tab/tabid-7)
 
@@ -332,6 +333,7 @@ To turn the simple type shown in the example into a type supporting the `Derived
 ```
 
 ##### [JavaScript](#tab/tabid-12)
+
 ```javascript
       // We set the order for this property. The order of the first property defaulted to 0
       var recordedProperty = new SdsObjects.SdsTypeProperty({

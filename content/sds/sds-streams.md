@@ -45,7 +45,7 @@ The stream identifier, `SdsStream.Id`, has the following requirements:
 ## Indexes
 
 While you define the primary index on the type, the stream is where you define secondary indexes.
-If the primary index defined on the type is a compound index, secondary indexes on the stream are allowed as long as that compound index does not have more than two properties. For more information on compound indexes, see [Indexes](xref:sdsIndexes#compound-indexes). 
+If the primary index defined on the type is a compound index, secondary indexes on the stream are allowed as long as that compound index does not have more than two properties. For more information on compound indexes, see [Indexes](xref:sdsIndexes#compound-indexes).
 
 ## Interpolation and extrapolation
 

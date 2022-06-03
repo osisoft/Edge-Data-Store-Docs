@@ -4,7 +4,7 @@ uid: sdsTypes
 
 # Types
 
-An SdsType, also called a type, defines the shape of a single measured event or object. A type gives structure to the data. For example, if a device measures three things, such as longitude, latitude, and speed, at the same time, then the SdsType should include those three properties. 
+An SdsType, also called a type, defines the shape of a single measured event or object. A type gives structure to the data. For example, if a device measures three things, such as longitude, latitude, and speed, at the same time, then the SdsType should include those three properties.
 
 An SdsType defines the structure of an event stored in an SdsStream and how to associate events within the SdsStream. An event is a single unit whose properties have values that relate to the index; that is, each property of an SdsType event is related to the event’s index. Each event is a single unit.
 
@@ -45,9 +45,9 @@ The type identifier, `SdsType.ID`, has the following requirements:
 
 - Cannot contain forward slash ("/")
 
-- Contains a maximum of 100 characters 
+- Contains a maximum of 100 characters
 
-Type management using the .NET SDS client libraries methods is performed through `ISdsMetadataService`. You can create `ISdsMetadataService` using one of the `SdsService.GetMetadataService()` factory methods. .NET client libraries provide `SdsTypeBuilder` to help build SdsTypes from .NET types. 
+Type management using the .NET SDS client libraries methods is performed through `ISdsMetadataService`. You can create `ISdsMetadataService` using one of the `SdsService.GetMetadataService()` factory methods. .NET client libraries provide `SdsTypeBuilder` to help build SdsTypes from .NET types.
 
 ## `SdsTypeProperty`
 
@@ -75,11 +75,11 @@ The `SdsTypeProperty` identifier has the same requirements as the `SdsType` iden
 
 - Cannot contain forward slash ("/")
 
-- Contains a maximum of 100 characters 
+- Contains a maximum of 100 characters
 
 ### `IsKey`
 
-`IsKey` is a Boolean value that identifies the SdsType Key. Each SdsType needs a Key to function as the primary index. 
+`IsKey` is a Boolean value that identifies the SdsType Key. Each SdsType needs a Key to function as the primary index.
 
 A key defined by more than one property is called a compound key. A compound key can be defined by a maximum of three properties. In a compound key, each property that is included in the key is specified as `IsKey`. The `Order` field then defines how the keys are combined in the compound key.
 
@@ -89,9 +89,9 @@ The `Value` field is used for properties that represent a value. For example, th
 
 ### `InterpolationMode`
 
-`InterpolationMode` is assigned when the property of the event should be interpolated in a specific way that differs from the interpolation mode of the SdsType. `InterpolationMode` is only applied to a property that is not part of the index. If the `InterpolationMode` is not set, the property inherits the `IntepolationMode` of the SdsType.
+`InterpolationMode` is assigned when the property of the event should be interpolated in a specific way that differs from the interpolation mode of the SdsType. `InterpolationMode` is only applied to a property that is not part of the index. If the `InterpolationMode` is not set, the property inherits the `InterpolationMode` of the SdsType.
 
-An SdsType with the `InterpolationMode` set to `Discrete` cannot have a property with an `InteroplationMode`. For more information on interpolation of events, see [Interpolation](xref:ReadCharacteristics#interpolation).
+An SdsType with the `InterpolationMode` set to `Discrete` cannot have a property with an `InterpolationMode`. For more information on interpolation of events, see [Interpolation](xref:ReadCharacteristics#interpolation).
 
 ### `UOM`
 

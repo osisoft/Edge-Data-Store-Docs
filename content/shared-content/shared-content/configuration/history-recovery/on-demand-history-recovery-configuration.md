@@ -63,6 +63,6 @@ Parameter | Type| Description
 | api/v1/configuration/_\<componentId>_/historyRecoveries/_\<operationId>_ |  `GET`    | Gets the status of an individual history recovery
 | api/v1/configuration/_\<componentId>_/historyRecoveries/_\<operationId>_ | `DELETE`       | Cancels history recovery and removes the state |
 | api/v1/configuration/_\<componentId>_/historyRecoveries/_\<operationId>_/cancel | `POST` | Cancels history recovery|
-| api/v1/configuration/_\<componentId>_/historyRecoveries/_\<operationId>_/resume | `POST` | Resumes canceled or failed history recovery operation (`202`) from the checkpoint<br><br>**Note:** If the `<operationId>` is not found, a 404 HTTP error message is returned.  | 
+| api/v1/configuration/_\<componentId>_/historyRecoveries/_\<operationId>_/resume | `POST` | Resumes canceled or failed history recovery operation (`202`) from the checkpoint<br><br>**Note:** If the `<operationId>` is not found, a 404 HTTP error message is returned.  |
 
 **Note:** Replace _\<componentId>_ with the `Id` of your adapter component. Replace _\<operationId>_ with the `Id` of the history recovery operation for which you want to perform the action.

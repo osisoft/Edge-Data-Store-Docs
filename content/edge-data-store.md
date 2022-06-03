@@ -4,11 +4,11 @@ uid: EdgeDataStore
 
 # Edge Data Store
 
-Edge Data Store (EDS) is a lightweight data collection and storage application designed to capture data at the edge of networks for historical storage and analysis. It runs on small, rugged devices or embedded in existing industrial hardware, and is designed to be resilient and require minimal installation and administration. While not a replacement for a PI System or OSIsoft Cloud Services (OCS), EDS augments the PI System and OCS by collecting and storing data in situations where deploying a full system is impractical. 
+Edge Data Store (EDS) is a lightweight data collection and storage application designed to capture data at the edge of networks for historical storage and analysis. It runs on small, rugged devices or embedded in existing industrial hardware, and is designed to be resilient and require minimal installation and administration. While not a replacement for a PI System or OSIsoft Cloud Services (OCS), EDS augments the PI System and OCS by collecting and storing data in situations where deploying a full system is impractical.
 
 The following diagram shows conceptually how EDS captures data and sends to permanent storage:
 
-![EDS conceptual diagram](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/EDSConceptualDiag.jpg "EDS conecptual diagram")
+![EDS conceptual diagram](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/EDSConceptualDiag.jpg "EDS conceptual diagram")
 
 EDS collects data using any of the following methods:
 
@@ -48,7 +48,7 @@ Blue boxes in the diagram show ways to interact with EDS from the local device:
 
 * Configuration – Use REST or the EdgeCmd tool to configure EDS as a whole or each component individually and to view the current configuration
 
-EDS requires an endpoint to connect to REST APIs on the local device, which is shown outlined in blue in the diagram. By default, the endpoint uses port `5590`; however, it can be configured to use another port. 
+EDS requires an endpoint to connect to REST APIs on the local device, which is shown outlined in blue in the diagram. By default, the endpoint uses port `5590`; however, it can be configured to use another port.
 
 Orange arrows show data flowing into EDS and blue arrows show data flowing out of EDS.
 

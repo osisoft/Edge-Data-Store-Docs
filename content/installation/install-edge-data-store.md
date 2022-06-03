@@ -4,7 +4,7 @@ uid: InstallEdgeDataStore
 
 # Install Edge Data Store
 
-Install Edge Data Store using an install kit, as described in this section, or using Docker containers. For more information on using Docker, see [Install Edge Data Store using Docker](xref:edgeDocker). 
+Install Edge Data Store using an install kit, as described in this section, or using Docker containers. For more information on using Docker, see [Install Edge Data Store using Docker](xref:edgeDocker).
 
 For a list of supported platforms and processors, see [System requirements](xref:SystemRequirements).
 
@@ -14,7 +14,7 @@ The port assignment can be changed either during or after installation. For more
 
 ## Windows (Windows 10 x64)
 
-You must have administrative privileges on the device to install EDS. Run the installation file directly to step through a wizard, or use the command line to run the installation, including silent installation. 
+You must have administrative privileges on the device to install EDS. Run the installation file directly to step through a wizard, or use the command line to run the installation, including silent installation.
 
 For instructions on verifying the EDS installation, see [Verify installation](xref:VerifyInstallation).
 
@@ -36,17 +36,17 @@ To install EDS on Windows using the installation wizard, follow these steps:
 
 1. In the `OSIsoft Edge Data Store Setup` window, select **Next**.
 
-1. (Optional) Change the installation folder and port number. 
+1. (Optional) Change the installation folder and port number.
 
    **Note:** OSIsoft recommends you use the default installation path. Valid values for the port number are in the range of 1024 to 65535 and only an unused port number should be entered. The default port is 5590.
-    
-1. (Optional) Add a system component for a Modbus TCP EDS adapter instance, an OPC UA EDS adapter instance, or both.
+
+2. (Optional) Add a system component for a Modbus TCP EDS adapter instance, an OPC UA EDS adapter instance, or both.
 
     **Note:** The Modus TCP EDS adapter and the OPC UA EDS adapter are both installed, regardless of whether system components are added. Additional system components can be added for each adapter after installation.
 
-1. Select **Next** > **Install**.
-    
-1. Select **Finish**.
+3. Select **Next** > **Install**.
+
+4. Select **Finish**.
 
 ### Run the installation from a command line
 
@@ -59,8 +59,9 @@ To install EDS on Windows from the command line, follow these steps:
 ```
 Msiexec /quiet /i EdgeDataStore.msi PORT="<number>" INSTALLFOLDER="<file_path>" WIXUI_ENABLEMODBUS="1" WIXUI_ENABLEOPCUA="1"
 ```
-   Parameters:
-   
+
+**Parameters**:
+
    - `/quiet` – The installation runs in silent mode.
 
    - `/i` – This is the install flag.
@@ -77,7 +78,7 @@ Msiexec /quiet /i EdgeDataStore.msi PORT="<number>" INSTALLFOLDER="<file_path>" 
 
 ## Linux
 
-You must have administrative privileges to install the software, for example `root` or `sudo` privilege, and the Linux OS must be up to date for the install to succeed. 
+You must have administrative privileges to install the software, for example `root` or `sudo` privilege, and the Linux OS must be up to date for the install to succeed.
 
 For instructions on how to verify the Edge Data Store installation, see [Verify installation](xref:VerifyInstallation).
 
@@ -90,8 +91,8 @@ To download the appropriate file for your device, follow these steps:
 1. Download the Linux distribution file from the [OSIsoft Customer portal (https://customers.osisoft.com/s/products)](https://customers.osisoft.com/s/products).
 
        **Note:** Customer login credentials are required to access the portal.
-       
-1. Copy the Linux distribution file to the file system of the device.
+
+2. Copy the Linux distribution file to the file system of the device.
 
 ### Install on a Linux device
 
@@ -99,7 +100,7 @@ To install EDS on Linux, follow these steps:
 
 1. Open a terminal window and change the working directory to the location of the distribution file.
 
-1. Run the apt install command for the distribution file appropriate to your operating system and processor. 
+1. Run the apt install command for the distribution file appropriate to your operating system and processor.
 
     **Debian 9 or later (Intel/AMD 64-bit processors)**
 
@@ -121,7 +122,7 @@ To install EDS on Linux, follow these steps:
     sudo apt install ./EdgeDataStore_linux-arm64.deb
     ```
 
-    A validation check for prerequisites is performed. 
+    A validation check for prerequisites is performed.
 
 1. If the install fails, run the following commands from the terminal window and try the install again:
 
@@ -151,7 +152,7 @@ To perform a silent install EDS on Linux with all default options, follow these 
     ```
 
    Parameters:
-   
+
    - `-q` – Specifies a silent install.
 
    - `-y` – Responds Yes to installing prerequisites.
@@ -159,11 +160,11 @@ To perform a silent install EDS on Linux with all default options, follow these 
    - `Edgeinstallfile.deb` – The name of the distribution file.
 
    - `< /dev/null` – All defaults are used in the installation.
-   
+
 ### Silent install on a Linux device with specified parameters
- 
+
  Complete the following steps to perform a silent install EDS on Linux using a parameter file to customize the installation:
- 
+
  1. Create a file called `silent.ini` with the following parameters on separate lines:
 
     - <port_number>
@@ -179,10 +180,10 @@ To perform a silent install EDS on Linux with all default options, follow these 
     Y
     N
     ```
- 
- 1. Open a terminal window and change the working directory to the location of the distribution file.
- 
- 1. Run the apt-get install command for the distribution file appropriate to your operating system and processor.
+
+ 2. Open a terminal window and change the working directory to the location of the distribution file.
+
+ 3. Run the apt-get install command for the distribution file appropriate to your operating system and processor.
 
     ```bash
     sudo apt-get install -q -y ./Edgeinstallfile.deb < silent.ini

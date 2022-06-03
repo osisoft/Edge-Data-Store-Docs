@@ -4,7 +4,7 @@ uid: IndexesInDotNet
 
 # Indexes in .NET framework
 
-The following examples are in csharp, but you can apply the concepts such as simple, compound, and secondary indexes to any language. For more information on indexes in JavaScript and Python, see [Indexes outside of .NET framework](xref:IndexesOutsideDotNet). 
+The following examples are in csharp, but you can apply the concepts such as simple, compound, and secondary indexes to any language. For more information on indexes in JavaScript and Python, see [Indexes outside of .NET framework](xref:IndexesOutsideDotNet).
 
 ## Simple indexes
 
@@ -60,14 +60,14 @@ Secondary indexes are defined at the stream level. To add indexes to a stream, a
       secondary = await config.GetOrCreateStreamAsync(secondary);
 ```
 
-To read data indexed by a secondary index, use a filtered `GET` method(`IEnumerable<Simple> orderedBySecondary = await client.GetFilteredValuesAsync<Simple>(secondary.Id, 
+To read data indexed by a secondary index, use a filtered `GET` method(`IEnumerable<Simple> orderedBySecondary = await client.GetFilteredValuesAsync<Simple>(secondary.Id,
       "Measurement gt 0 and Measurement lt 6");`).
 
-Use indexes to order data. On a stream level, you can set the property to be the secondary index. To improve performance when working with a large set of data: 
+Use indexes to order data. On a stream level, you can set the property to be the secondary index. To improve performance when working with a large set of data:
 
 - Ensure that the property is a secondary index.
 
-- Use [logical operators](xref:sdsFilterExpressions#examples-of-logical-operators) for filtering. 
+- Use [logical operators](xref:sdsFilterExpressions#examples-of-logical-operators) for filtering.
 
 ```csharp
       await client.UpdateValuesAsync<Simple>(secondary.Id, new List<Simple>()

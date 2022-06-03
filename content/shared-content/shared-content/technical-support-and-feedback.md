@@ -15,12 +15,13 @@ For technical assistance with PI Adapters, contact OSIsoft Technical Support thr
 Alternatively, call OSIsoft Technical Support at +1 510-297-5828.
 
 When you contact OSIsoft Technical Support, be prepared to provide this information:
+
 - Product name, version, and build numbers
 - Details about your computer platform (CPU type, operating system, and version number)
 - Time that the difficulty started
 - Log files at that time
 - Details of any environment changes prior to the start of the issue
-- Summary of the issue, including any relevant log files during the time the issue occurred 
+- Summary of the issue, including any relevant log files during the time the issue occurred
 
 <!--To view a brief primer on PI Adapters, see the [PI Adapters playbook](https://customers.osisoft.com/s/knowledgearticle?knowledgeArticleUrl=Playbook-PI-adapters) in the OSIsoft Customer Portal.-->
 
@@ -37,4 +38,3 @@ To submit documentation feedback for PI Adapters, send an email to [documentatio
 - Details of the suggestion or error
 
 The technical documentation team at OSIsoft will review and respond to your feedback.
-

@@ -14,7 +14,7 @@ Returns a list of all available units of measure in the system
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Units?skip={skip}&count={count}
 ```
 
@@ -46,7 +46,8 @@ Parameter representing the maximum number of objects to retrieve. If unspecified
 
 #### Example response body
 
-> 200 Response
+200 Response
+
 ```json
 HTTP/1.1 200
 Content-Type: application/json
@@ -78,7 +79,8 @@ Content-Type: application/json
 ]
 ```
 
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -102,7 +104,7 @@ Returns the unit of measure corresponding to the specified uomId within a given 
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Units/{uomId}
 ```
 
@@ -131,7 +133,8 @@ The unit of measure identifier
 
 #### Example response body
 
-> 200 Response
+200 Response
+
 ```json
 HTTP/1.1 200
 Content-Type: application/json
@@ -145,7 +148,8 @@ Content-Type: application/json
 }
 ```
 
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -160,6 +164,7 @@ Content-Type: application/json
 ```
 
 ---
+
 ## Definitions
 
 ### SdsUom
@@ -175,13 +180,13 @@ DataContract representing a unit of measure
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|Id|string|false|true|Unique identifier for this unit of measure|
-|Abbreviation|string|false|true|Abbreviation for this unit of measure|
-|Name|string|false|true|Full name for this unit of measure|
-|DisplayName|string|false|true|Display name for this unit of measure|
-|QuantityId|string|false|true|The `Id` of the quantity that this unit is a measure of|
-|ConversionFactor|double|false|false|When a value of this unit is multiplied by the `ConversionFactor` and then incremented by the `ConversionOffset`, the value in terms of the base unit of the corresponding quantity is returned.|
-|ConversionOffset|double|false|false|When a value of this unit is multiplied by the `ConversionFactor` and then incremented by the `ConversionOffset`, the value in terms of the base unit of the corresponding quantity is returned.|
+|`Id`|string|false|true|Unique identifier for this unit of measure|
+|`Abbreviation`|string|false|true|Abbreviation for this unit of measure|
+|`Name`|string|false|true|Full name for this unit of measure|
+|`DisplayName`|string|false|true|Display name for this unit of measure|
+|`QuantityId`|string|false|true|The `Id` of the quantity that this unit is a measure of|
+|`ConversionFactor`|double|false|false|When a value of this unit is multiplied by the `ConversionFactor` and then incremented by the `ConversionOffset`, the value in terms of the base unit of the corresponding quantity is returned.|
+|`ConversionOffset`|double|false|false|When a value of this unit is multiplied by the `ConversionFactor` and then incremented by the `ConversionOffset`, the value in terms of the base unit of the corresponding quantity is returned.|
 
 ```json
 {

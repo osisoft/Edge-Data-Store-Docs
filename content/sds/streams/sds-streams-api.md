@@ -14,7 +14,7 @@ Returns a list of streams
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams?query={query}&skip={skip}&count={count}&orderby={orderby}
 ```
 
@@ -52,7 +52,8 @@ Parameter representing sorted order. A field name is required. The sorting is ba
 
 #### Example response body
 
-> 200 Response ([SdsStream](#schemasdsstream)[])
+200 Response ([SdsStream](#schemasdsstream)[])
+
 ```json
 [
   {
@@ -88,7 +89,7 @@ Returns the specified stream
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}
 ```
 
@@ -117,7 +118,8 @@ Stream identifier
 
 #### Example response body
 
-> 200 Response ([SdsStream](#schemasdsstream))
+200 Response ([SdsStream](#schemasdsstream))
+
 ```json
 {
   "Id": "string",
@@ -151,7 +153,7 @@ Creates the specified stream. If a stream with a matching identifier already exi
 
 ### Request
 
-```text 
+```text
 POST /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}
 ```
 
@@ -182,7 +184,8 @@ Stream identifier
 
 #### Example response body
 
-> 200 Response ([SdsStream](#schemasdsstream))
+200 Response ([SdsStream](#schemasdsstream))
+
 ```json
 {
   "Id": "string",
@@ -216,7 +219,7 @@ Creates the specified stream. If a stream with the same Id already exists, the d
 
 ### Request
 
-```text 
+```text
 PUT /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}
 ```
 
@@ -247,7 +250,8 @@ Stream identifier
 
 #### Example response body
 
-> 201 Response ([SdsStream](#schemasdsstream))
+201 Response ([SdsStream](#schemasdsstream))
+
 ```json
 {
   "Id": "string",
@@ -281,7 +285,7 @@ Deletes a stream from the specified tenant and namespace
 
 ### Request
 
-```text 
+```text
 DELETE /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}
 ```
 
@@ -310,7 +314,8 @@ Stream identifier
 
 #### Example response body
 
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -334,7 +339,7 @@ Returns the type definition that is associated with a given stream
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Type
 ```
 
@@ -363,7 +368,8 @@ Stream identifier
 
 #### Example response body
 
-> 200 Response ([SdsType](#schemasdstype))
+200 Response ([SdsType](#schemasdstype))
+
 ```json
 {
   "Id": "string",
@@ -686,7 +692,7 @@ Returns the type definition that is associated with a given stream
 
 ### Request
 
-```text 
+```text
 PUT /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Type
 ```
 
@@ -716,7 +722,8 @@ Stream identifier
 
 #### Example response body
 
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -738,7 +745,7 @@ Stream identifier
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Resolved
 ```
 
@@ -762,7 +769,8 @@ GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Resol
 
 #### Example response body
 
-> 200 Response ([SdsResolvedStream](#schemasdsresolvedstream))
+200 Response ([SdsResolvedStream](#schemasdsresolvedstream))
+
 ```json
 {
   "Id": "string",
@@ -908,7 +916,7 @@ GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Resol
 
 ### Request
 
-```text 
+```text
 POST /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/Bulk/Streams/Resolved
 ```
 
@@ -928,7 +936,8 @@ POST /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/Bulk/Streams/Re
 
 #### Example response body
 
-> 207 Response ([SdsResolvedStreamsResponse](#schemasdsresolvedstreamsresponse))
+207 Response ([SdsResolvedStreamsResponse](#schemasdsresolvedstreamsresponse))
+
 ```json
 {
   "Data": [
@@ -1098,14 +1107,14 @@ POST /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/Bulk/Streams/Re
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|`Id`|string|false|true|An unique identifier for the SdsStream object|
-|`Name`|string|false|true|An optional user-friendly name for the SdsStream object|
-|`Description`|string|false|true|A brief description of the SdsStream object|
-|`TypeId`|string|false|true|An unique identifier for the SdsType of the SdsStream object|
-|`Indexes`|[[SdsStreamIndex](#schemasdsstreamindex)]|false|true|List of SdsStreamIndexs to define secondary indexes for the SdsStream|
-|`InterpolationMode`|[SdsInterpolationMode](#schemasdsinterpolationmode)|false|true|Defines the SdsInterpolationMode of the SdsStream. Default is null.|
-|`ExtrapolationMode`|[SdsExtrapolationMode](#schemasdsextrapolationmode)|false|true|Defines the SdsExtrapolationMode of the SdsStream. Default is null.|
-|`PropertyOverrides`|[[SdsStreamPropertyOverride](#schemasdsstreampropertyoverride)]|false|true|List of SdsStreamPropertyOverrides to define unit of measure and interpolation mode overrides for the SdsStream|
+|`Id`|string|false|true|An unique identifier for the `SdsStream` object|
+|`Name`|string|false|true|An optional user-friendly name for the `SdsStream` object|
+|`Description`|string|false|true|A brief description of the `SdsStream` object|
+|`TypeId`|string|false|true|An unique identifier for the SdsType of the `SdsStream` object|
+|`Indexes`|[[SdsStreamIndex](#schemasdsstreamindex)]|false|true|List of `SdsStreamIndex`s to define secondary indexes for the `SdsStream`|
+|`InterpolationMode`|[SdsInterpolationMode](#schemasdsinterpolationmode)|false|true|Defines the `SdsInterpolationMode` of the `SdsStream`. Default is `null`.|
+|`ExtrapolationMode`|[SdsExtrapolationMode](#schemasdsextrapolationmode)|false|true|Defines the `SdsExtrapolationMode` of the `SdsStream`. Default is `null`.|
+|`PropertyOverrides`|[[SdsStreamPropertyOverride](#schemasdsstreampropertyoverride)]|false|true|List of `SdsStreamPropertyOverrides` to define unit of measure and interpolation mode overrides for the `SdsStream`|
 
 ```json
 {

@@ -30,8 +30,8 @@ Complete the following steps to configure system and adapter. Use the `PUT` meth
   
     * If you installed the adapter to listen on a non-default port, update `5590` to the port number in use.
     * In order for some of the adapter specific configurations to take effect, you have to restart the adapter.
-    * Discoveries and HistoryRecoveries facet details are not required to be supplied as part of the configuration and supplied values will be ignored. 
-      Their results will be restored from the previous states. 
+    * Discoveries and HistoryRecoveries facet details are not required to be supplied as part of the configuration and supplied values will be ignored.
+      Their results will be restored from the previous states.
 
 If the operation fails due to errors in the configuration, the count of the error and suitable error messages are returned in the result.
 

@@ -10,9 +10,10 @@ When the form parameter is specified as `table`, `?form=table`, events are retur
 
 Specifying a form of type `table-headers`, `?form=tableh`, results in a collection where the Rows collection contains a column header list.
 
-Table format can be applied to any read that returns multiple values and summaries. 
+Table format can be applied to any read that returns multiple values and summaries.
 
-##### [Csharp](#tab/tabid-0)
+#### [Csharp](#tab/tabid-0)
+
 ```csharp
       public enum State
       {
@@ -29,7 +30,8 @@ Table format can be applied to any read that returns multiple values and summari
       }
 ```
 
-##### [Python](#tab/tabid-1)
+#### [Python](#tab/tabid-1)
+
 ```python
       class State(Enum):
         Ok = 0
@@ -53,7 +55,7 @@ Table format can be applied to any read that returns multiple values and summari
           self.__measurement = measurement
 ```
 
-##### [JavaScript](#tab/tabid-2)
+#### [JavaScript](#tab/tabid-2)
 
 ```javascript
       var State =
@@ -89,6 +91,7 @@ The following is a request to retrieve values using the window parameters:
 
 The following response is returned by the code above:
 
+```
       Content-Type: application/json
 
       [
@@ -142,6 +145,7 @@ The following response is returned by the code above:
             "Measurement":9.0
          }
       ]
+```
 
 To retrieve the results in table format, add the form variable and specify table.
 
@@ -151,8 +155,9 @@ To retrieve the results in table format, add the form variable and specify table
       &form=table
  ```
 
-**Response**
+#### Response
 
+```
       Content-Type: application/json
 
       {  
@@ -224,7 +229,7 @@ To retrieve the results in table format, add the form variable and specify table
             ]
          ]
       }
-
+```
 
 To retrieve the results in table format with column headers, add the form variable and specify ``tableh``.
 
@@ -234,8 +239,9 @@ To retrieve the results in table format with column headers, add the form variab
       &form=tableh
  ```
 
-**Response**
+#### Response
 
+```
       Content-Type: application/json
 
       {  
@@ -312,3 +318,4 @@ To retrieve the results in table format with column headers, add the form variab
             ]
          ]
       }
+```

@@ -26,8 +26,8 @@ To remove EDS from a Linux device, follow these steps:
     sudo apt remove osisoft.edgedatastore
 
     ```
-    
-    The configuration, data, and log files are not removed by the uninstall process.
+
+The configuration, data, and log files are not removed by the uninstall process.
 
 1. (Optional) To remove all data stored in the Edge Storage component, all configuration files, and all log files, delete the directory `/usr/share/OSIsoft/EdgeDataStore/`.
 

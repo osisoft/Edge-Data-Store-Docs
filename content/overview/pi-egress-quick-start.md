@@ -11,12 +11,12 @@ Data egress provides a mechanism to transfer data to PI Server using OMF message
 To create a PI Web API OMF endpoint, follow these steps:
 
 1. Install PI Web API and enable the **OSIsoft Message Format (OMF) Services** feature.
-    
+
     - During configuration, choose an AF database and PI Data Archive where metadata and data will be stored.
-    
+
     - The account used in an egress configuration needs permissions to create AF elements, element templates, and PI points.
 
-1. Configure PI Web API to use `Basic` authentication.
+2. Configure PI Web API to use `Basic` authentication.
 
  For complete steps, as well as best practices and recommendations, see the [PI Web API User Guide](https://docs.osisoft.com/bundle/pi-web-api/page/pi-web-api.html).
 
@@ -59,7 +59,7 @@ To configure Edge Storage periodic egress for the PI Web API endpoint and creden
 
 1. Save the JSON file with the name `PeriodicEgressEndpoints.json` to any directory on the device where EDS is installed.
 
-1. To configure Edge Storage to send data to the PI System, run the following curl script from the directory where the JSON file is located. 
+1. To configure Edge Storage to send data to the PI System, run the following curl script from the directory where the JSON file is located.
 
 ```bash
 curl -d "@PeriodicEgressEndpoints.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/storage/PeriodicEgressEndpoints/

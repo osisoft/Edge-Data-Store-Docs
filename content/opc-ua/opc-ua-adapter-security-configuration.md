@@ -35,7 +35,7 @@ To configure OPC UA EDS adapter security, follow these steps:
 1. Add the adapter certificate to the server's trust store.
 
    The connection succeeds only when the adapter certificate is trusted on the server side. For more details on how to make a client certificate trusted, see your OPC UA server documentation. In general, OPC UA servers work in a similar fashion as the clients, a similar approach may work to make the server certificate trusted on the client side.
-   
+
    When certificates are mutually trusted, the connection attempt succeeds and the adapter instance is connected to the most secure endpoint provided by the server.
 
 ## Certificate locations

@@ -40,23 +40,23 @@ The type identifier, `SdsStreamView.ID`, has the following requirements:
 ## SdsStreamView mapping
 
 SDS attempts to map properties from the source to the destination. When the mapping is straightforward, SDS automatically maps properties from the source to the target type. For example:
- 
- - The properties are in the same position
- 
- - The properties are of the same data type
- 
- - The properties have the same name
+
+- The properties are in the same position
+
+- The properties are of the same data type
+
+- The properties have the same name
 
 When SDS is unable to determine how to map a source property, the property is removed. If SDS encounters a target property that it cannot map to, the property is added and configured with a default value. To map a property that SDS cannot map automatically, define an `SdsStreamViewProperty` and add it to the SdsStreamView’s properties.
 
-The following table show mapping compatibilities. SDS largely supports mapping within the same data type. 
+The following table show mapping compatibilities. SDS largely supports mapping within the same data type.
 
-| Source type\ Target type    | Numeric types 	| Nullable numeric types 	| Enumeration types 	| Nullable enumeration types 	| Object types    	| 
+| Source type\ Target type    | Numeric types 	| Nullable numeric types 	| Enumeration types 	| Nullable enumeration types 	| Object types    	|
 |----------------------------	|---------------	|------------------------	|-------------------	|----------------------------	|--------------------|
 | Numeric types              	| Yes           	| Yes                    	| No                	| No                         	| No                 |
 | Nullable numeric types     	| Yes           	| Yes                    	| No                	| No                         	| No                 |
 | Enumeration types          	| No            	| No                     	| Yes               	| Yes                        	| No                 |
-| Nullable enumeration types 	| No            	| No                     	| Yes               	| Yes                        	| No                 | 
+| Nullable enumeration types 	| No            	| No                     	| Yes               	| Yes                        	| No                 |
 | Object types               	| No            	| No                     	| No                	| No                         	| Yes*               |
 
 \* Mappable if `typeId` matches between the source and the target type

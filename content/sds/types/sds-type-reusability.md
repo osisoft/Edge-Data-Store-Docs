@@ -94,7 +94,7 @@ The new type may also include the full type definition of the reference type ins
 }
 ```
 
-If you send the full definition, the referenced types (base type `Simple` in the example above) should match the actual type initially created. If you send the full definition and the referenced types do not exist, SDS creates them automatically. Further type creations can reference them as demonstrated above. 
+If you send the full definition, the referenced types (base type `Simple` in the example above) should match the actual type initially created. If you send the full definition and the referenced types do not exist, SDS creates them automatically. Further type creations can reference them as demonstrated above.
 
 **Note:** When trying to get types back from SDS, the results will also include types that were automatically created by SDS.
 

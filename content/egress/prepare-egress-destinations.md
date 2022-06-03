@@ -14,16 +14,16 @@ To create an OMF connection to OCS, follow these steps:
 
 1. Create a **Client**.
    
-   The **Client Id** and **Client Secret** are used for the corresponding properties in the egress configuration.
+   - The **Client Id** and **Client Secret** are used for the corresponding properties in the egress configuration.
    
 1. Create an **OMF** type **Connection**.
    
-   The connection should link the created client to an existing [namespace](https://docs.osisoft.com/bundle/ocs/page/set-up/namespaces/namespaces-concept.html) where the data will be stored.
+   - The connection should link the created client to an existing [namespace](https://docs.osisoft.com/bundle/ocs/page/set-up/namespaces/namespaces-concept.html) where the data will be stored.
    The **OMF Endpoint** URL for the connection is used as the egress configuration `Endpoint` property.
 
 ## PI Server destinations
 
-To prepare a PI Server to receive OMF messages from EDS, a PI Web API OMF endpoint must be available. 
+To prepare a PI Server to receive OMF messages from EDS, a PI Web API OMF endpoint must be available.
 
 To create an OMF connection to PI Server, follow these steps:
 

@@ -10,7 +10,7 @@ EDS also produces diagnostic data. You can use diagnostic data to find more info
 
 ## EDS adapter health
 
-The following health types and streams are created to reflect the health of EDS adapters. 
+The following health types and streams are created to reflect the health of EDS adapters.
 
 The `Adapters` static type includes these properties and servers as a root AF element with the ID Adapters.
 

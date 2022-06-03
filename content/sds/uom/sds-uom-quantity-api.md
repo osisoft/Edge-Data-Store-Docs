@@ -4,7 +4,7 @@ uid: SdsUOMQuantityAPI
 
 # SdsUomQuantity API
 
-The REST APIs provide programmatic access to read and write SDS data. The APIs in this section interact with SdsUomQuantitys. For more information, see [SdsUomQuantity](xref:unitsOfMeasure#sdsuomquantity).
+The REST APIs provide programmatic access to read and write SDS data. The APIs in this section interact with `SdsUomQuantity`s. For more information, see [SdsUomQuantity](xref:unitsOfMeasure#sdsuomquantity).
 
 ## `List Quantities`
 
@@ -14,7 +14,7 @@ Returns a list of all quantities available within a given namespace
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Quantities?skip={skip}&count={count}
 ```
 
@@ -32,8 +32,6 @@ Parameter representing the zero-based offset of the first object to retrieve.  I
 `[Optional] int count`  
 Parameter representing the maximum number of objects to retrieve. If unspecified, a default value of 100 is used.
 
-
-
 ### Response
 
 |Status Code|Body Type|Description|
@@ -48,7 +46,8 @@ Parameter representing the maximum number of objects to retrieve. If unspecified
 
 #### Example response body
 
-> 200 Response
+200 Response
+
 ```json
 HTTP/1.1 200
 Content-Type: application/json
@@ -98,7 +97,8 @@ Content-Type: application/json
 ]
 ```
 
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -122,7 +122,7 @@ Returns the quantity corresponding to the specified quantityId within a given na
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Quantities/{quantityId}
 ```
 
@@ -151,7 +151,8 @@ The quantity identifier
 
 #### Example response body
 
-> 200 Response
+200 Response
+
 ```json
 HTTP/1.1 200
 Content-Type: application/json
@@ -177,7 +178,9 @@ Content-Type: application/json
 ]
 }
 ```
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -201,7 +204,7 @@ Returns the unit of measure associated with the specified uomId belonging to the
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Quantities/{quantityId}/Units/{uomId}
 ```
 
@@ -232,7 +235,9 @@ The unit of measure identifier
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
-> 200 Response
+
+200 Response
+
 ```json
 HTTP/1.1 200
 Content-Type: application/json
@@ -246,7 +251,8 @@ Content-Type: application/json
 }
 ```
 
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -270,7 +276,7 @@ Returns the list of units of measure that belongs to the quantity with the speci
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Quantities/{quantityId}/Units
 ```
 
@@ -299,7 +305,8 @@ The quantity identifier
 
 #### Example response body
 
-> 200 Response
+200 Response
+
 ```json
 HTTP/1.1 200
 Content-Type: application/json
@@ -323,7 +330,8 @@ Content-Type: application/json
 ]
 ```
 
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -338,6 +346,7 @@ Content-Type: application/json
 ```
 
 ---
+
 ## Definitions
 
 ### SdsUomQuantity

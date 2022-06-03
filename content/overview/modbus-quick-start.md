@@ -16,7 +16,7 @@ The adapter instance requests data from the Modbus TCP device and then the devic
 
 To configure a data source to connect a Modbus TCP device to the Modbus TCP EDS adapter instance, follow these steps:
 
-1. Using a text editor, copy the example below to create a file in JSON format to describe the location of the Modbus TCP data source. 
+1. Using a text editor, copy the example below to create a file in JSON format to describe the location of the Modbus TCP data source.
 
    ```json
    {
@@ -38,10 +38,9 @@ To configure a data source to connect a Modbus TCP device to the Modbus TCP EDS 
 
 1. Modify the values in the example to match your environment, including the IP address and port for the Modbus data source.
 
-1. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is `Modbus1`, name the file `Modbus1DataSource.json`. 
+1. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is `Modbus1`, name the file `Modbus1DataSource.json`.
 
-1. Run the following curl script from the same directory where the file is located, updating the file name and destination in the script if needed. 
-
+1. Run the following curl script from the same directory where the file is located, updating the file name and destination in the script if needed.
 
    ```bash
    curl -d "@Modbus1Datasource.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Datasource
@@ -53,7 +52,7 @@ When the command completes successfully (a 204 is returned by curl), the Modbus 
 
 Data selection items will use schedules to perform their scans for data. To configure the schedule file, complete the following steps:
 
-1.  Using a text editor, copy the example below to create a file in JSON format to define the schedule.
+1. Using a text editor, copy the example below to create a file in JSON format to define the schedule.
 
     ```json
     [
@@ -67,7 +66,7 @@ Data selection items will use schedules to perform their scans for data. To conf
 
 1. Modify the values in the example to match your environment.
 
-1. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is `Modbus1`, name the file `Modbus1Schedules.json`. 
+1. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is `Modbus1`, name the file `Modbus1Schedules.json`.
 
 1. Run the following curl script from the same directory where the file is located, updating the file name and the endpoint URL in the script if needed.
 
@@ -79,7 +78,7 @@ Data selection items will use schedules to perform their scans for data. To conf
 
 After you create the data source file and schedule file, select the streams to store in EDS by configuring Modbus data selection. To configure the data selection file, complete the following steps:
 
-1. Using a text editor, copy the example below to create a file in JSON format to define each stream to ingress to EDS. 
+1. Using a text editor, copy the example below to create a file in JSON format to define each stream to ingress to EDS.
 
    ```json
    [
@@ -110,7 +109,7 @@ After you create the data source file and schedule file, select the streams to s
 
 1. Modify the values in the example to match your environment.
 
-1. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is `Modbus1`, name the file `Modbus1DataSelection.json`. 
+1. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is `Modbus1`, name the file `Modbus1DataSelection.json`.
 
 1. Run the following curl script from the same directory where the file is located, updating the file name and the endpoint URL in the script if needed.
 

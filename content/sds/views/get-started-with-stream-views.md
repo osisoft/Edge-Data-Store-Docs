@@ -4,9 +4,9 @@ uid: sdsGSStreamViews
 
 # Get started with SdsStreamViews
 
-To work with stream views, you first need to have types, streams, and streams data defined. The following is a simplified procedure for working with a stream view. For code examples, see [Work with SdsStreamViews outside of .NET framework](xref:IndexesOutsideDotNet) and [Work with SdsStreamViews in .NET framework](xref:IndexesInDotNet). 
+To work with stream views, you first need to have types, streams, and streams data defined. The following is a simplified procedure for working with a stream view. For code examples, see [Work with SdsStreamViews outside of .NET framework](xref:IndexesOutsideDotNet) and [Work with SdsStreamViews in .NET framework](xref:IndexesInDotNet).
 
-1. Create a type that will be the source type. 
+1. Create a type that will be the source type.
 
 1. Create a stream that is of the type defined in the previous step.
 
@@ -16,7 +16,7 @@ To work with stream views, you first need to have types, streams, and streams da
 
 1. Create another type that will be the target type.
 
-1. Create a stream view using the source type (step 1) and the target type (step 5). 
+1. Create a stream view using the source type (step 1) and the target type (step 5).
 
     - The mapping between the source and the target type happens automatically if you do not specify it in [SdsStreamViewProperty](xref:sdsStreamViews#SdsStreamViewProperty).
 
@@ -121,8 +121,7 @@ foreach (Simple value in simpleValues)
 //  4 / 1 / 2017 7:09:00 AM: Warning, 9
 ```
 
-To map the `Measurement` property to a property in the same location of the same type, allow SDS to 
-automatically determine mapping.
+To map the `Measurement` property to a property in the same location of the same type, allow SDS to automatically determine mapping.
 
 ```csharp
 public class Simple1

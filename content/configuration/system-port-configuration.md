@@ -4,7 +4,7 @@ uid: SystemPortConfiguration
 
 # System port configuration
 
-The _System_Port.json_ file specifies the port on which Edge Data Store is listening for REST API calls. The same port is used for configuration and for writing data to OMF and SDS. The default port is 5590. Valid ports are in the range of 1024-65535. 
+The _System_Port.json_ file specifies the port on which Edge Data Store is listening for REST API calls. The same port is used for configuration and for writing data to OMF and SDS. The default port is 5590. Valid ports are in the range of 1024-65535.
 
 ## Configure system port
 
@@ -20,7 +20,7 @@ To configure the system port, follow these steps:
    }
    ```
 
-1. Save the JSON file with the name _EdgePort.json_ 
+1. Save the JSON file with the name _EdgePort.json_
 
 1. Run the following script:
 
@@ -38,4 +38,4 @@ The following parameters is used to specify the system port.
 
 | Parameter      | Required    | Type   | Nullable | Description                      |
 | ------------- | --------- | -------- | -------- | ------------------------------- |
-| **Port** | Required | `integer` | No       | The TCP port to bind EDS to. (Range [1024,65535]) Example: 5590 | 
+| **Port** | Required | `integer` | No       | The TCP port to bind EDS to. (Range [1024,65535]) Example: 5590 |

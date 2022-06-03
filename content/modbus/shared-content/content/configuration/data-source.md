@@ -14,9 +14,9 @@ To configure the Modbus TCP data source, follow these steps:
 
 1. Using any text editor, create a file that contains a Modbus TCP data source in JSON format.
 
-    - For content structure, see [Modbus TCP data source examples](#modbus-tcp-data-source-examples). 
+    - For content structure, see [Modbus TCP data source examples](#modbus-tcp-data-source-examples).
 
-1. Modify the parameters in the example to match your environment. For a table of all available parameters, see [Parameters for Modbus TCP data source](#parameters-for-modbus-tcp-data-source). 
+1. Modify the parameters in the example to match your environment. For a table of all available parameters, see [Parameters for Modbus TCP data source](#parameters-for-modbus-tcp-data-source).
 
 1. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is `Modbus1`, name the file `Modbus1Datasource.json`.
 

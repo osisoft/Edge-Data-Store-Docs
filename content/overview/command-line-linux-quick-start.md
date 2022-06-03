@@ -8,18 +8,18 @@ The EdgeCmd utility is OSIsoft's proprietary tool for configuring Edge Data Stor
 
 To access EdgeCmd on Linux, follow these steps:
 
-1. Open a command prompt. 
+1. Open a command prompt.
 
 1. Enter the following command to start the edgecmd.exe tool from any directory.
 
    ```bash
    debian@beaglebone:~$ edgecmd help
    ```
-   
-1. Type edgecmd help and press Enter.
- 
+
+2. Type edgecmd help and press Enter.
+
  The EdgeCmd utility launches, displaying the following introductory material and a command prompt at the end:
-   
+
    ```
    ************************************************************************************************************************
      Welcome to OSIsoft Edge Data Store configuration utility. Utility version: 1.0.0.148

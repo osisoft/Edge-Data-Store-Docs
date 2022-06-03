@@ -20,7 +20,7 @@ curl is a command line tool used to make HTTP calls and is supported on both Win
 
 ### Postman
 
-In instances where EDS is installed on a platform with a GUI component, Postman is a useful REST tool for learning more about EDS REST APIs and creating REST calls. 
+In instances where EDS is installed on a platform with a GUI component, Postman is a useful REST tool for learning more about EDS REST APIs and creating REST calls.
 
 ### C#, Python, Go
 

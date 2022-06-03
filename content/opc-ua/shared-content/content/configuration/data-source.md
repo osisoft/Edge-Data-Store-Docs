@@ -13,14 +13,14 @@ For each instance of the OPC UA EDS adapter defined in system configuration, you
 To configure the OPC UA data source, follow these steps:
 
 1. Using any text editor, create a file that contains an OPC UA data source in JSON format.
-    
+
     - For content structure, see [OPC UA data source examples](#opc-ua-data-source-examples).
 
-1. Modify the parameters in the example to match your environment. For a table of all available parameters, see [Parameters for OPC UA data source](#parameters-for-opc-ua-data-source).
+2. Modify the parameters in the example to match your environment. For a table of all available parameters, see [Parameters for OPC UA data source](#parameters-for-opc-ua-data-source).
 
-1. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is OpcUa1, name the file `OpcUa1Datasource.json`.
+3. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is OpcUa1, name the file `OpcUa1Datasource.json`.
 
-1. Use any tool capable of making HTTP requests to execute a `POST` command with the contents of that file to the following endpoint: `http://localhost:<port_number>/api/v1/configuration/<EDS_adapterId>/DataSource/`. 
+4. Use any tool capable of making HTTP requests to execute a `POST` command with the contents of that file to the following endpoint: `http://localhost:<port_number>/api/v1/configuration/<EDS_adapterId>/DataSource/`.
 
 The following example shows the HTTPS request using curl, which you must run from the same directory where the file is located, and uses the adapter instance created during installation, which is OpcUa1:
 
@@ -32,17 +32,17 @@ curl -d "@OpcUa1DataSource.config.json" -H "Content-Type: application/json" "htt
 
 ## Export OPC UA dynamic variables
 
-The OPC UA EDS adapter is able to export available OPC UA dynamic variables by browsing the OPC UA hierarchies or sub-hierarchies as part of the data source configuration process. 
+The OPC UA EDS adapter is able to export available OPC UA dynamic variables by browsing the OPC UA hierarchies or sub-hierarchies as part of the data source configuration process.
 
 1. To limit browsing, specify a comma-separated collection of nodeIds in data source configuration file using the **RootNodeIds** parameter.
-   
+
    **Note:** The nodeIds are treated as roots from which the adapter starts the browse operation.
-   
+
    The adapter triggers an export operation after a successful connection to the OPC UA server when the data selection file does not exist in configuration directory.
   
-1. Copy the exported data selection JSON file from the directory or retrieve it using a REST API call.
+2. Copy the exported data selection JSON file from the directory or retrieve it using a REST API call.
 
-1. (Optional) To avoid a potentially long and resource-intensive browse operation, create the data selection file manually. Configure it before you configure the data source or push both in one configuration call together.
+3. (Optional) To avoid a potentially long and resource-intensive browse operation, create the data selection file manually. Configure it before you configure the data source or push both in one configuration call together.
 
 ## Parameters for OPC UA data source
 
