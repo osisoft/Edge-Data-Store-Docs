@@ -4,13 +4,13 @@ uid: sdsTypeAPI
 
 # SdsType API
 
-The REST APIs provide programmatic access to read and write SDS data. The following APIs interact with SdsTypes. For general SdsType information, see [Types](xref:sdsTypes).
+The REST APIs provide programmatic access to read and write SDS data. The following APIs interact with `SdsTypes`. For general `SdsType` information, see [Types](xref:sdsTypes).
 
 ## `List Types`
 
 <a id="opIdType_List Types"></a>
 
-Gets a list of `SdsType` objects. If the optional parameters are not set, this call will return up to the first 100 SdsTypes
+Gets a list of `SdsType` objects. If you do not set the optional parameters, this call returns up to the first 100 `SdsTypes`.
 
 ### Request
 
@@ -21,29 +21,22 @@ GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types?query={query}&skip
 #### Parameters
 
 `string tenantId`
-Tenant identifier.
+Tenant identifier
 
 `string namespaceId`
-Namespace identifier.
+Namespace identifier
 
 `[Optional] string query`  
-Query identifier. 
-See [Search in SDS](xref:sdsSearching) for information about specifying the search parameter.
+Query identifier. See [Search in SDS](xref:sdsSearching) for information about specifying the search parameter.
 
 `[Optional] int skip`  
-Parameter representing the zero-based offset of the first object to retrieve. If unspecified, a default value of 0 is used.
+Parameter representing the zero-based offset of the first object to retrieve. If unspecified, a default value of `0` is used.
 
 `[Optional] int count`  
-Parameter representing the maximum number of objects to retrieve. If unspecified, a default value of 100 is used.
+Parameter representing the maximum number of objects to retrieve. If unspecified, a default value of `100` is used.
 
 `[Optional] string orderby`  
-Parameter representing sorted order.
-A field name is required.
-The sorting is based on the stored values for a given field (of type `string`). 
-For example, ``orderby=name`` would sort the returned results by the ``name`` values (ascending by default). 
-Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values ``asc`` or ``desc``, respectively.
-For example, ``orderby=name desc`` would sort the returned results by the ``name`` values, descending. 
-If no value is specified, there is no sorting of results.
+Parameter representing sorted order. A field name is required. The sorting is based on the stored values for a given field (of type `string`). For example, `orderby=name` would sort the returned results by the `name` values (ascending by default). Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values ``asc`` or ``desc``, respectively. For example, ``orderby=name desc`` would sort the returned results by the ``name`` values, descending. If you do not specify a value, the results are not sorted.
 
 ### Response
 
@@ -52,8 +45,8 @@ If no value is specified, there is no sorting of results.
 |200|[SdsType](#schemasdstype)[]|Returns a list of `SdsType` objects|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
@@ -134,7 +127,7 @@ Content-Type: application/json
 
 <a id="opIdType_Get Type"></a>
 
-Gets the specified `SdsType`.
+Gets the specified `SdsType`
 
 ### Request
 
@@ -145,13 +138,13 @@ GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}
 #### Parameters
 
 `string tenantId`
-Tenant identifier.
+Tenant identifier
 
 `string namespaceId`
-Namespace identifier.
+Namespace identifier
 
 `string typeId`
-Type identifier.
+Type identifier
 
 ### Response
 
@@ -161,8 +154,8 @@ Type identifier.
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
@@ -253,13 +246,13 @@ POST /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}
 #### Parameters
 
 `string tenantId`
-Tenant identifier.
+Tenant identifier
 
 `string namespaceId`
-Namespace identifier.
+Namespace identifier
 
 `string typeId`
-Type identifier.
+Type identifier
 
 ### Response
 
@@ -271,9 +264,9 @@ Type identifier.
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
 |409|[ErrorResponseBody](#schemaerrorresponsebody)|Conflict|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
@@ -742,13 +735,13 @@ DELETE /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}
 #### Parameters
 
 `string tenantId`
-Tenant identifier.
+Tenant identifier
 
 `string namespaceId`
-Namespace identifier.
+Namespace identifier
 
 `string typeId`
-Type identifier.
+Type identifier
 
 ### Response
 
@@ -758,9 +751,9 @@ Type identifier.
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
 |409|[ErrorResponseBody](#schemaerrorresponsebody)|Conflict|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
@@ -797,13 +790,13 @@ GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}/Reference
 #### Parameters
 
 `string tenantId`
-Tenant identifier.
+Tenant identifier
 
 `string namespaceId`
-Namespace identifier.
+Namespace identifier
 
 `string typeId`
-Type identifier.
+Type identifier
 
 ### Response
 
@@ -813,8 +806,8 @@ Type identifier.
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
@@ -852,24 +845,24 @@ Type identifier.
 <a id="tocSsdstype"></a>
 <a id="tocssdstype"></a>
 
-A contract defining the type of data to read or write in a SdsStream
+A contract defining the type of data to read or write in a `SdsStream`
 
 #### Properties
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|Id|string|false|true|A unique identifier for the SdsType object|
-|Name|string|false|true|An optional user-friendly name for the SdsType object|
-|Description|string|false|true|A brief description of the SdsType object|
-|SdsTypeCode|[SdsTypeCode](#schemasdstypecode)|false|false|The SdsTypeCode of the SdsType object|
-|IsGenericType|boolean|false|false|A boolean value indicating whether the current SdsType is a generic type This property is only used when using templates or generics. It will be automatically set if the SdsType is generated using SdsTypeBuilder. For further information on generics, please refer, https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/index|
-|IsReferenceType|boolean|false|false|Enabling this property preserves objects as references during serialization/de-serialization of the SdsType data while using the SdsFormatter This property behaves similar to IsReference property for DataContractSerializer and is only valid for serialization if SdsFormatter is used.|
-|GenericArguments|[SdsType]|false|true|Contains the parameterized SdsTypes of the current generic SdsType This property is only used when using templates or generics. It will be automatically set if the SdsType is generated using SdsTypeBuilder. For further information on generics, please refer to https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/index|
-|Properties|[[SdsTypeProperty](#schemasdstypeproperty)]|false|true|List of SdsTypePropertys of the SdsType|
-|BaseType|SdsType|false|true|Defines the base type of the SdsType Commonly used by SdsTypeBuilder to generate SdsType from contracts not explicitly defined and maintained by the user.|
-|DerivedTypes|[SdsType]|false|true|List of SdsTypes that should be recognized by SdsFormatter during serialization/de-serialization. This property behaves similar to KnownTypeAttribute attribute for DataContractSerializer and only valid for serialization if SdsFormatter is used.|
-|InterpolationMode|[SdsInterpolationMode](#schemasdsinterpolationmode)|false|false|Defines the SdsInterpolationMode of the SdsType. This property is only valid for the root SdsType and invalid for SdsTypes of SdsTypePropertys.|
-|ExtrapolationMode|[SdsExtrapolationMode](#schemasdsextrapolationmode)|false|false|Defines the SdsExtrapolationMode of the SdsType. This property is only valid for the root SdsType and invalid for SdsTypes of SdsTypePropertys.|
+|`Id`|string|false|true|A unique identifier for the `SdsType` object|
+|`Name`|string|false|true|An optional user-friendly name for the `SdsType` object|
+|`Description`|string|false|true|A brief description of the `SdsType` object|
+|`SdsTypeCode`|[SdsTypeCode](#schemasdstypecode)|false|false|The `SdsTypeCode` of the `SdsType` object|
+|`IsGenericType`|boolean|false|false|A boolean value indicating whether the current `SdsType` is a generic type. This property is only used when using templates or generics. It is automatically set if the `SdsType` is generated using `SdsTypeBuilder`. For further information on generics, please refer, https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/index|
+|`IsReferenceType`|boolean|false|false|Enabling this property preserves objects as references during serialization/de-serialization of the `SdsType` data while using the `SdsFormatter`. This property behaves similar to `IsReference` property for `DataContractSerializer` and is only valid for serialization if `SdsFormatter` is used.|
+|`GenericArguments`|[SdsType]|false|true|Contains the parameterized `SdsTypes` of the current generic `SdsType`. This property is only used when using templates or generics. It is automatically set if the `SdsType` is generated using `SdsTypeBuilder`. For further information on generics, please refer to https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/index|
+|`Properties`|[[SdsTypeProperty](#schemasdstypeproperty)]|false|true|List of `SdsTypePropertys` of the `SdsType`|
+|`BaseType`|SdsType|false|true|Defines the base type of the `SdsType`. Commonly used by `SdsTypeBuilder` to generate `SdsType` from contracts not explicitly defined and maintained by the user.|
+|`DerivedTypes`|[SdsType]|false|true|List of `SdsTypes` that should be recognized by `SdsFormatter` during serialization/de-serialization. This property behaves similar to `KnownTypeAttribute` attribute for `DataContractSerializer` and only valid for serialization if `SdsFormatter` is used.|
+|`InterpolationMode`|[SdsInterpolationMode](#schemasdsinterpolationmode)|false|false|Defines the `SdsInterpolationMode` of the `SdsType`. This property is only valid for the root `SdsType` and invalid for `SdsTypes` of `SdsTypePropertys`.|
+|`ExtrapolationMode`|[SdsExtrapolationMode](#schemasdsextrapolationmode)|false|false|Defines the `SdsExtrapolationMode` of the `SdsType`. This property is only valid for the root `SdsType` and invalid for `SdsTypes` of `SdsTypePropertys`.|
 
 ```json
 {
@@ -1295,23 +1288,23 @@ A contract defining the type of data to read or write in a SdsStream
 <a id="tocSsdstypeproperty"></a>
 <a id="tocssdstypeproperty"></a>
 
-A contract defining a property of a SdsType
+A contract defining a property of a `SdsType`
 
 #### Properties
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|Id|string|false|true|An unique identifier for the SdsTypeProperty object|
-|Name|string|false|true|An optional user-friendly name for the SdsTypeProperty object|
-|Description|string|false|true|A brief description of the SdsTypeProperty object|
-|Order|int32|false|false|The order used for comparison among SdsTypePropertys if a compound index is specified for SdsType|
-|IsKey|boolean|false|false|A boolean value indicating whether the current SdsTypeProperty must be used for indexing Used in combination with property to enable compound indexing|
-|FixedSize|int32|false|false|An optional property specifying the length of string Exclusively used for that is of|
-|SdsType|[SdsType](#schemasdstype)|false|true|SdsType of the current SdsTypeProperty|
-|Value|any|false|true|An enum value of the current SdsTypeProperty. Exclusively used for a of an enum|
-|Uom|string|false|true|Indicates the Unit of Measure of the current SdsTypeProperty|
-|InterpolationMode|[SdsInterpolationMode](#schemasdsinterpolationmode)|false|true|An InterpolationMode that overrides the root SdsType's InterpolationMode for this SdsTypeProperty|
-|IsQuality|boolean|false|false|Indicates whether this property marks data quality|
+|`Id`|string|false|true|An unique identifier for the `SdsTypeProperty` object|
+|`Name`|string|false|true|An optional user-friendly name for the `SdsTypeProperty` object|
+|`Description`|string|false|true|A brief description of the `SdsTypeProperty` object|
+|`Order`|int32|false|false|The order used for comparison among `SdsTypeProperty`s if a compound index is specified for `SdsType`|
+|`IsKey`|boolean|false|false|A boolean value indicating whether the current `SdsTypeProperty` must be used for indexing. Used in combination with property to enable compound indexing|
+|`FixedSize`|int32|false|false|An optional property specifying the length of string Exclusively used for that is of|
+|`SdsType`|[SdsType](#schemasdstype)|false|true|`SdsType` of the current `SdsTypeProperty`|
+|`Value`|any|false|true|An enum value of the current `SdsTypeProperty`.|
+|`Uom`|string|false|true|Indicates the Unit of Measure of the current `SdsTypeProperty`|
+|`InterpolationMode`|[SdsInterpolationMode](#schemasdsinterpolationmode)|false|true|An `InterpolationMode` that overrides the root `SdsType`'s `InterpolationMode` for this `SdsTypeProperty`|
+|`IsQuality`|boolean|false|false|Indicates whether this property marks data quality|
 
 ```json
 {
@@ -1420,19 +1413,19 @@ A contract defining a property of a SdsType
 <a id="tocSsdsinterpolationmode"></a>
 <a id="tocssdsinterpolationmode"></a>
 
-Interpolation modes that can be applied to SdsType, SdsTypeProperty, SdsStream, and SdsStreamPropertyOverride objects
+Interpolation modes that can be applied to `SdsType`, `SdsTypeProperty`, `SdsStream`, and `SdsStreamPropertyOverride` objects
 
 #### Enumerated Values
 
 |Property|Value|
 |---|---|
-|Default|0|
-|Continuous|0|
-|StepwiseContinuousLeading|1|
-|StepwiseContinuousTrailing|2|
-|Discrete|3|
-|ContinuousNullableLeading|4|
-|ContinuousNullableTrailing|5|
+|`Default`|0|
+|`Continuous`|0|
+|`StepwiseContinuousLeading`|1|
+|`StepwiseContinuousTrailing`|2|
+|`Discrete`|3|
+|`ContinuousNullableLeading`|4|
+|`ContinuousNullableTrailing`|5|
 
 ---
 
@@ -1443,16 +1436,16 @@ Interpolation modes that can be applied to SdsType, SdsTypeProperty, SdsStream, 
 <a id="tocSsdsextrapolationmode"></a>
 <a id="tocssdsextrapolationmode"></a>
 
-Defines how a stream responds to requests with indexes that precede or follow all data in the stream. Behavior also depends on the SdsInterpolationMode for a stream. If SdsInterpolationMode is set to Discrete, extrapolation will not occur. If SdsInterpolationMode is set to ContinuousNullableLeading or ContinuousNullableTrailing, default values will be returned instead of actual data.
+Defines how a stream responds to requests with indexes that precede or follow all data in the stream. Behavior also depends on the `SdsInterpolationMode` for a stream. If you set `SdsInterpolationMode` to `Discrete`, extrapolation does not occur. If you set `SdsInterpolationMode` to `ContinuousNullableLeading` or `ContinuousNullableTrailing`, default values are returned instead of actual data.
 
 #### Enumerated Values
 
 |Property|Value|
 |---|---|
-|All|0|
-|None|1|
-|Forward|2|
-|Backward|3|
+|`All`|0|
+|`None`|1|
+|`Forward`|2|
+|`Backward`|3|
 
 ---
 
@@ -1469,11 +1462,11 @@ Contains the error message format that follows the OCS error standards
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|OperationId|string|false|true|Operation unique identifier of action that caused the error|
-|Error|string|false|true|Error description|
-|Reason|string|false|true|Reason for the error|
-|Resolution|string|false|true|Resolution to resolve the error|
-|Parameters|object|false|true|IDs or values that are creating or are affected by the error|
+|`OperationId`|string|false|true|Operation unique identifier of action that caused the error|
+|`Error`|string|false|true|Error description|
+|`Reason`|string|false|true|Reason for the error|
+|`Resolution`|string|false|true|Resolution to resolve the error|
+|`Parameters`|object|false|true|`Ids` or values that are creating or are affected by the error|
 
 ```json
 {
