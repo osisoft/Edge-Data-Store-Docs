@@ -74,7 +74,7 @@ Msiexec /quiet /i EdgeDataStore.msi PORT="<number>" INSTALLFOLDER="<file_path>" 
 
    - `WIXUI_ENABLEOPCUA` - Add a system component to create a OPC UA EDS adapter instance. The value must be 1, for the component to be added.
 
-    **Note:** If you do not specify a parameter, the default value for the parameter is used. Property names must be in all capital letters, for example, `PORT`.
+**Note:** If you do not specify a parameter, the default value for the parameter is used. Property names must be in all capital letters, for example, `PORT`.
 
 ## Linux
 
@@ -188,8 +188,9 @@ To perform a silent install EDS on Linux with all default options, follow these 
     ```bash
     sudo apt-get install -q -y ./Edgeinstallfile.deb < silent.ini
     ```
-   Parameters:
-   
+
+Parameters:
+
    - `-q` – Specifies a silent install.
 
    - `-y` – Responds Yes to installing prerequisites.
@@ -197,4 +198,3 @@ To perform a silent install EDS on Linux with all default options, follow these 
    - `Edgeinstallfile.deb` – The name of the distribution file.
 
    - `< silent.ini` – The file with the installation properties.
-
