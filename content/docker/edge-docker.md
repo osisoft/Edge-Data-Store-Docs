@@ -156,3 +156,9 @@ curl http://localhost:6000/api/v1/configuration
 ### Remove REST access
 
 If you remove the `--network host` option from the docker run command, REST access is not possible from outside the container. This may be of value where you want to host an application in the same container as Edge Data Store but do not want to have external REST access enabled.
+
+## Upgrade
+
+To upgrade a Docker container with persistent storage to the latest version of Edge Data Store you should follow the process above for creating a new container image. Then, when running the container use the same persistent storage that was used previously. This will ensure that all of the configuration data is carried over to the upgraded container.
+
+***NOTE: If you previously used the REST API to change the port number the container was listening on you will need to follow the [Change port number](#change-port-number) section to reenable listening on the specified port.***
