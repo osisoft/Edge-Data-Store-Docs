@@ -15,7 +15,7 @@ To create a startup script for EDS, follow these steps:
 1. Use a text editor to create a script similar to one of the following examples:
 
     **Note**: The script varies slightly by processor.
-    
+
     **ARM32**
 
     ```bash
@@ -39,7 +39,7 @@ To create a startup script for EDS, follow these steps:
     ```
 
     **AMD64**
-            
+
     ```bash
     #!/bin/sh
     if [ -z $portnum ] ; then
@@ -95,13 +95,13 @@ To create a Docker container that runs EDS, follow these steps:
     ENTRYPOINT ["/edsdockerstart.sh"]
     ```
 
-2. Copy the <code>EdgeDataStore_linux-platform.tar.gz</code> file into the same directory as the `Dockerfile`.
+2. Copy the `EdgeDataStore_linux-platform.tar.gz` file into the same directory as the `Dockerfile`.
 
-3. Copy the <code>edsdockerstart.sh</code> script into the same directory as the `Dockerfile`.
+3. Copy the `edsdockerstart.sh` script into the same directory as the `Dockerfile`.
 
 4. Run the following command line in the same directory:
 
-   **Note**: You may need to include the `sudo` command. 
+   **Note**: You may need to include the `sudo` command.
 
     ```bash
     docker build -t edgedatastore .
@@ -109,7 +109,7 @@ To create a Docker container that runs EDS, follow these steps:
 
 ## Docker container startup
 
-The following procedures contain instructions on how to run EDS inside a Docker container with different options enabled. 
+The following procedures contain instructions on how to run EDS inside a Docker container with different options enabled.
 
 **Note**: Before running the Docker container, determine whether to store the data in the container or in a host directory.
 
@@ -117,12 +117,12 @@ The following procedures contain instructions on how to run EDS inside a Docker 
 
 To run EDS inside a Docker container with access to its REST API from the local host, complete the following:
 
-1. Use the Docker container image <code>edgedatastore</code> you previously created.
+1. Use the Docker container image `edgedatastore` you previously created.
 
 2. Type the following in the command line:
-3. 
-   **Note**: You may need to include the `sudo` command. 
-   
+3.
+   **Note**: You may need to include the `sudo` command.
+
     ```bash
     docker run -d --network host edgedatastore
     ```
@@ -131,15 +131,15 @@ Port `5590` is accessible from the host and you can make REST calls to EDS from 
 
 ### Run the Docker container with persistent storage
 
-To run EDS inside a Docker container while using the host for persistent storage, complete the following steps. 
+To run EDS inside a Docker container while using the host for persistent storage, complete the following steps.
 
 **Note**: This procedure also enables access to EDS REST API from the local host.
 
-1. Use the docker container image <code>edgedatastore</code> you previously created.
+1. Use the docker container image `edgedatastore` you previously created.
 
 2. Type the following in the command line:
 
-   **Note**: You may need to include the `sudo` command. 
+   **Note**: You may need to include the `sudo` command.
 
     ```bash
     docker run -d --network host -v /edgeds:/usr/share/OSIsoft/ edgedatastore
