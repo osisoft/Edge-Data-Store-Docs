@@ -70,7 +70,7 @@ The following examples are valid strings representing date and time:
 
   - Local: "mm-dd-yyyy hh:mm:ss"
 
-When you activate logging, the content of an incoming OMF message, including the headers, is written to a file in the `Logs` directory. For an active application, this file can become quite large. As a result, debug information is stored to disk in another format than usual log messages. A single file is written to the usual logs directory for every incoming OMF type, container, and data message.
+When you activate logging, the content of an incoming OMF message, including the headers, is written to multiple files in the `Logs` directory. Those files are written to the `IngressDebugLogs` directory in the usual logs directory for every incoming OMF type, container, and data message.
 
 ### IngressDebugExpiration type
 
