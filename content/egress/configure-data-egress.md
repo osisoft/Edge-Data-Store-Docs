@@ -18,7 +18,7 @@ To create new egress endpoints, follow these steps:
 
     - For content structure, see the following [Examples](#examples).
 
-2. Update the parameters as needed. For a table of all available parameters, see [Parameters](#parameters).
+1. Update the parameters as needed. For a table of all available parameters, see [Parameters](#parameters).
 
 3. Save the JSON file with the name `PeriodicEgressEndpoints.json` to any directory on the device where Edge Data Store is installed.
 
