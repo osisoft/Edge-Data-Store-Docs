@@ -16,7 +16,7 @@ When a custom application fails to write stream data to EDS, follow these steps:
 
 1. Verify the custom application is sending OMF messages in the correct order: 1) OMF type, 2) OMF container, 3) OMF data.
 
-   **Note:** OMF messages must be sent in the correct order to be ingressed into Edge Data Store.
+   **Note**: OMF messages must be sent in the correct order to be ingressed into Edge Data Store.
 
 1. Refer to logging of warnings, errors, and messages for help with diagnosing these issues.
 
@@ -44,7 +44,7 @@ Use debugging information to troubleshoot problems between an OMF application an
 
 1. Set an appropriate time value for the **IngressDebugExpiration** property.
 
-   **Note:** You can also disable debugging by setting the expiration value to `null`.
+   **Note**: You can also disable debugging by setting the expiration value to `null`.
 
 Date and time strings should use the following formats:
 
@@ -62,7 +62,7 @@ If unexpected data appears in an OCS or PI System, check if multiple devices are
 
 1. Assign stream prefixes in the periodic egress endpoint configuration to ensure that output data streams are logically separated in the systems of record. For instructions, see [Configure data egress](xref:configureEgress).
 
-   **Note:** Type prefixes may be helpful if you have changed a stream type definition on EDS. OMF types on both OCS and the PI System are immutable once created. If the type of the data stream changes, it is best to either delete the old type definition (if nothing is still using it) or add a type prefix to create a new unique type that will be used by new streams egressing from EDS to the systems of record.
+   **Note**: Type prefixes may be helpful if you have changed a stream type definition on EDS. OMF types on both OCS and the PI System are immutable once created. If the type of the data stream changes, it is best to either delete the old type definition (if nothing is still using it) or add a type prefix to create a new unique type that will be used by new streams egressing from EDS to the systems of record.
 
 ### Periodic egress logging
 
@@ -80,7 +80,7 @@ Use debugging information to troubleshoot problems between Edge Data Store and t
 
 1. Set an appropriate time value for the **DebugExpiration** property.
 
-   **Note:** Disable debugging by setting the expiration value to `null`.
+   **Note**: Disable debugging by setting the expiration value to `null`.
 
 Date and time strings should use the following formats:
 
