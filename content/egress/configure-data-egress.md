@@ -36,33 +36,53 @@ curl -d "@EgressEndpoints.config.json" -H "Content-Type: application/json" "http
 
 To support the reuse of common configuration blocks, EDS egress configuration is divided into four components:
 
+* `EgressConfigurations`: Ties together the three previous components and includes settings for type and stream prefixing, backfill, and more
+
 * `EgressEndpoints`: Describes the egress endpoint connectivity information
 
 * `Schedules`: Describes the timing of data egress
 
 * `DataSelectors`: Describes which data to egress and includes stream and data filtering
 
-* `EgressConfigurations`: Ties together the three previous components and includes settings for type and stream prefixing, backfill, and more
+
+
+The following table lists egress parameters for `EgressConfigurations`.
+
+| Parameter                       | Required                  | Type      | Description                                        |
+|---------------------------------|---------------------------|-----------|----------------------------------------------------|
+| **Id**                          | Required                  | string    | Unique identifier                                  |
+| **Name**                        | Optional                  | string    | Friendly name                                      |
+| **Description**                 | Optional                  | string    | Friendly description                               |
+| **Enabled**                     | Optional                  | Boolean      | An indicator of whether egress is enabled when the egress endpoint is loaded. Defaults to true. |
+| **NamespaceId**                 | Optional                  | string    | Represents the namespace that will be egressed. There are two available namespaces: `default` and `diagnostics`. The default namespace is `default`. |
+| **Backfill**                    | Optional                  | Boolean   | An indicator of whether data should be backfilled. Enabling the backfill flag will result in all data from the earliest index to the latest stored index being egressed. Data backfill occurs for each stream, including when you add a new stream. Once data backfill is complete for a stream, any out-of-order data is not egressed.  Defaults to `false`. |
+| **StreamPrefix**                | Optional                  | string    | Prefix applied to any streams that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % | < > { } ` " |
+| **TypePrefix**                  | Optional                  | string    | Prefix applied to any types that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % | < > { } ` " |
+| **DebugExpiration**             | Optional                  | DateTime  | Enables logging of detailed information, for each outbound HTTP request pertaining to this egress endpoint, to disk. The value represents the date and time this detailed information should stop being saved. Examples of valid strings representing date and time:  UTC: "yyyy-mm-ddThh:mm:ssZ", Local: "mm-dd-yyyy hh:mm:ss". For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
+| **EndpointId**                  | Optional                  | string    | Defines where data can be egressed |
+| **ScheduleId**                  | Optional                  | string    | Defines when data can be egressed |
+| **DataSelectorId**              | Optional                  | array     | Defines what data can be egressed |
+
 
 The following table lists egress parameters for `EgressEndpoints`.
 
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
-| **ClientId**                    | Required for OCS endpoint | string    | Used for authentication with the OCS OMF endpoint |
-| **ClientSecret**                | Required for OCS endpoint | string    | Used for authentication with the OCS OMF endpoint |
-| **Endpoint**                    | Required                  | string    |Destination that accepts OMF v1.2 and older messages. Supported destinations include OCS and PI. |
-| **Id**                          | Required          | string    | Unique identifier |
-| **Password**                    | Required for PI endpoint  | string    | Used for Basic authentication to the PI Web API OMF endpoint |
-| **TokenEndpoint**               | Optional for OCS endpoint | string    | Used to retrieve an OCS token from an alternative endpoint. *This is not normally necessary with OCS. Only use if directed to do so by customer support*. |
+| **Id**                          | Required                  | string    | Unique identifier                                  |
+| **Endpoint**                    | Required                  | string    | Destination that accepts OMF v1.2 and older messages. Supported destinations include OCS and PI. |
 | **Username**                    | Required for PI endpoint  | string    | Used for Basic authentication to the PI Web API OMF endpoint. If domain is required, the backslash must be escaped (for example, *domain*\\\\*username*). |
+| **ClientId**                    | Required for OCS endpoint | string    | Used for authentication with the OCS OMF endpoint  |
+| **ClientSecret**                | Required for OCS endpoint | string    | Used for authentication with the OCS OMF endpoint  |
+| **TokenEndpoint**               | Optional for OCS endpoint | string    | Used to retrieve an OCS token from an alternative endpoint. *This is not normally necessary with OCS. Only use if directed to do so by customer support*. |
 | **ValidateEndpointCertificate** | Optional                  | Boolean   | Used to disable verification of destination certificate. Use for testing only with self-signed certificates. Defaults to true. |
 
 The following table lists egress parameters for `Schedules`.
 
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
-| **ExecutionPeriod**             | Required                  | string    | Frequency of time between each egress action. Must be a string in the format d.hh:mm:ss.##. |
 | **Id**                          | Required                  | string    | Unique identifier |
+| **ExecutionPeriod**             | Required                  | TimeSpan  | Frequency of time between each egress action. Must be a string in the format d.hh:mm:ss.##. |
+
 
 The following table lists egress parameters for `DataSelectors`.
 
@@ -70,22 +90,6 @@ The following table lists egress parameters for `DataSelectors`.
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
 | **Id**                          | Required                  | string    | Unique identifier |
 | **StreamFilter**                | Optional                  | string    | A filter used to determine which streams and types are egressed. For more information on valid filters, see [Search in SDS](xref:sdsSearching). |
-
-The following table lists egress parameters for `EgressConfigurations`.
-
-| Parameter                       | Required                  | Type      | Description                                        |
-|---------------------------------|---------------------------|-----------|----------------------------------------------------|
-| **Backfill**                    | Optional                  | Boolean   | An indicator of whether data should be backfilled. Enabling the backfill flag will result in all data from the earliest index to the latest stored index being egressed. Data backfill occurs for each stream, including when you add a new stream. Once data backfill is complete for a stream, any out-of-order data is not egressed.  Defaults to `false`. |
-| **EndpointId**                  | Optional                  | string    | Defines where data can be egressed |
-| **DataSelectorId**              | Optional                  | string or array    | Defines what data can be egressed |
-| **DebugExpiration**             | Optional                  | string    | Enables logging of detailed information, for each outbound HTTP request pertaining to this egress endpoint, to disk. The value represents the date and time this detailed information should stop being saved. Examples of valid strings representing date and time:  UTC: "yyyy-mm-ddThh:mm:ssZ", Local: "mm-dd-yyyy hh:mm:ss". For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
-| **Description**                 | Optional                  | string    | Friendly description |
-| **Enabled**                     | Optional                  | Boolean      | An indicator of whether egress is enabled when the egress endpoint is loaded. Defaults to true. |
-| **Name**                        | Optional                  | string    | Friendly name |
-| **NamespaceId**                 | Optional                  | string    | Represents the namespace that will be egressed. There are two available namespaces: `default` and `diagnostics`. The default namespace is `default`. |
-| **ScheduleId**                  | Optional                  | string    | Defines when data can be egressed |
-| **StreamPrefix**                | Optional                  | string    | Prefix applied to any streams that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % | < > { } ` " |
-| **TypePrefix**                  | Optional                  | string    | Prefix applied to any types that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % | < > { } ` " |
 
 ### Examples
 
