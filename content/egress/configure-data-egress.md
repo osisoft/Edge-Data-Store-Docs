@@ -77,7 +77,7 @@ The following table lists egress parameters for `DataSelectors`.
 | **Backfill**                    | Optional                  | Boolean   | An indicator of whether data should be backfilled. Enabling the backfill flag will result in all data from the earliest index to the latest stored index being egressed. Data backfill occurs for each stream, including when you add a new stream. Once data backfill is complete for a stream, any out-of-order data is not egressed.  Defaults to `false`. |
 | **EgressFilter**                | Optional                  | string    | A filter used to determine which streams and types are egressed. For more information on valid filters, see [Search in SDS](xref:sdsSearching). |
 
-The following table lists egress parameters for `EgressConfiguration`.
+The following table lists egress parameters for `EgressConfigurations`.
 
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
