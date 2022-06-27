@@ -54,7 +54,7 @@ The following table lists egress parameters for `EgressEndpoints`.
 | **Description**                 | Optional                  | string    | Friendly description |
 | **Enabled**                     | Optional                  | Boolean      | An indicator of whether egress is enabled when the egress endpoint is loaded. Defaults to true. |
 | **Endpoint**                    | Required                  | string    | Destination that accepts OMF v1.1 messages. Supported destinations include OCS and PI. |
-| **Id**                          | Optional                  | string    | Unique identifier |
+| **Id**                          | Required          | string    | Unique identifier |
 | **Name**                        | Optional                  | string    | Friendly name |
 | **Password**                    | Required for PI endpoint  | string    | Used for Basic authentication to the PI Web API OMF endpoint |
 | **TokenEndpoint**               | Optional for OCS endpoint | string    | Used to retrieve an OCS token from an alternative endpoint. *This is not normally necessary with OCS. Only use if directed to do so by customer support*. |
