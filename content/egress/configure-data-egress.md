@@ -48,19 +48,18 @@ The following table lists egress parameters for `EgressConfigurations`.
 
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
-| **Id**                          | Required                  | string    | Unique identifier                                  |
+| **Id**                          | Optional                  | string    | Unique identifier of the configuration             |
 | **Name**                        | Optional                  | string    | Friendly name                                      |
 | **Description**                 | Optional                  | string    | Friendly description                               |
-| **Enabled**                     | Optional                  | Boolean      | An indicator of whether egress is enabled when the egress endpoint is loaded. Defaults to true. |
+| **Enabled**                     | Optional                  | Boolean   | An indicator of whether egress is enabled when the egress endpoint is loaded. Defaults to `true`. |
+| **EndpointId**                  | Required                  | string    | Id of the endpoint selected for egress |
+| **ScheduleId**                  | Required                  | string    | Id of the schedule selected for egress |
+| **DataSelectorId**              | Optional                  | array     | Id of the data selectors for egress    |
 | **NamespaceId**                 | Optional                  | string    | Represents the namespace that will be egressed. There are two available namespaces: `default` and `diagnostics`. The default namespace is `default`. |
 | **Backfill**                    | Optional                  | Boolean   | An indicator of whether data should be backfilled. Enabling the backfill flag will result in all data from the earliest index to the latest stored index being egressed. Data backfill occurs for each stream, including when you add a new stream. Once data backfill is complete for a stream, any out-of-order data is not egressed.  Defaults to `false`. |
 | **StreamPrefix**                | Optional                  | string    | Prefix applied to any streams that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % | < > { } ` " |
 | **TypePrefix**                  | Optional                  | string    | Prefix applied to any types that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % | < > { } ` " |
 | **DebugExpiration**             | Optional                  | DateTime  | Enables logging of detailed information, for each outbound HTTP request pertaining to this egress endpoint, to disk. The value represents the date and time this detailed information should stop being saved. Examples of valid strings representing date and time:  UTC: "yyyy-mm-ddThh:mm:ssZ", Local: "mm-dd-yyyy hh:mm:ss". For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
-| **EndpointId**                  | Optional                  | string    | Defines where data can be egressed |
-| **ScheduleId**                  | Optional                  | string    | Defines when data can be egressed |
-| **DataSelectorId**              | Optional                  | array     | Defines what data can be egressed |
-
 
 The following table lists egress parameters for `EgressEndpoints`.
 
@@ -69,25 +68,30 @@ The following table lists egress parameters for `EgressEndpoints`.
 | **Id**                          | Required                  | string    | Unique identifier of the endpoint configuration                                  |
 | **Endpoint**                    | Required                  | string    | Destination that accepts OMF v1.2 and older messages. Supported destinations include OCS and PI. |
 | **Username**                    | Required for PI endpoint  | string    | User name used for authentication to PI Web API OMF endpoint. If domain is required, the backslash must be escaped (for example, *domain*\\\\*username*). |
-| **ClientId**                    | Required for OCS endpoint | string    | Used for authentication with the OCS OMF endpoint  |
-| **ClientSecret**                | Required for OCS endpoint | string    | Used for authentication with the OCS OMF endpoint  |
-| **TokenEndpoint**               | Optional for OCS endpoint | string    | Used to retrieve an OCS token from an alternative endpoint. *This is not normally necessary with OCS. Only use if directed to do so by customer support*. |
-| **ValidateEndpointCertificate** | Optional                  | Boolean   | Used to disable verification of destination certificate. Use for testing only with self-signed certificates. Defaults to true. |
+| **Password**                    | Required for PI endpoint  | string    | Password used for authentication to PI Web API OMF endpoint |
+| **ClientId**                    | Required for OCS endpoint | string    | Client ID used for authentication to OCS OMF endpoint  |
+| **ClientSecret**                | Required for OCS endpoint | string    | Client Secret used for authentication with the OCS OMF endpoint  |
+| **TokenEndpoint**               | Optional for OCS endpoint | string    | Used to retrieve an OCS token from an alternative endpoint. *This is not normally necessary with OCS. Only use if directed to do so by customer support.* |
+| **ValidateEndpointCertificate** | Optional                  | Boolean   | Validate endpoint certificate (recommended). If `false`, egress accepts any endpoint certificate. Use for testing only with self-signed certificates. Defaults to `true`. |
 
 The following table lists egress parameters for `Schedules`.
 
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
 | **Id**                          | Required                  | string    | Unique identifier |
-| **ExecutionPeriod**             | Required                  | TimeSpan  | Frequency of time between each egress action. Must be a string in the format d.hh:mm:ss.##. |
+| **ExecutionPeriod**             | Required                  | TimeSpan  | Frequency of time between each egress action. Must be a string in the following format `d.hh:mm:ss.##`. |
 
 
 The following table lists egress parameters for `DataSelectors`.
 
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
-| **Id**                          | Required                  | string    | Unique identifier |
+| **Id**                          | Required                  | string    | Unique identifier for schedule configuration |
 | **StreamFilter**                | Optional                  | string    | A filter used to determine which streams and types are egressed. For more information on valid filters, see [Search in SDS](xref:sdsSearching). |
+| **AbsoluteDeadband**            | Optional                  | string    | Specifies the absolute change in data value that should cause the current value to pass the filter test. At least one of `AbsoluteDeadband` or `PercentChange` must be specified. |
+| **PercentChange**            | Optional                     | string    | Specifies the percent change from previous value that should cause the current value to pass the filter test. At least one of `AbsoluteDeadband` or `PercentChange` must be specified. |
+| **ExpirationPeriod**            | Optional                  | string    | The length in time that can elapse after an event before automatically storing the next event. The expected format is `HH:MM:SS.###`. |
+
 
 ### Examples
 
