@@ -44,8 +44,6 @@ To support the reuse of common configuration blocks, EDS egress configuration is
 
 * `DataSelectors`: Describes which data to egress and includes stream and data filtering
 
-
-
 The following table lists egress parameters for `EgressConfigurations`.
 
 | Parameter                       | Required                  | Type      | Description                                        |
@@ -68,9 +66,9 @@ The following table lists egress parameters for `EgressEndpoints`.
 
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
-| **Id**                          | Required                  | string    | Unique identifier                                  |
+| **Id**                          | Required                  | string    | Unique identifier of the endpoint configuration                                  |
 | **Endpoint**                    | Required                  | string    | Destination that accepts OMF v1.2 and older messages. Supported destinations include OCS and PI. |
-| **Username**                    | Required for PI endpoint  | string    | Used for Basic authentication to the PI Web API OMF endpoint. If domain is required, the backslash must be escaped (for example, *domain*\\\\*username*). |
+| **Username**                    | Required for PI endpoint  | string    | User name used for authentication to PI Web API OMF endpoint. If domain is required, the backslash must be escaped (for example, *domain*\\\\*username*). |
 | **ClientId**                    | Required for OCS endpoint | string    | Used for authentication with the OCS OMF endpoint  |
 | **ClientSecret**                | Required for OCS endpoint | string    | Used for authentication with the OCS OMF endpoint  |
 | **TokenEndpoint**               | Optional for OCS endpoint | string    | Used to retrieve an OCS token from an alternative endpoint. *This is not normally necessary with OCS. Only use if directed to do so by customer support*. |
