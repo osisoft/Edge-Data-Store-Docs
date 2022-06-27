@@ -20,14 +20,14 @@ To create new egress endpoints, follow these steps:
 
 1. Update the parameters as needed. For a table of all available parameters, see [Parameters](#parameters).
 
-1. Save the JSON file with the name `PeriodicEgressEndpoints.json` to any directory on the device where Edge Data Store is installed.
+1. Save the JSON file with the name `EgressEndpoints.json` to any directory on the device where Edge Data Store is installed.
 
-1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints/`
+1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/storage/egressendpoints/`
 
 Example using cURL, which must be run from the directory where the JSON file is saved:
 
 ```bash
-curl -d "@PeriodicEgressEndpoints.config.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints"
+curl -d "@EgressEndpoints.config.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/storage/egressendpoints"
 ```
 
 **Note**: The @ symbol is a required prefix for this command.
