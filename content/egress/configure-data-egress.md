@@ -36,7 +36,7 @@ curl -d "@PeriodicEgressEndpoints.config.json" -H "Content-Type: application/jso
 
 To support the reuse of common configuration blocks, EDS egress configuration is divided into four components:
 
-* `Endpoints`: Describes the egress endpoint connectivity information
+* `EgressEndpoints`: Describes the egress endpoint connectivity information
 
 * `Schedules`: Describes the timing of data egress
 
