@@ -56,10 +56,10 @@ The following table lists egress parameters for `EgressConfigurations`.
 | **ScheduleId**                  | Required                  | string    | Id of the schedule selected for egress |
 | **DataSelectorId**              | Optional                  | array     | Id of the data selectors for egress    |
 | **NamespaceId**                 | Optional                  | string    | Represents the namespace that will be egressed. There are two available namespaces: `default` and `diagnostics`. The default namespace is `default`. |
-| **Backfill**                    | Optional                  | Boolean   | An indicator of whether data should be backfilled. Enabling the backfill flag will result in all data from the earliest index to the latest stored index being egressed. Data backfill occurs for each stream, including when you add a new stream. Once data backfill is complete for a stream, any out-of-order data is not egressed.  Defaults to `false`. |
+| **Backfill**                    | Optional                  | Boolean   | Indicator of whether data should be backfilled. Enable if data should be backfilled. Backfilling occurs when you run the egress endpoint for the first time after application startup. This results in all data from the earliest to the latest stored index being egressed. Defaults to `false`. |
 | **StreamPrefix**                | Optional                  | string    | Prefix applied to any streams that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % | < > { } ` " |
 | **TypePrefix**                  | Optional                  | string    | Prefix applied to any types that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % | < > { } ` " |
-| **DebugExpiration**             | Optional                  | DateTime  | Enables logging of detailed information, for each outbound HTTP request pertaining to this egress endpoint, to disk. The value represents the date and time this detailed information should stop being saved. Examples of valid strings representing date and time:  UTC: "yyyy-mm-ddThh:mm:ssZ", Local: "mm-dd-yyyy hh:mm:ss". For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
+| **DebugExpiration**             | Optional                  | string    | Enables logging of detailed information for each outbound HTTP request pertaining to this egress endpoint to disk. The value represents the date and time this detailed information should stop being saved. Examples of valid strings representing date and time:  UTC: "yyyy-mm-ddThh:mm:ssZ", Local: "mm-dd-yyyy hh:mm:ss". For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
 
 The following table lists egress parameters for `EgressEndpoints`.
 
@@ -78,15 +78,15 @@ The following table lists egress parameters for `Schedules`.
 
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
-| **Id**                          | Required                  | string    | Unique identifier |
-| **ExecutionPeriod**             | Required                  | TimeSpan  | Frequency of time between each egress action. Must be a string in the following format `d.hh:mm:ss.##`. |
+| **Id**                          | Required                  | string    | Unique identifier of the schedule configuration    |
+| **ExecutionPeriod**             | Required                  | string    | Frequency of time between each egress action. Must be a string in the following format `d.hh:mm:ss.##`. |
 
 
 The following table lists egress parameters for `DataSelectors`.
 
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
-| **Id**                          | Required                  | string    | Unique identifier for schedule configuration |
+| **Id**                          | Required                  | string    | Unique identifier of the data selector configuration |
 | **StreamFilter**                | Optional                  | string    | A filter used to determine which streams and types are egressed. For more information on valid filters, see [Search in SDS](xref:sdsSearching). |
 | **AbsoluteDeadband**            | Optional                  | string    | Specifies the absolute change in data value that should cause the current value to pass the filter test. At least one of `AbsoluteDeadband` or `PercentChange` must be specified. |
 | **PercentChange**            | Optional                     | string    | Specifies the percent change from previous value that should cause the current value to pass the filter test. At least one of `AbsoluteDeadband` or `PercentChange` must be specified. |
