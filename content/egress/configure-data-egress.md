@@ -10,7 +10,7 @@ Once the OCS or PI Server destinations are prepared to receive OMF messages, con
 
 **Warning**: If you delete or remove an egress configuration and then recreate it with `Backfill` set to `true`, duplicate data will appear on any stream that was previously egressed successfully. New streams will not see duplicate data.
 
-## Create egress endpoints
+## Create egress configurations
 
 To create new egress endpoints, follow these steps:
 
