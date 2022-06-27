@@ -11,6 +11,9 @@
   - topicUid: sdsQuickStart
   - topicUid: commandLineLinuxQuickStart
   - topicUid: commandLineWindowsQuickStart
+- topicUid: Upgrade
+  items:
+  - topicUid: UpgradeFrom40
 - topicUid: InstallEdgeDataStore
   items:
     - topicUid: SystemRequirements
