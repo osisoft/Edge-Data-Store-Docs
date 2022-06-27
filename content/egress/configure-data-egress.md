@@ -44,7 +44,7 @@ To support the reuse of common configuration blocks, EDS egress configuration is
 
 * `EgressConfigurations`: Ties together the three previous components and includes settings for type and stream prefixing, backfill, and more
 
-The following table lists egress parameters for `Endpoints`.
+The following table lists egress parameters for `EgressEndpoints`.
 
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
