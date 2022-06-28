@@ -101,7 +101,7 @@ The following are valid egress configuration examples.
 ```json
 [{
     "Id": "OCS",
-    "ExecutionPeriod" : "00:00:15",
+    "Period" : "00:00:15",
     "Endpoint" : "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
     "ClientId" : "{clientId}",
     "ClientSecret" : "{clientSecret}"
@@ -113,7 +113,7 @@ The following are valid egress configuration examples.
 ```json
 [{
     "Id": "OCS",
-    "ExecutionPeriod" : "00:00:15",
+    "Period" : "00:00:15",
     "EgressFilter" : "TypeId:myType",
     "Endpoint" : "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
     "ClientId" : "{clientId}",
@@ -126,7 +126,7 @@ The following are valid egress configuration examples.
 ```json
 [{
     "Id": "OCS",
-    "ExecutionPeriod" : "00:00:15",
+    "Period" : "00:00:15",
     "Backfill" : true,
     "Endpoint" : "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
     "ClientId" : "{clientId}",
@@ -139,7 +139,7 @@ The following are valid egress configuration examples.
 ```json
 [{
     "Id": "OCS",
-    "ExecutionPeriod" : "01:00:00",
+    "Period" : "01:00:00",
     "Endpoint" : "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
     "ClientId" : "{clientId}",
     "ClientSecret" : "{clientSecret}",
@@ -154,7 +154,7 @@ The following are valid egress configuration examples.
     "Id": "PI",
     "Name" : null,
     "Description" : null,
-    "ExecutionPeriod" : "00:00:15",
+    "Period" : "00:00:15",
     "Enabled" : true,
     "Backfill" : false,
     "EgressFilter" : null,
@@ -177,7 +177,7 @@ The following are valid egress configuration examples.
 ```json
 [{
     "Id": "PI",
-    "ExecutionPeriod" : "00:01:00",
+    "Period" : "00:01:00",
     "EgressFilter" : "Id:*Modbus* OR Id:*Opc*",
     "Endpoint" : "https://{webApiLocation}/piwebapi/omf/",
     "Username" : "{domain}\\{username}",
@@ -190,7 +190,7 @@ The following are valid egress configuration examples.
 ```json
 [{
     "Id": "PI",
-    "ExecutionPeriod" : "01:00:00",
+    "Period" : "01:00:00",
     "EgressFilter" : "Unique*",
     "Endpoint" : "https://{webApiLocation}/piwebapi/omf/",
     "Username" : "{username}",
