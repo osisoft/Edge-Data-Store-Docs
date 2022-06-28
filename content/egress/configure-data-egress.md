@@ -36,13 +36,13 @@ curl -d "@EgressEndpoints.config.json" -H "Content-Type: application/json" "http
 
 To support the reuse of common configuration blocks, EDS egress configuration is divided into four components:
 
-* `EgressConfigurations`: Ties together the three previous components and includes settings for type and stream prefixing, backfill, and more
+- `EgressConfigurations`: Ties together the three previous components and includes settings for type and stream prefixing, backfill, and more
 
-* `EgressEndpoints`: Describes the egress endpoint connectivity information
+- `EgressEndpoints`: Describes the egress endpoint connectivity information
 
-* `Schedules`: Describes the timing of data egress
+- `Schedules`: Describes the timing of data egress
 
-* `DataSelectors`: Describes which data to egress and includes stream and data filtering
+- `DataSelectors`: Describes which data to egress and includes stream and data filtering
 
 The following table lists egress parameters for `EgressConfigurations`.
 
@@ -56,7 +56,7 @@ The following table lists egress parameters for `EgressConfigurations`.
 | **ScheduleId**                  | Required                  | string    | Id of the schedule selected for egress |
 | **DataSelectorId**              | Optional                  | array     | Id of the data selectors for egress    |
 | **NamespaceId**                 | Optional                  | string    | Represents the namespace that will be egressed. There are two available namespaces: `default` and `diagnostics`. The default namespace is `default`. |
-| **Backfill**                    | Optional                  | Boolean   | Indicator of whether data should be backfilled. Enable if data should be backfilled. Backfilling occurs when you run the egress endpoint for the first time after application startup. This results in all data from the earliest to the latest stored index being egressed. Defaults to `false`. |
+| **Backfill**                    | Optional                  | Boolean   | Indicator of whether data should be backfilled. Enable if data should be backfilled. Data backfill occurs when you run the egress endpoint for the first time after application startup. This results in all data from the earliest to the latest stored index being egressed. Defaults to `false`. |
 | **StreamPrefix**                | Optional                  | string    | Prefix applied to any streams that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % | < > { } ` " |
 | **TypePrefix**                  | Optional                  | string    | Prefix applied to any types that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % | < > { } ` " |
 | **DebugExpiration**             | Optional                  | string    | Enables logging of detailed information for each outbound HTTP request pertaining to this egress endpoint to disk. The value represents the date and time this detailed information should stop being saved. Examples of valid strings representing date and time:  UTC: "yyyy-mm-ddThh:mm:ssZ", Local: "mm-dd-yyyy hh:mm:ss". For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
@@ -81,7 +81,6 @@ The following table lists egress parameters for `Schedules`.
 | **Id**                          | Required                  | string    | Unique identifier of the schedule configuration    |
 | **ExecutionPeriod**             | Required                  | string    | Frequency of time between each egress action. Must be a string in the following format `d.hh:mm:ss.##`. |
 
-
 The following table lists egress parameters for `DataSelectors`.
 
 | Parameter                       | Required                  | Type      | Description                                        |
@@ -91,7 +90,6 @@ The following table lists egress parameters for `DataSelectors`.
 | **AbsoluteDeadband**            | Optional                  | string    | Specifies the absolute change in data value that should cause the current value to pass the filter test. At least one of `AbsoluteDeadband` or `PercentChange` must be specified. |
 | **PercentChange**            | Optional                     | string    | Specifies the percent change from previous value that should cause the current value to pass the filter test. At least one of `AbsoluteDeadband` or `PercentChange` must be specified. |
 | **ExpirationPeriod**            | Optional                  | string    | The length in time that can elapse after an event before automatically storing the next event. The expected format is `HH:MM:SS.###`. |
-
 
 ### Examples
 
