@@ -36,7 +36,7 @@ curl -d "@EgressEndpoints.config.json" -H "Content-Type: application/json" "http
 
 To support the reuse of common configuration blocks, EDS egress configuration is divided into four components:
 
-- `EgressConfigurations`: Ties together the three previous components and includes settings for type and stream prefixing, backfill, and more
+- `EgressConfigurations`: Ties together the three following components and includes settings for type and stream prefixing, backfill, and more
 
 - `EgressEndpoints`: Describes the egress endpoint connectivity information
 
