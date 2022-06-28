@@ -51,12 +51,12 @@ The following table lists egress parameters for `EgressConfigurations`.
 | **Id**                          | Optional                  | string    | Unique identifier of the configuration             |
 | **Name**                        | Optional                  | string    | Friendly name                                      |
 | **Description**                 | Optional                  | string    | Friendly description                               |
-| **Enabled**                     | Optional                  | Boolean   | An indicator of whether egress is enabled when the egress endpoint is loaded. Defaults to `true`. |
+| **Enabled**                     | Optional                  | boolean   | An indicator of whether egress is enabled when the egress endpoint is loaded. Defaults to `true`. |
 | **EndpointId**                  | Required                  | string    | Id of the endpoint selected for egress |
 | **ScheduleId**                  | Required                  | string    | Id of the schedule selected for egress |
-| **DataSelectorId**              | Optional                  | array     | Id of the data selectors for egress    |
+| **DataSelectorIds**              | Optional                 | array     | Ids of the data selectors for egress    |
 | **NamespaceId**                 | Optional                  | string    | Represents the namespace that will be egressed. There are two available namespaces: `default` and `diagnostics`. The default namespace is `default`. |
-| **Backfill**                    | Optional                  | Boolean   | Indicator of whether data should be backfilled. Enable if data should be backfilled. Data backfill occurs when you run the egress endpoint for the first time after application startup. This results in all data from the earliest to the latest stored index being egressed. Defaults to `false`. |
+| **Backfill**                    | Optional                  | boolean   | Indicator of whether data should be backfilled. Enable if data should be backfilled. Data backfill occurs when you run the egress endpoint for the first time after application startup. This results in all data from the earliest to the latest stored index being egressed. Defaults to `false`. |
 | **StreamPrefix**                | Optional                  | string    | Prefix applied to any streams that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % | < > { } ` " |
 | **TypePrefix**                  | Optional                  | string    | Prefix applied to any types that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % | < > { } ` " |
 | **DebugExpiration**             | Optional                  | string    | Enables logging of detailed information for each outbound HTTP request pertaining to this egress endpoint to disk. The value represents the date and time this detailed information should stop being saved. Examples of valid strings representing date and time:  UTC: "yyyy-mm-ddThh:mm:ssZ", Local: "mm-dd-yyyy hh:mm:ss". For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
@@ -72,7 +72,7 @@ The following table lists egress parameters for `EgressEndpoints`.
 | **ClientId**                    | Required for OCS endpoint | string    | Client ID used for authentication to OCS OMF endpoint  |
 | **ClientSecret**                | Required for OCS endpoint | string    | Client Secret used for authentication with the OCS OMF endpoint  |
 | **TokenEndpoint**               | Optional for OCS endpoint | string    | Used to retrieve an OCS token from an alternative endpoint. *This is not normally necessary with OCS. Only use if directed to do so by customer support.* |
-| **ValidateEndpointCertificate** | Optional                  | Boolean   | Validate endpoint certificate (recommended). If `false`, egress accepts any endpoint certificate. Use for testing only with self-signed certificates. Defaults to `true`. |
+| **ValidateEndpointCertificate** | Optional                  | boolean   | Validate endpoint certificate (recommended). If `false`, egress accepts any endpoint certificate. Use for testing only with self-signed certificates. Defaults to `true`. |
 
 The following table lists egress parameters for `Schedules`.
 
