@@ -80,7 +80,7 @@ The following table lists egress parameters for `Schedules`.
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
 | **Id**                          | Required                  | string    | Unique identifier of the schedule configuration            |
 | **Period**                      | Required                  | string    | Frequency of time between each egress action beginning at or after the `StartTime`. Must be a string in the following format `d.hh:mm:ss.##`. See `StartTime` for additional information. |
-| **StartTime**                   | Required                  | string    | The UTC time when egress actions should begin. Must be a string in the following format `yyyy-MM-ddThh:mm:ss`.|
+| **StartTime**                   | Optional                  | string    | The UTC time when egress actions should begin. Must be a string in the following format `yyyy-MM-ddThh:mm:ss`. Use the `StartTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `StartTime`, egress begins as soon as you submit the configuration and will occur again whenever the length of the `Period` completes. For example, a `Period` of `0.00.15.00.00` without a defined `StartTime` results in immediate data egress when you submit the configuration and then again every 15 minutes. Conversely, if you use a `StartTime` of `2020-10-02T06:00"00`, a `Period` of `0.00.15.00.00`, and you submit your configuration at 6:07 UTC on October 2, 2020, egress will begin at 6:15 UTC and will continue every 15 minutes thereafter. |
 
 The following table lists egress parameters for `DataSelectors`.
 
