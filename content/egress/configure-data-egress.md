@@ -79,7 +79,7 @@ The following table lists egress parameters for `Schedules`.
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
 | **Id**                          | Required                  | string    | Unique identifier of the schedule configuration            |
-| **Period**                      | Required                  | string    | Frequency of time between each egress action. Must be a string in the following format `d.hh:mm:ss.##`. |
+| **Period**                      | Required                  | string    | Frequency of time between each egress action beginning at or after the `StartTime`. Must be a string in the following format `d.hh:mm:ss.##`. See `StartTime` for additional information. |
 | **StartTime**                   | Required                  | string    | The UTC time when egress actions should begin. Must be a string in the following format `yyyy-MM-ddThh:mm:ss`.|
 
 The following table lists egress parameters for `DataSelectors`.
