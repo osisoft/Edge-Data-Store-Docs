@@ -122,7 +122,7 @@ The following are valid configuration examples for egress.
 
 `PUT http://localhost:5590/api/v1/configuration`
 
-**Create configuration for egress of all data for all streams, to OCS, every 15 seconds.**
+**Create configuration for egress of all data for all streams to OCS every 15 seconds.**
 
 ```json
 {
