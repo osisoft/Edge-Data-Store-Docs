@@ -4,39 +4,9 @@ uid: configureEgress
 
 # Configure data egress
 
-Once the OCS or PI Server destinations are prepared to receive OMF messages, configure data egress endpoints to create the connection to the destination and specify the details of the data transfer.
+Once the OCS or PI Server destinations are prepared to receive OMF messages, configure data egress to create the connection to the destination and specify the details of the data transfer.
 
-**Note**: You cannot add egress configurations manually because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit egress configuration. For additional endpoints, see [REST URLs](#rest-urls).
-
-**Warning**: If you delete or remove an egress configuration and then recreate it with `Backfill` set to `true`, duplicate data will appear on any stream that was previously egressed successfully. New streams will not see duplicate data.
-
-## Create egress configurations
-
-To create new egress endpoints, follow these steps:
-
-1. Create a JSON file containing one or more egress endpoints.
-
-    - For content structure, see the following [Examples](#examples).
-
-1. Update the parameters as needed. For a table of all available parameters, see [Parameters](#parameters).
-
-1. Save the JSON file with the name `EgressEndpoints.json` to any directory on the device where Edge Data Store is installed.
-
-1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/storage/egressendpoints/`
-
-Example using cURL, which must be run from the directory where the JSON file is saved:
-
-```bash
-curl -d "@EgressEndpoints.config.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/storage/egressendpoints"
-```
-
-**Note**: The @ symbol is a required prefix for this command.
-
-### Parameters
-
-To support the reuse of common configuration blocks, EDS egress configuration is divided into four components:
-
-- `EgressConfigurations`: Ties together the three following components and includes settings for type and stream prefixing, backfill, and more
+To support the reuse of common configuration blocks, EDS egress configuration is divided into four facets, which can be configured together or separately:
 
 - `EgressEndpoints`: Describes the egress endpoint connectivity information
 
@@ -44,22 +14,57 @@ To support the reuse of common configuration blocks, EDS egress configuration is
 
 - `DataSelectors`: Describes which data to egress and includes stream and data filtering
 
-The following table lists egress parameters for `EgressConfigurations`.
+- `EgressConfigurations`: Ties together the three previous facets and includes settings for type and stream prefixing, backfill, and more
 
-| Parameter                       | Required                  | Type      | Description                                        |
-|---------------------------------|---------------------------|-----------|----------------------------------------------------|
-| **Id**                          | Optional                  | string    | Unique identifier of the configuration             |
-| **Name**                        | Optional                  | string    | Friendly name                                      |
-| **Description**                 | Optional                  | string    | Friendly description                               |
-| **Enabled**                     | Optional                  | boolean   | An indicator of whether egress is enabled when the egress endpoint is loaded. Defaults to `true`. |
-| **EndpointId**                  | Required                  | string    | Id of the endpoint selected for egress |
-| **ScheduleId**                  | Required                  | string    | Id of the schedule selected for egress |
-| **DataSelectorIds**              | Optional                 | array     | Ids of the data selectors for egress    |
-| **NamespaceId**                 | Optional                  | string    | Represents the namespace that will be egressed. There are two available namespaces: `default` and `diagnostics`. The default namespace is `default`. |
-| **Backfill**                    | Optional                  | boolean   | Indicator of whether data should be backfilled. Enable if data should be backfilled. Data backfill occurs when you run the egress endpoint for the first time after application startup. This results in all data from the earliest to the latest stored index being egressed. Defaults to `false`. |
-| **StreamPrefix**                | Optional                  | string    | Prefix applied to any streams that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % | < > { } ` " |
-| **TypePrefix**                  | Optional                  | string    | Prefix applied to any types that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % | < > { } ` " |
-| **DebugExpiration**             | Optional                  | string    | Enables logging of detailed information for each outbound HTTP request pertaining to this egress endpoint to disk. The value represents the date and time this detailed information should stop being saved. Examples of valid strings representing date and time:  UTC: "yyyy-mm-ddThh:mm:ssZ", Local: "mm-dd-yyyy hh:mm:ss". For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
+**Note**: You cannot add configurations manually because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit configurations. For additional endpoints, see [REST URLs](#rest-urls).
+
+**Warning**: If configuring the facets separately,`EgressEndpoints`, `Schedules`, and `DataSelectors` must be configured before they are referenced in `EgressConfigurations`.
+
+**Warning**: If you delete or remove an egress configuration and then recreate it with `Backfill` set to `true`, duplicate data will appear on any stream that was previously egressed successfully. New streams will not see duplicate data.
+
+## Create configurations
+
+To configure EDS for data egress, follow these steps:
+
+1. Create a JSON file.
+
+    - For content structure, see the following [Examples](#examples).
+
+2. Update the parameters as needed. For a table of all available parameters, see [Parameters](#parameters).
+
+3. Save the JSON file to any directory on the device where Edge Data Store is installed.
+
+4. Use any tool capable of making HTTP requests to send the contents of the JSON file to the appropriate configuration endpoints:
+
+| Use Case                              | Filename                       | Command  | Endpoint                                                                  |
+|---------------------------------------|--------------------------------|-----------|--------------------------------------------------------------------------|
+| Configures multiple egress facets     | **StorageEgress.json**         | PUT       | http://localhost:5590/api/v1/configuration                               |
+| Creates EgressEndpoints only          | **EgressEndpoints.json**       | POST      | http://localhost:5590/api/v1/configuration/storage/egressendpoints       |
+| Creates Schedules only                | **Schedules.json**             | POST      | http://localhost:5590/api/v1/configuration/storage/schedules             |
+| Creates DataSelectors only            | **DataSelectors.json**         | POST      | http://localhost:5590/api/v1/configuration/storage/dataselectors         |
+| Creates EgressConfigurations only     | **EgressConfigurations.json**  | POST      | http://localhost:5590/api/v1/configuration/storage/egressconfigurations  |
+
+Example using cURL, which must be run from the directory where the JSON file is saved:
+```bash
+curl -d "@{Filename}" -H "Content-Type: application/json" -X {Command} {Endpoint}
+```
+
+**Note**: The @ symbol is a required prefix for this command. `{Filename}`, `{Command}` and `{Endpoint}` should be replaced by the corresponding filename, command, and endpoint.
+
+  - If configuring multiple egress facets together,
+
+```bash
+curl -d "@StorageEgress.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration
+```
+
+  - If configuring schedules only,
+
+```bash
+curl -d "@Schedules.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration/storage/schedules
+```
+
+
+### Parameters
 
 The following table lists egress parameters for `EgressEndpoints`.
 
@@ -78,9 +83,9 @@ The following table lists egress parameters for `Schedules`.
 
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
-| **Id**                          | Required                  | string    | Unique identifier of the schedule configuration            |
+| **Id**                          | Required                  | string    | Unique identifier of the schedule configuration    |
 | **Period**                      | Required                  | string    | Frequency of time between each egress action beginning at or after the `StartTime`. Must be a string in the following format `d.hh:mm:ss.##`. See `StartTime` for additional information. |
-| **StartTime**                   | Optional                  | string    | The date and time when egress actions should begin. Must be a string in the following format `yyyy-MM-ddThh:mm:ss`. Use the `StartTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `StartTime`, egress begins as soon as you submit the configuration and will occur again whenever the length of the `Period` completes. For example, a `Period` of `00:15:00` without a defined `StartTime` results in immediate data egress when you submit the configuration and then again every 15 minutes. Conversely, if you use a `StartTime` of `2020-10-02T06:00:00`, a `Period` of `00:15:00`, and you submit your configuration at 6:07 on October 2, 2020, egress will begin at 6:15 and will continue every 15 minutes thereafter. |
+| **StartTime**                   | Optional                  | string    | The date and time when egress actions should begin. Examples of valid strings representing date and time:  UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `mm-dd-yyyy hh:mm:ss`. Use the `StartTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `StartTime`, egress begins as soon as you submit the configuration and will occur again whenever the length of the `Period` completes. For example, a `Period` of `00:15:00` without a defined `StartTime` results in immediate data egress when you submit the configuration and then again every 15 minutes. Conversely, if you use a `StartTime` of `2020-10-02T06:00:00`, a `Period` of `00:15:00`, and you submit your configuration at 6:07 on October 2, 2020, egress will begin at 6:15 and will continue every 15 minutes thereafter. |
 
 The following table lists egress parameters for `DataSelectors`.
 
@@ -92,124 +97,318 @@ The following table lists egress parameters for `DataSelectors`.
 | **PercentChange**               | Optional                  | string    | Specifies the percent change from previous value that should cause the current value to pass the filter test. At least one of `AbsoluteDeadband` or `PercentChange` must be specified. |
 | **ExpirationPeriod**            | Optional                  | string    | The length in time that can elapse after an event before automatically storing the next event. The expected format is `HH:MM:SS.###`. |
 
+The following table lists egress parameters for `EgressConfigurations`.
+
+| Parameter                       | Required                  | Type      | Description                                        |
+|---------------------------------|---------------------------|-----------|----------------------------------------------------|
+| **Id**                          | Optional                  | string    | Unique identifier of the configuration             |
+| **Name**                        | Optional                  | string    | Friendly name                                      |
+| **Description**                 | Optional                  | string    | Friendly description                               |
+| **Enabled**                     | Optional                  | boolean   | An indicator of whether egress is enabled when the egress endpoint is loaded. Defaults to `true`. |
+| **EndpointId**                  | Required                  | string    | Id of the endpoint selected for egress |
+| **ScheduleId**                  | Required                  | string    | Id of the schedule selected for egress |
+| **DataSelectorIds**             | Optional                  | array     | Ids of the data selectors for egress    |
+| **NamespaceId**                 | Optional                  | string    | Represents the namespace that will be egressed. There are two available namespaces: `default` and `diagnostics`. The default namespace is `default`. |
+| **Backfill**                    | Optional                  | boolean   | Indicator of whether data should be backfilled. Enable if data should be backfilled. Data backfill occurs when you run the egress endpoint for the first time after application startup. This results in all data from the earliest to the latest stored index being egressed. Defaults to `false`. |
+| **StreamPrefix**                | Optional                  | string    | Prefix applied to any streams that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % \| < > \{ } \` " |
+| **TypePrefix**                  | Optional                  | string    | Prefix applied to any types that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % \| < > \{ } \` " |
+| **DebugExpiration**             | Optional                  | string    | Enables logging of detailed information for each outbound HTTP request pertaining to this egress endpoint to disk. The value represents the date and time this detailed information should stop being saved. Examples of valid strings representing date and time:  UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `mm-dd-yyyy hh:mm:ss`. For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
+
 ### Examples
 
-The following are valid egress configuration examples.
+The following are valid configuration examples for egress.
 
-**Egress data to OCS. All streams, every 15 seconds.**
+#### Configure multiple egress facets in a single request
 
+`PUT http://localhost:5590/api/v1/configuration`
+
+- Create configuration for egress of all data for all streams, to OCS, every 15 seconds.
 ```json
-[{
-    "Id": "OCS",
-    "Period" : "00:00:15",
-    "Endpoint" : "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
-    "ClientId" : "{clientId}",
-    "ClientSecret" : "{clientSecret}"
-}]
+{
+    "Storage": {
+        "EgressEndpoints": [
+            {
+                "Id": "Endpoint-OCS",
+                "Endpoint": "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
+                "ClientId": "{clientId}",
+                "ClientSecret": "{clientSecret}"
+            }
+        ],
+        "Schedules": [
+            {
+                "Id": "Schedule-15sec",
+                "Period": "00:00:15"
+            }
+        ],
+        "EgressConfigurations": [
+            {
+                "Id": "OCS",
+                "EndpointId": "Endpoint-OCS",
+                "ScheduleId": "Schedule-15sec"
+            }
+        ]
+    }
+}
 ```
 
-**Egress data to OCS - streams with a specific TypeId value, every 15 seconds.**
-
+- Create configuration for egress of some data for some streams, to OCS and PI, every 2 days starting January 1st, 2022 at 9:00. EgressEndpoints/Schedules/DataSelectors definitions are shared.
 ```json
-[{
-    "Id": "OCS",
-    "Period" : "00:00:15",
-    "EgressFilter" : "TypeId:myType",
-    "Endpoint" : "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
-    "ClientId" : "{clientId}",
-    "ClientSecret" : "{clientSecret}"
-}]
+{
+    "Storage": {
+        "EgressEndpoints": [
+            {
+                "Id": "Endpoint-OCS",
+                "Endpoint": "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
+                "ClientId": "{clientId}",
+                "ClientSecret": "{clientSecret}"
+            },
+            {
+                "Id": "Endpoint-PI",
+                "Endpoint": "https://{webApiLocation}/piwebapi/omf/",
+                "Username" : "{username}",
+                "Password" : "{password}"
+            }
+        ],
+        "Schedules": [
+            {
+            "Id": "Schedule1",
+            "StartTime": "2022-01-01T09:00:00",
+            "Period": "2.00:00:00"
+            }
+        ],
+        "DataSelectors": [
+            {
+                "Id": "DataSelector1",
+                "StreamFilter": "TypeId:TestType1",
+                "AbsoluteDeadband": 50,
+                "ExpirationPeriod": "12:00:00"
+            },
+            {
+                "Id": "DataSelector2",
+                "StreamFilter": "TypeId:TestType1",
+                "PercentChange": 80
+            }
+        ],
+        "EgressConfigurations": [
+            {
+                "Id": "OCS",
+                "EndpointId": "Endpoint-OCS",
+                "ScheduleId": "Schedule1",
+                "DataSelectorIds": ["DataSelector1"]
+            },
+            {
+                "Id": "PI",
+                "EndpointId": "Endpoint-PI",
+                "ScheduleId": "Schedule1",
+                "DataSelectorIds": ["DataSelector1", "DataSelector2"]
+            }
+        ]
+    }
+}
 ```
 
-**Egress data to OCS - all streams, every 15 seconds, including data backfill.**
+#### Create EgressEndpoints only
+
+`POST http://localhost:5590/api/v1/configuration/storage/egressendpoints`
+
+- Add single new egress endpoint to PI.
 
 ```json
-[{
-    "Id": "OCS",
-    "Period" : "00:00:15",
-    "Backfill" : true,
-    "Endpoint" : "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
-    "ClientId" : "{clientId}",
-    "ClientSecret" : "{clientSecret}"
-}]
+{
+    "Id": "Endpoint-PI",
+    "Endpoint": "https://{webApiLocation}/piwebapi/omf/",
+    "Username" : "{username}",
+    "Password" : "{password}"
+}
 ```
 
-**Egress diagnostic data to OCS - every 1 hour.**
+- Add multiple new egress endpoints to OCS and PI with use of domain in username. All properties explicitly listed.
 
 ```json
-[{
-    "Id": "OCS",
-    "Period" : "01:00:00",
-    "Endpoint" : "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
-    "ClientId" : "{clientId}",
-    "ClientSecret" : "{clientSecret}",
-    "NamespaceId" : "diagnostics"
-}]
+[
+    {
+        "Id": "Endpoint-OCS",
+        "Endpoint": "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
+        "ClientId": "{clientId}",
+        "ClientSecret": "{clientSecret}"
+        "Username" : null,
+        "Password" : null,
+        "TokenEndpoint" : null,
+        "ValidateEndpointCertificate" : true
+    },
+    {
+        "Id": "Endpoint-PI-WithDomain",
+        "Endpoint": "https://{webApiLocation}/piwebapi/omf/",
+        "ClientId": null,
+        "ClientSecret": null,
+        "Username" : "{domain}\\{username}",
+        "Password" : "{password}"
+        "TokenEndpoint" : null,
+        "ValidateEndpointCertificate" : true
+    }
+]
 ```
 
-**Egress data to PI - all streams, every 15 seconds, including both type and stream prefix. All properties explicitly listed.**
+#### Create Schedules only
+
+`POST http://localhost:5590/api/v1/configuration/storage/schedules`
+
+- Add single new schedule for egress every 15 seconds.
 
 ```json
-[{
+{
+    "Id": "Schedule-15sec",
+    "Period": "00:00:15"
+}
+```
+
+- Add multiple new schedules for egress every 1 minute / every 1 hour  starting January 1st, 2022 at 9:00. All properties explicitly listed.
+
+```json
+[
+    {
+        "Id": "Schedule-1min",
+        "StartTime": null,
+        "Period": "00:01:00"
+    },
+    {
+        "Id": "Schedule-1hr",
+        "StartTime": "2022-01-01T09:00:00",
+        "Period": "01:00:00"
+    }
+]
+```
+
+#### Create DataSelectors only
+
+`POST http://localhost:5590/api/v1/configuration/storage/dataselectors`
+
+- Add single new data selector for egress of data filtered by percent change of 10 for streams whose Id contains "Modbus" or "Opc".
+
+```json
+{
+    "Id": "DataFilterByPercentChange-StreamFilterById",
+    "StreamFilter": "Id:*Modbus* OR Id:*Opc*",
+    "PercentChange": 10
+}
+```
+
+- Add single new data selector for egress of data filtered by absolute deadband of 5 and expiration period of 10 minutes for all streams. All properties explicitly listed.
+
+```json
+{
+    "Id": "DataFilterByAbsoluteDeadbandWithExpiration",
+    "StreamFilter": null,
+    "AbsoluteDeadband": 5,
+    "PercentChange": null,
+    "ExpirationPeriod": "00:10:00"
+}
+```
+
+- Add multiple new data selectors for egress of all data for streams with a specific TypeId value / streams with a field that begins with "Unique".
+
+```json
+[
+    {
+        "Id": "StreamFilterByTypeId",
+        "StreamFilter": "TypeId:myType",
+        "AbsoluteDeadband": 0
+    },
+    {
+        "Id": "StreamFilterByFieldName",
+        "StreamFilter": "Unique*",
+        "PercentChange": 0
+    }
+]
+```
+
+#### Create EgressConfigurations only
+
+`POST http://localhost:5590/api/v1/configuration/storage/egressconfigurations`
+
+- Add single new configuration for egress of all data for all streams, to OCS, every 15 seconds.
+
+```json
+{
+    "Id": "OCS",
+    "EndpointId": "Endpoint-OCS",
+    "ScheduleId": "Schedule-15sec"
+}
+```
+
+- Add single new configuration for egress of all data for all streams, to PI, every 15 seconds, including both type and stream prefix. All properties explicitly listed.
+
+```json
+{
     "Id": "PI",
     "Name" : null,
     "Description" : null,
-    "Period" : "00:00:15",
     "Enabled" : true,
+    "EndpointId": "Endpoint-PI",
+    "ScheduleId": "Schedule-15sec",
+    "DataSelectorIds": null,
+    "NamespaceId" : "default"
     "Backfill" : false,
-    "EgressFilter" : null,
-    "Endpoint" : "https://{webApiLocation}/piwebapi/omf/",
-    "ClientId" : null,
-    "ClientSecret" : null,
-    "Username" : "{username}",
-    "Password" : "{password}",
     "StreamPrefix" : "1ValidPrefix.",
     "TypePrefix" : "AlsoValid_",
-    "DebugExpiration" : null,
-    "NamespaceId" : "default",
-    "TokenEndpoint" : null,
-    "ValidateEndpointCertificate" : true
-}]
+    "DebugExpiration" : null
+}
 ```
 
-**Egress data to PI - streams whose Id contains "Modbus" or "Opc", every 1 minute. Includes use of domain for username.**
+- Add single new configuration for egress of all data for streams with a specific TypeId value, to OCS, every 15 seconds.
 
 ```json
-[{
-    "Id": "PI",
-    "Period" : "00:01:00",
-    "EgressFilter" : "Id:*Modbus* OR Id:*Opc*",
-    "Endpoint" : "https://{webApiLocation}/piwebapi/omf/",
-    "Username" : "{domain}\\{username}",
-    "Password" : "{password}"
-}]
+{
+    "EndpointId": "Endpoint-OCS",
+    "ScheduleId": "Schedule-15sec",
+    "DataSelectorIds": ["StreamFilterByTypeId"]
+}
 ```
 
-**Egress data to PI - streams containing a field that begins with "Unique", every 1 hour.**
+- Add single new configuration for egress of all data for streams containing a field that begins with "Unique" but data filtered by percent change of 10 for streams whose Id contains "Modbus" or "Opc", to PI, every 1 minute.
 
 ```json
-[{
-    "Id": "PI",
-    "Period" : "01:00:00",
-    "EgressFilter" : "Unique*",
-    "Endpoint" : "https://{webApiLocation}/piwebapi/omf/",
-    "Username" : "{username}",
-    "Password" : "{password}"
-}]
+{
+    "EndpointId": "Endpoint-PI",
+    "ScheduleId": "Schedule-1min",
+    "DataSelectorIds": ["StreamFilterByFieldName", "DataFilterByPercentChange-StreamFilterById"]
+}
+```
+
+- Add multiple new configurations for egress, with backfill / diagnostics data / PI endpoint with domain in username. EgressEndpoints/Schedules/DataSelectors definitions are shared.
+
+```json
+[
+    {
+        "EndpointId": "Endpoint-OCS",
+        "ScheduleId": "Schedule-15sec",
+        "Backfill": true
+    },
+    {
+        "EndpointId": "Endpoint-OCS",
+        "ScheduleId": "Schedule-1hr",
+        "DataSelectorIds": ["DataFilterByAbsoluteDeadbandWithExpiration"]
+        "NamespaceId": "diagnostics"
+    },
+    {
+        "EndpointId": "Endpoint-PI-WithDomain",
+        "ScheduleId": "Schedule-1hr",
+        "DataSelectorIds": ["StreamFilterByTypeId", "DataFilterByAbsoluteDeadbandWithExpiration"]
+    }
+]
 ```
 
 ### REST URLs
+The following table shows examples of REST URLS. The `{egressFacet}` parameter can be any of the four egress facets: `EgressEndpoints`, `Schedules`, `DataSelectors`, or `EgressConfigurations`.
 
-The following table shows examples of REST URLS.
-
-| Relative URL                                              | HTTP verb | Action               |
-|-----------------------------------------------------------|-----------|----------------------|
-| api/v1/configuration/storage/periodicegressendpoints      | GET       | Gets all configured egress endpoints. |
-| api/v1/configuration/storage/periodicegressendpoints      | DELETE    | Deletes all configured egress endpoints. |
-| api/v1/configuration/storage/periodicegressendpoints      | POST      | Adds an array of egress endpoints, fails if any endpoint already exists. |
-| api/v1/configuration/storage/periodicegressendpoints      | POST      | Adds a single egress endpoint, fails if endpoint already exists. |
-| api/v1/configuration/storage/periodicegressendpoints      | PUT       | Replaces all egress endpoints. |
-| api/v1/configuration/storage/periodicegressendpoints/{id} | GET       | Gets configured endpoint with *id*. |
-| api/v1/configuration/storage/periodicegressendpoints/{id} | DELETE    | Deletes configured endpoint with *id*. |
-| api/v1/configuration/storage/periodicegressendpoints/{id} | PUT       | Replaces egress endpoint with *id*, fails if endpoint does not exist. |
-| api/v1/configuration/storage/periodicegressendpoints/{id} | PATCH     | Allows partial updating of configured endpoint with *id*. |
+| Relative URL                                    | HTTP verb | Action               |
+|-------------------------------------------------|-----------|----------------------|
+| api/v1/configuration/storage/\{egressFacet}      | GET       | Gets all configured objects of the *egressFacet*. |
+| api/v1/configuration/storage/\{egressFacet}      | DELETE    | Deletes all configured objects of the *egressFacet*. |
+| api/v1/configuration/storage/\{egressFacet}      | POST      | Adds an array of objects to the *egressFacet*, fails if any object already exists. |
+| api/v1/configuration/storage/\{egressFacet}      | POST      | Adds a single object to the *egressFacet*, fails if the object already exists. |
+| api/v1/configuration/storage/\{egressFacet}      | PUT       | Replaces all objects in the *egressFacet*. |
+| api/v1/configuration/storage/\{egressFacet}/\{id} | GET       | Gets the configured object with *id* in the *egressFacet*. |
+| api/v1/configuration/storage/\{egressFacet}/\{id} | DELETE    | Deletes the configured object with *id* in the *egressFacet*. |
+| api/v1/configuration/storage/\{egressFacet}/\{id} | PUT       | Replaces the object with *id* in the *egressFacet*, fails if the object does not exist. |
+| api/v1/configuration/storage/\{egressFacet}/\{id} | PATCH     | Allows partial updating of the configured object with *id* in the *egressFacet*. |
