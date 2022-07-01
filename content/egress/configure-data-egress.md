@@ -30,39 +30,39 @@ To configure EDS for data egress, follow these steps:
 
     - For content structure, see the following [Examples](#examples).
 
-2. Update the parameters as needed. For a table of all available parameters, see [Parameters](#parameters).
+1. Update the parameters as needed. For a table of all available parameters, see [Parameters](#parameters).
 
-3. Save the JSON file to any directory on the device where Edge Data Store is installed.
+1. Save the JSON file to any directory on the device where Edge Data Store is installed.
 
-4. Use any tool capable of making HTTP requests to send the contents of the JSON file to the appropriate configuration endpoints:
+1. Use any tool capable of making HTTP requests to send the contents of the JSON file to the appropriate configuration endpoints:
 
 | Use Case                              | Filename                       | Command  | Endpoint                                                                  |
 |---------------------------------------|--------------------------------|-----------|--------------------------------------------------------------------------|
-| Configures multiple egress facets     | **StorageEgress.json**         | PUT       | http://localhost:5590/api/v1/configuration                               |
-| Creates EgressEndpoints only          | **EgressEndpoints.json**       | POST      | http://localhost:5590/api/v1/configuration/storage/egressendpoints       |
-| Creates Schedules only                | **Schedules.json**             | POST      | http://localhost:5590/api/v1/configuration/storage/schedules             |
-| Creates DataSelectors only            | **DataSelectors.json**         | POST      | http://localhost:5590/api/v1/configuration/storage/dataselectors         |
-| Creates EgressConfigurations only     | **EgressConfigurations.json**  | POST      | http://localhost:5590/api/v1/configuration/storage/egressconfigurations  |
+| Configures multiple egress facets     | **StorageEgress.json**         | PUT       | `http://localhost:5590/api/v1/configuration`                               |
+| Creates EgressEndpoints only          | **EgressEndpoints.json**       | POST      | `http://localhost:5590/api/v1/configuration/storage/egressendpoints`       |
+| Creates Schedules only                | **Schedules.json**             | POST      | `http://localhost:5590/api/v1/configuration/storage/schedules`             |
+| Creates DataSelectors only            | **DataSelectors.json**         | POST      | `http://localhost:5590/api/v1/configuration/storage/dataselectors`         |
+| Creates EgressConfigurations only     | **EgressConfigurations.json**  | POST      | `http://localhost:5590/api/v1/configuration/storage/egressconfigurations`  |
 
 Example using cURL, which must be run from the directory where the JSON file is saved:
+
 ```bash
 curl -d "@{Filename}" -H "Content-Type: application/json" -X {Command} {Endpoint}
 ```
 
 **Note**: The @ symbol is a required prefix for this command. `{Filename}`, `{Command}` and `{Endpoint}` should be replaced by the corresponding filename, command, and endpoint.
 
-  - If configuring multiple egress facets together,
+- If configuring multiple egress facets together,
 
 ```bash
 curl -d "@StorageEgress.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration
 ```
 
-  - If configuring schedules only,
+- If configuring schedules only,
 
 ```bash
 curl -d "@Schedules.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration/storage/schedules
 ```
-
 
 ### Parameters
 
@@ -122,7 +122,8 @@ The following are valid configuration examples for egress.
 
 `PUT http://localhost:5590/api/v1/configuration`
 
-- Create configuration for egress of all data for all streams, to OCS, every 15 seconds.
+**Create configuration for egress of all data for all streams, to OCS, every 15 seconds.**
+
 ```json
 {
     "Storage": {
@@ -151,7 +152,8 @@ The following are valid configuration examples for egress.
 }
 ```
 
-- Create configuration for egress of some data for some streams, to OCS and PI, every 2 days starting January 1st, 2022 at 9:00. EgressEndpoints/Schedules/DataSelectors definitions are shared.
+**Create configuration for egress of some data for some streams, to OCS and PI, every 2 days starting January 1st, 2022 at 9:00. EgressEndpoints/Schedules/DataSelectors definitions are shared.**
+
 ```json
 {
     "Storage": {
@@ -211,7 +213,7 @@ The following are valid configuration examples for egress.
 
 `POST http://localhost:5590/api/v1/configuration/storage/egressendpoints`
 
-- Add single new egress endpoint to PI.
+**Add a single new egress endpoint to PI.**
 
 ```json
 {
@@ -222,7 +224,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-- Add multiple new egress endpoints to OCS and PI with use of domain in username. All properties explicitly listed.
+**Add multiple new egress endpoints to OCS and PI with the use of a domain in the username. All properties are explicitly listed.**
 
 ```json
 [
@@ -253,7 +255,7 @@ The following are valid configuration examples for egress.
 
 `POST http://localhost:5590/api/v1/configuration/storage/schedules`
 
-- Add single new schedule for egress every 15 seconds.
+**Add a single new schedule for egress every 15 seconds.**
 
 ```json
 {
@@ -262,7 +264,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-- Add multiple new schedules for egress every 1 minute / every 1 hour  starting January 1st, 2022 at 9:00. All properties explicitly listed.
+**Add multiple new schedules for egress every minute and every hour starting January 1st, 2022 at 9:00. All properties are explicitly listed.**
 
 ```json
 [
@@ -293,7 +295,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-- Add single new data selector for egress of data filtered by absolute deadband of 5 and expiration period of 10 minutes for all streams. All properties explicitly listed.
+**Add a single new data selector for data egress filtered by an absolute deadband of 5 and expiration period of 10 minutes for all streams. All properties are explicitly listed.**
 
 ```json
 {
@@ -305,7 +307,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-- Add multiple new data selectors for egress of all data for streams with a specific TypeId value / streams with a field that begins with "Unique".
+**Add multiple new data selectors for egress of all data for streams with a specific `TypeId` value and streams with a field that begins with `Unique`.**
 
 ```json
 [
@@ -326,7 +328,7 @@ The following are valid configuration examples for egress.
 
 `POST http://localhost:5590/api/v1/configuration/storage/egressconfigurations`
 
-- Add single new configuration for egress of all data for all streams, to OCS, every 15 seconds.
+**Add a single new configuration for egress of all data for all streams to OCS every 15 seconds.**
 
 ```json
 {
@@ -336,7 +338,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-- Add single new configuration for egress of all data for all streams, to PI, every 15 seconds, including both type and stream prefix. All properties explicitly listed.
+**Add a single new configuration for egress of all data for all streams to PI every 15 seconds and include both the type and stream prefix. All properties are explicitly listed.**
 
 ```json
 {
@@ -355,7 +357,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-- Add single new configuration for egress of all data for streams with a specific TypeId value, to OCS, every 15 seconds.
+**Add a single new configuration for egress of all data for streams with a specific `TypeId` value, to OCS every 15 seconds.**
 
 ```json
 {
@@ -365,7 +367,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-- Add single new configuration for egress of all data for streams containing a field that begins with "Unique" but data filtered by percent change of 10 for streams whose Id contains "Modbus" or "Opc", to PI, every 1 minute.
+**Add a single new configuration for egress of all data for streams containing a field that begins with `Unique` but with data filtered by percent change of 10 for streams whose Id contains `Modbus` or `Opc` to PI every minute.**
 
 ```json
 {
@@ -375,7 +377,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-- Add multiple new configurations for egress, with backfill / diagnostics data / PI endpoint with domain in username. EgressEndpoints/Schedules/DataSelectors definitions are shared.
+**Add multiple new configurations for egress with backfill, diagnostics data, or PI endpoint with domain in username. `EgressEndpoints`, `Schedules`, and `DataSelectors` definitions are shared.**
 
 ```json
 [
@@ -399,6 +401,7 @@ The following are valid configuration examples for egress.
 ```
 
 ### REST URLs
+
 The following table shows examples of REST URLS. The `{egressFacet}` parameter can be any of the four egress facets: `EgressEndpoints`, `Schedules`, `DataSelectors`, or `EgressConfigurations`.
 
 | Relative URL                                    | HTTP verb | Action               |
