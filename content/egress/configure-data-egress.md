@@ -6,56 +6,91 @@ uid: configureEgress
 
 Once the OCS or PI Server destinations are prepared to receive OMF messages, configure data egress endpoints to create the connection to the destination and specify the details of the data transfer.
 
-**Note:** You cannot add egress configurations manually because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit egress configuration. For additional endpoints, see [REST URLs](#rest-urls).
+**Note**: You cannot add egress configurations manually because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit egress configuration. For additional endpoints, see [REST URLs](#rest-urls).
 
-**Warning:** If a periodic egress endpoint is deleted/removed and then recreated with backfilling set to true, duplicate data will appear on any stream that was previously egressed successfully. New streams will not see duplicate data.
+**Warning**: If you delete or remove an egress configuration and then recreate it with `Backfill` set to `true`, duplicate data will appear on any stream that was previously egressed successfully. New streams will not see duplicate data.
 
-## Create egress endpoints
+## Create egress configurations
 
 To create new egress endpoints, follow these steps:
 
 1. Create a JSON file containing one or more egress endpoints.
 
-    - For content structure, see the following [Examples](#examples). 
+    - For content structure, see the following [Examples](#examples).
 
 1. Update the parameters as needed. For a table of all available parameters, see [Parameters](#parameters).
 
-1. Save the JSON file with the name `PeriodicEgressEndpoints.json` to any directory on the device where Edge Data Store is installed.
+1. Save the JSON file with the name `EgressEndpoints.json` to any directory on the device where Edge Data Store is installed.
 
-1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints/`
+1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/storage/egressendpoints/`
 
 Example using cURL, which must be run from the directory where the JSON file is saved:
 
 ```bash
-curl -d "@PeriodicEgressEndpoints.config.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints"
+curl -d "@EgressEndpoints.config.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/storage/egressendpoints"
 ```
 
-**Note** The @ symbol is a required prefix for this command.
+**Note**: The @ symbol is a required prefix for this command.
 
 ### Parameters
 
-The following table lists egress parameters.
+To support the reuse of common configuration blocks, EDS egress configuration is divided into four components:
+
+- `EgressConfigurations`: Ties together the three following components and includes settings for type and stream prefixing, backfill, and more
+
+- `EgressEndpoints`: Describes the egress endpoint connectivity information
+
+- `Schedules`: Describes the timing of data egress
+
+- `DataSelectors`: Describes which data to egress and includes stream and data filtering
+
+The following table lists egress parameters for `EgressConfigurations`.
 
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
-| **Backfill**                    | Optional                  | Boolean   | An indicator of whether data should be backfilled. Enabling the backfill flag will result in all data from the earliest index to the latest stored index being egressed. Backfilling occurs for each stream, including when a new stream is added. Once backfilling is complete for a stream, any out-of-order data is not egressed.  Defaults to false. |
-| **ClientId**                    | Required for OCS endpoint | string    | Used for authentication with the OCS OMF endpoint. |
-| **ClientSecret**                | Required for OCS endpoint | string    | Used for authentication with the OCS OMF endpoint. |
-| **DebugExpiration**             | Optional                  | string    | Enables logging of detailed information, for each outbound HTTP request pertaining to this egress endpoint, to disk. The value represents the date and time this detailed information should stop being saved. Examples of valid strings representing date and time:  UTC: "yyyy-mm-ddThh:mm:ssZ", Local: "mm-dd-yyyy hh:mm:ss". For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
-| **Description**                 | Optional                  | string    | Friendly description |
-| **EgressFilter**                | Optional                  | string    | A filter used to determine which streams and types are egressed. For more information on valid filters, see [Search in SDS](xref:sdsSearching). |
-| **Enabled**                     | Optional                  | Boolean      | An indicator of whether egress is enabled when the egress endpoint is loaded. Defaults to true. |
-| **Endpoint**                    | Required                  | string    | Destination that accepts OMF v1.1 messages. Supported destinations include OCS and PI. |
-| **ExecutionPeriod**             | Required                  | string    | Frequency of time between each egress action. Must be a string in the format d.hh:mm:ss.##. |
-| **Id**                          | Optional                  | string    | Unique identifier |
-| **Name**                        | Optional                  | string    | Friendly name |
-| **NamespaceId**                 | Optional                  | string    | Represents the namespace that will be egressed. There are two available namespaces: default and diagnostics. Default namespace is "default". |
-| **Password**                    | Required for PI endpoint  | string    | Used for Basic authentication to the PI Web API OMF endpoint. |
+| **Id**                          | Optional                  | string    | Unique identifier of the configuration             |
+| **Name**                        | Optional                  | string    | Friendly name                                      |
+| **Description**                 | Optional                  | string    | Friendly description                               |
+| **Enabled**                     | Optional                  | boolean   | An indicator of whether egress is enabled when the egress endpoint is loaded. Defaults to `true`. |
+| **EndpointId**                  | Required                  | string    | Id of the endpoint selected for egress |
+| **ScheduleId**                  | Required                  | string    | Id of the schedule selected for egress |
+| **DataSelectorIds**              | Optional                 | array     | Ids of the data selectors for egress    |
+| **NamespaceId**                 | Optional                  | string    | Represents the namespace that will be egressed. There are two available namespaces: `default` and `diagnostics`. The default namespace is `default`. |
+| **Backfill**                    | Optional                  | boolean   | Indicator of whether data should be backfilled. Enable if data should be backfilled. Data backfill occurs when you run the egress endpoint for the first time after application startup. This results in all data from the earliest to the latest stored index being egressed. Defaults to `false`. |
 | **StreamPrefix**                | Optional                  | string    | Prefix applied to any streams that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % | < > { } ` " |
-| **TokenEndpoint**               | Optional for OCS endpoint | string    | Used to retrieve an OCS token from an alternative endpoint. *This is not normally necessary with OCS. Only use if directed to do so by customer support*. |
 | **TypePrefix**                  | Optional                  | string    | Prefix applied to any types that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % | < > { } ` " |
-| **Username**                    | Required for PI endpoint  | string    | Used for Basic authentication to the PI Web API OMF endpoint. If domain is required, the backslash must be escaped (for example, *domain*\\\\*username*). |
-| **ValidateEndpointCertificate** | Optional                  | Boolean   | Used to disable verification of destination certificate. Use for testing only with self-signed certificates. Defaults to true. |
+| **DebugExpiration**             | Optional                  | string    | Enables logging of detailed information for each outbound HTTP request pertaining to this egress endpoint to disk. The value represents the date and time this detailed information should stop being saved. Examples of valid strings representing date and time:  UTC: "yyyy-mm-ddThh:mm:ssZ", Local: "mm-dd-yyyy hh:mm:ss". For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
+
+The following table lists egress parameters for `EgressEndpoints`.
+
+| Parameter                       | Required                  | Type      | Description                                        |
+|---------------------------------|---------------------------|-----------|----------------------------------------------------|
+| **Id**                          | Required                  | string    | Unique identifier of the endpoint configuration                                  |
+| **Endpoint**                    | Required                  | string    | Destination that accepts OMF v1.2 and older messages. Supported destinations include OCS and PI. |
+| **Username**                    | Required for PI endpoint  | string    | User name used for authentication to PI Web API OMF endpoint. If domain is required, the backslash must be escaped (for example, *domain*\\\\*username*). |
+| **Password**                    | Required for PI endpoint  | string    | Password used for authentication to PI Web API OMF endpoint |
+| **ClientId**                    | Required for OCS endpoint | string    | Client ID used for authentication to OCS OMF endpoint  |
+| **ClientSecret**                | Required for OCS endpoint | string    | Client Secret used for authentication with the OCS OMF endpoint  |
+| **TokenEndpoint**               | Optional for OCS endpoint | string    | Used to retrieve an OCS token from an alternative endpoint. *This is not normally necessary with OCS. Only use if directed to do so by customer support.* |
+| **ValidateEndpointCertificate** | Optional                  | boolean   | Validate endpoint certificate (recommended). If `false`, egress accepts any endpoint certificate. Use for testing only with self-signed certificates. Defaults to `true`. |
+
+The following table lists egress parameters for `Schedules`.
+
+| Parameter                       | Required                  | Type      | Description                                        |
+|---------------------------------|---------------------------|-----------|----------------------------------------------------|
+| **Id**                          | Required                  | string    | Unique identifier of the schedule configuration            |
+| **Period**                      | Required                  | string    | Frequency of time between each egress action beginning at or after the `StartTime`. Must be a string in the following format `d.hh:mm:ss.##`. See `StartTime` for additional information. |
+| **StartTime**                   | Optional                  | string    | The date and time when egress actions should begin. Must be a string in the following format `yyyy-MM-ddThh:mm:ss`. Use the `StartTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `StartTime`, egress begins as soon as you submit the configuration and will occur again whenever the length of the `Period` completes. For example, a `Period` of `00:15:00` without a defined `StartTime` results in immediate data egress when you submit the configuration and then again every 15 minutes. Conversely, if you use a `StartTime` of `2020-10-02T06:00:00`, a `Period` of `00:15:00`, and you submit your configuration at 6:07 on October 2, 2020, egress will begin at 6:15 and will continue every 15 minutes thereafter. |
+
+The following table lists egress parameters for `DataSelectors`.
+
+| Parameter                       | Required                  | Type      | Description                                        |
+|---------------------------------|---------------------------|-----------|----------------------------------------------------|
+| **Id**                          | Required                  | string    | Unique identifier of the data selector configuration |
+| **StreamFilter**                | Optional                  | string    | A filter used to determine which streams and types are egressed. For more information on valid filters, see [Search in SDS](xref:sdsSearching). |
+| **AbsoluteDeadband**            | Optional                  | string    | Specifies the absolute change in data value that should cause the current value to pass the filter test. At least one of `AbsoluteDeadband` or `PercentChange` must be specified. |
+| **PercentChange**               | Optional                  | string    | Specifies the percent change from previous value that should cause the current value to pass the filter test. At least one of `AbsoluteDeadband` or `PercentChange` must be specified. |
+| **ExpirationPeriod**            | Optional                  | string    | The length in time that can elapse after an event before automatically storing the next event. The expected format is `HH:MM:SS.###`. |
 
 ### Examples
 
@@ -66,7 +101,7 @@ The following are valid egress configuration examples.
 ```json
 [{
     "Id": "OCS",
-    "ExecutionPeriod" : "00:00:15",
+    "Period" : "00:00:15",
     "Endpoint" : "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
     "ClientId" : "{clientId}",
     "ClientSecret" : "{clientSecret}"
@@ -78,7 +113,7 @@ The following are valid egress configuration examples.
 ```json
 [{
     "Id": "OCS",
-    "ExecutionPeriod" : "00:00:15",
+    "Period" : "00:00:15",
     "EgressFilter" : "TypeId:myType",
     "Endpoint" : "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
     "ClientId" : "{clientId}",
@@ -86,12 +121,12 @@ The following are valid egress configuration examples.
 }]
 ```
 
-**Egress data to OCS - all streams, every 15 seconds, including backfilling.**
+**Egress data to OCS - all streams, every 15 seconds, including data backfill.**
 
 ```json
 [{
     "Id": "OCS",
-    "ExecutionPeriod" : "00:00:15",
+    "Period" : "00:00:15",
     "Backfill" : true,
     "Endpoint" : "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
     "ClientId" : "{clientId}",
@@ -104,7 +139,7 @@ The following are valid egress configuration examples.
 ```json
 [{
     "Id": "OCS",
-    "ExecutionPeriod" : "01:00:00",
+    "Period" : "01:00:00",
     "Endpoint" : "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
     "ClientId" : "{clientId}",
     "ClientSecret" : "{clientSecret}",
@@ -119,7 +154,7 @@ The following are valid egress configuration examples.
     "Id": "PI",
     "Name" : null,
     "Description" : null,
-    "ExecutionPeriod" : "00:00:15",
+    "Period" : "00:00:15",
     "Enabled" : true,
     "Backfill" : false,
     "EgressFilter" : null,
@@ -142,7 +177,7 @@ The following are valid egress configuration examples.
 ```json
 [{
     "Id": "PI",
-    "ExecutionPeriod" : "00:01:00",
+    "Period" : "00:01:00",
     "EgressFilter" : "Id:*Modbus* OR Id:*Opc*",
     "Endpoint" : "https://{webApiLocation}/piwebapi/omf/",
     "Username" : "{domain}\\{username}",
@@ -155,7 +190,7 @@ The following are valid egress configuration examples.
 ```json
 [{
     "Id": "PI",
-    "ExecutionPeriod" : "01:00:00",
+    "Period" : "01:00:00",
     "EgressFilter" : "Unique*",
     "Endpoint" : "https://{webApiLocation}/piwebapi/omf/",
     "Username" : "{username}",
