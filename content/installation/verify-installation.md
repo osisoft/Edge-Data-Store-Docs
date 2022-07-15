@@ -17,39 +17,50 @@ To verify the Edge Data Store installation, follow these steps.
 1. If you receive an error, wait a few seconds and try the script again. If the installation was successful, a JSON copy of the default system configuration is returned:
 
     ```json
-        {
+    {
         "Storage": {
-            "PeriodicEgressEndpoints": [],
+            "EgressEndpoints": [],
+            "Schedules": [],
+            "DataSelectors": [],
+            "EgressConfigurations": [],
+            "Egresses": [],
             "Runtime": {
-            "streamStorageLimitMb": 2,
-            "streamStorageTargetMb": 1,
-            "ingressDebugExpiration": "0001-01-01T00:00:00",
-            "checkpointRateInSec": 30,
-            "transactionLogLimitMB": 250,
-            "enableTransactionLog": true
+                "streamStorageLimitMb": 2,
+                "streamStorageTargetMb": 1,
+                "ingressDebugExpiration": "0001-01-01T00:00:00",
+                "checkpointRateInSec": 30,
+                "transactionLogLimitMB": 250,
+                "enableMetrics": false
             },
             "Logging": {
-            "logLevel": "Information",
-            "logFileSizeLimitBytes": 34636833,
-            "logFileCountLimit": 31
+                "logLevel": "Information",
+                "logFileSizeLimitBytes": 34636833,
+                "logFileCountLimit": 31
             }
         },
         "System": {
             "Logging": {
-            "logLevel": "Information",
-            "logFileSizeLimitBytes": 34636833,
-            "logFileCountLimit": 31
+                "logLevel": "Information",
+                "logFileSizeLimitBytes": 34636833,
+                "logFileCountLimit": 31
             },
             "HealthEndpoints": [],
-            "Port": {
-            "port": 5590
-            },
             "Components": [
-            {
-                "componentId": "Storage",
-                "componentType": "EDS.Component"
+                {
+                    "componentId": "Storage",
+                    "componentType": "Storage"
+                }
+            ],
+            "Buffering": {
+                "bufferLocation": "C:/ProgramData/OSIsoft/EdgeDataStore/Buffers",
+                "maxBufferSizeMB": 1024,
+                "enablePersistentBuffering": true
+            },
+            "General": {
+                "enableDiagnostics": true,
+                "metadataLevel": "Medium",
+                "healthPrefix": null
             }
-            ]
         }
-        }
+    }
     ```
