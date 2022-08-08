@@ -10,13 +10,16 @@ The _appsettings.json_ file specifies the port on which Edge Data Store is liste
 
 Before changing the port, ensure that no other service or application on the device running EDS is using that port because only one application or service can use a port. After reconfiguring the port, EDS must be restarted for the changes to take effect.
 
-To reconfiure the port follow the steps below:
+To reconfiure the port:
 
-1. Open the _appsettings.json_ file in a text editor. This file can be found in `C:\Program Files\OSIsoft\EdgeDataStore\` or the location specified during installation. On Linux, this file can be found in `/opt/OSIsoft/EdgeDataStore/`
-2. Change the port value to a valid value and save the file.
-3. Restart the Edge Data Store service.
+1. Open the _appsettings.json_ file in a text editor. This file is located in `C:\Program Files\OSIsoft\EdgeDataStore\` or the location specified during installation. On Linux, this file is located in `/opt/OSIsoft/EdgeDataStore/`.
+
+1. Change the port value to a valid value between 1024 and 65535 and save the file.
+
+1. Restart the Edge Data Store service.
 
 Sample _appsettings.json_ file
+
 ```json
 {
   "ApplicationSettings": {
