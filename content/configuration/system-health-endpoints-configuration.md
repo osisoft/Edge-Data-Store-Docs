@@ -8,7 +8,7 @@ To monitor the status of Edge Data Store, configure health information egress fo
 
 ## Configure system health endpoints
 
-To configure system health endpoints, follow these steps:
+To configure system health endpoints:
 
 1. Using any text editor, create a JSON file containing system health endpoints.
 

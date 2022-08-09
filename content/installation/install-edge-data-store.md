@@ -20,7 +20,7 @@ For instructions on verifying the EDS installation, see [Verify installation](xr
 
 ### Download the install file
 
-To download the Windows installation file, follow these steps:
+To download the Windows installation file:
 
 1. Download the Windows `EdgeDataStore.msi` file from the [OSIsoft Customer portal (https://customers.osisoft.com/s/products)](https://customers.osisoft.com/s/products).
 
@@ -30,7 +30,7 @@ To download the Windows installation file, follow these steps:
 
 ### Run the installation wizard
 
-To install EDS on Windows using the installation wizard, follow these steps:
+To install EDS on Windows using the installation wizard:
 
 1. To start the installer, double-click the `EdgeDataStore.msi` file in Windows Explorer.
 
@@ -50,7 +50,7 @@ To install EDS on Windows using the installation wizard, follow these steps:
 
 ### Run the installation from a command line
 
-To install EDS on Windows from the command line, follow these steps:
+To install EDS on Windows from the command line:
 
 1. Open a command window, by running as an administrator, and change the working directory to the location of the `EdgeDataStore.msi` file.
 
@@ -86,7 +86,7 @@ For instructions on how to verify the Edge Data Store installation, see [Verify 
 
 ### Download the distribution file
 
-To download the appropriate file for your device, follow these steps:
+To download the appropriate file for your device:
 
 1. Download the Linux distribution file from the [OSIsoft Customer portal (https://customers.osisoft.com/s/products)](https://customers.osisoft.com/s/products).
 
@@ -96,7 +96,7 @@ To download the appropriate file for your device, follow these steps:
 
 ### Install on a Linux device
 
-To install EDS on Linux, follow these steps:
+To install EDS on Linux:
 
 1. Open a terminal window and change the working directory to the location of the distribution file.
 
@@ -141,7 +141,7 @@ To install EDS on Linux, follow these steps:
 
 ### Silent install on a Linux device
 
-To perform a silent install EDS on Linux with all default options, follow these steps:
+To perform a silent install EDS on Linux with all default options:
 
 1. Open a terminal window and change the working directory to the location of the distribution file.
 

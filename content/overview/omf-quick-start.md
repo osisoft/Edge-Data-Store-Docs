@@ -16,7 +16,7 @@ To get started using OMF messages to ingress data into EDS, create an OMF type a
 
 The first step in OMF data ingress is to create an OMF type that describes the format of the data to be stored in a container. In this example, the data to be written is a timestamp and a numeric value.
 
-To create an OMF type, follow these steps:
+To create an OMF type:
 
 1. Create an OMF JSON file that defines the type as follows:
 
@@ -55,7 +55,7 @@ When this command completes successfully, an OMF type with the same name is crea
 
 The next step in writing OMF data is to create an OMF container. As with an OMF type, the create container message only needs to be sent once before sending data events, but resending the same definition again does not cause an error.
 
-To create an OMF container, follow these steps:
+To create an OMF container:
 
 1. Create an OMF JSON file that defines the container as follows:
 
@@ -107,7 +107,7 @@ Once a type and container are defined, follow these steps to write data to the c
 
 ## Use SDS to read last data written
 
-To use the SDS REST API to read back the last data event written to the server, follow these steps:
+To use the SDS REST API to read back the last data event written to the server:
 
 1. Start the curl command line tool.
 
@@ -125,7 +125,7 @@ To use the SDS REST API to read back the last data event written to the server, 
 
 ## Use SDS to read a range of data events
 
-To use the SDS REST API to read back the a range of data written to the server, follow these steps:
+To use the SDS REST API to read back the a range of data written to the server:
 
 1. Start the curl command line tool.
 

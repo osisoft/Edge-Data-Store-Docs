@@ -27,7 +27,7 @@ An OMF type message describes the format of the data to be stored. A type messag
 
 The first step in OMF data ingress is to create an OMF type that describes the format of the data to be stored. In this example, the data to be written is a timestamp and a numeric value.
 
-To create an OMF type, follow these steps:
+To create an OMF type:
 
 1. Create an OMF JSON file that defines the type as follows:
 
@@ -68,7 +68,7 @@ An OMF container message uses an OMF type as a template to create a way to colle
 
 ### Create an OMF container
 
-The next step in writing OMF data is to create an OMF container. To create an OMF container, follow these steps:
+The next step in writing OMF data is to create an OMF container. To create an OMF container:
 
 1. Create an OMF JSON file that defines the container as follows:
 
@@ -97,7 +97,7 @@ An OMF data message sends actual data events, like time-series data, to be store
 
 Once a type and container are defined, you can send data messages to write data to the container.
 
-To writer data to the container, follow these steps:
+To writer data to the container:
 
 1. Create an OMF JSON file to define data events to be stored in the SdsStreams created in the previous steps. For best performance, batch OMF messages together, as in the following example:
 

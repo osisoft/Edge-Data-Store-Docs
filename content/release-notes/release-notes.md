@@ -46,6 +46,10 @@ During upgrade, the existing OPC UA configuration is modified in the following w
  
 **Note:** OPC UA servers must be configured to trust this new certificate.
 
+## Enhancements
+
+If the transaction log reaches its maximum size, a device status message is sent with a status of `DeviceInError`.
+
 
 
 

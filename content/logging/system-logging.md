@@ -34,7 +34,7 @@ It is located in:
 
 ## Change logging configuration
 
-To change the logging configuration, follow these steps:
+To change the logging configuration:
 
 1. Edit the message logging configuration JSON file that you want to update the parameters as needed. For example, the `System_Logging.json` file:
 

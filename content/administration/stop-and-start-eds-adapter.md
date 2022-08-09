@@ -8,7 +8,7 @@ By default, when Edge Data Store starts, all currently configured EDS adapter in
 
 ## Stop an EDS adapter
 
-To stop an EDS adapter instance, follow these steps:
+To stop an EDS adapter instance:
 
 1. Open a tool capable of making HTTP requests.
 
@@ -28,7 +28,7 @@ To stop an EDS adapter instance, follow these steps:
 
 ## Start an EDS adapter
 
-To start an EDS adapter instance, follow these steps:
+To start an EDS adapter instance:
 
 1. Open a tool capable of making HTTP requests.
 

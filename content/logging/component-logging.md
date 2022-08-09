@@ -20,7 +20,7 @@ If you have more than one adapter of the same kind configured, the default file 
 
 ## Configure logging
 
-To change the message logging behavior, follow these steps:
+To change the message logging behavior:
 
 1. Using any text editor, open the `componentId_Logging.json` file that you want.
 

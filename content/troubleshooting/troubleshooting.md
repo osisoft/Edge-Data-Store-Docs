@@ -12,7 +12,7 @@ In addition to diagnostics data, all components in Edge Data Store support OMF h
 
 ## OMF ingress
 
-When a custom application fails to write stream data to EDS, follow these steps:
+When a custom application fails to write stream data to EDS:
 
 1. Verify the custom application is sending OMF messages in the correct order: 1) OMF type, 2) OMF container, 3) OMF data.
 
@@ -22,7 +22,7 @@ When a custom application fails to write stream data to EDS, follow these steps:
 
 ### OMF ingress logging
 
-Ingress logging messages provide a record of ingress events. To capture the most information for troubleshooting, follow these steps:
+Ingress logging messages provide a record of ingress events. To capture the most information for troubleshooting:
 
 1. Refer to [System-level logging configuration](xref:systemloggingConfiguration) to set logging parameters.
 
@@ -38,7 +38,7 @@ Each log file leverages the following filename format:
 
 `{ticks}-{operationId}-{Request/Response}.txt`
 
-Use debugging information to troubleshoot problems between an OMF application and Edge Data Store. To enable debugging, follow these steps:
+Use debugging information to troubleshoot problems between an OMF application and Edge Data Store. To enable debugging:
 
 1. Refer to [Storage runtime configuration](xref:storageruntime) to enable debugging.
 
@@ -56,7 +56,7 @@ Date and time strings should use the following formats:
 
 EDS periodic egress extracts data from SDS streams and sends the appropriate sequences of type, container, and data OMF messages on startup.  
 
-If unexpected data appears in an OCS or PI System, check if multiple devices are writing to the same SDS stream. To check egress configuration, follow these steps:
+If unexpected data appears in an OCS or PI System, check if multiple devices are writing to the same SDS stream. To check egress configuration:
 
 1. Check all egress configuration files in Edge Data Store to verify whether any endpoints are duplicated. A duplicate endpoint means that more than one device is egressing data to it, resulting in unexpected data.
 
@@ -66,7 +66,7 @@ If unexpected data appears in an OCS or PI System, check if multiple devices are
 
 ### Periodic egress logging
 
-Egress logging messages provide a record of egress events. To capture maximum information for troubleshooting, follow these steps:
+Egress logging messages provide a record of egress events. To capture maximum information for troubleshooting:
 
 1. Refer to [System-level logging configuration](xref:systemloggingConfiguration) to set logging parameters.
 
@@ -74,7 +74,7 @@ Egress logging messages provide a record of egress events. To capture maximum in
 
 ### Periodic egress debugging
 
-Use debugging information to troubleshoot problems between Edge Data Store and the egress destination. To enable debugging, follow these steps:
+Use debugging information to troubleshoot problems between Edge Data Store and the egress destination. To enable debugging:
 
 1. Refer to [Data egress configuration](xref:egress) to enable debugging.
 

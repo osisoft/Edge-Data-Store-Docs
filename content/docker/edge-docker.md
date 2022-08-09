@@ -10,7 +10,7 @@ Docker is a set of tools you can use on Linux to manage application deployments.
 
 ## Create a startup script
 
-To create a startup script for EDS, follow these steps:
+To create a startup script for EDS:
 
 1. Use a text editor to create a script similar to one of the following examples:
 
@@ -53,7 +53,7 @@ To create a startup script for EDS, follow these steps:
 
 ## Create a Docker container
 
-To create a Docker container that runs EDS, follow these steps:
+To create a Docker container that runs EDS:
 
 1. Create the following `Dockerfile` in the directory where you want to create and run the container.
 

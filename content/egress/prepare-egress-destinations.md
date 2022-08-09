@@ -10,7 +10,7 @@ OCS and PI Server destinations may require additional configuration to receive O
 
 To prepare OCS to receive OMF messages from EDS, create an OMF connection in OCS. Creating an OMF connection results in an available OMF endpoint that can be used by the EDS egress mechanism.
 
-To create an OMF connection to OCS, follow these steps:
+To create an OMF connection to OCS:
 
 1. Create a **Client**.
    
@@ -25,7 +25,7 @@ To create an OMF connection to OCS, follow these steps:
 
 To prepare a PI Server to receive OMF messages from EDS, a PI Web API OMF endpoint must be available.
 
-To create an OMF connection to PI Server, follow these steps:
+To create an OMF connection to PI Server:
 
 1. Install PI Web API and enable the **OSIsoft Message Format (OMF) Services** feature.
 

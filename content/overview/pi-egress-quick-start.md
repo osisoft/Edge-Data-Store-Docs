@@ -8,7 +8,7 @@ Data egress provides a mechanism to transfer data to PI Server using OMF message
 
 ## Create a PI Web API OMF endpoint
 
-To create a PI Web API OMF endpoint, follow these steps:
+To create a PI Web API OMF endpoint:
 
 1. Install PI Web API and enable the **OSIsoft Message Format (OMF) Services** feature.
 
