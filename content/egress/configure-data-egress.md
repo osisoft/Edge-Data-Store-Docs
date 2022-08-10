@@ -16,15 +16,17 @@ To support the reuse of common configuration blocks, EDS egress configuration is
 
 - `EgressConfigurations`: Ties together the three previous facets and includes settings for type and stream prefixing, backfill, and more
 
-**Note**: You cannot add configurations manually because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit configurations. For additional endpoints, see [REST URLs](#rest-urls).
+**Warnings**: 
 
-**Warning**: If configuring the facets separately,`EgressEndpoints`, `Schedules`, and `DataSelectors` must be configured before they are referenced in `EgressConfigurations`.
+  - You cannot add configurations manually because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit configurations. For additional endpoints, see [REST URLs](#rest-urls).
+  
+  - If configuring the facets separately,`EgressEndpoints`, `Schedules`, and `DataSelectors` must be configured before they are referenced in `EgressConfigurations`.
 
-**Warning**: If you delete or remove an egress configuration and then recreate it with `Backfill` set to `true`, duplicate data will appear on any stream that was previously egressed successfully. New streams will not see duplicate data.
+  - If you delete or remove an egress configuration and then recreate it with `Backfill` set to `true`, duplicate data will appear on any stream that was previously egressed successfully. New streams will not see duplicate data.
 
-## Create configurations
+## Create egress configuration
 
-To configure EDS for data egress, follow these steps:
+To configure EDS for data egress:
 
 1. Create a JSON file.
 
@@ -71,9 +73,9 @@ The following table lists egress parameters for `EgressEndpoints`.
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
 | **Id**                          | Required                  | string    | Unique identifier of the endpoint configuration                                  |
-| **Endpoint**                    | Required                  | string    | Destination that accepts OMF v1.2 and older messages. Supported destinations include OCS and PI. |
-| **Username**                    | Required for PI endpoint  | string    | User name used for authentication to PI Web API OMF endpoint. If domain is required, the backslash must be escaped (for example, *domain*\\\\*username*). |
-| **Password**                    | Required for PI endpoint  | string    | Password used for authentication to PI Web API OMF endpoint |
+| **Endpoint**                    | Required                  | string    | Destination that accepts OMF v1.2 and older messages. Supported destinations include OCS and PI Server. |
+| **Username**                    | Required for PI Server endpoint  | string    | User name used for authentication to PI Web API OMF endpoint. If domain is required, the backslash must be escaped (for example, *domain*\\\\*username*). |
+| **Password**                    | Required for PI Server endpoint  | string    | Password used for authentication to PI Web API OMF endpoint |
 | **ClientId**                    | Required for OCS endpoint | string    | Client ID used for authentication to OCS OMF endpoint  |
 | **ClientSecret**                | Required for OCS endpoint | string    | Client Secret used for authentication with the OCS OMF endpoint  |
 | **TokenEndpoint**               | Optional for OCS endpoint | string    | Used to retrieve an OCS token from an alternative endpoint. *This is not normally necessary with OCS. Only use if directed to do so by customer support.* |
@@ -85,7 +87,7 @@ The following table lists egress parameters for `Schedules`.
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
 | **Id**                          | Required                  | string    | Unique identifier of the schedule configuration    |
 | **Period**                      | Required                  | string    | Frequency of time between each egress action beginning at or after the `StartTime`. Must be a string in the following format `d.hh:mm:ss.##`. See `StartTime` for additional information. |
-| **StartTime**                   | Optional                  | string    | The date and time when egress actions should begin. Examples of valid strings representing date and time:  UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `mm-dd-yyyy hh:mm:ss`. Use the `StartTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `StartTime`, egress begins as soon as you submit the configuration and will occur again whenever the length of the `Period` completes. For example, a `Period` of `00:15:00` without a defined `StartTime` results in immediate data egress when you submit the configuration and then again every 15 minutes. Conversely, if you use a `StartTime` of `2020-10-02T06:00:00`, a `Period` of `00:15:00`, and you submit your configuration at 6:07 on October 2, 2020, egress will begin at 6:15 and will continue every 15 minutes thereafter. |
+| **StartTime**                   | Optional                  | string    | The date and time when egress actions should begin. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ` and Local: `mm-dd-yyyy hh:mm:ss`. Use the `StartTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `StartTime`, egress begins as soon as you submit the configuration and will occur again whenever the length of the `Period` completes. For example, a `Period` of `00:15:00` without a defined `StartTime` results in immediate data egress when you submit the configuration and then every 15 minutes thereafter. Conversely, if you use a `StartTime` of `2022-10-02T06:00:00`, a `Period` of `00:15:00`, and you submit your configuration at 6:07 on October 2, 2022, egress will begin at 6:15 and will continue every 15 minutes thereafter. <br>**Note:** The next egress will not start until the previous egress is complete. |
 
 The following table lists egress parameters for `DataSelectors`.
 

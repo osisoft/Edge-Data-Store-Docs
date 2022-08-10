@@ -4,7 +4,7 @@ uid: egress
 
 # Data egress configuration
 
-Edge Data Store provides an egress mechanism to copy and transfer data through OMF to OSIsoft Cloud Services or a PI Server. For each egress destination, the destination needs to be prepared and an endpoint needs to be configured.
+Edge Data Store provides an egress mechanism to transfer data through OMF to OSIsoft Cloud Services or a PI Server. For each egress destination, the destination needs to be prepared and an endpoint needs to be configured.
 
 Prepare egress destinations to ensure that OCS or PI Server are properly configured to receive OMF messages and record information needed to create a connection to the destination.
 

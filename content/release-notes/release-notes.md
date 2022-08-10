@@ -50,7 +50,7 @@ During upgrade, the existing OPC UA configuration is modified in the following w
 
 If the transaction log reaches its maximum size, a device status message is sent with a status of `DeviceInError`.
 
-
+You can configure periodic egress to schedule data transfer to long term storage.
 
 
 
