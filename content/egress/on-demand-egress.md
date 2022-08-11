@@ -40,7 +40,7 @@ The following table lists the parameters for on-demand egress.
 | `EndIndex`            | Required       | string    | End of the data to transfer. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `mm-dd-yyyy hh:mm:ss`, and Relative: `d.hh:mm:ss.##`. Relative time strings are compared to the `StartIndex` to determine the start of the data to transfer.  |
 | `DataSelectors`       | Optional       | array     | Ids of the data selectors for egress. <!--what selectors can be used and what do they mean?-->    |
 
-## Example on-demand egress request
+### Example on-demand egress request
 
 ```JSON
 {
@@ -59,7 +59,7 @@ The following table lists the parameters for on-demand egress.
 }
 ```
 
-## Example cancel egress request
+### Example cancel egress request
 
 ```JSON
 {
@@ -70,7 +70,7 @@ The following table lists the parameters for on-demand egress.
 }
 ```
 
-## Example resume egress request
+### Example resume egress request
 
 ```JSON
 {
@@ -80,7 +80,7 @@ The following table lists the parameters for on-demand egress.
 }
 ```
 
-## Example delete egress request
+### Example delete egress request
 
 ```JSON
 {
