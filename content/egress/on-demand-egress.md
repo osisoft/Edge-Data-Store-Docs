@@ -22,7 +22,7 @@ To send a data egress request:<!--do we recommend saving the JSON file? Or just 
 
 1. Save the JSON file to any directory on the device where Edge Data Store is installed.
 
-1. Use any tool capable of making HTTP requests to send the contents of the JSON request to the following configuration endpoints:
+1. Use any tool capable of making HTTP requests to send the contents of the JSON request to the following configuration endpoint using `POST`:
 
   `http://localhost:5590/api/v1/configuration/storage/egresses`
 
@@ -38,4 +38,56 @@ The following table lists the parameters for on-demand egress.
 | `StartTime`           | Optional       | string    | The date and time when egress request should begin. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ` and Local: `mm-dd-yyyy hh:mm:ss`. Use the `StartTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `StartTime`, egress begins as soon as you submit the configuration. <br>**Note:**`** The next egress will not start until the previous egress is complete. |
 | `StartIndex`          | Required       | string    | Start of the data to transfer. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `mm-dd-yyyy hh:mm:ss`, and Relative: `d.hh:mm:ss.##`. Relative time strings are compared to the `StartTime` to determine the start of the data to transfer. If the `StartTime` is not specified, the relative time string is compared to the time the request is received.   |
 | `EndIndex`            | Required       | string    | End of the data to transfer. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `mm-dd-yyyy hh:mm:ss`, and Relative: `d.hh:mm:ss.##`. Relative time strings are compared to the `StartIndex` to determine the start of the data to transfer.  |
-| `DataSelectors`       | Optional       | array     | Ids of the data selectors for egress    |
+| `DataSelectors`       | Optional       | array     | Ids of the data selectors for egress. <!--what selectors can be used and what do they mean?-->    |
+
+## Example on-demand egress request
+
+```JSON
+{
+    "Id": "Request_Id",
+    "EndpointId": "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
+    "Period": "00:00:30",
+    "StartTime": "2022-08-10T21:20:00Z",
+    "StartIndex": "2022-08-08T18:20:00Z",
+    "EndIndex": "2022-08-10T22:20:00Z",
+    "DataSelectors": [
+        {
+            "id": "PercentChangeFilter",
+            "percentChange": 1
+        }
+    ]
+}
+```
+
+## Example cancel egress request
+
+```JSON
+{
+  "Id": "Request_Id",
+  "EndpointId": "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
+  "Period": "00:00:30",
+  "EndIndex": "+00:15:00"
+}
+```
+
+## Example resume egress request
+
+```JSON
+{
+  "Id": "Request_Id",
+  "EndpointId": "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
+  "StartIndex": "-00:05:00"
+}
+```
+
+## Example delete egress request
+
+```JSON
+{
+  "Id": "Request_Id",
+  "EndpointId": "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
+  "StartTime": "2022-08-10T10:20:00",
+  "StartIndex": "-00:10:00",
+  "EndIndex": "+00:30:00"
+}
+```
