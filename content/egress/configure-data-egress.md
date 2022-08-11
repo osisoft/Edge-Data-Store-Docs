@@ -234,7 +234,7 @@ The following are valid configuration examples for egress.
         "Id": "Endpoint-OCS",
         "Endpoint": "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
         "ClientId": "{clientId}",
-        "ClientSecret": "{clientSecret}"
+        "ClientSecret": "{clientSecret}",
         "Username" : null,
         "Password" : null,
         "TokenEndpoint" : null,
@@ -246,7 +246,7 @@ The following are valid configuration examples for egress.
         "ClientId": null,
         "ClientSecret": null,
         "Username" : "{domain}\\{username}",
-        "Password" : "{password}"
+        "Password" : "{password}",
         "TokenEndpoint" : null,
         "ValidateEndpointCertificate" : true
     }
@@ -391,7 +391,7 @@ The following are valid configuration examples for egress.
     {
         "EndpointId": "Endpoint-OCS",
         "ScheduleId": "Schedule-1hr",
-        "DataSelectorIds": ["DataFilterByAbsoluteDeadbandWithExpiration"]
+        "DataSelectorIds": ["DataFilterByAbsoluteDeadbandWithExpiration"],
         "NamespaceId": "diagnostics"
     },
     {
