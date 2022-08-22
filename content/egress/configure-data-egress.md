@@ -2,9 +2,9 @@
 uid: configureEgress
 ---
 
-# Configure data egress
+# Configure periodic data egress
 
-Once the OCS or PI Server destinations are prepared to receive OMF messages, configure data egress to create the connection to the destination and specify the details of the data transfer.
+Once the OCS or PI Server destinations are prepared to receive OMF messages, configure data egress to create the connection to the destination and specify the details of the data transfer. Periodic egress runs on a regular schedule to ensure that data is sent to long term storage.
 
 To support the reuse of common configuration blocks, EDS egress configuration is divided into four facets, which can be configured together or separately:
 
@@ -369,7 +369,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-**Add a single new configuration for egress of all data for streams containing a field that begins with `Unique` but with data filtered by percent change of 10 for streams whose Id contains `Modbus` or `Opc` to PI every minute.**
+**Add a single new configuration for egress of all data for streams containing a field that begins with `Unique` but with data filtered by percent change of 10 for streams whose Id contains `Modbus` or `Opc` to PI Server every minute.**
 
 ```json
 {
@@ -379,7 +379,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-**Add multiple new configurations for egress with backfill, diagnostics data, or PI endpoint with domain in username. `EgressEndpoints`, `Schedules`, and `DataSelectors` definitions are shared.**
+**Add multiple new configurations for egress with backfill, diagnostics data, or PI Server endpoint with domain in username. `EgressEndpoints`, `Schedules`, and `DataSelectors` definitions are shared.**
 
 ```json
 [

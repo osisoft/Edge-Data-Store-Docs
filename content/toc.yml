@@ -58,6 +58,7 @@
     - topicUid: PrepareEgressDestinations
     - topicUid: configureEgress
     - topicUid: EgressExecutionDetails
+    - topicUid: ondemandEgress
     - topicUid: EdgeDataStoreDiagnostics
   - topicUid: EdgeDataStoreHealth
     items:
