@@ -6,11 +6,13 @@ uid: systemloggingConfiguration
 
 Edge Data Store writes daily log messages to flat text files in the following locations:
 
-- Windows: `%ProgramData%/OSIsoft/EdgeDataStore/Logs`
+- Windows: `%ProgramData%\OSIsoft\EdgeDataStore\Logs`
 
 - Linux: `/usr/share/OSIsoft/EdgeDataStore/Logs`
 
-Each message in the log displays the message severity level, timestamp, and the message itself.
+Each message in the log displays the message severity level, timestamp, and the message itself. 
+
+If the transaction log reaches its maximum size, EDS will send a `DeviceinError` message.
 
 ## Default logging configuration and schema
 
@@ -28,7 +30,7 @@ The following logging configuration is the default for a component on install:
 The schema file specifies how to formally describe the configuration parameters for message logging.
 It is located in:
 
-- Windows: `%ProgramFiles%/OSIsoft/EdgeDataStore/Schema`
+- Windows: `%ProgramFiles%\OSIsoft\EdgeDataStore\Schema`
 
 - Linux: `/opt/OSIsoft/EdgeDataStore/Schema`
 
@@ -82,5 +84,5 @@ The following parameters are available for configuring logging.
 | Parameter                   | Required | Type      | Nullable | Description |
 | --------------------------- | ---------| --------  | -------- | ----------- |
 | **LogFileCountLimit**       | Optional | `integer` | Yes      | The maximum number of log files that the service will create for the component. It must be a positive integer.             |
-| **LogFileSizeLimitBytes**   | Optional | `integer` | Yes      | The maximum size in bytes of log files that the service will create for the component. It must be a positive integer. If the transaction log reaches its maximum size, EDS will send a `DeviceinError` message.            |
+| **LogFileSizeLimitBytes**   | Optional | `integer` | Yes      | The maximum size in bytes of log files that the service will create for the component. It must be a positive integer.             |
 | **LogLevel**                | Optional | reference | No       | The log level settings that you want. The following options are available: <br> **Verbose** - Captures all messages: Verbose, Debug, Information, Warning and Error <br> **Debug** - Captures most messages: Debug, Information, Warning and Error <br> **Information** - Captures most messages: Information, Warning and Error <br> **Warning** - Captures only Warning and Error messages <br> **Error** - Captures Error messages only |
