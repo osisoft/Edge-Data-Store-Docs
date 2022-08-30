@@ -6,9 +6,9 @@ uid: systemloggingConfiguration
 
 Edge Data Store writes daily log messages to flat text files in the following locations:
 
-- Windows: `%ProgramData%\OSIsoft\EdgeDataStore\Logs`
+  - Windows: `%ProgramData%\OSIsoft\EdgeDataStore\Logs`
 
-- Linux: `/usr/share/OSIsoft/EdgeDataStore/Logs`
+  - Linux: `/usr/share/OSIsoft/EdgeDataStore/Logs`
 
 Each message in the log displays the message severity level, timestamp, and the message itself. 
 
@@ -27,12 +27,11 @@ The following logging configuration is the default for a component on install:
 }
 ```
 
-The schema file specifies how to formally describe the configuration parameters for message logging.
-It is located in:
+The schema file specifies how to formally describe the configuration parameters for message logging. It is located in:
 
-- Windows: `%ProgramFiles%\OSIsoft\EdgeDataStore\Schema`
+  - Windows: `%ProgramFiles%\OSIsoft\EdgeDataStore\Schema`
 
-- Linux: `/opt/OSIsoft/EdgeDataStore/Schema`
+  - Linux: `/opt/OSIsoft/EdgeDataStore/Schema`
 
 ## Change logging configuration
 
