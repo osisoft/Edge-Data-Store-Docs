@@ -12,7 +12,7 @@ To configure OCS to receive OMF messages from EDS, create an OMF connection in O
 
 To create an OMF connection to OCS:
 
-1. Create a **Client**.
+1. In OCS, create a **Client**. For details, see [Clients](https://docs.osisoft.com/bundle/ocs/page/set-up/clients/clients-concept.html) in the OCS documentation.
    
    - The **Client Id** and **Client Secret** are used for the corresponding properties in the egress configuration.
    

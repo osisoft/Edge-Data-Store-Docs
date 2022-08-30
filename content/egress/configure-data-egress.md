@@ -66,7 +66,7 @@ curl -d "@StorageEgress.json" -H "Content-Type: application/json" -X PUT http://
 curl -d "@Schedules.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration/storage/schedules
 ```
 
-### Parameters
+## Parameters
 
 The following table lists egress parameters for `EgressEndpoints`.
 
@@ -87,7 +87,7 @@ The following table lists egress parameters for `Schedules`.
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
 | **Id**                          | Required                  | string    | Unique identifier of the schedule configuration    |
 | **Period**                      | Required                  | string    | Frequency of time between each egress action beginning at or after the `StartTime`. Must be a string in the following format `d.hh:mm:ss.##`. See `StartTime` for additional information. |
-| **StartTime**                   | Optional                  | string    | The date and time when egress actions should begin. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ` and Local: `yyyy-mm-ddThh:mm:ss`. Use the `StartTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `StartTime`, egress begins as soon as you submit the configuration and will occur again whenever the length of the `Period` completes. For example, a `Period` of `00:15:00` without a defined `StartTime` results in immediate data egress when you submit the configuration and then every 15 minutes thereafter. Conversely, if you use a `StartTime` of `2022-10-02T06:00:00`, a `Period` of `00:15:00`, and you submit your configuration at 6:07 on October 2, 2022, egress will begin at 6:15 and will continue every 15 minutes thereafter. <br>**Note:** The next egress will not start until the previous egress is complete. |
+| **StartTime**                   | Optional                  | string    | The date and time when egress actions will begin. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ` and Local: `yyyy-mm-ddThh:mm:ss`. Use the `StartTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `StartTime`, egress begins as soon as you submit the configuration and will occur again whenever the length of the `Period` completes. For example, a `Period` of `00:15:00` without a defined `StartTime` results in immediate data egress when you submit the configuration and then every 15 minutes thereafter. Conversely, if you use a `StartTime` of `2022-10-02T06:00:00`, a `Period` of `00:15:00`, and you submit your configuration at 6:07 on October 2, 2022, egress will begin at 6:15 and will continue every 15 minutes thereafter. <br>**Note:** The next egress job will not start until the previous egress job is complete. |
 
 The following table lists egress parameters for `DataSelectors`.
 
@@ -95,8 +95,8 @@ The following table lists egress parameters for `DataSelectors`.
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
 | **Id**                          | Required                  | string    | Unique identifier of the data selector configuration |
 | **StreamFilter**                | Optional                  | string    | A filter used to determine which streams and types are egressed. For more information on valid filters, see [Search in SDS](xref:sdsSearching). |
-| **AbsoluteDeadband**            | Optional                  | string    | Specifies the absolute change in data value that should cause the current value to pass the filter test. At least one of `AbsoluteDeadband` or `PercentChange` must be specified. |
-| **PercentChange**               | Optional                  | string    | Specifies the percent change from previous value that should cause the current value to pass the filter test. At least one of `AbsoluteDeadband` or `PercentChange` must be specified. |
+| **AbsoluteDeadband**            | Optional                  | string    | Specifies the absolute change in data value that will cause the current value to pass the filter test. At least one of `AbsoluteDeadband` or `PercentChange` must be specified. |
+| **PercentChange**               | Optional                  | string    | Specifies the percent change from previous value that will cause the current value to pass the filter test. At least one of `AbsoluteDeadband` or `PercentChange` must be specified. |
 | **ExpirationPeriod**            | Optional                  | string    | The length in time that can elapse after an event before automatically storing the next event. The expected format is `HH:MM:SS.###`. |
 
 The following table lists egress parameters for `EgressConfigurations`.
@@ -111,20 +111,20 @@ The following table lists egress parameters for `EgressConfigurations`.
 | **ScheduleId**                  | Required                  | string    | Id of the schedule selected for egress |
 | **DataSelectorIds**             | Optional                  | array     | Ids of the data selectors for egress    |
 | **NamespaceId**                 | Optional                  | string    | Represents the namespace that will be egressed. There are two available namespaces: `default` and `diagnostics`. The default namespace is `default`. |
-| **Backfill**                    | Optional                  | boolean   | Indicator of whether data should be backfilled. Enable if data should be backfilled. Data backfill occurs when you run the egress endpoint for the first time after application startup. This results in all data from the earliest to the latest stored index being egressed. Defaults to `false`. |
+| **Backfill**                    | Optional                  | boolean   | Indicates whether data will be backfilled. Data backfill occurs when you run the egress endpoint for the first time after application startup. This results in all data from the earliest to the latest stored index being egressed. Set to `true` to backfill data. Defaults to `false`. |
 | **StreamPrefix**                | Optional                  | string    | Prefix applied to any streams that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % \| < > \{ } \` " |
 | **TypePrefix**                  | Optional                  | string    | Prefix applied to any types that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % \| < > \{ } \` " |
-| **DebugExpiration**             | Optional                  | string    | Enables logging of detailed information for each outbound HTTP request pertaining to this egress endpoint to disk. The value represents the date and time this detailed information should stop being saved. Examples of valid strings representing date and time:  UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`. For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
+| **DebugExpiration**             | Optional                  | string    | Enables logging of detailed information for each outbound HTTP request pertaining to this egress endpoint to disk. The value represents the date and time this logging will stop. Examples of valid strings representing date and time:  UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`. For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
 
-### Examples
+## Examples
 
 The following are valid configuration examples for egress.
 
-#### Configure multiple egress facets in a single request
+### Configure multiple egress facets in a single request
 
 `PUT http://localhost:5590/api/v1/configuration`
 
-**Create configuration for egress of all data for all streams to OCS every 15 seconds.**
+Create configuration for egress of all data for all streams to OCS every 15 seconds.
 
 ```json
 {
@@ -154,7 +154,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-**Create configuration for egress of some data for some streams, to OCS and PI, every 2 days starting January 1st, 2022 at 9:00. EgressEndpoints/Schedules/DataSelectors definitions are shared.**
+Create configuration for egress of some data for some streams, to OCS and PI, every 2 days starting January 1st, 2022 at 9:00. EgressEndpoints/Schedules/DataSelectors definitions are shared.
 
 ```json
 {
@@ -211,11 +211,11 @@ The following are valid configuration examples for egress.
 }
 ```
 
-#### Create EgressEndpoints only
+### Create EgressEndpoints only
 
 `POST http://localhost:5590/api/v1/configuration/storage/egressendpoints`
 
-**Add a single new egress endpoint to PI.**
+Add a single new egress endpoint to PI.
 
 ```json
 {
@@ -226,7 +226,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-**Add multiple new egress endpoints to OCS and PI with the use of a domain in the username. All properties are explicitly listed.**
+Add multiple new egress endpoints to OCS and PI with the use of a domain in the username. All properties are explicitly listed.
 
 ```json
 [
@@ -253,11 +253,11 @@ The following are valid configuration examples for egress.
 ]
 ```
 
-#### Create Schedules only
+### Create Schedules only
 
 `POST http://localhost:5590/api/v1/configuration/storage/schedules`
 
-**Add a single new schedule for egress every 15 seconds.**
+Add a single new schedule for egress every 15 seconds.
 
 ```json
 {
@@ -266,7 +266,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-**Add multiple new schedules for egress every minute and every hour starting January 1st, 2022 at 9:00. All properties are explicitly listed.**
+Add multiple new schedules for egress every minute and every hour starting January 1st, 2022 at 9:00. All properties are explicitly listed.
 
 ```json
 [
@@ -283,11 +283,11 @@ The following are valid configuration examples for egress.
 ]
 ```
 
-#### Create DataSelectors only
+### Create DataSelectors only
 
 `POST http://localhost:5590/api/v1/configuration/storage/dataselectors`
 
-- Add single new data selector for egress of data filtered by percent change of 10 for streams whose Id contains "Modbus" or "Opc".
+  Add single new data selector for egress of data filtered by percent change of 10 for streams whose Id contains "Modbus" or "Opc".
 
 ```json
 {
@@ -297,7 +297,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-**Add a single new data selector for data egress filtered by an absolute deadband of 5 and expiration period of 10 minutes for all streams. All properties are explicitly listed.**
+Add a single new data selector for data egress filtered by an absolute deadband of 5 and expiration period of 10 minutes for all streams. All properties are explicitly listed.
 
 ```json
 {
@@ -309,7 +309,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-**Add multiple new data selectors for egress of all data for streams with a specific `TypeId` value and streams with a field that begins with `Unique`.**
+Add multiple new data selectors for egress of all data for streams with a specific `TypeId` value and streams with a field that begins with `Unique`.
 
 ```json
 [
@@ -326,11 +326,11 @@ The following are valid configuration examples for egress.
 ]
 ```
 
-#### Create EgressConfigurations only
+### Create EgressConfigurations only
 
 `POST http://localhost:5590/api/v1/configuration/storage/egressconfigurations`
 
-**Add a single new configuration for egress of all data for all streams to OCS every 15 seconds.**
+Add a single new configuration for egress of all data for all streams to OCS every 15 seconds.
 
 ```json
 {
@@ -340,7 +340,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-**Add a single new configuration for egress of all data for all streams to PI every 15 seconds and include both the type and stream prefix. All properties are explicitly listed.**
+Add a single new configuration for egress of all data for all streams to PI every 15 seconds and include both the type and stream prefix. All properties are explicitly listed.
 
 ```json
 {
@@ -359,7 +359,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-**Add a single new configuration for egress of all data for streams with a specific `TypeId` value, to OCS every 15 seconds.**
+Add a single new configuration for egress of all data for streams with a specific `TypeId` value, to OCS every 15 seconds.
 
 ```json
 {
@@ -369,7 +369,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-**Add a single new configuration for egress of all data for streams containing a field that begins with `Unique` but with data filtered by percent change of 10 for streams whose Id contains `Modbus` or `Opc` to PI Server every minute.**
+Add a single new configuration for egress of all data for streams containing a field that begins with `Unique` but with data filtered by percent change of 10 for streams whose Id contains `Modbus` or `Opc` to PI Server every minute.
 
 ```json
 {
@@ -379,7 +379,7 @@ The following are valid configuration examples for egress.
 }
 ```
 
-**Add multiple new configurations for egress with backfill, diagnostics data, or PI Server endpoint with domain in username. `EgressEndpoints`, `Schedules`, and `DataSelectors` definitions are shared.**
+Add multiple new configurations for egress with backfill, diagnostics data, or PI Server endpoint with domain in username. `EgressEndpoints`, `Schedules`, and `DataSelectors` definitions are shared.
 
 ```json
 [
