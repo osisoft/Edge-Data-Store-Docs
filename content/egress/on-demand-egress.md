@@ -4,7 +4,7 @@ uid: ondemandEgress
 
 # Configure on-demand data egress
 
-Once the OCS or PI Server destinations are configured to receive OMF messages, you can send data egress requests as needed. For example, you may need to backfill data or want to review data for an event as soon as possible. For on-demand data egress, you specify the details of the data transfer which includes the start time and the data to egress. For more information on egress destinations, see [Configure egress destinations](xref: PrepareEgressDestinations).
+Once the OCS or PI Server destinations are configured to receive OMF messages, you can send data egress requests as needed. For example, you may need to backfill data or want to review data for an event as soon as possible. For on-demand data egress, you specify the details of the data transfer which includes the start time and the data to egress. For more information on egress destinations, see [Configure egress destinations](xref:PrepareEgressDestinations).
 
 Make requests in JSON using parameters, similar to periodic egress. You can either save the parameters in a file to send them or send the request directly. In addition to creating on-demand egress requests, you can cancel, resume, and delete these requests. 
 
@@ -14,7 +14,7 @@ To send an on-demand data egress request:
 
 1. Create a JSON file.
 
-    - For content structure, see the following [Example on-demand egress request](#Example_on-demand_egress_request).
+    - For content structure, see the following [Example on-demand egress request](#example_on-demand_egress_request).
 
 **Note:** If you prefer, you can send the JSON request directly without saving the parameters to a file.
 
@@ -77,8 +77,8 @@ The following table lists the parameters for on-demand egress.
 | `Period`              | Optional       | string    | If both the `StartIndex` and `EndIndex` are in the past, the `Period` is not used. If the egress request includes future data, the `Period` is the frequency of time between each egress action after the `StartTime` . Must be a string in the format `d.hh:mm:ss.##`. See `StartTime` for additional information. If the egress request includes future data and the `Period` is not set, the default value is `00:01:00`, which is 1 minute. |
 | `StartTime`           | Optional       | string    | The date and time when egress request will begin. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ` and Local: `yyyy-mm-ddThh:mm:ss`. Use the `StartTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `StartTime`, EDS uses the time the request is received as the start time. <br>**Note:** The next egress job will not start until the previous egress job is complete. |
 | `StartIndex`          | Optional       | string    | Start of the data to transfer. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`, and Relative: `+d.hh:mm:ss.##` or `-d.hh:mm:ss.##`. Relative time strings are compared to the `StartTime` to determine the start of the data to transfer. If the `StartTime` is not specified, the relative time string is compared to the time the request is received.   |
-| `EndIndex`            | Optional       | string    | End of the data to transfer. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`, and Relative: `+d.hh:mm:ss.##` or `-d.hh:mm:ss.##`. Relative time strings are compared to the `StartIndex` to determine the start of the data to transfer.  |
-| `DataSelectors`       | Optional       | array     | An array of DataSelectors configurations of the data selectors for egress. See the `DataSelectors` parameters in the following table.    |
+| `EndIndex`            | Optional       | string    | End of the data to transfer. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`, and Relative: `+d.hh:mm:ss.##`. Relative time strings are compared to the `StartIndex` to determine the start of the data to transfer. Relative time strings must be positive to ensure a range of data is selected for egress. |
+| `DataSelectors`       | Optional       | array     | An array of configuration settings to select data for egress. See the `DataSelectors` parameters in the following table.    |
 
 The following table lists egress parameters for `DataSelectors`.
 
@@ -89,6 +89,8 @@ The following table lists egress parameters for `DataSelectors`.
 | **AbsoluteDeadband**            | Optional                  | string    | Specifies the absolute change in data value that will cause the current value to pass the filter test.  |
 | **PercentChange**               | Optional                  | string    | Specifies the percent change from previous value that will cause the current value to pass the filter test. |
 | **ExpirationPeriod**            | Optional                  | string    | The length in time that can elapse after an event before automatically storing the next event. The expected format is `HH:MM:SS.###`. |
+
+## Examples
 
 ### Example on-demand egress request
 
