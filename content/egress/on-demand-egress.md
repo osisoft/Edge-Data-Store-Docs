@@ -14,9 +14,9 @@ To send an on-demand data egress request:
 
 1. Create a JSON file.
 
-    - For content structure, see the following [Example on-demand egress request](#example_on-demand_egress_request).
+  - For content structure, see the following [Example on-demand egress request](#example_on-demand_egress_request).
 
-**Note:** If you prefer, you can send the JSON request directly without saving the parameters to a file.
+  **Note:** If you prefer, you can send the JSON request directly without saving the parameters to a file.
 
 1. Update the parameters as needed. For descriptions of all available parameters, see [Parameters](#parameters).
 

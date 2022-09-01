@@ -30,7 +30,7 @@ To configure EDS for data egress:
 
 1. Create a JSON file.
 
-    - For content structure, see the following [Examples](#examples).
+   - For content structure, see the following [Examples](#examples).
 
 1. Update the parameters as needed. For a table of all available parameters, see [Parameters](#parameters).
 
@@ -54,13 +54,13 @@ curl -d "@{Filename}" -H "Content-Type: application/json" -X {Command} {Endpoint
 
 **Note**: The @ symbol is a required prefix for this command. `{Filename}`, `{Command}` and `{Endpoint}` should be replaced by the corresponding filename, command, and endpoint.
 
-- If configuring multiple egress facets together,
+- To configure multiple egress facets together:
 
 ```bash
 curl -d "@StorageEgress.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration
 ```
 
-- If configuring schedules only,
+- To configure schedules only:
 
 ```bash
 curl -d "@Schedules.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration/storage/schedules
