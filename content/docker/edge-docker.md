@@ -64,7 +64,7 @@ To create a Docker container that runs EDS:
     ```dockerfile
     FROM ubuntu:20.04
     WORKDIR /
-    RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates libicu70 libssl3 curl
+    RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates libicu66 libssl1.1 curl
     COPY edsdockerstart.sh /
     RUN chmod +x /edsdockerstart.sh
     ADD ./EdgeDataStore_linux-arm.tar.gz .
@@ -76,7 +76,7 @@ To create a Docker container that runs EDS:
     ```dockerfile
     FROM ubuntu:20.04
     WORKDIR /
-    RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates libicu70 libssl3 curl
+    RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates libicu66 libssl1.1 curl
     COPY edsdockerstart.sh /
     RUN chmod +x /edsdockerstart.sh
     ADD ./EdgeDataStore_linux-arm64.tar.gz .
@@ -88,7 +88,7 @@ To create a Docker container that runs EDS:
     ```dockerfile
     FROM ubuntu:20.04
     WORKDIR /
-    RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates libicu70 libssl3 curl
+    RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates libicu66 libssl1.1 curl
     COPY edsdockerstart.sh /
     RUN chmod +x /edsdockerstart.sh
     ADD ./EdgeDataStore_linux-x64.tar.gz .
