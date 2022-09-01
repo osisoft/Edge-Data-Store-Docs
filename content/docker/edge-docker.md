@@ -62,7 +62,7 @@ To create a Docker container that runs EDS:
     **ARM32**
 
     ```dockerfile
-    FROM ubuntu:22.04
+    FROM ubuntu:20.04
     WORKDIR /
     RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates libicu70 libssl3 curl
     COPY edsdockerstart.sh /
@@ -74,7 +74,7 @@ To create a Docker container that runs EDS:
     **ARM64**
 
     ```dockerfile
-    FROM ubuntu:22.04
+    FROM ubuntu:20.04
     WORKDIR /
     RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates libicu70 libssl3 curl
     COPY edsdockerstart.sh /
@@ -86,7 +86,7 @@ To create a Docker container that runs EDS:
     **AMD64 (x64)**
 
     ```dockerfile
-    FROM ubuntu:22.04
+    FROM ubuntu:20.04
     WORKDIR /
     RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates libicu70 libssl3 curl
     COPY edsdockerstart.sh /
