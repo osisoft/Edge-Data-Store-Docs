@@ -4,7 +4,7 @@ uid: PrepareEgressDestinations
 
 # Configure egress destinations
 
-OCS and PI Server destinations require additional configuration to receive OMF messages. Once you configure a destination, you can use the `EndpointId` parameter to specify it as the destination of the data in periodic and on-demand egress configurations.
+OCS and PI Server destinations require additional configuration to receive OMF messages. Once you configure a destination, you can use the `EndpointId` parameter to specify it as the destination of the data in periodic and manual egress configurations.
 
 ## OCS destinations
 
