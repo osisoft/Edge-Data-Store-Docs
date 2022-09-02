@@ -44,7 +44,7 @@ To delete a manual data egress request:
 ```JSON
 {
   "Id": "Request_Id",
-  "EndpointId": "OCS_Location",
+  "EndpointId": "AVEVA DATA HUB_Location",
   "Period": "00:00:30",
   "EndIndex": "+00:15:00"
 }
@@ -55,7 +55,7 @@ To delete a manual data egress request:
 ```JSON
 {
   "Id": "Request_Id",
-  "EndpointId": "OCS_Location",
+  "EndpointId": "AVEVA DATA HUB_Location",
   "StartIndex": "-00:05:00"
 }
 ```
@@ -65,7 +65,7 @@ To delete a manual data egress request:
 ```JSON
 {
   "Id": "Request_Id",
-  "EndpointId": "OCS_Location",
+  "EndpointId": "AVEVA DATA HUB_Location",
   "ScheduledTime": "2022-08-10T10:20:00",
   "StartIndex": "-00:10:00",
   "EndIndex": "+00:30:00"

@@ -17,7 +17,7 @@ REST access is through HTTP. The default port is 5590. The port number can be ch
 
 ## Data egress
 
-Use HTTPS to write data to OSIsoft Cloud Services or OSIsoft PI Web API; writing to either of these destinations is not limited to the local device.
+Use HTTPS to write data to AVEVA Data Hub or OSIsoft PI Web API; writing to either of these destinations is not limited to the local device.
 
 ## EDS adapters
 

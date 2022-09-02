@@ -55,19 +55,19 @@ The following parameters are available for configuring health endpoints:
 | **Endpoint**                    | Required                            | `string`    | The URL of the OMF endpoint to receive this health data <br><br>Allowed value: well-formed http or https endpoint string<br>Default: `null`|
 | **Username**                    | Required for PI Web API endpoints   | `string`    | The username used to authenticate with a PI Web API OMF endpoint <br><br>_PI server:_<br>Allowed value: any string<br>Default: `null`|
 | **Password**                    | Required for PI Web API endpoints   | `string`    | The password used to authenticate with a PI Web API OMF endpoint <br><br>_PI server:_<br>Allowed value: any string<br>Default: `null`|
-| **ClientId**                    | Required for OCS endpoints          | `string`    | The client ID used for authentication with an OSIsoft Cloud Services OMF endpoint <br><br>Allowed value: any string<br>Default: `null` |
-| **ClientSecret**                | Required for OCS endpoints          | `string`    | The client secret used for authentication with an OSIsoft Cloud Services OMF endpoint <br><br>Allowed value: any string<br>Default: `null`|
-| **TokenEndpoint** | Optional for OCS endpoints | `string` | Retrieves an OCS token from an alternative endpoint <br><br>Allowed value: well-formed http or https endpoint string <br>Default value: `null` |
+| **ClientId**                    | Required for AVEVA DATA HUB endpoints          | `string`    | The client ID used for authentication with an AVEVA Data Hub OMF endpoint <br><br>Allowed value: any string<br>Default: `null` |
+| **ClientSecret**                | Required for AVEVA DATA HUB endpoints          | `string`    | The client secret used for authentication with an AVEVA Data Hub OMF endpoint <br><br>Allowed value: any string<br>Default: `null`|
+| **TokenEndpoint** | Optional for AVEVA DATA HUB endpoints | `string` | Retrieves an AVEVA DATA HUB token from an alternative endpoint <br><br>Allowed value: well-formed http or https endpoint string <br>Default value: `null` |
 | **ValidateEndpointCertificate** | Optional                            | `boolean`      | Disables verification of destination security certificate. Use for testing only with self-signed certificates; OSIsoft recommends keeping this set to the default, true, in production environments. <br><br>Allowed value: `true` or `false`<br>Default value: `true`|
 
 ## Examples
 
-### OCS endpoint
+### AVEVA DATA HUB endpoint
 
 ```code
 {
-    "Id": "OCS",
-    "Endpoint": "https://<OCS OMF endpoint>",
+    "Id": "AVEVA DATA HUB",
+    "Endpoint": "https://<AVEVA DATA HUB OMF endpoint>",
     "ClientId": "<clientid>",
     "ClientSecret": "<clientsecret>"
 }

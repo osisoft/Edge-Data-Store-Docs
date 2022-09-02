@@ -25,4 +25,4 @@ The following diagram depicts the collection and processing of data for an opera
 4. The adapter sends OMF data to a supported storage location in a process known as *data egress*. Supported egress endpoints include:
 
    * PI Server
-   * OSIsoft Cloud Services
+   * AVEVA Data Hub

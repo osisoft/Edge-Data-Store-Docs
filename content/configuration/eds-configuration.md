@@ -69,11 +69,11 @@ The following JSON file represents minimal configuration of an Edge Data Store. 
     }
   ```
 
-This example results in a minimal configuration of Edge Data Store. It only supports OMF and SDS operations using REST. No egress is configured, so no data will be sent to either OCS or PI Web API.
+This example results in a minimal configuration of Edge Data Store. It only supports OMF and SDS operations using REST. No egress is configured, so no data will be sent to either AVEVA DATA HUB or PI Web API.
 
 ## Configure maximum Edge Data Store
 
-The following JSON file represents maximum configuration of an Edge Data Store. There are Modbus TCP EDS adapter components and OPC UA EDS adapter components, and egress is configured to send to both PI Web API and OCS from both the default (operational data) and diagnostics (diagnostic data) namespace.
+The following JSON file represents maximum configuration of an Edge Data Store. There are Modbus TCP EDS adapter components and OPC UA EDS adapter components, and egress is configured to send to both PI Web API and AVEVA DATA HUB from both the default (operational data) and diagnostics (diagnostic data) namespace.
 
 1. Using any text editor, create a JSON file using the following example. Fill in any credentials or IP addresses with appropriate values for your environment.
 2. Save the edited JSON in a file named _EdgeMaximumConfiguration.json_ in any directory.
@@ -206,12 +206,12 @@ The following JSON file represents maximum configuration of an Edge Data Store. 
     "Storage": {
         "EgressEndpoints": [
             {
-                "id": "Endpoint-OCS",
-                "endpoint": "<OCS OMF URL for your tenant and namespace>",
+                "id": "Endpoint-AVEVA DATA HUB",
+                "endpoint": "<AVEVA DATA HUB OMF URL for your tenant and namespace>",
                 "userName": null,
                 "password": null,
-                "clientId": "<OCS ClientId>",
-                "clientSecret": "<OCS ClientSecret>",
+                "clientId": "<AVEVA DATA HUB ClientId>",
+                "clientSecret": "<AVEVA DATA HUB ClientSecret>",
                 "tokenEndpoint": null,
                 "validateEndpointCertificate": true
             },
@@ -244,11 +244,11 @@ The following JSON file represents maximum configuration of an Edge Data Store. 
         ],
         "EgressConfigurations": [
             {
-                "id": "OCS",
+                "id": "AVEVA DATA HUB",
                 "name": null,
                 "description": null,
                 "enabled": true,
-                "endpointId": "Endpoint-OCS",
+                "endpointId": "Endpoint-AVEVA DATA HUB",
                 "scheduleId": "Schedule1",
                 "dataSelectorIds": null,
                 "namespaceId": "default",
@@ -274,11 +274,11 @@ The following JSON file represents maximum configuration of an Edge Data Store. 
                 "typePrefix": "ChangeMe"
             },
             {
-                "id": "OCSDiag",
+                "id": "AVEVA DATA HUBDiag",
                 "name": null,
                 "description": null,
                 "enabled": true,
-                "endpointId": "Endpoint-OCS",
+                "endpointId": "Endpoint-AVEVA DATA HUB",
                 "scheduleId": "Schedule1",
                 "dataSelectorIds": [
                     "DataSelector1"

@@ -10,7 +10,7 @@ The following diagram depicts the data flow of a single instance of Modbus TCP E
 
 ![Modbus TCP EDS](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/ModbusTCP.jpg "Modbus TCP EDS")
 
-The adapter instance requests data from the Modbus TCP device and then the device sends its data. The adapter sends the collected data to the storage component where it is held until it can be egressed to permanent storage in PI Server or OSIsoft Cloud Services. The adapter instance can be configured from the device where EDS is installed, and EDS collects health information about the adapter that can be egressed.
+The adapter instance requests data from the Modbus TCP device and then the device sends its data. The adapter sends the collected data to the storage component where it is held until it can be egressed to permanent storage in PI Server or AVEVA Data Hub. The adapter instance can be configured from the device where EDS is installed, and EDS collects health information about the adapter that can be egressed.
 
 ## Configure a Modbus TCP data source
 

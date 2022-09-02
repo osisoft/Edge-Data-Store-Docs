@@ -6,7 +6,7 @@ uid: troubleShooting
 
 Edge Data Store includes both local and remote means of diagnosing issues encountered while using or developing against EDS.
 
-Edge Data Store supports a diagnostics namespace that stores streams containing diagnostic information from Edge Data Store itself. Egress this data to either a PI Web Server or OSIsoft Cloud Services to monitor the state of a system remotely. For details about egressing diagnostic data, see [Diagnostics configuration](xref:EdgeDataStoreDiagnostics).
+Edge Data Store supports a diagnostics namespace that stores streams containing diagnostic information from Edge Data Store itself. Egress this data to either a PI Web Server or AVEVA Data Hub to monitor the state of a system remotely. For details about egressing diagnostic data, see [Diagnostics configuration](xref:EdgeDataStoreDiagnostics).
 
 In addition to diagnostics data, all components in Edge Data Store support OMF health messages. Configure health messages to send health data to either PI Web Server or OSIsoft Cloud Service endpoints for remote monitoring of devices. For more information, see [Health endpoints configuration](xref:HealthEndpointsConfiguration).
 
@@ -56,13 +56,13 @@ Date and time strings should use the following formats:
 
 EDS periodic egress extracts data from SDS streams and sends the appropriate sequences of type, container, and data OMF messages on startup.  
 
-If unexpected data appears in an OCS or PI System, check if multiple devices are writing to the same SDS stream. To check egress configuration:
+If unexpected data appears in an AVEVA DATA HUB or PI System, check if multiple devices are writing to the same SDS stream. To check egress configuration:
 
 1. Check all egress configuration files in Edge Data Store to verify whether any endpoints are duplicated. A duplicate endpoint means that more than one device is egressing data to it, resulting in unexpected data.
 
 1. Assign stream prefixes in the periodic egress endpoint configuration to ensure that output data streams are logically separated in the systems of record. For instructions, see [Configure data egress](xref:configureEgress).
 
-   **Note**: Type prefixes may be helpful if you have changed a stream type definition on EDS. OMF types on both OCS and the PI System are immutable once created. If the type of the data stream changes, it is best to either delete the old type definition (if nothing is still using it) or add a type prefix to create a new unique type that will be used by new streams egressing from EDS to the systems of record.
+   **Note**: Type prefixes may be helpful if you have changed a stream type definition on EDS. OMF types on both AVEVA DATA HUB and the PI System are immutable once created. If the type of the data stream changes, it is best to either delete the old type definition (if nothing is still using it) or add a type prefix to create a new unique type that will be used by new streams egressing from EDS to the systems of record.
 
 ### Periodic egress logging
 

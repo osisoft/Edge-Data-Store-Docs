@@ -2109,7 +2109,7 @@ See `Outer Join` [GET request](#outer-join-example-request) above to compare.
 <a id="tocSerrorresponsebody"></a>
 <a id="tocserrorresponsebody"></a>
 
-Contains the error message format that follows the OCS error standards
+Contains the error message format that follows the AVEVA DATA HUB error standards
 
 #### Properties
 

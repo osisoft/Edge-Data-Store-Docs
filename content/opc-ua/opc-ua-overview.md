@@ -12,7 +12,7 @@ The following diagram depicts the data flow for a single instance of OPC UA EDS 
 
 ![OPC UA EDS](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/OPCUAConfiguration.jpg "OPC UA Configuration")
 
-The adapter instance polls the OPC UA device and then collects data from the device. The adapter then sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or OSIsoft Cloud Services. The adapter instance can be configured from the device where EDS is installed, and EDS collects health information about the adapter that can be egressed.
+The adapter instance polls the OPC UA device and then collects data from the device. The adapter then sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or AVEVA Data Hub. The adapter instance can be configured from the device where EDS is installed, and EDS collects health information about the adapter that can be egressed.
 
 The OPC UA EDS adapter can connect to multiple devices by defining one instance of the adapter for each device. The EDS installation includes the OPC UA EDS adapter and the option to add a single OPC UA EDS adapter instance. Add additional instances after installation using system components configuration.
 
@@ -22,4 +22,4 @@ Once an adapter instance is defined, manually configure it with JSON documents t
   
   * Data selection configuration - specifies what data is collected from the device and how it is identified. Each adapter component instance requires a data selection configuration.
 
-With these configurations completed, the OPC UA EDS adapter instance collects data from the specified device and sends it to EDS, where it is stored locally until it can be sent to a PI System or OSIsoft Cloud Services for long-term storage and analysis.
+With these configurations completed, the OPC UA EDS adapter instance collects data from the specified device and sends it to EDS, where it is stored locally until it can be sent to a PI System or AVEVA Data Hub for long-term storage and analysis.

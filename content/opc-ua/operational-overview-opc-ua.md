@@ -53,7 +53,7 @@ The OPC UA EDS adapter is able to export available OPC UA dynamic variables by b
 
 ## Buffering
 
-Because the OPC UA EDS adapter sends data directly to EDS, buffering capability is not provided. EDS acts as a buffer before the data is egressed to either a PI Server or OCS. The amount of data stored in EDS is controlled by the following storage parameters:
+Because the OPC UA EDS adapter sends data directly to EDS, buffering capability is not provided. EDS acts as a buffer before the data is egressed to either a PI Server or AVEVA DATA HUB. The amount of data stored in EDS is controlled by the following storage parameters:
 
  - `StreamStorageLimitMb`
 
