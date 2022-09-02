@@ -64,9 +64,6 @@
     items:
     - topicUid: HealthEndpointsConfiguration
   - topicUid: LoggingConfig
-    items: 
-    - topicUid: systemloggingConfiguration
-    - topicUid: ComponentLoggingConfiguration
 - topicUid: EdgeDataStoreAdministration
   items:
   - topicUid: RetrieveProductVersionInformation
