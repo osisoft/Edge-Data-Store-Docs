@@ -2,7 +2,7 @@
 uid: EDSDataIngress
 ---
 
-# Data ingress configuration
+# Data ingress
 
 Edge Data Store supports the following protocols to ingress data:
 

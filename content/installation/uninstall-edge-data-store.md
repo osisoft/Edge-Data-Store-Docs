@@ -8,7 +8,7 @@ Uninstall Edge Data Store to remove the program files from a device. The data fi
 
 ## Uninstall from Windows
 
-To remove EDS from a Windows device, follow these steps:
+To remove EDS from a Windows device:
 
 1. To remove the EDS program files from a Windows device, use the Windows Control Panel uninstall application process.
 
@@ -18,7 +18,7 @@ To remove EDS from a Windows device, follow these steps:
 
 ## Uninstall from Linux
 
-To remove EDS from a Linux device, follow these steps:
+To remove EDS from a Linux device:
 
 1. To remove EDS software from a Linux device, open a terminal window and run the following command:
 

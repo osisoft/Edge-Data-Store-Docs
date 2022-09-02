@@ -16,7 +16,7 @@ To get started using the SDS REST API to ingress data into EDS, create an SDS ty
 
 ## Create an SDS type
 
-To create an SDS type that describes the format of the data to be stored in a container, follow these steps:
+To create an SDS type that describes the format of the data to be stored in a container:
 
 1. Create a JSON file using the example below:
 
@@ -59,7 +59,7 @@ To create an SDS type that describes the format of the data to be stored in a co
 
 ## Create an SDS stream
 
-To create an SDS stream, follow these steps:
+To create an SDS stream:
 
 1. Create a JSON file using the example below:
 
@@ -114,7 +114,7 @@ After you create a type and container, follow these steps to use SDS to write da
 
 ## Read last data written using SDS
 
-To use the SDS REST API to read back the last data event written to the server, follow these steps:
+To use the SDS REST API to read back the last data event written to the server:
 
 1. Start the curl command line tool.
 
@@ -132,7 +132,7 @@ To use the SDS REST API to read back the last data event written to the server, 
 
 ## Read a range of data events written using SDS
 
-To use the SDS REST API to read back the a range of data written to the server, follow these steps:
+To use the SDS REST API to read back the a range of data written to the server:
 
 1. Start the curl command line tool.
 

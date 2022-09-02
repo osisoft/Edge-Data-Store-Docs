@@ -2,13 +2,13 @@
 uid: HealthEndpointsConfiguration
 ---
 
-# Health endpoints configuration
+# Configure health endpoints
 
 To monitor the status of Edge Data Store, configure health information egress for its components to an OMF endpoint capable of receiving health messages. Health data is transmitted at a one minute interval.
 
 ## Configure system health endpoints
 
-To configure system health endpoints, follow these steps:
+To configure system health endpoints:
 
 1. Using any text editor, create a JSON file containing system health endpoints.
 

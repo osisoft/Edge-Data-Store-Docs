@@ -8,7 +8,7 @@ Data egress provides a mechanism to transfer data to OSIsoft Cloud Services usin
 
 ## Create an OMF connection in OCS
 
-To create an OMF connection in OCS, follow these steps:
+To create an OMF connection in OCS:
 
 1. In OCS, create a **Client**.
 
@@ -22,7 +22,7 @@ To create an OMF connection in OCS, follow these steps:
 
 ## Create a periodic egress configuration
 
-To configure periodic egress to OCS, follow these steps:
+To configure periodic egress to OCS:
 
 1. Create a JSON file containing one or more egress endpoints, by copying the following example into a text editor.
 

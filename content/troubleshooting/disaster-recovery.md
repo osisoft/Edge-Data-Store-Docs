@@ -22,7 +22,7 @@ Use the following procedures to recover EDS data from a Windows device. You need
 
 ### Create a backup of EDS data from the failed device
 
-To create a backup of data from the failed device, follow these steps:
+To create a backup of data from the failed device:
 
 1. If your device is still able to boot, verify that Edge Data Store service has stopped. Use the Windows Task Manager to stop the Edge Data Store service.
 
@@ -46,7 +46,7 @@ To create a backup of data from the failed device, follow these steps:
 
 ### Delete default storage and configuration folders
 
-When EDS is installed on the new device, the new system has a default configuration. To delete the default storage and configuration folders on the new device, follow these steps:
+When EDS is installed on the new device, the new system has a default configuration. To delete the default storage and configuration folders on the new device:
 
 1. Use the Windows Task Manager to stop the Edge Data Store service.
 
@@ -54,7 +54,7 @@ When EDS is installed on the new device, the new system has a default configurat
 
 ### Restore backed up data files
 
-To restore the data files on the new device, follow these steps:
+To restore the data files on the new device:
 
 1. Copy or unzip the backup storage and configuration files into the `C:\ProgramData\OSIsoft\EdgeDataStore` directory.
 
@@ -78,7 +78,7 @@ Use the following procedures to recover EDS data from a Linux device. Root acces
 
 ### Create a backup of EDS data from the failed device
 
-To create a backup of data from the failed device, follow these steps:
+To create a backup of data from the failed device:
 
 1. If your device is still able to boot, open a terminal window and verify that Edge Data Store service has stopped using the following command:
 
@@ -106,7 +106,7 @@ To create a backup of data from the failed device, follow these steps:
 
 ### Move the files to the new device
 
-When EDS is installed on the new device, the new system has a default configuration. To copy the backed up storage and configuration folders to the new device, follow these steps:
+When EDS is installed on the new device, the new system has a default configuration. To copy the backed up storage and configuration folders to the new device:
 
 1. Open a terminal window and stop the Edge Data Store service using the following command:
 
@@ -118,7 +118,7 @@ When EDS is installed on the new device, the new system has a default configurat
 
 ### Restore backed up data files
 
-To restore the data files on the new device, follow these steps:
+To restore the data files on the new device:
 
 1. Delete the default storage and configuration folders from the `/usr/share/OSIsoft/EdgeDataStore` directory.
 

@@ -6,7 +6,7 @@ uid: ResetTheStorageComponent
 
 When applied at the storage component level, the Reset command deletes all event and configuration data related to the Storage component and restarts Edge Data Store.
 
-To reset the Storage component, follow these steps:
+To reset the Storage component:
 
 1. Open a tool capable of making HTTP requests.
 

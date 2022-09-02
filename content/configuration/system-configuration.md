@@ -2,7 +2,7 @@
 uid: SystemConfiguration
 ---
 
-# System configuration
+# System components
 
 Edge Data Store uses JSON configuration files in a protected directory on Windows and Linux to store configuration that is read on startup. While the files are accessible to view, OSIsoft recommends that you use REST or the EdgeCmd command line tool to make any changes to the files.
 

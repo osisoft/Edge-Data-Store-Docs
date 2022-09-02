@@ -21,7 +21,7 @@ The Storage component is required for Edge Data Store to run and only one Storag
 
 ## Add system components
 
-To add system component, follow these steps:
+To add system component:
 
 1. Using any text editor, create a JSON file with the ComponentId and ComponentType. The following example adds a Modbus TCP EDS adapter instance.
 

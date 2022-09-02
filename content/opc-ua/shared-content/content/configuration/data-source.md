@@ -10,7 +10,7 @@ For each instance of the OPC UA EDS adapter defined in system configuration, you
 
 **Note:** You cannot manually configure OPC UA data source configurations. You must use the REST endpoints to add or edit the configuration.
 
-To configure the OPC UA data source, follow these steps:
+To configure the OPC UA data source:
 
 1. Using any text editor, create a file that contains an OPC UA data source in JSON format.
 

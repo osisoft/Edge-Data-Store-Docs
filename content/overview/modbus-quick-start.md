@@ -14,7 +14,7 @@ The adapter instance requests data from the Modbus TCP device and then the devic
 
 ## Configure a Modbus TCP data source
 
-To configure a data source to connect a Modbus TCP device to the Modbus TCP EDS adapter instance, follow these steps:
+To configure a data source to connect a Modbus TCP device to the Modbus TCP EDS adapter instance:
 
 1. Using a text editor, copy the example below to create a file in JSON format to describe the location of the Modbus TCP data source.
 

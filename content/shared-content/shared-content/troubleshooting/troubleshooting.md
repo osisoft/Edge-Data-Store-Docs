@@ -15,6 +15,7 @@ Messages from the System and OmfEgress logs provide information on the status of
 Perform the following steps to view the System and OmfEgress logs:
 
 1. Navigate to the logs directory:<br>
+   
     **Windows**: `%ProgramData%\OSIsoft\Adapters\<AdapterName>\Logs`<br>
     **Linux**: `/usr/share/OSIsoft/Adapters/<AdapterName>/Logs`.<br><br>
     **Example:**<br> A successful connection to a PI Web API egress endpoint displays the following message in the OmfEgress log:
@@ -26,21 +27,23 @@ Perform the following steps to view the System and OmfEgress logs:
     ValidateEndpointCertificate: <true or false>
     ```
 
-2. Optional: Change the log level of the adapter to receive more information and context. For more information, see [Logging configuration](xref:LoggingConfiguration).
+1. Optional: Change the log level of the adapter to receive more information and context. For more information, see [Logging configuration](xref:LoggingConfiguration).
 
 ### ASP .NET Core platform log
 
 The ASP .NET Core platform log provides information from the Kestrel web server that hosts the application. The log could contain information that the adapter is overloaded with incoming data. Perform the following steps to spread the load among multiple adapters:
 
 1. Decrease the scan frequency.
-2. Lower the amount of data selection items.
+
+1. Lower the amount of data selection items.
 
 ## Wireshark
 
 Wireshark is a protocol-specific troubleshooting tool that supports all current adapter protocols. Perform the following steps if you want to use Wireshark to capture traffic from the data source to the adapter or from the adapter to the OMF destination.
 
 1. Download [Wireshark](https://www.wireshark.org/download.html).
-2. Familiarize yourself with the tool and read the [Wireshark user guide](https://www.wireshark.org/docs/wsug_html_chunked/).
+
+1. Familiarize yourself with the tool and read the [Wireshark user guide](https://www.wireshark.org/docs/wsug_html_chunked/).
 
 ## Health and diagnostics egress to PI Web API
 
@@ -49,12 +52,18 @@ The adapter sends health and diagnostics data to PI Web API; in some cases, conf
 To resolve the conflict, perform the following steps:
 
 1. Stop the adapter.
-2. Delete the `Health` folder inside of the `Buffers` folder.
-3. Stop PI Web API.
-4. Delete the relevant adapter created AF structure.
-5. Delete the associated health and diagnostics PI points on any or all PI Data Archives created by PI Web API.
-6. Start PI Web API.
-7. Start the adapter.
+
+1. Delete the `Health` folder inside of the `Buffers` folder.
+
+1. Stop PI Web API.
+
+1. Delete the relevant adapter created AF structure.
+
+1. Delete the associated health and diagnostics PI points on any or all PI Data Archives created by PI Web API.
+
+1.  Start PI Web API.
+
+1.  Start the adapter.
 
 ## Adapter connection to egress endpoint
 
@@ -76,8 +85,10 @@ Perform the following steps to determine if a connection to the PI Web API endpo
 Perform the following steps to determine if a connection to the OCS endpoint exists:
 
 1. Open OCS.
-2. Click **Sequential Data Store** > **Streams**.
-3. Makes sure that  the following streams have been created for your egress endpoint:
+
+1. Click **Sequential Data Store** > **Streams**.
+
+1. Makes sure that  the following streams have been created for your egress endpoint:
     - **DeviceStatus**
     - **NextHealthMessageExpected**
     - **IORate**
@@ -87,5 +98,7 @@ Perform the following steps to determine if a connection to the OCS endpoint exi
 Perform the following steps to see all established TCP sessions in Linux:
 
 1. Open a terminal.
-2. Type the following command: `ss  -o state established -t -p`
-3. Press Enter.
+
+1. Type the following command: `ss  -o state established -t -p`
+
+1. Press Enter.

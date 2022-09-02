@@ -2,92 +2,171 @@
 uid: edgeDocker
 ---
 
-# Install Edge Data Store using Docker
+# Install Edge Data Store with Docker
 
-Docker is a set of tools that can be used on Linux to manage application deployments. To use Docker, you must be familiar with the underlying technology and have determined that it is appropriate for your planned use of Edge Data Store. Docker is not a requirement to use EDS.
+Docker is a set of tools you can use on Linux to manage application deployments. This topic provides examples of how to create a Docker container with Edge Data Store (EDS).
 
-Installing EDS using Docker is a two step process. First, create the docker image that includes EDS. Then run the container.
+**Note**: You should only use Docker to install EDS if your environment requires it and you are proficient with Docker. Docker is not required to use EDS.
 
-## Create a Docker image for EDS
+## Create a startup script
 
-To create a Docker image for EDS, follow these steps: 
+To create a startup script for EDS:
 
-1. Using the example appropriate for your operating system and processor, create the Dockerfile in the directory where you want to create and run the container. The file must be named `Dockerfile`.
+1. Use a text editor to create a script similar to one of the following examples:
 
-1. Copy the appropriate `.tar.gz` file to the same directory as the Dockerfile.
+    **Note**: The script varies slightly by processor.
 
-1. Run the following command line in the same directory (sudo may be necessary):
+    **ARM32**
+
+    ```bash
+    #!/bin/sh
+    if [ -z $portnum ] ; then
+        exec /EdgeDataStore_linux-arm/OSIsoft.Data.System.Host
+    else
+        exec /EdgeDataStore_linux-arm/OSIsoft.Data.System.Host --port:$portnum
+    fi
+    ```
+
+    **ARM64**
+
+    ```bash
+    #!/bin/sh
+    if [ -z $portnum ] ; then
+        exec /EdgeDataStore_linux-arm64/OSIsoft.Data.System.Host
+    else
+        exec /EdgeDataStore_linux-arm64/OSIsoft.Data.System.Host --port:$portnum
+    fi
+    ```
+
+    **AMD64**
+
+    ```bash
+    #!/bin/sh
+    if [ -z $portnum ] ; then
+        exec /EdgeDataStore_linux-x64/OSIsoft.Data.System.Host
+    else
+        exec /EdgeDataStore_linux-x64/OSIsoft.Data.System.Host --port:$portnum
+    fi
+    ```
+
+2. Name the script `edsdockerstart.sh` and save it to the directory where you plan to create the container.
+
+## Create a Docker container
+
+To create a Docker container that runs EDS:
+
+1. Create the following `Dockerfile` in the directory where you want to create and run the container.
+
+    **Note**: `Dockerfile` is the required name for the file. Use appropriate variation for your operating system:
+
+    **ARM32**
+
+    ```dockerfile
+    FROM ubuntu:20.04
+    WORKDIR /
+    RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates libicu66 libssl1.1 curl
+    COPY edsdockerstart.sh /
+    RUN chmod +x /edsdockerstart.sh
+    ADD ./EdgeDataStore_linux-arm.tar.gz .
+    ENTRYPOINT ["/edsdockerstart.sh"]
+    ```
+
+    **ARM64**
+
+    ```dockerfile
+    FROM ubuntu:20.04
+    WORKDIR /
+    RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates libicu66 libssl1.1 curl
+    COPY edsdockerstart.sh /
+    RUN chmod +x /edsdockerstart.sh
+    ADD ./EdgeDataStore_linux-arm64.tar.gz .
+    ENTRYPOINT ["/edsdockerstart.sh"]
+    ```
+
+    **AMD64 (x64)**
+
+    ```dockerfile
+    FROM ubuntu:20.04
+    WORKDIR /
+    RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates libicu66 libssl1.1 curl
+    COPY edsdockerstart.sh /
+    RUN chmod +x /edsdockerstart.sh
+    ADD ./EdgeDataStore_linux-x64.tar.gz .
+    ENTRYPOINT ["/edsdockerstart.sh"]
+    ```
+
+2. Copy the `EdgeDataStore_linux-platform.tar.gz` file into the same directory as the `Dockerfile`.
+
+3. Copy the `edsdockerstart.sh` script into the same directory as the `Dockerfile`.
+
+4. Run the following command line in the same directory:
+
+   **Note**: You may need to include the `sudo` command.
+
+    ```bash
+    docker build -t edgedatastore .
+    ```
+
+## Docker container startup
+
+The following procedures contain instructions on how to run EDS inside a Docker container with different options enabled.
+
+**Note**: Before running the Docker container, determine whether to store the data in the container or in a host directory.
+
+### Run the Docker container with REST access enabled
+
+To run EDS inside a Docker container with access to its REST API from the local host, complete the following:
+
+1. Use the Docker container image `edgedatastore` you previously created.
+
+2. Type the following in the command line:
+3.
+   **Note**: You may need to include the `sudo` command.
+
+    ```bash
+    docker run -d --network host edgedatastore
+    ```
+
+Port `5590` is accessible from the host and you can make REST calls to EDS from applications on the local host computer. In this example, all data retained by EDS is stored in the container itself. When you delete the container, the stored data is also deleted.
+
+### Run the Docker container with persistent storage
+
+To run EDS inside a Docker container while using the host for persistent storage, complete the following steps.
+
+**Note**: This procedure also enables access to EDS REST API from the local host.
+
+1. Use the docker container image `edgedatastore` you previously created.
+
+2. Type the following in the command line:
+
+   **Note**: You may need to include the `sudo` command.
+
+    ```bash
+    docker run -d --network host -v /edgeds:/usr/share/OSIsoft/ edgedatastore
+    ```
+
+Port `5590` is accessible from the host and you can make REST calls to EDS from applications on the local host computer. In this example, all data written to the container is written to the host directory instead and the host directory is a directory on the local machine, <!-- customize -->`/edgeds`. You can specify any directory.
+
+### Change port number
+
+To use a port other than `5590`, you can specify a `portnum` variable on the `docker run` command line. For example, to start EDS using port `6000` instead of `5590`, use the following command:
 
 ```bash
-docker build -t edgedatastore .
+docker run -d -e portnum=6000 --network host edgedatastore
 ```
 
-### ARM32 example
+This command accesses the REST API with port `6000` instead of port `5590`. The following `curl` command returns the configuration for the container.
 
 ```bash
-FROM ubuntu:22.04
-WORKDIR /
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates libicu70 libssl3
-ADD ./EdgeDataStore_linux-arm.tar.gz .
-ENTRYPOINT ["./EdgeDataStore_linux-arm/OSIsoft.Data.System.Host"]
+curl http://localhost:6000/api/v1/configuration
 ```
 
-### ARM64 example
+### Remove REST access
 
-```bash
-FROM ubuntu:22.04
-WORKDIR /
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates libicu70 libssl3
-ADD ./EdgeDataStore_linux-arm64.tar.gz .
-ENTRYPOINT ["./EdgeDataStore_linux-arm64/OSIsoft.Data.System.Host"]
-```
+If you remove the `--network host` option from the docker run command, REST access is not possible from outside of the container. This may be useful if you want to host an application in the same container as EDS without external REST access enabled.
 
-### AMD64 (x64) example
+## Upgrade
 
-```bash
-FROM ubuntu:22.04
-WORKDIR /
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates libicu70 libssl3
-ADD ./EdgeDataStore_linux-x64.tar.gz .
-ENTRYPOINT ["./EdgeDataStore_linux-x64/OSIsoft.Data.System.Host"]
-```
+To upgrade a Docker container with persistent storage to the latest version of EDS, you should follow the process above for creating a new container image. Then, when you run the container, use the same persistent storage that you previously used. This allows you to carry over all of the configuration data to the upgraded container.
 
-## Run the EDS Docker container
-
-Before running the Docker container, determine whether to store the data in the container or in a host directory.
-
-### REST access from the local machine from Docker
-
-To run the container, follow these steps:
-
-1. Open command line.
-
-1. Type the following in the command line (sudo may be necessary):
-
-```bash
-docker run -d --network host edgedatastore
-```
-
-Port 5590 is accessible from the host and you can make REST calls to EDS from applications on the local host computer. In this example, all data collected by EDS is stored in the container itself. When the container is deleted, the data stored is also deleted.
-
-### Persistent storage on the local file system from Docker
-
-To run the container, follow these steps:
-
-1. Open a terminal window.
-
-1. Type the following in the command line (sudo may be necessary):
-
-```bash
-docker run -d --network host -v /edgeds:/usr/share/OSIsoft/ edgedatastore
-```
-
-Port 5590 is accessible from the host and you can make REST calls to EDS from applications on the local host computer. In this example, all data is written to the host directory, and the host directory is a directory on the local machine, `/edgeds`. You can specify any directory.
-
-### Port number change
-
-To use a port other than 5590, see [System port configuration](xref:SystemPortConfiguration). Changing the configuration of EDS running in the container changes the port exposed to the local machine.
-
-### Limiting local host access to Docker
-
-If you remove the `--network host` option from the docker run command, no REST access is possible from outside the container. This can be used when you want to host an application in the same container as EDS, and do not want to have external REST access enabled.
+**Note**: If you previously used the REST API to change the port number the container listened on, you will need to follow the [Change port number](#change-port-number) section to reenable listening on the specified port.

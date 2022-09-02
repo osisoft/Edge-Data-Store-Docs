@@ -58,14 +58,12 @@
     - topicUid: PrepareEgressDestinations
     - topicUid: configureEgress
     - topicUid: EgressExecutionDetails
+    - topicUid: ondemandEgress
     - topicUid: EdgeDataStoreDiagnostics
   - topicUid: EdgeDataStoreHealth
     items:
     - topicUid: HealthEndpointsConfiguration
   - topicUid: LoggingConfig
-    items: 
-    - topicUid: systemloggingConfiguration
-    - topicUid: ComponentLoggingConfiguration
 - topicUid: EdgeDataStoreAdministration
   items:
   - topicUid: RetrieveProductVersionInformation

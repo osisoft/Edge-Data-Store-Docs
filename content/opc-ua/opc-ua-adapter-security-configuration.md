@@ -10,7 +10,7 @@ The OPC UA EDS adapter instance generates a self-signed certificate when the fir
 
 ## Configure OPC UA EDS adapter security
 
-To configure OPC UA EDS adapter security, follow these steps:
+To configure OPC UA EDS adapter security:
 
 1. In the data source configuration, set **UseSecureConnection** to `true`. For more information, see [Data source configuration](xref:OPCUADataSourceConfiguration).
 
