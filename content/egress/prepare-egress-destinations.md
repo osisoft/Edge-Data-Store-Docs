@@ -4,15 +4,15 @@ uid: PrepareEgressDestinations
 
 # Configure egress destinations
 
-AVEVA DATA HUB and PI Server destinations require additional configuration to receive OMF messages. Once you configure a destination, you can use the `EndpointId` parameter to specify it as the destination of the data in periodic and manual egress configurations.
+AVEVA Data Hub and PI Server destinations require additional configuration to receive OMF messages. Once you configure a destination, you can use the `EndpointId` parameter to specify it as the destination of the data in periodic and manual egress configurations.
 
-## AVEVA DATA HUB destinations
+## AVEVA Data Hub destinations
 
-To configure AVEVA DATA HUB to receive OMF messages from EDS, create an OMF connection in AVEVA DATA HUB. Creating an OMF connection results in an available OMF endpoint that can be used by the EDS egress mechanism.
+To configure AVEVA Data Hub to receive OMF messages from EDS, create an OMF connection in AVEVA Data Hub. Creating an OMF connection results in an available OMF endpoint that can be used by the EDS egress mechanism.
 
-To create an OMF connection to AVEVA DATA HUB:
+To create an OMF connection to AVEVA Data Hub:
 
-1. In AVEVA DATA HUB, create a **Client**. For details, see [Clients](https://docs.osisoft.com/bundle/ocs/page/set-up/clients/clients-concept.html) in the AVEVA DATA HUB documentation.
+1. In AVEVA Data Hub, create a **Client**. For details, see [Clients](https://docs.osisoft.com/bundle/ocs/page/set-up/clients/clients-concept.html) in the AVEVA Data Hub documentation.
    
    - The **Client Id** and **Client Secret** are used for the corresponding properties in the egress configuration.
    

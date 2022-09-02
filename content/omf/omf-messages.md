@@ -15,7 +15,7 @@ EDS supports versions 1.0 and 1.1 of the OMF specification.
 
 ## Message types
 
-OMF message types fall into three categories: Type, Container, and Data, which are described below. Each message type creates a different type of data and contains keywords that define characteristics of the data. Most of the message types are used to create the structure of the data and give it meaning. Data messages contain time-series data for which the PI System is known. The message types and the data they create are described in detail in this section. For details about the keywords supported by AVEVA DATA HUB, see the AVEVA DATA HUB documentation, [AVEVA Data Hub](https://docs.osisoft.com/bundle/ocs/page/ocs-content-portal-overview.html).
+OMF message types fall into three categories: Type, Container, and Data, which are described below. Each message type creates a different type of data and contains keywords that define characteristics of the data. Most of the message types are used to create the structure of the data and give it meaning. Data messages contain time-series data for which the PI System is known. The message types and the data they create are described in detail in this section. For details about the keywords supported by AVEVA Data Hub, see the AVEVA Data Hub documentation, [AVEVA Data Hub](https://docs.osisoft.com/bundle/ocs/page/ocs-content-portal-overview.html).
 
 All messages should only be sent from the OMF application one time, but resending the same definition again does not cause an error.
 

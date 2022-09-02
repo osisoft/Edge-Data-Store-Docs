@@ -2,19 +2,19 @@
 uid: ocsEgressQuickStart
 ---
 
-# AVEVA DATA HUB egress quick start
+# AVEVA Data Hub egress quick start
 
-Data egress provides a mechanism to transfer data to AVEVA Data Hub using OMF messages. To get started sending data stored in Edge Data Store to AVEVA DATA HUB, create an OMF connection in AVEVA DATA HUB and configure an egress endpoint with the connection information for AVEVA DATA HUB.
+Data egress provides a mechanism to transfer data to AVEVA Data Hub using OMF messages. To get started sending data stored in Edge Data Store to AVEVA Data Hub, create an OMF connection in AVEVA Data Hub and configure an egress endpoint with the connection information for AVEVA Data Hub.
 
-## Create an OMF connection in AVEVA DATA HUB
+## Create an OMF connection in AVEVA Data Hub
 
-To create an OMF connection in AVEVA DATA HUB:
+To create an OMF connection in AVEVA Data Hub:
 
-1. In AVEVA DATA HUB, create a **Client**.
+1. In AVEVA Data Hub, create a **Client**.
 
   The `Client Id` and `Client Secret` are used for the corresponding properties in the egress configuration.
 
-1. In AVEVA DATA HUB, create an **OMF** type **Connection**.
+1. In AVEVA Data Hub, create an **OMF** type **Connection**.
 
   The connection should link the client to an existing namespace where the data will be stored. The **OMF Endpoint** URL for the connection is used as the value for the `Endpoint` property in the egress configuration.
 
@@ -22,13 +22,13 @@ To create an OMF connection in AVEVA DATA HUB:
 
 ## Create a periodic egress configuration
 
-To configure periodic egress to AVEVA DATA HUB:
+To configure periodic egress to AVEVA Data Hub:
 
 1. Create a JSON file containing one or more egress endpoints, by copying the following example into a text editor.
 
    ```json
    [{
-       "Id": "AVEVA DATA HUB",
+       "Id": "AVEVA Data Hub",
        "ExecutionPeriod": "00:00:50",
        "Name": null,
        "NamespaceId": "default",
@@ -38,9 +38,9 @@ To configure periodic egress to AVEVA DATA HUB:
        "EgressFilter": "",
        "StreamPrefix": "ChangeMe",
        "TypePrefix": "ChangeMe",
-       "Endpoint": "https://<your AVEVA DATA HUB OMF endpoint>",
-       "ClientId": "<your AVEVA DATA HUB ClientId>",
-       "ClientSecret": "<your AVEVA DATA HUB ClientSecret>",
+       "Endpoint": "https://<your AVEVA Data Hub OMF endpoint>",
+       "ClientId": "<your AVEVA Data Hub ClientId>",
+       "ClientSecret": "<your AVEVA Data Hub ClientSecret>",
        "UserName": null,
        "Password": null,
        "DebugExpiration": null,
@@ -49,18 +49,18 @@ To configure periodic egress to AVEVA DATA HUB:
    }]
    ```
 
-1. Modify the **Endpoint** parameter to be the URL of the AVEVA DATA HUB OMF endpoint.
+1. Modify the **Endpoint** parameter to be the URL of the AVEVA Data Hub OMF endpoint.
 
-1. Modify the **ClientId** and **ClientSecret** parameters with the authentication information to connect to the AVEVA DATA HUB OMF endpoint.
+1. Modify the **ClientId** and **ClientSecret** parameters with the authentication information to connect to the AVEVA Data Hub OMF endpoint.
 
-    **Note:** If uniqueness is required on the destination system, use the **StreamPrefix** and **TypePrefix** parameters. If a **StreamPrefix** is specified, it is used to create a unique stream ID on AVEVA DATA HUB. This configuration is set up to send all stream data to AVEVA DATA HUB. To only send specific streams, edit the **EgressFilter** parameter. For examples of more advanced scenarios, see [Data egress configuration](xref:egress).
+    **Note:** If uniqueness is required on the destination system, use the **StreamPrefix** and **TypePrefix** parameters. If a **StreamPrefix** is specified, it is used to create a unique stream ID on AVEVA Data Hub. This configuration is set up to send all stream data to AVEVA Data Hub. To only send specific streams, edit the **EgressFilter** parameter. For examples of more advanced scenarios, see [Data egress configuration](xref:egress).
 
 1. Save the JSON file with the name `PeriodicEgressEndpoints.json` to any directory on the device where EDS is installed.
 
-1. To configure the Edge Storage component to send data to AVEVA DATA HUB, run the following curl script from the directory where the JSON file is located.
+1. To configure the Edge Storage component to send data to AVEVA Data Hub, run the following curl script from the directory where the JSON file is located.
 
     ```bash
     curl -d "@PeriodicEgressEndpoints.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/storage/PeriodicEgressEndpoints/
     ```
 
-   When this command completes successfully, data egress to AVEVA DATA HUB begins.
+   When this command completes successfully, data egress to AVEVA Data Hub begins.

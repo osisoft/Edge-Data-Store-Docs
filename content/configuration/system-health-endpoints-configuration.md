@@ -54,7 +54,7 @@ The following parameters are available for configuring system health endpoints.
         "maxBufferSizeMB": 0
     },
     {
-        "Endpoint": "https://<AVEVA DATA HUB OMF endpoint>",
+        "Endpoint": "https://<AVEVA Data Hub OMF endpoint>",
         "ClientId": "<clientid>",
         "ClientSecret": "<clientsecret>",
         "buffering": "disk",

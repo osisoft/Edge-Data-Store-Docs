@@ -38,7 +38,7 @@ configuration, the request will fail.
 
 | Description | Method | Endpoint |
 | ----------- | ------ | -------- |
-| Configure data egress (to either AVEVA DATA HUB or PI Web API) | PUT | `http://localhost:5590/api/v1/configuration/storage/PeriodicEgressEndpoints/`|
+| Configure data egress (to either AVEVA Data Hub or PI Web API) | PUT | `http://localhost:5590/api/v1/configuration/storage/PeriodicEgressEndpoints/`|
 
 ### EDS adapters
 

@@ -4,9 +4,9 @@ uid: SdsTypesOutsideDotNet
 
 # SdsTypes outside of .NET framework
 
-You can manually build types when .NET `SdsTypeBuilder` is unavailable. In the following examples, types are built and defined in Python and Javascript. For more detailed examples, see the AVEVA DATA HUB code samples in GitHub for[Python](https://github.com/osisoft/sample-ocs-waveform-python) and [JavaScript](https://github.com/osisoft/sample-ocs-waveform-nodejs).
+You can manually build types when .NET `SdsTypeBuilder` is unavailable. In the following examples, types are built and defined in Python and Javascript. For more detailed examples, see the AVEVA Data Hub code samples in GitHub for[Python](https://github.com/osisoft/sample-ocs-waveform-python) and [JavaScript](https://github.com/osisoft/sample-ocs-waveform-nodejs).
 
-For samples in other languages, go to [AVEVA DATA HUB code samples in GitHub](https://github.com/osisoft/OSI-Samples-AVEVA DATA HUB/blob/master/docs/SDS_WAVEFORM_README.md).
+For samples in other languages, go to [AVEVA Data Hub code samples in GitHub](https://github.com/osisoft/OSI-Samples-AVEVA Data Hub/blob/master/docs/SDS_WAVEFORM_README.md).
 
 ## SdsTypeCode, SdsTypeProperty, and SdsType
 

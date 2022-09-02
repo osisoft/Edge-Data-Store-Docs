@@ -493,7 +493,7 @@ The index defining the end of the window
 <a id="tocSerrorresponsebody"></a>
 <a id="tocserrorresponsebody"></a>
 
-Contains the error message format that follows the AVEVA DATA HUB error standards
+Contains the error message format that follows the AVEVA Data Hub error standards
 
 #### Properties
 

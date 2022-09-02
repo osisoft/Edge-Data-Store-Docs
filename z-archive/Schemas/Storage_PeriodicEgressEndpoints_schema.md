@@ -6,7 +6,7 @@ uid: storage_PeriodicEgressEndpoints_schema
 
 ```json
 [{
-        "Id": "AVEVA DATA HUB Data",
+        "Id": "AVEVA Data Hub Data",
         "ExecutionPeriod": "00:00:50",
         "Name": null,
         "NamespaceId": "default",
@@ -16,7 +16,7 @@ uid: storage_PeriodicEgressEndpoints_schema
         "EgressFilter": "",
         "StreamPrefix": "<makeunique>",
         "TypePrefix": "<makeunique>",
-        "Endpoint": "https://<AVEVA DATA HUB OMF endpoint>",
+        "Endpoint": "https://<AVEVA Data Hub OMF endpoint>",
         "ClientId": "<clientid>",
         "ClientSecret": "<clientsecret>",
         "UserName": null,
@@ -46,7 +46,7 @@ uid: storage_PeriodicEgressEndpoints_schema
         "ValidateEndpointCertificate": true
     },
     {
-        "Id": "AVEVA DATA HUB Diagnostics",
+        "Id": "AVEVA Data Hub Diagnostics",
         "ExecutionPeriod": "00:00:50",
         "Name": null,
         "NamespaceId": "diagnostics",
@@ -56,7 +56,7 @@ uid: storage_PeriodicEgressEndpoints_schema
         "EgressFilter": "",
         "StreamPrefix": "<makeunique>",
         "TypePrefix": "<makeunique>",
-        "Endpoint": "https://<AVEVA DATA HUB OMF endpoint>",
+        "Endpoint": "https://<AVEVA Data Hub OMF endpoint>",
         "ClientId": "<clientid>",
         "ClientSecret": "<clientsecret>",
         "UserName": null,

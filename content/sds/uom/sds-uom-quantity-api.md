@@ -432,7 +432,7 @@ DataContract representing a unit of measure
 <a id="tocSerrorresponsebody"></a>
 <a id="tocserrorresponsebody"></a>
 
-Contains the error message format that follows the AVEVA DATA HUB error standards
+Contains the error message format that follows the AVEVA Data Hub error standards
 
 #### Properties
 

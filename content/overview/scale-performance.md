@@ -12,7 +12,7 @@ The Edge Storage component is integrated with the EDS and does not replace any e
 
 * By default, the storage component processes data in a FIFO (first in first out) method: as new data comes in and the size of streams exceeds the configured limits, older data is purged.
 
-* Data that needs to be permanently retained must be egressed to either PI Data Archive (using the PI Web API OMF endpoint) or to AVEVA Data Hub, using the AVEVA DATA HUB OMF ingress endpoint.
+* Data that needs to be permanently retained must be egressed to either PI Data Archive (using the PI Web API OMF endpoint) or to AVEVA Data Hub, using the AVEVA Data Hub OMF ingress endpoint.
 
 ## Edge Storage scale
 

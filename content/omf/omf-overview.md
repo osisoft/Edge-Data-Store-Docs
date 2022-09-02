@@ -23,7 +23,7 @@ This endpoint can only be accessed locally, so the OMF application must run on t
 
 ## Supported functionality
 
-Edge Data Store supports OMF versions 1.0 and OMF version 1.1 for data ingress. For details on the difference versions of OMF, see the OMF specification, available here: [OSIsoft Message Format](https://docs.osisoft.com/bundle/omf/page/index.html). The OMF ingress functionality is the same technology that is used in AVEVA Data Hub and writing an OMF application for EDS is very similar to writing an OMF application for AVEVA DATA HUB.
+Edge Data Store supports OMF versions 1.0 and OMF version 1.1 for data ingress. For details on the difference versions of OMF, see the OMF specification, available here: [OSIsoft Message Format](https://docs.osisoft.com/bundle/omf/page/index.html). The OMF ingress functionality is the same technology that is used in AVEVA Data Hub and writing an OMF application for EDS is very similar to writing an OMF application for AVEVA Data Hub.
 
 The OMF endpoint for the Edge Storage component only supports the create action; it does not support the update action. If a create data message is sent with the same time index, the values will be replaced at that index value.
 

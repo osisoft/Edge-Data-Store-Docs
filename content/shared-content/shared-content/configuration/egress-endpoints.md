@@ -11,9 +11,9 @@ PI adapters collect time series data, which they can send to a permanent data st
 
 For long term storage and analysis, you can configure any adapter to send time series data to one or several of these endpoints in any combination. An egress endpoint is comprised of the properties specified under [Egress endpoint parameters](#egress-endpoint-parameters).
 
-Data egress to a PI server creates a PI point in the PI adapter configuration. Data egress to AVEVA DATA HUB creates a stream in the PI adapter configuration.
+Data egress to a PI server creates a PI point in the PI adapter configuration. Data egress to AVEVA Data Hub creates a stream in the PI adapter configuration.
 
-The name of the PI point or AVEVA DATA HUB stream is a combination of the StreamIdPrefix specified in the adapter data source configuration and the StreamId specified in the adapter data selection configuration.
+The name of the PI point or AVEVA Data Hub stream is a combination of the StreamIdPrefix specified in the adapter data source configuration and the StreamId specified in the adapter data selection configuration.
 
 ## Configure egress endpoints
 
@@ -57,12 +57,12 @@ The following parameters are available for configuring egress endpoints:
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|-------------|
 | **Id**                          | Optional                  | `string`    | Unique identifier<br><br>Allowed value: any string identifier<br>Default value: new GUID |
-| **Endpoint**                    | Required                  | `string`    | Destination that accepts OMF v1.2 messages. Supported destinations include AVEVA DATA HUB and PI Server.<br><br>Allowed value: well-formed http or https endpoint string<br>Default: `null` |
+| **Endpoint**                    | Required                  | `string`    | Destination that accepts OMF v1.2 messages. Supported destinations include AVEVA Data Hub and PI Server.<br><br>Allowed value: well-formed http or https endpoint string<br>Default: `null` |
 | **Username**                    | Required for PI server endpoint  | `string`    | Basic authentication to the PI Web API OMF endpoint <br><br>_PI server:_<br>Allowed value: any string<br>Default: `null`<br>**Note:** If your username contains a backslash, you must add an escape character, for example, type `OilCompany\TestUser` as `OilCompany\\TestUser`.|
 | **Password**                    | Required for PI server endpoint  | `string`    | Basic authentication to the PI Web API OMF endpoint <br><br>_PI server:_<br>Allowed value: any string<br>Default: `null`  |
-| **ClientId**                    | Required for AVEVA DATA HUB endpoint | `string`    | Authentication with the AVEVA DATA HUB OMF endpoint <br><br>Allowed value: any string, can be null if the endpoint URL schema is `HTTP`<br>Default: `null`|
-| **ClientSecret**                | Required for AVEVA DATA HUB endpoint | `string`    | Authentication with the AVEVA DATA HUB OMF endpoint <br><br>Allowed value: any string, can be null if the endpoint URL schema is `HTTP`<br>Default: `null`|
-| **TokenEndpoint**               | Optional for AVEVA DATA HUB endpoint | `string`    | Retrieves an AVEVA DATA HUB token from an alternative endpoint <br><br>Allowed value: well-formed http or https endpoint string <br>Default value: `null` |
+| **ClientId**                    | Required for AVEVA Data Hub endpoint | `string`    | Authentication with the AVEVA Data Hub OMF endpoint <br><br>Allowed value: any string, can be null if the endpoint URL schema is `HTTP`<br>Default: `null`|
+| **ClientSecret**                | Required for AVEVA Data Hub endpoint | `string`    | Authentication with the AVEVA Data Hub OMF endpoint <br><br>Allowed value: any string, can be null if the endpoint URL schema is `HTTP`<br>Default: `null`|
+| **TokenEndpoint**               | Optional for AVEVA Data Hub endpoint | `string`    | Retrieves an AVEVA Data Hub token from an alternative endpoint <br><br>Allowed value: well-formed http or https endpoint string <br>Default value: `null` |
 | **ValidateEndpointCertificate** | Optional                  | `boolean`   | Disables verification of destination certificate. **Note:** Only use for testing with self-signed certificates. <br><br>Allowed value: `true` or `false`<br>Default value: `true` |
 
 ### Special characters encoding
@@ -88,12 +88,12 @@ The adapter encodes special characters used in the data selection **StreamId** p
 
 The following examples are valid egress configurations:
 
-### Egress data to AVEVA DATA HUB
+### Egress data to AVEVA Data Hub
 
 ```json
 [{
-     "Id": "AVEVA DATA HUB",
-     "Endpoint": "https://<AVEVA DATA HUB OMF endpoint>",
+     "Id": "AVEVA Data Hub",
+     "Endpoint": "https://<AVEVA Data Hub OMF endpoint>",
      "ClientId": "<clientid>",
      "ClientSecret": "<clientsecret>"
 }]

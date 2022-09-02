@@ -16,7 +16,7 @@ EDS provides the following capabilities:
 
 - Configurable data storage
 
-- Data egress to PI Web API and AVEVA DATA HUB
+- Data egress to PI Web API and AVEVA Data Hub
 
 - REST API to enable custom applications for visualization and analytics on Edge Data Store on either Linux, Windows, or both in a variety of programming languages
 
@@ -28,7 +28,7 @@ The following diagram depicts the relationships of architectural components to o
 
 ## Edge Data Store data flow
 
-Edge Data Store can egress data to both PI Data Archive and AVEVA Data Hub. For more information, see [PI egress quick start](xref:piEgressQuickStart) and [AVEVA DATA HUB egress quick start](xref:ocsEgressQuickStart).
+Edge Data Store can egress data to both PI Data Archive and AVEVA Data Hub. For more information, see [PI egress quick start](xref:piEgressQuickStart) and [AVEVA Data Hub egress quick start](xref:ocsEgressQuickStart).
 
 The following diagram depicts the flow of data in Edge Data Store:
 
