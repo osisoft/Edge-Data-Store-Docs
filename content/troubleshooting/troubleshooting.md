@@ -92,9 +92,9 @@ Date and time strings should use the following formats:
 
 Because the overall number and content length of each request/response pair captured by debugging can be quite large, debugging information is stored to disk in a separate location from other log messages. Debug folders and files are created under the Edge Data Store data folder as follows:
 
-   Windows: C:\%ProgramData%\OSIsoft\EdgeDataStore\Logs\EgressDebugLogs\Data\OCS\Data\637968638158828069-7a18023e-1cd9-4e3c-9f6a-8f8164269e59-Request.txt
+   Windows: %programdata%\OSIsoft\EdgeDataStore\Logs\EgressDebugLogs\Data\{egressId}\{omfType}\{Ticks}-{Guid}-{Request/Response}.txt
 
-   Linux: %programdata%\OSIsoft\EdgeDataStore\Logs\EgressDebugLogs\Data\{egressId}\{omfType}\{Ticks}-{Guid}-{Request/Response}.txt
+   Linux: /usr/share/OSIsoft/EdgeDataStore/Logs/EgressDebugLogs/Data/{egressId}/{omfType}/{Ticks}-{Guid}-{Request/Response}.txt
 
 The OMF specific elements of the file structure are defined in the following table.
 
