@@ -84,9 +84,9 @@ Use debugging information to troubleshoot problems between Edge Data Store and t
 
 Date and time strings should use the following formats:
 
-    - UTC: `yyyy-mm-ddThh:mm:ssZ`
+   - UTC: `yyyy-mm-ddThh:mm:ssZ`
 
-    - Local: `mm-dd-yyyy hh:mm:ss`
+   - Local: `mm-dd-yyyy hh:mm:ss`
 
 ### Debugging folder/file structure
 
