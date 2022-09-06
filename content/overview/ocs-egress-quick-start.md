@@ -10,15 +10,13 @@ Data egress provides a mechanism to transfer data to AVEVA Data Hub using OMF me
 
 To create an OMF connection in AVEVA Data Hub:
 
-1. In AVEVA Data Hub, create a **Client**.
+1. In AVEVA Data Hub, create a client. For details, see [Clients](https://docs.osisoft.com/bundle/data-hub/page/set-up/clients/clients-concept.html) in the AVEVA Data Hub documentation.
 
-  The `Client Id` and `Client Secret` are used for the corresponding properties in the egress configuration.
+  The **Client Id** and **Client Secret** are used for the corresponding properties in the egress configuration.
 
-1. In AVEVA Data Hub, create an **OMF** type **Connection**.
+1. In AVEVA Data Hub, create an OMF connection. For details, see [Configure an OMF connection](https://docs.osisoft.com/bundle/data-hub/page/add-organize-data/collect-data/connectors/omf/omf-connection-procedure.html) in the AVEVA Data Hub documentation.
 
-  The connection should link the client to an existing namespace where the data will be stored. The **OMF Endpoint** URL for the connection is used as the value for the `Endpoint` property in the egress configuration.
-
-  For complete steps, as well as best practices and recommendations, see the [AVEVA Data Hub documentation](https://docs.osisoft.com/bundle/ocs/page/ocs-content-portal-overview.html).
+  The **OMF Endpoint** URL for the connection is used as the egress configuration **EndpointId** parameter.
 
 ## Create a periodic egress configuration
 
