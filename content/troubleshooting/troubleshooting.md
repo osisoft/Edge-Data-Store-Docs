@@ -48,9 +48,9 @@ Use debugging information to troubleshoot problems between an OMF application an
 
 Date and time strings should use the following formats:
 
-- UTC: "yyyy-mm-ddThh:mm:ssZ"
+- UTC: `yyyy-mm-ddThh:mm:ssZ`
 
-- Local: "mm-dd-yyyy hh:mm:ss"
+- Local: `mm-dd-yyyy hh:mm:ss`
 
 ## Periodic egress
 
@@ -84,17 +84,17 @@ Use debugging information to troubleshoot problems between Edge Data Store and t
 
 Date and time strings should use the following formats:
 
-    - UTC: "yyyy-mm-ddThh:mm:ssZ"
+    - UTC: `yyyy-mm-ddThh:mm:ssZ`
 
-    - Local: "mm-dd-yyyy hh:mm:ss"
+    - Local: `mm-dd-yyyy hh:mm:ss`
 
 ### Debugging folder/file structure
 
 Because the overall number and content length of each request/response pair captured by debugging can be quite large, debugging information is stored to disk in a separate location from other log messages. Debug folders and files are created under the Edge Data Store data folder as follows:
 
-   Windows: %programdata%\OSIsoft\EdgeDataStore\Logs\EgressDebugLogs\Data\{egressId}\{omfType}\{Ticks}-{Guid}-{Request/Response}.txt
+   Windows: `%programdata%\OSIsoft\EdgeDataStore\Logs\EgressDebugLogs\Data\{egressId}\{omfType}\{Ticks}-{Guid}-{Request/Response}.txt`
 
-   Linux: /usr/share/OSIsoft/EdgeDataStore/Logs/EgressDebugLogs/Data/{egressId}/{omfType}/{Ticks}-{Guid}-{Request/Response}.txt
+   Linux: `/usr/share/OSIsoft/EdgeDataStore/Logs/EgressDebugLogs/Data/{egressId}/{omfType}/{Ticks}-{Guid}-{Request/Response}.txt`
 
 The OMF specific elements of the file structure are defined in the following table.
 
