@@ -40,34 +40,6 @@ The following problems and enhancement requests have been deferred until a futur
 
   - In this release of EDS, SDS transaction logs are expected to be truncated each time the system checkpoints. However, in the unlikely scenario that this truncation process fails repeatedly, the transaction log will continue to grow in size, eventually causing a process termination. The next EDS release will handle this scenario more gracefully.
 
-<!--## Upgrade notes
-
-**Warning:** During upgrade, Edge Data Store will stop collecting and sending data for several seconds.
-
-### Modbus TCP
-
-The Modbus TCP adapter embedded in Edge Data Store is updated.
-
-- The data source property `applyPrefixToStreamId` has been removed. Use the `defaultStreamIdPattern` to achieve similar behavior.
-
-### OPC UA
-
-The OPC UA adapter embedded in Edge Data Store is updated.
-
-  - The data source property `applyPrefixToStreamId` has been removed. Use the `defaultStreamIdPattern` to achieve similar behavior.
-
-During upgrade, the existing OPC UA configuration is modified in the following ways:
-
-  - The data source configuration is updated to the 1.3 framework.
-
-  - The data selection configuration is updated to include `streamId`.
-
-  - Trusted server certificates are moved to a new location. Refer to the OPC UA adapter security configuration for location information.
-
-  - A new client certificate is generated. 
- 
-**Note:** OPC UA servers must be configured to trust this new certificate. -->
-
 ## Security information and guidance 
 
 OSIsoft is (committed to releasing secure products)[https://docs.osisoft.com/bundle/security-commitment-and-disclosure-standards/page/securitycommitmentanddisclosurestandards.html]. This section is intended to provide relevant security-related information to guide your installation or upgrade decision.  

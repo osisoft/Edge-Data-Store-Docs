@@ -24,7 +24,7 @@ When a custom application fails to write stream data to EDS:
 
 Ingress logging messages provide a record of ingress events. To capture the most information for troubleshooting:
 
-1. Refer to [System-level logging configuration](xref:systemloggingConfiguration) to set logging parameters.
+1. Refer to [Configure logging](xref:LoggingConfig) to set logging parameters.
 
 1. For maximum message logging information, set the log level to `Trace`.
 
@@ -68,7 +68,7 @@ If unexpected data appears in an AVEVA Data Hub or PI System, check if multiple 
 
 Egress logging messages provide a record of egress events. To capture maximum information for troubleshooting:
 
-1. Refer to [System-level logging configuration](xref:systemloggingConfiguration) to set logging parameters.
+1. Refer to [Configure logging](xref:LoggingConfig) to set logging parameters.
 
 1. For maximum message logging information, set the log level to `Trace`.
 
