@@ -32,7 +32,7 @@ Complete the following steps to configure buffering. Use the `PUT` method in con
     curl -d "@ConfigureBuffering.json" -H "Content-Type: application/json" -X PUT "http://localhost:5590/api/v1/configuration/system/buffering"
     ```
 
-**Note**: If you installed the adapter to listen on a non-default port, update `5590` to the port number in use. For a list of other REST operations you can perform, like updating or replacing a buffering configuration, see [REST URLs](#rest-urls).
+**Note:** If you installed the adapter to listen on a non-default port, update `5590` to the port number in use. For a list of other REST operations you can perform, like updating or replacing a buffering configuration, see [REST URLs](#rest-urls).
     <br/>
     <br/>
 
@@ -51,7 +51,7 @@ The following parameters are available for configuring buffering:
 | Parameter | Required | Type | Description |
 | ----------| -------- | ---- | ----------- |
 | **EnablePersistentBuffering**  | Optional |  `boolean` | Enables or disables on-disk buffering <br><br> Allowed value: `true` or `false`<br>Default value: `true` <br><br> **Note:** If you disable persistent buffering, in-memory buffering is used. On-disk and in-memory buffering are limited by value in the **MaxBufferSizeMB** property. |
-| **MaxBufferSizeMB**  | Optional     |`integer` | Defines the maximum size of the buffer that is persisted on disk <sup>1</sup> or used in memory <sup>2</sup>. The unit is specified in MB (1 Megabyte = 1048576 bytes). Consider the capacity and the type of storage medium to determine a suitable value for this parameter. <br><br>Minimum value: `1`<br>Maximum value:  `2147483647`<br> Default value: `1024`<br><br>**Note:** The **MaxBufferSizeMB** property is applied to each configured endpoint. For example, if you set the **MaxBufferSizeMB** to `1024` and  you configured the adapter to send data to two endpoints (for example, PI Server and OCS), the total maximum resources used for buffering will be `2048`.  The health endpoint is an exception fixed at 20 MB.  |
+| **MaxBufferSizeMB**  | Optional     |`integer` | Defines the maximum size of the buffer that is persisted on disk <sup>1</sup> or used in memory <sup>2</sup>. The unit is specified in MB (1 Megabyte = 1048576 bytes). Consider the capacity and the type of storage medium to determine a suitable value for this parameter. <br><br>Minimum value: `1`<br>Maximum value:  `2147483647`<br> Default value: `1024`<br><br>**Note:** The **MaxBufferSizeMB** property is applied to each configured endpoint. For example, if you set the **MaxBufferSizeMB** to `1024` and  you configured the adapter to send data to two endpoints (for example, PI Server and AVEVA Data Hub), the total maximum resources used for buffering will be `2048`.  The health endpoint is an exception fixed at 20 MB.  |
 | **BufferLocation**   | Required  | `string` | Defines the location of the buffer files. Absolute paths are required. Consider the access-control list (ACL) when you set this parameter. **BufferLocation** is used to buffer files when **EnablePersistentBuffering** is `true`. <br><br> Allowed value: Valid path to a folder location in the file system <br> Default value: <br> **Windows:** _%ProgramData%\OSIsoft\Adapters\\{AdapterInstance}\Buffers_ <br> **Linux:** _/usr/share/OSIsoft/Adapters/{AdapterInstance}/Buffers_ |
 
 <sup>1</sup> **Buffering to disk** - disk is only used if required; <br>

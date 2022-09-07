@@ -40,4 +40,4 @@ File descriptor usage differs on different Linux operating systems and devices, 
 
 For example, when tested on a Raspberry Pi 3 Model B+ using a Raspbian operating system, an installation of EDS with no user-defined streams had an average of 424 open file descriptors. The same installation with 250 streams had an average of 932 open file descriptors. The file descriptor limit per process for the operating system used was 1024.
 
-Windows has an object called a handle that is used in much the same way that Linux uses file descriptors. However, Windows does not have a limitation on the number of handles.
+Windows has an object called a handle that is used in much the same way that Linux uses file descriptors; however, Windows does not have a limitation on the number of handles.

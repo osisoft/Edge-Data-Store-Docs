@@ -7,6 +7,7 @@
   - topicUid: opcUaQuickStart
   - topicUid: modbusQuickStart
   - topicUid: omfQuickStart
+  - topicUid: adhEgressQuickStart
   - topicUid: piEgressQuickStart
   - topicUid: sdsQuickStart
   - topicUid: commandLineLinuxQuickStart
@@ -58,7 +59,8 @@
     - topicUid: PrepareEgressDestinations
     - topicUid: configureEgress
     - topicUid: EgressExecutionDetails
-    - topicUid: ondemandEgress
+    - topicUid: ManualEgress
+    - topicUid: ManageEgressJobs
     - topicUid: EdgeDataStoreDiagnostics
   - topicUid: EdgeDataStoreHealth
     items:

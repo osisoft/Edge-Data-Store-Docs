@@ -4,23 +4,21 @@ uid: PrepareEgressDestinations
 
 # Configure egress destinations
 
-OCS and PI Server destinations require additional configuration to receive OMF messages. Once you configure a destination, you can use the `EndpointId` parameter to specify it as the destination of the data in periodic and on-demand egress configurations.
+AVEVA Data Hub and PI Server destinations require additional configuration to receive OMF messages. Once you configure a destination, you can use the `EndpointId` parameter to specify it as the destination of the data in periodic and manual egress configurations.
 
-## OCS destinations
+## AVEVA Data Hub destinations
 
-To configure OCS to receive OMF messages from EDS, create an OMF connection in OCS. Creating an OMF connection results in an available OMF endpoint that can be used by the EDS egress mechanism.
+To configure AVEVA Data Hub to receive OMF messages from EDS, create an OMF connection in AVEVA Data Hub. Creating an OMF connection results in an available OMF endpoint that can be used by the EDS egress mechanism.
 
-To create an OMF connection to OCS:
+To create an OMF connection to AVEVA Data Hub:
 
-1. In OCS, create a **Client**. For details, see [Clients](https://docs.osisoft.com/bundle/ocs/page/set-up/clients/clients-concept.html) in the OCS documentation.
+1. In AVEVA Data Hub, create a client. For details, see [Clients](https://docs.osisoft.com/bundle/data-hub/page/set-up/clients/clients-concept.html) in the AVEVA Data Hub documentation.
    
-   - The **Client Id** and **Client Secret** are used for the corresponding properties in the egress configuration.
+  The **Client Id** and **Client Secret** are used for the corresponding properties in the egress configuration.
    
-1. Create an **OMF** type **Connection**.
-   
-   - The connection should link the created client to an existing [namespace](https://docs.osisoft.com/bundle/ocs/page/set-up/namespaces/namespaces-concept.html) where the data will be stored.
+1. In AVEVA Data Hub, create an OMF connection. For details, see [Configure an OMF connection](https://docs.osisoft.com/bundle/data-hub/page/add-organize-data/collect-data/connectors/omf/omf-connection-procedure.html) in the AVEVA Data Hub documentation.
   
-   The **OMF Endpoint** URL for the connection is used as the egress configuration `EndpointId` parameter.
+  The **OMF Endpoint** URL for the connection is used as the egress configuration **EndpointId** parameter.
 
 ## PI Server destinations
 
@@ -30,9 +28,9 @@ To create an OMF connection to PI Server:
 
 1. Install PI Web API and enable the **OSIsoft Message Format (OMF) Services** feature.
 
-    - During configuration, choose an AF database and PI Data Archive where metadata and data will be stored.
+   - During configuration, choose an AF database and PI Data Archive where metadata and data will be stored.
     
-    - The account used in an egress configuration needs permissions to create AF elements, element templates, and PI points.
+   - The account used in an egress configuration needs permissions to create AF elements, element templates, and PI points.
 
 1. Configure PI Web API to use `Basic` authentication.
 

@@ -10,7 +10,7 @@ Edge Data Store requires configuration, which can be performed either for each i
 
 The following JSON file represents minimal configuration of an Edge Data Store. There are no Modbus TCP EDS adapter or OPC UA EDS adapter components, and the Storage component configurations are set to the default. If you configure a system with this JSON file, any existing Modbus TCP EDS adapter or OPC UA EDS adapter components will be disabled and removed. No storage data will be deleted or modified, and OMF and SDS data access will not be impacted.
 
-1. Save or copy the example JSON in a file named _EdgeMinimumConfiguration.json_ in any directory on a device with Edge Data Store installed.
+1. Save or copy the example JSON in a file named `EdgeMinimumConfiguration.json` in any directory on a device with Edge Data Store installed.
 
 1. Run the following curl command from the directory where the file is located:
 
@@ -69,14 +69,16 @@ The following JSON file represents minimal configuration of an Edge Data Store. 
     }
   ```
 
-This example results in a minimal configuration of Edge Data Store. It only supports OMF and SDS operations using REST. No egress is configured, so no data will be sent to either OCS or PI Web API.
+This example results in a minimal configuration of Edge Data Store. It only supports OMF and SDS operations using REST. No egress is configured, so no data will be sent to either AVEVA Data Hub or PI Web API.
 
 ## Configure maximum Edge Data Store
 
-The following JSON file represents maximum configuration of an Edge Data Store. There are Modbus TCP EDS adapter components and OPC UA EDS adapter components, and egress is configured to send to both PI Web API and OCS from both the default (operational data) and diagnostics (diagnostic data) namespace.
+The following JSON file represents maximum configuration of an Edge Data Store. There are Modbus TCP EDS adapter components and OPC UA EDS adapter components, and egress is configured to send to both PI Web API and AVEVA Data Hub from both the default (operational data) and diagnostics (diagnostic data) namespace.
 
 1. Using any text editor, create a JSON file using the following example. Fill in any credentials or IP addresses with appropriate values for your environment.
-2. Save the edited JSON in a file named _EdgeMaximumConfiguration.json_ in any directory.
+   
+2. Save the edited JSON in a file named `EdgeMaximumConfiguration.json` in any directory.
+   
 3. Run the following curl command from the same directory where the file is located:
 
   ```bash
@@ -206,12 +208,12 @@ The following JSON file represents maximum configuration of an Edge Data Store. 
     "Storage": {
         "EgressEndpoints": [
             {
-                "id": "Endpoint-OCS",
-                "endpoint": "<OCS OMF URL for your tenant and namespace>",
+                "id": "Endpoint-AVEVA Data Hub",
+                "endpoint": "<AVEVA Data Hub OMF URL for your tenant and namespace>",
                 "userName": null,
                 "password": null,
-                "clientId": "<OCS ClientId>",
-                "clientSecret": "<OCS ClientSecret>",
+                "clientId": "<AVEVA Data Hub ClientId>",
+                "clientSecret": "<AVEVA Data Hub ClientSecret>",
                 "tokenEndpoint": null,
                 "validateEndpointCertificate": true
             },
@@ -244,11 +246,11 @@ The following JSON file represents maximum configuration of an Edge Data Store. 
         ],
         "EgressConfigurations": [
             {
-                "id": "OCS",
+                "id": "AVEVA Data Hub",
                 "name": null,
                 "description": null,
                 "enabled": true,
-                "endpointId": "Endpoint-OCS",
+                "endpointId": "Endpoint-AVEVA Data Hub",
                 "scheduleId": "Schedule1",
                 "dataSelectorIds": null,
                 "namespaceId": "default",
@@ -274,11 +276,11 @@ The following JSON file represents maximum configuration of an Edge Data Store. 
                 "typePrefix": "ChangeMe"
             },
             {
-                "id": "OCSDiag",
+                "id": "AVEVA Data HubDiag",
                 "name": null,
                 "description": null,
                 "enabled": true,
-                "endpointId": "Endpoint-OCS",
+                "endpointId": "Endpoint-AVEVA Data Hub",
                 "scheduleId": "Schedule1",
                 "dataSelectorIds": [
                     "DataSelector1"

@@ -4,7 +4,7 @@ uid: configureEgress
 
 # Configure periodic data egress
 
-Once the OCS or PI Server destinations are prepared to receive OMF messages, configure data egress to create the connection to the destination and specify the details of the data transfer. Periodic egress runs on a regular schedule to ensure that data is sent to long term storage. For more information on egress destinations, see [Configure egress destinations](xref: PrepareEgressDestinations).
+Once the AVEVA Data Hub or PI Server destinations are prepared to receive OMF messages, configure data egress to create the connection to the destination and specify the details of the data transfer. Periodic egress runs on a regular schedule to ensure that data is sent to long term storage. For more information on egress destinations, see [Configure egress destinations](xref:PrepareEgressDestinations).
 
 To support the reuse of common configuration blocks, EDS egress configuration is divided into four facets, which can be configured together or separately:
 
@@ -16,7 +16,7 @@ To support the reuse of common configuration blocks, EDS egress configuration is
 
 - `EgressConfigurations`: Ties together the three previous facets and includes settings for type and stream prefixing, backfill, and more
 
-**Warnings**: 
+**Warnings:** 
 
   - You cannot add configurations manually because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit configurations. For additional endpoints, see [REST URLs](#rest-urls).
   
@@ -52,7 +52,7 @@ Example using cURL, which must be run from the directory where the JSON file is 
 curl -d "@{Filename}" -H "Content-Type: application/json" -X {Command} {Endpoint}
 ```
 
-**Note**: The @ symbol is a required prefix for this command. `{Filename}`, `{Command}` and `{Endpoint}` should be replaced by the corresponding filename, command, and endpoint.
+**Note:** The @ symbol is a required prefix for this command. `{Filename}`, `{Command}` and `{Endpoint}` should be replaced by the corresponding filename, command, and endpoint.
 
 - To configure multiple egress facets together:
 
@@ -73,12 +73,12 @@ The following table lists egress parameters for `EgressEndpoints`.
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
 | **Id**                          | Required                  | string    | Unique identifier of the endpoint configuration                                  |
-| **Endpoint**                    | Required                  | string    | Destination that accepts OMF v1.2 and older messages. Supported destinations include OCS and PI Server. |
+| **Endpoint**                    | Required                  | string    | Destination that accepts OMF v1.2 and older messages. Supported destinations include AVEVA Data Hub and PI Server. |
 | **Username**                    | Required for PI Server endpoint  | string    | User name used for authentication to PI Web API OMF endpoint. If domain is required, the backslash must be escaped (for example, *domain*\\\\*username*). |
 | **Password**                    | Required for PI Server endpoint  | string    | Password used for authentication to PI Web API OMF endpoint |
-| **ClientId**                    | Required for OCS endpoint | string    | Client ID used for authentication to OCS OMF endpoint  |
-| **ClientSecret**                | Required for OCS endpoint | string    | Client Secret used for authentication with the OCS OMF endpoint  |
-| **TokenEndpoint**               | Optional for OCS endpoint | string    | Used to retrieve an OCS token from an alternative endpoint. *This is not normally necessary with OCS. Only use if directed to do so by customer support.* |
+| **ClientId**                    | Required for AVEVA Data Hub endpoint | string    | Client ID used for authentication to AVEVA Data Hub OMF endpoint  |
+| **ClientSecret**                | Required for AVEVA Data Hub endpoint | string    | Client Secret used for authentication with the AVEVA Data Hub OMF endpoint  |
+| **TokenEndpoint**               | Optional for AVEVA Data Hub endpoint | string    | Used to retrieve an AVEVA Data Hub token from an alternative endpoint. *This is not normally necessary with AVEVA Data Hub. Only use if directed to do so by customer support.* |
 | **ValidateEndpointCertificate** | Optional                  | boolean   | Validate endpoint certificate (recommended). If `false`, egress accepts any endpoint certificate. Use for testing only with self-signed certificates. Defaults to `true`. |
 
 The following table lists egress parameters for `Schedules`.
@@ -124,14 +124,14 @@ The following are valid configuration examples for egress.
 
 `PUT http://localhost:5590/api/v1/configuration`
 
-Create configuration for egress of all data for all streams to OCS every 15 seconds.
+Create configuration for egress of all data for all streams to AVEVA Data Hub every 15 seconds.
 
 ```json
 {
     "Storage": {
         "EgressEndpoints": [
             {
-                "Id": "Endpoint-OCS",
+                "Id": "Endpoint-AVEVA Data Hub",
                 "Endpoint": "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
                 "ClientId": "{clientId}",
                 "ClientSecret": "{clientSecret}"
@@ -145,8 +145,8 @@ Create configuration for egress of all data for all streams to OCS every 15 seco
         ],
         "EgressConfigurations": [
             {
-                "Id": "OCS",
-                "EndpointId": "Endpoint-OCS",
+                "Id": "AVEVA Data Hub",
+                "EndpointId": "Endpoint-AVEVA Data Hub",
                 "ScheduleId": "Schedule-15sec"
             }
         ]
@@ -154,14 +154,14 @@ Create configuration for egress of all data for all streams to OCS every 15 seco
 }
 ```
 
-Create configuration for egress of some data for some streams, to OCS and PI, every 2 days starting January 1st, 2022 at 9:00. EgressEndpoints/Schedules/DataSelectors definitions are shared.
+Create configuration for egress of some data for some streams, to AVEVA Data Hub and PI, every 2 days starting January 1st, 2022 at 9:00. EgressEndpoints/Schedules/DataSelectors definitions are shared.
 
 ```json
 {
     "Storage": {
         "EgressEndpoints": [
             {
-                "Id": "Endpoint-OCS",
+                "Id": "Endpoint-AVEVA Data Hub",
                 "Endpoint": "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
                 "ClientId": "{clientId}",
                 "ClientSecret": "{clientSecret}"
@@ -195,8 +195,8 @@ Create configuration for egress of some data for some streams, to OCS and PI, ev
         ],
         "EgressConfigurations": [
             {
-                "Id": "OCS",
-                "EndpointId": "Endpoint-OCS",
+                "Id": "AVEVA Data Hub",
+                "EndpointId": "Endpoint-AVEVA Data Hub",
                 "ScheduleId": "Schedule1",
                 "DataSelectorIds": ["DataSelector1"]
             },
@@ -226,12 +226,12 @@ Add a single new egress endpoint to PI.
 }
 ```
 
-Add multiple new egress endpoints to OCS and PI with the use of a domain in the username. All properties are explicitly listed.
+Add multiple new egress endpoints to AVEVA Data Hub and PI with the use of a domain in the username. All properties are explicitly listed.
 
 ```json
 [
     {
-        "Id": "Endpoint-OCS",
+        "Id": "Endpoint-AVEVA Data Hub",
         "Endpoint": "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
         "ClientId": "{clientId}",
         "ClientSecret": "{clientSecret}",
@@ -330,12 +330,12 @@ Add multiple new data selectors for egress of all data for streams with a specif
 
 `POST http://localhost:5590/api/v1/configuration/storage/egressconfigurations`
 
-Add a single new configuration for egress of all data for all streams to OCS every 15 seconds.
+Add a single new configuration for egress of all data for all streams to AVEVA Data Hub every 15 seconds.
 
 ```json
 {
-    "Id": "OCS",
-    "EndpointId": "Endpoint-OCS",
+    "Id": "AVEVA Data Hub",
+    "EndpointId": "Endpoint-AVEVA Data Hub",
     "ScheduleId": "Schedule-15sec"
 }
 ```
@@ -359,11 +359,11 @@ Add a single new configuration for egress of all data for all streams to PI ever
 }
 ```
 
-Add a single new configuration for egress of all data for streams with a specific `TypeId` value, to OCS every 15 seconds.
+Add a single new configuration for egress of all data for streams with a specific `TypeId` value, to AVEVA Data Hub every 15 seconds.
 
 ```json
 {
-    "EndpointId": "Endpoint-OCS",
+    "EndpointId": "Endpoint-AVEVA Data Hub",
     "ScheduleId": "Schedule-15sec",
     "DataSelectorIds": ["StreamFilterByTypeId"]
 }
@@ -384,12 +384,12 @@ Add multiple new configurations for egress with backfill, diagnostics data, or P
 ```json
 [
     {
-        "EndpointId": "Endpoint-OCS",
+        "EndpointId": "Endpoint-AVEVA Data Hub",
         "ScheduleId": "Schedule-15sec",
         "Backfill": true
     },
     {
-        "EndpointId": "Endpoint-OCS",
+        "EndpointId": "Endpoint-AVEVA Data Hub",
         "ScheduleId": "Schedule-1hr",
         "DataSelectorIds": ["DataFilterByAbsoluteDeadbandWithExpiration"],
         "NamespaceId": "diagnostics"

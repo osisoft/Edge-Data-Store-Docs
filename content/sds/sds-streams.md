@@ -4,7 +4,7 @@ uid: sdsStreams
 
 # Streams
 
-SdsStreams are collections of sequentially occurring values indexed by a single property, typically time series data. You define SdsStreams to organize incoming data from another system into the OCS. To define an SdsStream, you must first define an SdsType, which defines the structure of the data you want to stream into a selected namespace.
+SdsStreams are collections of sequentially occurring values indexed by a single property, typically time series data. You define SdsStreams to organize incoming data from another system into the AVEVA Data Hub. To define an SdsStream, you must first define an SdsType, which defines the structure of the data you want to stream into a selected namespace.
 
 SDS stores collections of events and provides convenient ways to find and associate events. Events of consistent structure are stored in streams. Streams are referenced by their identifier or `Id` field. Stream identifiers must be unique within a namespace.
 

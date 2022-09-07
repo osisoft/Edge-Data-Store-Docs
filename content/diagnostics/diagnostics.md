@@ -4,7 +4,7 @@ uid: EdgeDataStoreDiagnostics
 
 # Diagnostics configuration
 
-Edge Data Store and its components produce performance and system data for diagnostic purposes which is stored locally in the Storage component, and may be queried locally or egressed to PI Web API endpoints or the OSIsoft Cloud Services or both. Diagnostic data is always produced and saved; it cannot be disabled.
+Edge Data Store and its components produce performance and system data for diagnostic purposes which is stored locally in the Storage component, and may be queried locally or egressed to PI Web API endpoints or the AVEVA Data Hub or both. Diagnostic data is always produced and saved; it cannot be disabled.
 
 Diagnostic data is stored within the `diagnostics` namespace in Edge Storage. Local access to this data is available through SDS. For more information, see [Read data](xref:sdsReadingData).
 

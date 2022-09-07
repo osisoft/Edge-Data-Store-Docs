@@ -2,9 +2,9 @@
 uid: piEgressQuickStart
 ---
 
-# PI egress quick start
+# PI Server egress quick start
 
-Data egress provides a mechanism to transfer data to PI Server using OMF messages through a PI Web API endpoint. To get started sending data stored in Edge Data Store to a PI System, create a PI Web API OMF endpoint and configure periodic egress to use the PI Web API endpoint.
+Data egress provides a mechanism to transfer data to PI Server using OMF messages through a PI Web API endpoint. To get started sending data stored in Edge Data Store to a PI Server, create a PI Web API OMF endpoint and configure periodic egress to use the PI Web API endpoint.
 
 ## Create a PI Web API OMF endpoint
 
@@ -24,4 +24,4 @@ To create a PI Web API OMF endpoint:
 
 ## Create a periodic egress configuration
 
-To configure Edge Storage periodic egress for the PI Web API endpoint and credentials, follow the steps in [HERE](https://docs.osisoft.com/bundle/edge-data-store/page/egress/configure-data-egress.html#create-configurations).
+To configure Edge Storage periodic egress for the PI Web API endpoint and credentials, follow the steps in [Configure data egress](https://docs.osisoft.com/bundle/edge-data-store/page/egress/configure-data-egress.html#create-configurations).

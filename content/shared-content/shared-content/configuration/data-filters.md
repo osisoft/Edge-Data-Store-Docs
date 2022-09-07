@@ -32,7 +32,7 @@ Complete the following steps to configure data filters. Use the `PUT` method in 
     curl -d "@ConfigureDataFilters.json" -H "Content-Type: application/json" -X PUT "http://localhost:5590/api/v1/configuration/<ComponentId>/DataFilters"
     ```
 
-    **Note**: If you installed the adapter to listen on a non-default port, update `5590` to the port number in use. For a list of other REST operations you can perform, like updating or deleting a data filters configuration, see [REST URLs](#rest-urls).
+    **Note:** If you installed the adapter to listen on a non-default port, update `5590` to the port number in use. For a list of other REST operations you can perform, like updating or deleting a data filters configuration, see [REST URLs](#rest-urls).
     <br/>
     <br/>
 

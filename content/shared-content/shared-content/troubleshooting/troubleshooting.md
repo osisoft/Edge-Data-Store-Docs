@@ -67,7 +67,7 @@ To resolve the conflict, perform the following steps:
 
 ## Adapter connection to egress endpoint
 
-Certain egress health information in both PI Web API and OCS show if an adapter connection to an egress endpoint exists. To verify an active connection, perform one of the following procedures:
+Certain egress health information in both PI Web API and AVEVA Data Hub show if an adapter connection to an egress endpoint exists. To verify an active connection, perform one of the following procedures:
 
 ### PI Web API connection
 
@@ -80,11 +80,11 @@ Perform the following steps to determine if a connection to the PI Web API endpo
     - **NextHealthMessageExpected**
     - **IORate**
 
-### OCS connection
+### AVEVA Data Hub connection
 
-Perform the following steps to determine if a connection to the OCS endpoint exists:
+Perform the following steps to determine if a connection to the AVEVA Data Hub endpoint exists:
 
-1. Open OCS.
+1. Open AVEVA Data Hub.
 
 1. Click **Sequential Data Store** > **Streams**.
 

@@ -6,7 +6,7 @@ uid: EdgeDataStoreOverview
 
 Edge Data Store (EDS) is an embedded data server that runs on Linux and Windows. EDS provides a lightweight data collection and storage application designed to enable the capturing of data for historical storage and analysis at the edge of networks. A storage component based on sequential data storage technology is provided. You can configure and administer EDS through REST programming, configuration, administrative interfaces, and the EdgeCmd command line tool. EDS complements existing OSIsoft products, and is designed for small devices. You can install and run it on 64-bit Intel/AMD compatible and 32-bit ARM v7/v8 compatible chips.
 
-While not a replacement for a PI System, EDS augments the PI System by providing historical data access in situations where deploying a full PI System is impractical. EDS provides native capability, via its Egress functionality, to send data to a PI System or to OSIsoft Cloud Services for long term historical storage and analysis.
+While not a replacement for a PI System, EDS augments the PI System by providing historical data access in situations where deploying a full PI System is impractical. EDS provides native capability, via its Egress functionality, to send data to a PI System or to AVEVA Data Hub for long term historical storage and analysis.
 
 EDS provides the following capabilities:
 
@@ -16,7 +16,7 @@ EDS provides the following capabilities:
 
 - Configurable data storage
 
-- Data egress to PI Web API and OCS
+- Data egress to PI Web API and AVEVA Data Hub
 
 - REST API to enable custom applications for visualization and analytics on Edge Data Store on either Linux, Windows, or both in a variety of programming languages
 
@@ -28,7 +28,7 @@ The following diagram depicts the relationships of architectural components to o
 
 ## Edge Data Store data flow
 
-Edge Data Store can egress data to both PI Data Archive and OSIsoft Cloud Services. For more information, see [PI egress quick start](xref:piEgressQuickStart) and [OCS egress quick start](xref:ocsEgressQuickStart).
+Edge Data Store can egress data to both PI Data Archive and AVEVA Data Hub. For more information, see [PI egress quick start](xref:piEgressQuickStart) and [AVEVA Data Hub egress quick start](xref:ocsEgressQuickStart).
 
 The following diagram depicts the flow of data in Edge Data Store:
 

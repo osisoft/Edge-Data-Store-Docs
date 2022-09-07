@@ -22,9 +22,9 @@ For instructions on verifying the EDS installation, see [Verify installation](xr
 
 To download the Windows installation file:
 
-1. Download the Windows `EdgeDataStore.msi` file from the [OSIsoft Customer portal (https://customers.osisoft.com/s/products)](https://customers.osisoft.com/s/products).
+1. Download the Windows `EdgeDataStore.msi` file from the [OSIsoft Customer portal](https://customers.osisoft.com/s/products).
 
-**Note:** Customer login credentials are required to access the portal.
+  **Note:** Customer login credentials are required to access the portal.
 
 1. Copy the `EdgeDataStore.msi` file to the file system of the device.
 
@@ -40,13 +40,13 @@ To install EDS on Windows using the installation wizard:
 
    **Note:** OSIsoft recommends you use the default installation path. Valid values for the port number are in the range of 1024 to 65535 and only an unused port number should be entered. The default port is 5590.
 
-2. (Optional) Add a system component for a Modbus TCP EDS adapter instance, an OPC UA EDS adapter instance, or both.
+1. (Optional) Add a system component for a Modbus TCP EDS adapter instance, an OPC UA EDS adapter instance, or both.
 
-    **Note:** The Modus TCP EDS adapter and the OPC UA EDS adapter are both installed, regardless of whether system components are added. Additional system components can be added for each adapter after installation.
+   **Note:** The Modus TCP EDS adapter and the OPC UA EDS adapter are both installed, regardless of whether system components are added. Additional system components can be added for each adapter after installation.
 
-3. Select **Next** > **Install**.
+1. Select **Next** > **Install**.
 
-4. Select **Finish**.
+1. Select **Finish**.
 
 ### Run the installation from a command line
 
@@ -60,19 +60,19 @@ To install EDS on Windows from the command line:
 Msiexec /quiet /i EdgeDataStore.msi PORT="<number>" INSTALLFOLDER="<file_path>" WIXUI_ENABLEMODBUS="1" WIXUI_ENABLEOPCUA="1"
 ```
 
-**Parameters**:
+  Parameters:
 
-   - `/quiet` – The installation runs in silent mode.
+  - `/quiet` – The installation runs in silent mode.
 
-   - `/i` – This is the install flag.
+  - `/i` – This is the install flag.
 
-   - `PORT` – Specify a port other than the default of 5590. If the "quiet" or "no ui" flag for msiexec is specified and the PORT value on the command line is not valid, the install will proceed with the default 5590 value.
+  - `PORT` – Specify a port other than the default of 5590. If the "quiet" or "no ui" flag for msiexec is specified and the PORT value on the command line is not valid, the install will proceed with the default 5590 value.
 
-   - `INSTALLFOLDER` – Specify an alternate location for the binary components other than the default location of "%PROGRAMFILES%\OSISoft\EdgeDataStore". OSIsoft recommends you use the default installation path.
+  - `INSTALLFOLDER` – Specify an alternate location for the binary components other than the default location of "%PROGRAMFILES%\OSISoft\EdgeDataStore". OSIsoft recommends you use the default installation path.
 
-   - `WIXUI_ENABLEMODBUS` – Add a system component to create a Modbus TCP EDS adapter instance. The value must be 1 for the component to be added.
+  - `WIXUI_ENABLEMODBUS` – Add a system component to create a Modbus TCP EDS adapter instance. The value must be 1 for the component to be added.
 
-   - `WIXUI_ENABLEOPCUA` - Add a system component to create a OPC UA EDS adapter instance. The value must be 1, for the component to be added.
+  - `WIXUI_ENABLEOPCUA` - Add a system component to create a OPC UA EDS adapter instance. The value must be 1, for the component to be added.
 
 **Note:** If you do not specify a parameter, the default value for the parameter is used. Property names must be in all capital letters, for example, `PORT`.
 
@@ -88,7 +88,7 @@ For instructions on how to verify the Edge Data Store installation, see [Verify 
 
 To download the appropriate file for your device:
 
-1. Download the Linux distribution file from the [OSIsoft Customer portal (https://customers.osisoft.com/s/products)](https://customers.osisoft.com/s/products).
+1. Download the Linux distribution file from the [OSIsoft Customer portal](https://customers.osisoft.com/s/products).
 
 **Note:** Customer login credentials are required to access the portal.
 
@@ -102,34 +102,34 @@ To install EDS on Linux:
 
 1. Run the apt install command for the distribution file appropriate to your operating system and processor.
 
-    **Debian 9 or later (Intel/AMD 64-bit processors)**
+   **Debian 9 or later (Intel/AMD 64-bit processors)**
 
-    ```bash
-    sudo apt install ./EdgeDataStore_linux-x64.deb
-    ```
+   ```bash
+   sudo apt install ./EdgeDataStore_linux-x64.deb
+   ```
 
-    **Debian 9 or later (ARM32, Raspberry PI 2,3,4: Raspbian, BeagleBone)**
+   **Debian 9 or later (ARM32, Raspberry PI 2,3,4: Raspbian, BeagleBone)**
 
-    ```bash
-    sudo apt install ./EdgeDataStore_linux-arm.deb
-    ```
+   ```bash
+   sudo apt install ./EdgeDataStore_linux-arm.deb
+   ```
 
-    ![alt text](https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/LinuxInstall1.jpg "Linux Installation")
+   ![alt text](https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/LinuxInstall1.jpg "Linux Installation")
 
-    **Debian 9 or later (Raspberry PI 3,4: Ubuntu ARM64 Server, Google Coral Dev Board, Nvidia Nano Jetson)**
+   **Debian 9 or later (Raspberry PI 3,4: Ubuntu ARM64 Server, Google Coral Dev Board, Nvidia Nano Jetson)**
 
-    ```bash
-    sudo apt install ./EdgeDataStore_linux-arm64.deb
-    ```
+   ```bash
+   sudo apt install ./EdgeDataStore_linux-arm64.deb
+   ```
 
-    A validation check for prerequisites is performed.
+   A validation check for prerequisites is performed.
 
 1. If the install fails, run the following commands from the terminal window and try the install again:
 
-    ```bash
-    sudo apt update
-    sudo apt upgrade
-    ```
+   ```bash
+   sudo apt update
+   sudo apt upgrade
+   ```
 
 1. (Optional) Change the port number and press Enter. The default port is 5590.
 
@@ -147,9 +147,9 @@ To perform a silent install EDS on Linux with all default options:
 
 1. Run the apt-get install command for the distribution file appropriate to your operating system and processor.
 
-    ```bash
-    sudo apt-get install -q -y ./Edgeinstallfile.deb < /dev/null
-    ```
+   ```bash
+   sudo apt-get install -q -y ./Edgeinstallfile.deb < /dev/null
+   ```
 
    Parameters:
 
@@ -163,9 +163,9 @@ To perform a silent install EDS on Linux with all default options:
 
 ### Silent install on a Linux device with specified parameters
 
- Complete the following steps to perform a silent install EDS on Linux using a parameter file to customize the installation:
+Complete the following steps to perform a silent install EDS on Linux using a parameter file to customize the installation:
 
- 1. Create a file called `silent.ini` with the following parameters on separate lines:
+1. Create a file called `silent.ini` with the following parameters on separate lines:
 
     - <port_number>
 
@@ -181,20 +181,20 @@ To perform a silent install EDS on Linux with all default options:
     N
     ```
 
- 2. Open a terminal window and change the working directory to the location of the distribution file.
+1. Open a terminal window and change the working directory to the location of the distribution file.
 
- 3. Run the apt-get install command for the distribution file appropriate to your operating system and processor.
+1. Run the apt-get install command for the distribution file appropriate to your operating system and processor.
 
-    ```bash
-    sudo apt-get install -q -y ./Edgeinstallfile.deb < silent.ini
-    ```
+   ```bash
+   sudo apt-get install -q -y ./Edgeinstallfile.deb < silent.ini
+   ```
 
-Parameters:
+  Parameters:
 
-   - `-q` – Specifies a silent install.
+  - `-q` – Specifies a silent install.
 
-   - `-y` – Responds Yes to installing prerequisites.
+  - `-y` – Responds Yes to installing prerequisites.
 
-   - `Edgeinstallfile.deb` – The name of the distribution file.
+  - `Edgeinstallfile.deb` – The name of the distribution file.
 
-   - `< silent.ini` – The file with the installation properties.
+  - `< silent.ini` – The file with the installation properties.
