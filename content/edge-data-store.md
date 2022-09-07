@@ -38,6 +38,8 @@ EDS components are shown in grey within the Edge Data Store in the diagram:
 
 * Data egress – Sends data from storage to PI Server or AVEVA Data Hub
 
+  **Note:** OSIsoft Cloud Services is also supported as an egress destination.
+
 * Health – Records health information of components and sends it to PI Server or AVEVA Data Hub
 
 Blue boxes in the diagram show ways to interact with EDS from the local device:
