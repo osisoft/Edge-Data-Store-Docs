@@ -6,7 +6,7 @@ uid: storageruntime
 
 The Edge Data Store storage component is installed with default configurations that are sufficient for most scenarios; however, you can configure the runtime characteristics of the storage component.  
 
-**Note**: Consult with OSIsoft Support personnel before you modify the default configuration.
+**Note:** Consult with OSIsoft Support personnel before you modify the default configuration.
 
 To update the storage runtime configuration, complete the following:
 

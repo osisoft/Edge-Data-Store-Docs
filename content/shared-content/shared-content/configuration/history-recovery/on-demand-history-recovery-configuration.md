@@ -17,7 +17,7 @@ The PI adapter supports performing history recovery on-demand by specifying a st
     curl -d "{ \"Id\":\"TestRecovery\", \"startTime\":\"2021-03-29T14:00:30Z\", \"endTime\":\"2021-03-29T15:00:15Z\"  }" -X POST "http://localhost:5590/api/v1/configuration/<ComponentId>/HistoryRecoveries"
     ```
 
-**Note**: The default port is `5590`. If you selected a different port number, replace it with that value. If you do not specify an `Id`, the endpoint generates a unique `Id`.
+**Note:** The default port is `5590`. If you selected a different port number, replace it with that value. If you do not specify an `Id`, the endpoint generates a unique `Id`.
 
 ## History recovery parameters
 

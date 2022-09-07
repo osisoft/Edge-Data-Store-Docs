@@ -34,7 +34,7 @@ Complete the following steps to configure health endpoints. Use the `PUT` method
     curl -d "@ConfigureHealthEndpoints.json" -H "Content-Type: application/json" -X PUT "http://localhost:5590/api/v1/configuration/system/healthendpoints"
     ```
 
-    **Note**: If you installed the adapter to listen on a non-default port, update `5590` to the port number in use. For a list of other REST operations you can perform, like updating or replacing a health endpoints configuration, see [REST URLs](#rest-urls).
+    **Note:** If you installed the adapter to listen on a non-default port, update `5590` to the port number in use. For a list of other REST operations you can perform, like updating or replacing a health endpoints configuration, see [REST URLs](#rest-urls).
     <br/>
     <br/>
 

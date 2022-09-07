@@ -2,7 +2,7 @@
 uid: omfQuickStart
 ---
 
-# OMF quick start
+# OMF ingress quick start
 
 Create a custom application using OSIsoft Message Format to send data to Edge Data Store from sources that cannot use Modbus or OPC UA protocols. The following diagram depicts the data flow from an OMF data collection application into EDS:
 

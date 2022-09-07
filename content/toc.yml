@@ -7,6 +7,7 @@
   - topicUid: opcUaQuickStart
   - topicUid: modbusQuickStart
   - topicUid: omfQuickStart
+  - topicUid: adhEgressQuickStart
   - topicUid: piEgressQuickStart
   - topicUid: sdsQuickStart
   - topicUid: commandLineLinuxQuickStart

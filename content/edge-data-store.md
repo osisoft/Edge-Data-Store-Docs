@@ -52,4 +52,4 @@ EDS requires an endpoint to connect to REST APIs on the local device, which is s
 
 Orange arrows show data flowing into EDS and blue arrows show data flowing out of EDS.
 
-For detailed information about configuring each component of EDS, see [Configuration](xref:Configuration)
+For detailed information about configuring each component of EDS, see [Configuration](xref:Configuration).

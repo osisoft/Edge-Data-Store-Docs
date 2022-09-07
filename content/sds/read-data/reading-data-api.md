@@ -1270,7 +1270,7 @@ Similarly, for intervals [12:00:03 PM, 12:00:04 PM] and [12:00:04 PM, 12:00:05 P
 | ContinuousNullableLeading <br> StepwiseContinuousLeading | 1 | 1 |
 | ContinuousNullableTrailing <br> StepwiseContinuousTrailing | 1 | 2 |
 
-**Note**: Non-weighted summaries disregard null values and treat them as non-existent. In the example above, non-weighted summaries for `Measurement` would be calculated based on (2,2,1,2,3) whereas weighted summaries for `Measurement` consider null values for its calculation. For more information see [Interpolation](xref:sdsReadingData#interpolation).
+**Note:** Non-weighted summaries disregard null values and treat them as non-existent. In the example above, non-weighted summaries for `Measurement` would be calculated based on (2,2,1,2,3) whereas weighted summaries for `Measurement` consider null values for its calculation. For more information see [Interpolation](xref:sdsReadingData#interpolation).
 
 #### Example request
 
@@ -1758,7 +1758,7 @@ Default value is `null` for SdsTypes.
 
 All Measurements from both streams with missing values interpolated. If the missing values are between valid measurements within a stream, they are interpolated. For more information, see [Interpolation](xref:sdsReadingData#interpolation). If the missing values are outside of the boundary values, they are extrapolated. For more information, see [Extrapolation](xref:sdsReadingData#extrapolation).
 
-**Note**: The Interpolated SdsJoinMode currently does not support SdsInterpolationModes of the streams. All join requests with interpolations will honor the interpolation mode of the stream type or type property.
+**Note:** The Interpolated SdsJoinMode currently does not support SdsInterpolationModes of the streams. All join requests with interpolations will honor the interpolation mode of the stream type or type property.
 
 #### Example response body
 

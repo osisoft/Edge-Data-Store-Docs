@@ -4,7 +4,7 @@ uid: configureEgress
 
 # Configure periodic data egress
 
-Once the AVEVA Data Hub or PI Server destinations are prepared to receive OMF messages, configure data egress to create the connection to the destination and specify the details of the data transfer. Periodic egress runs on a regular schedule to ensure that data is sent to long term storage. For more information on egress destinations, see [Configure egress destinations](xref: PrepareEgressDestinations).
+Once the AVEVA Data Hub or PI Server destinations are prepared to receive OMF messages, configure data egress to create the connection to the destination and specify the details of the data transfer. Periodic egress runs on a regular schedule to ensure that data is sent to long term storage. For more information on egress destinations, see [Configure egress destinations](xref:PrepareEgressDestinations).
 
 To support the reuse of common configuration blocks, EDS egress configuration is divided into four facets, which can be configured together or separately:
 
@@ -16,7 +16,7 @@ To support the reuse of common configuration blocks, EDS egress configuration is
 
 - `EgressConfigurations`: Ties together the three previous facets and includes settings for type and stream prefixing, backfill, and more
 
-**Warnings**: 
+**Warnings:** 
 
   - You cannot add configurations manually because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit configurations. For additional endpoints, see [REST URLs](#rest-urls).
   
@@ -52,7 +52,7 @@ Example using cURL, which must be run from the directory where the JSON file is 
 curl -d "@{Filename}" -H "Content-Type: application/json" -X {Command} {Endpoint}
 ```
 
-**Note**: The @ symbol is a required prefix for this command. `{Filename}`, `{Command}` and `{Endpoint}` should be replaced by the corresponding filename, command, and endpoint.
+**Note:** The @ symbol is a required prefix for this command. `{Filename}`, `{Command}` and `{Endpoint}` should be replaced by the corresponding filename, command, and endpoint.
 
 - To configure multiple egress facets together:
 

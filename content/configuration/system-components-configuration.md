@@ -25,22 +25,22 @@ To add system component:
 
 1. Using any text editor, create a JSON file with the ComponentId and ComponentType. The following example adds a Modbus TCP EDS adapter instance.
 
-    ```json
-      {
-        "ComponentId": "Modbus1",
-        "ComponentType": "Modbus"
-      }
-    ```
+  ```json
+    {
+      "ComponentId": "Modbus1",
+      "ComponentType": "Modbus"
+    }
+  ```
 
-   **Note:** The ComponentId must be a unique value. This example uses the ComponentId Modbus1, since it is the first Modbus TCP EDS adapter.
+  **Note:** The ComponentId must be a unique value. This example uses the ComponentId Modbus1, since it is the first Modbus TCP EDS adapter.
 
-2. Save the JSON file with the name _AddComponent.json_.
+1. Save the JSON file with the name _AddComponent.json_.
 
-3. From the same directory where the file exists, run the following curl script:
+1. From the same directory where the file exists, run the following curl script:
 
-    ```bash
-    curl -d "@AddComponent.json" -H "Content-Type: application/json" http://localhost:5590/api/v1/configuration/system/components
-    ```
+  ```bash
+  curl -d "@AddComponent.json" -H "Content-Type: application/json" http://localhost:5590/api/v1/configuration/system/components
+  ```
 
 After the curl command completes successfully, the new component is available for configuration and use.
 
@@ -51,23 +51,23 @@ The following parameters are used to define system components.
 | Parameters     | Required | Type    | Nullable | Description |
 | -------------- | -------- | --------| ---------|-------------|
 | ComponentId    | Required |`string` | Yes      | The unique ID of the component instance. It can be any alphanumeric string, for example Storage.|
-| ComponentType  | Required |`string` | Yes      | The type of the component, for example EDS.Component. There are three types of components: Storage identified by _EDS.Component_, OPC UA EDS Adapter identified by _OpcUa_, and Modbus TCP EDS Adapter identified by _Modbus_. |
+| ComponentType  | Required |`string` | Yes      | The type of the component, for example `EDS.Component`. There are three types of components: Storage identified by `EDS.Component`, OPC UA EDS Adapter identified by `OpcUa`, and Modbus TCP EDS Adapter identified by `Modbus`. |
 
 ## System components example
 
 ```json
 [
   {
-                "componentId": "OpcUa1",
-                "componentType": "OpcUa"
-            },
-            {
-                "componentId": "Modbus1",
-                "componentType": "Modbus"
-            },
-            {
-                "componentId": "Storage",
-                "componentType": "EDS.Component"
+    "componentId": "OpcUa1",
+    "componentType": "OpcUa"
+    },
+    {
+      "componentId": "Modbus1",
+      "componentType": "Modbus"
+    },
+    {
+      "componentId": "Storage",
+      "componentType": "EDS.Component"
    }
 ]
 ```

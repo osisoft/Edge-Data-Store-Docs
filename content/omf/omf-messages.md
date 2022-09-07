@@ -10,12 +10,11 @@ uid: OMFMessages
 
 Message headers allow you to pass additional information with the message. The message header is where you specify the action for the message, such as CREATE. For a description of each of the headers, see the [OMF specification](https://docs.osisoft.com/bundle/omf/page/headers.html).
 
-The `omfversion` header must match the version of the OMF spec used to construct the message.
-EDS supports versions 1.0 and 1.1 of the OMF specification.
+The `omfversion` header must match the version of the OMF spec used to construct the message. EDS supports versions 1.2 of the OMF specification.
 
 ## Message types
 
-OMF message types fall into three categories: Type, Container, and Data, which are described below. Each message type creates a different type of data and contains keywords that define characteristics of the data. Most of the message types are used to create the structure of the data and give it meaning. Data messages contain time-series data for which the PI System is known. The message types and the data they create are described in detail in this section. For details about the keywords supported by AVEVA Data Hub, see the AVEVA Data Hub documentation, [AVEVA Data Hub](https://docs.osisoft.com/bundle/ocs/page/ocs-content-portal-overview.html).
+OMF message types fall into three categories: Type, Container, and Data, which are described below. Each message type creates a different type of data and contains keywords that define characteristics of the data. Most of the message types are used to create the structure of the data and give it meaning. Data messages contain time-series data for which the PI System is known. The message types and the data they create are described in detail in this section. For details about the keywords supported by AVEVA Data Hub, see the AVEVA Data Hub documentation, [AVEVA Data Hub](https://docs.osisoft.com/bundle/data-hub/page/adh-content-portal-overview.html).
 
 All messages should only be sent from the OMF application one time, but resending the same definition again does not cause an error.
 
@@ -52,9 +51,9 @@ To create an OMF type:
 
    The value is indexed by a timestamp, and the numeric value that will be stored is a 32-bit floating point value.
 
-2. To create the OMF type in Edge Storage, store the JSON file with the name `OmfCreateType.json` on the local device.
+1. To create the OMF type in Edge Storage, store the JSON file with the name `OmfCreateType.json` on the local device.
 
-3. Run the following curl command:
+1. Run the following curl command:
 
    ```bash
    curl -d "@OmfCreateType.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: type" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
@@ -81,9 +80,9 @@ The next step in writing OMF data is to create an OMF container. To create an OM
 
    This container references the OMF type that was created earlier, and an error will occur if the type does not exist when the container is created.
 
-2. To create the OMF container in Edge Storage, store the JSON file with the name `OmfCreateContainer.json` on the local device.
+1. To create the OMF container in Edge Storage, store the JSON file with the name `OmfCreateContainer.json` on the local device.
 
-3. To create the SDS stream to store data defined by the type, run the following curl command:
+1. To create the SDS stream to store data defined by the type, run the following curl command:
 
    ```bash
    curl -d "@OmfCreateContainer.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: container" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/

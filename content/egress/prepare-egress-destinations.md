@@ -16,7 +16,7 @@ To create an OMF connection to AVEVA Data Hub:
    
   The **Client Id** and **Client Secret** are used for the corresponding properties in the egress configuration.
    
-2. In AVEVA Data Hub, create an OMF connection. For details, see [Configure an OMF connection](https://docs.osisoft.com/bundle/data-hub/page/add-organize-data/collect-data/connectors/omf/omf-connection-procedure.html) in the AVEVA Data Hub documentation.
+1. In AVEVA Data Hub, create an OMF connection. For details, see [Configure an OMF connection](https://docs.osisoft.com/bundle/data-hub/page/add-organize-data/collect-data/connectors/omf/omf-connection-procedure.html) in the AVEVA Data Hub documentation.
   
   The **OMF Endpoint** URL for the connection is used as the egress configuration **EndpointId** parameter.
 

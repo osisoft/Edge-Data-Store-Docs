@@ -15,6 +15,17 @@ To resume a manual data egress request:
 
   `http://localhost:5590/api/v1/configuration/storage/manualegresses/Id/resume`
 
+### Example cancel egress request
+
+```JSON
+{
+  "Id": "Request_Id",
+  "EndpointId": "AVEVA Data Hub_Location",
+  "Period": "00:00:30",
+  "EndIndex": "+00:15:00"
+}
+```
+
 ## Cancel a manual data egress request
 
 You can cancel a manual egress request to stop the egress. If needed, you can resume a cancelled request.
@@ -24,6 +35,16 @@ To cancel a manual data egress request:
 1. Use any tool capable of making HTTP requests to send the contents of the JSON request to the following configuration endpoint using `POST`:
 
   `http://localhost:5590/api/v1/configuration/storage/manualegresses/Id/cancel`
+
+### Example resume egress request
+
+```JSON
+{
+  "Id": "Request_Id",
+  "EndpointId": "AVEVA Data Hub_Location",
+  "StartIndex": "-00:05:00"
+}
+```
 
 ## Delete a manual data egress request
 
@@ -38,27 +59,6 @@ To delete a manual data egress request:
   To delete all egress requests, use the following endpoint:
 
   `http://localhost:5590/api/v1/configuration/storage/manualegresses`
-
-### Example cancel egress request
-
-```JSON
-{
-  "Id": "Request_Id",
-  "EndpointId": "AVEVA Data Hub_Location",
-  "Period": "00:00:30",
-  "EndIndex": "+00:15:00"
-}
-```
-
-### Example resume egress request
-
-```JSON
-{
-  "Id": "Request_Id",
-  "EndpointId": "AVEVA Data Hub_Location",
-  "StartIndex": "-00:05:00"
-}
-```
 
 ### Example delete egress request
 
