@@ -22,11 +22,18 @@ To configure the OPC UA data source:
 
 4. Use any tool capable of making HTTP requests to execute a `POST` command with the contents of that file to the following endpoint: `http://localhost:<port_number>/api/v1/configuration/<EDS_adapterId>/DataSource/`.
 
-The following example shows the HTTPS request using curl, which you must run from the same directory where the file is located, and uses the adapter instance created during installation, which is OpcUa1:
+    The following example shows the HTTPS request using curl or EdgeCmd, which you must run from the same directory where the file is located, and uses the adapter instance created during installation, which is OpcUa1:
 
-```bash
-curl -d "@OpcUa1DataSource.config.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/OpcUa1/DataSource"
-```
+    ### [curl](#tab/tabid-1)
+
+    ```bash
+    curl -d "@OpcUa1DataSource.config.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/OpcUa1/DataSource"  
+    ```
+        
+    ### [EdgeCmd](#tab/tabid-2)
+    
+    Tab content-2-1.
+    ***
 
 **Note:** After completing data source configuration, you need to configure data selection next. You can either generate a default data selection file or create the data selection file manually. For more information, see [Data selection configuration](xref:OPCUADataSelectionConfiguration).
 

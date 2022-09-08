@@ -20,17 +20,34 @@ To configure Modbus TCP data selection:
 
 1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:<port_number>/api/v1/configuration/<EDS adapterId>/DataSelection/`.
 
-The following example shows the HTTPS request using curl, which must be run from the same directory where the file is located, and uses the adapter instance created during installation, which is Modbus1:
+    The following example shows the HTTPS request using curl, which must be run from the same directory where the file is located, and uses the adapter instance created during installation, which is Modbus1:
+    
+    ### [curl](#tab/tabid-1)
 
-```bash
-curl -d "@DataSelection.config.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/Modbus1/DataSelection"
-```
+    ```bash
+    curl -d "@DataSelection.config.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/Modbus1/DataSelection"
+    ```
 
-To see the streams that have been created in EDS storage for the data specified in the configuration, run the following curl script:
+    ### [EdgeCmd](#tab/tabid-2)
 
-```bash
-curl http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/
-```
+    Tab content-2-1.
+    
+    ***
+
+    To see the streams that have been created in EDS storage for the data specified in the configuration, run the following curl script:
+
+    ### [curl](#tab/tabid-1)
+
+    ```bash
+    curl http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/
+    ```
+
+    ### [EdgeCmd](#tab/tabid-2)
+
+    Tab content-2-1.
+    
+    ***
+
 
 ## Parameters for Modbus TCP data selection
 
