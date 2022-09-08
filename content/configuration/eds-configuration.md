@@ -12,11 +12,20 @@ The following JSON file represents minimal configuration of an Edge Data Store. 
 
 1. Save or copy the example JSON in a file named `EdgeMinimumConfiguration.json` in any directory on a device with Edge Data Store installed.
 
-1. Run the following curl command from the directory where the file is located:
+1. Run the following curl command or EdgeCmd from the directory where the file is located:
 
-  ```bash
-  curl -d "@EdgeMinimumConfiguration.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration
-  ```
+    ### [curl](#tab/tabid-1)
+
+    ```bash
+    curl -d "@EdgeMinimumConfiguration.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration
+    ```
+
+    ### [EdgeCmd](#tab/tabid-2)
+
+    Tab content-2-1.
+    ***
+
+  
 
   The following will be set as the configuration of a running Edge Data Store. The configuration takes effect immediately after the command completes.
 
@@ -79,11 +88,19 @@ The following JSON file represents maximum configuration of an Edge Data Store. 
    
 2. Save the edited JSON in a file named `EdgeMaximumConfiguration.json` in any directory.
    
-3. Run the following curl command from the same directory where the file is located:
+3. Run the following curl command or EdgeCmd from the same directory where the file is located:
 
-  ```bash
-  curl -d "@EdgeMaximumConfiguration.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration
-  ```
+    ### [curl](#tab/tabid-1)
+
+    ```bash
+    curl -d "@EdgeMaximumConfiguration.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration
+    ```
+
+    ### [EdgeCmd](#tab/tabid-2)
+
+    Tab content-2-1.
+    ***
+
 
   The following will be set as the configuration for the running Edge Data Store. The configuration takes effect immediately after the command completes.
 
