@@ -39,7 +39,7 @@ The following table lists the parameters for manual egress.
 | Parameter             | Required       | Type      | Description                                        |
 |-----------------------|----------------|-----------|----------------------------------------------------|
 | `Id`                  | Optional       | string    | Unique identifier of the request.                  |
-| `EndpointId`            | Required       | string    | Destination that accepts OMF v1.2 and older messages. Supported destinations include AVEVA Data Hub and PI Server.|
+| `EndpointId`          | Required       | string    | Destination that accepts OMF v1.2 and older messages. Supported destinations include AVEVA Data Hub and PI Server.|
 | `Period`              | Optional       | string    | If the egress request includes future data, the `Period` is the frequency of time between each egress action after the `ScheduledTime`. Must be a string in the format `d.hh:mm:ss.##`. See `ScheduledTime` for additional information. If the egress request includes future data and the `Period` is not set, the default value is `00:60:00`, which is 60 minutes. If both the `StartIndex` and `EndIndex` are in the past, the `Period` is not used. |
 | `ScheduledTime`           | Optional       | string    | The date and time when egress request will begin. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ` and Local: `yyyy-mm-ddThh:mm:ss`. Use the `ScheduledTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `ScheduledTime`, EDS uses the time the request is received as the start time. <br>**Note:** The next egress job will not start until the previous egress job is complete. |
 | `StartIndex`          | Optional       | string    | Start of the data to transfer. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`, and Relative: `+d.hh:mm:ss.##` or `-d.hh:mm:ss.##`. Relative time strings are compared to the `ScheduledTime` to determine the start of the data to transfer. If the `ScheduledTime` is not specified, the relative time string is compared to the time the request is received.   |
@@ -58,9 +58,11 @@ The following table lists egress parameters for `DataSelectors`.
 
 ## Example manual egress request
 
+The following is an example manual egress request.
+
 ```JSON
 {
-    "Id": "Request_Id",
+    "Id": "Egress1",
     "EndpointId": "AVEVA Data Hub_Location",
     "Period": "00:00:30",
     "ScheduledTime": "2022-08-10T21:20:00Z",
@@ -74,3 +76,58 @@ The following table lists egress parameters for `DataSelectors`.
     ]
 }
 ```
+
+## Example response 
+
+The following is an example response for a manual egress request.
+
+```JSON
+{ 
+    "Id": "Egress1", 
+    "EndpointId": "AVEVA Data Hub_Location", 
+    "Period": "00:00:30", 
+    "RequestTimeUtc": "2022-08-10T21:20:00Z", 
+    "StartTime": "2022-08-10T21:20:00Z", 
+    "DataSelectors": [ 
+        { 
+            "Id": "PercentChangeFilter", 
+            "PercentChange": 1, 
+        } 
+    ], 
+    "StartIndex": "2022-08-08T18:20:00Z", 
+    "EndIndex": "2022-08-10T22:20:00Z", 
+    "StartIndexDateTimeUtc": "2022-08-08T18:20:00Z", 
+    "EndIndexDateTimeUtc": "2022-08-08T18:20:00Z", 
+    "Checkpoint": null, 
+    "Progress": 0, 
+    "Status": "Active", 
+    "Errors": null 
+}
+```
+
+### Response parameters
+
+Response parameters include information that was sent in the manual egress request and additional information about how the request will be processed. The following table lists the response parameters for manual egress.
+
+| Parameter               | Type      | Description                                        |
+|-------------------------|-----------|----------------------------------------------------|
+| `RequestTimeUtc`        |
+| `StartIndexDateTimeUtc` |
+| `EndIndexDateTimeUtc`   |
+| `Checkpoint`            |
+| `Progress`              |
+| `Status`                |
+| `Errors`                |
+
+## REST URLs
+
+| Action     | Relative URL                                              | HTTP verb | Description                          |
+|------------|-----------------------------------------------------------|-----------|--------------------------------------|
+| List All   | `api/v1/configuration/storage/manualegresses`             | GET       | Returns the status of all manual egress jobs in the queue. |
+| Status     | `api/v1/configuration/storage/manualegresses/<Id>`        | GET       | Returns the status of a specific egress job. |
+| Resume     | `api/v1/configuration/storage/manualegresses/<Id>/resume` | POST      | Resumes a canceled or failed egress job.  |
+| Cancel     | `api/v1/configuration/storage/manualegresses/<Id>/cancel` | POST      | Cancels an egress job.                |
+| Delete     | `api/v1/configuration/storage/manualegresses/<Id>`        | DELETE    | Cancels all active history recovery operations and removes states |
+| Delete All | `api/v1/configuration/storage/manualegresses`             | DELETE   | Gets the status of an individual history recovery
+
+**Note:** Replace `<Id>` with the Id of the egress job for which you want to perform the action.
