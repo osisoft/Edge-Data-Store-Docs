@@ -47,7 +47,7 @@ To add system component:
   ### [EdgeCmd](#tab/tabid-2)
 
   ```
-  edgecmd add components -type <componentType> -id <componentId>
+  edgecmd add components -type Modbus -id Modbus1
   ```
   ***
 

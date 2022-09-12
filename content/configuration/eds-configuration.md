@@ -22,7 +22,9 @@ The following JSON file represents minimal configuration of an Edge Data Store. 
 
     ### [EdgeCmd](#tab/tabid-2)
 
-    Tab content-2-1.
+    ```
+    edgecmd set storage -file EdgeMinimumConfiguration.json
+    ```
     ***
 
   
@@ -98,7 +100,9 @@ The following JSON file represents maximum configuration of an Edge Data Store. 
 
     ### [EdgeCmd](#tab/tabid-2)
 
-    Tab content-2-1.
+    ```
+    edgecmd set storage -file EdgeMaximumConfiguration.json
+    ```
     ***
 
 
