@@ -47,13 +47,11 @@ To add system component:
   ### [EdgeCmd](#tab/tabid-2)
 
   ```
-  cmd
+  edgecmd add components -type <componentType> -id <componentId>
   ```
   ***
 
-
-
-After the curl command completes successfully, the new component is available for configuration and use.
+After the command completes successfully, the new component is available for configuration and use.
 
 ## Parameters for system components
 
