@@ -32,7 +32,9 @@ To configure the OPC UA data source:
         
     ### [EdgeCmd](#tab/tabid-2)
     
-    Tab content-2-1.
+    ```
+    edgecmd set dataSource -cid OpcUa1 -file OpcUa1DataSource.config.json
+    ```
     ***
 
 **Note:** After completing data source configuration, you need to configure data selection next. You can either generate a default data selection file or create the data selection file manually. For more information, see [Data selection configuration](xref:OPCUADataSelectionConfiguration).
