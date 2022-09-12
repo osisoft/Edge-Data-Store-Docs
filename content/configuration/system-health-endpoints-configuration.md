@@ -22,13 +22,13 @@ To configure system health endpoints:
 
     Examples using curl and EdgeCmd (run this command from the same directory where the file is located):
     
-    ### [curl](#tab/tabid-1)
+    ## [curl](#tab/tabid-1)
 
     ```bash
     curl -d "@System_HealthEndpoints.json" -H "Content-Type: application/json" http://localhost:5590/api/v1/configuration/System/HealthEndpoints
     ```
 
-    ### [EdgeCmd](#tab/tabid-2)
+    ## [EdgeCmd](#tab/tabid-2)
 
     ```
     edgecmd set HealthEndpoins -cid <ComponentID> -file System_HealthEndpoints.json
