@@ -103,7 +103,6 @@ The following JSON file represents maximum configuration of an Edge Data Store. 
     ```
     ***
 
-
     The following will be set as the configuration for the running Edge Data Store. The configuration takes effect immediately after the command completes.
 
     ```json
