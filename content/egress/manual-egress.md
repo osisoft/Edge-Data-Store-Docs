@@ -16,15 +16,15 @@ To send a manual data egress request:
 
 1. Create a JSON file.
 
-  - For content structure, see the following [Example manual egress request](#example_manual_egress_request).
+  - For content structure, see the following [Example manual egress request](#example-manual-egress-request).
 
   **Note:** If you prefer, you can send the JSON request directly without saving the parameters to a file.
 
-1. Update the parameters as needed. For descriptions of all available parameters, see [Parameters](#parameters).
+2. Update the parameters as needed. For descriptions of all available parameters, see [Parameters](#parameters).
 
-1. Save the JSON file to any directory on the device where Edge Data Store is installed.
+3. Save the JSON file to any directory on the device where Edge Data Store is installed.
 
-1. Use any tool capable of making HTTP requests to send the contents of the JSON request to the following configuration endpoint using `POST`:
+4. Use any tool capable of making HTTP requests to send the contents of the JSON request to the following configuration endpoint using `POST`:
 
   `http://localhost:5590/api/v1/configuration/storage/manualegresses`
 
@@ -69,7 +69,7 @@ The following is an example manual egress request.
     "Period": "00:00:30",
     "ScheduledTime": "2022-08-10T21:20:00Z",
     "StartIndex": "2022-08-08T18:20:00Z",
-    "EndIndex": "2022-08-10T22:20:00Z",
+    "EndIndex": "+ 04:00:00",
     "DataSelectors": [
         {
             "id": "PercentChangeFilter",
@@ -79,7 +79,7 @@ The following is an example manual egress request.
 }
 ```
 
-## Example response 
+## Example manual egress response 
 
 The following is an example response for a manual egress request.
 
