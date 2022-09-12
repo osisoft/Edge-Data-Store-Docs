@@ -118,15 +118,8 @@ To writer data to the container:
 
 1. Save the JSON file with the name `OmfCreateDataEvents.json` on the local device.
 
-1. To write data values to the SDS stream, run the following curl command or EdgeCmd:
-
-   # [curl](#tab/tabid-1)
+1. To write data values to the SDS stream, run the following curl command:
    
    ```bash
    curl -d "@OmfCreateDataEvents.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: data" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
    ```
-   
-   # [EdgeCmd](#tab/tabid-2)
-   
-   Tab content-2-1.
-   ***
