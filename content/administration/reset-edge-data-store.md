@@ -31,6 +31,7 @@ To reset EDS:
   ```
   edgecmd reset
   ```
+  
   ***
   
   An HTTP status 204 message indicates success.

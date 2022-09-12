@@ -37,7 +37,7 @@ To change the message logging behavior:
       ### [EdgeCmd](#tab/tabid-2)
       
       ```
-      edgecmd edir logging -cid <componentID> -loglevel <LogLevel>
+      edgecmd edit logging -cid <componentID> -loglevel <LogLevel>
       ```
       ***
 
