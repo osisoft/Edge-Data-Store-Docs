@@ -26,7 +26,7 @@ To reset the Storage component:
     
     ## [EdgeCmd](#tab/tabid-2)
     
-    Tab content-2-1.
+    edgecmd storage reset
     ***
     
     An HTTP status 204 message indicates success.

@@ -26,5 +26,7 @@ To retrieve the product version of EDS:
   
   ## [EdgeCmd](#tab/tabid-2)
   
-  Tab content-2-1.
+  ```bash
+  edgecmd get version
+  ```
   ***

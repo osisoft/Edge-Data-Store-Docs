@@ -28,7 +28,9 @@ To stop an EDS adapter instance:
         
     ## [EdgeCmd](#tab/tabid-2)
     
-    Tab content-2-1.
+    ```
+    edgecmd -cid <ComponentID> stop
+    ```
     ***
 
     An HTTP status 204 message indicates success.
@@ -55,7 +57,9 @@ To start an EDS adapter instance:
     
     ## [EdgeCmd](#tab/tabid-2)
     
-    Tab content-2-1.
+    ```
+    edgecmd -cid <ComponentID> start
+    ```
     ***
 
     An HTTP status 204 message indicates success.

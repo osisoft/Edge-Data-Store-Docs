@@ -28,7 +28,9 @@ To reset EDS:
   
   ## [EdgeCmd](#tab/tabid-2)
   
-  Tab content-2-1.
+  ```
+  edgecmd reset
+  ```
   ***
   
   An HTTP status 204 message indicates success.

@@ -28,15 +28,17 @@ To change the message logging behavior:
 
       Example using curl or EdgeCmd (run this command from the same directory where the file is located):
 
-      # [curl](#tab/tabid-1)
+      ### [curl](#tab/tabid-1)
       
       ```bash
       curl -d "@componentId_Logging.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/<ComponentId>/Logging
       ```
       
-      # [EdgeCmd](#tab/tabid-2)
+      ### [EdgeCmd](#tab/tabid-2)
       
-      Tab content-2-1.
+      ```
+      edgecmd edir logging -cid <componentID> -loglevel <LogLevel>
+      ```
       ***
 
 
