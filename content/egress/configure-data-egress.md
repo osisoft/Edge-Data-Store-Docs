@@ -4,7 +4,9 @@ uid: configureEgress
 
 # Configure periodic data egress
 
-Once the AVEVA Data Hub or PI Server destinations are prepared to receive OMF messages, configure data egress to create the connection to the destination and specify the details of the data transfer. Periodic egress runs on a regular schedule to ensure that data is sent to long term storage. For more information on egress destinations, see [Configure egress destinations](xref:PrepareEgressDestinations).
+Periodic data egress is a recurring task that sends the timeseries data collected by EDS to long term storage in either AVEVA Data Hub or PI Server. You can create multiple egress destinations and multiple periodic egress tasks. Periodic egress runs on a regular schedule to ensure that data is sent to long term storage.
+
+Once the AVEVA Data Hub or PI Server destinations are prepared to receive OMF messages, configure data egress to create the connection to the destination and specify the details of the data egress, including the data to include and the frequency to send it. For more information on egress destinations, see [Configure egress destinations](xref:PrepareEgressDestinations).
 
 To support the reuse of common configuration blocks, EDS egress configuration is divided into four facets, which can be configured together or separately:
 
@@ -19,8 +21,6 @@ To support the reuse of common configuration blocks, EDS egress configuration is
 **Warnings:** 
 
   - You cannot add configurations manually because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit configurations. For additional endpoints, see [REST URLs](#rest-urls).
-  
-  - If configuring the facets separately,`EgressEndpoints`, `Schedules`, and `DataSelectors` must be configured before they are referenced in `EgressConfigurations`.
 
   - If you delete or remove an egress configuration and then recreate it with `Backfill` set to `true`, duplicate data will appear on any stream that was previously egressed successfully. New streams will not see duplicate data.
 
@@ -87,7 +87,7 @@ The following table lists egress parameters for `Schedules`.
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
 | **Id**                          | Required                  | string    | Unique identifier of the schedule configuration    |
 | **Period**                      | Required                  | string    | Frequency of time between each egress action beginning at or after the `StartTime`. Must be a string in the following format `d.hh:mm:ss.##`. See `StartTime` for additional information. |
-| **StartTime**                   | Optional                  | string    | The date and time when egress actions will begin. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ` and Local: `yyyy-mm-ddThh:mm:ss`. Use the `StartTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `StartTime`, egress begins as soon as you submit the configuration and will occur again whenever the length of the `Period` completes. For example, a `Period` of `00:15:00` without a defined `StartTime` results in immediate data egress when you submit the configuration and then every 15 minutes thereafter. Conversely, if you use a `StartTime` of `2022-10-02T06:00:00`, a `Period` of `00:15:00`, and you submit your configuration at 6:07 on October 2, 2022, egress will begin at 6:15 and will continue every 15 minutes thereafter. <br>**Note:** The next egress job will not start until the previous egress job is complete. |
+| **StartTime**                   | Optional                  | string    | The date and time when egress actions will begin. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ` and Local: `yyyy-mm-ddThh:mm:ss`. Use the `StartTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `StartTime`, egress begins as soon as you submit the configuration and will occur again whenever the length of the `Period` completes. For example, a `Period` of `00:15:00` without a defined `StartTime` results in immediate data egress when you submit the configuration and then every 15 minutes thereafter. Conversely, if you use a `StartTime` of `2022-10-02T06:00:00`, a `Period` of `00:15:00`, and you submit your configuration at 6:07 on October 2, 2022, egress will begin at 6:15 and will continue every 15 minutes thereafter.  |
 
 The following table lists egress parameters for `DataSelectors`.
 

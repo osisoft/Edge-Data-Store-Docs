@@ -4,9 +4,11 @@ uid: ManualEgress
 
 # Configure manual data egress
 
-Once the AVEVA Data Hub or PI Server destinations are configured to receive OMF messages, you can send data egress requests as needed. For example, you may need to backfill data or want to review data for an event as soon as possible. For manual data egress, you specify the details of the data transfer which includes the start time and the data to egress. For more information on egress destinations, see [Configure egress destinations](xref:PrepareEgressDestinations).
+Manual data egress is a task that sends the timeseries data collected by EDS to long term storage in either AVEVA Data Hub or PI Server. You can create multiple egress destinations and multiple manual egress tasks. Periodic egress runs on a regular schedule to ensure that data is sent to long term storage.
 
-Make requests in JSON using parameters, similar to periodic egress. You can either save the parameters in a file to send them or send the request directly. In addition to creating manual egress requests, you can cancel, resume, and delete these requests. 
+Once the AVEVA Data Hub or PI Server destinations are configured to receive OMF messages, you can send data egress requests as needed. For example, you may need to backfill data or want to review data for an event as soon as possible. For more information on egress destinations, see [Configure egress destinations](xref:PrepareEgressDestinations). 
+
+Make requests in JSON using parameters, similar to periodic egress, to specify the data to egress and when the egress should happen. You can either save the parameters in a file to send them or send the request directly. In addition to creating manual egress requests, you can cancel, resume, and delete these requests. 
 
 ## Send manual data egress request
 
@@ -39,11 +41,11 @@ The following table lists the parameters for manual egress.
 | Parameter             | Required       | Type      | Description                                        |
 |-----------------------|----------------|-----------|----------------------------------------------------|
 | `Id`                  | Optional       | string    | Unique identifier of the request.                  |
-| `EndpointId`          | Required       | string    | Destination that accepts OMF v1.2 and older messages. Supported destinations include AVEVA Data Hub and PI Server.|
-| `Period`              | Optional       | string    | If the egress request includes future data, the `Period` is the frequency of time between each egress action after the `ScheduledTime`. Must be a string in the format `d.hh:mm:ss.##`. See `ScheduledTime` for additional information. If the egress request includes future data and the `Period` is not set, the default value is `00:60:00`, which is 60 minutes. If both the `StartIndex` and `EndIndex` are in the past, the `Period` is not used. |
-| `ScheduledTime`           | Optional       | string    | The date and time when egress request will begin. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ` and Local: `yyyy-mm-ddThh:mm:ss`. Use the `ScheduledTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `ScheduledTime`, EDS uses the time the request is received as the start time. <br>**Note:** The next egress job will not start until the previous egress job is complete. |
-| `StartIndex`          | Optional       | string    | Start of the data to transfer. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`, and Relative: `+d.hh:mm:ss.##` or `-d.hh:mm:ss.##`. Relative time strings are compared to the `ScheduledTime` to determine the start of the data to transfer. If the `ScheduledTime` is not specified, the relative time string is compared to the time the request is received.   |
-| `EndIndex`            | Optional       | string    | End of the data to transfer. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`, and Relative: `+d.hh:mm:ss.##`. Relative time strings are compared to the `StartIndex` to determine the start of the data to transfer. Relative time strings must be positive to ensure a range of data is selected for egress. |
+| `EndpointId`          | Required       | string    | Unique identifier of the endpoint destination.     |
+| `Period`              | Optional       | string    | The frequency of time between each egress action after the initial egress. Must be a string in the format `d.hh:mm:ss.##`. See `ScheduledTime` for additional information. If the `Period` is not set, the default value is `01:00:00`, which is 1 hour. If the entire range of data specified by the `StartIndex` and `EndIndex` is in the past, the `Period` is not used. |
+| `ScheduledTime`       | Optional       | string    | The date and time when the egress request will begin. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ` and Local: `yyyy-mm-ddThh:mm:ss`. Use the `ScheduledTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `ScheduledTime`, EDS uses the time the request is received. <br>**Note:** Only one manual egress job runs at a time. |
+| `StartIndex`          | Optional       | string    | Identifies the first data point to transfer. The Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`, and Relative: `+d.hh:mm:ss.##` or `-d.hh:mm:ss.##`. <br>Relative time strings are calculated based on the `ScheduledTime`. If the `ScheduledTime` is not specified, the relative time string is calculated based on the time the egress job starts. |
+| `EndIndex`            | Optional       | string    | Identifies the last data point to transfer. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`, and Relative: `+d.hh:mm:ss.##`. <br>Relative time strings are calculated based on the `StartIndex`. Relative time strings must be positive to ensure a range of data is selected for egress. |
 | `DataSelectors`       | Optional       | array     | An array of configuration settings to select data for egress. See the `DataSelectors` parameters in the following table.    |
 
 The following table lists egress parameters for `DataSelectors`.
@@ -84,7 +86,7 @@ The following is an example response for a manual egress request.
 ```JSON
 { 
     "Id": "Egress1", 
-    "EndpointId": "AVEVA Data Hub_Location", 
+    "EndpointId": "AVEVA Data Hub_Destination", 
     "Period": "00:00:30", 
     "RequestTimeUtc": "2022-08-10T21:20:00Z", 
     "StartTime": "2022-08-10T21:20:00Z", 
@@ -95,9 +97,9 @@ The following is an example response for a manual egress request.
         } 
     ], 
     "StartIndex": "2022-08-08T18:20:00Z", 
-    "EndIndex": "2022-08-10T22:20:00Z", 
+    "EndIndex": "+00:04:00:00", 
     "StartIndexDateTimeUtc": "2022-08-08T18:20:00Z", 
-    "EndIndexDateTimeUtc": "2022-08-08T18:20:00Z", 
+    "EndIndexDateTimeUtc": "2022-08-10T22:20:00Z", 
     "Checkpoint": null, 
     "Progress": 0, 
     "Status": "Active", 
@@ -109,15 +111,15 @@ The following is an example response for a manual egress request.
 
 Response parameters include information that was sent in the manual egress request and additional information about how the request will be processed. The following table lists the response parameters for manual egress.
 
-| Parameter               | Type      | Description                                        |
-|-------------------------|-----------|----------------------------------------------------|
-| `RequestTimeUtc`        |
-| `StartIndexDateTimeUtc` |
-| `EndIndexDateTimeUtc`   |
-| `Checkpoint`            |
-| `Progress`              |
-| `Status`                |
-| `Errors`                |
+| Parameter               | Description                                        |
+|-------------------------|----------------------------------------------------|
+| `RequestTimeUtc`        | The date and time EDS received the egress request. |
+| `StartIndexDateTimeUtc` | The date and time of the first data point to transfer in Coordinated Universal Time (UTC). If you specified a relative time, this is the calculated result. |
+| `EndIndexDateTimeUtc`   | The date and time of the last data point to transfer Coordinated Universal Time (UTC). If you specified a relative time, this is the calculated result. |
+| `Checkpoint`            | The latest timestamp that the egress has completed with the range between `StartIndex` and `EndIndex`.  |
+| `Progress`              | Current percent complete of the egress job.   |
+| `Status`                | Status of the egress job. Values are `Active`, `Canceled`, `Complete`, and `Failed`.            |
+| `Errors`                | Errors encountered during egress.             |
 
 ## REST URLs
 
