@@ -32,7 +32,9 @@ To configure the Modbus TCP data source:
     
     # [EdgeCmd](#tab/tabid-2)
     
-    Tab content-2-1.
+    ```
+    edgecmd set dataSource -cid Modbus1 -file Modbus1DataSource.config.json
+    ```
     ***
 
     

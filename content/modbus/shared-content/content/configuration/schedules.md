@@ -1,5 +1,5 @@
 ---
-uid: SchedulesConfiguration
+uid: ModbusSchedulesConfiguration
 ---
 
 # Schedules

@@ -26,7 +26,9 @@ To update the storage runtime configuration, complete the following:
     
   ### [EdgeCmd](#tab/tabid-2)
   
-  Tab content-2-1.
+  ```
+  edgecmd set runtime -cid OpcUa1 -file Storage_Runtime.config.json
+  ```
   ***
 
 
