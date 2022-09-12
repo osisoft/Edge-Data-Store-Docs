@@ -29,8 +29,8 @@ Complete the following steps to configure data filters. Use the `PUT` method in 
 6. Enter the following curl command or EdgeCmd to initialize the data filters configuration.
 
     ### [curl](#tab/tabid-1)
-    
-    ```bash
+.    
+   ```bash
     curl -d "@ConfigureDataFilters.json" -H "Content-Type: application/json" -X PUT "http://localhost:5590/api/v1/configuration/Modbus1/DataFilters"
     ```
     

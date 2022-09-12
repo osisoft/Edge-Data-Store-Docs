@@ -85,7 +85,7 @@ To configure the OPC UA data selection:
 
 1. Update the parameters as needed. For a table of all available parameters, see [Parameters for OPC UA data selection](#parameters-for-opc-ua-data-selection).
 
-1. Save the file to the device with Edge Data Store installed with the name `DataSelection.config.json`.
+1. Save the file to the device with Edge Data Store installed with the name `OpcUa1DataSelection.config.json`.
 
 1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:<port_number>/api/v1/configuration/<EDS adapterId>/DataSelection/`
 
