@@ -57,11 +57,19 @@ To generate the default data selection file and use it to configure data selecti
 
 1. Save the file.
 
-1. Run the following curl script from the directory where the file is located, updating the file name and destination in the script if needed:
+1. Run the following curl command or EdgeCmd from the directory where the file is located, updating the file name and destination in the script if needed:
 
+  # [curl](#tab/tabid-1)
+  
   ```bash
   curl -d "@OpcUa1_DataSelection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
   ```
+  
+  # [EdgeCmd](#tab/tabid-2)
+  
+  Tab content-2-1.
+  ***
+
 
 ## Configure OPC UA data selection by manually creating the file
 

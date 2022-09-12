@@ -16,8 +16,15 @@ To retrieve the product version of EDS:
   http://localhost:<port_number>/api/v1/diagnostics/productinformation
   ```
 
-   Example using curl and the default port number:
+  Example using curl and EdgeCmd and the default port number:
 
-   ```bash
-   curl -v http://localhost:5590/api/v1/Diagnostics/ProductInformation
-   ```
+  ## [curl](#tab/tabid-1)
+  
+  ```bash
+  curl -v http://localhost:5590/api/v1/Diagnostics/ProductInformation
+  ```
+  
+  ## [EdgeCmd](#tab/tabid-2)
+  
+  Tab content-2-1.
+  ***

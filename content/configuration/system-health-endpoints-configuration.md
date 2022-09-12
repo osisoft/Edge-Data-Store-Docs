@@ -20,11 +20,18 @@ To configure system health endpoints:
 
 1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/System/HealthEndpoints`, updating the port number if needed.
 
-    Example using curl (run this command from the same directory where the file is located):
+    Examples using curl and EdgeCmd (run this command from the same directory where the file is located):
+    
+    ### [curl](#tab/tabid-1)
 
     ```bash
     curl -d "@System_HealthEndpoints.json" -H "Content-Type: application/json" http://localhost:5590/api/v1/configuration/System/HealthEndpoints
     ```
+
+    ### [EdgeCmd](#tab/tabid-2)
+
+    Tab content-2-1.
+    ***
 
 ## Parameters
 

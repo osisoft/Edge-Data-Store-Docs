@@ -18,11 +18,18 @@ To stop an EDS adapter instance:
     http://localhost:<port_number>/api/v1/administration/<adapterId>/Stop
     ```
 
-    Example **Stop the OpcUa1 adapter** using curl and the default port:
+    Example **Stop the OpcUa1 adapter** using curl or EdgeCmd and the default port:
 
+    ## [curl](#tab/tabid-1)
+    
     ```bash
     curl -d "" http://localhost:5590/api/v1/Administration/OpcUa1/Stop
     ```
+        
+    ## [EdgeCmd](#tab/tabid-2)
+    
+    Tab content-2-1.
+    ***
 
     An HTTP status 204 message indicates success.
 
@@ -38,10 +45,17 @@ To start an EDS adapter instance:
     http://localhost:<port_number>/api/v1/administration/<adapterId>/Start
     ```
 
-    Example **Stop the Modbus1 adapter** using curl and the default port:
+    Example **Stop the Modbus1 adapter** using curl or EdgeCmd and the default port:
 
+    ## [curl](#tab/tabid-1)
+    
     ```bash
     curl -d "" http://localhost:5590/api/v1/Administration/Modbus1/Start
     ```
+    
+    ## [EdgeCmd](#tab/tabid-2)
+    
+    Tab content-2-1.
+    ***
 
     An HTTP status 204 message indicates success.

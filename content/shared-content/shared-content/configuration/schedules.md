@@ -26,13 +26,21 @@ Complete the following steps to change the schedules configuration:
 
     `5590` is the default port number. If you selected a different port number, replace it with that value.
 
-    Example using `curl`:
+    Example using curl or EdgeCmd:
 
-    **Note:** Run this command from the same directory where the file is located.
+    **Note:** Run this curl command or EdgeCmd from the same directory where the file is located.
 
+    # [curl](#tab/tabid-1)
+    
     ```bash
     curl -d "@ConfigureSchedules.json" -H "Content-Type: application/json" -X PUT "http://localhost:5590/api/v1/configuration/<ComponentId>/Schedules"
     ```
+    
+    # [EdgeCmd](#tab/tabid-2)
+    
+    Tab content-2-1.
+    ***
+
 
 On successful execution, the schedules change takes effect immediately during runtime.
 

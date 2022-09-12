@@ -18,10 +18,17 @@ To reset EDS:
   http://localhost:<port_number>/api/v1/administration/System/Reset
   ```
 
-  Example using curl and the default port:
+  Example using curl or EdgeCmd and the default port:
 
+  ## [curl](#tab/tabid-1)
+  
   ```bash
   curl -d "" http://localhost:5590/api/v1/Administration/System/Reset
   ```
-
+  
+  ## [EdgeCmd](#tab/tabid-2)
+  
+  Tab content-2-1.
+  ***
+  
   An HTTP status 204 message indicates success.
