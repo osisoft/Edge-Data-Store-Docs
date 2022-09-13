@@ -30,8 +30,7 @@ To update the storage runtime configuration, complete the following:
   edgecmd set runtime -file Storage_Runtime.config.json
   ```
   ***
-
-
+  
   **Note:** The @ symbol is a required prefix for this command.
 
 ## Parameters

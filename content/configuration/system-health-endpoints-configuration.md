@@ -31,7 +31,7 @@ To configure system health endpoints:
     ### [EdgeCmd](#tab/tabid-2)
 
     ```
-    edgecmd set HealthEndpoins -cid <ComponentID> -file System_HealthEndpoints.json
+    edgecmd set HealthEndpoints -file System_HealthEndpoints.json
     ```
     
     ***
