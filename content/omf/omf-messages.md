@@ -53,11 +53,21 @@ To create an OMF type:
 
 1. To create the OMF type in Edge Storage, store the JSON file with the name `OmfCreateType.json` on the local device.
 
-1. Run the following curl command:
+1. Run the following curl command or EdgeCmd:
    
+    # [curl](#tab/tabid-1)
+    
    ```bash
    curl -d "@OmfCreateType.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: type" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
    ```
+    
+    # [EdgeCmd](#tab/tabid-2)
+    
+    ```
+    Help wanted
+    ```
+    ***
+   
 
 When this command completes successfully, an OMF type with the same name is created on the server. Any number of containers can be created from the type, as long as they use a timestamp as an index and have a 32-bit floating point value. The create type message needs to be sent before container and data messages.
 
@@ -82,11 +92,21 @@ The next step in writing OMF data is to create an OMF container. To create an OM
 
 1. To create the OMF container in Edge Storage, store the JSON file with the name `OmfCreateContainer.json` on the local device.
 
-1. To create the SDS stream to store data defined by the type, run the following curl command:
+1. To create the SDS stream to store data defined by the type, run the following curl command or EdgeCmd:
+   
+   # [curl](#tab/tabid-1)
     
    ```bash
    curl -d "@OmfCreateContainer.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: container" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
    ```
+   
+    
+    # [EdgeCmd](#tab/tabid-2)
+    
+    ```
+    Help wanted
+    ```
+    ***
 
 
 ## Data messages
@@ -118,8 +138,17 @@ To writer data to the container:
 
 1. Save the JSON file with the name `OmfCreateDataEvents.json` on the local device.
 
-1. To write data values to the SDS stream, run the following curl command:
+1. To write data values to the SDS stream, run the following curl command or EdgeCmd:
    
-   ```bash
-   curl -d "@OmfCreateDataEvents.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: data" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
-   ```
+    # [curl](#tab/tabid-1)
+
+    ```bash
+    curl -d "@OmfCreateDataEvents.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: data" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
+    ```
+
+    # [EdgeCmd](#tab/tabid-2)
+    
+    ```
+    Help wanted
+    ```
+    ***

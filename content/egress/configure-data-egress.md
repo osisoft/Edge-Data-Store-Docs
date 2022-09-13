@@ -46,25 +46,56 @@ To configure EDS for data egress:
 | Creates DataSelectors only            | **DataSelectors.json**         | POST      | `http://localhost:5590/api/v1/configuration/storage/dataselectors`         |
 | Creates EgressConfigurations only     | **EgressConfigurations.json**  | POST      | `http://localhost:5590/api/v1/configuration/storage/egressconfigurations`  |
 
-Example using cURL, which must be run from the directory where the JSON file is saved:
+Examples using cURL and EdgeCmd, which must be run from the directory where the JSON file is saved:
+
+# [curl](#tab/tabid-1)
 
 ```bash
 curl -d "@{Filename}" -H "Content-Type: application/json" -X {Command} {Endpoint}
 ```
 
+
+# [EdgeCmd](#tab/tabid-2)
+
+```
+EdgeCmd {Command} {Endpoint} -file {Filename}
+```
+***
+
+
 **Note:** The @ symbol is a required prefix for this command. `{Filename}`, `{Command}` and `{Endpoint}` should be replaced by the corresponding filename, command, and endpoint.
 
 - To configure multiple egress facets together:
 
-```bash
-curl -d "@StorageEgress.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration
-```
+    # [curl](#tab/tabid-1)
+    
+    ```bash
+    curl -d "@StorageEgress.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration
+    ```
+    
+    # [EdgeCmd](#tab/tabid-2)
+    
+    ```
+    edgecmd set application -file StorageEgress.json    
+    ```
+    ***
+
 
 - To configure schedules only:
 
-```bash
-curl -d "@Schedules.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration/storage/schedules
-```
+    # [curl](#tab/tabid-1)
+    
+    ```bash
+    curl -d "@Schedules.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration/storage/schedules
+    ```
+
+    # [EdgeCmd](#tab/tabid-2)
+    
+    ```
+    edgecmd set schedules -file Schedudles.json
+    ```
+    ***
+
 
 ## Parameters
 
