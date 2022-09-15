@@ -87,25 +87,28 @@ The following is an example response for a manual egress request.
 
 ```JSON
 { 
-    "Id": "Egress1", 
-    "EndpointId": "AVEVA Data Hub_Destination", 
-    "Period": "00:00:30", 
-    "RequestTimeUtc": "2022-08-10T21:20:00Z", 
-    "StartTime": "2022-08-10T21:20:00Z", 
-    "DataSelectors": [ 
+    "id": "Egress1", 
+    "endpointId": "AVEVA Data Hub_Location", 
+    "period": "00:00:30", 
+    "requestTimeUtc": "2022-08-10T13:45:58.607148Z", 
+    "scheduledTime": "2022-08-10T21:20:00Z", 
+    "dataSelectors": [ 
         { 
-            "Id": "PercentChangeFilter", 
-            "PercentChange": 1, 
+            "id": "PercentChangeFilter",
+            "streamFilter": null, 
+            "absoluteDeadband": null,
+            "percentChange": 1, 
+            "expirationPeriod": null
         } 
     ], 
-    "StartIndex": "2022-08-08T18:20:00Z", 
-    "EndIndex": "+00:04:00:00", 
-    "StartIndexDateTimeUtc": "2022-08-08T18:20:00Z", 
-    "EndIndexDateTimeUtc": "2022-08-10T22:20:00Z", 
-    "Checkpoint": null, 
-    "Progress": 0, 
-    "Status": "Active", 
-    "Errors": null 
+    "startIndex": "2022-08-08T18:20:00Z", 
+    "endIndex": "+ 04:00:00", 
+    "startIndexDateTimeUtc": "2022-08-08T18:20:00Z", 
+    "endIndexDateTimeUtc": "2022-08-10T22:20:00Z", 
+    "checkpoint": null, 
+    "progress": 0, 
+    "status": "Active", 
+    "errors": null 
 }
 ```
 
