@@ -10,7 +10,7 @@ Once the AVEVA Data Hub or PI Server destinations are configured to receive OMF 
 
 Make requests in JSON using parameters, similar to periodic egress, to specify the data to egress and when the egress should happen. You can either save the parameters in a file to send them or send the request directly. In addition to creating manual egress requests, you can cancel, resume, and delete these requests. 
 
-**Note:** The maximum number of active manual egress jobs is 50. If the maximum number is reached, new manual egress requests will be rejected. 
+**Note:** The maximum number of manual egress jobs is 50. If the maximum number is reached, new manual egress requests will be rejected. Use the delete URLs to remove egress jobs that are no longer needed.  
 
 ## Send manual data egress request
 
