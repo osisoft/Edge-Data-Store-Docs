@@ -26,7 +26,7 @@ Once collected, the data is stored locally in configurable data storage within E
 
 EDS runs on both Linux and Windows platforms and is comprised of separate components that each perform a specific function within EDS. The following diagram shows Edge Data Store architecture with all of its components and how the data flow through those components:
 
-![EDS architecture](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/EDSArchitecturalDiag.jpg "EDS architecture")
+![EDS architecture](../content/images/EDSArchitecturalDiag.jpg "EDS architecture")
 
 EDS components are shown in grey within the Edge Data Store in the diagram:
 

@@ -114,8 +114,6 @@ To install EDS on Linux:
    sudo apt install ./EdgeDataStore_linux-arm.deb
    ```
 
-   ![alt text](https://osisoft.github.io/Edge-Data-Store-Docs/V1/images/LinuxInstall1.jpg "Linux Installation")
-
    **Debian 9 or later (Raspberry PI 3,4: Ubuntu ARM64 Server, Google Coral Dev Board, Nvidia Nano Jetson)**
 
    ```bash
@@ -124,18 +122,18 @@ To install EDS on Linux:
 
    A validation check for prerequisites is performed.
 
-1. If the install fails, run the following commands from the terminal window and try the install again:
+2. If the install fails, run the following commands from the terminal window and try the install again:
 
    ```bash
    sudo apt update
    sudo apt upgrade
    ```
 
-1. (Optional) Change the port number and press Enter. The default port is 5590.
+3. (Optional) Change the port number and press Enter. The default port is 5590.
 
    **Note:** If you specify an invalid value for the port, the install will proceed with the default value of 5590.
 
-1. (Optional) Add a system component for a Modbus TCP EDS adapter instance, an OPC UA EDS adapter instance, or both, and press Enter.
+4. (Optional) Add a system component for a Modbus TCP EDS adapter instance, an OPC UA EDS adapter instance, or both, and press Enter.
 
     **Note:** The Modus TCP EDS adapter and the OPC UA EDS adapter are both installed, regardless of whether system components are added. Additional system components can be added for each adapter after installation.
 
