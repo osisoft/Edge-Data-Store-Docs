@@ -6,7 +6,7 @@ uid: omfOverview
 
 Create a custom application using OSIsoft Message Format (OMF) to send data to EDS from sources that cannot use Modbus or OPC UA protocols. The following diagram depicts the data flow from an OMF data collection application into EDS:
 
-![EDS OMF Ingress](../content/images/OMFIngressExample.jpg "OMF Ingress Example")
+![EDS OMF Ingress](../images/OMFIngressExample.jpg "OMF Ingress Example")
 
 The OMF application collects data from a data source and sends it to the Edge Data Store endpoint. The EDS endpoint sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or AVEVA Data Hub. The OMF application must run on the same device as Edge Data Store and no authentication is needed.
 
