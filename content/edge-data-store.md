@@ -8,7 +8,7 @@ Edge Data Store (EDS) is a lightweight data collection and storage application d
 
 The following diagram shows conceptually how EDS captures data and sends to permanent storage:
 
-![EDS conceptual diagram](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/EDSConceptualDiag.jpg "EDS conceptual diagram")
+![EDS conceptual diagram](content/images/EDSConceptualDiag.jpg "EDS conceptual diagram")
 
 EDS collects data using any of the following methods:
 
