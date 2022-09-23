@@ -2,7 +2,7 @@
 uid: releaseNotes
 ---
 
-# Edge Data Store 1.1 Release notes
+# Edge Data Store 1.1 release notes
 
 Edge Data Store (EDS) is a lightweight data collection and storage application designed to capture data at the edge of networks for historical storage and analysis. It runs on small, rugged devices or embedded in existing industrial hardware, and is designed to be resilient and require minimal installation and administration.
 
@@ -10,19 +10,47 @@ Edge Data Store (EDS) is a lightweight data collection and storage application d
 
 The following features were added: 
 
-  - Manual egress
+### EDS and storage component
 
-  - Period egress definition improvements
-  
-  - Support for OMF 1.2 ingress and egress
+- Support for OMF 1.2 ingress and egress 
 
-  - Support for the latest OpcUa and Modbus adapters
+- Support for the latest OPC UA and Modbus adapters 
 
-  - Enhanced health and diagnostics reporting
+- SDS performance and stability enhancements  
 
-  - Enhanced SDS support including fast recovery, memory usage optimization and configuration, more diagnostic capabilities
+- Enhanced health and diagnostics reporting, including egress IO rate 
 
-  - Support for stream metadata and tags
+- Support for stream tags and metadata 
+
+- Periodic egress improvements 
+
+- Added ability to indicate start time 
+
+- Improved flexibility of egress configuration 
+
+- Added data filtering, consistent with Adapters 
+
+- Added manual egress feature to allow data egress to permanent storage outside of regular periodic schedule 
+
+- PI Web API compatibility improvements 
+
+### OPC UA component
+
+- Reduced load on OPC UA server during history recovery by caching user access level. 
+
+- Enhanced logged messages to include status code in hexadecimal instead of decimal and aliased data types. 
+
+- Manage edge system configuration secrets in a centralized location while keeping backward compatibility 
+
+- Excluded read-only facets from top level configuration in Get request 
+
+- Increased the payload size to 64MB 
+
+- No longer log and throw System.InvalidOperationException when the same component is added multiple times. 
+
+### Modbus component
+
+- PI Adapter for Modbus now leverages a Schedules configuration consistent with other adapters. Instead of specifying a scanRate for each selection item, you configure a schedule in the schedules config facet, then reference that schedule with the scheduleId property on each selection item.  
 
 ## Fixes
 
@@ -32,13 +60,68 @@ The following items were resolved:
 |-----------|---------------------------------------------------|
 | 298730    | Fixed FormatException from parsing UOM CSV using some cultures.   |
 | 294320    | Fixed an issue causing data to stop flowing to a first ADH endpoint after a second endpoint is added.   |
-| 308001    | OPC UA now correctly distinguishes between local and UTC time as inputs to History Recovery only mode.   |
+| 308001    | OPC UA now correctly distinguishes between local and UTC time as inputs to History Recovery only mode. History recovery starttime and endtime supplied in local time format will be treated as a local time by the adapter node instead of the UTC time.  |
+| 335628   | Fixed an issue that prevented built-in adapters from sending string data.      |
+| 275072   | Data collection for the OPC UA server data items will no longer be skipped when the source OPC UA Server has invalid data item attributes like: DataType, Description, BrowseName, DisplayName, UserAccessLevel.	-  
+| 338424   | The OpcUa Data Type 'UtcTime' is now supported as a DateTime type.    |
+| 270854   | Fixed an issue that caused data to be collected for selection items with `"selected": false`.  |
+
 
 ## Known issues 
 
-The following problems and enhancement requests have been deferred until a future release: 
+There are no known issues with this release.
 
-  - In this release of EDS, SDS transaction logs are expected to be truncated each time the system checkpoints. However, in the unlikely scenario that this truncation process fails repeatedly, the transaction log will continue to grow in size, eventually causing a process termination. The next EDS release will handle this scenario more gracefully.
+## Upgrade considerations
+
+This is a list of known changes in EDS 1.1 that may be relevant to upgrading customers.
+
+Downtime during upgrade is expected to be approximately 6 seconds. 
+
+- Built-in Adapter types have been updated since the previous EDS release to either include Data Quality (new OMF 1.2 feature) or to improve their naming. EDS will automatically migrate to these new types using StreamViews. Clients using EDS’s generic OMF endpoint must manually migrate if types are updated (see KB article: https://customers.osisoft.com/s/knowledgearticle?knowledgeArticleUrl=000037807). 
+
+- Periodic egress configuration has been reorganized in order to support the reuse of common configuration blocks. When EDS is upgraded, it will automatically migrate existing configurations to the new format. However, any subsequent configuration changes made will need to use the updated API and format. See documentation for more information. 
+
+- The `ApplyPrefixToStreamId` configuration property has been removed. 
+
+- OMF 1.2 support – EDS supports ingress of both OMF 1.1 and 1.2. However, it will only egress OMF 1.2, so its egress endpoints must be capable of receiving OMF 1.2 (requires PI Web API 2021 or later). 
+
+- Stream Tags and Metadata are now supported. OMF Data Source, if provided, will be written to EDS as custom metadata and then egressed properly using the OMF Data Source property. 
+
+- Upgraded to .NET 6 
+
+- The following deprecated operating systems are no longer supported: Debian 9 and Ubuntu 18/04.
+
+### OPC UA component
+
+- The DeviceStatus value "NotConfigured" has been changed to "Not Configured". 
+
+- Moved trusted certificates from \Adapters\OpcUa\Certificates\Trusted\certs to \Adapters\OpcUa\Certificates\trusted\certs. 
+
+- The configuration items "ApplyPrefixToStreamId" and "rootNodeIds" have been removed from the Data Source configuration. They will be removed automatically. 
+
+- Old data selection items that did not have a Stream Id specified will be given a default Stream Id taken from the "DefaultStreamIdPattern" configuration item in the Data Source configuration. 
+
+### Modbus component
+
+- The DeviceStatus value "NotConfigured" has been changed to "Not Configured". 
+
+- Data Source 
+
+  - Moved IpAddress and Port to new Devices array to support connecting to multiple Modbus devices.  
+
+  - Changed intervals and timeouts to Timespan type instead of integers 
+
+  - `ConnectTimeout` has been removed from the data source configuration 
+
+  - `ApplyPrefixToStreamId` has been removed from the data source configuration 
+
+- Data Selection 
+
+  - ScanRate replaced by ScheduleId 
+
+  - The `RegisterType` property no longer supports `Input32` or `Holding32` register types 
+
+- Default StreamId now includes DeviceId 
 
 ## Security information and guidance 
 
@@ -49,27 +132,14 @@ OSIsoft (proactively discloses)[https://docs.osisoft.com/bundle/security-commitm
 | Component      | Version    | CVE or Reference   | CVSS   | Description                               |
 |----------------|------------|--------------------|--------|-------------------------------------------|
 | zlib           | 1.2.11     | CVE-2018-25032     | 7.5    | The Edge Data Store's utilization of zlib through .NET 6 does not expose these vulnerabilities.   |
+| zlib           | 1.2.11     | CVE-2022-37434     | 9.8    | The Edge Data Store's utilization of zlib through .NET 6 does not expose these vulnerabilities.   |
 
 ## Distribution kit files 
 
-  - EdgeDataStore_1.1.0.9-arm.deb
+  - EdgeDataStore_1.1.1.6-arm.deb
 
-  - EdgeDataStore_1.1.0.9-arm64.deb
+  - EdgeDataStore_1.1.1.6-arm64.deb
 
-  - EdgeDataStore_1.1.0.9-x64.deb
+  - EdgeDataStore_1.1.1.6-x64.deb
 
-  - EdgeDataStore_1.1.0.9-x64.msi
-
-### Installation and upgrade
-
-This release is not intended for upgrade scenarios.
-
-Install using the provided .msi or .deb installers as appropriate.
-
-### Uninstallation
-
-  - Windows: Remove the product using Uninstall a program in the Windows Control Panel.
-
-  - Ubuntu: Remove the product using Ubuntu Software.
-
-  - Debian: Remove the product using Software Center.
+  - EdgeDataStore_1.1.1.6-x64.msi
