@@ -74,7 +74,7 @@ This is a list of known changes in EDS 1.1 that may be relevant to upgrading
 
 - Downtime during upgrade is expected to be approximately 6 seconds. 
 
-- Built-in Adapter types have been updated since the previous EDS release to either include Data Quality, new OMF 1.2 feature, or to improve their naming. EDS will automatically migrate to these new types using StreamViews. Clients using EDS’s generic OMF endpoint must manually migrate if types are updated. For detail, see the KB article, (OPC UA Adapter - Upgrade from v1.1 to v1.2)[https://customers.osisoft.com/s/knowledgearticle?knowledgeArticleUrl=000037807]. 
+- Built-in Adapter types have been updated since the previous EDS release to either include Data Quality, new OMF 1.2 feature, or to improve their naming. EDS will automatically migrate to these new types using StreamViews. Clients using EDS’s generic OMF endpoint must manually migrate if types are updated. For detail, see the KB article, [OPC UA Adapter - Upgrade from v1.1 to v1.2](https://customers.osisoft.com/s/knowledgearticle?knowledgeArticleUrl=000037807). 
 
 - Periodic egress configuration has been reorganized in order to support the reuse of common configuration blocks. When EDS is upgraded, it will automatically migrate existing configurations to the new format. However, any subsequent configuration changes made will need to use the updated API and format. See documentation for more information. 
 
@@ -88,7 +88,7 @@ This is a list of known changes in EDS 1.1 that may be relevant to upgrading
 
 - The following deprecated operating systems are no longer supported: Debian 9 and Ubuntu 18/04.
 
-- OPC UA component
+- OPC UA component considerations:
 
   - The `DeviceStatus` value `NotConfigured` is now `Not Configured`. 
 
@@ -98,7 +98,7 @@ This is a list of known changes in EDS 1.1 that may be relevant to upgrading
 
   - Existing data selection items that did not have a Stream Id specified will be given a default Stream Id taken from the `DefaultStreamIdPattern` configuration item in the Data Source configuration. 
 
-- Modbus component
+- Modbus component considerations:
 
   - The `DeviceStatus` value `NotConfigured` is now `Not Configured`. 
 
@@ -122,9 +122,9 @@ This is a list of known changes in EDS 1.1 that may be relevant to upgrading
 
 ## Security information and guidance 
 
-OSIsoft is (committed to releasing secure products)[https://docs.osisoft.com/bundle/security-commitment-and-disclosure-standards/page/securitycommitmentanddisclosurestandards.html]. This section is intended to provide relevant security-related information to guide your installation or upgrade decision.  
+OSIsoft is [committed to releasing secure products](https://docs.osisoft.com/bundle/security-commitment-and-disclosure-standards/page/securitycommitmentanddisclosurestandards.html). This section is intended to provide relevant security-related information to guide your installation or upgrade decision.  
 
-OSIsoft (proactively discloses)[https://docs.osisoft.com/bundle/security-commitment-and-disclosure-standards/page/securitycommitmentanddisclosurestandards.html#vulnerability-communication] aggregate information about the number and severity of security vulnerabilities addressed in each release. The tables below provide an overview of security issues addressed and their relative severity based on (standard scoring)[https://docs.osisoft.com/bundle/security-commitment-and-disclosure-standards/page/securitycommitmentanddisclosurestandards.html#vulnerability-scoring]. 
+OSIsoft [proactively discloses](https://docs.osisoft.com/bundle/security-commitment-and-disclosure-standards/page/securitycommitmentanddisclosurestandards.html#vulnerability-communication) aggregate information about the number and severity of security vulnerabilities addressed in each release. The tables below provide an overview of security issues addressed and their relative severity based on [standard scoring](https://docs.osisoft.com/bundle/security-commitment-and-disclosure-standards/page/securitycommitmentanddisclosurestandards.html#vulnerability-scoring). 
 
 | Component      | Version    | CVE or Reference   | CVSS   | Description                               |
 |----------------|------------|--------------------|--------|-------------------------------------------|
