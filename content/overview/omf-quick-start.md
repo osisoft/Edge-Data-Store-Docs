@@ -12,6 +12,8 @@ The OMF application collects data from a data source and sends it to the EDS end
 
 To get started using OMF messages to ingress data into EDS, create an OMF type and container and then write data events to the container using REST APIs. Use the Sequential Data Store (SDS) REST API to read the data back from EDS.
 
+The `omfversion` header must match the version of the OMF spec used to construct the message. EDS supports versions 1.0, 1.1, and 1.2 of the OMF specification.
+
 ## Create an OMF type
 
 The first step in OMF data ingress is to create an OMF type that describes the format of the data to be stored in a container. In this example, the data to be written is a timestamp and a numeric value.

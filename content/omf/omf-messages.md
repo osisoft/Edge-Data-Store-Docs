@@ -8,9 +8,9 @@ uid: OMFMessages
 
 ## Headers
 
-Message headers allow you to pass additional information with the message. The message header is where you specify the action for the message, such as CREATE. For a description of each of the headers, see the [OMF specification](https://docs.osisoft.com/bundle/omf/page/headers.html).
+Message headers allow you to pass additional information with the message. The message header is where you specify the action for the message, such as `CREATE`. For a description of each of the headers, see the [OMF specification](https://docs.osisoft.com/bundle/omf/page/headers.html).
 
-The `omfversion` header must match the version of the OMF spec used to construct the message. EDS supports versions 1.2 of the OMF specification.
+The `omfversion` header must match the version of the OMF spec used to construct the message. EDS supports versions 1.0, 1.1, and 1.2 of the OMF specification.
 
 ## Message types
 

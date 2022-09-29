@@ -86,7 +86,7 @@ This is a list of known changes in EDS 1.1 that may be relevant to upgrading
 
 - Upgraded to .NET 6. 
 
-- The following deprecated operating systems are no longer supported: Debian 9 and Ubuntu 18/04.
+- The following deprecated operating systems are no longer supported: Debian 9 and Ubuntu 18.04.
 
 - OPC UA component considerations:
 
