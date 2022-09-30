@@ -93,7 +93,7 @@ Use the `StreamStorageLimitMb` property to set the maximum size in megabytes tha
 
 ## StreamStorageTargetMb
 
-Use the `StreamStorageTargetMb` property to set the size in megabytes that a stream will be reduced to after `StreamStorageLimitMb` size is reached for a single stream. When a stream exceeds the size specified in the `StreamStorageLimitMb` property, older data is deleted from the file until the stream is at or below the `StreamStorageTargetMb` value. The target value needs to be smaller than the maximum specified in the `StreamStorageLimitMb` property.
+Use the `StreamStorageTargetMb` property to set the size in megabytes that a stream is reduced to after `StreamStorageLimitMb` size is reached for a single stream. When a stream exceeds the size specified in the `StreamStorageLimitMb` property, older data is deleted from the file until the stream is at or below the `StreamStorageTargetMb` value. The target value needs to be smaller than the maximum specified in the `StreamStorageLimitMb` property.
 
 ### StreamStorageTargetMb type
 
