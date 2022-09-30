@@ -4,7 +4,7 @@ uid: egress
 
 # Data egress
 
-Edge Data Store provides an egress mechanism to transfer data through OMF to AVEVA Data Hub or a PI Server. For each egress destination, the destination needs to be prepared and an endpoint needs to be configured.
+Edge Data Store provides an egress mechanism to transfer data through OMF to AVEVA Data Hub or a PI Server. For each egress destination, you need to prepare the destination and configure an endpoint.
 
 Prepare egress destinations to ensure that AVEVA Data Hub or PI Server are properly configured to receive OMF messages and record information needed to create a connection to the destination.
 
