@@ -14,6 +14,6 @@ Type, container, and data items are batched into one or more OMF messages for eg
 
 If egress fails due to HTTP exceptions, EDS will retry sending the request with a default backoff. If EDS receives a `Retry-After` header in the response from the endpoint, then the backoff is adjusted accordingly. If the message still fails to send after retries, EDS will either move onto the next message in the queue or wait for 5 minutes before retrying process again.
 
-For data collection and egress, in-memory and on-disk storage are used to track the last successfully-egressed data event, per stream. Data is egressed in the order it is collected, and egress configurations can include future data.
+For data collection and egress, in-memory and on-disk storage are used to track the last successfully-egressed data event per stream. EDS egresses data in the order it is collected and egress configurations can include future data.
 
 **Note:** When an event with a future timestamp is successfully egressed, only values after the associated timestamp of that event will be egressed.
