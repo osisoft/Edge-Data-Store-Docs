@@ -274,7 +274,7 @@ Content-Type: application/json
 
 <a id="opIdQuantity_List Quantity Units of Measure"></a>
 
-Returns the list of units of measure that belongs to the quantity with the specified quantityId
+Returns the list of units of measure that belongs to the quantity with the specified `quantityId`
 
 ### Request
 
