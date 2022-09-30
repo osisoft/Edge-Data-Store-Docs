@@ -42,7 +42,7 @@ To install EDS on Windows using the installation wizard:
 
 1. (Optional) Add a system component for a Modbus TCP EDS adapter instance, an OPC UA EDS adapter instance, or both.
 
-   **Note:** The Modus TCP EDS adapter and the OPC UA EDS adapter are both installed, regardless of whether system components are added. Additional system components can be added for each adapter after installation.
+   **Note:** The Modus TCP EDS adapter and the OPC UA EDS adapter are both installed regardless of whether system components are added. Additional system components can be added for each adapter after installation.
 
 1. Select **Next** > **Install**.
 
