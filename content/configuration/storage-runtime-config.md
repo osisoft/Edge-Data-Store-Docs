@@ -54,7 +54,7 @@ The following is a valid runtime configuration example.
 
 ## IngressDebugExpiration
 
-Use the `IngressDebugExpiration` property when debugging OMF to set the date and time when debugging should be disabled. If a future date and time is is specified, incoming OMF messages are logged and the HTTP request and response content is stored to disk for review. The debug logging stops at the data and time specified. Set the value to `null` to disable logging.
+Use the `IngressDebugExpiration` property to set the date and time when debugging should be disabled. If you specify a future date and time, incoming OMF messages are logged and the HTTP request and response content is stored to disk for review. The debug logging stops at the date and time specified. Set the value to `null` to disable logging.
 
 Every incoming OMF message logs a request and response log file. Log files are located in the following location and grouped by the associated OMF message type:
 
