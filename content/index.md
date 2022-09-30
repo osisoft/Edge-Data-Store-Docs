@@ -20,7 +20,7 @@ EDS collects data using any of the following methods:
 
 * Custom application using REST API
 
-Once collected, the data is stored locally in configurable data storage within EDS, until it can be sent to permanent storage in a PI System or in AVEVA Data Hub through periodic egress. The data can also be read from local storage by custom applications using REST APIs.
+Once collected, EDS stores the data locally in configurable data storage within EDS until it can be sent to permanent storage in a PI System or in AVEVA Data Hub through periodic egress. The data can also be read from local storage with custom applications that use REST APIs.
 
 ## Edge Data Store architecture
 
