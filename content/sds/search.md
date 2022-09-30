@@ -413,9 +413,9 @@ Wildcard (`*`) character can be used both in metadata keys and values with one c
 
 **Query string**     | **Returns** | **Description**
 ------------------  | ---------------- | ------------------------
-`manufa*turer:compan*`  | stream1 | Searches and returns stream1.
-`ser*al:a*`  | stream1, stream2 | Searches and returns stream1 and stream2.
-`s*:a*`  | stream1, stream2, stream3 | Searches and returns all three streams.
+`manufa*turer:compan*`  | stream1 | Searches and returns stream1
+`ser*al:a*`  | stream1, stream2 | Searches and returns stream1 and stream2
+`s*:a*`  | stream1, stream2, stream3 | Searches and returns all three streams
 `Id:stream*`  |  stream1, stream2, stream3 | Searches all fields and returns three streams.
 `Id*:stream*`  | nothing | Wildcard in the field limits the search to metadata. Returns nothing because there is no metadata by that name that meets the criteria.
 
