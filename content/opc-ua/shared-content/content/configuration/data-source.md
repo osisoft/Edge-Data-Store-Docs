@@ -99,4 +99,4 @@ The following are examples of valid OPC UA data source configurations:
 | api/v1/configuration/\<ComponentId\>/DataSource | `PUT` | Configures or updates the data source configuration. Overwrites any active data source configuration. If no configuration is active, the adapter starts collecting data after the following conditions are met:<br/><br/>&bull; The data source configuration `PUT` request is received.<br/>&bull; A data selection configuration is active. |
 | api/v1/configuration/\<ComponentId\>/DataSource | `DELETE` | Deletes the data source configuration. After the request is received, the adapter stops collecting data. |
 
-**Note:** Replace \<ComponentId\> with the Id of your OPC UA component, for example _OpcUa1_.
+**Note:** Replace `ComponentId` with the Id of your OPC UA component, for example `OpcUa1`.
