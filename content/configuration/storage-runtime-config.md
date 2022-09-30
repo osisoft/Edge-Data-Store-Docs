@@ -8,7 +8,7 @@ The Edge Data Store storage component is installed with default configurations t
 
 **Note:** Consult with Technical Support before you modify the default configuration.
 
-To update the storage runtime configuration, complete the following:
+To update the storage runtime configuration:
 
 1. Using any text editor, create a JSON file that contains the storage runtime configuration.
 
