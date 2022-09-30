@@ -73,7 +73,7 @@ This example results in a minimal configuration of Edge Data Store. It only supp
 
 ## Configure maximum Edge Data Store
 
-The following JSON file represents maximum configuration of an Edge Data Store. There are Modbus TCP EDS adapter components and OPC UA EDS adapter components, and egress is configured to send to both PI Web API and AVEVA Data Hub from both the default (operational data) and diagnostics (diagnostic data) namespace.
+The following JSON file represents the maximum configuration of an Edge Data Store. There are Modbus TCP EDS adapter components and OPC UA EDS adapter components and egress is configured to send to both PI Web API and AVEVA Data Hub from both the default (operational data) and diagnostics (diagnostic data) namespace.
 
 1. Using any text editor, create a JSON file using the following example. Fill in any credentials or IP addresses with appropriate values for your environment.
    
