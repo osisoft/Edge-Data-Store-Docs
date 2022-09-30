@@ -640,7 +640,7 @@ A contract defining stream view map property
 |---|---|---|---|---|
 |`SourceId`|string|false|true|Identifier of the SdsType of the SdsStream|
 |`TargetId`|string|false|true|Identifier of the SdsType to convert events to|
-|`Mode`|[SdsStreamViewMode](#schemasdsstreamviewmode)|false|false|Aggregate of actions applied to the properties. SdsStreamViewMode are combined via binary arithmetic|
+|`Mode`|[SdsStreamViewMode](#schemasdsstreamviewmode)|false|false|Aggregate of actions applied to the properties. `SdsStreamViewMode` are combined via binary arithmetic.|
 |`StreamViewMap`|[SdsStreamViewMap](#schemasdsstreamviewmap)|false|true|Mapping for derived types|
 
 ```json
