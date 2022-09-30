@@ -403,7 +403,7 @@ DataContract representing a unit of measure
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|`Id`|string|false|true|Unique identifier for this unit of measure.|
+|`Id`|string|false|true|Unique identifier for this unit of measure|
 |`Abbreviation`|string|false|true|Abbreviation for this unit of measure.|
 |`Name`|string|false|true|Full name for this unit of measure.|
 |`DisplayName`|string|false|true|Display name for this unit of measure.|
