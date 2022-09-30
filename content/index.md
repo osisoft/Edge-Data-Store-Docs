@@ -4,7 +4,7 @@ uid: index
 
 # Edge Data Store
 
-Edge Data Store (EDS) is a lightweight data collection and storage application designed to capture data at the edge of networks for historical storage and analysis. It runs on small, rugged devices or embedded in existing industrial hardware, and is designed to be resilient and require minimal installation and administration. While not a replacement for a PI System or AVEVA Data Hub, EDS augments the PI System and AVEVA Data Hub by collecting and storing data in situations where deploying a full system is impractical. It can collect data that is beyond the reach of automation systems, in unreliable network conditions, and in environments too rough for traditional computers. Edge Data Store can run almost anywhere you can install a sensor, such as beam pumps, mining trucks, wind mills, etc.
+Edge Data Store (EDS) is a lightweight data collection and storage application designed to capture data at the edge of networks for historical storage and analysis. It runs on small, rugged devices or embedded in existing industrial hardware and is designed for resilience and require minimal installation and administration. While not a replacement for a PI System or AVEVA Data Hub, EDS augments the PI System and AVEVA Data Hub by collecting and storing data in situations where deploying a full system is impractical. It can collect data that is beyond the reach of automation systems, in unreliable network conditions, and in environments too rough for traditional computers. Edge Data Store can run almost anywhere you can install a sensor, such as beam pumps, mining trucks, wind mills, and more.
 
 The following diagram shows conceptually how EDS captures data and sends to permanent storage:
 
