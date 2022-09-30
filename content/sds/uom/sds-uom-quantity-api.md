@@ -202,7 +202,7 @@ Content-Type: application/json
 
 <a id="opIdQuantity_Get Quantity Unit of Measure"></a>
 
-Returns the unit of measure associated with the specified uomId belonging to the quantity with the specified quantityId
+Returns the unit of measure associated with the specified `uomId` belonging to the quantity with the specified `quantityId`
 
 ### Request
 
