@@ -364,7 +364,7 @@ DataContract representing a measurable quantity. For example, A unit of measure 
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|`Id`|string|false|true|Unique identifier for this quantity.|
+|`Id`|string|false|true|Unique identifier for this quantity|
 |`Name`|string|false|true|Friendly name for this quantity|
 |`BaseUom`|[SdsUom](#schemasdsuom)|false|true|The base unit of measurement for this quantity. All other uom's measuring this quantity will be calculated relative to the base uom.|
 |`Dimensions`|[integer]|false|true|Powers of each dimension that define this quantity. This array must have a length of 7. Dimensions represented in index order are Length, Mass, Time, Electric Current, Thermodynamic Temperature, Amount of Substance, and Luminous Density. For example, A velocity quantity would have values [1,0,-1,0,0,0,0] for (length)/(time)|
