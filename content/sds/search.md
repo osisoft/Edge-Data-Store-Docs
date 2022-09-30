@@ -191,7 +191,7 @@ For more information on stream view properties, see [Stream Views](xref:sdsStrea
 | TargetTypeId | Yes		|
 | Properties   | Yes, with limitations* |
 
-**Note:** The `Properties` collection contains a list of SdsStreamViewProperty objects. The query attempts to find a match on the SdsStreamViewProperty's `Id`, `SourceTypeId`, and `TargetTypeId` fields. The `Properties` collection of nested views will also be searched. See the following example. 
+**Note:** The `Properties` collection contains a list of `SdsStreamViewProperty` objects. The query attempts to find a match on the `SdsStreamViewProperty`'s `Id`, `SourceTypeId`, and `TargetTypeId` fields. The `Properties` collection of nested views are also searched. See the following example. 
 
 #### Example
 
