@@ -118,13 +118,13 @@ Response parameters include information that was sent in the manual egress reque
 
 | Parameter               | Description                                        |
 |-------------------------|----------------------------------------------------|
-| `RequestTimeUtc`        | The date and time EDS received the egress request. |
+| `RequestTimeUtc`        | The date and time EDS received the egress request |
 | `StartIndexDateTimeUtc` | The date and time of the first data point to transfer in Coordinated Universal Time (UTC). If you specified a relative time, this is the calculated result. |
 | `EndIndexDateTimeUtc`   | The date and time of the last data point to transfer Coordinated Universal Time (UTC). If you specified a relative time, this is the calculated result. |
-| `Checkpoint`            | The latest timestamp that the egress has completed with the range between `StartIndex` and `EndIndex`.  |
-| `Progress`              | Current percent complete of the egress job.   |
-| `Status`                | Status of the egress job. Values are `Active`, `Canceled`, `Complete`, and `Failed`.            |
-| `Errors`                | Errors encountered during egress.             |
+| `Checkpoint`            | The latest timestamp that the egress has completed with the range between `StartIndex` and `EndIndex`  |
+| `Progress`              | Current percent complete of the egress job   |
+| `Status`                | Status of the egress job. Values are `Active`, `Canceled`, `Complete`, and `Failed`            |
+| `Errors`                | Errors encountered during egress             |
 
 ## REST URLs
 
