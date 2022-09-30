@@ -16,4 +16,4 @@ If egress fails due to HTTP exceptions, EDS will retry sending the request with 
 
 For data collection and egress, in-memory and on-disk storage are used to track the last successfully-egressed data event per stream. EDS egresses data in the order it is collected and egress configurations can include future data.
 
-**Note:** When an event with a future timestamp is successfully egressed, only values after the associated timestamp of that event will be egressed.
+**Note:** When EDS successfully egresses an event with a future timestamp, only values after the associated timestamp of that event are egressed.
