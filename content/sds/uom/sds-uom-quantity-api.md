@@ -404,12 +404,12 @@ DataContract representing a unit of measure
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
 |`Id`|string|false|true|Unique identifier for this unit of measure|
-|`Abbreviation`|string|false|true|Abbreviation for this unit of measure.|
-|`Name`|string|false|true|Full name for this unit of measure.|
-|`DisplayName`|string|false|true|Display name for this unit of measure.|
-|`QuantityId`|string|false|true|The Id of the quantity that this unit is a measure of.|
-|`ConversionFactor`|double|false|false|When a value of this unit is multiplied by the ConversionFactor and then incremented by the ConversionOffset, the value in terms of the base unit of the corresponding quantity is returned.|
-|`ConversionOffset`|double|false|false|When a value of this unit is multiplied by the ConversionFactor and then incremented by the ConversionOffset, the value in terms of the base unit of the corresponding quantity is returned.|
+|`Abbreviation`|string|false|true|Abbreviation for this unit of measure |
+|`Name`|string|false|true|Full name for this unit of measure |
+|`DisplayName`|string|false|true|Display name for this unit of measure |
+|`QuantityId`|string|false|true|The `Id` of the quantity that this unit is a measure of |
+|`ConversionFactor`|double|false|false|When a value of this unit is multiplied by the `ConversionFactor` and then incremented by the `ConversionOffset`, the value in terms of the base unit of the corresponding quantity is returned. |
+|`ConversionOffset`|double|false|false|When a value of this unit is multiplied by the `ConversionFactor` and then incremented by the `ConversionOffset`, the value in terms of the base unit of the corresponding quantity is returned.|
 
 ```json
 {
