@@ -48,7 +48,7 @@ Blue boxes in the diagram show ways to interact with EDS from the local device:
 
 * Configuration – Use REST or the EdgeCmd tool to configure EDS as a whole or each component individually and to view the current configuration
 
-EDS requires an endpoint to connect to REST APIs on the local device, which is shown outlined in blue in the diagram. By default, the endpoint uses port 5590; however, it can be configured to use another port.
+EDS requires an endpoint to connect to REST APIs on the local device, which is shown outlined in blue in the diagram. By default, the endpoint uses port 5590; however, you can configure it to use another port.
 
 Orange arrows show data flowing into EDS and blue arrows show data flowing out of EDS.
 

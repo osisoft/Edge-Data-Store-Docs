@@ -14,7 +14,7 @@ The port assignment can be changed either during or after installation. For more
 
 ## Windows (Windows 10 x64)
 
-You must have administrative privileges on the device to install EDS. Run the installation file directly to step through a wizard, or use the command line to run the installation, including silent installation.
+You must have administrator privileges on the device to install EDS. Run the installation file directly to step through a wizard or use the command line to run the installation, including silent installation.
 
 For instructions on verifying the EDS installation, see [Verify installation](xref:VerifyInstallation).
 
