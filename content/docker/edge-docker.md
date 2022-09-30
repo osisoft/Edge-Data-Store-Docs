@@ -163,7 +163,7 @@ curl http://localhost:6000/api/v1/configuration
 
 ### Remove REST access
 
-If you remove the `--network host` option from the docker run command, REST access is not possible from outside of the container. This may be useful if you want to host an application in the same container as EDS without external REST access enabled.
+If you remove the `--network host` option from the Docker run command, REST access is not possible from outside of the container. This may be useful if you want to host an application in the same container as EDS without external REST access enabled.
 
 ## Upgrade
 

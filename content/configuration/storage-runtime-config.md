@@ -112,7 +112,7 @@ Use the `EnableTransactionLog` property to define whether the `Storage` componen
 
 ## TransactionLogLimitMB
 
-Use the `TransactionLogLimitMB` property to define the maximum size, in MB, of a transaction log. When a transaction log exceeds this size, it is deleted, which reduces the amount of data that can be recovered if the host device loses power.
+Use the `TransactionLogLimitMB` property to define the maximum size, in MB, of a transaction log. When a transaction log exceeds this size, it is deleted, which reduces the amount of data that you can recover if the host device loses power.
 
 ### TransactionLogLimitMB type
 
@@ -125,7 +125,7 @@ Use the `TransactionLogLimitMB` property to define the maximum size, in MB, of a
 
 Use the `CheckpointRateInSec` property to define, in seconds, how often the storage component ensures recent data and configuration changes are flushed to storage.  
 
-A setting of `0` disables checkpointing. Disabling checkpointing reduces the resiliency of the product and thus data loss can occur if the host device loses power.
+A setting of `0` disables checkpointing. Disabling checkpointing reduces the resiliency of the product, which can result in data loss if the host device loses power.
 
 ### CheckpointRateInSec type
 
