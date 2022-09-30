@@ -28,7 +28,7 @@ Namespace identifier
 
 `[Optional] int skip` 
 
-Parameter representing the zero-based offset of the first object to retrieve.  If unspecified, a default value of 0 is used.
+Parameter representing the zero-based offset of the first object to retrieve. If unspecified, a default value of `0` is used.
 
 `[Optional] int count`  
 
