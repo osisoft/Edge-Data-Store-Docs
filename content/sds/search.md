@@ -391,9 +391,9 @@ Metadata key is not searched if the operator (`:`) is missing in the query strin
 
 Query string           | Returns | Description
 ------------------------   | ------------- |-------------
-`manufacturer:company`  | stream1 | Searches and returns stream1.
-`company`               | stream1      | Searches only the metadata values due to lack of `:` operator and returns stream1.
-`a*`  | stream1, stream2, stream3       | Searches the metadata values and returns all three streams.
+`manufacturer:company`  | stream1 | Searches and returns stream1
+`company`               | stream1      | Searches only the metadata values due to lack of `:` operator and returns stream1
+`a*`  | stream1, stream2, stream3       | Searches the metadata values and returns all three streams
 
 #### Request
 
