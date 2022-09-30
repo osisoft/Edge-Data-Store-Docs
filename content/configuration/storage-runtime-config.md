@@ -82,7 +82,7 @@ When you activate logging, the content of an incoming OMF message, including the
 
 ## StreamStorageLimitMb
 
-Use the `StreamStorageLimitMb` property to set the maximum size in megabytes that a stream can reach. When a stream exceeds the size specified, older data is deleted from the file until the stream is at or below the `StreamStorageTargetMb` value. The target value, set in the `StreamStorageTargetMb` property, needs to be smaller than the maximum specified in this property.
+Use the `StreamStorageLimitMb` property to set the maximum size in megabytes that a stream can reach. When a stream exceeds the specified size, older data is deleted from the file until the stream is at or below the `StreamStorageTargetMb` value. The target value, set in the `StreamStorageTargetMb` property, needs to be smaller than the maximum specified in this property.
 
 ### StreamStorageLimitMb type
 
