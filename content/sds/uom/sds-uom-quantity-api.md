@@ -120,7 +120,7 @@ Content-Type: application/json
 
 <a id="opIdQuantity_Get Quantity"></a>
 
-Returns the quantity corresponding to the specified quantityId within a given namespace
+Returns the quantity corresponding to the specified `quantityId` within a given namespace
 
 ### Request
 
