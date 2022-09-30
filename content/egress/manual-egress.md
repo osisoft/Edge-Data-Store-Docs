@@ -130,12 +130,12 @@ Response parameters include information that was sent in the manual egress reque
 
 | Relative URL                                              | HTTP verb | Action                               |
 |-----------------------------------------------------------|-----------|--------------------------------------|
-| `api/v1/configuration/storage/manualegresses`             | POST      | Requests a manual egress job.        |
-| `api/v1/configuration/storage/manualegresses`             | GET       | Returns the state of all manual egress jobs in the queue. |
-| `api/v1/configuration/storage/manualegresses/<Id>`        | GET       | Returns the state of a specific egress job. |
-| `api/v1/configuration/storage/manualegresses/<Id>/resume` | POST      | Resumes a canceled or failed egress job.  |
-| `api/v1/configuration/storage/manualegresses/<Id>/cancel` | POST      | Cancels an egress job.                |
-| `api/v1/configuration/storage/manualegresses/<Id>`        | DELETE    | Cancels all active history recovery operations and removes states |
-| `api/v1/configuration/storage/manualegresses`             | DELETE    | Deletes the state of an individual history recovery
+| `api/v1/configuration/storage/manualegresses`             | `POST`      | Requests a manual egress job        |
+| `api/v1/configuration/storage/manualegresses`             | `GET`       | Returns the state of all manual egress jobs in the queue |
+| `api/v1/configuration/storage/manualegresses/<Id>`        | `GET`       | Returns the state of a specific egress job |
+| `api/v1/configuration/storage/manualegresses/<Id>/resume` | `POST`     | Resumes a canceled or failed egress job  |
+| `api/v1/configuration/storage/manualegresses/<Id>/cancel` | `POST`     | Cancels an egress job                |
+| `api/v1/configuration/storage/manualegresses/<Id>`        | `DELETE`   | Cancels all active history recovery operations and removes states |
+| `api/v1/configuration/storage/manualegresses`             | `DELETE`    | Deletes the state of an individual history recovery
 
 **Note:** Replace `<Id>` with the Id of the egress job for which you want to perform the action.
