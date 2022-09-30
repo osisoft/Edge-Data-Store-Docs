@@ -46,7 +46,7 @@ The full schema definition for the logging configuration is in the component spe
 
   - OSIsoft Adapter for Modbus TCP: `Modbus1_Logging.json`
   
-If you have more than one adapter of the same kind configured, the default file name will incrementally change, for example, `OpcUa2_Logging.json`.
+If you have more than one adapter of the same kind configured, the default file name incrementally changes, for example, `OpcUa2_Logging.json`.
 
 The component specific logging files are located in the following folders:
 
