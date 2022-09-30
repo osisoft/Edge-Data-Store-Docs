@@ -70,19 +70,19 @@ Msiexec /quiet /i EdgeDataStore.msi PORT="<number>" INSTALLFOLDER="<file_path>" 
 
   - `INSTALLFOLDER` – Specify an alternate location for the binary components other than the default location of "%PROGRAMFILES%\OSISoft\EdgeDataStore". OSIsoft recommends you use the default installation path.
 
-  - `WIXUI_ENABLEMODBUS` – Add a system component to create a Modbus TCP EDS adapter instance. The value must be 1 for the component to be added.
+  - `WIXUI_ENABLEMODBUS` – Add a system component to create a Modbus TCP EDS adapter instance. The value must be `1` for the component to be added.
 
-  - `WIXUI_ENABLEOPCUA` - Add a system component to create a OPC UA EDS adapter instance. The value must be 1, for the component to be added.
+  - `WIXUI_ENABLEOPCUA` - Add a system component to create a OPC UA EDS adapter instance. The value must be `1` for the component to be added.
 
 **Note:** If you do not specify a parameter, the default value for the parameter is used. Property names must be in all capital letters, for example, `PORT`.
 
 ## Linux
 
-You must have administrative privileges to install the software, for example `root` or `sudo` privilege, and the Linux OS must be up to date for the install to succeed.
+You must have administrator privileges to install the software, for example `root` or `sudo` privilege and the Linux OS must be up to date for the install to succeed.
 
 For instructions on how to verify the Edge Data Store installation, see [Verify installation](xref:VerifyInstallation).
 
-**Note:** For devices using Ubuntu 20.04 or higher, install the libicu63 package prior to installing Edge Data Store.
+**Note:** For devices using Ubuntu 20.04 or higher, install the `libicu63` package prior to installing Edge Data Store.
 
 ### Download the distribution file
 
@@ -181,7 +181,7 @@ Complete the following steps to perform a silent install EDS on Linux using a pa
 
 1. Open a terminal window and change the working directory to the location of the distribution file.
 
-1. Run the apt-get install command for the distribution file appropriate to your operating system and processor.
+1. Run the `apt-get install` command for the distribution file appropriate to your operating system and processor.
 
    ```bash
    sudo apt-get install -q -y ./Edgeinstallfile.deb < silent.ini

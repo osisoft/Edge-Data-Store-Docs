@@ -6,13 +6,13 @@ uid: opcUaOverview
 
 ## Overview
 
-The OPC UA EDS adapter is a component of Edge Data Store that transfers time-series data from an OPC UA capable device to EDS. OPC Unified Architecture (OPC UA) is a machine to machine communication protocol for industrial automation developed by the OPC Foundation. The OPC UA EDS adapter can connect to any device that uses the OPC UA communication protocol, and uses subscriptions to reduce the amount of data transferred by only reading data changes and events.
+The OPC UA EDS adapter is a component of Edge Data Store that transfers time-series data from an OPC UA capable device to EDS. OPC Unified Architecture (OPC UA) is a machine to machine communication protocol for industrial automation developed by the OPC Foundation. The OPC UA EDS adapter can connect to any device that uses the OPC UA communication protocol, and it uses subscriptions to reduce the amount of data transferred by only reading data changes and events.
 
 The following diagram depicts the data flow for a single instance of OPC UA EDS adapter instance:
 
 ![OPC UA EDS](../images/OPCUAConfiguration.jpg "OPC UA Configuration")
 
-The adapter instance polls the OPC UA device and then collects data from the device. The adapter then sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or AVEVA Data Hub. The adapter instance can be configured from the device where EDS is installed, and EDS collects health information about the adapter that can be egressed.
+The adapter instance polls the OPC UA device and then collects data from the device. The adapter then sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or AVEVA Data Hub. You can configure the adapter instance from the device where EDS is installed. EDS also collects health information about the adapter that can be egressed.
 
 The OPC UA EDS adapter can connect to multiple devices by defining one instance of the adapter for each device. The EDS installation includes the OPC UA EDS adapter and the option to add a single OPC UA EDS adapter instance. Add additional instances after installation using system components configuration.
 

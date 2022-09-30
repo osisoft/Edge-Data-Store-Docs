@@ -41,9 +41,9 @@ UInt64                   | 12
 
 ## Compound indexes
 
-A single property,such as `DateTime`, is adequate for defining an index most of the time. For more complex scenarios, SDS allows you to define multiple properties. Indexes defined by multiple properties are known as *compound indexes*. Only the primary index (or key) supports compound indexes.
+A single property, such as `DateTime`, is adequate for defining an index most of the time. For more complex scenarios, SDS allows you to define multiple properties. Indexes defined by multiple properties are known as *compound indexes*. Only the primary index (or key) supports compound indexes.
 
-When defining a compound index within .NET framework, you should apply the `OSIsoft.Sds.SdsMemberAttribute` on each property field of the SdsType that is combined to define the index. Set the property ``IsKey`` to `true` and give the `Order` field a zero-based index value. The `Order` field defines the precedence of the property when sorting. A property with an order of 0 has highest precedence.
+When you define a compound index within the .NET framework, you should apply the `OSIsoft.Sds.SdsMemberAttribute` on each property field of the SdsType that is combined to define the index. Set the property `IsKey` to `true` and give the **Order** field a zero-based index value. The **Order** field defines the precedence of the property when sorting. A property with an order of `0` has highest precedence.
 
 When defining compound indexes outside of .NET framework, specify the `IsKey` and `Order` fields
 on the `SdsTypeProperty` object.

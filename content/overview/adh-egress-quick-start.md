@@ -8,7 +8,7 @@ Data egress provides a mechanism to transfer data to AVEVA Data Hub using OMF me
 
 ## AVEVA Data Hub destinations
 
-To configure AVEVA Data Hub to receive OMF messages from EDS, create an OMF connection in AVEVA Data Hub. Creating an OMF connection results in an available OMF endpoint that can be used by the EDS egress mechanism.
+To configure AVEVA Data Hub to receive OMF messages from EDS, create an OMF connection in AVEVA Data Hub. Creating an OMF connection results in an available OMF endpoint that EDS can use for the egress mechanism.
 
 To create an OMF connection to AVEVA Data Hub:
 

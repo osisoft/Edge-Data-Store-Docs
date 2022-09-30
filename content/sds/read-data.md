@@ -47,7 +47,7 @@ If multiple calls return `408 - Operation timed out error` even after increasing
 
 ### Compression
 
-Include ``Accept-Encoding: gzip, deflate`` in the HTTP header. This enables compression. For more information, see [Compression](xref:sdsCompression#supported-compression-schemes).
+Include `Accept-Encoding: gzip, deflate` in the HTTP header. This enables compression. For more information, see [Compression](xref:sdsCompression#supported-compression-schemes).
 
 ### Use available read data APIs
 
@@ -87,7 +87,7 @@ SDS supports reading from multiple streams in one request. The following method 
 
 ## SdsBoundaryType
 
-The `SdsBoundaryType` enum defines how data on the boundary of queries is handled: around the start index for range value queries,  and around the start and end index for window values. The following are valid values for `SdsBoundaryType`:
+The `SdsBoundaryType` enum defines how data on the boundary of queries is handled—around the start index for range value queries and around the start and end index for window values. The following are valid values for `SdsBoundaryType`:
 
 | Boundary | Enumeration value | Operation |
 | -------  | ----------------- | --------- |

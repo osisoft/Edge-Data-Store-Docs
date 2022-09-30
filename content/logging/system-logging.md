@@ -12,7 +12,7 @@ Edge Data Store writes daily log messages to flat text files in the following lo
 
 Each message in the log displays the message severity level, timestamp, and the message itself. 
 
-If the transaction log reaches its maximum size, EDS will send a `DeviceinError` message.
+If the transaction log reaches its maximum size, EDS sends a `DeviceinError` message.
 
 ## Default logging configuration and schema
 
@@ -57,7 +57,7 @@ To change the logging configuration:
       curl -d "@System_Logging.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/System/Logging
       ```
 
-    On successful execution, the log level change takes effect immediately during runtime. The other configurations (log file size and file count) get updated after Edge Data Store is restarted.
+    On successful execution, the log-level change takes effect immediately during runtime. The other configurations (log file size and file count) get updated after Edge Data Store is restarted.
 
     **Note:**  Any parameter not specified in the updated configuration file will revert to the default schema value.
 

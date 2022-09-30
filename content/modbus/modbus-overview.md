@@ -10,7 +10,7 @@ The following diagram depicts the data flow of a single instance of Modbus TCP E
 
 ![Modbus TCP EDS](../images/ModbusTCP.jpg "Modbus TCP EDS")
 
-The adapter instance requests data from the Modbus TCP device and then the device sends its data. The adapter sends the collected data to the storage component where it is held until it can be egressed to permanent storage in PI Server or AVEVA Data Hub. The adapter instance can be configured from the device where EDS is installed, and EDS collects health information about the adapter that can be egressed.
+The adapter instance requests data from the Modbus TCP device and then the device sends its data. The adapter sends the collected data to the storage component where it is held until it can be egressed to permanent storage in PI Server or AVEVA Data Hub. You can configure the adapter instance from the device where EDS is installed and EDS collects health information about the adapter that can be egressed.
 
 The Modbus TCP EDS adapter can connect to multiple devices by defining one instance of the adapter for each device. The EDS installation includes the Modbus TCP EDS adapter and the option to add a single Modbus TCP EDS adapter instance. Add additional instances after installation using system components configuration.
 

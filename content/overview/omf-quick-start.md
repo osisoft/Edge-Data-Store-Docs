@@ -43,9 +43,9 @@ To create an OMF type:
 
    The value is indexed by a timestamp, and the numeric value that will be stored is a 32-bit floating point value.
 
-2. To create the OMF type in Edge Storage, store the JSON file with the name `OmfCreateType.json` on the local device.
+1. To create the OMF type in Edge Storage, store the JSON file with the name `OmfCreateType.json` on the local device.
 
-3. Run the following curl command:
+1. Run the following curl command:
 
    ```bash
    curl -d "@OmfCreateType.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: type" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
@@ -70,9 +70,9 @@ To create an OMF container:
 
    This container references the OMF type that was created earlier, and an error will occur if the type does not exist when the container is created.
 
-2. To create the OMF container in Edge Storage, store the JSON file with the name `OmfCreateContainer.json` on the local device.
+1. To create the OMF container in Edge Storage, store the JSON file with the name `OmfCreateContainer.json` on the local device.
 
-3. To create the SDS stream to store data defined by the type, run the following curl command:
+1. To create the SDS stream to store data defined by the type, run the following curl command:
 
    ```bash
    curl -d "@OmfCreateContainer.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: container" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/

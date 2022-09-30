@@ -46,7 +46,7 @@ To configure a data source to connect a Modbus TCP device to the Modbus TCP EDS 
    curl -d "@Modbus1Datasource.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Datasource
    ```
 
-When the command completes successfully (a 204 is returned by curl), the Modbus TCP data source has been created. If you get a 400 error, check the JSON file for errors. If you receive a 404 or 500 error, check that EDS is running on the device.
+When the command completes successfully, that is a `204` is returned, the Modbus TCP data source has been created. If a `400` error is returned, check the JSON file for errors. If a `404` or `500` error is returned, check that EDS is running on the device.
 
 ## Configure a Schedule
 

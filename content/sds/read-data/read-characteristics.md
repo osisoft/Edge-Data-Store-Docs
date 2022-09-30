@@ -45,7 +45,7 @@ The following table describes how the `Continuous` interpolation mode affects in
 
 <sup>2</sup> For the Continuous interpolation mode, nullable types are interpolated in the same manner as their non-nullable equivalents as long as the values surrounding the requested interpolation index are non-null. If either of the values are null, the interpolated value will be null.
 
-If the InterpolationMode is not assigned, the events are interpolated in the default manner, unless the interpolation mode is overridden in the `SdsTypeProperty` or the SdsStream. For more information on overriding the interpolation mode on a specific type property, see [SdsTypeProperty](xref:sdsTypeProperty). For more information on overriding the interpolation mode for a specific stream, see [Streams](xref:sdsStreams).
+If the `InterpolationMode` is not assigned, the events are interpolated in the default manner, unless the interpolation mode is overridden in the `SdsTypeProperty` or the `SdsStream`. For more information on overriding the interpolation mode on a specific type property, see [SdsTypeProperty](xref:sdsTypeProperty). For more information on overriding the interpolation mode for a specific stream, see [Streams](xref:sdsStreams).
 
 ## Extrapolation
 
@@ -53,7 +53,7 @@ Extrapolation defines how a stream responds to requests with indexes that preced
 
 `ExtrapolationMode` works with the `InterpolationMode` to determine how a stream responds. The following tables show how `ExtrapolationMode` affects returned values for each `InterpolationMode` value.
 
-If the `ExtrapolationMode` is not assigned, the events are extrapolated in the default manner, unless the extrapolation mode is overridden on the SdsStream. For more information on overriding the extrapolation mode on a specific stream, see [Streams](xref:sdsStreams).
+If the `ExtrapolationMode` is not assigned, the events are extrapolated in the default manner, unless the extrapolation mode is overridden on the `SdsStream`. For more information on overriding the extrapolation mode on a specific stream, see [Streams](xref:sdsStreams).
 
 ### ExtrapolationMode with InterpolationMode = Default (or Continuous), StepwiseContinuousLeading and StepwiseContinuousTrailing
 

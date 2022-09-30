@@ -66,14 +66,14 @@ The following parameters are available for configuring logging.
 
 ### Log levels
 
-The logLevel sets the minimum severity for messages to be included in the logs. Messages with a severity below the level set are not included. The log levels in their increasing order of severity are as follows: `Trace`, `Debug`, `Information`, `Warning`, `Error`, `Critical`.
+The `logLevel` sets the minimum severity for messages included in the logs. Messages with a severity below the level set are not included. The log levels in their increasing order of severity are as follows: `Trace`, `Debug`, `Information`, `Warning`, `Error`, `Critical`.
 
 The following table has general guidelines for setting the log level.
 
 | **Level**                | **Description**|
 |--------------------------|-----------|
 | Trace         | Logs that contain the most detailed messages. These messages may contain sensitive application data like actual received values and should not be enabled in a production environment. |
-| Debug | Logs that can be used to troubleshoot data flow issues by recording metrics and detailed flow related information. |
+| Debug | Logs that can be used to troubleshoot data flow issues by recording metrics and detailed flow-related information. |
 | Information | Logs that track the general flow of the application. Any non-repetitive general information (like version information relating to the software at startup, what external services are being used, data source connection string, number of measurements, egress URL, change of state "Starting", "Stopping", or configuration) can be useful for diagnosing potential application errors.  |
 | Warning | Logs that highlight an abnormal or unexpected event in the application flow, but does not otherwise cause the application execution to stop. Warning messages can indicate a data source state that is not configured, that a communication with backup failover instance has been lost, an insecure communication channel in use, or any other event that could require attention, but that does not impact data flow. |
 | Error | Logs that highlight when the current flow of execution is stopped due to a failure. These should indicate a failure in the current activity, not an application-wide failure. This can indicate an invalid configuration, unavailable external endpoint, internal flow error, and so on.|
