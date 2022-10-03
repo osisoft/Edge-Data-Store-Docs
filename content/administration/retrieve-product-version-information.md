@@ -21,3 +21,14 @@ To retrieve the product version information of EDS:
    ```bash
    curl -v http://localhost:5590/api/v1/Diagnostics/ProductInformation
    ```
+   
+   Example Response
+   ```json
+   {
+    "Product Name": "Edge Data Store",
+    "Product Version": "1.1.1.46",
+    "Adapter Framework Version": "1.6.0.24",
+    "Runtime Version": ".NET 6.0.9",
+    "Operating System": "Microsoft Windows 10.0.19044"
+   }
+   ```
