@@ -80,6 +80,7 @@ The following table lists egress parameters for `EgressEndpoints`.
 | **ClientSecret**                | Required for AVEVA Data Hub endpoint | string    | Client Secret used for authentication with the AVEVA Data Hub OMF endpoint  |
 | **TokenEndpoint**               | Optional for AVEVA Data Hub endpoint | string    | Used to retrieve an AVEVA Data Hub token from an alternative endpoint. *This is not normally necessary with AVEVA Data Hub. Only use if directed to do so by customer support.* |
 | **ValidateEndpointCertificate** | Optional                  | boolean   | Validate endpoint certificate (recommended). If `false`, egress accepts any endpoint certificate. Use for testing only with self-signed certificates. Defaults to `true`. |
+| **DebugExpiration**             | Optional                  | string    | Enables logging of detailed information for each outbound HTTP request pertaining to this egress endpoint to disk. The value represents the date and time this logging will stop. Examples of valid strings representing date and time:  UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`. For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
 
 The following table lists egress parameters for `Schedules`.
 
@@ -114,7 +115,6 @@ The following table lists egress parameters for `EgressConfigurations`.
 | **Backfill**                    | Optional                  | boolean   | Indicates whether data will be backfilled. Data backfill occurs when you run the egress endpoint for the first time after application startup. This results in all data from the earliest to the latest stored index being egressed. Set to `true` to backfill data. Defaults to `false`. |
 | **StreamPrefix**                | Optional                  | string    | Prefix applied to any streams that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % \| < > \{ } \` " |
 | **TypePrefix**                  | Optional                  | string    | Prefix applied to any types that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % \| < > \{ } \` " |
-| **DebugExpiration**             | Optional                  | string    | Enables logging of detailed information for each outbound HTTP request pertaining to this egress endpoint to disk. The value represents the date and time this logging will stop. Examples of valid strings representing date and time:  UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`. For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
 
 ## Examples
 
@@ -154,7 +154,7 @@ Create configuration for egress of all data for all streams to AVEVA Data Hub ev
 }
 ```
 
-Create configuration for egress of some data for some streams, to AVEVA Data Hub and PI, every 2 days starting January 1st, 2022 at 9:00. EgressEndpoints/Schedules/DataSelectors definitions are shared.
+Create configuration for egress of some data for some streams, to AVEVA Data Hub and PI Server, every 2 days starting January 1st, 2022 at 9:00. EgressEndpoints/Schedules/DataSelectors definitions are shared.
 
 ```json
 {
@@ -169,8 +169,8 @@ Create configuration for egress of some data for some streams, to AVEVA Data Hub
             {
                 "Id": "Endpoint-PI",
                 "Endpoint": "https://{webApiLocation}/piwebapi/omf/",
-                "Username" : "{username}",
-                "Password" : "{password}"
+                "Username": "{username}",
+                "Password": "{password}"
             }
         ],
         "Schedules": [
@@ -221,8 +221,8 @@ Add a single new egress endpoint to PI.
 {
     "Id": "Endpoint-PI",
     "Endpoint": "https://{webApiLocation}/piwebapi/omf/",
-    "Username" : "{username}",
-    "Password" : "{password}"
+    "Username": "{username}",
+    "Password": "{password}"
 }
 ```
 
@@ -235,20 +235,22 @@ Add multiple new egress endpoints to AVEVA Data Hub and PI with the use of a dom
         "Endpoint": "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
         "ClientId": "{clientId}",
         "ClientSecret": "{clientSecret}",
-        "Username" : null,
-        "Password" : null,
-        "TokenEndpoint" : null,
-        "ValidateEndpointCertificate" : true
+        "Username": null,
+        "Password": null,
+        "TokenEndpoint": null,
+        "ValidateEndpointCertificate": true,
+        "DebugExpiration": null
     },
     {
         "Id": "Endpoint-PI-WithDomain",
         "Endpoint": "https://{webApiLocation}/piwebapi/omf/",
         "ClientId": null,
         "ClientSecret": null,
-        "Username" : "{domain}\\{username}",
-        "Password" : "{password}",
-        "TokenEndpoint" : null,
-        "ValidateEndpointCertificate" : true
+        "Username": "{domain}\\{username}",
+        "Password": "{password}",
+        "TokenEndpoint": null,
+        "ValidateEndpointCertificate": true,
+        "DebugExpiration": null
     }
 ]
 ```
@@ -345,17 +347,16 @@ Add a single new configuration for egress of all data for all streams to PI ever
 ```json
 {
     "Id": "PI",
-    "Name" : null,
-    "Description" : null,
-    "Enabled" : true,
+    "Name": null,
+    "Description": null,
+    "Enabled": true,
     "EndpointId": "Endpoint-PI",
     "ScheduleId": "Schedule-15sec",
     "DataSelectorIds": null,
-    "NamespaceId" : "default"
-    "Backfill" : false,
-    "StreamPrefix" : "1ValidPrefix.",
-    "TypePrefix" : "AlsoValid_",
-    "DebugExpiration" : null
+    "NamespaceId": "default"
+    "Backfill": false,
+    "StreamPrefix": "1ValidPrefix.",
+    "TypePrefix": "AlsoValid_",
 }
 ```
 
@@ -408,12 +409,12 @@ The following table shows examples of REST URLS. The `{egressFacet}` parameter c
 
 | Relative URL                                    | HTTP verb | Action               |
 |-------------------------------------------------|-----------|----------------------|
-| api/v1/configuration/storage/\{egressFacet}      | GET       | Gets all configured objects of the *egressFacet*. |
-| api/v1/configuration/storage/\{egressFacet}      | DELETE    | Deletes all configured objects of the *egressFacet*. |
-| api/v1/configuration/storage/\{egressFacet}      | POST      | Adds an array of objects to the *egressFacet*, fails if any object already exists. |
-| api/v1/configuration/storage/\{egressFacet}      | POST      | Adds a single object to the *egressFacet*, fails if the object already exists. |
-| api/v1/configuration/storage/\{egressFacet}      | PUT       | Replaces all objects in the *egressFacet*. |
-| api/v1/configuration/storage/\{egressFacet}/\{id} | GET       | Gets the configured object with *id* in the *egressFacet*. |
-| api/v1/configuration/storage/\{egressFacet}/\{id} | DELETE    | Deletes the configured object with *id* in the *egressFacet*. |
-| api/v1/configuration/storage/\{egressFacet}/\{id} | PUT       | Replaces the object with *id* in the *egressFacet*, fails if the object does not exist. |
-| api/v1/configuration/storage/\{egressFacet}/\{id} | PATCH     | Allows partial updating of the configured object with *id* in the *egressFacet*. |
+| `api/v1/configuration/storage/\{egressFacet}`      | `GET`       | Gets all configured objects of the *egressFacet*. |
+| `api/v1/configuration/storage/\{egressFacet}`      | `DELETE`    | Deletes all configured objects of the *egressFacet*. |
+| `api/v1/configuration/storage/\{egressFacet}`      | `POST`      | Adds an array of objects to the *egressFacet*, fails if any object already exists. |
+| `api/v1/configuration/storage/\{egressFacet}`      | `POST`      | Adds a single object to the *egressFacet*, fails if the object already exists. |
+| `api/v1/configuration/storage/\{egressFacet}`      | `PUT`       | Replaces all objects in the *egressFacet*. |
+| `api/v1/configuration/storage/\{egressFacet}/\{id}` | `GET`       | Gets the configured object with *id* in the *egressFacet*. |
+| `api/v1/configuration/storage/\{egressFacet}/\{id}` | `DELETE`    | Deletes the configured object with *id* in the *egressFacet*. |
+| `api/v1/configuration/storage/\{egressFacet}/\{id}` | `PUT`       | Replaces the object with *id* in the *egressFacet*, fails if the object does not exist. |
+| `api/v1/configuration/storage/\{egressFacet}/\{id}` | `PATCH`     | Allows partial updating of the configured object with *id* in the *egressFacet*. |
