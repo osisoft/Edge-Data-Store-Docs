@@ -133,10 +133,10 @@ OSIsoft [proactively discloses](https://docs.osisoft.com/bundle/security-commitm
 
 ## Distribution kit files 
 
-  - EdgeDataStore_1.1.1.6-arm.deb
+  - EdgeDataStore_1.1.1.46-arm_.deb
 
-  - EdgeDataStore_1.1.1.6-arm64.deb
+  - EdgeDataStore_1.1.1.46-arm64_.deb
 
-  - EdgeDataStore_1.1.1.6-x64.deb
+  - EdgeDataStore_1.1.1.46-x64_.deb
 
-  - EdgeDataStore_1.1.1.6-x64.msi
+  - EdgeDataStore_1.1.1.46-x64_.msi
