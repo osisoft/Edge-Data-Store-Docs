@@ -27,7 +27,6 @@ The following JSON file represents the minimal configuration of an Edge Data Sto
             "Schedules": [],
             "DataSelectors": [],
             "EgressConfigurations": [],
-            "Egresses": [],
             "Runtime": {
                 "streamStorageLimitMb": 2,
                 "streamStorageTargetMb": 1,
@@ -105,7 +104,6 @@ The following JSON file represents the maximum configuration of an Edge Data Sto
             ],
             "simultaneousRequests": 1,
             "maxResponseDataLength": 250,
-            "connectTimeout": "0:00:15",
             "reconnectInterval": "0:00:05",
             "requestTimeout": "0:00:09",
             "delayBetweenRequests": "0:00:00",
@@ -208,12 +206,13 @@ The following JSON file represents the maximum configuration of an Edge Data Sto
     "Storage": {
         "EgressEndpoints": [
             {
-                "id": "Endpoint-AVEVA Data Hub",
+                "id": "Endpoint-ADH",
                 "endpoint": "<AVEVA Data Hub OMF URL for your tenant and namespace>",
                 "userName": null,
                 "password": null,
                 "clientId": "<AVEVA Data Hub ClientId>",
                 "clientSecret": "<AVEVA Data Hub ClientSecret>",
+                "debugExpiration": null,
                 "tokenEndpoint": null,
                 "validateEndpointCertificate": true
             },
@@ -224,6 +223,7 @@ The following JSON file represents the maximum configuration of an Edge Data Sto
                 "password": "<password>",
                 "clientId": null,
                 "clientSecret": null,
+                "debugExpiration": null,
                 "tokenEndpoint": null,
                 "validateEndpointCertificate": true
             }
@@ -246,16 +246,15 @@ The following JSON file represents the maximum configuration of an Edge Data Sto
         ],
         "EgressConfigurations": [
             {
-                "id": "AVEVA Data Hub",
+                "id": "ADH",
                 "name": null,
                 "description": null,
                 "enabled": true,
-                "endpointId": "Endpoint-AVEVA Data Hub",
+                "endpointId": "Endpoint-ADH",
                 "scheduleId": "Schedule1",
                 "dataSelectorIds": null,
                 "namespaceId": "default",
                 "backfill": false,
-                "debugExpiration": null,
                 "streamPrefix": "ChangeMe",
                 "typePrefix": "ChangeMe"
             },
@@ -271,23 +270,21 @@ The following JSON file represents the maximum configuration of an Edge Data Sto
                 ],
                 "namespaceId": "default",
                 "backfill": false,
-                "debugExpiration": null,
                 "streamPrefix": "ChangeMe",
                 "typePrefix": "ChangeMe"
             },
             {
-                "id": "AVEVA Data HubDiag",
+                "id": "ADHDiag",
                 "name": null,
                 "description": null,
                 "enabled": true,
-                "endpointId": "Endpoint-AVEVA Data Hub",
+                "endpointId": "Endpoint-ADH",
                 "scheduleId": "Schedule1",
                 "dataSelectorIds": [
                     "DataSelector1"
                 ],
                 "namespaceId": "diagnostics",
                 "backfill": false,
-                "debugExpiration": null,
                 "streamPrefix": "ChangeMe",
                 "typePrefix": "ChangeMe"
             },
@@ -301,12 +298,10 @@ The following JSON file represents the maximum configuration of an Edge Data Sto
                 "dataSelectorIds": null,
                 "namespaceId": "diagnostics",
                 "backfill": false,
-                "debugExpiration": null,
                 "streamPrefix": "ChangeMe",
                 "typePrefix": "ChangeMe"
             }
         ],
-        "Egresses": [],
         "Runtime": {
             "streamStorageLimitMb": 2,
             "streamStorageTargetMb": 1,
