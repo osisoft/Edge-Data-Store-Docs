@@ -4,7 +4,7 @@ uid: adhEgressQuickStart
 
 # AVEVA Data Hub egress quick start
 
-Data egress provides a mechanism to transfer data to AVEVA Data Hub using OMF messages through a PI Web API endpoint. To get started sending data stored in Edge Data Store to AVEVA Data Hub, configure an AVEVA Data Hub destination and configure periodic egress to use that destination.
+Data egress provides a mechanism to transfer data to AVEVA Data Hub using OMF messages. To get started sending data stored in Edge Data Store to AVEVA Data Hub, configure an AVEVA Data Hub destination and configure periodic egress to use that destination.
 
 ## AVEVA Data Hub destinations
 
@@ -22,4 +22,4 @@ To create an OMF connection to AVEVA Data Hub:
 
 ## Create a periodic egress configuration
 
-To configure Edge Storage periodic egress for the PI Web API endpoint and credentials, follow the steps in [Configure data egress](https://docs.osisoft.com/bundle/edge-data-store/page/egress/configure-data-egress.html#create-configurations).
+To configure Edge Storage periodic egress for the AVEVA Data Hub endpoint and credentials, follow the steps in [Configure data egress](https://docs.osisoft.com/bundle/edge-data-store/page/egress/configure-data-egress.html#create-configurations).
