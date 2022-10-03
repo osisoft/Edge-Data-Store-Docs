@@ -10,13 +10,13 @@ Once the AVEVA Data Hub or PI Server destinations are prepared to receive OMF me
 
 To support the reuse of common configuration blocks, EDS egress configuration is divided into four facets, which can be configured together or separately:
 
-- `EgressEndpoints`: Describes the egress endpoint connectivity information
+- `EgressEndpoints` - Describes the egress endpoint connectivity information
 
-- `Schedules`: Describes the timing of data egress
+- `Schedules` - Describes the timing of data egress
 
-- `DataSelectors`: Describes which data to egress and includes stream and data filtering
+- `DataSelectors` - Describes which data to egress and includes stream and data filtering
 
-- `EgressConfigurations`: Ties together the three previous facets and includes settings for type and stream prefixing, backfill, and more
+- `EgressConfigurations` - Ties together the three previous facets and includes settings for type and stream prefixing, backfill, and more
 
 **Warnings:** 
 
