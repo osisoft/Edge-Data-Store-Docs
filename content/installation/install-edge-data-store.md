@@ -57,7 +57,7 @@ To install EDS on Windows from the command line:
 1. Enter the `msiexec` command and specify parameters to run the installation, using the following example as a guide.
 
 ```
-Msiexec /quiet /i EdgeDataStore.msi PORT="<number>" INSTALLFOLDER="<file_path>" WIXUI_ENABLEMODBUS="1" WIXUI_ENABLEOPCUA="1"
+Msiexec /quiet /i EdgeDataStore_1.1.1.46-x64_.msi PORT="<number>" INSTALLFOLDER="<file_path>" WIXUI_ENABLEMODBUS="1" WIXUI_ENABLEOPCUA="1"
 ```
 
   Parameters:
