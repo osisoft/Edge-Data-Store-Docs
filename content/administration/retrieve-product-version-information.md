@@ -4,9 +4,9 @@ uid: RetrieveProductVersionInformation
 
 # Retrieve product version information
 
-The product version information includes the Edge Data Store version number, the .NET Core version, the Core CLR version, and the operating system. This information can be useful for troubleshooting purposes.
+The product version information includes the Edge Data Store application version, the adapter framework version, the .NET runtime version, and the operating system. This information can be useful for troubleshooting purposes.
 
-To retrieve the product version of EDS:
+To retrieve the product version information of EDS:
 
 1. Open a tool capable of making HTTP requests.
 
