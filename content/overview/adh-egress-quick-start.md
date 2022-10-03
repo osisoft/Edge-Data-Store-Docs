@@ -22,4 +22,4 @@ To create an OMF connection to AVEVA Data Hub:
 
 ## Create a periodic egress configuration
 
-To configure Edge Storage periodic egress for the AVEVA Data Hub endpoint and credentials, follow the steps in [Configure data egress](https://docs.osisoft.com/bundle/edge-data-store/page/egress/configure-data-egress.html#create-configurations).
+To configure Edge Storage periodic egress to AVEVA Data Hub, follow the steps in [Configure data egress](https://docs.osisoft.com/bundle/edge-data-store/page/egress/configure-data-egress.html#create-configurations).
