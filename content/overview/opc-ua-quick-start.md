@@ -24,7 +24,6 @@ To configure a data source to connect an OPC UA device to an OPC UA EDS adapter 
        "UseSecureConnection": false,
        "UserName": null,
        "Password": null,
-       "RootNodeIds": null,
        "IncomingTimestamp": "Source",
        "StreamIdPrefix": "OpcUa"
    }
