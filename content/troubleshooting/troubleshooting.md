@@ -92,9 +92,9 @@ Date and time strings should use the following formats:
 
 Debug folders and files are created under the Edge Data Store folder as follows:
 
-   Windows: `%programdata%\OSIsoft\EdgeDataStore\Logs\EgressDebugLogs\Data\{egressEndpointId}\{omfType}\{Ticks}-{Guid}-{Request/Response}.txt`
+   Windows: `%programdata%\OSIsoft\EdgeDataStore\Logs\EgressDebugLogs\Data\{egressType}\{egressId}\{omfType}\{Ticks}-{Guid}-{Request/Response}.txt`
 
-   Linux: `/usr/share/OSIsoft/EdgeDataStore/Logs/EgressDebugLogs/Data/{egressEndpointId}/{omfType}/{Ticks}-{Guid}-{Request/Response}.txt`
+   Linux: `/usr/share/OSIsoft/EdgeDataStore/Logs/EgressDebugLogs/Data{egressType}/{egressId}/{omfType}/{Ticks}-{Guid}-{Request/Response}.txt`
 
 The OMF specific elements of the file structure are defined in the following table.
 
