@@ -6,7 +6,7 @@ uid: configureEgress
 
 Periodic data egress is a recurring task that sends the timeseries data collected by EDS to long term storage in either AVEVA Data Hub or PI Server. You can create multiple egress destinations and multiple periodic egress tasks. Periodic egress runs on a regular schedule to ensure that data is sent to long term storage.
 
-Once the AVEVA Data Hub or PI Server destinations are prepared to receive OMF messages, configure data egress to create the connection to the destination and specify the details of the data egress, including the data to include and the frequency to send it. For more information on egress destinations, see [Configure egress destinations](xref:PrepareEgressDestinations).
+Once the AVEVA Data Hub or PI Server destinations are prepared to receive OMF messages, configure data egress to create the connection to the destination and specify the details of the data egress, including the data to include and the frequency to send it. For more information on egress destinations, see [Prepare egress destinations](xref:PrepareEgressDestinations).
 
 To support the reuse of common configuration blocks, EDS egress configuration is divided into four facets, which can be configured together or separately:
 
@@ -60,10 +60,10 @@ curl -d "@{Filename}" -H "Content-Type: application/json" -X {Command} {Endpoint
 curl -d "@StorageEgress.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration
 ```
 
-- To configure schedules only:
+- To configure only the EgressEndpoints facet:
 
 ```bash
-curl -d "@Schedules.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration/storage/schedules
+curl -d "@EgressEndpoints.json" -H "Content-Type: application/json" -X POST http://localhost:5590/api/v1/configuration/storage/egressendpoints
 ```
 
 ## Parameters
@@ -78,9 +78,9 @@ The following table lists egress parameters for `EgressEndpoints`.
 | **Password**                    | Required for PI Server endpoint  | string    | Password used for authentication to PI Web API OMF endpoint |
 | **ClientId**                    | Required for AVEVA Data Hub endpoint | string    | Client ID used for authentication to AVEVA Data Hub OMF endpoint  |
 | **ClientSecret**                | Required for AVEVA Data Hub endpoint | string    | Client Secret used for authentication with the AVEVA Data Hub OMF endpoint  |
+| **DebugExpiration**             | Optional                  | string    | Enables logging of detailed information for each outbound HTTP request pertaining to this egress endpoint to disk. The value represents the date and time this logging will stop. Examples of valid strings representing date and time:  UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`. For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
 | **TokenEndpoint**               | Optional for AVEVA Data Hub endpoint | string    | Used to retrieve an AVEVA Data Hub token from an alternative endpoint. *This is not normally necessary with AVEVA Data Hub. Only use if directed to do so by customer support.* |
 | **ValidateEndpointCertificate** | Optional                  | boolean   | Validate endpoint certificate (recommended). If `false`, egress accepts any endpoint certificate. Use for testing only with self-signed certificates. Defaults to `true`. |
-| **DebugExpiration**             | Optional                  | string    | Enables logging of detailed information for each outbound HTTP request pertaining to this egress endpoint to disk. The value represents the date and time this logging will stop. Examples of valid strings representing date and time:  UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`. For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
 
 The following table lists egress parameters for `Schedules`.
 
@@ -409,12 +409,12 @@ The following table shows examples of REST URLS. The `{egressFacet}` parameter c
 
 | Relative URL                                    | HTTP verb | Action               |
 |-------------------------------------------------|-----------|----------------------|
-| `api/v1/configuration/storage/\{egressFacet}`      | `GET`       | Gets all configured objects of the *egressFacet*. |
-| `api/v1/configuration/storage/\{egressFacet}`      | `DELETE`    | Deletes all configured objects of the *egressFacet*. |
-| `api/v1/configuration/storage/\{egressFacet}`      | `POST`      | Adds an array of objects to the *egressFacet*, fails if any object already exists. |
-| `api/v1/configuration/storage/\{egressFacet}`      | `POST`      | Adds a single object to the *egressFacet*, fails if the object already exists. |
-| `api/v1/configuration/storage/\{egressFacet}`      | `PUT`       | Replaces all objects in the *egressFacet*. |
-| `api/v1/configuration/storage/\{egressFacet}/\{id}` | `GET`       | Gets the configured object with *id* in the *egressFacet*. |
-| `api/v1/configuration/storage/\{egressFacet}/\{id}` | `DELETE`    | Deletes the configured object with *id* in the *egressFacet*. |
-| `api/v1/configuration/storage/\{egressFacet}/\{id}` | `PUT`       | Replaces the object with *id* in the *egressFacet*, fails if the object does not exist. |
-| `api/v1/configuration/storage/\{egressFacet}/\{id}` | `PATCH`     | Allows partial updating of the configured object with *id* in the *egressFacet*. |
+| `api/v1/configuration/storage/{egressFacet}`      | `GET`       | Gets all configured objects of the *egressFacet*. |
+| `api/v1/configuration/storage/{egressFacet}`      | `DELETE`    | Deletes all configured objects of the *egressFacet*. |
+| `api/v1/configuration/storage/{egressFacet}`      | `POST`      | Adds an array of objects to the *egressFacet*, fails if any object already exists. |
+| `api/v1/configuration/storage/{egressFacet}`      | `POST`      | Adds a single object to the *egressFacet*, fails if the object already exists. |
+| `api/v1/configuration/storage/{egressFacet}`      | `PUT`       | Replaces all objects in the *egressFacet*. |
+| `api/v1/configuration/storage/{egressFacet}/{id}` | `GET`       | Gets the configured object with *id* in the *egressFacet*. |
+| `api/v1/configuration/storage/{egressFacet}/{id}` | `DELETE`    | Deletes the configured object with *id* in the *egressFacet*. |
+| `api/v1/configuration/storage/{egressFacet}/{id}` | `PUT`       | Replaces the object with *id* in the *egressFacet*, fails if the object does not exist. |
+| `api/v1/configuration/storage/{egressFacet}/{id}` | `PATCH`     | Allows partial updating of the configured object with *id* in the *egressFacet*. |
