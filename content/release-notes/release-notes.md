@@ -92,7 +92,7 @@ This is a list of known changes in EDS 1.1 that may be relevant to upgrading
 
   - The `DeviceStatus` value `NotConfigured` is now `Not Configured`. 
 
-  - Moved trusted certificates from `\Adapters\OpcUa\Certificates\Trusted\certs` to `\Adapters\OpcUa\Certificates\trusted\certs`. 
+  - Moved trusted certificates from `\EdgeDataStore\{componentId}\Certificates\Trusted\certs` to `\EdgeDataStore\Certificates\trusted\certs`.
 
   - The configuration items `ApplyPrefixToStreamId` and `rootNodeIds` have been removed from the Data Source configuration. They will be removed automatically. 
 
