@@ -52,7 +52,7 @@ The NextHealthMessageExpected dynamic type includes the following values, which 
 
 The following health types and streams are created to reflect the health of the Storage component.
 
-The `Storage` static type includes the following properties and servers as a root AF element with the ID Storage.
+The `Storage` static type includes the following properties and servers as a root AF element with the Id Storage.
 
 | Property     | Type     | Description      |
 |--------------|----------|------------------|

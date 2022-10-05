@@ -8,7 +8,7 @@ The OPC UA EDS adapter is a component of Edge Data Store that defines connection
 
 The following diagram depicts the data flow for a single instance of OPC UA EDS adapter instance:
 
-![OPC UA EDS](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/OPCUAConfiguration.jpg "OPC UA Configuration")
+![OPC UA EDS](../content/images/OPCUAConfiguration.jpg "OPC UA Configuration")
 
 The adapter instance polls the OPC UA device and then collects data from the device. The adapter then sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or AVEVA Data Hub. The adapter instance can be configured from the device where EDS is installed, and EDS collects health information about the adapter that can be egressed.
 
@@ -84,11 +84,11 @@ When you create the data source file, the OPC UA adapter auto generates the data
    ]
    ```
 
-2. To ingress a stream to Edge Data Store, change the value of the **Selected** key from `false` to `true`. All streams in the auto generated data selection file are initially set to `false`.
+1. To ingress a stream to Edge Data Store, change the value of the `Selected` key from `false` to `true`. All streams in the auto generated data selection file are initially set to `false`.
 
-3. Save the the file.
+1. Save the the file.
 
-4. Run the following curl script from the directory where the file is located, updating the file name and destination in the script if needed:
+1. Run the following curl script from the directory where the file is located, updating the file name and destination in the script if needed:
 
    ```bash
    curl -d "@OpcUa1Dataselection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection

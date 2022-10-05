@@ -48,8 +48,8 @@ The following parameters are available for configuring system health endpoints.
 | `Endpoint`                                                    | Required  | `string` | Yes      | The URL of the ingress point which accepts OMF health messages.|
 | `Id`                                                          | Optional  | `string` | Yes      | The `Id` of the health endpoint configuration. <br> The `Id` can be any alphanumeric string; for example, `Endpoint1`. If you do not specify an `Id`, Edge Data Store generates one automatically.|
 | `MaxBufferSizeMB`                                             | Optional  | `integer`| No       | The limit on the maximum megabytes of data to buffer for messages to this endpoint if an integer is > 0. This parameter is useful if you want to limit memory or disk usage growth in the event of disconnection to the endpoint. If the buffer is full, old messages will be discarded for new messages. The default is `0`. |
-| `Password`                                                    | Optional  | `string` | Yes      | The password used for authentication to PI Web API OMF endpoint. |
-| `UserName`                                                    | Optional  | `string` | Yes      | The user name used for authentication to PI Web API OMF endpoint. |
+| `Password`                                                    | Optional  | `string` | Yes      | The password used for authentication to PI Web API OMF endpoint |
+| `UserName`                                                    | Optional  | `string` | Yes      | The user name used for authentication to PI Web API OMF endpoint |
 | `ValidateEndpointCertificate`                                 | Optional  | `Boolean`| No       | The OSIsoft Adapter validates the endpoint certificate if set to true (recommended). If set to false, the OSIsoft Adapter accepts any endpoint certificate. OSIsoft strongly recommends using disabled endpoint certificate validation for testing purposes only. |
 | `EnableDiagnostics`                                    | Optional | `Boolean`| No    | Determines if diagnostics are enabled  |
 

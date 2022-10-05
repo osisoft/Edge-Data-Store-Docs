@@ -24,4 +24,4 @@ To create a PI Web API OMF endpoint:
 
 ## Create a periodic egress configuration
 
-To configure Edge Storage periodic egress for the PI Web API endpoint and credentials, follow the steps in [Configure data egress](https://docs.osisoft.com/bundle/edge-data-store/page/egress/configure-data-egress.html#create-configurations).
+To configure periodic egress for the PI Server, follow the steps in [Configure data egress](https://docs.osisoft.com/bundle/edge-data-store/page/egress/configure-data-egress.html#create-configurations).

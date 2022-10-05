@@ -49,7 +49,7 @@ To generate the default data selection file:
   ]
   ```
 
-1. In a text editor, edit the file and change the value of any Selected key from false to true in order to transfer the OPC UA data to be stored in Edge Data Store.
+1. In a text editor, edit the file and change the value of any Selected key from `false` to `true` in order to transfer the OPC UA data to be stored in Edge Data Store.
 
 1. In the same directory where you edited the file, run the following curl command:
 

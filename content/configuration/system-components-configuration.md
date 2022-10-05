@@ -6,7 +6,7 @@ uid: SystemComponentsConfiguration
 
 Edge Data Store components are Modbus TCP EDS adapter, OPC UA EDS adapter, and the Storage component. These components are only active if they are configured for the system to use them. EDS itself needs only a small amount of configuration - the list of components and the HTTP Port used for REST calls.
 
-The default _System_Components.json_ file for the System component contains the following information.
+The default _System_Components.json_ file for the System component contains the following information:
 
 ```json
 [
@@ -21,9 +21,9 @@ The Storage component is required for Edge Data Store to run and only one Storag
 
 ## Add system components
 
-To add system component:
+To add system components:
 
-1. Using any text editor, create a JSON file with the ComponentId and ComponentType. The following example adds a Modbus TCP EDS adapter instance.
+1. Using any text editor, create a JSON file with a `ComponentId` and `ComponentType`. The following example adds a Modbus TCP EDS adapter instance.
 
   ```json
     {
@@ -32,9 +32,9 @@ To add system component:
     }
   ```
 
-  **Note:** The ComponentId must be a unique value. This example uses the ComponentId Modbus1, since it is the first Modbus TCP EDS adapter.
+  **Note:** The `ComponentId` must be a unique value. This example uses the `ComponentId` "Modbus1," since it is the first Modbus TCP EDS adapter.
 
-1. Save the JSON file with the name _AddComponent.json_.
+1. Save the JSON file with the name `AddComponent.json`.
 
 1. From the same directory where the file exists, run the following curl script or EdgeCmd:
 

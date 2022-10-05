@@ -60,7 +60,6 @@
     - topicUid: configureEgress
     - topicUid: EgressExecutionDetails
     - topicUid: ManualEgress
-    - topicUid: ManageEgressJobs
     - topicUid: EdgeDataStoreDiagnostics
   - topicUid: EdgeDataStoreHealth
     items:

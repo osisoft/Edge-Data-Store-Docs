@@ -191,7 +191,7 @@ For more information on stream view properties, see [Stream Views](xref:sdsStrea
 | TargetTypeId | Yes		|
 | Properties   | Yes, with limitations* |
 
-**Note:** The `Properties` collection contains a list of SdsStreamViewProperty objects. The query attempts to find a match on the SdsStreamViewProperty's `Id`, `SourceTypeId`, and `TargetTypeId` fields. The `Properties` collection of nested views will also be searched. See the following example. 
+**Note:** The `Properties` collection contains a list of `SdsStreamViewProperty` objects. The query attempts to find a match on the `SdsStreamViewProperty`'s `Id`, `SourceTypeId`, and `TargetTypeId` fields. The `Properties` collection of nested views are also searched. See the following example. 
 
 #### Example
 
@@ -391,9 +391,9 @@ Metadata key is not searched if the operator (`:`) is missing in the query strin
 
 Query string           | Returns | Description
 ------------------------   | ------------- |-------------
-`manufacturer:company`  | stream1 | Searches and returns stream1.
-`company`               | stream1      | Searches only the metadata values due to lack of `:` operator and returns stream1.
-`a*`  | stream1, stream2, stream3       | Searches the metadata values and returns all three streams.
+`manufacturer:company`  | stream1 | Searches and returns stream1
+`company`               | stream1      | Searches only the metadata values due to lack of `:` operator and returns stream1
+`a*`  | stream1, stream2, stream3       | Searches the metadata values and returns all three streams
 
 #### Request
 
@@ -413,9 +413,9 @@ Wildcard (`*`) character can be used both in metadata keys and values with one c
 
 **Query string**     | **Returns** | **Description**
 ------------------  | ---------------- | ------------------------
-`manufa*turer:compan*`  | stream1 | Searches and returns stream1.
-`ser*al:a*`  | stream1, stream2 | Searches and returns stream1 and stream2.
-`s*:a*`  | stream1, stream2, stream3 | Searches and returns all three streams.
+`manufa*turer:compan*`  | stream1 | Searches and returns stream1
+`ser*al:a*`  | stream1, stream2 | Searches and returns stream1 and stream2
+`s*:a*`  | stream1, stream2, stream3 | Searches and returns all three streams
 `Id:stream*`  |  stream1, stream2, stream3 | Searches all fields and returns three streams.
 `Id*:stream*`  | nothing | Wildcard in the field limits the search to metadata. Returns nothing because there is no metadata by that name that meets the criteria.
 

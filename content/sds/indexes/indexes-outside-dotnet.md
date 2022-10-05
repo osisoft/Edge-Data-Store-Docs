@@ -8,7 +8,7 @@ The following examples are in Python and JavaScript.
 
 ## Simple indexes
 
-When the .NET `SdsTypeBuilder` is unavailable, indexes must be built manually.
+When the .NET `SdsTypeBuilder` is unavailable, you must build indexes manually.
 
 The following examples show SdsTypes defined in [Python](https://github.com/osisoft/sample-ocs-waveform-python) and [Java Script](https://github.com/osisoft/sample-ocs-waveform-nodejs). For samples in other languages, go to [AVEVA Data Hub code samples in GitHub](https://github.com/osisoft/OSI-Samples-ADH/blob/main/docs/SDS_WAVEFORM.md).
 

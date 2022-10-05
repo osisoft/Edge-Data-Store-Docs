@@ -8,9 +8,9 @@ uid: OMFMessages
 
 ## Headers
 
-Message headers allow you to pass additional information with the message. The message header is where you specify the action for the message, such as CREATE. For a description of each of the headers, see the [OMF specification](https://docs.osisoft.com/bundle/omf/page/headers.html).
+Message headers allow you to pass additional information with the message. The message header is where you specify the action for the message, such as `CREATE`. For a description of each of the headers, see the [OMF specification](https://docs.osisoft.com/bundle/omf/page/headers.html).
 
-The `omfversion` header must match the version of the OMF spec used to construct the message. EDS supports versions 1.2 of the OMF specification.
+The `omfversion` header must match the version of the OMF spec used to construct the message. EDS supports versions 1.0, 1.1, and 1.2 of the OMF specification.
 
 ## Message types
 
@@ -73,7 +73,7 @@ When this command completes successfully, an OMF type with the same name is crea
 
 ## Container messages
 
-An OMF container message uses an OMF type as a template to create a way to collect and group data events. A container message is interpreted as an SdsStream in the Sequential Data Store.
+An OMF container message uses an OMF type as a template to create a way to collect and group data events. A container message is interpreted as an `SdsStream` in the Sequential Data Store.
 
 ### Create an OMF container
 
@@ -88,7 +88,7 @@ The next step in writing OMF data is to create an OMF container. To create an OM
    }]
    ```
 
-   This container references the OMF type that was created earlier, and an error will occur if the type does not exist when the container is created.
+   This container references the OMF type that was created earlier, and an error occurs if the type does not exist when the container is created.
 
 1. To create the OMF container in Edge Storage, store the JSON file with the name `OmfCreateContainer.json` on the local device.
 
@@ -119,7 +119,7 @@ Once a type and container are defined, you can send data messages to write data 
 
 To writer data to the container:
 
-1. Create an OMF JSON file to define data events to be stored in the SdsStreams created in the previous steps. For best performance, batch OMF messages together, as in the following example:
+1. Create an OMF JSON file to define data events to be stored in the `SdsStreams` created in the previous steps. For best performance, batch OMF messages together, as in the following example:
 
    ```json
    [{

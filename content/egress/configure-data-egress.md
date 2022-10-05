@@ -4,23 +4,23 @@ uid: configureEgress
 
 # Configure periodic data egress
 
-Once the AVEVA Data Hub or PI Server destinations are prepared to receive OMF messages, configure data egress to create the connection to the destination and specify the details of the data transfer. Periodic egress runs on a regular schedule to ensure that data is sent to long term storage. For more information on egress destinations, see [Configure egress destinations](xref:PrepareEgressDestinations).
+Periodic data egress is a recurring task that sends the timeseries data collected by EDS to long term storage in either AVEVA Data Hub or PI Server. You can create multiple egress destinations and multiple periodic egress tasks. Periodic egress runs on a regular schedule to ensure that data is sent to long term storage.
+
+Once the AVEVA Data Hub or PI Server destinations are prepared to receive OMF messages, configure data egress to create the connection to the destination and specify the details of the data egress, including the data to include and the frequency to send it. For more information on egress destinations, see [Configure egress destinations](xref:PrepareEgressDestinations).
 
 To support the reuse of common configuration blocks, EDS egress configuration is divided into four facets, which can be configured together or separately:
 
-- `EgressEndpoints`: Describes the egress endpoint connectivity information
+- `EgressEndpoints` - Describes the egress endpoint connectivity information
 
-- `Schedules`: Describes the timing of data egress
+- `Schedules` - Describes the timing of data egress
 
-- `DataSelectors`: Describes which data to egress and includes stream and data filtering
+- `DataSelectors` - Describes which data to egress and includes stream and data filtering
 
-- `EgressConfigurations`: Ties together the three previous facets and includes settings for type and stream prefixing, backfill, and more
+- `EgressConfigurations` - Ties together the three previous facets and includes settings for type and stream prefixing, backfill, and more
 
 **Warnings:** 
 
   - You cannot add configurations manually because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit configurations. For additional endpoints, see [REST URLs](#rest-urls).
-  
-  - If configuring the facets separately,`EgressEndpoints`, `Schedules`, and `DataSelectors` must be configured before they are referenced in `EgressConfigurations`.
 
   - If you delete or remove an egress configuration and then recreate it with `Backfill` set to `true`, duplicate data will appear on any stream that was previously egressed successfully. New streams will not see duplicate data.
 
@@ -111,6 +111,7 @@ The following table lists egress parameters for `EgressEndpoints`.
 | **ClientSecret**                | Required for AVEVA Data Hub endpoint | string    | Client Secret used for authentication with the AVEVA Data Hub OMF endpoint  |
 | **TokenEndpoint**               | Optional for AVEVA Data Hub endpoint | string    | Used to retrieve an AVEVA Data Hub token from an alternative endpoint. *This is not normally necessary with AVEVA Data Hub. Only use if directed to do so by customer support.* |
 | **ValidateEndpointCertificate** | Optional                  | boolean   | Validate endpoint certificate (recommended). If `false`, egress accepts any endpoint certificate. Use for testing only with self-signed certificates. Defaults to `true`. |
+| **DebugExpiration**             | Optional                  | string    | Enables logging of detailed information for each outbound HTTP request pertaining to this egress endpoint to disk. The value represents the date and time this logging will stop. Examples of valid strings representing date and time:  UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`. For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
 
 The following table lists egress parameters for `Schedules`.
 
@@ -118,7 +119,7 @@ The following table lists egress parameters for `Schedules`.
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
 | **Id**                          | Required                  | string    | Unique identifier of the schedule configuration    |
 | **Period**                      | Required                  | string    | Frequency of time between each egress action beginning at or after the `StartTime`. Must be a string in the following format `d.hh:mm:ss.##`. See `StartTime` for additional information. |
-| **StartTime**                   | Optional                  | string    | The date and time when egress actions will begin. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ` and Local: `yyyy-mm-ddThh:mm:ss`. Use the `StartTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `StartTime`, egress begins as soon as you submit the configuration and will occur again whenever the length of the `Period` completes. For example, a `Period` of `00:15:00` without a defined `StartTime` results in immediate data egress when you submit the configuration and then every 15 minutes thereafter. Conversely, if you use a `StartTime` of `2022-10-02T06:00:00`, a `Period` of `00:15:00`, and you submit your configuration at 6:07 on October 2, 2022, egress will begin at 6:15 and will continue every 15 minutes thereafter. <br>**Note:** The next egress job will not start until the previous egress job is complete. |
+| **StartTime**                   | Optional                  | string    | The date and time when egress actions will begin. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ` and Local: `yyyy-mm-ddThh:mm:ss`. Use the `StartTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `StartTime`, egress begins as soon as you submit the configuration and will occur again whenever the length of the `Period` completes. For example, a `Period` of `00:15:00` without a defined `StartTime` results in immediate data egress when you submit the configuration and then every 15 minutes thereafter. Conversely, if you use a `StartTime` of `2022-10-02T06:00:00`, a `Period` of `00:15:00`, and you submit your configuration at 6:07 on October 2, 2022, egress will begin at 6:15 and will continue every 15 minutes thereafter.  |
 
 The following table lists egress parameters for `DataSelectors`.
 
@@ -145,7 +146,6 @@ The following table lists egress parameters for `EgressConfigurations`.
 | **Backfill**                    | Optional                  | boolean   | Indicates whether data will be backfilled. Data backfill occurs when you run the egress endpoint for the first time after application startup. This results in all data from the earliest to the latest stored index being egressed. Set to `true` to backfill data. Defaults to `false`. |
 | **StreamPrefix**                | Optional                  | string    | Prefix applied to any streams that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % \| < > \{ } \` " |
 | **TypePrefix**                  | Optional                  | string    | Prefix applied to any types that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ & ' ( ) \ * + , ; = % \| < > \{ } \` " |
-| **DebugExpiration**             | Optional                  | string    | Enables logging of detailed information for each outbound HTTP request pertaining to this egress endpoint to disk. The value represents the date and time this logging will stop. Examples of valid strings representing date and time:  UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`. For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
 
 ## Examples
 
@@ -185,7 +185,7 @@ Create configuration for egress of all data for all streams to AVEVA Data Hub ev
 }
 ```
 
-Create configuration for egress of some data for some streams, to AVEVA Data Hub and PI, every 2 days starting January 1st, 2022 at 9:00. EgressEndpoints/Schedules/DataSelectors definitions are shared.
+Create configuration for egress of some data for some streams, to AVEVA Data Hub and PI Server, every 2 days starting January 1st, 2022 at 9:00. EgressEndpoints/Schedules/DataSelectors definitions are shared.
 
 ```json
 {
@@ -200,8 +200,8 @@ Create configuration for egress of some data for some streams, to AVEVA Data Hub
             {
                 "Id": "Endpoint-PI",
                 "Endpoint": "https://{webApiLocation}/piwebapi/omf/",
-                "Username" : "{username}",
-                "Password" : "{password}"
+                "Username": "{username}",
+                "Password": "{password}"
             }
         ],
         "Schedules": [
@@ -252,8 +252,8 @@ Add a single new egress endpoint to PI.
 {
     "Id": "Endpoint-PI",
     "Endpoint": "https://{webApiLocation}/piwebapi/omf/",
-    "Username" : "{username}",
-    "Password" : "{password}"
+    "Username": "{username}",
+    "Password": "{password}"
 }
 ```
 
@@ -266,20 +266,22 @@ Add multiple new egress endpoints to AVEVA Data Hub and PI with the use of a dom
         "Endpoint": "https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf",
         "ClientId": "{clientId}",
         "ClientSecret": "{clientSecret}",
-        "Username" : null,
-        "Password" : null,
-        "TokenEndpoint" : null,
-        "ValidateEndpointCertificate" : true
+        "Username": null,
+        "Password": null,
+        "TokenEndpoint": null,
+        "ValidateEndpointCertificate": true,
+        "DebugExpiration": null
     },
     {
         "Id": "Endpoint-PI-WithDomain",
         "Endpoint": "https://{webApiLocation}/piwebapi/omf/",
         "ClientId": null,
         "ClientSecret": null,
-        "Username" : "{domain}\\{username}",
-        "Password" : "{password}",
-        "TokenEndpoint" : null,
-        "ValidateEndpointCertificate" : true
+        "Username": "{domain}\\{username}",
+        "Password": "{password}",
+        "TokenEndpoint": null,
+        "ValidateEndpointCertificate": true,
+        "DebugExpiration": null
     }
 ]
 ```
@@ -376,17 +378,16 @@ Add a single new configuration for egress of all data for all streams to PI ever
 ```json
 {
     "Id": "PI",
-    "Name" : null,
-    "Description" : null,
-    "Enabled" : true,
+    "Name": null,
+    "Description": null,
+    "Enabled": true,
     "EndpointId": "Endpoint-PI",
     "ScheduleId": "Schedule-15sec",
     "DataSelectorIds": null,
-    "NamespaceId" : "default"
-    "Backfill" : false,
-    "StreamPrefix" : "1ValidPrefix.",
-    "TypePrefix" : "AlsoValid_",
-    "DebugExpiration" : null
+    "NamespaceId": "default"
+    "Backfill": false,
+    "StreamPrefix": "1ValidPrefix.",
+    "TypePrefix": "AlsoValid_",
 }
 ```
 

@@ -4,13 +4,13 @@ uid: EdgeDataStoreDiagnostics
 
 # Diagnostics configuration
 
-Edge Data Store and its components produce performance and system data for diagnostic purposes which is stored locally in the Storage component, and may be queried locally or egressed to PI Web API endpoints or the AVEVA Data Hub or both. Diagnostic data is always produced and saved; it cannot be disabled.
+Edge Data Store and its components produce performance and system data for diagnostic purposes and store that data locally in the Storage component. You can query it locally or egress it to PI Web API endpoints, the AVEVA Data Hub, or both. Diagnostic data is always produced and saved; you cannot disable it.
 
-Diagnostic data is stored within the `diagnostics` namespace in Edge Storage. Local access to this data is available through SDS. For more information, see [Read data](xref:sdsReadingData).
+Edge Storage stores diagnostic data within the `diagnostics` namespace. Local access to this data is available through SDS. For more information, see [Read data](xref:sdsReadingData).
 
 ## Egress diagnostics data through PeriodicEgressEndpoints
 
-To egress diagnostics related data, specify `diagnostics` as the NamespaceId in the periodic egress endpoint configuration. For details and instructions, see [Data egress configuration](xref:egress).
+To egress diagnostics related data, specify `diagnostics` as the `NamespaceId` in the periodic egress endpoint configuration. For details and instructions, see [Data egress configuration](xref:egress).
 
 ## Edge Data Store diagnostics
 
@@ -58,7 +58,7 @@ The `Diagnostics.Adapter.IORate` dynamic type includes these values, which are l
 
 ### Error rate
 
-The `Diagnostics.Adapter.ErrorRate` dynamic type includes these values, and are logged in a stream with the id `{DeviceName}.{componentid}.ErrorRate`.
+The `Diagnostics.Adapter.ErrorRate` dynamic type includes these values, and are logged in a stream with the Id `{DeviceName}.{componentid}.ErrorRate`.
 
 | Type         | Property |  Description     |
 |--------|--------------|-----------------------------------|
@@ -82,7 +82,7 @@ The `Storage.default.default.Counts` stream includes counts of the types, stream
 
 ### Storage.default.diagnostics.Counts
 
-The `Storage.default.default.Counts` stream includes counts of the types, streams, and stream views of the diagnostics namespace.
+The `Storage.default.diagnostics.Counts` stream includes counts of the types, streams, and stream views of the diagnostics namespace.
 
 | Type         | Property |  Description     |
 |--------|--------------|-----------------------------------|
@@ -101,3 +101,12 @@ The `Storage.Totals.Counts` stream includes counts of the types, streams, and st
 | integer | TypeCount | Count of types |
 | integer | StreamCount | Count of streams |
 | integer | StreamViewCount | Count of stream views |
+
+### IO rate
+
+The `Diagnostics.Storage.IORate` dynamic type includes these values, which are logged in a stream with the id `{DeviceName}.Storage.{EgressType}.{EgressID}.IORate`, where `{EgressType}` can be `Periodic` or `Manual`. IO rate includes only sequential data successfully sent to an endpoint for the referenced egress configuration.
+
+| Type         | Property |  Description     |
+|--------|--------------|-----------------------------------|
+| string | timestamp | Timestamp of event |
+| double | IORate | 10-minute rolling average of data rate (streams/second) |

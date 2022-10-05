@@ -8,9 +8,9 @@ Create a custom application using Sequential Data Store (SDS) REST API to send d
 
 The following diagram depicts the data flow from an SDS custom application into EDS:
 
-![SDS Application Example](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/SDSApplicationExample.jpg "SDS Application Example")
+![SDS Application Example](../content/images/SDSApplicationExample.jpg "SDS Application Example")
 
-The SDS application collects data from a data source and sends it to the EDS endpoint. The EDS endpoint sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or AVEVA Data Hub. All data from all sources on EDS can be read using the SDS REST APIs on the local device, in the default tenant and the default namespace.
+The SDS application collects data from a data source and sends it to the EDS endpoint. The EDS endpoint sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or AVEVA Data Hub. All data from all sources on EDS can be read using the SDS REST APIs on the local device in the default tenant and the default namespace.
 
 To get started using the SDS REST API to ingress data into EDS, create an SDS type and stream and then write data events to the SDS stream. Use the Sequential Data Store (SDS) REST API to read the data back from EDS.
 
@@ -45,7 +45,7 @@ To create an SDS type that describes the format of the data to be stored in a co
    }
    ```
 
-   **Note:** The data to be written is a timestamp and numeric value. It is indexed by a timestamp, and the numeric value that will be stored is a 64-bit floating point value.
+   **Note:** The data to be written is a timestamp and numeric value. It is indexed by a timestamp, and the numeric value is a 64-bit floating point value.
 
 1. Save the JSON file the name `SDSCreateType.json`.
 
