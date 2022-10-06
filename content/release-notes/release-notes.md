@@ -92,7 +92,7 @@ This is a list of known changes in EDS 1.1 that may be relevant to upgrading
 
   - The `DeviceStatus` value `NotConfigured` is now `Not Configured`. 
 
-  - Moved trusted certificates from `\Adapters\OpcUa\Certificates\Trusted\certs` to `\Adapters\OpcUa\Certificates\trusted\certs`. 
+  - Moved trusted certificates from `\EdgeDataStore\{componentId}\Certificates\Trusted\certs` to `\EdgeDataStore\Certificates\trusted\certs`.
 
   - The configuration items `ApplyPrefixToStreamId` and `rootNodeIds` have been removed from the Data Source configuration. They will be removed automatically. 
 
@@ -133,10 +133,10 @@ OSIsoft [proactively discloses](https://docs.osisoft.com/bundle/security-commitm
 
 ## Distribution kit files 
 
-  - EdgeDataStore_1.1.1.6-arm.deb
+  - EdgeDataStore_1.1.1.46-arm_.deb
 
-  - EdgeDataStore_1.1.1.6-arm64.deb
+  - EdgeDataStore_1.1.1.46-arm64_.deb
 
-  - EdgeDataStore_1.1.1.6-x64.deb
+  - EdgeDataStore_1.1.1.46-x64_.deb
 
-  - EdgeDataStore_1.1.1.6-x64.msi
+  - EdgeDataStore_1.1.1.46-x64_.msi

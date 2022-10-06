@@ -4,9 +4,9 @@ uid: ManualEgress
 
 # Configure manual data egress
 
-Manual data egress is a task that sends the timeseries data collected by EDS to long term storage in either AVEVA Data Hub or PI Server. You can create multiple egress destinations and multiple manual egress tasks. Periodic egress runs on a regular schedule to ensure that data is sent to long term storage.
+Manual data egress is a task that sends the timeseries data collected by EDS to long term storage in either AVEVA Data Hub or PI Server. You can create multiple manual egress tasks.
 
-Once you configure the AVEVA Data Hub or PI Server destinations to receive OMF messages, you can send data egress requests as needed. For example, you may need to backfill data or want to review data for an event as soon as possible. For more information on egress destinations, see [Configure egress destinations](xref:PrepareEgressDestinations). 
+Once you prepare the AVEVA Data Hub or PI Server destinations to receive OMF messages and configure `EgressEndpoints` for the chosen destination, you can send manual egress requests as needed. For example, you may need to backfill data or want to review data for an event as soon as possible. For more information on egress destinations, see [Prepare egress destinations](xref:PrepareEgressDestinations). 
 
 Make requests in JSON using parameters, similar to periodic egress, to specify the data to egress and when the egress should happen. You can either save the parameters in a file to send them or send the request directly. In addition to creating manual egress requests, you can cancel, resume, and delete these requests. For a list of other REST operations you can perform, see [REST URLs](#rest-urls).
 
@@ -46,8 +46,8 @@ The following table lists the parameters for manual egress.
 | `EndpointId`          | Required       | string    | Unique identifier of the endpoint destination. <br>**Note:** The endpoint must be configured before sending manual egress requests.    |
 | `Period`              | Optional       | string    | The frequency of time between each egress action after the initial egress. Must be a string in the format `d.hh:mm:ss.##`. See `ScheduledTime` for additional information. If the `Period` is not set, the default value is `01:00:00`, which is 1 hour. If the entire range of data specified by the `StartIndex` and `EndIndex` is in the past, the `Period` is not used. |
 | `ScheduledTime`       | Optional       | string    | The date and time when the egress request will begin. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ` and Local: `yyyy-mm-ddThh:mm:ss`. Use the `ScheduledTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `ScheduledTime`, EDS uses the time the request is received. <br>**Note:** Only one manual egress job runs at a time. |
-| `StartIndex`          | Optional       | string    | Identifies the first data point to transfer. The Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`, and Relative: `+d.hh:mm:ss.##` or `-d.hh:mm:ss.##`. <br>Relative time strings are calculated based on the `ScheduledTime`. If the `ScheduledTime` is not specified, the relative time string is calculated based on the time the egress job request is received. |
-| `EndIndex`            | Optional       | string    | Identifies the last data point to transfer. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`, and Relative: `+d.hh:mm:ss.##`. <br>Relative time strings are calculated based on the `StartIndex`. Relative time strings must be positive to ensure a range of data is selected for egress. |
+| `StartIndex`          | Optional       | string    | Identifies the first data point to transfer. If `null`, it is interpreted as the date and time egress is scheduled to start. The Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`, and Relative: `+d.hh:mm:ss.##` or `-d.hh:mm:ss.##`. <br>Relative time strings are calculated based on the `ScheduledTime`. If the `ScheduledTime` is not specified, the relative time string is calculated based on the time the egress job request is received. |
+| `EndIndex`            | Optional       | string    | Identifies the last data point to transfer. If `null`, it is interpreted as the date and time egress is scheduled to start. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`, and Relative: `+d.hh:mm:ss.##`. <br>Relative time strings are calculated based on the `StartIndex`. Relative time strings must be positive to ensure a range of data is selected for egress. |
 | `DataSelectors`       | Optional       | array     | An array of configuration settings to select data for egress. See the `DataSelectors` parameters in the following table.    |
 
 The following table lists egress parameters for `DataSelectors`.
@@ -104,7 +104,7 @@ The following is an example response for a manual egress request.
     "startIndex": "2022-08-08T18:20:00Z", 
     "endIndex": "+ 04:00:00", 
     "startIndexDateTimeUtc": "2022-08-08T18:20:00Z", 
-    "endIndexDateTimeUtc": "2022-08-10T22:20:00Z", 
+    "endIndexDateTimeUtc": "2022-08-08T22:20:00Z", 
     "checkpoint": null, 
     "progress": 0, 
     "status": "Active", 
@@ -132,10 +132,11 @@ Response parameters include information that was sent in the manual egress reque
 |-----------------------------------------------------------|-----------|--------------------------------------|
 | `api/v1/configuration/storage/manualegresses`             | `POST`      | Requests a manual egress job        |
 | `api/v1/configuration/storage/manualegresses`             | `GET`       | Returns the state of all manual egress jobs in the queue |
+| `api/v1/configuration/storage/manualegresses`             | `DELETE`    | Cancels all active manual egress job and removes states |
 | `api/v1/configuration/storage/manualegresses/<Id>`        | `GET`       | Returns the state of a specific egress job |
-| `api/v1/configuration/storage/manualegresses/<Id>/resume` | `POST`     | Resumes a canceled or failed egress job  |
+| `api/v1/configuration/storage/manualegresses/<Id>`        | `DELETE`   | Deletes the state of an individual egress job|
 | `api/v1/configuration/storage/manualegresses/<Id>/cancel` | `POST`     | Cancels an egress job                |
-| `api/v1/configuration/storage/manualegresses/<Id>`        | `DELETE`   | Cancels all active history recovery operations and removes states |
-| `api/v1/configuration/storage/manualegresses`             | `DELETE`    | Deletes the state of an individual history recovery
+| `api/v1/configuration/storage/manualegresses/<Id>/resume` | `POST`     | Resumes a canceled or failed egress job  |
+
 
 **Note:** Replace `<Id>` with the Id of the egress job for which you want to perform the action.

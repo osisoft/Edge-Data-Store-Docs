@@ -33,7 +33,6 @@ The following table lists all available runtime parameters for EDS storage confi
 | [IngressDebugExpiration](#ingressdebugexpiration)      | Required | string   | If set, defines how long OMF ingress debug files should be produced |
 | [StreamStorageLimitMb](#streamstoragelimitmb)        | Required | integer  | The maximum size in megabytes that a stream can reach |
 | [StreamStorageTargetMb](#streamstoragetargetmb)       | Required | integer  | The size in megabytes that a stream will be reduced to after StreamStorageLimitMb size is reached for a single stream |
-| [EnableTransactionLog](#enabletransactionlog)        | No       | Boolean     | Enables or disables the transaction log. The transaction log helps to ensure no data is lost should a device lose power. |
 | [TransactionLogLimitMB](#transactionloglimitmb)     | No       | integer  | Maximum size for transaction log file. Transaction log files larger than this size will be deleted, resulting is loss of data should the device lose power. |
 | [CheckpointRateInSec](#checkpointrateinsec)         | No       | integer  | How often to flush new data to store  |
 
@@ -47,8 +46,7 @@ The following is a valid runtime configuration example.
   "streamStorageTargetMb": 1,
   "ingressDebugExpiration": "0001-01-01T00:00:00",
   "checkpointRateInSec": 30,
-  "transactionLogLimitMB": 250,
-  "enableTransactionLog": true
+  "transactionLogLimitMB": 250
 }
 ```
 
@@ -101,14 +99,6 @@ Use the `StreamStorageTargetMb` property to set the size in megabytes that a str
 
 - minimum value: `1`
 - maximum value: `2147483647`
-
-## EnableTransactionLog
-
-Use the `EnableTransactionLog` property to define whether the `Storage` component maintains a transaction log between checkpoint operations. The transaction log helps the product reduce data loss if the host device loses power.
-
-### EnableTransactionLog type
-
-`bool`
 
 ## TransactionLogLimitMB
 

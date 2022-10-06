@@ -28,7 +28,6 @@ To configure a data source to connect a Modbus TCP device to the Modbus TCP EDS 
                 "Port": <Port - usually 502>,
             }
         ],
-        "ConnectTimeout": "00:00:05",
         "ReconnectInterval": "00:00:01",
         "RequestTimeout": "00:00:10",
         "DelayBetweenRequests": "00:00:00.5",

@@ -22,17 +22,17 @@ For instructions on verifying the EDS installation, see [Verify installation](xr
 
 To download the Windows installation file:
 
-1. Download the Windows `EdgeDataStore.msi` file from the [OSIsoft Customer portal](https://customers.osisoft.com/s/products).
+1. Download the Windows `EdgeDataStore_1.1.1.46-x64_.msi` file from the [OSIsoft Customer portal](https://customers.osisoft.com/s/products).
 
   **Note:** Customer login credentials are required to access the portal.
 
-1. Copy the `EdgeDataStore.msi` file to the file system of the device.
+1. Copy the `EdgeDataStore_1.1.1.46-x64_.msi` file to the file system of the device.
 
 ### Run the installation wizard
 
 To install EDS on Windows using the installation wizard:
 
-1. To start the installer, double-click the `EdgeDataStore.msi` file in Windows Explorer.
+1. To start the installer, double-click the `EdgeDataStore_1.1.1.46-x64_.msi` file in Windows Explorer.
 
 1. In the `OSIsoft Edge Data Store Setup` window, select **Next**.
 
@@ -42,7 +42,7 @@ To install EDS on Windows using the installation wizard:
 
 1. (Optional) Add a system component for a Modbus TCP EDS adapter instance, an OPC UA EDS adapter instance, or both.
 
-   **Note:** The Modus TCP EDS adapter and the OPC UA EDS adapter are both installed regardless of whether system components are added. Additional system components can be added for each adapter after installation.
+   **Note:** The Modbus TCP EDS adapter and the OPC UA EDS adapter are both installed regardless of whether system components are added. Additional system components can be added for each adapter after installation.
 
 1. Select **Next** > **Install**.
 
@@ -52,12 +52,12 @@ To install EDS on Windows using the installation wizard:
 
 To install EDS on Windows from the command line:
 
-1. Open a command window, by running as an administrator, and change the working directory to the location of the `EdgeDataStore.msi` file.
+1. Open a command window, by running as an administrator, and change the working directory to the location of the `EdgeDataStore_1.1.1.46-x64_.msi` file.
 
 1. Enter the `msiexec` command and specify parameters to run the installation, using the following example as a guide.
 
 ```
-Msiexec /quiet /i EdgeDataStore.msi PORT="<number>" INSTALLFOLDER="<file_path>" WIXUI_ENABLEMODBUS="1" WIXUI_ENABLEOPCUA="1"
+Msiexec /quiet /i EdgeDataStore_1.1.1.46-x64_.msi PORT="<number>" INSTALLFOLDER="<file_path>" WIXUI_ENABLEMODBUS="1" WIXUI_ENABLEOPCUA="1"
 ```
 
   Parameters:
@@ -82,8 +82,6 @@ You must have administrator privileges to install the software, for example `roo
 
 For instructions on how to verify the Edge Data Store installation, see [Verify installation](xref:VerifyInstallation).
 
-**Note:** For devices using Ubuntu 20.04 or higher, install the `libicu63` package prior to installing Edge Data Store.
-
 ### Download the distribution file
 
 To download the appropriate file for your device:
@@ -105,19 +103,19 @@ To install EDS on Linux:
    **Debian 9 or later (Intel/AMD 64-bit processors)**
 
    ```bash
-   sudo apt install ./EdgeDataStore_linux-x64.deb
+   sudo apt install ./EdgeDataStore_1.1.1.46-x64_.deb
    ```
 
    **Debian 9 or later (ARM32, Raspberry PI 2,3,4: Raspbian, BeagleBone)**
 
    ```bash
-   sudo apt install ./EdgeDataStore_linux-arm.deb
+   sudo apt install ./EdgeDataStore_1.1.1.46-arm_.deb
    ```
 
    **Debian 9 or later (Raspberry PI 3,4: Ubuntu ARM64 Server, Google Coral Dev Board, Nvidia Nano Jetson)**
 
    ```bash
-   sudo apt install ./EdgeDataStore_linux-arm64.deb
+   sudo apt install ./EdgeDataStore_1.1.1.46-arm64_.deb
    ```
 
    A validation check for prerequisites is performed.
@@ -135,7 +133,7 @@ To install EDS on Linux:
 
 4. (Optional) Add a system component for a Modbus TCP EDS adapter instance, an OPC UA EDS adapter instance, or both, and press Enter.
 
-    **Note:** The Modus TCP EDS adapter and the OPC UA EDS adapter are both installed, regardless of whether system components are added. Additional system components can be added for each adapter after installation.
+    **Note:** The Modbus TCP EDS adapter and the OPC UA EDS adapter are both installed, regardless of whether system components are added. Additional system components can be added for each adapter after installation.
 
 ### Silent install on a Linux device
 
