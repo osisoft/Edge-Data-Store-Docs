@@ -87,7 +87,7 @@ The following tables shows supported math functions within a filter expression.
 
 ### Math function examples
 
-For the following examples, assume that the SDS Type event includes a field named **Value** of type `double`:
+For the following examples, assume that the SdsType event includes a field named **Value** of type `double`:
 
 - `Value eq (6.0 add 3.0)`
 

@@ -8,7 +8,7 @@ Edge Data Store requires configuration, which can be performed either for each i
 
 ## Configure minimum Edge Data Store
 
-The following JSON file represents minimal configuration of an Edge Data Store. There are no Modbus TCP EDS adapter or OPC UA EDS adapter components, and the Storage component configurations are set to the default. If you configure a system with this JSON file, any existing Modbus TCP EDS adapter or OPC UA EDS adapter components will be disabled and removed. No storage data will be deleted or modified, and OMF and SDS data access will not be impacted.
+The following JSON file represents the minimal configuration of an Edge Data Store. There are no Modbus TCP EDS adapter or OPC UA EDS adapter components and the Storage component configurations are set to the default. If you configure a system with this JSON file, any existing Modbus TCP EDS adapter or OPC UA EDS adapter components are disabled and removed. No storage data is deleted or modified and OMF and SDS data access is not impacted.
 
 1. Save or copy the example JSON in a file named `EdgeMinimumConfiguration.json` in any directory on a device with Edge Data Store installed.
 
@@ -27,7 +27,6 @@ The following JSON file represents minimal configuration of an Edge Data Store. 
             "Schedules": [],
             "DataSelectors": [],
             "EgressConfigurations": [],
-            "Egresses": [],
             "Runtime": {
                 "streamStorageLimitMb": 2,
                 "streamStorageTargetMb": 1,
@@ -69,11 +68,11 @@ The following JSON file represents minimal configuration of an Edge Data Store. 
     }
   ```
 
-This example results in a minimal configuration of Edge Data Store. It only supports OMF and SDS operations using REST. No egress is configured, so no data will be sent to either AVEVA Data Hub or PI Web API.
+This example results in a minimal configuration of Edge Data Store. It only supports OMF and SDS operations using REST. No egress is configured, so no data is sent to either AVEVA Data Hub or PI Web API.
 
 ## Configure maximum Edge Data Store
 
-The following JSON file represents maximum configuration of an Edge Data Store. There are Modbus TCP EDS adapter components and OPC UA EDS adapter components, and egress is configured to send to both PI Web API and AVEVA Data Hub from both the default (operational data) and diagnostics (diagnostic data) namespace.
+The following JSON file represents the maximum configuration of an Edge Data Store. There are Modbus TCP EDS adapter components and OPC UA EDS adapter components and egress is configured to send to both PI Web API and AVEVA Data Hub from both the default (operational data) and diagnostics (diagnostic data) namespace.
 
 1. Using any text editor, create a JSON file using the following example. Fill in any credentials or IP addresses with appropriate values for your environment.
    
@@ -105,7 +104,6 @@ The following JSON file represents maximum configuration of an Edge Data Store. 
             ],
             "simultaneousRequests": 1,
             "maxResponseDataLength": 250,
-            "connectTimeout": "0:00:15",
             "reconnectInterval": "0:00:05",
             "requestTimeout": "0:00:09",
             "delayBetweenRequests": "0:00:00",
@@ -208,12 +206,13 @@ The following JSON file represents maximum configuration of an Edge Data Store. 
     "Storage": {
         "EgressEndpoints": [
             {
-                "id": "Endpoint-AVEVA Data Hub",
+                "id": "Endpoint-ADH",
                 "endpoint": "<AVEVA Data Hub OMF URL for your tenant and namespace>",
                 "userName": null,
                 "password": null,
                 "clientId": "<AVEVA Data Hub ClientId>",
                 "clientSecret": "<AVEVA Data Hub ClientSecret>",
+                "debugExpiration": null,
                 "tokenEndpoint": null,
                 "validateEndpointCertificate": true
             },
@@ -224,6 +223,7 @@ The following JSON file represents maximum configuration of an Edge Data Store. 
                 "password": "<password>",
                 "clientId": null,
                 "clientSecret": null,
+                "debugExpiration": null,
                 "tokenEndpoint": null,
                 "validateEndpointCertificate": true
             }
@@ -246,16 +246,15 @@ The following JSON file represents maximum configuration of an Edge Data Store. 
         ],
         "EgressConfigurations": [
             {
-                "id": "AVEVA Data Hub",
+                "id": "ADH",
                 "name": null,
                 "description": null,
                 "enabled": true,
-                "endpointId": "Endpoint-AVEVA Data Hub",
+                "endpointId": "Endpoint-ADH",
                 "scheduleId": "Schedule1",
                 "dataSelectorIds": null,
                 "namespaceId": "default",
                 "backfill": false,
-                "debugExpiration": null,
                 "streamPrefix": "ChangeMe",
                 "typePrefix": "ChangeMe"
             },
@@ -271,23 +270,21 @@ The following JSON file represents maximum configuration of an Edge Data Store. 
                 ],
                 "namespaceId": "default",
                 "backfill": false,
-                "debugExpiration": null,
                 "streamPrefix": "ChangeMe",
                 "typePrefix": "ChangeMe"
             },
             {
-                "id": "AVEVA Data HubDiag",
+                "id": "ADHDiag",
                 "name": null,
                 "description": null,
                 "enabled": true,
-                "endpointId": "Endpoint-AVEVA Data Hub",
+                "endpointId": "Endpoint-ADH",
                 "scheduleId": "Schedule1",
                 "dataSelectorIds": [
                     "DataSelector1"
                 ],
                 "namespaceId": "diagnostics",
                 "backfill": false,
-                "debugExpiration": null,
                 "streamPrefix": "ChangeMe",
                 "typePrefix": "ChangeMe"
             },
@@ -301,12 +298,10 @@ The following JSON file represents maximum configuration of an Edge Data Store. 
                 "dataSelectorIds": null,
                 "namespaceId": "diagnostics",
                 "backfill": false,
-                "debugExpiration": null,
                 "streamPrefix": "ChangeMe",
                 "typePrefix": "ChangeMe"
             }
         ],
-        "Egresses": [],
         "Runtime": {
             "streamStorageLimitMb": 2,
             "streamStorageTargetMb": 1,

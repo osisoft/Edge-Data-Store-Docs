@@ -16,7 +16,7 @@ To access EdgeCmd on Linux:
    debian@beaglebone:~$ edgecmd help
    ```
 
-2. Type edgecmd help and press Enter.
+1. Type edgecmd help and press Enter.
 
  The EdgeCmd utility launches, displaying the following introductory material and a command prompt at the end:
 

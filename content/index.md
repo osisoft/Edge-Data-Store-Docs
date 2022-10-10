@@ -4,7 +4,7 @@ uid: index
 
 # Edge Data Store
 
-Edge Data Store (EDS) is a lightweight data collection and storage application designed to capture data at the edge of networks for historical storage and analysis. It runs on small, rugged devices or embedded in existing industrial hardware, and is designed to be resilient and require minimal installation and administration. While not a replacement for a PI System or AVEVA Data Hub, EDS augments the PI System and AVEVA Data Hub by collecting and storing data in situations where deploying a full system is impractical. It can collect data that is beyond the reach of automation systems, in unreliable network conditions, and in environments too rough for traditional computers. Edge Data Store can run almost anywhere you can install a sensor, such as beam pumps, mining trucks, wind mills, etc.
+Edge Data Store (EDS) is a lightweight data collection and storage application designed to capture data at the edge of networks for historical storage and analysis. It runs on small, rugged devices or embedded in existing industrial hardware and is designed for resilience and require minimal installation and administration. While not a replacement for a PI System or AVEVA Data Hub, EDS augments the PI System and AVEVA Data Hub by collecting and storing data in situations where deploying a full system is impractical. It can collect data that is beyond the reach of automation systems, in unreliable network conditions, and in environments too rough for traditional computers. Edge Data Store can run almost anywhere you can install a sensor, such as beam pumps, mining trucks, wind mills, and more.
 
 The following diagram shows conceptually how EDS captures data and sends to permanent storage:
 
@@ -20,7 +20,7 @@ EDS collects data using any of the following methods:
 
 * Custom application using REST API
 
-Once collected, the data is stored locally in configurable data storage within EDS, until it can be sent to permanent storage in a PI System or in AVEVA Data Hub through periodic egress. The data can also be read from local storage by custom applications using REST APIs.
+Once collected, EDS stores the data locally in configurable data storage within EDS until it can be sent to permanent storage in a PI System or in AVEVA Data Hub through periodic egress. The data can also be read from local storage with custom applications that use REST APIs.
 
 ## Edge Data Store architecture
 
@@ -48,7 +48,7 @@ Blue boxes in the diagram show ways to interact with EDS from the local device:
 
 * Configuration – Use REST or the EdgeCmd tool to configure EDS as a whole or each component individually and to view the current configuration
 
-EDS requires an endpoint to connect to REST APIs on the local device, which is shown outlined in blue in the diagram. By default, the endpoint uses port 5590; however, it can be configured to use another port.
+EDS requires an endpoint to connect to REST APIs on the local device, which is shown outlined in blue in the diagram. By default, the endpoint uses port 5590; however, you can configure it to use another port.
 
 Orange arrows show data flowing into EDS and blue arrows show data flowing out of EDS.
 

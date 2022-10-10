@@ -30,7 +30,7 @@ To create a backup of data from the failed device:
 
   **Note:** Windows storage and configuration files are stored in the following locations:
 
-     - `C:\ProgramData\OSIsoft\EdgeDataStore\Configuration`_`
+     - `C:\ProgramData\OSIsoft\EdgeDataStore\Configuration`
   
      - `C:\ProgramData\OSIsoft\EdgeDataStore\Storage`
 

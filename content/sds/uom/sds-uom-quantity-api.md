@@ -28,11 +28,11 @@ Namespace identifier
 
 `[Optional] int skip` 
 
-Parameter representing the zero-based offset of the first object to retrieve.  If unspecified, a default value of 0 is used.
+Parameter representing the zero-based offset of the first object to retrieve. If unspecified, a default value of `0` is used.
 
 `[Optional] int count`  
 
-Parameter representing the maximum number of objects to retrieve. If unspecified, a default value of 100 is used.
+Parameter representing the maximum number of objects to retrieve. If unspecified, a default value of `100` is used.
 
 ### Response
 
@@ -120,7 +120,7 @@ Content-Type: application/json
 
 <a id="opIdQuantity_Get Quantity"></a>
 
-Returns the quantity corresponding to the specified quantityId within a given namespace
+Returns the quantity corresponding to the specified `quantityId` within a given namespace
 
 ### Request
 
@@ -202,7 +202,7 @@ Content-Type: application/json
 
 <a id="opIdQuantity_Get Quantity Unit of Measure"></a>
 
-Returns the unit of measure associated with the specified uomId belonging to the quantity with the specified quantityId
+Returns the unit of measure associated with the specified `uomId` belonging to the quantity with the specified `quantityId`
 
 ### Request
 
@@ -274,7 +274,7 @@ Content-Type: application/json
 
 <a id="opIdQuantity_List Quantity Units of Measure"></a>
 
-Returns the list of units of measure that belongs to the quantity with the specified quantityId
+Returns the list of units of measure that belongs to the quantity with the specified `quantityId`
 
 ### Request
 
@@ -364,7 +364,7 @@ DataContract representing a measurable quantity. For example, A unit of measure 
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|`Id`|string|false|true|Unique identifier for this quantity.|
+|`Id`|string|false|true|Unique identifier for this quantity|
 |`Name`|string|false|true|Friendly name for this quantity|
 |`BaseUom`|[SdsUom](#schemasdsuom)|false|true|The base unit of measurement for this quantity. All other uom's measuring this quantity will be calculated relative to the base uom.|
 |`Dimensions`|[integer]|false|true|Powers of each dimension that define this quantity. This array must have a length of 7. Dimensions represented in index order are Length, Mass, Time, Electric Current, Thermodynamic Temperature, Amount of Substance, and Luminous Density. For example, A velocity quantity would have values [1,0,-1,0,0,0,0] for (length)/(time)|
@@ -403,13 +403,13 @@ DataContract representing a unit of measure
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|`Id`|string|false|true|Unique identifier for this unit of measure.|
-|`Abbreviation`|string|false|true|Abbreviation for this unit of measure.|
-|`Name`|string|false|true|Full name for this unit of measure.|
-|`DisplayName`|string|false|true|Display name for this unit of measure.|
-|`QuantityId`|string|false|true|The Id of the quantity that this unit is a measure of.|
-|`ConversionFactor`|double|false|false|When a value of this unit is multiplied by the ConversionFactor and then incremented by the ConversionOffset, the value in terms of the base unit of the corresponding quantity is returned.|
-|`ConversionOffset`|double|false|false|When a value of this unit is multiplied by the ConversionFactor and then incremented by the ConversionOffset, the value in terms of the base unit of the corresponding quantity is returned.|
+|`Id`|string|false|true|Unique identifier for this unit of measure|
+|`Abbreviation`|string|false|true|Abbreviation for this unit of measure |
+|`Name`|string|false|true|Full name for this unit of measure |
+|`DisplayName`|string|false|true|Display name for this unit of measure |
+|`QuantityId`|string|false|true|The `Id` of the quantity that this unit is a measure of |
+|`ConversionFactor`|double|false|false|When a value of this unit is multiplied by the `ConversionFactor` and then incremented by the `ConversionOffset`, the value in terms of the base unit of the corresponding quantity is returned. |
+|`ConversionOffset`|double|false|false|When a value of this unit is multiplied by the `ConversionFactor` and then incremented by the `ConversionOffset`, the value in terms of the base unit of the corresponding quantity is returned.|
 
 ```json
 {

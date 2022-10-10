@@ -104,7 +104,7 @@ The following is an example response for a manual egress request.
     "startIndex": "2022-08-08T18:20:00Z", 
     "endIndex": "+ 04:00:00", 
     "startIndexDateTimeUtc": "2022-08-08T18:20:00Z", 
-    "endIndexDateTimeUtc": "2022-08-10T22:20:00Z", 
+    "endIndexDateTimeUtc": "2022-08-08T22:20:00Z", 
     "checkpoint": null, 
     "progress": 0, 
     "status": "Active", 

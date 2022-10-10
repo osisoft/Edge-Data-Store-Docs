@@ -4,7 +4,7 @@ uid: Performance
 
 # Performance
 
-Edge Data Store is designed to run on a variety of low powered devices and to serve data to custom applications that run on the same platform. To assist in determining the appropriate hardware and software configuration for a specific use, EDS was tested on a variety of different devices, from single board computers to industrial edge gateways, on Linux and Windows operating systems, with different data stream counts and with the supported ingress methods collecting data at different event rates.
+Edge Data Store is designed to run on a variety of low-powered devices and to serve data to custom applications that run on the same platform. To assist in determining the appropriate hardware and software configuration for a specific use, EDS was tested on a variety of different devices—from single board computers to industrial edge gateways, on Linux and Windows operating systems, and with different data stream counts and with the supported ingress methods collecting data at different event rates.
 
 Use the following performance testing information to determine the appropriate hardware and software to use with EDS in your scenarios.
 

@@ -8,7 +8,7 @@ The Modbus TCP EDS adapter is a component of Edge Data Store that defines connec
 
 The following diagram depicts the data flow of a single instance of Modbus TCP EDS adapter:
 
-![Modbus TCP EDS](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/ModbusTCP.jpg "Modbus TCP EDS")
+![Modbus TCP EDS](../content/images/ModbusTCP.jpg "Modbus TCP EDS")
 
 The adapter instance requests data from the Modbus TCP device and then the device sends its data. The adapter sends the collected data to the storage component where it is held until it can be egressed to permanent storage in PI Server or AVEVA Data Hub. The adapter instance can be configured from the device where EDS is installed, and EDS collects health information about the adapter that can be egressed.
 
@@ -28,7 +28,6 @@ To configure a data source to connect a Modbus TCP device to the Modbus TCP EDS 
                 "Port": <Port - usually 502>,
             }
         ],
-        "ConnectTimeout": "00:00:05",
         "ReconnectInterval": "00:00:01",
         "RequestTimeout": "00:00:10",
         "DelayBetweenRequests": "00:00:00.5",
@@ -46,7 +45,7 @@ To configure a data source to connect a Modbus TCP device to the Modbus TCP EDS 
    curl -d "@Modbus1Datasource.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Datasource
    ```
 
-When the command completes successfully (a 204 is returned by curl), the Modbus TCP data source has been created. If you get a 400 error, check the JSON file for errors. If you receive a 404 or 500 error, check that EDS is running on the device.
+When the command completes successfully, that is a `204` is returned, the Modbus TCP data source has been created. If a `400` error is returned, check the JSON file for errors. If a `404` or `500` error is returned, check that EDS is running on the device.
 
 ## Configure a Schedule
 
