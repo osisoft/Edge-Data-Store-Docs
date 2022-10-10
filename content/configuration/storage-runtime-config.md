@@ -34,7 +34,8 @@ The following table lists all available runtime parameters for EDS storage confi
 | [StreamStorageLimitMb](#streamstoragelimitmb)        | Required | integer  | The maximum size in megabytes that a stream can reach |
 | [StreamStorageTargetMb](#streamstoragetargetmb)       | Required | integer  | The size in megabytes that a stream will be reduced to after StreamStorageLimitMb size is reached for a single stream |
 | [TransactionLogLimitMB](#transactionloglimitmb)     | No       | integer  | Maximum size for transaction log file. Transaction log files larger than this size will be deleted, resulting is loss of data should the device lose power. |
-| [CheckpointRateInSec](#checkpointrateinsec)         | No       | integer  | How often to flush new data to store  |
+| [CheckpointRateInSec](#checkpointrateinsec)         | No       | integer  | How often to flush new data to store.  |
+| [EnableMetrics](#enableMetrics) | No | Boolean | Enables or disables a metrics stream in the diagnostics namespace. This should be set to `false` unless directed by OSIsoft support. |
 
 ## Examples
 
@@ -46,7 +47,9 @@ The following is a valid runtime configuration example.
   "streamStorageTargetMb": 1,
   "ingressDebugExpiration": "0001-01-01T00:00:00",
   "checkpointRateInSec": 30,
-  "transactionLogLimitMB": 250
+  "transactionLogLimitMB": 250,
+  "enableTransactionLog": true,
+  "enableMetrics": false
 }
 ```
 
@@ -123,3 +126,11 @@ A setting of `0` disables checkpointing. Disabling checkpointing reduces the res
 
 - minimum value: `0`
 - maximum value: `86400`
+
+## EnableMetrics 
+
+Use the EnableMetrics property to allow EDS to create a new stream in the diagnostics namespace to track some metrics about internal storage operations. These metrics have no value outside of troubleshooting specific issues with the help of OSIsoft support. It is recommended that this property always be set to `false` unless directed by OSIsoft support.
+
+### EnableMetrics type
+
+`bool`
