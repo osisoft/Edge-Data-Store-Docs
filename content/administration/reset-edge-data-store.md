@@ -8,7 +8,7 @@ When applied at the system level, the Reset command deletes all event and config
 
 **Note:** All configuration and stored data will be lost as a result of performing this action.
 
-To reset EDS, follow these steps:
+To reset EDS:
 
 1. Start any tool capable of making HTTP requests.
 

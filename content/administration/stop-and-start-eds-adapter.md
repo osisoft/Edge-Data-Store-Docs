@@ -8,7 +8,7 @@ By default, when Edge Data Store starts, all currently configured EDS adapter in
 
 ## Stop an EDS adapter
 
-To stop an EDS adapter instance, follow these steps:
+To stop an EDS adapter instance:
 
 1. Open a tool capable of making HTTP requests.
 
@@ -18,7 +18,7 @@ To stop an EDS adapter instance, follow these steps:
     http://localhost:<port_number>/api/v1/administration/<adapterId>/Stop
     ```
 
-    Example **Stop the OpcUa1 adapter** using curl and the default port: 
+    Example **Stop the OpcUa1 adapter** using curl and the default port:
 
     ```bash
     curl -d "" http://localhost:5590/api/v1/Administration/OpcUa1/Stop
@@ -28,7 +28,7 @@ To stop an EDS adapter instance, follow these steps:
 
 ## Start an EDS adapter
 
-To start an EDS adapter instance, follow these steps:
+To start an EDS adapter instance:
 
 1. Open a tool capable of making HTTP requests.
 

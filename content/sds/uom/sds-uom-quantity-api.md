@@ -4,7 +4,7 @@ uid: SdsUOMQuantityAPI
 
 # SdsUomQuantity API
 
-The REST APIs provide programmatic access to read and write SDS data. The APIs in this section interact with SdsUomQuantitys. For more information, see [SdsUomQuantity](xref:unitsOfMeasure#sdsuomquantity).
+The REST APIs provide programmatic access to read and write SDS data. The APIs in this section interact with `SdsUomQuantity`s. For more information, see [SdsUomQuantity](xref:unitsOfMeasure#sdsuomquantity).
 
 ## `List Quantities`
 
@@ -14,25 +14,25 @@ Returns a list of all quantities available within a given namespace
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Quantities?skip={skip}&count={count}
 ```
 
 #### Parameters
 
-`string tenantId`
-Tenant identifier.
+`string tenantId` 
+Tenant identifier
 
-`string namespaceId`
-Namespace identifier.
+`string namespaceId` 
+Namespace identifier
 
-`[Optional] int skip`  
-Parameter representing the zero-based offset of the first object to retrieve.  If unspecified, a default value of 0 is used.
+`[Optional] int skip` 
+
+Parameter representing the zero-based offset of the first object to retrieve. If unspecified, a default value of `0` is used.
 
 `[Optional] int count`  
-Parameter representing the maximum number of objects to retrieve. If unspecified, a default value of 100 is used.
 
-
+Parameter representing the maximum number of objects to retrieve. If unspecified, a default value of `100` is used.
 
 ### Response
 
@@ -42,13 +42,14 @@ Parameter representing the maximum number of objects to retrieve. If unspecified
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
 
-> 200 Response
+200 Response
+
 ```json
 HTTP/1.1 200
 Content-Type: application/json
@@ -98,7 +99,8 @@ Content-Type: application/json
 ]
 ```
 
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -118,23 +120,23 @@ Content-Type: application/json
 
 <a id="opIdQuantity_Get Quantity"></a>
 
-Returns the quantity corresponding to the specified quantityId within a given namespace
+Returns the quantity corresponding to the specified `quantityId` within a given namespace
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Quantities/{quantityId}
 ```
 
 #### Parameters
 
-`string tenantId`
-Tenant identifier.
+`string tenantId` 
+Tenant identifier
 
-`string namespaceId`
-Namespace identifier.
+`string namespaceId` 
+Namespace identifier
 
-`string quantityId`
+`string quantityId` 
 The quantity identifier
 
 ### Response
@@ -145,13 +147,14 @@ The quantity identifier
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
 
-> 200 Response
+200 Response
+
 ```json
 HTTP/1.1 200
 Content-Type: application/json
@@ -177,7 +180,9 @@ Content-Type: application/json
 ]
 }
 ```
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -197,27 +202,27 @@ Content-Type: application/json
 
 <a id="opIdQuantity_Get Quantity Unit of Measure"></a>
 
-Returns the unit of measure associated with the specified uomId belonging to the quantity with the specified quantityId
+Returns the unit of measure associated with the specified `uomId` belonging to the quantity with the specified `quantityId`
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Quantities/{quantityId}/Units/{uomId}
 ```
 
 #### Parameters
 
-`string tenantId`
-Tenant identifier.
+`string tenantId` 
+Tenant identifier
 
-`string namespaceId`
-Namespace identifier.
+`string namespaceId` 
+Namespace identifier
 
-`string quantityId`
-The quantity identifier.
+`string quantityId` 
+The quantity identifier
 
-`string uomId`
-The unit of measure identifier.
+`string uomId` 
+The unit of measure identifier
 
 ### Response
 
@@ -227,12 +232,14 @@ The unit of measure identifier.
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
-> 200 Response
+
+200 Response
+
 ```json
 HTTP/1.1 200
 Content-Type: application/json
@@ -246,7 +253,8 @@ Content-Type: application/json
 }
 ```
 
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -266,24 +274,24 @@ Content-Type: application/json
 
 <a id="opIdQuantity_List Quantity Units of Measure"></a>
 
-Returns the list of units of measure that belongs to the quantity with the specified quantityId
+Returns the list of units of measure that belongs to the quantity with the specified `quantityId`
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Quantities/{quantityId}/Units
 ```
 
 #### Parameters
 
-`string tenantId`
-Tenant identifier.
+`string tenantId` 
+Tenant identifier
 
-`string namespaceId`
-Namespace identifier.
+`string namespaceId` 
+Namespace identifier
 
-`string quantityId`
-The quantity identifier.
+`string quantityId` 
+The quantity identifier
 
 ### Response
 
@@ -293,13 +301,14 @@ The quantity identifier.
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
 
-> 200 Response
+200 Response
+
 ```json
 HTTP/1.1 200
 Content-Type: application/json
@@ -323,7 +332,8 @@ Content-Type: application/json
 ]
 ```
 
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -338,6 +348,7 @@ Content-Type: application/json
 ```
 
 ---
+
 ## Definitions
 
 ### SdsUomQuantity
@@ -353,10 +364,10 @@ DataContract representing a measurable quantity. For example, A unit of measure 
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|Id|string|false|true|Unique identifier for this quantity.|
-|Name|string|false|true|Friendly name for this quantity|
-|BaseUom|[SdsUom](#schemasdsuom)|false|true|The base unit of measurement for this quantity. All other uom's measuring this quantity will be calculated relative to the base uom.|
-|Dimensions|[integer]|false|true|Powers of each dimension that define this quantity. This array must have a length of 7. Dimensions represented in index order are Length, Mass, Time, Electric Current, Thermodynamic Temperature, Amount of Substance, and Luminous Density. For example, A velocity quantity would have values [1,0,-1,0,0,0,0] for (length)/(time)|
+|`Id`|string|false|true|Unique identifier for this quantity|
+|`Name`|string|false|true|Friendly name for this quantity|
+|`BaseUom`|[SdsUom](#schemasdsuom)|false|true|The base unit of measurement for this quantity. All other uom's measuring this quantity will be calculated relative to the base uom.|
+|`Dimensions`|[integer]|false|true|Powers of each dimension that define this quantity. This array must have a length of 7. Dimensions represented in index order are Length, Mass, Time, Electric Current, Thermodynamic Temperature, Amount of Substance, and Luminous Density. For example, A velocity quantity would have values [1,0,-1,0,0,0,0] for (length)/(time)|
 
 ```json
 {
@@ -392,13 +403,13 @@ DataContract representing a unit of measure
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|Id|string|false|true|Unique identifier for this unit of measure.|
-|Abbreviation|string|false|true|Abbreviation for this unit of measure.|
-|Name|string|false|true|Full name for this unit of measure.|
-|DisplayName|string|false|true|Display name for this unit of measure.|
-|QuantityId|string|false|true|The Id of the quantity that this unit is a measure of.|
-|ConversionFactor|double|false|false|When a value of this unit is multiplied by the ConversionFactor and then incremented by the ConversionOffset, the value in terms of the base unit of the corresponding quantity is returned.|
-|ConversionOffset|double|false|false|When a value of this unit is multiplied by the ConversionFactor and then incremented by the ConversionOffset, the value in terms of the base unit of the corresponding quantity is returned.|
+|`Id`|string|false|true|Unique identifier for this unit of measure|
+|`Abbreviation`|string|false|true|Abbreviation for this unit of measure |
+|`Name`|string|false|true|Full name for this unit of measure |
+|`DisplayName`|string|false|true|Display name for this unit of measure |
+|`QuantityId`|string|false|true|The `Id` of the quantity that this unit is a measure of |
+|`ConversionFactor`|double|false|false|When a value of this unit is multiplied by the `ConversionFactor` and then incremented by the `ConversionOffset`, the value in terms of the base unit of the corresponding quantity is returned. |
+|`ConversionOffset`|double|false|false|When a value of this unit is multiplied by the `ConversionFactor` and then incremented by the `ConversionOffset`, the value in terms of the base unit of the corresponding quantity is returned.|
 
 ```json
 {
@@ -421,7 +432,7 @@ DataContract representing a unit of measure
 <a id="tocSerrorresponsebody"></a>
 <a id="tocserrorresponsebody"></a>
 
-Contains the error message format that follows the OCS error standards
+Contains the error message format that follows the AVEVA Data Hub error standards
 
 #### Properties
 
@@ -431,7 +442,7 @@ Contains the error message format that follows the OCS error standards
 |Error|string|false|true|Error description|
 |Reason|string|false|true|Reason for the error|
 |Resolution|string|false|true|Resolution to resolve the error|
-|Parameters|object|false|true|IDs or values that are creating or are affected by the error|
+|Parameters|object|false|true|IDs or values that are creating or are affected by the error.|
 
 ```json
 {

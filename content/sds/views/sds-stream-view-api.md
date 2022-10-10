@@ -10,36 +10,35 @@ The REST APIs provide programmatic access to read and write SDS data. The APIs i
 
 <a id="opIdView_List Stream Views"></a>
 
-Returns a list of `SdsStreamView`.
+Returns a list of `SdsStreamView`
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/StreamViews?query={query}&skip={skip}&count={count}&orderby={orderby}
 ```
 
 #### Parameters
 
 `string tenantId`
-Tenant identifier.
+Tenant identifier
 
 `string namespaceId`
-Namespace identifier.
+Namespace identifier
 
 `[Optional] string query`  
-Query identifier. 
-See [Search in SDS](xref:sdsSearching) for information about specifying the search parameter.
+Query identifier. See [Search in SDS](xref:sdsSearching) for information about specifying the search parameter.
 
 `[Optional] int skip`  
-Parameter representing the zero-based offset of the first object to retrieve. If unspecified, a default value of 0 is used.
+Parameter representing the zero-based offset of the first object to retrieve. If unspecified, a default value of `0` is used.
 
 `[Optional] int count`  
-Parameter representing the maximum number of objects to retrieve. If unspecified, a default value of 100 is used.
+Parameter representing the maximum number of objects to retrieve. If unspecified, a default value of `100` is used.
 
 `[Optional] string orderby`  
 Parameter representing sorted order.
 A field name is required.
-The sorting is based on the stored values for a given field (of type `string`). For example, ``orderby=name`` would sort the returned results by the ``name`` values (ascending by default). Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values ``asc`` or ``desc``, respectively. For example, ``orderby=name desc`` would sort the returned results by the ``name`` values, descending. If no value is specified, there is no sorting of results.
+The sorting is based on the stored values for a given field (of type `string`). For example, ``orderby=name`` would sort the returned results by the `name` values (ascending by default). Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values `asc` or `desc`, respectively. For example, `orderby=name desc` sorts the returned results by descending `name` values. If you do not specify a value, the results are not sorted.
 
 ### Response
 
@@ -49,13 +48,14 @@ The sorting is based on the stored values for a given field (of type `string`). 
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
 
-> 200 Response
+200 Response
+
 ```json
 HTTP/1.1 200
 Content-Type: application/json
@@ -89,7 +89,8 @@ Content-Type: application/json
 ]
 ```
 
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -109,24 +110,24 @@ Content-Type: application/json
 
 <a id="opIdView_Get Stream View"></a>
 
-Returns the `SdsStreamView`.
+Returns the `SdsStreamView`
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/StreamViews/{streamViewId}
 ```
 
 #### Parameters
 
 `string tenantId`
-Tenant identifier.
+Tenant identifier
 
 `string namespaceId`
-Namespace identifier.
+Namespace identifier
 
 `string streamViewId`
-Stream view identifier.
+Stream view identifier
 
 ### Response
 
@@ -136,13 +137,14 @@ Stream view identifier.
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
 
-> 200 Response
+200 Response
+
 ```json
 HTTP/1.1 200
 Content-Type: application/json
@@ -168,7 +170,8 @@ Content-Type: application/json
 }
 ```
 
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -188,24 +191,24 @@ Content-Type: application/json
 
 <a id="opIdView_Get Or Create Stream View"></a>
 
-If an `SdsStreamView` with a matching identifier already exists, the stream view passed in is compared with the existing stream view. If the stream views are identical, a Found (302) status is returned and the stream view. If the stream views are different, the Conflict (409) error is returned. If no matching identifier is found, the specified stream view is created.
+If an `SdsStreamView` with a matching identifier already exists, the stream view passed in is compared with the existing stream view. If the stream views are identical, a Found (302) status is returned. If the stream views are different, the Conflict (409) error is returned. If no matching identifier is found, the specified stream view is created.
 
 ### Request
 
-```text 
+```text
 POST /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/StreamViews/{streamViewId}
 ```
 
 #### Parameters
 
 `string tenantId`
-Tenant identifier.
+Tenant identifier
 
 `string namespaceId`
-Namespace identifier.
+Namespace identifier
 
 `string streamViewId`
-Stream view identifier.
+Stream view identifier
 
 ### Response
 
@@ -216,14 +219,15 @@ Stream view identifier.
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
 |409|[ErrorResponseBody](#schemaerrorresponsebody)|Conflict|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
 
-> 200 Response ([SdsStreamView](#schemasdsstreamview))
+200 Response ([SdsStreamView](#schemasdsstreamview))
+
 ```json
 {
   "Id": "string",
@@ -256,24 +260,24 @@ Stream view identifier.
 
 <a id="opIdView_Create Or Update Stream View"></a>
 
-Creates or updates the definition of a `SdsStreamView`.
+Creates or updates the definition of a `SdsStreamView`
 
 ### Request
 
-```text 
+```text
 PUT /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/StreamViews/{streamViewId}
 ```
 
 #### Parameters
 
 `string tenantId`
-Tenant identifier.
+Tenant identifier
 
 `string namespaceId`
-Namespace identifier.
+Namespace identifier
 
 `string streamViewId`
-Stream view identifier.
+Stream view identifier
 
 ### Response
 
@@ -283,9 +287,9 @@ Stream view identifier.
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
 |409|[ErrorResponseBody](#schemaerrorresponsebody)|Conflict|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
@@ -323,24 +327,24 @@ Stream view identifier.
 
 <a id="opIdView_Delete Stream View"></a>
 
-Deletes a stream view from the specified tenant and namespace.
+Deletes a stream view from the specified tenant and namespace
 
 ### Request
 
-```text 
+```text
 DELETE /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/StreamViews/{streamViewId}
 ```
 
 #### Parameters
 
 `string tenantId`
-Tenant identifier.
+Tenant identifier
 
 `string namespaceId`
-Namespace identifier.
+Namespace identifier
 
 `string streamViewId`
-Stream view identifier.
+Stream view identifier
 
 ### Response
 
@@ -350,13 +354,14 @@ Stream view identifier.
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
 
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -376,24 +381,24 @@ Stream view identifier.
 
 <a id="opIdView_Get Stream View Map"></a>
 
-Returns the `SdsStreamViewMap` corresponding to the specified streamViewId.
+Returns the `SdsStreamViewMap` corresponding to the specified streamViewId
 
 ### Request
 
-```text 
+```text
 GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/StreamViews/{streamViewId}/Map
 ```
 
 #### Parameters
 
 `string tenantId`
-Tenant identifier.
+Tenant identifier
 
 `string namespaceId`
-Namespace identifier.
+Namespace identifier
 
 `string streamViewId`
-Stream view identifier.
+Stream view identifier
 
 ### Response
 
@@ -403,13 +408,14 @@ Stream view identifier.
 |400|[ErrorResponseBody](#schemaerrorresponsebody)|Missing or invalid inputs|
 |401|[ErrorResponseBody](#schemaerrorresponsebody)|Unauthorized|
 |403|[ErrorResponseBody](#schemaerrorresponsebody)|Forbidden|
-|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found|
-|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request|
+|404|[ErrorResponseBody](#schemaerrorresponsebody)|One of the resources specified was not found.|
+|500|[ErrorResponseBody](#schemaerrorresponsebody)|An error occurred while processing the request.|
 |503|[ErrorResponseBody](#schemaerrorresponsebody)|Service Unavailable|
 
 #### Example response body
 
-> 200 Response
+200 Response
+
 ```json
 HTTP/1.1 200
 Content-Type: application/json
@@ -438,7 +444,8 @@ Content-Type: application/json
 }
 ```
 
-> 400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+400 Response ([ErrorResponseBody](#schemaerrorresponsebody))
+
 ```json
 {
   "OperationId": "string",
@@ -453,6 +460,7 @@ Content-Type: application/json
 ```
 
 ---
+
 ## Definitions
 
 ### SdsStreamView
@@ -468,12 +476,12 @@ A contract defining the stream view
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|Id|string|false|true|An unique identifier for the SdsStreamView|
-|Name|string|false|true|An optional user-friendly name for the SdsStreamView|
-|Description|string|false|true|A brief description of the SdsStreamView|
-|SourceTypeId|string|false|true|Identifier of the SdsType of the SdsStream|
-|TargetTypeId|string|false|true|Identifier of the SdsType to convert events to|
-|Properties|[[SdsStreamViewProperty](#schemasdsstreamviewproperty)]|false|true|List of SdsStreamViewProperty|
+|Id|string|false|true|A unique identifier for the `SdsStreamView`|
+|Name|string|false|true|An optional user-friendly name for the `SdsStreamView`|
+|Description|string|false|true|A brief description of the `SdsStreamView`|
+|SourceTypeId|string|false|true|Identifier of the `SdsType` of the `SdsStream`|
+|TargetTypeId|string|false|true|Identifier of the `SdsType` to convert events to|
+|Properties|[[SdsStreamViewProperty](#schemasdsstreamviewproperty)]|false|true|List of `SdsStreamViewProperty`|
 
 ```json
 {
@@ -516,9 +524,9 @@ A contract defining the stream view property
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|SourceId|string|false|true|Identifier of the SdsTypeProperty from the source SdsType Properties list|
-|TargetId|string|false|true|Identifier of the SdsTypeProperty from the target SdsType Properties list|
-|SdsStreamView|[SdsStreamView](#schemasdsstreamview)|false|true|Additional mapping instructions for derived types|
+|`SourceId`|string|false|true|Identifier of the `SdsTypeProperty` from the source `SdsType` Properties list|
+|`TargetId`|string|false|true|Identifier of the `SdsTypeProperty` from the target `SdsType` Properties list|
+|`SdsStreamView`|[SdsStreamView](#schemasdsstreamview)|false|true|Additional mapping instructions for derived types|
 
 ```json
 {
@@ -550,17 +558,17 @@ A contract defining the stream view property
 <a id="tocSerrorresponsebody"></a>
 <a id="tocserrorresponsebody"></a>
 
-Contains the error message format that follows the OCS error standards
+Contains the error message format that follows the AVEVA Data Hub error standards
 
 #### Properties
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|OperationId|string|false|true|Operation unique identifier of action that caused the error|
-|Error|string|false|true|Error description|
-|Reason|string|false|true|Reason for the error|
-|Resolution|string|false|true|Resolution to resolve the error|
-|Parameters|object|false|true|IDs or values that are creating or are affected by the error|
+|`OperationId`|string|false|true|Operation unique identifier of action that caused the error|
+|`Error`|string|false|true|Error description|
+|`Reason`|string|false|true|Reason for the error|
+|`Resolution`|string|false|true|Resolution to resolve the error|
+|`Parameters`|object|false|true|IDs or values that are creating or are affected by the error|
 
 ```json
 {
@@ -590,9 +598,9 @@ A contract defining the stream view map
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|SourceTypeId|string|false|true|Identifier of the SdsType of the SdsStream|
-|TargetTypeId|string|false|true|Identifier of the SdsType to convert events to|
-|Properties|[[SdsStreamViewMapProperty](#schemasdsstreamviewmapproperty)]|false|true|Identifier of the SdsStreamViewMapProperty from the target SdsType Properties list|
+|`SourceTypeId`|string|false|true|Identifier of the `SdsType` of the `SdsStream`|
+|`TargetTypeId`|string|false|true|Identifier of the `SdsType` to convert events to|
+|`Properties`|[[SdsStreamViewMapProperty](#schemasdsstreamviewmapproperty)]|false|true|Identifier of the `SdsStreamViewMapProperty` from the target `SdsType` Properties list|
 
 ```json
 {
@@ -630,10 +638,10 @@ A contract defining stream view map property
 
 |Property Name|Data Type|Required|Nullable|Description|
 |---|---|---|---|---|
-|SourceId|string|false|true|Identifier of the SdsType of the SdsStream|
-|TargetId|string|false|true|Identifier of the SdsType to convert events to|
-|Mode|[SdsStreamViewMode](#schemasdsstreamviewmode)|false|false|Aggregate of actions applied to the properties. SdsStreamViewMode are combined via binary arithmetic|
-|StreamViewMap|[SdsStreamViewMap](#schemasdsstreamviewmap)|false|true|Mapping for derived types|
+|`SourceId`|string|false|true|Identifier of the SdsType of the SdsStream|
+|`TargetId`|string|false|true|Identifier of the SdsType to convert events to|
+|`Mode`|[SdsStreamViewMode](#schemasdsstreamviewmode)|false|false|Aggregate of actions applied to the properties. `SdsStreamViewMode` are combined via binary arithmetic.|
+|`StreamViewMap`|[SdsStreamViewMap](#schemasdsstreamviewmap)|false|true|Mapping for derived types|
 
 ```json
 {
@@ -668,10 +676,10 @@ A contract defining stream view map property
 
 |Property|Value|
 |---|---|
-|None|0|
-|FieldAdd|1|
-|FieldRemove|2|
-|FieldRename|4|
-|FieldMove|8|
-|FieldConversion|16|
-|InvalidFieldConversion|32|
+|`None`|0|
+|`FieldAdd`|1|
+|`FieldRemove`|2|
+|`FieldRename`|4|
+|`FieldMove`|8|
+|`FieldConversion`|16|
+|`InvalidFieldConversion`|32|

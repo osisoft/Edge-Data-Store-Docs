@@ -7,6 +7,7 @@
   - topicUid: opcUaQuickStart
   - topicUid: modbusQuickStart
   - topicUid: omfQuickStart
+  - topicUid: adhEgressQuickStart
   - topicUid: piEgressQuickStart
   - topicUid: sdsQuickStart
   - topicUid: commandLineLinuxQuickStart
@@ -36,12 +37,17 @@
       - topicUid: OPCUADataSourceConfiguration
       - topicUid: OPCUAAdapterSecurityConfiguration
       - topicUid: OPCUADataSelectionConfiguration
+        items:
+        - topicUid: DataFiltersConfiguration
     - topicUid: modbusOverview
       items:
       - topicUid: PrinciplesOfOperationModbus
       - topicUid: SupportedFeaturesModbus
       - topicUid: ModbusTCPDataSourceConfiguration
       - topicUid: ModbusTCPDataSelectionConfiguration
+        items:
+        - topicUid: DataFiltersConfiguration
+        - topicUid: SchedulesConfiguration
     - topicUid: omfOverview
       items:
       - topicUid: OMFMessages
@@ -52,15 +58,13 @@
     items:
     - topicUid: PrepareEgressDestinations
     - topicUid: configureEgress
+    - topicUid: ManualEgress
     - topicUid: EgressExecutionDetails
     - topicUid: EdgeDataStoreDiagnostics
   - topicUid: EdgeDataStoreHealth
     items:
     - topicUid: HealthEndpointsConfiguration
   - topicUid: LoggingConfig
-    items: 
-    - topicUid: systemloggingConfiguration
-    - topicUid: ComponentLoggingConfiguration
 - topicUid: EdgeDataStoreAdministration
   items:
   - topicUid: RetrieveProductVersionInformation

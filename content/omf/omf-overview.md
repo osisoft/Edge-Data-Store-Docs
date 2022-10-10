@@ -6,9 +6,9 @@ uid: omfOverview
 
 Create a custom application using OSIsoft Message Format (OMF) to send data to EDS from sources that cannot use Modbus or OPC UA protocols. The following diagram depicts the data flow from an OMF data collection application into EDS:
 
-![EDS OMF Ingress](https://osisoft.github.io/Edge-Data-Store-Docs/content/images/OMFIngressExample.jpg "OMF Ingress Example")
+![EDS OMF Ingress](../images/OMFIngressExample.jpg "OMF Ingress Example")
 
-The OMF application collects data from a data source and sends it to the Edge Data Store endpoint. The EDS endpoint sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or OSIsoft Cloud Services. The OMF application must run on the same device as Edge Data Store and no authentication is needed. 
+The OMF application collects data from a data source and sends it to the Edge Data Store endpoint. The EDS endpoint sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or AVEVA Data Hub. The OMF application must run on the same device as Edge Data Store and no authentication is needed.
 
 ## OMF endpoint
 
@@ -23,7 +23,7 @@ This endpoint can only be accessed locally, so the OMF application must run on t
 
 ## Supported functionality
 
-Edge Data Store supports OMF versions 1.0 and OMF version 1.1 for data ingress. For details on the difference versions of OMF, see the OMF specification, available here: [OSIsoft Message Format](https://docs.osisoft.com/bundle/omf/page/index.html). The OMF ingress functionality is the same technology that is used in OSIsoft Cloud Services (OCS) and writing an OMF application for EDS is very similar to writing an OMF application for OCS. 
+Edge Data Store supports OMF versions 1.0, 1.1, and 1.2 for data ingress. For details on the difference versions of OMF, see the OMF specification, available here: [OSIsoft Message Format](https://docs.osisoft.com/bundle/omf/page/index.html). The OMF ingress functionality is the same technology that is used in AVEVA Data Hub and writing an OMF application for EDS is very similar to writing an OMF application for AVEVA Data Hub.
 
 The OMF endpoint for the Edge Storage component only supports the create action; it does not support the update action. If a create data message is sent with the same time index, the values will be replaced at that index value.
 
@@ -33,7 +33,7 @@ For efficiency reasons, OSIsoft recommends batching OMF messages that are sent t
 
 ## HTTPS status codes
 
-Edge Data Store returns the following status codes to provide feedback when an OMF ingress message is received. If an error occurs because of an issue with the server (408 Request Timeout or 503 Service Unavailable), the application can retry the request. It is up to the OMF application developer to determine how many times to retry a request.
+Edge Data Store returns the following status codes to provide feedback when an OMF ingress message is received. If an error occurs because of an issue with the server, such as `408 Request Timeout` or `503 Service Unavailable`, the application can retry the request. It is up to the OMF application developer to determine how many times to retry a request.
 
 | Status Code        | Description               | Common Causes               |
 |--------------------|---------------------------|-----------------------------|

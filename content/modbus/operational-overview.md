@@ -20,7 +20,7 @@ For more details, see [Data source configuration](xref:ModbusTCPDataSourceConfig
 
 ## Connection
 
-The Modbus TCP EDS adapter communicates with the Modbus TCP devices through the TCP/IP network by sending request packets that are constructed based on the data selection configurations, and collects the response packets returned by the devices. 
+The Modbus TCP EDS adapter communicates with the Modbus TCP devices through the TCP/IP network by sending request packets that are constructed based on the data selection configurations and collects the response packets returned by the devices.
 
 ## Stream creation
 
@@ -37,9 +37,9 @@ For each data selection configuration, the Modbus TCP EDS adapter creates a stre
 | Property name | Data type | Description |
 |---------------|-----------|-------------|
 | Timestamp     | String    | The response time of the stream data from the Modbus TCP device. |
-| Value         | Specified by the data selection | The value of the stream data from the Modbus TCP device. | 
+| Value         | Specified by the data selection | The value of the stream data from the Modbus TCP device |
 
-Stream ID is a unique identifier for each stream created by the adapter for the selected measurement. If a custom stream ID is specified for the measurement in the data selection configuration, the Modbus TCP EDS adapter will use that stream ID to create the stream. Otherwise, the adapter constructs the stream ID using the following format: 
+Stream ID is a unique identifier for each stream created by the adapter for the selected measurement. If you specify a custom stream ID for the measurement in the data selection configuration, the Modbus TCP EDS adapter will use that stream ID to create the stream. Otherwise, the adapter constructs the stream ID using the following format:
 
 ```
 <Adapter Component ID>.<Unit ID>.<Register Type>.<Register Offset> 
@@ -49,7 +49,7 @@ Stream ID is a unique identifier for each stream created by the adapter for the 
 
 ## Buffering
 
-Because the Modbus TCP EDS adapter sends data directly to EDS, buffering capability is not provided. EDS acts as a buffer before the data is egressed to either a PI Server or OCS. The amount of data stored in EDS is controlled by the following storage parameters:
+Because the Modbus TCP EDS adapter sends data directly to EDS, buffering capability is not provided. EDS acts as a buffer before the data is egressed to either a PI Server or AVEVA Data Hub. The amount of data stored in EDS is controlled by the following storage parameters:
 
  - **StreamStorageLimitMb**
 

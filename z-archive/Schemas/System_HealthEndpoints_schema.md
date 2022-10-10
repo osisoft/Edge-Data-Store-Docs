@@ -15,7 +15,7 @@ The OMF health endpoint configuration schema specifies how to formally describe 
         "maxBufferSizeMB": 0
     },
     {
-        "Endpoint": "https://<OCS OMF endpoint>",
+        "Endpoint": "https://<AVEVA Data Hub OMF endpoint>",
         "ClientId": "<clientid>",
         "ClientSecret": "<clientsecret>",
         "buffering": 0,

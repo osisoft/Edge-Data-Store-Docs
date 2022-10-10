@@ -81,13 +81,13 @@ The following tables shows supported math functions within a filter expression.
 | `mul`   | Multiplication          |
 | `div`   | Division                |
 | `mod`   | Modulo                  |
-| `round` | Rounds to the nearest numeric component without a decimal, with the midpoint rounded away from 0. For example, 0.5 rounds to 1; -0.5 rounds to -1) |
+| `round` | Rounds to the nearest numeric component without a decimal, with the midpoint rounded away from 0. For example, 0.5 rounds to 1; -0.5 rounds to -1). |
 | `floor` | Rounds down to the nearest numeric component without a decimal |
 |`ceiling`| Rounds up to the nearest numeric component without a decimal |
 
 ### Math function examples
 
-For the following examples, assume that the SDS Type event includes a field named **Value** of type `double`:
+For the following examples, assume that the SdsType event includes a field named **Value** of type `double`:
 
 - `Value eq (6.0 add 3.0)`
 

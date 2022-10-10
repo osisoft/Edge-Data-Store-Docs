@@ -37,9 +37,9 @@ When you request data with an SdsStreamView, the read characteristics defined by
 
 ## Unit of measure conversions
 
-SDS supports assigning units of measure (UOM) to stream data. For more information, see [Units of measure](xref:unitsOfMeasure). If stream data has UOM information associated, SDS supports reading data with unit conversions applied. On each read data request, unit conversions are specified by a user defined collection of `SdsStreamPropertyOverride` objects in read requests. 
+SDS supports assigning units of measure (UOM) to stream data. For more information, see [Units of measure](xref:unitsOfMeasure). If stream data has UOM information associated, SDS supports reading data with unit conversions applied. On each read data request, unit conversions are specified by a user defined collection of `SdsStreamPropertyOverride` objects in read requests.
 
-The properties of the `SdsStreamPropertyOverride` object are descriped in the following table.
+The properties of the `SdsStreamPropertyOverride` object are described in the following table.
 
 | Property          | Type                 | Optionality | Description                                            |
 | ----------------- | -------------------- | ----------- | -----------------------------------------------------  |
@@ -55,7 +55,7 @@ All unit conversions are POST HTTP requests. The unit conversion transformation 
   POST api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/Transform
 ```
 
-**Request body**
+### Request body
 
 The Request Body contains a collection of `SdsStreamPropertyOverride` objects.
 

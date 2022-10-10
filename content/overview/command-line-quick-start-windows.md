@@ -6,7 +6,7 @@ uid: commandLineWindowsQuickStart
 
 The EdgeCmd utility is OSIsoft's proprietary tool for configuring Edge Data Store from a command line. EdgeCmd must be installed on the device with Edge Data Store. For instructions on installing EdgeCmd, see the [EdgeCmd utility help](https://docs.osisoft.com/bundle/edgecmd/page/index.html).
 
-To access EdgeCmd on Windows, follow these steps:
+To access EdgeCmd on Windows:
 
 1. Open a command prompt.
 
@@ -15,6 +15,7 @@ To access EdgeCmd on Windows, follow these steps:
    ```cmd
   edgecmd Help
    ```
+
    The EdgeCmd utility launches, displaying the introductory material followed by a command prompt:
    
    ```

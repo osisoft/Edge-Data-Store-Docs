@@ -42,9 +42,9 @@ A `GetStreamsAsync` call with different queries will return below:
 
 [Optional] Parameter representing the zero-based offset of the first SdsStream to retrieve. The number of matched items to skip over before returning. If unspecified, a default value of `0` is used. Use when more items match the search criteria than can be returned in a single call.
 
-`int count` 
+`int count`
 
-[Optional] Parameter representing the maximum number of streams to retrieve. If unspecified, a default value of 100 is used.
+[Optional] Parameter representing the maximum number of streams to retrieve. If unspecified, a default value of `100` is used.
 
 `string orderby`
 
@@ -58,7 +58,7 @@ If there are 175 streams that match the search criteria "temperature" in a singl
     _metadataService.GetStreamsAsync(query:"temperature", skip:0, count:100)
 ```
 
-If `skip` is set to 100, the following call will return the remaining 75 matches while skipping over the first 100:
+If `skip` is set to `100`, the following call will return the remaining 75 matches while skipping over the first 100:
 
 ```csharp
     _metadataService.GetStreamsAsync(query:"temperature", skip:100, count:100)
@@ -70,7 +70,7 @@ Streams search is exposed through the REST API and the client libraries method `
 
 For more information on stream properties, see [Streams](xref:sdsStreams#streampropertiestable).
 
-**Searcheable Properties**
+### Searchable Properties
 
 | Property          | Searchable  |
 |-------------------|-------------|
@@ -83,7 +83,7 @@ For more information on stream properties, see [Streams](xref:sdsStreams#streamp
 | ExtrapolationMode | No		  |
 | PropertyOverrides | No		  |
 
-**Searcheable Child Resources**
+### Searchable Child Resources
 
 | Property          | Searchable  |
 |-------------------|-------------|
@@ -104,9 +104,9 @@ Search for streams using the REST API and specifying the optional `query` parame
 
 #### Parameters
 
-`string query` 
+`string query`
 
-[Optional] Parameter representing the search criteria. If unspecified, returns all values. Can be used with `skip`, `count` and `orderby`. 
+[Optional] Parameter representing the search criteria. If unspecified, returns all values. Can be used with `skip`, `count` and `orderby`.
 
 `int skip`  
 
@@ -114,25 +114,25 @@ Search for streams using the REST API and specifying the optional `query` parame
 
 `int count`  
 
-[Optional] Parameter representing the maximum number of streams to retrieve. If unspecified, a default value of 100 is used.
+[Optional] Parameter representing the maximum number of streams to retrieve. If unspecified, a default value of `100` is used.
 
 #### .NET client libraries method
 
-`GetStreamsAsync` is used to search for and return streams. 
+`GetStreamsAsync` is used to search for and return streams.
 
 ```csharp
       _metadataService.GetStreamsAsync(query:"QueryString", skip:0, count:100);
 ```
 
-The stream fields valid for search are identified in the fields table located on the [Streams](xref:sdsStreams#streampropertiestable) page. Note that stream metadata has unique syntax rules.
-For details, see [How search works with stream metadata](#Stream_Metadata_search_topic).
+The stream fields valid for search are identified in the fields table located on the [Streams](xref:sdsStreams#streampropertiestable) page. Note that stream metadata has unique syntax rules. For details, see [How search works with stream metadata](#Stream_Metadata_search_topic).
 
 ## Search for types
 
-Type search is exposed through the REST API and the client libraries method `GetTypesAsync`. 
+Type search is exposed through the REST API and the client libraries method `GetTypesAsync`.
 For more information on type properties, see [Types](xref:sdsTypes#typepropertiestable).
 
-**Searcheable Properties**
+### Searchable Properties
+
 | Property          | Searchable |
 |-------------------|------------|
 | Id                | Yes        |
@@ -143,7 +143,7 @@ For more information on type properties, see [Types](xref:sdsTypes#typepropertie
 | ExtrapolationMode | No         |
 | Properties        | Yes, with limitations* |
 
-**Note:** `Name` and `Id` of an SdsType are included in its `Properties` field. Similarly, `Name` and `Id` of a nested type are included in its `Properties`. If there are two types with the same `Properties`, `Name`, or `Id`, the search will return both types in the result.
+**Note:** The `Name` and `Id` of an SdsType are included in its `Properties` field. Similarly, `Name` and `Id` of a nested type are included in its `Properties`. If there are two types with the same `Properties`, `Name`, or `Id`, the search will return both types in the result.
 
 #### Request
 
@@ -157,19 +157,19 @@ Search for types using the REST API and specifying the optional `query` paramete
 
 `string query`  
 
-[Optional] Parameter representing the search criteria. If unspecified, returns all values. Can be used with `skip`, `count` and `orderby`. 
+[Optional] Parameter representing the search criteria. If unspecified, returns all values. Can be used with `skip`, `count` and `orderby`.
 
 `int skip`  
 
-[Optional] Parameter representing the zero-based offset of the first type to retrieve. If unspecified, a default value of 0 is used. Use when more items match the search criteria than can be returned in a single call.
+[Optional] Parameter representing the zero-based offset of the first type to retrieve. If unspecified, a default value of `0` is used. Use when more items match the search criteria than can be returned in a single call.
 
-`int count` 
+`int count`
 
-[Optional] Parameterr representing the maximum number of types to retrieve. If unspecified, a default value of 100 is used.
+[Optional] Parameter representing the maximum number of types to retrieve. If unspecified, a default value of `100` is used.
 
 #### .NET client libraries method
 
-`GetTypesAsync` is used to search for and return types. 
+`GetTypesAsync` is used to search for and return types.
 
 ```csharp
       _metadataService.GetTypesAsync(query:"QueryString", skip:0, count:100);
@@ -177,10 +177,11 @@ Search for types using the REST API and specifying the optional `query` paramete
 
 ## Search for stream views
 
-Stream view search is exposed through the REST API and the client libraries method `GetStreamViewsAsync`. 
+Stream view search is exposed through the REST API and the client libraries method `GetStreamViewsAsync`.
 For more information on stream view properties, see [Stream Views](xref:sdsStreamViews).
 
-**Searcheable Properties**
+### Searchable Properties
+
 | Property     | Searchable |
 |--------------|------------|
 | Id           | Yes		|
@@ -190,7 +191,7 @@ For more information on stream view properties, see [Stream Views](xref:sdsStrea
 | TargetTypeId | Yes		|
 | Properties   | Yes, with limitations* |
 
-**Note:** The `Properties` collection contains a list of SdsStreamViewProperty objects. The query will attempt to find a match on the SdsStreamViewProperty's `Id`, `SourceTypeId`, and `TargetTypeId` fields. The `Properties` collection of nested views will also be searched. See the following example. 
+**Note:** The `Properties` collection contains a list of `SdsStreamViewProperty` objects. The query attempts to find a match on the `SdsStreamViewProperty`'s `Id`, `SourceTypeId`, and `TargetTypeId` fields. The `Properties` collection of nested views are also searched. See the following example. 
 
 #### Example
 
@@ -240,11 +241,11 @@ Search for stream views using the REST API and specifying the optional `query` p
 
 `int skip` 
 
-[Optional] Parameter representing the zero-based offset of the first stream view to retrieve.If unspecified, a default value of 0 is used. Use when more items match the search criteria than can be returned in a single call.
+[Optional] Parameter representing the zero-based offset of the first stream view to retrieve.If unspecified, a default value of `0` is used. Use when more items match the search criteria than can be returned in a single call.
 
 `int count`
 
-[Optional] Parameter representing the maximum number of stream views to retrieve. If unspecified, a default value of 100 is used.
+[Optional] Parameter representing the maximum number of stream views to retrieve. If unspecified, a default value of `100` is used.
 
 #### .NET client libraries method
 
@@ -299,7 +300,7 @@ Query string     | Matches field value | Does not match field value
 
 You can qualify the search to a specific field using the `:` operator.  
 
-	fieldname:fieldvalue
+`fieldname:fieldvalue`
 
 #### Request
 
@@ -340,60 +341,59 @@ Supported    | Not Supported
 	GetStreamsAsync(query:"log*");
 ```
 
-### Double quotes (`""`) operator	
+### Double quotes (`""`) operator
 
-Tokenized search terms are delimited by whitespace and punctuation. To include these delimiters in a search, enclose them in double quotes.	
+Tokenized search terms are delimited by whitespace and punctuation. To include these delimiters in a search, enclose them in double quotes.
 
 When using double quotes, the matching string must include the whole value of the field on the object being searched. Partial strings will not be matched unless wildcards are used. For example, if you are searching for a stream with description `Pump three on unit five`, a query `"unit five"` will not match the description, but `*"unit five"` will.
 
 Note that while wildcard (`*`) can be used either in or outside of quotes, it is treated as a string literal inside quotes. For example, you can search for `"dog food"*` to find a string that starts with "dog food", but if you search for `"dog food*"`, it will only match the value of "dog food*".
 
- Query string     | Matches field value | Does not match field value	
------------------- | --------------------------------- | -----------------------------	
-`"pump pressure"` | pump pressure | pressure <br> pressure pump <br> pump pressure gauge	
+ Query string     | Matches field value | Does not match field value
+------------------ | --------------------------------- | -----------------------------
+`"pump pressure"` | pump pressure | pressure <br> pressure pump <br> pump pressure gauge
 `"pump pressure"*` | pump pressure <br> pump pressure gauge | pressure <br> pressure pump <br> the pump pressure gauge
 `*"pump pressure"` | pump pressure <br> the pump pressure | pressure <br> pressure pump <br> the pump pressure gauge
-`*"pump pressure"*` | pump pressure <br> pump pressure gauge <br> the pump pressure gauge | pressure <br> pressure pump 
+`*"pump pressure"*` | pump pressure <br> pump pressure gauge <br> the pump pressure gauge | pressure <br> pressure pump
 `"pump*pressure"` | pump\*pressure | pump pressure <br> the pump pressure gauge
 
 #### Request
 
 ```text	
-	GET api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams?query="pump pressure"	
+	GET api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams?query="pump pressure"
 ```
 
 #### .NET client libraries method
 
 ```csharp	
-	GetStreamsAsync(query:"\\"pump pressure\\"");	
+	GetStreamsAsync(query:"\\"pump pressure\\"");
 ```
 
 ## <a name="Stream_Metadata_search_topic">How search works with stream metadata</a>
 
-[Stream metadata](xref:sds-streams-metadata) behaves differently with search syntax rules described in the previous sections. 
+[Stream metadata](xref:sds-streams-metadata) behaves differently with search syntax rules described in the previous sections.
 
-**A namespace with streams with respective metadata key-value pairs**
+### A namespace with streams with respective metadata key-value pairs
 
 **streamId** | **Metadata**
------------- | --------- 
+------------ | ---------
 stream1      | { manufacturer, company }<br>{ serial, abc }
 stream2      | { serial, a1 }
-stream3      | { status, active }<br>{ second key, second value }   
-
+stream3      | { status, active }<br>{ second key, second value }
 
 ### Field-scoping (``:``) Operator
 
-Stream metadata key is only searchable in association with its value. This pairing is defined using the field-scoping (``:``) operator. 
+Stream metadata key is only searchable in association with its value. This pairing is defined using the field-scoping (``:``) operator.
 
-	myStreamMetadataKey:myStreamMetadataValue
+`myStreamMetadataKey:myStreamMetadataValue`
 
 Metadata key is not searched if the operator (`:`) is missing in the query string: the search is then limited to metadata values along with other searchable fields in the stream.
 
 Query string           | Returns | Description
 ------------------------   | ------------- |-------------
-`manufacturer:company`  | stream1 | Searches and returns stream1.
-`company`               | stream1      | Searches only the metadata values due to lack of `:` operator and returns stream1.
-`a*`  | stream1, stream2, stream3       | Searches the metadata values and returns all three streams.
+`manufacturer:company`  | stream1 | Searches and returns stream1
+`company`               | stream1      | Searches only the metadata values due to lack of `:` operator and returns stream1
+`a*`  | stream1, stream2, stream3       | Searches the metadata values and returns all three streams
 
 #### Request
 
@@ -413,10 +413,10 @@ Wildcard (`*`) character can be used both in metadata keys and values with one c
 
 **Query string**     | **Returns** | **Description**
 ------------------  | ---------------- | ------------------------
-`manufa*turer:compan*`  | stream1 | Searches and returns stream1.
-`ser*al:a*`  | stream1, stream2 | Searches and returns stream1 and stream2.
-`s*:a*`  | stream1, stream2, stream3 | Searches and returns all three streams. 
-`Id:stream*`  |  stream1, stream2, stream3 | Searches all fields and returns three streams. 
+`manufa*turer:compan*`  | stream1 | Searches and returns stream1
+`ser*al:a*`  | stream1, stream2 | Searches and returns stream1 and stream2
+`s*:a*`  | stream1, stream2, stream3 | Searches and returns all three streams
+`Id:stream*`  |  stream1, stream2, stream3 | Searches all fields and returns three streams.
 `Id*:stream*`  | nothing | Wildcard in the field limits the search to metadata. Returns nothing because there is no metadata by that name that meets the criteria.
 
 #### Request

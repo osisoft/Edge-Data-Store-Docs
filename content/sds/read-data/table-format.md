@@ -4,15 +4,16 @@ uid: sdsTableFormat
 
 # Table format
 
-Results of a query can be organized into tables by directing the form parameter to return a table. Two forms of table are available: table and header table. Apply the table format to any read that returns multiple values and summaries by setting the form variable to specify a table or a table with headers.
+You can organize results of a query into tables by directing the form parameter to return a table. Two table forms are available: table and header table. Apply the table format to any read that returns multiple values and summaries by setting the form variable to specify a table or a table with headers.
 
-When the form parameter is specified as `table`, `?form=table`, events are returned in row column form. Results include a collection named Columns that lists column name and type and a collection named Rows containing a collection of rows matching the order of the columns.
+When the form parameter is specified as `table`, `?form=table`, events are returned in row column form. Results include a collection named `Columns` that lists column name and type and a collection named `Rows` containing a collection of rows matching the order of the columns.
 
 Specifying a form of type `table-headers`, `?form=tableh`, results in a collection where the Rows collection contains a column header list.
 
-Table format can be applied to any read that returns multiple values and summaries. 
+Table format can be applied to any read that returns multiple values and summaries.
 
-##### [Csharp](#tab/tabid-0)
+#### [Csharp](#tab/tabid-0)
+
 ```csharp
       public enum State
       {
@@ -29,7 +30,8 @@ Table format can be applied to any read that returns multiple values and summari
       }
 ```
 
-##### [Python](#tab/tabid-1)
+#### [Python](#tab/tabid-1)
+
 ```python
       class State(Enum):
         Ok = 0
@@ -53,7 +55,7 @@ Table format can be applied to any read that returns multiple values and summari
           self.__measurement = measurement
 ```
 
-##### [JavaScript](#tab/tabid-2)
+#### [JavaScript](#tab/tabid-2)
 
 ```javascript
       var State =
@@ -87,8 +89,9 @@ The following is a request to retrieve values using the window parameters:
       ?startIndex=2017-04-01T07:00:00Z&endIndex=2017-04-01T07:10:00Z
  ```
 
-The following response would be returned from the above code:
+The following response is returned by the code above:
 
+```
       Content-Type: application/json
 
       [
@@ -142,6 +145,7 @@ The following response would be returned from the above code:
             "Measurement":9.0
          }
       ]
+```
 
 To retrieve the results in table format, add the form variable and specify table.
 
@@ -151,8 +155,9 @@ To retrieve the results in table format, add the form variable and specify table
       &form=table
  ```
 
-Response
+#### Response
 
+```
       Content-Type: application/json
 
       {  
@@ -224,7 +229,7 @@ Response
             ]
          ]
       }
-
+```
 
 To retrieve the results in table format with column headers, add the form variable and specify ``tableh``.
 
@@ -234,8 +239,9 @@ To retrieve the results in table format with column headers, add the form variab
       &form=tableh
  ```
 
-Response
+#### Response
 
+```
       Content-Type: application/json
 
       {  
@@ -312,3 +318,4 @@ Response
             ]
          ]
       }
+```

@@ -4,9 +4,9 @@ uid: SdsTypesOutsideDotNet
 
 # SdsTypes outside of .NET framework
 
-You can manually build types when .NET `SdsTypeBuilder` is unavailable. In the following examples, types are built and defined in Python and Javascript. For more detailed examples, see the OCS code samples in GitHub for[Python](https://github.com/osisoft/sample-ocs-waveform-python) and [JavaScript](https://github.com/osisoft/sample-ocs-waveform-nodejs). 
+You can manually build types when .NET `SdsTypeBuilder` is unavailable. In the following examples, types are built and defined in Python and Javascript. For more detailed examples, see the AVEVA Data Hub code samples in GitHub for[Python](https://github.com/osisoft/sample-ocs-waveform-python) and [JavaScript](https://github.com/osisoft/sample-ocs-waveform-nodejs).
 
-For samples in other languages, go to [OCS code samples in GitHub](https://github.com/osisoft/OSI-Samples-OCS/blob/master/docs/SDS_WAVEFORM_README.md).
+For samples in other languages, go to [AVEVA Data Hub code samples in GitHub](https://github.com/osisoft/OSI-Samples-AVEVA Data Hub/blob/master/docs/SDS_WAVEFORM_README.md).
 
 ## SdsTypeCode, SdsTypeProperty, and SdsType
 
@@ -120,6 +120,7 @@ SdsType: function (SdsType) {
     }
 },
 ```
+
 ***
 
 ## Enum `State` and type `Simple`
@@ -164,6 +165,7 @@ var Simple = function () {
     this.Measurement = null;
 }
 ```
+
 ***
 
 ## Defining and creating types
@@ -266,7 +268,9 @@ var simpleType = new SdsObjects.SdsType({
     "Properties": [timeProperty, stateProperty, measurementProperty]
 });
 ```
+
 Working with a derived class is easy. For example, this is a derived class:
+
 ```javascript
 class Derived(Simple):
     @property
@@ -276,6 +280,7 @@ class Derived(Simple):
     def Observation(self, observation):
         self.__observation = observation
 ```
+
 ***
 
 ## Extending the types
