@@ -88,6 +88,8 @@ This is a list of known changes in EDS 1.1 that may be relevant to upgrading
 
 - The following deprecated operating systems are no longer supported: Debian 9 and Ubuntu 18.04.
 
+- Renamed the `Edge Data Store Schema` directory to `Schemas`.
+
 - OPC UA component considerations:
 
   - The `DeviceStatus` value `NotConfigured` is now `Not Configured`. 
