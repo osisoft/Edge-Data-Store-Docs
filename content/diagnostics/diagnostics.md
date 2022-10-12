@@ -6,7 +6,7 @@ uid: EdgeDataStoreDiagnostics
 
 Edge Data Store and its components produce performance and system data for diagnostic purposes and store that data locally in the Storage component. You can query it locally or egress it to PI Web API endpoints, the AVEVA Data Hub, or both. Diagnostic data is produced and saved by default, but can be disabled using the `enableDiagnostics` parameter in the `System` component.
 
-Edge Storage stores diagnostic data within the `diagnostics` namespace. Local access to this data is available through SDS. For more information, see [Read data](xref:sdsReadingData).
+All diagnostics streams will have an ID format of `{prefix}{DeviceName}.{StreamId}`; for example, `APrefixLocalhost.Storage.default.default.Counts`. EDS stores diagnostic data within the `diagnostics` namespace. Local access to this data is available through SDS. For more information, see [Read data](xref:sdsReadingData).
 
 ## Egress diagnostics data
 
