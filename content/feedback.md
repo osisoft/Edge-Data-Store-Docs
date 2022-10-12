@@ -15,21 +15,29 @@ For technical assistance with Edge Data Store, contact OSIsoft Technical Support
 Alternatively, call OSIsoft Technical Support at +1 510-297-5828.
 
 When contacting OSIsoft Technical Support, provide the following information to enable timely resolution of your issue:
+
 - Product name, version, and build numbers
+
 - Details about your computer platform (CPU type, operating system, and version number)
+
 - Date and time the issue started
+
 - Log files during the time the issue occurred
+
 - Details of any environment changes prior to the start of the issue
+
 - Summary of the issue  
 
 ## Product feedback
 
-To submit product feedback, including enhancement requests, visit the [Edge Data Store feedback page](https://feedback.osisoft.com/forums/906877-edge-data-store). The OSIsoft product team will review and address feedback for potential inclusion in future product updates. 
+To submit product feedback, including enhancement requests, visit the [Edge Data Store feedback page](https://feedback.osisoft.com/forums/906877-edge-data-store). The OSIsoft product team will review and address feedback for potential inclusion in future product updates.
 
 ## Documentation feedback
 
-To submit documentation feedback, send an email to [documentation@osisoft.com](mailto:documentation@osisoft.com?subject=Edge%20Data%20Store%20documentation) and include the following information:
+To submit documentation feedback, send an email to [documentation@aveva.com](mailto:documentation@aveva.com?subject=Edge%20Data%20Store%20documentation) and include the following information:
+
 - Documentation topic URL
+
 - Details of the issue
 
-The OSIsoft technical documentation team will review and address your feedback in future documentation updates.
+The technical documentation team will review and address your feedback in future documentation updates.

@@ -10,8 +10,9 @@ To more efficiently utilize network bandwidth, the EDS Sequential Data Store sup
 
 the EDS Sequential Data Store supports the following compression schemes:
 
-- ``gzip``
-- ``deflate``
+- `gzip`
+
+- `deflate`
 
 ## Request compression (write data)
 

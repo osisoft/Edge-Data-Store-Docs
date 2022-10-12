@@ -5,9 +5,9 @@ uid: sdsTypeExamples
 # Examples of SdsTypes
 
 The examples in this section refer to the following types and are defined in Python and JavaScript samples. 
-In the sample code, ``SdsType``, ``SdsTypeProperty``, and ``SdsTypeCode`` are defined as in the code snippets shown here:
+In the sample code, `SdsType`, `SdsTypeProperty`, and `SdsTypeCode` are defined as in the code snippets shown here:
 
-**Python**
+## Python
 
 ```python
 class SdsTypeCode(Enum):
@@ -83,7 +83,7 @@ class SdsType(object):
         self.__properties = properties
 ```
 
-**JavaScript**
+## JavaScript
 
 ```javascript
 SdsTypeCodeMap: {
@@ -131,7 +131,7 @@ SdsType: function (SdsType) {
 
 Working with the following types (both Python and JavaScript classes are shown):
 
-**Python**
+## Python
 
 ```python
 class State(Enum):
@@ -159,7 +159,7 @@ class Simple(object):
         self.__measurement = measurement
 ```
 
-**JavaScript**
+## JavaScript
 
 ```javascript
 var State =
@@ -178,7 +178,7 @@ var Simple = function () {
 
 Define the SdsType as follows:
 
-**Python**
+## Python
 
 ```python
 # Create the properties
@@ -232,7 +232,7 @@ simpleType.SdsTypeCode = SdsTypeCode.Object
 simpleType.Properties = [ time ]
 ```
 
-**JavaScript**
+## JavaScript
 
 ```javascript
 // Time is the primary key
@@ -301,7 +301,7 @@ class Derived(Simple):
 
 Extend the SdsType as follows:
 
-**Python**
+## Python
 
 ```python
 # Observation property is a simple non-indexed, standard data type
@@ -323,7 +323,7 @@ derived.SdsTypeCode = SdsTypeCode.Object
 derived.Properties = [ observation ]
 ```
 
-**JavaScript**
+## JavaScript
 
 ```javascript
 var observationProperty = new SdsObjects.SdsTypeProperty({

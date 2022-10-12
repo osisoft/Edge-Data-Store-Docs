@@ -7,25 +7,27 @@ Consider the following when determining Edge Data Store security practices.
 
 ## REST APIs
 
-EDS supports REST APIs for configuration, data reading (through SDS), and data writing (through OMF and SDS). EDS provides only localhost access to REST APIs, which means any code that reads or writes to the REST APIs must reside on the computer or device on which EDS is running. 
+EDS supports REST APIs for configuration, data reading through SDS, and data writing through OMF and SDS. EDS provides only localhost access to REST APIs, which means any code that reads or writes to the REST APIs must reside on the device on which EDS is running. To keep EDS secure, only administrators should have access to devices where EDS is installed.
 
-REST access is through HTTP. The default port is 5590. The port number can be changed during installation, or during configuration after installation. URLs must be of the form http://<i></i>localhost:{port}/ or http://<i></i>127.0.0.1:{port}/. 
+REST access is through HTTP. The default port is 5590. The port number can be changed during installation or  configuration. URLs must be of the form `http://localhost:{port}/` or `http://127.0.0.1:{port}/`.
 
-**Note:** Do not use the host's name or IP Address in the URL.
+**Note:** Do not use the host name or IP Address in the URL.
 
 **Note:** Docker users must use the "host" networking mode for the container. For information about using EDS with Docker, see [Install Edge Data Store using Docker](xref:edgeDocker).
 
 ## Data egress
 
-Use HTTPS to write data to OSIsoft Cloud Services or OSIsoft PI Web API; writing to either of these destinations is not limited to the local machine.
+Use HTTPS to write data to AVEVA Data Hub or OSIsoft PI Web API; writing to either of these destinations is not limited to the local device.
 
 ## EDS adapters
 
 The Modbus TCP EDS adapter and the OPC UA EDS adapter access remote data sources through binary protocols.
 
+The Modbus TCP EDS adapter does not currently support transport layer security between the adapter and the data source, which means that the Modbus traffic will be unprotected. If needed, use other measures to secure this traffic such as air-gapped control network, VPN connection, SSH tunnel, etc.
+
 ## Secure storage
 
-Sensitive information such as passwords and client secrets are saved in configuration files in an encrypted form. Only the EDS runtime can properly store and retrieve these protected data items. 
+Sensitive information such as passwords and client secrets are saved in configuration files in an encrypted form. Only the EDS runtime can properly store and retrieve these protected data items.
 
 **Note:** Do not manually edit configuration files. Altering encrypted values will cause failures.
 

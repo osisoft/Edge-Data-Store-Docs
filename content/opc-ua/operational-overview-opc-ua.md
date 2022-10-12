@@ -10,9 +10,11 @@ The OPC UA EDS adapter conforms to the OPC UA specification for operation. Once 
 
 For an OPC UA EDS adapter instance to start data collection, configure the adapter by defining the following:
 
-- Data source: Provide the connection information for the OPC UA data source.
-- Data selection: Specify the OPC UA items to which the adapter instance should subscribe for data.
-- Logging: Set up the logging behavior for the adapter instance.
+- Data source - Provide the connection information for the OPC UA data source.
+
+- Data selection - Specify the OPC UA items to which the adapter instance should subscribe for data.
+
+- Logging - Set up the logging behavior for the adapter instance.
 
 For more information, see [Data source configuration](xref:OPCUADataSourceConfiguration) and [Data selection configuration](xref:OPCUADataSelectionConfiguration). For more information on how to configure logging, see [Component-level logging configuration](xref:ComponentLoggingConfiguration).
 
@@ -30,7 +32,7 @@ The OPC UA EDS adapter collects time-series data from selected OPC UA dynamic va
 
 ## Stream properties
 
-The OPC UA EDS adapter creates a stream with two properties per selected OPC UA item. The properties are described in the following table:
+The OPC UA EDS adapter creates a stream with two properties per selected OPC UA item. The properties are described in the following table.
 
 | Property name | Data type | Description |
 |---------------|-----------|-------------|
@@ -51,9 +53,10 @@ The OPC UA EDS adapter is able to export available OPC UA dynamic variables by b
 
 ## Buffering
 
-Because the OPC UA EDS adapter sends data directly to EDS, buffering capability is not provided. EDS acts as a buffer before the data is egressed to either a PI Server or OCS. The amount of data stored in EDS is controlled by the following storage parameters:
+Because the OPC UA EDS adapter sends data directly to EDS, buffering capability is not provided. EDS acts as a buffer before the data is egressed to either a PI Server or AVEVA Data Hub. The amount of data stored in EDS is controlled by the following storage parameters:
 
  - `StreamStorageLimitMb`
+
  - `StreamStorageTargetMb`
 
 For more information about configuring data storage in EDS, see [Storage runtime configuration](xref:storageruntime).
