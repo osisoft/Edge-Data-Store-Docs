@@ -42,15 +42,15 @@ The following table lists the parameters for manual egress.
 
 | Parameter             | Required       | Type      | Description                                        |
 |-----------------------|----------------|-----------|----------------------------------------------------|
-| `Id`                  | Optional       | string    | Unique identifier of the request.                  |
-| `EndpointId`          | Required       | string    | Unique identifier of the endpoint destination. </br></br>**Note:** You must configure the endpoint before sending manual egress requests.    |
-| `Period`              | Optional       | string    | The frequency of time between each egress action after the initial egress. Must be a string in the format `d.hh:mm:ss.##`. See `ScheduledTime` for additional information. If you do not set the `Period`, the default value is `01:00:00`, which is 1 hour. If the entire range of data specified by the `StartIndex` and `EndIndex` is in the past, the `Period` is not used. |
-| `ScheduledTime`       | Optional       | string    | The date and time when the egress request will begin. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ` and Local: `yyyy-mm-ddThh:mm:ss`. Use the `ScheduledTime` parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a `ScheduledTime`, EDS uses the time the request is received. </br></br>**Note:** Only one manual egress job runs at a time. |
-| `StartIndex`          | Optional       | string    | Identifies the first data point to transfer. If `null`, it is interpreted as the date and time egress is scheduled to start. The Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`, and Relative: `+d.hh:mm:ss.##` or `-d.hh:mm:ss.##`. </br></br>Relative time strings are calculated based on the `ScheduledTime`. If the `ScheduledTime` is not specified, the relative time string is calculated based on the time the egress job request is received. |
-| `EndIndex`            | Optional       | string    | Identifies the last data point to transfer. If `null`, it is interpreted as the date and time egress is scheduled to start. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`, and Relative: `+d.hh:mm:ss.##`. </br></br>Relative time strings are calculated based on the `StartIndex`. Relative time strings must be positive to ensure a range of data is selected for egress. |
-| `DataSelectors`       | Optional       | array     | An array of configuration settings to select data for egress. See the `DataSelectors` parameters in the following table.    |
+| **Id**                  | Optional       | string    | Unique identifier of the request.                  |
+| **EndpointId**          | Required       | string    | Unique identifier of the endpoint destination. </br></br>**Note:** You must configure the endpoint before sending manual egress requests.    |
+| **Period**              | Optional       | string    | The frequency of time between each egress action after the initial egress. Must be a string in the format `d.hh:mm:ss.##`. See **ScheduledTime** for additional information. If you do not set the **Period**, the default value is `01:00:00`, which is 1 hour. If the entire range of data specified by the `StartIndex` and `EndIndex` is in the past, the **Period** is not used. |
+| **ScheduledTime**       | Optional       | string    | The date and time when the egress request will begin. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ` and Local: `yyyy-mm-ddThh:mm:ss`. Use the **ScheduledTime** parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a **ScheduledTime**, EDS uses the time the request is received. </br></br>**Note:** Only one manual egress job runs at a time. |
+| `StartIndex`          | Optional       | string    | Identifies the first data point to transfer. If `null`, it is interpreted as the date and time egress is scheduled to start. The Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`, and Relative: `+d.hh:mm:ss.##` or `-d.hh:mm:ss.##`. </br></br>Relative time strings are calculated based on the **ScheduledTime**. If the **ScheduledTime** is not specified, the relative time string is calculated based on the time the egress job request is received. |
+| **EndIndex**            | Optional       | string    | Identifies the last data point to transfer. If `null`, it is interpreted as the date and time egress is scheduled to start. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`, and Relative: `+d.hh:mm:ss.##`. </br></br>Relative time strings are calculated based on the **StartIndex**. Relative time strings must be positive to ensure a range of data is selected for egress. |
+| **DataSelectors**       | Optional       | array     | An array of configuration settings to select data for egress. See the **DataSelectors** parameters in the following table.    |
 
-The following table lists egress parameters for `DataSelectors`.
+The following table lists egress parameters for **DataSelectors**.
 
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
@@ -118,13 +118,13 @@ Response parameters include information sent in the manual egress request and ad
 
 | Parameter               | Description                                        |
 |-------------------------|----------------------------------------------------|
-| `RequestTimeUtc`        | The date and time EDS received the egress request. |
-| `StartIndexDateTimeUtc` | The date and time of the first data point to transfer in Coordinated Universal Time (UTC). If you specified a relative time, this is the calculated result. |
-| `EndIndexDateTimeUtc`   | The date and time of the last data point to transfer Coordinated Universal Time (UTC). If you specified a relative time, this is the calculated result. |
-| `Checkpoint`            | The latest timestamp that the egress has completed with the range between `StartIndex` and `EndIndex`.  |
-| `Progress`              | Current percent complete of the egress job.   |
-| `Status`                | Status of the egress job. Values are `Active`, `Canceled`, `Complete`, and `Failed`.            |
-| `Errors`                | Errors encountered during egress.            |
+| **RequestTimeUtc**        | The date and time EDS received the egress request. |
+| **StartIndexDateTimeUtc** | The date and time of the first data point to transfer in Coordinated Universal Time (UTC). If you specified a relative time, this is the calculated result. |
+| **EndIndexDateTimeUtc**   | The date and time of the last data point to transfer Coordinated Universal Time (UTC). If you specified a relative time, this is the calculated result. |
+| **Checkpoint**            | The latest timestamp that the egress has completed with the range between **StartIndex** and **EndIndex**.  |
+| **Progress**              | Current percent complete of the egress job.   |
+| **Status**                | Status of the egress job. Values are `Active`, `Canceled`, `Complete`, and `Failed`.            |
+| **Errors**                | Errors encountered during egress.            |
 
 ## REST URLs
 

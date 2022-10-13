@@ -4,7 +4,7 @@ uid: EdgeDataStoreConfiguration
 
 # Edge Data Store configuration
 
-Edge Data Store requires configuration, which can be performed either for each individual component or for the system as a whole. Use the following procedures to configure Edge Data Store as a whole system with either a minimum or a maximum configuration.
+Edge Data Store requires configuration, which can be performed either for each individual component or for the system as a whole. Use the following procedures to configure Edge Data Store as a whole system with either a minimum or a maximum configuration. All parameters are described in detail in the individual component sections.
 
 ## Configure minimum Edge Data Store
 
@@ -76,9 +76,9 @@ The following JSON file represents the maximum configuration of an Edge Data Sto
 
 1. Using any text editor, create a JSON file using the following example. Fill in any credentials or IP addresses with appropriate values for your environment.
    
-2. Save the edited JSON in a file named `EdgeMaximumConfiguration.json` in any directory.
+1. Save the edited JSON in a file named `EdgeMaximumConfiguration.json` in any directory.
    
-3. Run the following curl command from the same directory where the file is located:
+1. Run the following curl command from the same directory where the file is located:
 
   ```bash
   curl -d "@EdgeMaximumConfiguration.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration
