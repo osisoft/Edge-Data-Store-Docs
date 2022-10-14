@@ -2,8 +2,7 @@
 uid: BufferingConfiguration
 ---
 
-(To editor: Copied from https://raw.githubusercontent.com/osisoft/PI-Adapter/main/shared-content/configuration/buffering.md. Don't know if you want to do a reference or just a copy')
-# Buffering
+# Buffering configuration
 
 You can configure PI adapters to buffer data egressed from the adapter to endpoints. Buffering is configured through the buffering configuration parameters in the system configuration.
 
@@ -15,19 +14,19 @@ Complete the following steps to configure buffering. Use the `PUT` method in con
 
 1. Using a text editor, create an empty text file.
 
-2. Copy and paste an example configuration for buffering into the file.
+1. Copy and paste an example configuration for buffering into the file.
 
     For sample JSON, see [Examples - Retrieve the buffering configuration](#examples).
 
-3. Update the example JSON parameters for your environment.
+1. Update the example JSON parameters for your environment.
 
     For a table of all available parameters, see [Buffering parameters](#buffering-parameters).
 
-4. Save the file. For example, as `ConfigureBuffering.json`.
+1. Save the file. For example, as `ConfigureBuffering.json`.
 
-5. Open a command line session. Change directory to the location of `ConfigureBuffering.json`.
+1. Open a command line session. Change directory to the location of `ConfigureBuffering.json`.
 
-6. Enter the following cURL command (which uses the `PUT` method) to initialize the buffering configuration.
+1. Enter the following curl command (which uses the `PUT` method) to initialize the buffering configuration.
 
     ```bash
     curl -d "@ConfigureBuffering.json" -H "Content-Type: application/json" -X PUT "http://localhost:5590/api/v1/configuration/system/buffering"
@@ -36,9 +35,8 @@ Complete the following steps to configure buffering. Use the `PUT` method in con
     **Notes:**
   
     * If you installed the adapter to listen on a non-default port, update `5590` to the port number in use.
+  
     * For a list of other REST operations you can perform, like updating or replacing a buffering configuration, see [REST URLs](#rest-urls).
-    <br/>
-    <br/>
 
 ## Buffering schema
 
@@ -61,26 +59,34 @@ The following parameters are available for configuring buffering:
 <sup>1</sup> **Buffering to disk** - disk is only used if required; <br>
 
 - Data is only written to the disk buffer if queued in the memory buffer for more than 5 seconds.
-- The **MaxBufferSizeMB** is applied per configured endpoint except the health endpoint.<br>
-- An adapter creates 20 MB buffer files that are stored in **BufferLocation**.<br>
-- When **MaxBufferSizeMB** is reached, the oldest buffer file is deleted and a new buffer file is created.<br>
+
+- The **MaxBufferSizeMB** is applied per configured endpoint except the health endpoint.
+
+- An adapter creates 20 MB buffer files that are stored in **BufferLocation**.
+  
+- When **MaxBufferSizeMB** is reached, the oldest buffer file is deleted and a new buffer file is created.
+  
 - The health endpoint is fixed at 20 MB. When the health endpoint buffer file becomes full, a new buffer file is created and the previous buffer file is deleted.
 
 **Note:** The following rules apply in case of an error when creating a new buffer file:
 
-- Attempt to delete oldest buffer file and retry.
-- If unable to buffer, errors are logged to indicate data loss.
-- If a buffer file is corrupted, an attempt is made to recover individual records and any failure to recover records is logged.
+  - Attempt to delete oldest buffer file and retry.
+  
+  - If unable to buffer, errors are logged to indicate data loss.
+  
+  - If a buffer file is corrupted, an attempt is made to recover individual records and any failure to recover records is logged.
 
-<sup>2</sup> **Buffering only to memory**:<br>
+<sup>2</sup> **Buffering only to memory**:
 
-- The **MaxBufferSizeMB** is applied per configured endpoint except the health endpoint.<br>
-- When **MaxBufferSizeMB** is reached, the oldest messages in the memory buffer are removed. Depending on the size of a new message, several old messages may be removed.<br>
-- The health endpoint is fixed at 20 MB. When the health endpoint buffer file becomes full, the oldest messages in the memory buffer are removed and new messages are added.
+  - The **MaxBufferSizeMB** is applied per configured endpoint except the health endpoint.
+  
+  - When **MaxBufferSizeMB** is reached, the oldest messages in the memory buffer are removed. Depending on the size of a new message, several old messages may be removed.
+  
+  - The health endpoint is fixed at 20 MB. When the health endpoint buffer file becomes full, the oldest messages in the memory buffer are removed and new messages are added.
 
 ## Examples
 
-The following examples are buffering configurations made through the`curl` REST client.
+The following examples are buffering configurations made through the `curl` REST client.
 
 ### Retrieve the buffering configuration
 
@@ -112,6 +118,6 @@ curl -d "{ \"MaxBufferSizeMB\": 100 }" -H "Content-Type: application/json" -X PA
 
 | Relative URL | HTTP verb | Action               |
 | ------------ |---------- |----------------------|
-| api/v1/configuration/system/buffering | GET       | Gets the buffering configuration |
-| api/v1/configuration/system/buffering | PUT       | Replaces the existing buffering configuration |
-| api/v1/configuration/system/buffering | PATCH     | Update parameter, partial configuration |
+| `api/v1/configuration/system/buffering` | `GET`       | Gets the buffering configuration |
+| `api/v1/configuration/system/buffering` | `PUT`       | Replaces the existing buffering configuration |
+| `api/v1/configuration/system/buffering` | `PATCH`     | Update parameter, partial configuration |

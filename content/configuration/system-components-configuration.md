@@ -50,8 +50,8 @@ The following parameters are used to define system components.
 
 | Parameters     | Required | Type    | Nullable | Description |
 | -------------- | -------- | --------| ---------|-------------|
-| ComponentId    | Required |`string` | Yes      | The unique ID of the component instance. It can be any alphanumeric string, for example Storage.|
-| ComponentType  | Required |`string` | Yes      | The type of the component, for example `Storage`. There are three types of components: Storage identified by `Storage`, OPC UA EDS Adapter identified by `OpcUa`, and Modbus TCP EDS Adapter identified by `Modbus`. |
+| **ComponentId**    | Required |`string` | Yes      | The unique ID of the component instance. It can be any alphanumeric string, for example Storage.|
+| **ComponentType**  | Required |`string` | Yes      | The type of the component, for example `Storage`. There are three types of components: Storage identified by `Storage`, OPC UA EDS Adapter identified by `OpcUa`, and Modbus TCP EDS Adapter identified by `Modbus`. |
 
 ## System components example
 
