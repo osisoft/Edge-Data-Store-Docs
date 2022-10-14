@@ -12,7 +12,7 @@ EDS also produces diagnostic data. You can use diagnostic data to find more info
 
 The following health types and streams are created to reflect the health of EDS adapters.
 
-**Note:** If a Health prefix is assigned in System_General's Health Prefix field (xref: GeneralConfiguration), all streams will be prefixed with {HealthPrefix}.
+**Note:** If a Health prefix is assigned in System_General's Health Prefix field (xref: GeneralConfiguration), all streams will be prefixed with `{HealthPrefix}`.
 
 The EDS static type includes these properties and servers as a root AF element with the ID.
 
