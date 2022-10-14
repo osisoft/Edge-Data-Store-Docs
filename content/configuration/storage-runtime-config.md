@@ -16,7 +16,7 @@ To update the storage runtime configuration:
 
 1. Save the JSON file with the name `Storage_Runtime.config.json`.
 
-1. From the same directory where the file exists, run the following `curl` script:
+1. From the same directory where the file exists, run the following curl script:
 
   ```bash
   curl -d "@Storage_Runtime.config.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/storage/Runtime

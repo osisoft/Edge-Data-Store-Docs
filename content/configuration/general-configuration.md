@@ -5,22 +5,28 @@ uid: GeneralConfiguration
 
 # General configuration
 
-You can configure Edge Data Store's components to produce and store diagnostics data at a designated health endpoint, and to send metadata for created streams. Edge Data Store's specific metadata is sent to Edge Data Store regardless of whether **EnableDiagnostics** is Enabled or its MetadataLevel. This only affects data sent to health endpoints.
+You can configure Edge Data Store's components to produce and store diagnostics data at a designated health endpoint and to send metadata for created streams. Edge Data Store's specific metadata is sent to Edge Data Store regardless of whether **EnableDiagnostics** is Enabled or its MetadataLevel. This only affects data sent to health endpoints.
 For more information about available diagnostics data, see [Edge Data Store diagnostics](xref:EdgeDataStoreDiagnostics).
 
 ## Configure general
 
-1. Start any of the [Configuration tools](xref:ConfigurationTools) capable of making HTTP requests.
-   
-1. Run a `PUT` command to the following endpoint, setting the parameters as needed: `http://localhost:5590/api/v1/configuration/system/general`
+To update the general configuration:
 
-   **Note:** `5590` is the default port number. If you selected a different port number, replace it with that value.
+1. Using any text editor, create a JSON file that contains the storage runtime configuration.
 
-   Example using `curl`:
+  - For the content structure, see [Parameters](#parameters).
+
+1. Save the JSON file with the name `General.config.json`.
+
+1. From the same directory where the file exists, run the following curl script:
 
    ```bash
    curl -d "{ \"EnableDiagnostics\":true, \"MetadataLevel\":Medium, \"HealthPrefix\":\"Machine1\" }" -X PUT "http://localhost:5590/api/v1/configuration/system/general"
    ```
+
+   Alternatively, run a `PUT` command to the following endpoint, setting the parameters as needed: `http://localhost:5590/api/v1/configuration/system/general`
+
+      **Note:** `5590` is the default port number. If you selected a different port number, replace it with that value.
 
 ## General schema
 
@@ -32,7 +38,7 @@ Linux: `/opt/OSIsoft/Adapters/<AdapterName>/Schemas`
 
 ## Parameters
 
-The following parameters are available for configuring general:
+The following table lists the parameters for general configuration.
 
 | Parameter             | Required | Type    | Description |
 | ---------             | -------- | ------- | ----------- |
