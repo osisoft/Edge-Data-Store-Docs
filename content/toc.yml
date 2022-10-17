@@ -19,7 +19,6 @@
     - topicUid: SystemPortConfiguration
     - topicUid: GeneralConfiguration
     - topicUid: BufferingConfiguration
-    - topicUid: EdgeDataStoreConfiguration
   - topicUid: EDSDataIngress
     items:
     - topicUid: opcUaOverview
