@@ -4,38 +4,29 @@ uid: SystemPortConfiguration
 
 # System port configuration
 
-The _System_Port.json_ file specifies the port on which Edge Data Store is listening for REST API calls. The same port is used for configuration and for writing data to OMF and SDS. The default port is 5590. Valid ports are in the range of 1024-65535. 
+The `appsettings.json` file specifies the port on which Edge Data Store listens for REST API calls. EDS uses the same port for configuration and for writing data to OMF and SDS. The default port is `5590`. Valid ports are in the range of 1024-65535. During installation, a prompt allows you to specify a non-default port.
 
-## Configure system port
+## Reconfigure system port
 
-Before changing the port, ensure that no other service or application on the device running EDS is using that port because only one application or service can use a port. If you change the port number through the REST API, you must restart EDS.
+Before changing the port, ensure that no other service or application on the device running EDS uses that port because only one application or service can use a port. After reconfiguring the port, you must restart EDS for the changes to take effect.
 
-To configure the system port, follow these steps:
+To reconfigure the port:
 
-1. Using any text editor, create a JSON file based on the following example and enter the new port number:
+1. Open the `appsettings.json` file in a text editor. 
+  
+  This file is located in `C:\Program Files\OSIsoft\EdgeDataStore\` on Windows, in `/opt/OSIsoft/EdgeDataStore/` on Linux, or in the location specified during installation.
 
-   ```json
-   {
-     "Port": 5590
-   }
-   ```
+1. Change the port value to a valid value between `1024` and `65535` and save the file.
 
-1. Save the JSON file with the name _EdgePort.json_ 
+1. Restart the Edge Data Store service.
 
-1. Run the following script:
+## Sample JSON file
 
-    ```bash
-    curl -d "@EdgePort.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/system/port
-    ```
-
-    **Note:** The port number in the script must be the current port number, not the new port number in the file.
-
-1. After the REST command completes, restart EDS for the change to take effect.
-
-## Parameters for system port
-
-The following parameters is used to specify the system port.
-
-| Parameter      | Required    | Type   | Nullable | Description                      |
-| ------------- | --------- | -------- | -------- | ------------------------------- |
-| **Port** | Required | `integer` | No       | The TCP port to bind EDS to. (Range [1024,65535]) Example: 5590 | 
+```json
+{
+  "ApplicationSettings": {
+    "Port": 5590,
+    "ApplicationDataDirectory": "EdgeDataStore"
+  }
+}
+```

@@ -1,8 +1,0 @@
-- name: Operational overview
-  href: operational-overview.md
-- name: Supported features
-  href: supported-features-modbus.md
-- name: Data source configuration
-  href: modbus-data-source-configuration.md
-- name: Data selection configuration
-  href: modbus-data-selection-configuration.md

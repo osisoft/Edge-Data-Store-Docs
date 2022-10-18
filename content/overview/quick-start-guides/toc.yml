@@ -4,7 +4,7 @@
   href: ../modbus-quick-start.md
 - name: OMF quick start
   href: ../omf-quick-start.md
-- name: OCS egress quick start
+- name: AVEVA Data Hub egress quick start
   href: ../ocs-egress-quick-start.md
 - name: PI egress quick start
   href: ../pi-egress-quick-start.md

@@ -2,15 +2,6 @@
   items:
   - topicUid: scalePerformance
   - topicUid: security
-- topicUid: QuickStartGuides
-  items:
-  - topicUid: opcUaQuickStart
-  - topicUid: modbusQuickStart
-  - topicUid: omfQuickStart
-  - topicUid: piEgressQuickStart
-  - topicUid: sdsQuickStart
-  - topicUid: commandLineLinuxQuickStart
-  - topicUid: commandLineWindowsQuickStart
 - topicUid: InstallEdgeDataStore
   items:
     - topicUid: SystemRequirements
@@ -26,7 +17,8 @@
     items:
     - topicUid: SystemComponentsConfiguration
     - topicUid: SystemPortConfiguration
-    - topicUid: EdgeDataStoreConfiguration
+    - topicUid: GeneralConfiguration
+    - topicUid: BufferingConfiguration
   - topicUid: EDSDataIngress
     items:
     - topicUid: opcUaOverview
@@ -36,12 +28,17 @@
       - topicUid: OPCUADataSourceConfiguration
       - topicUid: OPCUAAdapterSecurityConfiguration
       - topicUid: OPCUADataSelectionConfiguration
+        items:
+        - topicUid: DataFiltersConfiguration
     - topicUid: modbusOverview
       items:
       - topicUid: PrinciplesOfOperationModbus
       - topicUid: SupportedFeaturesModbus
       - topicUid: ModbusTCPDataSourceConfiguration
       - topicUid: ModbusTCPDataSelectionConfiguration
+        items:
+        - topicUid: DataFiltersConfiguration
+        - topicUid: SchedulesConfiguration
     - topicUid: omfOverview
       items:
       - topicUid: OMFMessages
@@ -52,15 +49,13 @@
     items:
     - topicUid: PrepareEgressDestinations
     - topicUid: configureEgress
+    - topicUid: ManualEgress
     - topicUid: EgressExecutionDetails
     - topicUid: EdgeDataStoreDiagnostics
   - topicUid: EdgeDataStoreHealth
     items:
     - topicUid: HealthEndpointsConfiguration
   - topicUid: LoggingConfig
-    items: 
-    - topicUid: systemloggingConfiguration
-    - topicUid: ComponentLoggingConfiguration
 - topicUid: EdgeDataStoreAdministration
   items:
   - topicUid: RetrieveProductVersionInformation
@@ -75,8 +70,8 @@
   - topicUid: sdsTypes
     items:
     - topicUid: sdsTypeCode
-    - topicUid: sdsTypeProperty
-    - topicUid: sdsTypeExamples
+    - topicUid: SdsTypesInDotNet
+    - topicUid: SdsTypesOutsideDotNet
     - topicUid: sdsTypeReusability
     - topicUid: sdsTypeAPI
   - topicUid: sdsStreams
@@ -84,10 +79,12 @@
     - topicUid: sdsStreamsAPI
   - topicUid: sdsStreamViews
     items:
+    - topicUid: sdsGSStreamViews
     - topicUid: sdsStreamViewsAPI
   - topicUid: sdsIndexes
     items:
-    - topicUid: sdsIndexExamples
+    - topicUid: IndexesInDotNet
+    - topicUid: IndexesOutsideDotNet
   - topicUid: sdsReadingData
     items:
     - topicUid: ResponseFormat

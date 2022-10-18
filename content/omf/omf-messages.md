@@ -8,27 +8,25 @@ uid: OMFMessages
 
 ## Headers
 
-Message headers allow you to pass additional information with the message. The message header is where you specify the action for the message, such as CREATE. For a description of each of the headers, see the [OMF specification](https://docs.osisoft.com/bundle/omf/page/headers.html). 
+Message headers allow you to pass additional information with the message. The message header is where you specify the action for the message, such as `CREATE`. For a description of each of the headers, see the [OMF specification](https://docs.osisoft.com/bundle/omf/page/headers.html).
 
-The `omfversion` header must match the version of the OMF spec used to construct the message.
-EDS suports versions 1.0 and 1.1 of the OMF specification. 
+The `omfversion` header must match the version of the OMF spec used to construct the message. EDS supports versions 1.0, 1.1, and 1.2 of the OMF specification.
 
 ## Message types
 
-OMF message types fall into three categories: Type, Container, and Data, which are described below. 
-Each message type creates a different type of data and contains keywords that define characteristics of the data. Most of the message types are used to create the structure of the data and give it meaning. Data messages contain time-series data for which the PI System is known. The message types and the data they create are described in detail in this section. For details about the keywords supported by OCS, see the OCS documentation, [OSIsoft Cloud Services](https://docs.osisoft.com/bundle/ocs/page/ocs-content-portal-overview.html).
+OMF message types fall into three categories: Type, Container, and Data, which are described below. Each message type creates a different type of data and contains keywords that define characteristics of the data. Most of the message types are used to create the structure of the data and give it meaning. Data messages contain time-series data for which the PI System is known. The message types and the data they create are described in detail in this section. For details about the keywords supported by AVEVA Data Hub, see the AVEVA Data Hub documentation, [AVEVA Data Hub](https://docs.osisoft.com/bundle/data-hub/page/adh-content-portal-overview.html).
 
 All messages should only be sent from the OMF application one time, but resending the same definition again does not cause an error.
 
 ### Type messages
 
-An OMF type message describes the format of the data to be stored. A type message is interpreted by OSIsoft Cloud Services as an SdsType in the Sequential Data Store. Because SdsTypes are immutable, update operations are not supported.  
+An OMF type message describes the format of the data to be stored. A type message is interpreted by AVEVA Data Hub as an SdsType in the Sequential Data Store. Because SdsTypes are immutable, update operations are not supported.  
 
 ### Create an OMF type
 
 The first step in OMF data ingress is to create an OMF type that describes the format of the data to be stored. In this example, the data to be written is a timestamp and a numeric value.
 
-To create an OMF type, follow these steps:
+To create an OMF type:
 
 1. Create an OMF JSON file that defines the type as follows:
 
@@ -52,7 +50,7 @@ To create an OMF type, follow these steps:
    ```
 
    The value is indexed by a timestamp, and the numeric value that will be stored is a 32-bit floating point value.
-   
+
 1. To create the OMF type in Edge Storage, store the JSON file with the name `OmfCreateType.json` on the local device.
 
 1. Run the following curl command:
@@ -65,11 +63,11 @@ When this command completes successfully, an OMF type with the same name is crea
 
 ## Container messages
 
-An OMF container message uses an OMF type as a template to create a way to collect and group data events. A container message is interpreted as an SdsStream in the Sequential Data Store. 
+An OMF container message uses an OMF type as a template to create a way to collect and group data events. A container message is interpreted as an `SdsStream` in the Sequential Data Store.
 
 ### Create an OMF container
 
-The next step in writing OMF data is to create an OMF container. To create an OMF container, follow these steps: 
+The next step in writing OMF data is to create an OMF container. To create an OMF container:
 
 1. Create an OMF JSON file that defines the container as follows:
 
@@ -80,8 +78,8 @@ The next step in writing OMF data is to create an OMF container. To create an OM
    }]
    ```
 
-   This container references the OMF type that was created earlier, and an error will occur if the type does not exist when the container is created. 
-   
+   This container references the OMF type that was created earlier, and an error occurs if the type does not exist when the container is created.
+
 1. To create the OMF container in Edge Storage, store the JSON file with the name `OmfCreateContainer.json` on the local device.
 
 1. To create the SDS stream to store data defined by the type, run the following curl command:
@@ -92,15 +90,15 @@ The next step in writing OMF data is to create an OMF container. To create an OM
 
 ## Data messages
 
-An OMF data message sends actual data events, like time-series data, to be stored. A data message is mapped to generic SDS values in the Sequential Data Store. 
+An OMF data message sends actual data events, like time-series data, to be stored. A data message is mapped to generic SDS values in the Sequential Data Store.
 
 ### Write data events to the OMF container
 
 Once a type and container are defined, you can send data messages to write data to the container.
 
-To writer data to the container, follow these steps:
+To writer data to the container:
 
-1. Create an OMF JSON file to define data events to be stored in the SdsStreams created in the previous steps. For best performance, batch OMF messages together, as in the following example: 
+1. Create an OMF JSON file to define data events to be stored in the `SdsStreams` created in the previous steps. For best performance, batch OMF messages together, as in the following example:
 
    ```json
    [{
@@ -124,3 +122,17 @@ To writer data to the container, follow these steps:
    ```bash
    curl -d "@OmfCreateDataEvents.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: data" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
    ```
+
+## HTTPS status codes
+
+Edge Data Store returns the following status codes to provide feedback when an OMF ingress message is received. If an error occurs because of an issue with the server, such as `408 Request Timeout` or `503 Service Unavailable`, the application can retry the request. It is up to the OMF application developer to determine how many times to retry a request.
+
+| Status Code        | Description               | Common Causes               |
+|--------------------|---------------------------|-----------------------------|
+| 204 No Content     | The OMF message was successfully processed, but there is no additional information to return. | |
+| 400 Bad Request    | The OMF message was malformed or not understood. The client should not retry sending the message without modifications.| The body or headers of the OMF message were incorrect. Verify the validity of the request contents and headers.
+| 408 Request Timeout| The server did not reply to a request within the time that the client was prepared to wait. The client may repeat the request without modifications at any later time.| Server busy or over-loaded with other requests.|
+| 409 Conflict       | The request could not be completed due to a conflict with the current state of the server.| The information in the OMF message contradicts the data currently stored in EDS.|
+| 413 Payload Too Large| Payload size exceeds OMF body size limit.| The body of an OMF message has a maximum size of 192KB. A request with a body size exceeding the maximum will be rejected with this error code.|
+| 500 Internal Server Error| The server encountered an unexpected condition.| Review EDS logs for more insight.|
+| 503 Service Unavailable| The server is currently unavailable, retry later.| The EDS server is performing maintenance on one or more streams.|

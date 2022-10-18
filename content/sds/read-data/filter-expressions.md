@@ -8,55 +8,27 @@ Apply filter expressions to any read that returns multiple values, including `Ge
 
 ## SdsTypeCodes
 
-The following types are supported for use within a filter expression:
+The following tables lists supported and unsupported types within a filter expression.
 
-- `Boolean`
-
-- `Byte`
-
-- `Char`
-
-- `DateTime`
-
-- `DateTimeOffset`
-
-- `Decimal`
-
-- `Double`
-
-- `Guid`
-
-- `Int16`
-
-- `Int32`
-
-- `Int64`
-
-- `Sbyte`
-
-- `Single`
-
-- `String`
-
-- `Timespan`
-
-- `UInt16`
-
-- `UInt32`
-
-- `Uint64`
-
-The following types are not supported for use within a filter expression:
-
-- `Array`
-
-- `IEnumerable`
-
-- `IDictionary`
-
-- `IList`
-
-- `Nullable Types`
+| Supports  | Does not support        |
+|------------|------------------------|
+|``Boolean``    |   ``Array``       |
+| ``Byte``    |     ``IEnumerable``       |
+| ``Char``    |              ``IDictionary``     |
+| ``DateTime``  |             ``IList``         |
+|``DateTimeOffset``  |          |
+| ``Decimal``   |         |
+|  ``Double``| ``Nullable Types`` |
+| ``Guid`` |                              |
+| ``Int16``  |                             |
+| ``Int32``   |                                |
+| ``Int64``  |                             |
+|  ``Sbyte`` |                                |
+| ``String``   |                                 |
+| ``Timespan`` |                                |
+| ``UInt16``  |                                 |
+| ``UInt32``   |                                 |
+| ``UInt64``  |                                       |
 
 ## Logical operators
 
@@ -109,13 +81,13 @@ The following tables shows supported math functions within a filter expression.
 | `mul`   | Multiplication          |
 | `div`   | Division                |
 | `mod`   | Modulo                  |
-| `round` | Rounds to the nearest numeric component without a decimal, with the midpoint rounded away from 0. For example, 0.5 rounds to 1; -0.5 rounds to -1) |
+| `round` | Rounds to the nearest numeric component without a decimal, with the midpoint rounded away from 0. For example, 0.5 rounds to 1; -0.5 rounds to -1). |
 | `floor` | Rounds down to the nearest numeric component without a decimal |
 |`ceiling`| Rounds up to the nearest numeric component without a decimal |
 
 ### Math function examples
 
-For the following examples, assume that the SDS Type event includes a field named `Value` of type **double**:
+For the following examples, assume that the SdsType event includes a field named **Value** of type `double`:
 
 - `Value eq (6.0 add 3.0)`
 
@@ -135,7 +107,7 @@ For the following examples, assume that the SDS Type event includes a field name
 
 ## String functions
 
-String operations are case sensitive. The character index in a string is 0-based. The following table shows supported string functions within a filter expression.
+String operations are case sensitive. The character index in a string is zero-based. The following table shows supported string functions within a filter expression.
 
 | Function       | Description                                                         |
 |----------------|-----------------------------------------------------------------|

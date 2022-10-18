@@ -4,7 +4,7 @@ uid: sdsIndexExamples
 
 # Index examples
 
-The following examples show how to build an SdsType representation using the provided sample classes in Python and Java Script. 
+The following examples show how to build an SdsType representation using the provided sample classes in Python and JavaScript.
 
 ## Sample classes
 
