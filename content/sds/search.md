@@ -87,12 +87,12 @@ For more information on stream properties, see [Streams](xref:sdsStreams).
 
 | Property          | Searchable  |
 |-------------------|-------------|
-| [Metadata](xref:sdsStreams#metadata)*		| Yes		  |
-| [Tags](xref:sdsStreams#tags)*	| Yes		  |
+| [Metadata](xref:sdsStreams)*		| Yes		  |
+| [Tags](xref:sdsStreams)*	| Yes		  |
 | ACL | No		  |
 | Owner | No		  |
 
-**Note:** You can access stream metadata and tags through Metadata API and Tags API respectively. Metadata and tags are associated with streams and can be used as search criteria. See [below](#Stream_Metadata_search_topic) for more information.
+**Note:** You can access stream metadata and tags through Metadata API and Tags API respectively. Metadata and tags are associated with streams and can be used as search criteria. See [How search works with stream metadata](#Stream_Metadata_search_topic) for more information.
 
 #### Request
 
@@ -371,7 +371,7 @@ Note that while wildcard (`*`) can be used either in or outside of quotes, it is
 
 ## <a name="Stream_Metadata_search_topic">How search works with stream metadata</a>
 
-[Stream metadata](xref:sdsStreams#metadata) behaves differently with search syntax rules described in the previous sections.
+[Stream metadata](xref:sdsStreams) behaves differently with search syntax rules described in the previous sections.
 
 ### A namespace with streams with respective metadata key-value pairs
 

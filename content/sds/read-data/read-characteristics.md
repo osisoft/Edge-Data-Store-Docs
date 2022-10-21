@@ -45,7 +45,7 @@ The following table describes how the `Continuous` interpolation mode affects in
 
 <sup>2</sup> For the Continuous interpolation mode, nullable types are interpolated in the same manner as their non-nullable equivalents as long as the values surrounding the requested interpolation index are non-null. If either of the values are null, the interpolated value will be null.
 
-If the `InterpolationMode` is not assigned, the events are interpolated in the default manner, unless the interpolation mode is overridden in the `SdsTypeProperty` or the `SdsStream`. For more information on overriding the interpolation mode on a specific type property, see [SdsTypeProperty](xref:sdsTypes#sdsTypeProperty). For more information on overriding the interpolation mode for a specific stream, see [Streams](xref:sdsStreams).
+If the `InterpolationMode` is not assigned, the events are interpolated in the default manner, unless the interpolation mode is overridden in the `SdsTypeProperty` or the `SdsStream`. For more information on overriding the interpolation mode on a specific type property, see [SdsTypeProperty](xref:sdsTypes#sdstypeproperty). For more information on overriding the interpolation mode for a specific stream, see [Streams](xref:sdsStreams).
 
 ## Extrapolation
 
