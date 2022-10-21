@@ -1,4 +1,4 @@
-<?xml version="1.1"?>
+<?xml version="2023"?>
 <?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -213,12 +213,12 @@
    <Row ss:Height="14.5">
     <Cell><Data ss:Type="String">MAP</Data></Cell>
     <Cell ss:Index="3" ss:StyleID="s31"><Data ss:Type="String">edge</Data></Cell>
-    <Cell ss:StyleID="s44"><Data ss:Type="String">Edge-Data-Store_1.1</Data></Cell>
+    <Cell ss:StyleID="s44"><Data ss:Type="String">Edge-Data-Store_2023</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
     <Cell><Data ss:Type="String">apply-ALL</Data></Cell>
     <Cell ss:Index="3" ss:StyleID="s31"><Data ss:Type="String">edge</Data></Cell>
-    <Cell ss:StyleID="s44"><Data ss:Type="String">Edge-Data-Store_1.1</Data></Cell>
+    <Cell ss:StyleID="s44"><Data ss:Type="String">Edge-Data-Store_2023</Data></Cell>
    </Row>
    <Row>
     <Cell><Data ss:Type="String">default</Data></Cell>

@@ -2,7 +2,7 @@
 uid: releaseNotes
 ---
 
-# Edge Data Store 1.1 release notes
+# Edge Data Store 2023 release notes
 
 Edge Data Store (EDS) is a lightweight data collection and storage application designed to capture data at the edge of networks for historical storage and analysis. It runs on small, rugged devices or embedded in existing industrial hardware and is designed to be resilient and require minimal installation and administration.
 
@@ -60,7 +60,7 @@ The following items were resolved:
 | 294320    | Fixed an issue causing data to stop flowing to a first ADH endpoint after a second endpoint is added.   |
 | 308001    | OPC UA now correctly distinguishes between local and UTC time as inputs to History Recovery only mode. History recovery starttime and endtime supplied in local time format will be treated as a local time by the adapter node instead of the UTC time.  |
 | 335628   | Fixed an issue that prevented built-in adapters from sending string data.      |
-| 275072   | Data collection for the OPC UA server data items will no longer be skipped when the source OPC UA Server has invalid data item attributes like: DataType, Description, BrowseName, DisplayName, UserAccessLevel.	-  
+| 275072   | Data collection for the OPC UA server data items will no longer be skipped when the source OPC UA Server has invalid data item attributes like: DataType, Description, BrowseName, DisplayName, UserAccessLevel.	|  
 | 338424   | The OpcUa Data Type 'UtcTime' is now supported as a DateTime type.    |
 | 270854   | Fixed an issue that caused data to be collected for selection items with `"selected": false`.  |
 
@@ -70,7 +70,7 @@ There are no known issues with this release.
 
 ## Upgrade considerations
 
-This is a list of known changes in EDS 1.1 that may be relevant to upgrading customers.
+This is a list of known changes in Edge Data Store 2023 that may be relevant to upgrading customers.
 
 - Downtime during upgrade is expected to be approximately 6 seconds. 
 
