@@ -1,6 +1,6 @@
 
 ---
-uid: GeneralConfiguration
+uid: GeneralEDSConfiguration
 ---
 
 # General configuration

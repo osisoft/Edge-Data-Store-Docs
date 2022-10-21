@@ -17,7 +17,7 @@
     items:
     - topicUid: SystemComponentsConfiguration
     - topicUid: SystemPortConfiguration
-    - topicUid: GeneralConfiguration
+    - topicUid: GeneralEDSConfiguration
     - topicUid: BufferingConfiguration
   - topicUid: EDSDataIngress
     items:
