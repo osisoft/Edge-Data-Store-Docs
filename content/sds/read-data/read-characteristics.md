@@ -28,24 +28,24 @@ The following table describes how the `Continuous` interpolation mode affects in
 
 | Type                      | Result for an index between data in a stream  | Comment |
 |---------------------------|-----------------------------------------------|---------|
-|Numeric Types              |Interpolated<sup>1</sup>                   |Rounding is done as needed for integer types. |
-|Time related Types         |Interpolated                    |DateTime, DateTimeOffset, TimeSpan |
-|Nullable Types             |Interpolated<sup>2</sup>                   |Limited support for nullable numeric types. |
-|Array and List Types       |No event is returned            |         |
-|String Type                |No event is returned            |         |
-|Boolean Type               |Returns value of nearest index  |         |
-|Enumeration Types          |Returns Enum value at 0         |This may have a value for the enumeration. |
-|GUID                       |No event is returned            |         |
-|Version                    |No event is returned            |         |
-|IDictionary or IEnumerable |No event is returned            |Dictionary, Array, List, and so on. |
-|Empty Type		|Not supported                  	 | |
-|Object Type 		|Not supported                   	| |
+| Numeric Types             | Interpolated<sup>1</sup>                   | Rounding is done as needed for integer types. |
+| Time related Types        | Interpolated                    | DateTime, DateTimeOffset, TimeSpan |
+| Nullable Types            | Interpolated<sup>2</sup>                   | Limited support for nullable numeric types. |
+| Array and List Types      | No event is returned            |         |
+| String Type               | No event is returned            |         |
+| Boolean Type              | Returns value of nearest index  |         |
+| Enumeration Types         | Returns Enum value at 0         | This may have a value for the enumeration. |
+| GUID                      | No event is returned            |         |
+| Version                   | No event is returned            |         |
+| IDictionary or IEnumerable | No event is returned            | Dictionary, Array, List, and so on. |
+| Empty Type		         | Not supported                   | |
+| Object Type 	             | Not supported                   	| |
 
 <sup>1</sup> When extreme values are involved in an interpolation (for example, `Decimal.MaxValue`) the call might result in a `BadRequest` exception.
 
 <sup>2</sup> For the Continuous interpolation mode, nullable types are interpolated in the same manner as their non-nullable equivalents as long as the values surrounding the requested interpolation index are non-null. If either of the values are null, the interpolated value will be null.
 
-If the `InterpolationMode` is not assigned, the events are interpolated in the default manner, unless the interpolation mode is overridden in the `SdsTypeProperty` or the `SdsStream`. For more information on overriding the interpolation mode on a specific type property, see [SdsTypeProperty](xref:sdsTypeProperty). For more information on overriding the interpolation mode for a specific stream, see [Streams](xref:sdsStreams).
+If the `InterpolationMode` is not assigned, the events are interpolated in the default manner, unless the interpolation mode is overridden in the `SdsTypeProperty` or the `SdsStream`. For more information on overriding the interpolation mode on a specific type property, see [SdsTypeProperty](xref:sdsTypes#sdsTypeProperty). For more information on overriding the interpolation mode for a specific stream, see [Streams](xref:sdsStreams).
 
 ## Extrapolation
 

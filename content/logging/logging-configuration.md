@@ -20,7 +20,7 @@ To change the message logging behavior:
 
 1. Using any text editor, open the log configuration file that you want.
 
-1. Change the values as needed so it looks similar to the [Logging example](#logging-example).
+1. Change the values as needed so it looks similar to the [Logging example](#example-logging-configuration).
 
 1. Use any tool capable of making HTTP requests to execute a `POST` command with the contents of that file to the respective endpoint.
 

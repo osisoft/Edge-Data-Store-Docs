@@ -68,7 +68,7 @@ If `skip` is set to `100`, the following call will return the remaining 75 match
 
 Streams search is exposed through the REST API and the client libraries method `GetStreamsAsync`.
 
-For more information on stream properties, see [Streams](xref:sdsStreams#streampropertiestable).
+For more information on stream properties, see [Streams](xref:sdsStreams).
 
 ### Searchable Properties
 
@@ -87,8 +87,8 @@ For more information on stream properties, see [Streams](xref:sdsStreams#streamp
 
 | Property          | Searchable  |
 |-------------------|-------------|
-| [Metadata](xref:sds-streams-metadata)*		| Yes		  |
-| [Tags](xref:sds-streams-tags)*	| Yes		  |
+| [Metadata](xref:sdsStreams#metadata)*		| Yes		  |
+| [Tags](xref:sdsStreams#tags)*	| Yes		  |
 | ACL | No		  |
 | Owner | No		  |
 
@@ -124,12 +124,12 @@ Search for streams using the REST API and specifying the optional `query` parame
       _metadataService.GetStreamsAsync(query:"QueryString", skip:0, count:100);
 ```
 
-The stream fields valid for search are identified in the fields table located on the [Streams](xref:sdsStreams#streampropertiestable) page. Note that stream metadata has unique syntax rules. For details, see [How search works with stream metadata](#Stream_Metadata_search_topic).
+The stream fields valid for search are identified in the fields table located on the [Streams](xref:eam metadata has unique syntax rules. For details, see [How search works with stream metadata](#Stream_Metadata_search_topic).
 
 ## Search for types
 
 Type search is exposed through the REST API and the client libraries method `GetTypesAsync`.
-For more information on type properties, see [Types](xref:sdsTypes#typepropertiestable).
+For more information on type properties, see [Types](xref:sdsTypes).
 
 ### Searchable Properties
 
@@ -371,7 +371,7 @@ Note that while wildcard (`*`) can be used either in or outside of quotes, it is
 
 ## <a name="Stream_Metadata_search_topic">How search works with stream metadata</a>
 
-[Stream metadata](xref:sds-streams-metadata) behaves differently with search syntax rules described in the previous sections.
+[Stream metadata](xref:sdsStreams#metadata) behaves differently with search syntax rules described in the previous sections.
 
 ### A namespace with streams with respective metadata key-value pairs
 

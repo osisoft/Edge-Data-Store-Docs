@@ -67,7 +67,7 @@ Use indexes to order data. On a stream level, you can set the property to be the
 
 - Ensure that the property is a secondary index.
 
-- Use [logical operators](xref:sdsFilterExpressions#examples-of-logical-operators) for filtering.
+- Use [logical operators](xref:sdsFilterExpressions#logical-operators) for filtering.
 
 ```csharp
       await client.UpdateValuesAsync<Simple>(secondary.Id, new List<Simple>()
