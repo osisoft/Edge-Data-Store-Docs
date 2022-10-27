@@ -8,7 +8,7 @@ The Modbus TCP EDS adapter is a component of Edge Data Store that defines connec
 
 The following diagram depicts the data flow of a single instance of Modbus TCP EDS adapter:
 
-![Modbus TCP EDS](../content/images/ModbusTCP.jpg "Modbus TCP EDS")
+![Modbus TCP EDS](../../content/images/ModbusTCP.jpg "Modbus TCP EDS")
 
 The adapter instance requests data from the Modbus TCP device and then the device sends its data. The adapter sends the collected data to the storage component where it is held until it can be egressed to permanent storage in PI Server or AVEVA Data Hub. The adapter instance can be configured from the device where EDS is installed, and EDS collects health information about the adapter that can be egressed.
 
