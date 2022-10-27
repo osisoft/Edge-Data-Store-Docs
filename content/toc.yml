@@ -2,6 +2,16 @@
   items:
   - topicUid: scalePerformance
   - topicUid: security
+- topicUid: QuickStartGuides
+  items:
+  - topicUid: opcUaQuickStart
+  - topicUid: modbusQuickStart
+  - topicUid: omfQuickStart
+  - topicUid: adhEgressQuickStart
+  - topicUid: piEgressQuickStart
+  - topicUid: sdsQuickStart
+  - topicUid: commandLineLinuxQuickStart
+  - topicUid: commandLineWindowsQuickStart
 - topicUid: InstallEdgeDataStore
   items:
     - topicUid: SystemRequirements
