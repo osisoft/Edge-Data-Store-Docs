@@ -22,20 +22,20 @@ To configure the OPC UA data source:
 
 1. Use any tool capable of making HTTP requests to execute a `POST` command with the contents of that file to the following endpoint: `http://localhost:<port_number>/api/v1/configuration/<EDS_adapterId>/DataSource/`.
 
-The following example shows the HTTPS request using curl, which you must run from the same directory where the file is located, and uses the adapter instance created during installation, which is `OpcUa1`:
+The following examples show the HTTPS request using curl and EdgeCmd using the adapter instance created during installation, which is `OpcUa1`:
 
-    ### [curl](#tab/tabid-1)
+### [curl](#tab/tabid-1)
 
-    ```bash
-    curl -d "@OpcUa1DataSource.config.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/OpcUa1/DataSource"  
-    ```
-        
-    ### [EdgeCmd](#tab/tabid-2)
-    
-    ```
-    edgecmd set dataSource -cid OpcUa1 -file OpcUa1DataSource.config.json
-    ```
-    ***
+```bash
+curl -d "@OpcUa1DataSource.config.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/OpcUa1/DataSource"
+```
+
+### [EdgeCmd](#tab/tabid-2)
+
+```
+edgecmd set dataSource -cid OpcUa1 -file OpcUa1DataSource.config.json
+```
+***
 
 **Note:** After completing data source configuration, you need to configure data selection next. You can either generate a default data selection file or create the data selection file manually. For more information, see [Data selection configuration](xref:OPCUADataSelectionConfiguration).
 
@@ -48,7 +48,7 @@ The OPC UA EDS adapter is able to export available OPC UA dynamic variables by b
    **Note:** The nodeIds are treated as roots from which the adapter starts the browse operation.
 
    The adapter triggers an export operation after a successful connection to the OPC UA server when the data selection file does not exist in configuration directory.
-  
+
 1. Copy the exported data selection JSON file from the directory or retrieve it using a REST API call.
 
 1. (Optional) To avoid a potentially long and resource-intensive browse operation, create the data selection file manually. Configure it before you configure the data source or push both in one configuration call together.
