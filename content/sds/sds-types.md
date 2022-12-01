@@ -32,7 +32,7 @@ The following table shows the SdsType fields. Fields that are not included are r
 | `SdsTypeCode`       | SdsTypeCode            | Required    | No | Numeric code identifying the base SdsType |
 | `InterpolationMode` | SdsInterpolationMode   | Optional    | No | Interpolation setting of the type. Default is Continuous. |
 | `ExtrapolationMode` | SdsExtrapolationMode   | Optional    | No | Extrapolation setting of the type. Default is All. |
-| `Properties`        | IList\<SdsTypeProperty\> | Required    | Yes, with limitations | List of `SdsTypeProperty` items. See [SdsTypeProperty](xref:#SdsTypeProperty)
+| `Properties`        | IList\<SdsTypeProperty\> | Required    | Yes, with limitations | List of `SdsTypeProperty` items. See SdsTypeProperty below.  |
 For search limitations, see [Search in SDS](xref:sdsSearching).
 
 ## Rules for the type identifier (SdsType.ID)
@@ -97,7 +97,7 @@ An SdsType with the `InterpolationMode` set to `Discrete` cannot have a property
 
 `Uom` is the unit of measure for the property. The `Uom` of a property may be specified by the name or the abbreviation. The names and abbreviations of Uoms are case sensitive.
 
-The `InterpolationMode` and `Uom` of a property can be overridden on the stream. For more information, see [PropertyOverrides in Streams](xref:sdsStreams#propertyoverrides).
+The `InterpolationMode` and `Uom` of a property can be overridden on the stream. For more information, see [SdsStreamPropertyOverride in Streams](xref:sdsStreams#sdsstreampropertyoverride).
 
 ### Supported units of measure
 

@@ -20,7 +20,7 @@ All messages should only be sent from the OMF application one time, but resendin
 
 ### Type messages
 
-An OMF type message describes the format of the data to be stored. A type message is interpreted by AVEVA Data Hub as an SdsType in the Sequential Data Store. Because SdsTypes are immutable, update operations are not supported.  
+An OMF type message describes the format of the data to be stored. A type message is interpreted by AVEVA Data Hub as an SdsType in the Sequential Data Store. Because SdsTypes are immutable, update operations are not supported.
 
 ### Create an OMF type
 
@@ -54,7 +54,7 @@ To create an OMF type:
 1. To create the OMF type in Edge Storage, store the JSON file with the name `OmfCreateType.json` on the local device.
 
 1. Run the following curl command or EdgeCmd:
-    
+
    ```bash
    curl -d "@OmfCreateType.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: type" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
    ```
@@ -83,16 +83,16 @@ The next step in writing OMF data is to create an OMF container. To create an OM
 1. To create the OMF container in Edge Storage, store the JSON file with the name `OmfCreateContainer.json` on the local device.
 
 1. To create the SDS stream to store data defined by the type, run the following curl command or EdgeCmd:
-   
+
    # [curl](#tab/tabid-1)
-    
+
    ```bash
    curl -d "@OmfCreateContainer.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: container" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
    ```
-   
-    
+
+
     # [EdgeCmd](#tab/tabid-2)
-    
+
     ```
     Help wanted
     ```
@@ -129,16 +129,23 @@ To writer data to the container:
 1. Save the JSON file with the name `OmfCreateDataEvents.json` on the local device.
 
 1. To write data values to the SDS stream, run the following curl command or EdgeCmd:
-   
+
     # [curl](#tab/tabid-1)
 
-    ```bash
-    curl -d "@OmfCreateDataEvents.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: data" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
-    ```
+   ```bash
+   curl -d "@OmfCreateDataEvents.json" -H "Content-Type: application/json" -H "producertoken: x " -H "omfversion: 1.1" -H "action: create" -H "messageformat: json" -H "messagetype: data" -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/omf/
+   ```
 
-    # [EdgeCmd](#tab/tabid-2)
-    
-    ```
-    Help wanted
-    ```
-    ***
+## HTTPS status codes
+
+Edge Data Store returns the following status codes to provide feedback when an OMF ingress message is received. If an error occurs because of an issue with the server, such as `408 Request Timeout` or `503 Service Unavailable`, the application can retry the request. It is up to the OMF application developer to determine how many times to retry a request.
+
+| Status Code        | Description               | Common Causes               |
+|--------------------|---------------------------|-----------------------------|
+| 204 No Content     | The OMF message was successfully processed, but there is no additional information to return. | |
+| 400 Bad Request    | The OMF message was malformed or not understood. The client should not retry sending the message without modifications.| The body or headers of the OMF message were incorrect. Verify the validity of the request contents and headers.
+| 408 Request Timeout| The server did not reply to a request within the time that the client was prepared to wait. The client may repeat the request without modifications at any later time.| Server busy or over-loaded with other requests.|
+| 409 Conflict       | The request could not be completed due to a conflict with the current state of the server.| The information in the OMF message contradicts the data currently stored in EDS.|
+| 413 Payload Too Large| Payload size exceeds OMF body size limit.| The body of an OMF message has a maximum size of 192KB. A request with a body size exceeding the maximum will be rejected with this error code.|
+| 500 Internal Server Error| The server encountered an unexpected condition.| Review EDS logs for more insight.|
+| 503 Service Unavailable| The server is currently unavailable, retry later.| The EDS server is performing maintenance on one or more streams.|

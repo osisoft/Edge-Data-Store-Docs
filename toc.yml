@@ -1,6 +1,6 @@
 - name: Edge Data Store versions
   dropdown: true
   items:
-  - name: Edge Data Store 1.0
+  - name: Edge Data Store 1.1
     href: content/
     topicHref: content/index.md

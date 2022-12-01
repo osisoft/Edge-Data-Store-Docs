@@ -775,7 +775,7 @@ In this case, the results contain the final event. The returned continuation tok
 
 ## `List Interpolated Values`
 
-Returns a collection of values based on request parameters. The stream's read characteristics determine how events are calculated for indexes at which no stored event exists. For more information, see [Interpolation](xref:sdsReadingData#interpolation) and [Extrapolation](xref:sdsReadingData#extrapolation). Interpolation is not supported for streams with compound indexes.
+Returns a collection of values based on request parameters. The stream's read characteristics determine how events are calculated for indexes at which no stored event exists. For more information, see [Interpolation](xref:ReadCharacteristics#interpolation) and [Extrapolation](xref:ReadCharacteristics#extrapolation). Interpolation is not supported for streams with compound indexes.
 
 SDS supports two ways of specifying which interpolated events to return:  
 
@@ -786,7 +786,7 @@ SDS supports two ways of specifying which interpolated events to return:
 
 ## `Index collection`  
 
-Returns events at the specified indexes. If no stored event exists at a specified index, the stream's read characteristics determine how the returned event is calculated. For more information, see [Interpolation](xref:sdsReadingData#interpolation) and [Extrapolation](xref:sdsReadingData#extrapolation).
+Returns events at the specified indexes. If no stored event exists at a specified index, the stream's read characteristics determine how the returned event is calculated. For more information, see [Interpolation](xref:ReadCharacteristics#interpolation) and [Extrapolation](xref:ReadCharacteristics#extrapolation).
 
 ### Request
 
@@ -905,7 +905,7 @@ Content-Type: application/json
 
 ## `Interval`
 
-Returns events at evenly spaced intervals based on the specified start index, end index, and count. If no stored event exists at an index interval, the stream's read characteristics determine how the returned event is calculated. For more information, see [Interpolation](xref:sdsReadingData#interpolation) and [Extrapolation](xref:sdsReadingData#extrapolation).
+Returns events at evenly spaced intervals based on the specified start index, end index, and count. If no stored event exists at an index interval, the stream's read characteristics determine how the returned event is calculated. For more information, see [Interpolation](xref:ReadCharacteristics#interpolation) and [Extrapolation](xref:ReadCharacteristics#extrapolation).
 
 ### Request
 
@@ -1270,7 +1270,7 @@ Similarly, for intervals [12:00:03 PM, 12:00:04 PM] and [12:00:04 PM, 12:00:05 P
 | ContinuousNullableLeading <br> StepwiseContinuousLeading | 1 | 1 |
 | ContinuousNullableTrailing <br> StepwiseContinuousTrailing | 1 | 2 |
 
-**Note:** Non-weighted summaries disregard null values and treat them as non-existent. In the example above, non-weighted summaries for `Measurement` would be calculated based on (2,2,1,2,3) whereas weighted summaries for `Measurement` consider null values for its calculation. For more information see [Interpolation](xref:sdsReadingData#interpolation).
+**Note:** Non-weighted summaries disregard null values and treat them as non-existent. In the example above, non-weighted summaries for `Measurement` would be calculated based on (2,2,1,2,3) whereas weighted summaries for `Measurement` consider null values for its calculation. For more information see [Interpolation](xref:ReadCharacteristics#interpolation).
 
 #### Example request
 
@@ -1348,7 +1348,7 @@ Content-Type: application/json
 
 Returns representative data sampled by intervals between a specified start and end index.
 
-Sampling is driven by a specified property or properties of the stream's Sds Type. Property types that cannot be interpolated do not support sampling requests. Strings are an example of a property that cannot be interpolated. For more information see [Interpolation](xref:sdsReadingData#interpolation).
+Sampling is driven by a specified property or properties of the stream's Sds Type. Property types that cannot be interpolated do not support sampling requests. Strings are an example of a property that cannot be interpolated. For more information see [Interpolation](xref:ReadCharacteristics#interpolation).
 
 ### Request
 
@@ -1756,7 +1756,7 @@ Default value is `null` for SdsTypes.
 
 ### Response
 
-All Measurements from both streams with missing values interpolated. If the missing values are between valid measurements within a stream, they are interpolated. For more information, see [Interpolation](xref:sdsReadingData#interpolation). If the missing values are outside of the boundary values, they are extrapolated. For more information, see [Extrapolation](xref:sdsReadingData#extrapolation).
+All Measurements from both streams with missing values interpolated. If the missing values are between valid measurements within a stream, they are interpolated. For more information, see [Interpolation](xref:ReadCharacteristics#interpolation). If the missing values are outside of the boundary values, they are extrapolated. For more information, see [Extrapolation](xref:ReadCharacteristics#extrapolation).
 
 **Note:** The Interpolated SdsJoinMode currently does not support SdsInterpolationModes of the streams. All join requests with interpolations will honor the interpolation mode of the stream type or type property.
 

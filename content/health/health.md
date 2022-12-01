@@ -12,23 +12,25 @@ EDS also produces diagnostic data. You can use diagnostic data to find more info
 
 The following health types and streams are created to reflect the health of EDS adapters.
 
-The `Adapters` static type includes these properties and servers as a root AF element with the ID Adapters.
+**Note:** If a Health prefix is assigned in System_General's Health Prefix field (xref: GeneralConfiguration), all streams will be prefixed with `{HealthPrefix}`.
+
+The EDS static type includes these properties and servers as a root AF element with the ID.
 
 | Property     | Type     | Description      |
 |--------------|----------|------------------|
-| Id | string | Adapters - root AF element |
+| Id | string | Edge Data Stores - root AF element |
 | Description | string | Collection of Adapter assets |
 
 ### EDS adapter component health
 
-The Adapter Health static type includes the following properties, which are logged in a stream with the ID `{machinename}.{componentid}`. The stream is linked to root AF element (Adapters).
+The DataCollectorService static type includes the following properties, which are logged in a stream with the ID `{machinename}.{EdgeDataStore}`. The stream is linked to root AF element (Adapters).
 
 | Property     | Type     | Description      |
 |--------------|----------|------------------|
-| Id | string  | {DeviceName}.{ComponentId} |
-| Description | string | {productname} health |
-| Adapter Type | string | {adaptertype} |
-| Version | string | {adapterversion} |
+| Id           | string  | {machinename}.EdgeDataStore |
+| Description  | string | EDS Service Health |
+| Type         | string | Edge Data Store |
+| Version      | string | {EDS Version} |
 
 ### Device status
 
@@ -45,30 +47,19 @@ The NextHealthMessageExpected dynamic type includes the following values, which 
 
 | Property     | Type     | Description      |
 |--------------|----------|------------------|
-| Time | string | Timestamp of event |
+| Time         | string | Timestamp of event |
 | NextHealthMessageExpected | string | Time when next health message is expected. |
-
-## Storage component health
-
-The following health types and streams are created to reflect the health of the Storage component.
-
-The `Storage` static type includes the following properties and servers as a root AF element with the Id Storage.
-
-| Property     | Type     | Description      |
-|--------------|----------|------------------|
-| Id | string | Storage - root AF element |
-| Description | string | Storage Health |
 
 ### Storage health
 
-The Storage Health static type includes the following properties, which are logged in a stream with the ID `{machinename}.Storage`. The stream is linked to root AF element (Storage).
+The Storage Health static type includes the following properties, which are logged in a stream with the ID `{machinename}.Storage`. The stream is linked to Edge Data Store's service element `{machinename}.EdgeDataStore`.
 
 | Property     | Type     | Description      |
 |--------------|----------|------------------|
-| Id | string  | {DeviceName}.Storage |
-| Description | string | {productname} health |
-| Adapter Type | string | {adaptertype} |
-| Version | string | {storageversion} |
+| Id           | string   | `{machinename}.Storage` |
+| Description  | string   | Storage health |
+| Host         | string   | `{machinename}` |
+| Version      | string   | `{storageversion}` |
 
 ### Storage device status
 
@@ -87,3 +78,6 @@ The NextHealthMessageExpected dynamic type includes the following values, which 
 |--------------|----------|------------------|
 | Time | string | Timestamp of event |
 | NextHealthMessageExpected | string | Time when next health message is expected. |
+
+Example health strucutre:
+![AFStructureExample](../images/AFStructureExample.png)
