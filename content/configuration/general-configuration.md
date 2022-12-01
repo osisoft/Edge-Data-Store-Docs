@@ -16,7 +16,7 @@ To update the general configuration:
 
   - For the content structure, see [Parameters](#parameters).
 
-1. Save the JSON file with the name `General.config.json`.
+1. Save the JSON file with the name `General..json`.
 
 1. From the same directory where the file exists, run the following curl script:
 

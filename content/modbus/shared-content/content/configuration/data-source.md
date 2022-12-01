@@ -27,13 +27,13 @@ To configure the Modbus TCP data source:
     # [curl](#tab/tabid-1)
     
     ```bash
-    curl -d "@Modbus1DataSource.config.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/Modbus1/DataSource"
+    curl -d "@Modbus1DataSource..json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/Modbus1/DataSource"
     ```
     
     # [EdgeCmd](#tab/tabid-2)
     
     ```
-    edgecmd set dataSource -cid Modbus1 -file Modbus1DataSource.config.json
+    edgecmd set dataSource -cid Modbus1 -file Modbus1DataSource..json
     ```
     ***
 

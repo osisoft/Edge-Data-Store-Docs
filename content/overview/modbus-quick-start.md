@@ -39,11 +39,21 @@ To configure a data source to connect a Modbus TCP device to the Modbus TCP EDS 
 
 1. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is `Modbus1`, name the file `Modbus1DataSource.json`.
 
-1. Run the following curl script from the same directory where the file is located, updating the file name and destination in the script if needed.
+1. Run the following command from the same directory where the file is located, updating the file name and destination in the script if needed.
 
-   ```bash
-   curl -d "@Modbus1Datasource.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Datasource
-   ```
+    ### [curl](#tab/tabid-1)
+
+    ```bash
+    curl -d "@Modbus1Datasource.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Datasource
+    ```
+
+    ### [EdgeCmd](#tab/tabid-2)
+
+    ```bash
+    edgecmd set dataSource -cid Modbus1 -file Modbus1DataSource.json
+    ```
+
+    ***
 
 When the command completes successfully, that is a `204` is returned, the Modbus TCP data source has been created. If a `400` error is returned, check the JSON file for errors. If a `404` or `500` error is returned, check that EDS is running on the device.
 
@@ -67,11 +77,21 @@ Data selection items will use schedules to perform their scans for data. To conf
 
 1. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is `Modbus1`, name the file `Modbus1Schedules.json`.
 
-1. Run the following curl script from the same directory where the file is located, updating the file name and the endpoint URL in the script if needed.
+1. Run the following command from the same directory where the file is located, updating the file name and the endpoint URL in the script if needed.
 
-   ```bash
-   curl -d "@Modbus1Schedules.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Schedules
-   ```
+    ### [curl](#tab/tabid-1)
+
+    ```bash
+    curl -d "@Modbus1Schedules.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Schedules
+    ```
+
+    ### [EdgeCmd](#tab/tabid-2)
+
+    ```bash
+    edgecmd set schedules -cid Modbus1 -file Modbus1ConfigureSchedules.json
+    ```
+
+    ***
 
 ## Configure Modbus TCP data selection
 
@@ -112,6 +132,15 @@ After you create the data source file and schedule file, select the streams to s
 
 1. Run the following curl script from the same directory where the file is located, updating the file name and the endpoint URL in the script if needed.
 
-   ```bash
-   curl -d "@Modbus1Dataselection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Dataselection
-   ```
+    ### [curl](#tab/tabid-1)
+
+    ```bash
+    curl -d "@Modbus1Dataselection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Dataselection
+    ```
+
+    ### [EdgeCmd](#tab/tabid-2)
+
+    ```bash
+    edgecmd set dataSelection -cid Modbus1 -file Modbus1DataSelection.json
+    ```
+    ***

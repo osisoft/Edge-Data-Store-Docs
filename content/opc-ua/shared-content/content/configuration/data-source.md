@@ -27,13 +27,13 @@ The following examples show the HTTPS request using curl and EdgeCmd using the a
 ### [curl](#tab/tabid-1)
 
 ```bash
-curl -d "@OpcUa1DataSource.config.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/OpcUa1/DataSource"
+curl -d "@OpcUa1DataSource..json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/OpcUa1/DataSource"
 ```
 
 ### [EdgeCmd](#tab/tabid-2)
 
 ```
-edgecmd set dataSource -cid OpcUa1 -file OpcUa1DataSource.config.json
+edgecmd set dataSource -cid OpcUa1 -file OpcUa1DataSource..json
 ```
 ***
 

@@ -14,20 +14,20 @@ To update the storage runtime configuration:
 
   - For the content structure, see [Parameters](#parameters).
 
-1. Save the JSON file with the name `Storage_Runtime.config.json`.
+1. Save the JSON file with the name `Storage_Runtime..json`.
 
 1. From the same directory where the file exists, run the following curl script or EdgeCmd:
 
   ### [curl](#tab/tabid-1)
 
   ```bash
-  curl -d "@Storage_Runtime.config.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/storage/Runtime
+  curl -d "@Storage_Runtime..json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/storage/Runtime
   ```
 
   ### [EdgeCmd](#tab/tabid-2)
 
   ```
-  edgecmd set runtime -file Storage_Runtime.config.json
+  edgecmd set runtime -file Storage_Runtime..json
   ```
   ***
 
