@@ -72,7 +72,6 @@ To generate the default data selection file and use it to configure data selecti
   ```
   ***
 
-
 ## Configure OPC UA data selection by manually creating the file
 
 **Note:** OPC UA data selection configurations cannot be modified manually. Use the REST endpoints to add or edit the configuration.
@@ -94,7 +93,7 @@ To configure the OPC UA data selection:
   ### [curl](#tab/tabid-1)
   
   ```bash
-  curl -d "@OpcUa1DataSelection.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/OpcUa1/DataSelection"
+  curl -d "@OpcUa1DataSelection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
   ```
   
   ### [EdgeCmd](#tab/tabid-2)

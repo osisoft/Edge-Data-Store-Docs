@@ -20,13 +20,22 @@ To update the general configuration:
 
 1. From the same directory where the file exists, run the following curl script:
 
-   ```bash
-   curl -d "{ \"EnableDiagnostics\":true, \"MetadataLevel\":Medium, \"HealthPrefix\":\"Machine1\" }" -X PUT "http://localhost:5590/api/v1/configuration/system/general"
-   ```
+    ### [curl](#tab/tabid-1)
 
-   Alternatively, run a `PUT` command to the following endpoint, setting the parameters as needed: `http://localhost:5590/api/v1/configuration/system/general`
+    ```bash
+    curl -d "{ \"EnableDiagnostics\":true, \"MetadataLevel\":Medium, \"HealthPrefix\":\"Machine1\" }" -X PUT "http://localhost:5590/api/v1/configuration/system/general"
+    ```
 
-      **Note:** `5590` is the default port number. If you selected a different port number, replace it with that value.
+    Alternatively, run a `PUT` command to the following endpoint, setting the parameters as needed: `http://localhost:5590/api/v1/configuration/system/general`
+
+    **Note:** `5590` is the default port number. If you selected a different port number, replace it with that value.
+
+    ### [EdgeCmd](#tab/tabid-2)
+
+    ```bash
+    edgecmd set general -EnableDiagnostics true -MetadataLevel Medium -HealthPrefix Machine1
+    ```
+    ***
 
 ## General schema
 
@@ -50,11 +59,18 @@ The following table lists the parameters for general configuration.
 
 ### Retrieve the general configuration
 
-Example using `curl`:
+#### [curl](#tab/tabid-1)
 
 ```bash
 curl -X GET "http://localhost:{port}/api/v1/configuration/system/general"
 ```
+#### [EdgeCmd](#tab/tabid-2)
+
+```bash
+edgecmd get general
+```
+***
+
 
 Sample output:
 
