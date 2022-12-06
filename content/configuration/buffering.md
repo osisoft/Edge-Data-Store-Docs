@@ -28,40 +28,24 @@ Complete the following steps to configure buffering. Use the `PUT` method in con
 
 1. Enter the following curl command (which uses the `PUT` method) to initialize the buffering configuration.
 
-    ### [curl](#tab/tabid-1)
+    ### [curl](#tab/tabid1)
 
     ```bash
     curl -d "@ConfigureBuffering.json" -H "Content-Type: application/json" -X PUT "http://localhost:5590/api/v1/configuration/system/buffering"
     ```
 
-    ### [EdgeCmd](#tab/tabid-2)
+    ### [EdgeCmd](#tab/tabid2)
 
     ```bash
-    edgcmd set buffering -file ConfigureBuffering.json
+    edgecmd set buffering -file ConfigureBuffering.json
     ```
     ***
-
-    ### [curl](#tab/tabid-1)
-
-    ```bash
-    curl -d "@ConfigureBuffering.json" -H "Content-Type: application/json" -X PUT "http://localhost:5590/api/v1/configuration/system/buffering"
-    ```
-
-    ### [EdgeCmd](#tab/tabid-2)
-
-    ```bash
-    edgcmd set buffering -file ConfigureBuffering.json
-    ```
-    ***
-
 
     **Notes:**
 
     * If you installed the adapter to listen on a non-default port, update `5590` to the port number in use.
 
     * For a list of other REST operations you can perform, like updating or replacing a buffering configuration, see [REST URLs](#rest-urls).
-
-    ***
 
 ## Buffering schema
 
