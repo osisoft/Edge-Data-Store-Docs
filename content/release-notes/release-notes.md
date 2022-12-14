@@ -66,7 +66,7 @@ The following items were resolved:
 
 ## Known issues 
 
-There are no known issues with this release.
+Some EDS egress configuration changes are not respected until EDS is restarted.
 
 ## Upgrade considerations
 
