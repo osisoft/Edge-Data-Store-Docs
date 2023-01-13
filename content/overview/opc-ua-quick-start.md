@@ -33,11 +33,21 @@ To configure a data source to connect an OPC UA device to an OPC UA EDS adapter 
 
 1. Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is `OpcUa1`, name the file `OpcUa1Datasource.json`.
 
-1. Run the following curl script from the directory where the file is located, updating the file name and the destination in the script if needed.
+1. Run the following command from the directory where the file is located, updating the file name and the destination in the script if needed.
 
-```bash
-curl -d "@OpcUa1Datasource.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Datasource
-```
+    ### [curl](#tab/tabid-1)
+    
+    ```bash
+    curl -d "@OpcUa1Datasource.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Datasource
+    ```
+    
+    ### [EdgeCmd](#tab/tabid-2)
+    
+    ```
+    edgecmd set dataSource -cid OpcUa1 -file OpcUa1DataSource.json
+    ```
+    ***
+
 
 When the command completes successfully (a 204 message is returned by curl), the OPC UA data source has been created. If you receive a 400 error, check the data source JSON file for errors. If you receive a 404 or 500 error, check that Edge Data Store is running on the device.
 
@@ -87,8 +97,18 @@ When you create the data source file, the OPC UA adapter auto generates the data
 
 1. Save the the file.
 
-1. Run the following curl script from the directory where the file is located, updating the file name and destination in the script if needed:
+1. Run the following command from the directory where the file is located, updating the file name and destination in the script if needed:
 
-   ```bash
-   curl -d "@OpcUa1Dataselection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
-   ```
+    # [curl](#tab/tabid-1)
+    
+    ```bash
+    curl -d "@OpcUa1Dataselection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
+    ```
+    
+    # [EdgeCmd](#tab/tabid-2)
+    
+    ```
+    edgecmd set dataSelection -cid OpcUa1 -file OpcUa1DataSelection.json
+    ```
+    
+    ***

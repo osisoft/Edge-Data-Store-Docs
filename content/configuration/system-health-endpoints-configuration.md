@@ -16,22 +16,32 @@ To configure system health endpoints:
 
 1. Update the parameters as needed. For a table of all available parameters, see [Parameters](#parameters).
 
-1. Save the file with the name _System_HealthEndpoints.config.json_.
+1. Save the file with the name _System_HealthEndpoints..json_.
 
 1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/System/HealthEndpoints`, updating the port number if needed.
 
-    Example using curl (run this command from the same directory where the file is located):
+    Examples using curl and EdgeCmd (run this command from the same directory where the file is located):
+    
+    ### [curl](#tab/tabid-1)
 
     ```bash
     curl -d "@System_HealthEndpoints.json" -H "Content-Type: application/json" http://localhost:5590/api/v1/configuration/System/HealthEndpoints
     ```
 
+    ### [EdgeCmd](#tab/tabid-2)
+
+    ```
+    edgecmd set HealthEndpoints -file System_HealthEndpoints.json
+    ```
+    
+    ***
+
 ## Parameters
 
 The following parameters are available for configuring system health endpoints.
 
-NOTE: Parameters "Buffering" and "MaxBufferSizeMb" have been removed from the JSON. Configure buffering at (xref:BufferingConfiguration).
-(To Editor, this page should be very similar to this now https://github.com/osisoft/PI-Adapter/blob/main/shared-content/configuration/health-endpoints.md)
+NOTE: Parameters "Buffering" and "MaxBufferSizeMb" have been removed from the JSON. Configure buffering at <xref:BufferingConfiguration>.
+
 
 | Parameter                                                   | Required  | Type     | Nullable | Description                                   |
 | ----------------------------------------------------------- | --------- | -------- | -------- | -------------------------------------------- |

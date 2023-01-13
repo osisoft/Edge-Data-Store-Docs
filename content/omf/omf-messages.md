@@ -20,7 +20,7 @@ All messages should only be sent from the OMF application one time, but resendin
 
 ### Type messages
 
-An OMF type message describes the format of the data to be stored. A type message is interpreted by AVEVA Data Hub as an SdsType in the Sequential Data Store. Because SdsTypes are immutable, update operations are not supported.  
+An OMF type message describes the format of the data to be stored. A type message is interpreted by AVEVA Data Hub as an SdsType in the Sequential Data Store. Because SdsTypes are immutable, update operations are not supported.
 
 ### Create an OMF type
 

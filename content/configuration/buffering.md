@@ -28,14 +28,23 @@ Complete the following steps to configure buffering. Use the `PUT` method in con
 
 1. Enter the following curl command (which uses the `PUT` method) to initialize the buffering configuration.
 
+    ### [curl](#tab/tabid1)
+
     ```bash
     curl -d "@ConfigureBuffering.json" -H "Content-Type: application/json" -X PUT "http://localhost:5590/api/v1/configuration/system/buffering"
     ```
 
+    ### [EdgeCmd](#tab/tabid2)
+
+    ```bash
+    edgecmd set buffering -file ConfigureBuffering.json
+    ```
+    ***
+
     **Notes:**
-  
+
     * If you installed the adapter to listen on a non-default port, update `5590` to the port number in use.
-  
+
     * For a list of other REST operations you can perform, like updating or replacing a buffering configuration, see [REST URLs](#rest-urls).
 
 ## Buffering schema
@@ -63,25 +72,25 @@ The following parameters are available for configuring buffering:
 - The **MaxBufferSizeMB** is applied per configured endpoint except the health endpoint.
 
 - An adapter creates 20 MB buffer files that are stored in **BufferLocation**.
-  
+
 - When **MaxBufferSizeMB** is reached, the oldest buffer file is deleted and a new buffer file is created.
-  
+
 - The health endpoint is fixed at 20 MB. When the health endpoint buffer file becomes full, a new buffer file is created and the previous buffer file is deleted.
 
 **Note:** The following rules apply in case of an error when creating a new buffer file:
 
   - Attempt to delete oldest buffer file and retry.
-  
+
   - If unable to buffer, errors are logged to indicate data loss.
-  
+
   - If a buffer file is corrupted, an attempt is made to recover individual records and any failure to recover records is logged.
 
 <sup>2</sup> **Buffering only to memory**:
 
   - The **MaxBufferSizeMB** is applied per configured endpoint except the health endpoint.
-  
+
   - When **MaxBufferSizeMB** is reached, the oldest messages in the memory buffer are removed. Depending on the size of a new message, several old messages may be removed.
-  
+
   - The health endpoint is fixed at 20 MB. When the health endpoint buffer file becomes full, the oldest messages in the memory buffer are removed and new messages are added.
 
 ## Examples
