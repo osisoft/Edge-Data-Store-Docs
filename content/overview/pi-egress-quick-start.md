@@ -2,15 +2,15 @@
 uid: piEgressQuickStart
 ---
 
-# PI Server egress quick start
+# AVEVA Server egress quick start
 
-Data egress provides a mechanism to transfer data to PI Server using OMF messages through a PI Web API endpoint. To get started sending data stored in Edge Data Store to a PI Server, create a PI Web API OMF endpoint and configure periodic egress to use the PI Web API endpoint.
+Data egress provides a mechanism to transfer data to AVEVA Server using OMF messages through a PI Web API endpoint. To get started sending data stored in Edge Data Store to a AVEVA Server, create a PI Web API OMF endpoint and configure periodic egress to use the PI Web API endpoint.
 
 ## Create a PI Web API OMF endpoint
 
 To create a PI Web API OMF endpoint:
 
-1. Install PI Web API and enable the **OSIsoft Message Format (OMF) Services** feature.
+1. Install PI Web API and enable the **Open Message Format (OMF) Services** feature.
 
     - During configuration, choose an AF database and PI Data Archive where metadata and data will be stored.
 
@@ -24,4 +24,4 @@ To create a PI Web API OMF endpoint:
 
 ## Create a periodic egress configuration
 
-To configure periodic egress for the PI Server, follow the steps in [Configure data egress](https://docs.osisoft.com/bundle/edge-data-store/page/egress/configure-data-egress.html#create-configurations).
+To configure periodic egress for the AVEVA Server, follow the steps in [Configure data egress](https://docs.osisoft.com/bundle/edge-data-store/page/egress/configure-data-egress.html#create-configurations).

@@ -6,9 +6,9 @@ uid: troubleShooting
 
 Edge Data Store includes both local and remote means of diagnosing issues encountered while using or developing against EDS.
 
-Edge Data Store supports a diagnostics namespace that stores streams containing diagnostic information from Edge Data Store itself. Egress this data to either a PI Server or AVEVA Data Hub to monitor the state of a system remotely. For details about egressing diagnostic data, see [Diagnostics configuration](xref:EdgeDataStoreDiagnostics).
+Edge Data Store supports a diagnostics namespace that stores streams containing diagnostic information from Edge Data Store itself. Egress this data to either a AVEVA Server or AVEVA Data Hub to monitor the state of a system remotely. For details about egressing diagnostic data, see [Diagnostics configuration](xref:EdgeDataStoreDiagnostics).
 
-In addition to diagnostics data, all components in Edge Data Store support OMF health messages. Configure health messages to send health data to either PI Server or AVEVA Data Hub endpoints for remote monitoring of devices. For more information, see [Health endpoints configuration](xref:HealthEndpointsConfiguration).
+In addition to diagnostics data, all components in Edge Data Store support OMF health messages. Configure health messages to send health data to either AVEVA Server or AVEVA Data Hub endpoints for remote monitoring of devices. For more information, see [Health endpoints configuration](xref:HealthEndpointsConfiguration).
 
 ## OMF ingress
 

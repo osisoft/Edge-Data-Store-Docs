@@ -2,13 +2,13 @@
 uid: omfOverview
 ---
 
-# OSIsoft Message Format
+# Open Message Format
 
-Create a custom application using OSIsoft Message Format (OMF) to send data to EDS from sources that cannot use Modbus or OPC UA protocols. The following diagram depicts the data flow from an OMF data collection application into EDS:
+Create a custom application using Open Message Format (OMF) to send data to EDS from sources that cannot use Modbus or OPC UA protocols. The following diagram depicts the data flow from an OMF data collection application into EDS:
 
 ![EDS OMF Ingress](../images/OMFIngressExample.jpg "OMF Ingress Example")
 
-The OMF application collects data from a data source and sends it to the Edge Data Store endpoint. The EDS endpoint sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or AVEVA Data Hub. The OMF application must run on the same device as Edge Data Store and no authentication is needed.
+The OMF application collects data from a data source and sends it to the Edge Data Store endpoint. The EDS endpoint sends the data to the storage component where it is held until it can be egressed to permanent storage in AVEVA Server or AVEVA Data Hub. The OMF application must run on the same device as Edge Data Store and no authentication is needed.
 
 ## OMF endpoint
 
@@ -23,7 +23,7 @@ This endpoint can only be accessed locally, so the OMF application must run on t
 
 ## Supported functionality
 
-Edge Data Store supports OMF versions 1.0, 1.1, and 1.2 for data ingress. For details on the difference versions of OMF, see the OMF specification, available here: [OSIsoft Message Format](https://docs.osisoft.com/bundle/omf/page/index.html). The OMF ingress functionality is the same technology that is used in AVEVA Data Hub and writing an OMF application for EDS is very similar to writing an OMF application for AVEVA Data Hub.
+Edge Data Store supports OMF versions 1.0, 1.1, and 1.2 for data ingress. For details on the difference versions of OMF, see the OMF specification, available here: [Open Message Format](https://docs.osisoft.com/bundle/omf/page/index.html). The OMF ingress functionality is the same technology that is used in AVEVA Data Hub and writing an OMF application for EDS is very similar to writing an OMF application for AVEVA Data Hub.
 
 The OMF endpoint for the Edge Storage component only supports the create action; it does not support the update action. If a create data message is sent with the same time index, the values will be replaced at that index value.
 

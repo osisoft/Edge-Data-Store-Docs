@@ -12,7 +12,7 @@ The following diagram depicts the data flow for a single instance of OPC UA EDS 
 
 ![OPC UA EDS](../images/OPCUAConfiguration.jpg "OPC UA Configuration")
 
-The adapter instance polls the OPC UA device and then collects data from the device. The adapter then sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or AVEVA Data Hub. You can configure the adapter instance from the device where EDS is installed. EDS also collects health information about the adapter that can be egressed.
+The adapter instance polls the OPC UA device and then collects data from the device. The adapter then sends the data to the storage component where it is held until it can be egressed to permanent storage in AVEVA Server or AVEVA Data Hub. You can configure the adapter instance from the device where EDS is installed. EDS also collects health information about the adapter that can be egressed.
 
 The OPC UA EDS adapter can connect to multiple devices by defining one instance of the adapter for each device. The EDS installation includes the OPC UA EDS adapter and the option to add a single OPC UA EDS adapter instance. Add additional instances after installation using system components configuration.
 

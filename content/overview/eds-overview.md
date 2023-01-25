@@ -42,7 +42,7 @@ The following diagram depicts the relationship of key functions to relevant comp
 
 ## Data ingress to Edge Data Store
 
-Edge Data Store can ingress data in a number of ways. There are two built-in adapters: [EDS Modbus TCP](xref:modbusQuickStart) and [EDS OPC UA](xref:opcUaQuickStart). Data can also be ingressed using OSIsoft Message Format [(OMF)](xref:omfQuickStart) and the Sequential Data Store [SDS](xref:sdsWritingData) REST APIs.
+Edge Data Store can ingress data in a number of ways. There are two built-in adapters: [EDS Modbus TCP](xref:modbusQuickStart) and [EDS OPC UA](xref:opcUaQuickStart). Data can also be ingressed using Open Message Format [(OMF)](xref:omfQuickStart) and the Sequential Data Store [SDS](xref:sdsWritingData) REST APIs.
 
 The following diagram depicts an OMF data ingress scenario in the Edge Data Store:
 

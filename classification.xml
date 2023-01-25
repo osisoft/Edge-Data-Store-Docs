@@ -272,24 +272,24 @@
     <Cell><Data ss:Type="String">Active Versions?</Data></Cell>
    </Row>
    <Row>
-    <Cell><Data ss:Type="String">OSIsoft Cloud Services</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA Data Hub</Data></Cell>
     <Cell><Data ss:Type="String">cloud</Data></Cell>
-    <Cell ss:StyleID="s28"><Data ss:Type="String">OSIsoft Cloud Services (OCS)</Data></Cell>
+    <Cell ss:StyleID="s28"><Data ss:Type="String">AVEVA Data Hub (AVEVA Data Hub)</Data></Cell>
     <Cell><Data ss:Type="String">OSIsoft-Cloud-Services</Data></Cell>
-    <Cell><Data ss:Type="String">OSIsoft Cloud Services</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA Data Hub</Data></Cell>
    </Row>
    <Row>
-    <Cell><Data ss:Type="String">PI Server</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA Server</Data></Cell>
     <Cell><Data ss:Type="String">server</Data></Cell>
-    <Cell><Data ss:Type="String">PI Server</Data></Cell>
-    <Cell><Data ss:Type="String">PI-Server</Data></Cell>
-    <Cell><Data ss:Type="String">PI Server</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA Server</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA-Server</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA Server</Data></Cell>
    </Row>
    <Row>
-    <Cell><Data ss:Type="String">PI Server</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA Server</Data></Cell>
     <Cell><Data ss:Type="String">server</Data></Cell>
-    <Cell><Data ss:Type="String">PI Server</Data></Cell>
-    <Cell><Data ss:Type="String">PI-Server</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA Server</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA-Server</Data></Cell>
     <Cell><Data ss:Type="String">Benefits of Upgrading your PI System </Data></Cell>
    </Row>
    <Row>
@@ -328,7 +328,7 @@
     <Cell><Data ss:Type="String">PI ProcessBook to PI Vision Migration Utility</Data></Cell>
    </Row>
    <Row>
-    <Cell><Data ss:Type="String">OSIsoft Cloud Services</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA Data Hub</Data></Cell>
     <Cell><Data ss:Type="String">cloud</Data></Cell>
     <Cell><Data ss:Type="String">PI Cloud Connect</Data></Cell>
     <Cell ss:StyleID="s31"><Data ss:Type="String">PI-Cloud-Connect</Data></Cell>
@@ -400,9 +400,9 @@
    <Row>
     <Cell ss:StyleID="s32"><Data ss:Type="String">Developer</Data></Cell>
     <Cell ss:StyleID="s31"><Data ss:Type="String">developer</Data></Cell>
-    <Cell><Data ss:Type="String">OSIsoft Message Format (OMF)</Data></Cell>
+    <Cell><Data ss:Type="String">Open Message Format (OMF)</Data></Cell>
     <Cell ss:StyleID="s31"><Data ss:Type="String">OSIsoft-Message-Format</Data></Cell>
-    <Cell><Data ss:Type="String">OSIsoft Message Format (OMF)</Data></Cell>
+    <Cell><Data ss:Type="String">Open Message Format (OMF)</Data></Cell>
     <Cell ss:Index="7" ss:StyleID="s33"><Data ss:Type="String">Yes</Data></Cell>
    </Row>
    <Row>
@@ -440,7 +440,7 @@
    <Row>
     <Cell ss:StyleID="s32"><Data ss:Type="String">Developer</Data></Cell>
     <Cell ss:StyleID="s31"><Data ss:Type="String">developer</Data></Cell>
-    <Cell><Data ss:Type="String">PI Server</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA Server</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">PowerShell Tools for the PI System</Data></Cell>
     <Cell ss:Index="7" ss:StyleID="s33"/>
    </Row>
@@ -463,73 +463,73 @@
    <Row>
     <Cell ss:StyleID="s32"><Data ss:Type="String">PI Adapters</Data></Cell>
     <Cell ss:StyleID="s31"><Data ss:Type="String">adapter</Data></Cell>
-    <Cell ss:StyleID="s32"><Data ss:Type="String">PI Adapter for MQTT</Data></Cell>
-    <Cell ss:StyleID="s31"><Data ss:Type="String">PI-Adapter-for-MQTT</Data></Cell>
-    <Cell><Data ss:Type="String">PI Adapter for MQTT</Data></Cell>
+    <Cell ss:StyleID="s32"><Data ss:Type="String">AVEVA Adapter for MQTT</Data></Cell>
+    <Cell ss:StyleID="s31"><Data ss:Type="String">AVEVA-Adapter-for-MQTT</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA Adapter for MQTT</Data></Cell>
     <Cell ss:Index="7" ss:StyleID="s33"><Data ss:Type="String">Yes</Data></Cell>
    </Row>
    <Row>
     <Cell><Data ss:Type="String">PI Adapters</Data></Cell>
     <Cell ss:StyleID="s31"><Data ss:Type="String">adapter</Data></Cell>
-    <Cell ss:StyleID="s32"><Data ss:Type="String">PI Adapter for Modbus</Data></Cell>
-    <Cell ss:StyleID="s31"><Data ss:Type="String">PI-Adapter-for-Modbus-TCP</Data></Cell>
-    <Cell><Data ss:Type="String">PI Adapter for Modbus</Data></Cell>
+    <Cell ss:StyleID="s32"><Data ss:Type="String">AVEVA Adapter for Modbus</Data></Cell>
+    <Cell ss:StyleID="s31"><Data ss:Type="String">AVEVA-Adapter-for-Modbus-TCP</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA Adapter for Modbus</Data></Cell>
     <Cell ss:Index="7" ss:StyleID="s33"><Data ss:Type="String">Yes</Data></Cell>
    </Row>
    <Row>
     <Cell><Data ss:Type="String">PI Adapters</Data></Cell>
     <Cell><Data ss:Type="String">adapter</Data></Cell>
-    <Cell ss:StyleID="s32"><Data ss:Type="String">PI Adapter for DNP3</Data></Cell>
-    <Cell ss:StyleID="s31"><Data ss:Type="String">PI-Adapter-for-DNP3</Data></Cell>
-    <Cell><Data ss:Type="String">PI Adapter for DNP3</Data></Cell>
+    <Cell ss:StyleID="s32"><Data ss:Type="String">AVEVA Adapter for DNP3</Data></Cell>
+    <Cell ss:StyleID="s31"><Data ss:Type="String">AVEVA-Adapter-for-DNP3</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA Adapter for DNP3</Data></Cell>
     <Cell ss:Index="7" ss:StyleID="s33"><Data ss:Type="String">Yes</Data></Cell>
    </Row>
    <Row>
     <Cell><Data ss:Type="String">PI Adapters</Data></Cell>
     <Cell><Data ss:Type="String">adapter</Data></Cell>
-    <Cell ss:StyleID="s32"><Data ss:Type="String">PI Adapter for OPC UA</Data></Cell>
-    <Cell ss:StyleID="s31"><Data ss:Type="String">PI-Adapter-for-OPC-UA</Data></Cell>
-    <Cell><Data ss:Type="String">PI Adapter for OPC</Data></Cell>
+    <Cell ss:StyleID="s32"><Data ss:Type="String">AVEVA Adapter for OPC UA</Data></Cell>
+    <Cell ss:StyleID="s31"><Data ss:Type="String">AVEVA-Adapter-for-OPC-UA</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA Adapter for OPC</Data></Cell>
     <Cell ss:Index="7" ss:StyleID="s33"><Data ss:Type="String">Yes</Data></Cell>
    </Row>
    <Row>
     <Cell><Data ss:Type="String">PI Adapters</Data></Cell>
     <Cell><Data ss:Type="String">adapter</Data></Cell>
-    <Cell ss:StyleID="s32"><Data ss:Type="String">PI Adapter for BACnet</Data></Cell>
-    <Cell ss:StyleID="s31"><Data ss:Type="String">PI-Adapter-for-BACnet</Data></Cell>
-    <Cell><Data ss:Type="String">PI Adapter for BACnet</Data></Cell>
+    <Cell ss:StyleID="s32"><Data ss:Type="String">AVEVA Adapter for BACnet</Data></Cell>
+    <Cell ss:StyleID="s31"><Data ss:Type="String">AVEVA-Adapter-for-BACnet</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA Adapter for BACnet</Data></Cell>
     <Cell ss:Index="7" ss:StyleID="s33"><Data ss:Type="String">Yes</Data></Cell>
    </Row>
    <Row>
     <Cell><Data ss:Type="String">PI Adapters</Data></Cell>
     <Cell><Data ss:Type="String">adapter</Data></Cell>
-    <Cell ss:StyleID="s32"><Data ss:Type="String">PI Adapter for RDBMS</Data></Cell>
-    <Cell ss:StyleID="s31"><Data ss:Type="String">PI-Adapter-for-RDBMS</Data></Cell>
-    <Cell><Data ss:Type="String">PI Adapter for RDBMS</Data></Cell>
+    <Cell ss:StyleID="s32"><Data ss:Type="String">AVEVA Adapter for RDBMS</Data></Cell>
+    <Cell ss:StyleID="s31"><Data ss:Type="String">AVEVA-Adapter-for-RDBMS</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA Adapter for RDBMS</Data></Cell>
     <Cell ss:Index="7" ss:StyleID="s33"><Data ss:Type="String">Yes</Data></Cell>
    </Row>
    <Row>
     <Cell><Data ss:Type="String">PI Adapters</Data></Cell>
     <Cell><Data ss:Type="String">adapter</Data></Cell>
-    <Cell ss:StyleID="s32"><Data ss:Type="String">PI Adapter for Structured Data Files</Data></Cell>
-    <Cell ss:StyleID="s31"><Data ss:Type="String">PI-Adapter-for-Structured-Data-Files</Data></Cell>
-    <Cell><Data ss:Type="String">PI Adapter for Structured Data Files</Data></Cell>
+    <Cell ss:StyleID="s32"><Data ss:Type="String">AVEVA Adapter for Structured Data Files</Data></Cell>
+    <Cell ss:StyleID="s31"><Data ss:Type="String">AVEVA-Adapter-for-Structured-Data-Files</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA Adapter for Structured Data Files</Data></Cell>
     <Cell ss:Index="7" ss:StyleID="s33"><Data ss:Type="String">Yes</Data></Cell>
    </Row>
    <Row>
     <Cell><Data ss:Type="String">PI Adapters</Data></Cell>
     <Cell><Data ss:Type="String">adapter</Data></Cell>
-    <Cell ss:StyleID="s32"><Data ss:Type="String">PI Adapter for Azure Event Hubs</Data></Cell>
-    <Cell ss:StyleID="s31"><Data ss:Type="String">PI-Adapter-for-Azure-Event-Hubs</Data></Cell>
-    <Cell><Data ss:Type="String">PI Adapter for Azure Event Hubs</Data></Cell>
+    <Cell ss:StyleID="s32"><Data ss:Type="String">AVEVA Adapter for Azure Event Hubs</Data></Cell>
+    <Cell ss:StyleID="s31"><Data ss:Type="String">AVEVA-Adapter-for-Azure-Event-Hubs</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA Adapter for Azure Event Hubs</Data></Cell>
     <Cell ss:Index="7" ss:StyleID="s33"><Data ss:Type="String">Yes</Data></Cell>
    </Row>
    <Row>
     <Cell><Data ss:Type="String">PI Adapters</Data></Cell>
     <Cell><Data ss:Type="String">adapter</Data></Cell>
-    <Cell ss:StyleID="s32"><Data ss:Type="String">PI Adapter for HTTPS Network Proxy Support</Data></Cell>
-    <Cell ss:StyleID="s31"><Data ss:Type="String">PI-Adapter-for-HTTPS-Network-Proxy-Support</Data></Cell>
-    <Cell><Data ss:Type="String">PI Adapter for HTTPS Network Proxy Support</Data></Cell>
+    <Cell ss:StyleID="s32"><Data ss:Type="String">AVEVA Adapter for HTTPS Network Proxy Support</Data></Cell>
+    <Cell ss:StyleID="s31"><Data ss:Type="String">AVEVA-Adapter-for-HTTPS-Network-Proxy-Support</Data></Cell>
+    <Cell><Data ss:Type="String">AVEVA Adapter for HTTPS Network Proxy Support</Data></Cell>
     <Cell ss:Index="7" ss:StyleID="s33"><Data ss:Type="String">Yes</Data></Cell>
    </Row>
    <Row>
@@ -851,7 +851,7 @@
     <Cell><Data ss:Type="String">Apply Product Name key by using correct version subkey. Do not apply parent key and version subkey. Only apply one Product Name key per publication.</Data></Cell>
    </Row>
    <Row>
-    <Cell><Data ss:Type="String">Apply Product Family only to publications where family is relevant. See Tags by Publication Lookup tab. Some products should not have a family (OCS, Server, Edge, Cloud Connect). Product Family is used to group and filter groups of parallel products.</Data></Cell>
+    <Cell><Data ss:Type="String">Apply Product Family only to publications where family is relevant. See Tags by Publication Lookup tab. Some products should not have a family (AVEVA Data Hub, Server, Edge, Cloud Connect). Product Family is used to group and filter groups of parallel products.</Data></Cell>
    </Row>
    <Row ss:Index="5" ss:Height="13" ss:StyleID="s21">
     <Cell><Data ss:Type="String">Product Family</Data></Cell>
@@ -864,7 +864,7 @@
    </Row>
    <Row ss:Height="14.5">
     <Cell><Data ss:Type="String">cloud</Data><NamedCell ss:Name="Product"/></Cell>
-    <Cell ss:StyleID="s17"><Data ss:Type="String">PI-Server</Data><NamedCell
+    <Cell ss:StyleID="s17"><Data ss:Type="String">AVEVA-Server</Data><NamedCell
       ss:Name="Role"/></Cell>
    </Row>
    <Row ss:Height="14.5">
@@ -1018,55 +1018,55 @@
     <Cell ss:Index="2" ss:StyleID="s52"><Data ss:Type="String">PI I-Adapter-for-MQTT_1.0</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
-    <Cell ss:Index="2" ss:StyleID="s44"><Data ss:Type="String">PI-Adapter-for-MQTT_1.0</Data></Cell>
+    <Cell ss:Index="2" ss:StyleID="s44"><Data ss:Type="String">AVEVA-Adapter-for-MQTT_1.0</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
-    <Cell ss:Index="2" ss:StyleID="s18"><Data ss:Type="String">PI-Adapter-for-Modbus-TCP</Data></Cell>
+    <Cell ss:Index="2" ss:StyleID="s18"><Data ss:Type="String">AVEVA-Adapter-for-Modbus-TCP</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
-    <Cell ss:Index="2" ss:StyleID="s44"><Data ss:Type="String">PI-Adapter-for-Modbus-TCP_1.2</Data></Cell>
+    <Cell ss:Index="2" ss:StyleID="s44"><Data ss:Type="String">AVEVA-Adapter-for-Modbus-TCP_1.2</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
-    <Cell ss:Index="2" ss:StyleID="s18"><Data ss:Type="String">PI-Adapter-for-DNP3</Data></Cell>
+    <Cell ss:Index="2" ss:StyleID="s18"><Data ss:Type="String">AVEVA-Adapter-for-DNP3</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
-    <Cell ss:Index="2" ss:StyleID="s44"><Data ss:Type="String">PI-Adapter-for-DNP3_1.0</Data></Cell>
+    <Cell ss:Index="2" ss:StyleID="s44"><Data ss:Type="String">AVEVA-Adapter-for-DNP3_1.0</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
-    <Cell ss:Index="2" ss:StyleID="s18"><Data ss:Type="String">PI-Adapter-for-OPC-UA</Data></Cell>
+    <Cell ss:Index="2" ss:StyleID="s18"><Data ss:Type="String">AVEVA-Adapter-for-OPC-UA</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
-    <Cell ss:Index="2" ss:StyleID="s44"><Data ss:Type="String">PI-Adapter-for-OPC-UA_1.1</Data></Cell>
+    <Cell ss:Index="2" ss:StyleID="s44"><Data ss:Type="String">AVEVA-Adapter-for-OPC-UA_1.1</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
-    <Cell ss:Index="2" ss:StyleID="s18"><Data ss:Type="String">PI-Adapter-for-BACnet</Data></Cell>
+    <Cell ss:Index="2" ss:StyleID="s18"><Data ss:Type="String">AVEVA-Adapter-for-BACnet</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
-    <Cell ss:Index="2" ss:StyleID="s44"><Data ss:Type="String">PI-Adapter-for-BACnet_1.0</Data></Cell>
+    <Cell ss:Index="2" ss:StyleID="s44"><Data ss:Type="String">AVEVA-Adapter-for-BACnet_1.0</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
-    <Cell ss:Index="2" ss:StyleID="s18"><Data ss:Type="String">PI-Adapter-for-RDBMS</Data></Cell>
+    <Cell ss:Index="2" ss:StyleID="s18"><Data ss:Type="String">AVEVA-Adapter-for-RDBMS</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
-    <Cell ss:Index="2" ss:StyleID="s44"><Data ss:Type="String">PI-Adapter-for-RDBMS_1.0</Data></Cell>
+    <Cell ss:Index="2" ss:StyleID="s44"><Data ss:Type="String">AVEVA-Adapter-for-RDBMS_1.0</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
-    <Cell ss:Index="2" ss:StyleID="s18"><Data ss:Type="String">PI-Adapter-for-Structured-Data-Files</Data></Cell>
+    <Cell ss:Index="2" ss:StyleID="s18"><Data ss:Type="String">AVEVA-Adapter-for-Structured-Data-Files</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
-    <Cell ss:Index="2" ss:StyleID="s44"><Data ss:Type="String">PI-Adapter-for-Structured-Data-Files_1.0</Data></Cell>
+    <Cell ss:Index="2" ss:StyleID="s44"><Data ss:Type="String">AVEVA-Adapter-for-Structured-Data-Files_1.0</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
-    <Cell ss:Index="2" ss:StyleID="s18"><Data ss:Type="String">PI-Adapter-for-Azure-Event-Hubs</Data></Cell>
+    <Cell ss:Index="2" ss:StyleID="s18"><Data ss:Type="String">AVEVA-Adapter-for-Azure-Event-Hubs</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
-    <Cell ss:Index="2" ss:StyleID="s44"><Data ss:Type="String">PI-Adapter-for-Azure-Event-Hubs_1.2</Data></Cell>
+    <Cell ss:Index="2" ss:StyleID="s44"><Data ss:Type="String">AVEVA-Adapter-for-Azure-Event-Hubs_1.2</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
-    <Cell ss:Index="2" ss:StyleID="s18"><Data ss:Type="String">PI-Adapter-for-HTTPS-Network-Proxy-Support</Data></Cell>
+    <Cell ss:Index="2" ss:StyleID="s18"><Data ss:Type="String">AVEVA-Adapter-for-HTTPS-Network-Proxy-Support</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
-    <Cell ss:Index="2" ss:StyleID="s44"><Data ss:Type="String">PI-Adapter-for-HTTPS-Network-Proxy-Support_1.0</Data></Cell>
+    <Cell ss:Index="2" ss:StyleID="s44"><Data ss:Type="String">AVEVA-Adapter-for-HTTPS-Network-Proxy-Support_1.0</Data></Cell>
    </Row>
    <Row ss:Height="14.5">
     <Cell ss:Index="2" ss:StyleID="s18"><Data ss:Type="String">PI-Interface-for-OPC-DA</Data></Cell>

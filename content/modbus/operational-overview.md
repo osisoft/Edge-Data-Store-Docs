@@ -49,7 +49,7 @@ Stream ID is a unique identifier for each stream created by the adapter for the 
 
 ## Buffering
 
-Because the Modbus TCP EDS adapter sends data directly to EDS, buffering capability is not provided. EDS acts as a buffer before the data is egressed to either a PI Server or AVEVA Data Hub. The amount of data stored in EDS is controlled by the following storage parameters:
+Because the Modbus TCP EDS adapter sends data directly to EDS, buffering capability is not provided. EDS acts as a buffer before the data is egressed to either a AVEVA Server or AVEVA Data Hub. The amount of data stored in EDS is controlled by the following storage parameters:
 
  - **StreamStorageLimitMb**
 

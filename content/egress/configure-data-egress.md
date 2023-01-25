@@ -4,9 +4,9 @@ uid: configureEgress
 
 # Configure periodic data egress
 
-Periodic data egress is a recurring task that sends the timeseries data collected by EDS to long term storage in either AVEVA Data Hub or PI Server. You can create multiple egress destinations and multiple periodic egress tasks. Periodic egress runs on a regular schedule to ensure that data is sent to long term storage.
+Periodic data egress is a recurring task that sends the timeseries data collected by EDS to long term storage in either AVEVA Data Hub or AVEVA Server. You can create multiple egress destinations and multiple periodic egress tasks. Periodic egress runs on a regular schedule to ensure that data is sent to long term storage.
 
-Once the AVEVA Data Hub or PI Server destinations are prepared to receive OMF messages, configure data egress to create the connection to the destination and specify the details of the data egress, including the data to include and the frequency to send it. For more information on egress destinations, see [Prepare egress destinations](xref:PrepareEgressDestinations).
+Once the AVEVA Data Hub or AVEVA Server destinations are prepared to receive OMF messages, configure data egress to create the connection to the destination and specify the details of the data egress, including the data to include and the frequency to send it. For more information on egress destinations, see [Prepare egress destinations](xref:PrepareEgressDestinations).
 
 To support the reuse of common configuration blocks, EDS egress configuration is divided into four facets, which can be configured together or separately:
 
@@ -73,9 +73,9 @@ The following table lists egress parameters for `EgressEndpoints`.
 | Parameter                       | Required                  | Type      | Description                                        |
 |---------------------------------|---------------------------|-----------|----------------------------------------------------|
 | **Id**                          | Required                  | string    | Unique identifier of the endpoint configuration                                  |
-| **Endpoint**                    | Required                  | string    | Destination that accepts OMF v1.2 and older messages. Supported destinations include AVEVA Data Hub and PI Server. |
-| **Username**                    | Required for PI Server endpoint  | string    | User name used for authentication to PI Web API OMF endpoint. If domain is required, the backslash must be escaped (for example, *domain*\\\\*username*). |
-| **Password**                    | Required for PI Server endpoint  | string    | Password used for authentication to PI Web API OMF endpoint |
+| **Endpoint**                    | Required                  | string    | Destination that accepts OMF v1.2 and older messages. Supported destinations include AVEVA Data Hub and AVEVA Server. |
+| **Username**                    | Required for AVEVA Server endpoint  | string    | User name used for authentication to PI Web API OMF endpoint. If domain is required, the backslash must be escaped (for example, *domain*\\\\*username*). |
+| **Password**                    | Required for AVEVA Server endpoint  | string    | Password used for authentication to PI Web API OMF endpoint |
 | **ClientId**                    | Required for AVEVA Data Hub endpoint | string    | Client ID used for authentication to AVEVA Data Hub OMF endpoint  |
 | **ClientSecret**                | Required for AVEVA Data Hub endpoint | string    | Client Secret used for authentication with the AVEVA Data Hub OMF endpoint  |
 | **DebugExpiration**             | Optional                  | string    | Enables logging of detailed information for each outbound HTTP request pertaining to this egress endpoint to disk. The value represents the date and time this logging will stop. Examples of valid strings representing date and time:  UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`. For more information, see [Troubleshoot Edge Data Store](xref:troubleShooting). |
@@ -154,7 +154,7 @@ Create configuration for egress of all data for all streams to AVEVA Data Hub ev
 }
 ```
 
-Create configuration for egress of some data for some streams, to AVEVA Data Hub and PI Server, every 2 days starting January 1st, 2022 at 9:00. EgressEndpoints/Schedules/DataSelectors definitions are shared.
+Create configuration for egress of some data for some streams, to AVEVA Data Hub and AVEVA Server, every 2 days starting January 1st, 2022 at 9:00. EgressEndpoints/Schedules/DataSelectors definitions are shared.
 
 ```json
 {
@@ -370,7 +370,7 @@ Add a single new configuration for egress of all data for streams with a specifi
 }
 ```
 
-Add a single new configuration for egress of all data for streams containing a field that begins with `Unique` but with data filtered by percent change of 10 for streams whose Id contains `Modbus` or `Opc` to PI Server every minute.
+Add a single new configuration for egress of all data for streams containing a field that begins with `Unique` but with data filtered by percent change of 10 for streams whose Id contains `Modbus` or `Opc` to AVEVA Server every minute.
 
 ```json
 {
@@ -380,7 +380,7 @@ Add a single new configuration for egress of all data for streams containing a f
 }
 ```
 
-Add multiple new configurations for egress with backfill, diagnostics data, or PI Server endpoint with domain in username. `EgressEndpoints`, `Schedules`, and `DataSelectors` definitions are shared.
+Add multiple new configurations for egress with backfill, diagnostics data, or AVEVA Server endpoint with domain in username. `EgressEndpoints`, `Schedules`, and `DataSelectors` definitions are shared.
 
 ```json
 [

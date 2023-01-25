@@ -36,13 +36,13 @@ When selecting the device to host EDS, there are a few general principles that a
 
 ## Periodic Egress Performance
 
-EDS generates OMF messages when configured to egress data to a PI Server or to AVEVA Data Hub. An important part of periodic egress performance is the amount of network bandwidth available between the device hosting the EDS and the PI Web API OMF endpoint or the AVEVA Data Hub OMF endpoint. The performance numbers presented in this section reflect use of a network with a 1 GB LAN connection and a high-speed connection to the Internet. If EDS is installed on a device in a location with limited network bandwidth, a lower level of egress performance can be expected.
+EDS generates OMF messages when configured to egress data to a AVEVA Server or to AVEVA Data Hub. An important part of periodic egress performance is the amount of network bandwidth available between the device hosting the EDS and the PI Web API OMF endpoint or the AVEVA Data Hub OMF endpoint. The performance numbers presented in this section reflect use of a network with a 1 GB LAN connection and a high-speed connection to the Internet. If EDS is installed on a device in a location with limited network bandwidth, a lower level of egress performance can be expected.
 
 Data egress has a much smaller performance impact on EDS than data ingress. Generally speaking, the performance impact of data egress on CPU and RAM usage is only a small percentage of the CPU and RAM usage of data ingress, so data egress configuration is not a major factor in EDS system design.
 
 ### Periodic Egress Performance to PI Web API
 
-Performance testing of periodic egress between EDS and the PI Web API OMF endpoint was completed with a 1 GB LAN connection between the EDS test device and the PI Web API. The PI Web API was hosted on server class PC that also included a PI Server. The EDS device was configured for backfill and several million events were sent to the PI Web API. In all cases, EDS egress performance exceeded 10,000 events per second. In addition, extended tests were run over several weeks with an egress rate of 3,000 events per second.
+Performance testing of periodic egress between EDS and the PI Web API OMF endpoint was completed with a 1 GB LAN connection between the EDS test device and the PI Web API. The PI Web API was hosted on server class PC that also included a AVEVA Server. The EDS device was configured for backfill and several million events were sent to the PI Web API. In all cases, EDS egress performance exceeded 10,000 events per second. In addition, extended tests were run over several weeks with an egress rate of 3,000 events per second.
 
 ### Periodic Egress Performance to AVEVA Data Hub
 

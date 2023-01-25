@@ -4,9 +4,9 @@ uid: ManualEgress
 
 # Configure manual data egress
 
-Manual data egress is a task that sends the timeseries data collected by EDS to long term storage in either AVEVA Data Hub or PI Server. You can create multiple manual egress tasks.
+Manual data egress is a task that sends the timeseries data collected by EDS to long term storage in either AVEVA Data Hub or AVEVA Server. You can create multiple manual egress tasks.
 
-Once you prepare the AVEVA Data Hub or PI Server destinations to receive OMF messages and configure `EgressEndpoints` for the chosen destination, you can send manual egress requests as needed. For example, you may need to backfill data or want to review data for an event as soon as possible. For more information on egress destinations, see [Prepare egress destinations](xref:PrepareEgressDestinations). 
+Once you prepare the AVEVA Data Hub or AVEVA Server destinations to receive OMF messages and configure `EgressEndpoints` for the chosen destination, you can send manual egress requests as needed. For example, you may need to backfill data or want to review data for an event as soon as possible. For more information on egress destinations, see [Prepare egress destinations](xref:PrepareEgressDestinations). 
 
 Make requests in JSON using parameters, similar to periodic egress, to specify which data to egress and when the egress should happen. You can either save the parameters in a file to send them or send the request directly. In addition to creating manual egress requests, you can cancel, resume, and delete these requests. For a list of other REST operations you can perform, see [REST URLs](#rest-urls).
 

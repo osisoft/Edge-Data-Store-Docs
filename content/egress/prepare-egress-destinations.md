@@ -4,7 +4,7 @@ uid: PrepareEgressDestinations
 
 # Prepare egress destinations
 
-AVEVA Data Hub and PI Server destinations require additional configuration to receive OMF messages.
+AVEVA Data Hub and AVEVA Server destinations require additional configuration to receive OMF messages.
 
 ## AVEVA Data Hub destinations
 
@@ -20,17 +20,17 @@ To create an OMF connection to AVEVA Data Hub:
   
   The **OMF Endpoint** URL for the connection is used as the `EgressEndpoints` configuration **Endpoint** parameter.
 
-## PI Server destinations
+## AVEVA Server destinations
 
-To prepare a PI Server to receive OMF messages from EDS, a PI Web API OMF endpoint must be available to be used as the `EgressEndpoints` configuration **Endpoint** parameter.
+To prepare a AVEVA Server to receive OMF messages from EDS, a PI Web API OMF endpoint must be available to be used as the `EgressEndpoints` configuration **Endpoint** parameter.
 
-To create an OMF connection to PI Server:
+To create an OMF connection to AVEVA Server:
 
-1. Install PI Web API and enable the **OSIsoft Message Format (OMF) Services** feature.
+1. Install PI Web API and enable the **Open Message Format (OMF) Services** feature.
 
    - During configuration, choose an AF database and PI Data Archive where metadata and data will be stored.
     
-   - **Username** and **Password** are used in the `EgressEndpoints` configuration to connect to the PI Server. The referenced account needs permissions to create AF elements, element templates, and PI points.
+   - **Username** and **Password** are used in the `EgressEndpoints` configuration to connect to the AVEVA Server. The referenced account needs permissions to create AF elements, element templates, and PI points.
 
 1. Configure PI Web API to use `Basic` authentication.
 

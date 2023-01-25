@@ -48,7 +48,7 @@ The following features were added:
 
 - Modbus component improvements include:
 
-  - PI Adapter for Modbus now leverages a Schedules configuration consistent with other adapters. Instead of specifying a scanRate for each selection item, you configure a schedule in the schedules config facet, then reference that schedule with the scheduleId property on each selection item.  
+  - AVEVA Adapter for Modbus now leverages a Schedules configuration consistent with other adapters. Instead of specifying a scanRate for each selection item, you configure a schedule in the schedules config facet, then reference that schedule with the scheduleId property on each selection item.  
 
 ## Fixes
 

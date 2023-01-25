@@ -16,7 +16,7 @@ EDS collects data using any of the following methods:
 
 * Built-in Modbus TCP connectivity
 
-* Custom application using OSIsoft Message Format (OMF)
+* Custom application using Open Message Format (OMF)
 
 * Custom application using REST API
 
@@ -36,13 +36,13 @@ EDS components are shown in grey within the Edge Data Store in the diagram:
 
 * Data Storage – Stores data locally until it can be egressed
 
-* Data egress – Sends data from storage to PI Server or AVEVA Data Hub
+* Data egress – Sends data from storage to AVEVA Server or AVEVA Data Hub
 
-* Health – Records health information of components and sends it to PI Server or AVEVA Data Hub
+* Health – Records health information of components and sends it to AVEVA Server or AVEVA Data Hub
 
 Blue boxes in the diagram show ways to interact with EDS from the local device:
 
-* OMF REST – Use OSIsoft Message Format to write data to the data storage component programmatically
+* OMF REST – Use Open Message Format to write data to the data storage component programmatically
 
 * SDS REST APIs – Use SDS REST APIs to read data from and write data to the data storage component programmatically
 
@@ -97,7 +97,7 @@ For detailed information about configuring each component of EDS, see [Configura
       - [Principles of operation](xref:PrinciplesOfOperationModbus)
       - [Data source configuration](xref:ModbusTCPDataSourceConfiguration)
       - [Data selection configuration](xref:ModbusTCPDataSelectionConfiguration)
-    - [OSIsoft Message Format (OMF)](xref:omfOverview)
+    - [Open Message Format (OMF)](xref:omfOverview)
   - [Storage](xref:storage)
     - [Storage runtime configuration](xref:storageruntime)
   - [Data egress configuration](xref:egress)

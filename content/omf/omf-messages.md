@@ -4,7 +4,7 @@ uid: OMFMessages
 
 # OMF messages
 
-[The OSIsoft Message Format (OMF) specification](https://docs.osisoft.com/bundle/omf/page/index.html) is generic in that it does not specify a particular back-end system. This topic is a companion to the OMF specification which describes how OMF is interpreted by Edge Data Store. When creating an OMF application for EDS, you also need to consider the final destination of the data and review the associated documentation to determine what is supported.
+[The Open Message Format (OMF) specification](https://docs.osisoft.com/bundle/omf/page/index.html) is generic in that it does not specify a particular back-end system. This topic is a companion to the OMF specification which describes how OMF is interpreted by Edge Data Store. When creating an OMF application for EDS, you also need to consider the final destination of the data and review the associated documentation to determine what is supported.
 
 ## Headers
 

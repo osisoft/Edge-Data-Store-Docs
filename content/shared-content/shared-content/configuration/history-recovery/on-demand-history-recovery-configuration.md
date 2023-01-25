@@ -4,7 +4,7 @@ uid: OnDemandHistoryRecoveryConfiguration
 
 # On-demand history recovery configuration
 
-The PI adapter supports performing history recovery on-demand by specifying a start and end time.
+The AVEVA Adapter supports performing history recovery on-demand by specifying a start and end time.
 
 ## Configure history recovery
 
