@@ -1,5 +1,5 @@
 ---
-uid: SchedulesConfiguration
+uid: ModbusSchedulesConfiguration
 ---
 
 # Schedules
@@ -39,7 +39,7 @@ Complete the following steps to change the schedules configuration:
     ### [EdgeCmd](#tab/tabid-2)
     
     ``` 
-    edgecmd set dataSelection -cid Modbus1 -file Modbus1ConfigureSchedules.json
+    edgecmd set schedules -cid Modbus1 -file Modbus1ConfigureSchedules.json
     ```
     ***
 

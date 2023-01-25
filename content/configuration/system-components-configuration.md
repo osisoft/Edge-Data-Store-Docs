@@ -36,13 +36,22 @@ To add system components:
 
 1. Save the JSON file with the name `AddComponent.json`.
 
-1. From the same directory where the file exists, run the following curl script:
+1. From the same directory where the file exists, run the following curl script or EdgeCmd:
+
+  ### [curl](#tab/tabid-1)
 
   ```bash
   curl -d "@AddComponent.json" -H "Content-Type: application/json" http://localhost:5590/api/v1/configuration/system/components
   ```
 
-After the curl command completes successfully, the new component is available for configuration and use.
+  ### [EdgeCmd](#tab/tabid-2)
+
+  ```
+  edgecmd add components -type Modbus -id Modbus1
+  ```
+  ***
+
+After the command completes successfully, the new component is available for configuration and use.
 
 ## Parameters for system components
 

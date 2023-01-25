@@ -27,9 +27,9 @@ To generate the default data selection file and use it to configure data selecti
   The following are example locations of the file created using the adapter instance created during installation, which is OpcUa1:
 
   ```bash
-  Windows: %programdata%\OSIsoft\EdgeDataStore\Configuration\OpcUa1_DataSelection.json
+  Windows: %programdata%\OSIsoft\EdgeDataStore\Configuration\OpcUa1DataSelection.json.json
    
-  Linux: /usr/share/OSIsoft/EdgeDataStore/Configuration/OpcUa1_DataSelection.json
+  Linux: /usr/share/OSIsoft/EdgeDataStore/Configuration/OpcUa1DataSelection.json.json
   ```
 
 1. Copy the file to a different directory and open it using any text editor.
@@ -57,11 +57,20 @@ To generate the default data selection file and use it to configure data selecti
 
 1. Save the file.
 
-1. Run the following curl script from the directory where the file is located, updating the file name and destination in the script if needed:
+1. Run the following curl command or EdgeCmd from the directory where the file is located, updating the file name and destination in the script if needed:
 
+  ### [curl](#tab/tabid-1)
+  
   ```bash
-  curl -d "@OpcUa1_DataSelection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
+  curl -d "@OpcUa1DataSelection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
   ```
+  
+  ### [EdgeCmd](#tab/tabid-2)
+  
+  ```
+  edgecmd set dataSelection -cid OpcUa1 -file OpcUa1DataSelection.json
+  ```
+  ***
 
 ## Configure OPC UA data selection by manually creating the file
 
@@ -75,15 +84,25 @@ To configure the OPC UA data selection:
 
 1. Update the parameters as needed. For a table of all available parameters, see [Parameters for OPC UA data selection](#parameters-for-opc-ua-data-selection).
 
-1. Save the file to the device with Edge Data Store installed with the name `DataSelection.config.json`.
+1. Save the file to the device with Edge Data Store installed with the name `OpcUa1DataSelection.json`.
 
 1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:<port_number>/api/v1/configuration/<EDS adapterId>/DataSelection/`
 
-The following example shows the HTTPS request using curl, which must be run from the same directory where the file is located, and uses the adapter instance created during installation, which is OpcUa1:
+  The following examples show the HTTPS request using curl and EdgeCmd, which must be run from the same directory where the file is located, and uses the adapter instance created during installation, which is OpcUa1:
 
-```bash
-curl -d "@DataSelection.config.json" -H "Content-Type: application/json" "http://localhost:5590/api/v1/configuration/OpcUa1/DataSelection"
-```
+  ### [curl](#tab/tabid-1)
+  
+  ```bash
+  curl -d "@OpcUa1DataSelection.json" -H "Content-Type: application/json" -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
+  ```
+  
+  ### [EdgeCmd](#tab/tabid-2)
+  
+  ```
+  edgecmd set dataSelection -cid OpcUa1 -file OpcUa1DataSelection.json
+  ```
+  ***
+
 
 ## Parameters for OPC UA data selection
 

@@ -16,10 +16,17 @@ To reset the Storage component:
     http://localhost:<port_number>/api/v1/administration/Storage/Reset
     ```
 
-    Example using curl and the default port:
+    Example using curl or EdgeCmd and the default port:
 
+    ## [curl](#tab/tabid-1)
+    
     ```bash
     curl -d "" http://localhost:5590/api/v1/Administration/Storage/Reset
     ```
-
+    
+    ## [EdgeCmd](#tab/tabid-2)
+    
+    edgecmd storage reset
+    ***
+    
     An HTTP status 204 message indicates success.

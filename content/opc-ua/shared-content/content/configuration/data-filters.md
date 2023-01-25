@@ -1,5 +1,5 @@
 ---
-uid: DataFiltersConfiguration
+uid: OPCUADataFiltersConfiguration
 ---
 
 # Data filters
@@ -31,17 +31,16 @@ Complete the following steps to configure data filters. Use the `PUT` method in 
     ### [curl](#tab/tabid-1)
     
     ```bash
-    curl -d "@ConfigureDataFilters.json" -H "Content-Type: application/json" -X PUT "http://localhost:5590/api/v1/configuration/<ComponentId>/DataFilters"
+    curl -d "@ConfigureDataFilters.json" -H "Content-Type: application/json" -X PUT "http://localhost:5590/api/v1/configuration/OpcUa1/DataFilters"
     ```
     
-    ### [Tab Text 2](#tab/tabid-2)
+    ### [EdgeCmd](#tab/tabid-2)
     
     ```
     edgecmd set dataFilters -cid OpcUa1 -file ConfigureDataFilters.json
     ```
     ***
     
-
     **Note:** If you installed the adapter to listen on a non-default port, update `5590` to the port number in use. For a list of other REST operations you can perform, like updating or deleting a data filters configuration, see [REST URLs](#rest-urls).
     <br/>
     <br/>

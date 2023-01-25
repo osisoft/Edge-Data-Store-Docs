@@ -39,7 +39,7 @@
       - topicUid: OPCUAAdapterSecurityConfiguration
       - topicUid: OPCUADataSelectionConfiguration
         items:
-        - topicUid: DataFiltersConfiguration
+        - topicUid: OPCUADataFiltersConfiguration
     - topicUid: modbusOverview
       items:
       - topicUid: PrinciplesOfOperationModbus
@@ -47,8 +47,8 @@
       - topicUid: ModbusTCPDataSourceConfiguration
       - topicUid: ModbusTCPDataSelectionConfiguration
         items:
-        - topicUid: DataFiltersConfiguration
-        - topicUid: SchedulesConfiguration
+        - topicUid: ModbusDataFiltersConfiguration
+        - topicUid: ModbusSchedulesConfiguration
     - topicUid: omfOverview
       items:
       - topicUid: OMFMessages
