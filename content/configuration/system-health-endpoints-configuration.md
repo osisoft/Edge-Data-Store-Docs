@@ -40,7 +40,7 @@ To configure system health endpoints:
 
 The following parameters are available for configuring system health endpoints.
 
-NOTE: Parameters "Buffering" and "MaxBufferSizeMb" have been removed from the JSON. Configure buffering at <xref:BufferingConfiguration>.
+**Note:** Parameters `Buffering` and `MaxBufferSizeMb` have been removed from the JSON. Configure buffering at [Buffering configuration](buffering.md).
 
 
 | Parameter                                                   | Required  | Type     | Nullable | Description                                   |
@@ -58,7 +58,8 @@ NOTE: Parameters "Buffering" and "MaxBufferSizeMb" have been removed from the JS
 ## System health endpoints example
 
 ```json
-[{
+[
+    {
         "endpoint": "https://<pi web api server>/piwebapi/omf/",
         "UserName": "<username>",
         "Password": "<password>",
