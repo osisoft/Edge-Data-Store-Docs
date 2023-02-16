@@ -8,7 +8,7 @@
     <title>Data selection configuration </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Data selection configuration ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -84,16 +84,16 @@
 <h2 id="configure-opc-ua-data-selection-using-a-generated-file">Configure OPC UA data selection using a generated file</h2>
 <p>A default OPC UA data selection file will be created if there is no OPC UA data selection configuration, but a valid OPC UA data source exists.</p>
 <p><strong>Note:</strong> To avoid resource-intensive browse operations, OSIsoft recommends that you manually create a data selection file instead of generating the default data selection file.</p>
-<p>Complete the following steps to generate the default data selection file and use it to configure data selection:</p>
+<p>To generate the default data selection file and use it to configure data selection:</p>
 <ol>
-<li><p>Add an OPC UA EDS adapter instance with a unique ComponentId either manually or during the EDS installation. For details, see <a class="xref" href="../configuration/eds-configuration.html">Edge Data Store configuration</a>.</p>
+<li><p>Add an OPC UA EDS adapter instance with a unique <code>ComponentId</code> either manually or during the EDS installation. For details, see <a class="xref" href="../configuration/eds-configuration.html">Edge Data Store configuration</a>.</p>
 </li>
-<li><p>Configure a valid OPC UA data source. For details, see <a class="xref" href="opc-ua-data-source-configuration.html">Data source configuration</a>.</p>
+<li><p>Configure a valid OPC UA data source. For details, see <a class="xref" href="shared-content/content/configuration/data-source.html">Data source configuration</a>.</p>
 <p>Once you complete these steps, a default OPC UA data selection configuration file is generated in the configuration directory with   the file name based on the ComponentId.</p>
 <p>The following are example locations of the file created using the adapter instance created during installation, which is OpcUa1:</p>
-<pre><code class="lang-bash">Windows: %programdata%\OSIsoft\EdgeDataStore\Configuration\OpcUa1_DataSelection.json
+<pre><code class="lang-bash">Windows: %programdata%\OSIsoft\EdgeDataStore\Configuration\OpcUa1DataSelection.json.json
 
-Linux: /usr/share/OSIsoft/EdgeDataStore/Configuration/OpcUa1_DataSelection.json
+Linux: /usr/share/OSIsoft/EdgeDataStore/Configuration/OpcUa1DataSelection.json.json
 </code></pre></li>
 <li><p>Copy the file to a different directory and open it using any text editor.</p>
 <p>It will look similar to the following example:</p>
@@ -114,27 +114,62 @@ Linux: /usr/share/OSIsoft/EdgeDataStore/Configuration/OpcUa1_DataSelection.json
 </code></pre></li>
 <li><p>To ingress a stream to Edge Data Store, change the value of the <strong>Selected</strong> key from <code>false</code> to <code>true</code>. All streams in the auto generated data selection file are initially set to <code>false</code>.</p>
 </li>
-<li>Save the file.</li>
-<li><p>Run the following curl script from the directory where the file is located, updating the file name and destination in the script if needed:</p>
-<pre><code class="lang-bash">curl -d &quot;@OpcUa1_DataSelection.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
-</code></pre></li>
+<li><p>Save the file.</p>
+</li>
+<li><p>Run the following curl command or EdgeCmd from the directory where the file is located, updating the file name and destination in the script if needed:</p>
+<div class="tabGroup" id="tabgroup_0SYtuumazh">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_0SYtuumazh_tabid-1" role="tab" aria-controls="tabpanel_0SYtuumazh_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">curl</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_0SYtuumazh_tabid-2" role="tab" aria-controls="tabpanel_0SYtuumazh_tabid-2" data-tab="tabid-2" tabindex="-1">EdgeCmd</a>
+</li>
+</ul>
+<section id="tabpanel_0SYtuumazh_tabid-1" role="tabpanel" data-tab="tabid-1">
+<pre><code class="lang-bash">curl -d &quot;@OpcUa1DataSelection.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
+</code></pre></section>
+<section id="tabpanel_0SYtuumazh_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code>edgecmd set dataSelection -cid OpcUa1 -file OpcUa1DataSelection.json
+</code></pre></section>
+</div>
+</li>
 </ol>
 <h2 id="configure-opc-ua-data-selection-by-manually-creating-the-file">Configure OPC UA data selection by manually creating the file</h2>
 <p><strong>Note:</strong> OPC UA data selection configurations cannot be modified manually. Use the REST endpoints to add or edit the configuration.</p>
-<p>Complete the following steps to configure the OPC UA data selection:</p>
+<p>To configure the OPC UA data selection:</p>
 <ol>
-<li>Using any text editor, create a file that contains an OPC UA data selection in JSON form.<ul>
+<li><p>Using any text editor, create a file that contains an OPC UA data selection in JSON form.</p>
+<ul>
 <li>For content structure, see <a href="#opc-ua-data-selection-example">OPC UA data selection example</a>.</li>
 </ul>
 </li>
-<li>Update the parameters as needed. For a table of all available parameters, see <a href="#parameters-for-opc-ua-data-selection">Parameters for OPC UA data selection</a>.</li>
-<li>Save the file to the device with Edge Data Store installed with the name <em>DataSelection.config.json</em>.</li>
-<li>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:&lt;port_number&gt;/api/v1/configuration/&lt;EDS adapterId&gt;/DataSelection/</code></li>
+<li><p>Update the parameters as needed. For a table of all available parameters, see <a href="#parameters-for-opc-ua-data-selection">Parameters for OPC UA data selection</a>.</p>
+</li>
+<li><p>Save the file to the device with Edge Data Store installed with the name <code>OpcUa1DataSelection.json</code>.</p>
+</li>
+<li><p>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:&lt;port_number&gt;/api/v1/configuration/&lt;EDS adapterId&gt;/DataSelection/</code></p>
+<p>The following examples show the HTTPS request using curl and EdgeCmd, which must be run from the same directory where the file is located, and uses the adapter instance created during installation, which is OpcUa1:</p>
+<div class="tabGroup" id="tabgroup_0SYtuumazh-1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_0SYtuumazh-1_tabid-1" role="tab" aria-controls="tabpanel_0SYtuumazh-1_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">curl</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_0SYtuumazh-1_tabid-2" role="tab" aria-controls="tabpanel_0SYtuumazh-1_tabid-2" data-tab="tabid-2" tabindex="-1">EdgeCmd</a>
+</li>
+</ul>
+<section id="tabpanel_0SYtuumazh-1_tabid-1" role="tabpanel" data-tab="tabid-1">
+<pre><code class="lang-bash">curl -d &quot;@OpcUa1DataSelection.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
+</code></pre></section>
+<section id="tabpanel_0SYtuumazh-1_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code>edgecmd set dataSelection -cid OpcUa1 -file OpcUa1DataSelection.json
+</code></pre></section>
+</div>
+</li>
 </ol>
-<p>The following example shows the HTTPS request using curl, which must be run from the same directory where the file is located, and uses the adapter instance created during installation, which is OpcUa1:</p>
-<pre><code class="lang-bash">curl -d &quot;@DataSelection.config.json&quot; -H &quot;Content-Type: application/json&quot; &quot;http://localhost:5590/api/v1/configuration/OpcUa1/DataSelection&quot;
-</code></pre><h2 id="parameters-for-opc-ua-data-selection">Parameters for OPC UA data selection</h2>
-<p>The following parameters can be used to configure OPC UA data selection:</p>
+<h2 id="parameters-for-opc-ua-data-selection">Parameters for OPC UA data selection</h2>
+<p>The following parameters can be used to configure OPC UA data selection.</p>
 <table>
 <thead>
 <tr>
@@ -206,7 +241,7 @@ Linux: /usr/share/OSIsoft/EdgeDataStore/Configuration/OpcUa1_DataSelection.json
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/opc-ua/opc-ua-data-selection-configuration.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/opc-ua/opc-ua-data-selection-configuration.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

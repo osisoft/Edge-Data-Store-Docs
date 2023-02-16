@@ -8,14 +8,14 @@
     <title>SdsUomQuantity API </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="SdsUomQuantity API ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
     <link rel="stylesheet" href="../../../styles/main.css">
     <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../../">
     
@@ -78,33 +78,107 @@
             <article class="content wrap" id="_content" data-uid="SdsUOMQuantityAPI">
 <h1 id="sdsuomquantity-api">SdsUomQuantity API</h1>
 
-<p>The REST APIs provide programmatic access to read and write SDS data. The APIs in this section interact with SdsUomQuantitys. For more information, see <a class="xref" href="../units-of-measure.html#sdsuomquantity">SdsUomQuantity</a>.</p>
-<hr>
-<h2 id="get-quantity"><code>Get Quantity</code></h2>
-<p>Returns the quantity corresponding to the specified quantity Id within a given namespace.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Quantities/{quantityId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string quantityId</code><br>The quantity identifier.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>The requested SdsUomQuantity.</p>
-<p>Example response body for quantityId = &quot;Length&quot;:</p>
+<p>The REST APIs provide programmatic access to read and write SDS data. The APIs in this section interact with <code>SdsUomQuantity</code>s. For more information, see <a class="xref" href="../units-of-measure.html#sdsuomquantity">SdsUomQuantity</a>.</p>
+<h2 id="list-quantities"><code>List Quantities</code></h2>
+<p><a id="opIdQuantity_List Quantities"></a></p>
+<p>Returns a list of all quantities available within a given namespace</p>
+<h3 id="request">Request</h3>
+<pre><code class="lang-text">GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Quantities?skip={skip}&amp;count={count}
+</code></pre><h4 id="parameters">Parameters</h4>
+<p><code>string tenantId</code> 
+Tenant identifier</p>
+<p><code>string namespaceId</code> 
+Namespace identifier</p>
+<p><code>[Optional] int skip</code> </p>
+<p>Parameter representing the zero-based offset of the first object to retrieve. If unspecified, a default value of <code>0</code> is used.</p>
+<p><code>[Optional] int count</code>  </p>
+<p>Parameter representing the maximum number of objects to retrieve. If unspecified, a default value of <code>100</code> is used.</p>
+<h3 id="response">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="#schemasdsuomquantity">SdsUomQuantity</a>[]</td>
+<td>Returns a list of <code>SdsUomQuantity</code> objects</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body">Example response body</h4>
+<p>200 Response</p>
 <pre><code class="lang-json">HTTP/1.1 200
 Content-Type: application/json
-
+[
 {
-    &quot;Id&quot;: &quot;Length&quot;,
-    &quot;Name&quot;: &quot;Length&quot;,
-    &quot;BaseUom&quot;: {
-        &quot;Id&quot;: &quot;meter&quot;,
-        &quot;Abbreviation&quot;: &quot;m&quot;,
-        &quot;Name&quot;: &quot;meter&quot;,
-        &quot;DisplayName&quot;: &quot;meter&quot;,
-        &quot;QuantityId&quot;: &quot;Length&quot;,
-        &quot;ConversionFactor&quot;: 1
+    &quot;Id&quot;:&quot;Angular Velocity&quot;,
+    &quot;Name&quot;:&quot;Angular Velocity&quot;,
+    &quot;BaseUom&quot;:{
+        &quot;Id&quot;:&quot;radian per second&quot;,
+        &quot;Abbreviation&quot;:&quot;rad/s&quot;,
+        &quot;Name&quot;:&quot;radian per second&quot;,
+        &quot;DisplayName&quot;:&quot;radian per second&quot;,
+        &quot;QuantityId&quot;:&quot;Angular Velocity&quot;,
+        &quot;ConversionFactor&quot;:1
     },
-    &quot;Dimensions&quot;: [
-        1,
+    &quot;Dimensions&quot;:[
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+    ]
+},
+{
+    &quot;Id&quot;:&quot;Area&quot;,
+    &quot;Name&quot;:&quot;Area&quot;,
+    &quot;BaseUom&quot;:{
+        &quot;Id&quot;:&quot;square meter&quot;,
+        &quot;Abbreviation&quot;:&quot;m2&quot;,
+        &quot;Name&quot;:&quot;square meter&quot;,
+        &quot;DisplayName&quot;:&quot;square meter&quot;,
+        &quot;QuantityId&quot;:&quot;Area&quot;,
+        &quot;ConversionFactor&quot;:1
+    },
+    &quot;Dimensions&quot;:[
+        2,
         0,
         0,
         0,
@@ -113,78 +187,180 @@ Content-Type: application/json
         0
     ]
 }
-</code></pre><hr>
-<h2 id="get-quantities"><code>Get Quantities</code></h2>
-<p>Returns a list of all quantities available within a given namespace.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Quantities?skip={skip}&amp;count={count}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>int skip</code><br>An optional parameter representing the zero-based offset of the first SdsUomQuantity to retrieve. If not specified, a default value of 0 is used.</p>
-<p><code>int count</code><br>An optional parameter representing the maximum number of SdsUomQuantity to retrieve. If not specified, a default value of 100 is used.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>A list of SdsUomQuantity objects.</p>
-<p>Example response body:</p>
-<pre><code class="lang-json">HTTP/1.1 200
-Content-Type: application/json
-
-[
-    {
-        &quot;Id&quot;: &quot;Angular Velocity&quot;,
-        &quot;Name&quot;: &quot;Angular Velocity&quot;,
-        &quot;BaseUom&quot;: {
-            &quot;Id&quot;: &quot;radian per second&quot;,
-            &quot;Abbreviation&quot;: &quot;rad/s&quot;,
-            &quot;Name&quot;: &quot;radian per second&quot;,
-            &quot;DisplayName&quot;: &quot;radian per second&quot;,
-            &quot;QuantityId&quot;: &quot;Angular Velocity&quot;,
-            &quot;ConversionFactor&quot;: 1
-        },
-        &quot;Dimensions&quot;: [
-            0,
-            0,
-            -1,
-            0,
-            0,
-            0,
-            0
-        ]
-    },
-    {
-        &quot;Id&quot;: &quot;Area&quot;,
-        &quot;Name&quot;: &quot;Area&quot;,
-        &quot;BaseUom&quot;: {
-            &quot;Id&quot;: &quot;square meter&quot;,
-            &quot;Abbreviation&quot;: &quot;m2&quot;,
-            &quot;Name&quot;: &quot;square meter&quot;,
-            &quot;DisplayName&quot;: &quot;square meter&quot;,
-            &quot;QuantityId&quot;: &quot;Area&quot;,
-            &quot;ConversionFactor&quot;: 1
-        },
-        &quot;Dimensions&quot;: [
-            2,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-        ]
-    },
 ]
+</code></pre><p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
 </code></pre><hr>
-<h2 id="get-quantity-uom"><code>Get Quantity Uom</code></h2>
-<p>Returns the unit of measure associated with the specified uomId belonging to the quantity with the specified quantityId.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Quantities/{quantityId}/Units/{uomId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string quantityId</code><br>The quantity identifier.</p>
-<p><code>string uomId</code><br>The unit of measure identifier.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>The requested SdsUom</p>
-<p>Example response for quantityId = &quot;Length&quot; and uomId =&quot;mile&quot;:</p>
+<h2 id="get-quantity"><code>Get Quantity</code></h2>
+<p><a id="opIdQuantity_Get Quantity"></a></p>
+<p>Returns the quantity corresponding to the specified <code>quantityId</code> within a given namespace</p>
+<h3 id="request-1">Request</h3>
+<pre><code class="lang-text">GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Quantities/{quantityId}
+</code></pre><h4 id="parameters-1">Parameters</h4>
+<p><code>string tenantId</code> 
+Tenant identifier</p>
+<p><code>string namespaceId</code> 
+Namespace identifier</p>
+<p><code>string quantityId</code> 
+The quantity identifier</p>
+<h3 id="response-1">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="#schemasdsuomquantity">SdsUomQuantity</a></td>
+<td>Returns the <code>SdsUomQuantity</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-1">Example response body</h4>
+<p>200 Response</p>
 <pre><code class="lang-json">HTTP/1.1 200
 Content-Type: application/json
-
+{
+&quot;Id&quot;:&quot;Length&quot;,
+&quot;Name&quot;:&quot;Length&quot;,
+&quot;BaseUom&quot;:{
+    &quot;Id&quot;:&quot;meter&quot;,
+    &quot;Abbreviation&quot;:&quot;m&quot;,
+    &quot;Name&quot;:&quot;meter&quot;,
+    &quot;DisplayName&quot;:&quot;meter&quot;,
+    &quot;QuantityId&quot;:&quot;Length&quot;,
+    &quot;ConversionFactor&quot;:1
+},
+&quot;Dimensions&quot;:[
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+]
+}
+</code></pre><p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><hr>
+<h2 id="get-quantity-unit-of-measure"><code>Get Quantity Unit of Measure</code></h2>
+<p><a id="opIdQuantity_Get Quantity Unit of Measure"></a></p>
+<p>Returns the unit of measure associated with the specified <code>uomId</code> belonging to the quantity with the specified <code>quantityId</code></p>
+<h3 id="request-2">Request</h3>
+<pre><code class="lang-text">GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Quantities/{quantityId}/Units/{uomId}
+</code></pre><h4 id="parameters-2">Parameters</h4>
+<p><code>string tenantId</code> 
+Tenant identifier</p>
+<p><code>string namespaceId</code> 
+Namespace identifier</p>
+<p><code>string quantityId</code> 
+The quantity identifier</p>
+<p><code>string uomId</code> 
+The unit of measure identifier</p>
+<h3 id="response-2">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="#schemasdsuom">SdsUom</a></td>
+<td>Returns the <code>SdsUom</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-2">Example response body</h4>
+<p>200 Response</p>
+<pre><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
 {
     &quot;Id&quot;: &quot;mile&quot;,
     &quot;Abbreviation&quot;: &quot;mi&quot;,
@@ -193,37 +369,321 @@ Content-Type: application/json
     &quot;QuantityId&quot;: &quot;Length&quot;,
     &quot;ConversionFactor&quot;: 1609.344
 }
+</code></pre><p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
 </code></pre><hr>
-<h2 id="get-quantity-uoms"><code>Get Quantity Uoms</code></h2>
-<p>Returns the list of units of measure that belongs to the quantity with the specified quantityId.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Quantities/{quantityId}/Units
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string quantityId</code><br>The quantity identifier.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>A collection of SdsUom objects for the specified quantity.</p>
-<p>Example response for quantityId = &quot;Electric Current&quot;:</p>
+<h2 id="list-quantity-units-of-measure"><code>List Quantity Units of Measure</code></h2>
+<p><a id="opIdQuantity_List Quantity Units of Measure"></a></p>
+<p>Returns the list of units of measure that belongs to the quantity with the specified <code>quantityId</code></p>
+<h3 id="request-3">Request</h3>
+<pre><code class="lang-text">GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Quantities/{quantityId}/Units
+</code></pre><h4 id="parameters-3">Parameters</h4>
+<p><code>string tenantId</code> 
+Tenant identifier</p>
+<p><code>string namespaceId</code> 
+Namespace identifier</p>
+<p><code>string quantityId</code> 
+The quantity identifier</p>
+<h3 id="response-3">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="#schemasdsuom">SdsUom</a>[]</td>
+<td>Returns a list of <code>SdsUom</code> objects</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-3">Example response body</h4>
+<p>200 Response</p>
 <pre><code class="lang-json">HTTP/1.1 200
 Content-Type: application/json
-
 [
-    {
-        &quot;Id&quot;: &quot;milliampere&quot;,
-        &quot;Abbreviation&quot;: &quot;mA&quot;,
-        &quot;Name&quot;: &quot;milliampere&quot;,
-        &quot;DisplayName&quot;: &quot;milliampere&quot;,
-        &quot;QuantityId&quot;: &quot;Electric Current&quot;,
-        &quot;ConversionFactor&quot;: 0.001
-    },
-    {
-        &quot;Id&quot;: &quot;ampere&quot;,
-        &quot;Abbreviation&quot;: &quot;A&quot;,
-        &quot;Name&quot;: &quot;ampere&quot;,
-        &quot;DisplayName&quot;: &quot;ampere&quot;,
-        &quot;QuantityId&quot;: &quot;Electric Current&quot;,
-        &quot;ConversionFactor&quot;: 1
-    }
+{
+    &quot;Id&quot;:&quot;milliampere&quot;,
+    &quot;Abbreviation&quot;:&quot;mA&quot;,
+    &quot;Name&quot;:&quot;milliampere&quot;,
+    &quot;DisplayName&quot;:&quot;milliampere&quot;,
+    &quot;QuantityId&quot;:&quot;Electric Current&quot;,
+    &quot;ConversionFactor&quot;:0.001
+},
+{
+    &quot;Id&quot;:&quot;ampere&quot;,
+    &quot;Abbreviation&quot;:&quot;A&quot;,
+    &quot;Name&quot;:&quot;ampere&quot;,
+    &quot;DisplayName&quot;:&quot;ampere&quot;,
+    &quot;QuantityId&quot;:&quot;Electric Current&quot;,
+    &quot;ConversionFactor&quot;:1
+}
 ]
+</code></pre><p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><hr>
+<h2 id="definitions">Definitions</h2>
+<h3 id="sdsuomquantity">SdsUomQuantity</h3>
+<p><a id="schemasdsuomquantity"></a>
+<a id="schema_SdsUomQuantity"></a>
+<a id="tocSsdsuomquantity"></a>
+<a id="tocssdsuomquantity"></a></p>
+<p>DataContract representing a measurable quantity. For example, A unit of measure &#39;meter&#39; would measure a quantity &#39;length&#39;</p>
+<h4 id="properties">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Unique identifier for this quantity</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Friendly name for this quantity</td>
+</tr>
+<tr>
+<td><code>BaseUom</code></td>
+<td><a href="#schemasdsuom">SdsUom</a></td>
+<td>false</td>
+<td>true</td>
+<td>The base unit of measurement for this quantity. All other uom&#39;s measuring this quantity will be calculated relative to the base uom.</td>
+</tr>
+<tr>
+<td><code>Dimensions</code></td>
+<td>[integer]</td>
+<td>false</td>
+<td>true</td>
+<td>Powers of each dimension that define this quantity. This array must have a length of 7. Dimensions represented in index order are Length, Mass, Time, Electric Current, Thermodynamic Temperature, Amount of Substance, and Luminous Density. For example, A velocity quantity would have values [1,0,-1,0,0,0,0] for (length)/(time)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;BaseUom&quot;: {
+    &quot;Id&quot;: &quot;string&quot;,
+    &quot;Abbreviation&quot;: &quot;string&quot;,
+    &quot;Name&quot;: &quot;string&quot;,
+    &quot;DisplayName&quot;: &quot;string&quot;,
+    &quot;QuantityId&quot;: &quot;string&quot;,
+    &quot;ConversionFactor&quot;: 0,
+    &quot;ConversionOffset&quot;: 0
+  },
+  &quot;Dimensions&quot;: [
+    0
+  ]
+}
+</code></pre><hr>
+<h3 id="sdsuom">SdsUom</h3>
+<p><a id="schemasdsuom"></a>
+<a id="schema_SdsUom"></a>
+<a id="tocSsdsuom"></a>
+<a id="tocssdsuom"></a></p>
+<p>DataContract representing a unit of measure</p>
+<h4 id="properties-1">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Unique identifier for this unit of measure</td>
+</tr>
+<tr>
+<td><code>Abbreviation</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Abbreviation for this unit of measure</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Full name for this unit of measure</td>
+</tr>
+<tr>
+<td><code>DisplayName</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Display name for this unit of measure</td>
+</tr>
+<tr>
+<td><code>QuantityId</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>The <code>Id</code> of the quantity that this unit is a measure of</td>
+</tr>
+<tr>
+<td><code>ConversionFactor</code></td>
+<td>double</td>
+<td>false</td>
+<td>false</td>
+<td>When a value of this unit is multiplied by the <code>ConversionFactor</code> and then incremented by the <code>ConversionOffset</code>, the value in terms of the base unit of the corresponding quantity is returned.</td>
+</tr>
+<tr>
+<td><code>ConversionOffset</code></td>
+<td>double</td>
+<td>false</td>
+<td>false</td>
+<td>When a value of this unit is multiplied by the <code>ConversionFactor</code> and then incremented by the <code>ConversionOffset</code>, the value in terms of the base unit of the corresponding quantity is returned.</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Abbreviation&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;DisplayName&quot;: &quot;string&quot;,
+  &quot;QuantityId&quot;: &quot;string&quot;,
+  &quot;ConversionFactor&quot;: 0,
+  &quot;ConversionOffset&quot;: 0
+}
+</code></pre><hr>
+<h3 id="errorresponsebody">ErrorResponseBody</h3>
+<p><a id="schemaerrorresponsebody"></a>
+<a id="schema_ErrorResponseBody"></a>
+<a id="tocSerrorresponsebody"></a>
+<a id="tocserrorresponsebody"></a></p>
+<p>Contains the error message format that follows the AVEVA Data Hub error standards</p>
+<h4 id="properties-2">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OperationId</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Operation unique identifier of action that caused the error</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Error description</td>
+</tr>
+<tr>
+<td>Reason</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Reason for the error</td>
+</tr>
+<tr>
+<td>Resolution</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Resolution to resolve the error</td>
+</tr>
+<tr>
+<td>Parameters</td>
+<td>object</td>
+<td>false</td>
+<td>true</td>
+<td>IDs or values that are creating or are affected by the error.</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
 </code></pre></article>
           </div>
           
@@ -232,7 +692,7 @@ Content-Type: application/json
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/uom/sds-uom-quantity-api.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/sds/uom/sds-uom-quantity-api.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

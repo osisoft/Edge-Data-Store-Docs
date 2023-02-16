@@ -8,7 +8,7 @@
     <title>Troubleshoot Edge Data Store </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Troubleshoot Edge Data Store ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -79,10 +79,10 @@
 <h1 id="troubleshoot-edge-data-store">Troubleshoot Edge Data Store</h1>
 
 <p>Edge Data Store includes both local and remote means of diagnosing issues encountered while using or developing against EDS.</p>
-<p>Edge Data Store supports a diagnostics namespace that stores streams containing diagnostic information from Edge Data Store itself. Egress this data to either a PI Web Server or OSIsoft Cloud Services to monitor the state of a system remotely. For details about egressing diagnostic data, see <a class="xref" href="../diagnostics/diagnostics.html">Diagnostics configuration</a>.</p>
-<p>In addition to diagnostics data, all components in Edge Data Store support OMF health messages. Configure health messages to send health data to either PI Web Server or OSIsoft Cloud Service endpoints for remote monitoring of devices. For more information, see <a class="xref" href="../configuration/system-health-endpoints-configuration.html">Health endpoints configuration</a>.</p>
+<p>Edge Data Store supports a diagnostics namespace that stores streams containing diagnostic information from Edge Data Store itself. Egress this data to either a PI Server or AVEVA Data Hub to monitor the state of a system remotely. For details about egressing diagnostic data, see <a class="xref" href="../diagnostics/diagnostics.html">Diagnostics configuration</a>.</p>
+<p>In addition to diagnostics data, all components in Edge Data Store support OMF health messages. Configure health messages to send health data to either PI Server or AVEVA Data Hub endpoints for remote monitoring of devices. For more information, see <a class="xref" href="../configuration/system-health-endpoints-configuration.html">Health endpoints configuration</a>.</p>
 <h2 id="omf-ingress">OMF ingress</h2>
-<p>Complete the following steps when a custom application fails to write stream data to EDS:</p>
+<p>When a custom application fails to write stream data to EDS:</p>
 <ol>
 <li><p>Verify the custom application is sending OMF messages in the correct order: 1) OMF type, 2) OMF container, 3) OMF data.</p>
 <p><strong>Note:</strong> OMF messages must be sent in the correct order to be ingressed into Edge Data Store.</p>
@@ -91,55 +91,72 @@
 </li>
 </ol>
 <h3 id="omf-ingress-logging">OMF ingress logging</h3>
-<p>Ingress logging messages provide a record of ingress events. Complete the following steps to capture the most information for troubleshooting:</p>
+<p>Ingress logging messages provide a record of ingress events. To capture the most information for troubleshooting:</p>
 <ol>
-<li>Refer to <a class="xref" href="../logging/system-logging.html">System-level logging configuration</a> to set logging parameters.</li>
-<li>For maximum message logging information, set the log level to <strong>Trace</strong>.</li>
-</ol>
-<h3 id="omf-ingress-message-debugging">OMF ingress message debugging</h3>
-<p>Use debugging information to troubleshoot problems between an OMF application and Edge Data Store. Complete the following steps to enable debugging:</p>
-<ol>
-<li>Refer to <a class="xref" href="../configuration/storage-runtime-config.html">Storage runtime configuration</a> to enable debugging.</li>
-<li><p>Set an appropriate time value for the <em>IngressDebugExpiration</em> property. </p>
-<p><strong>Note:</strong> You can also disable debugging by setting the expiration value to <em>null</em>.</p>
+<li><p>Refer to <a class="xref" href="../logging/logging-configuration.html">Configure logging</a> to set logging parameters.</p>
+</li>
+<li><p>For maximum message logging information, set the log level to <code>Trace</code>.</p>
 </li>
 </ol>
-<p>Examples of valid strings representing date and time:</p>
-<pre><code>UTC: &quot;yyyy-mm-ddThh:mm:ssZ&quot;
-Local: &quot;mm-dd-yyyy hh:mm:ss&quot;
-</code></pre><h2 id="periodic-egress">Periodic egress</h2>
-<p>EDS periodic egress extracts data from SDS streams and sends the appropriate sequences of type, container, and data OMF messages on startup.  </p>
-<p><strong>Note:</strong> If unexpected data appears in an OCS or PI System, check if multiple devices are writing to the same SDS stream. </p>
+<h3 id="omf-ingress-message-debugging">OMF ingress message debugging</h3>
+<p>Every incoming OMF message logs a request and response log file. Log files are located in the following location and grouped by the associated OMF message type:</p>
+<p><code>C:\ProgramData\OSIsoft\EdgeDataStore\Logs\IngressDebugLogs\</code></p>
+<p>Each log file leverages the following filename format:</p>
+<p><code>{ticks}-{operationId}-{Request/Response}.txt</code></p>
+<p>Use debugging information to troubleshoot problems between an OMF application and Edge Data Store. To enable debugging:</p>
+<ol>
+<li><p>Refer to <a class="xref" href="../configuration/storage-runtime-config.html">Storage runtime configuration</a> to enable debugging.</p>
+</li>
+<li><p>Set an appropriate time value for the <strong>IngressDebugExpiration</strong> property.</p>
+<p><strong>Note:</strong> You can also disable debugging by setting the expiration value to <code>null</code>.</p>
+</li>
+</ol>
+<p>Date and time strings should use the following formats:</p>
+<ul>
+<li><p>UTC: <code>yyyy-mm-ddThh:mm:ssZ</code></p>
+</li>
+<li><p>Local: <code>yyyy-mm-ddThh:mm:ss</code></p>
+</li>
+</ul>
+<h2 id="egress">Egress</h2>
+<p>EDS egress extracts data from SDS streams and sends the appropriate sequences of type, container, and data OMF messages on startup.  </p>
+<p>If unexpected data appears in an AVEVA Data Hub or PI System, check if multiple devices are writing to the same SDS stream. To check egress configuration:</p>
 <ol>
 <li><p>Check all egress configuration files in Edge Data Store to verify whether any endpoints are duplicated. A duplicate endpoint means that more than one device is egressing data to it, resulting in unexpected data.</p>
 </li>
-<li><p>Assign stream prefixes in the periodic egress endpoint configuration to ensure that output data streams are logically separated in the systems of record. For instructions, see <a class="xref" href="../egress/configure-data-egress.html">Configure data egress</a>.</p>
-<p><strong>Note:</strong> Type prefixes may be helpful if you have changed a stream type definition on EDS. OMF types on both OCS and the PI System are immutable once created. If the type of the data stream changes, it is best to either delete the old type definition (if nothing is still using it) or add a type prefix to create a new unique type that will be used by new streams egressing from EDS to the systems of record.</p>
+<li><p>Assign stream prefixes in the periodic egress configuration to ensure that output data streams are logically separated in the systems of record. For instructions, see <a class="xref" href="../egress/configure-data-egress.html">Configure data egress</a>.</p>
+<p><strong>Note:</strong> Type prefixes may be helpful if you have changed a stream type definition on EDS. OMF types on both AVEVA Data Hub and the PI System are immutable once created. If the type of the data stream changes, it is best to either delete the old type definition (if nothing is still using it) or add a type prefix to create a new unique type that will be used by new streams egressing from EDS to the systems of record.</p>
 </li>
 </ol>
-<h3 id="periodic-egress-logging">Periodic egress logging</h3>
-<p>Egress logging messages provide a record of egress events. Complete the following to capture maximum information for troubleshooting:</p>
+<h3 id="egress-logging">Egress logging</h3>
+<p>Egress logging messages provide a record of egress events. To capture maximum information for troubleshooting:</p>
 <ol>
-<li>Refer to <a class="xref" href="../logging/system-logging.html">System-level logging configuration</a> to set logging parameters.</li>
-<li>For maximum message logging information, set the log level to <strong>Trace</strong>.</li>
-</ol>
-<h3 id="periodic-egress-debugging">Periodic egress debugging</h3>
-<p>Use debugging information to troubleshoot problems between Edge Data Store and the egress destination. Complete the following steps to enable debugging:</p>
-<ol>
-<li>Refer to <a class="xref" href="../egress/egress.html">Data egress configuration</a> to enable debugging.</li>
-<li><p>Set an appropriate time value for the <em>DebugExpiration</em> property. </p>
-<p><strong>Note:</strong> Disable debugging by setting the expiration value to <em>null</em>.</p>
+<li><p>Refer to <a class="xref" href="../logging/logging-configuration.html">Configure logging</a> to set logging parameters.</p>
+</li>
+<li><p>For maximum message logging information, set the log level to <code>Trace</code>.</p>
 </li>
 </ol>
-<p>Examples of valid strings representing date and time:</p>
-<pre><code>UTC: &quot;yyyy-mm-ddThh:mm:ssZ&quot;
-Local: &quot;mm-dd-yyyy hh:mm:ss&quot;
-</code></pre><h3 id="debugging-folderfile-structure">Debugging folder/file structure</h3>
-<p>Because the overall number and content length of each request/response pair captured by debugging can be quite large, debugging information is stored to disk in a separate location from other log messages. Debug folders and files are created under the Edge Data Store data folder as follows: </p>
-<pre><code>Windows: %programdata%\OSIsoft\EdgeDataStore\Storage\egressdump\{tenantId}\{namespaceId}\{egressId}\{omfType}\{Ticks}-{Guid}-{Req/Res}.txt
-
-Linux: /usr/share/OSIsoft/EdgeDataStore/Storage/egressdump/{tenantId}/{namespaceId}/{egressId}/{omfType}/{Ticks}-{Guid}-{Req/Res}.txt
-</code></pre><p>The OMF specific elements of the file structure are defined in the following table:</p>
+<h3 id="egress-debugging">Egress debugging</h3>
+<p>Use debugging information to troubleshoot problems between Edge Data Store and the egress destination. To enable debugging:</p>
+<ol>
+<li><p>Refer to <a class="xref" href="../egress/egress.html">Data egress configuration</a> to enable debugging.</p>
+</li>
+<li><p>Set an appropriate time value for the <strong>DebugExpiration</strong> property.</p>
+<p><strong>Note:</strong> Disable debugging by setting the expiration value to <code>null</code>.</p>
+</li>
+</ol>
+<p>Date and time strings should use the following formats:</p>
+<ul>
+<li><p>UTC: <code>yyyy-mm-ddThh:mm:ssZ</code></p>
+</li>
+<li><p>Local: <code>yyyy-mm-ddThh:mm:ss</code></p>
+</li>
+</ul>
+<h3 id="debugging-folderfile-structure">Debugging folder/file structure</h3>
+<p>Debug folders and files are created under the Edge Data Store folder as follows:</p>
+<p>   Windows: <code>%programdata%\OSIsoft\EdgeDataStore\Logs\EgressDebugLogs\Data\{egressType}\{egressId}\{omfType}\{Ticks}-{Guid}-{Request/Response}.txt</code></p>
+<p>   Linux: <code>/usr/share/OSIsoft/EdgeDataStore/Logs/EgressDebugLogs/Data{egressType}/{egressId}/{omfType}/{Ticks}-{Guid}-{Request/Response}.txt</code></p>
+<p>The OMF specific elements of the file structure are defined in the following table.</p>
 <table>
 <thead>
 <tr>
@@ -166,6 +183,8 @@ Linux: /usr/share/OSIsoft/EdgeDataStore/Storage/egressdump/{tenantId}/{namespace
 </tr>
 </tbody>
 </table>
+<h2 id="additional-resources">Additional resources</h2>
+<p>For information about specific log messages and possible resolutions, refer to the <a href="https://my.osisoft.com/">OSIsoft Customer Portal</a>.</p>
 </article>
           </div>
           
@@ -174,7 +193,7 @@ Linux: /usr/share/OSIsoft/EdgeDataStore/Storage/egressdump/{tenantId}/{namespace
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/troubleshooting/troubleshooting.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/troubleshooting/troubleshooting.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

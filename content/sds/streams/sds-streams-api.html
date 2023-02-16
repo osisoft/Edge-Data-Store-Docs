@@ -8,14 +8,14 @@
     <title>SdsStream API </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="SdsStream API ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
     <link rel="stylesheet" href="../../../styles/main.css">
     <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../../">
     
@@ -79,119 +79,4432 @@
 <h1 id="sdsstream-api">SdsStream API</h1>
 
 <p>The REST APIs provide programmatic access to read and write SDS data. The APIs in this section interact with SdsStreams. For general SdsStream information, see <a class="xref" href="../sds-streams.html">Streams</a>.</p>
-<hr>
-<h2 id="get-stream"><code>Get Stream</code></h2>
-<p>Returns the specified stream.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamId</code><br>The stream identifier.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>The requested SdsStream. Example response body:</p>
-<pre><code class="lang-json">HTTP/1.1 200
-Content-Type: application/json
-
-{  
-   &quot;Id&quot;:&quot;Simple&quot;,
-   &quot;Name&quot;:&quot;Simple&quot;,
-   &quot;TypeId&quot;:&quot;Simple&quot;,
-}
-</code></pre><hr>
-<h2 id="get-streams"><code>Get Streams</code></h2>
-<p>Returns a list of streams.</p>
-<p>If the optional search query parameter is specified, the list of streams returned will match the search criteria. If the search query parameter is not specified, the list will include all streams in the namespace. See <a class="xref" href="../search.html">Search in SDS</a> for information about specifying those respective parameters.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams?query={query}&amp;skip={skip}&amp;count={count}&amp;orderby={orderby}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string query</code><br>An optional parameter representing a string search. For information about specifying the search parameter, see <a class="xref" href="../search.html">Search in SDS</a>.</p>
-<p><code>int skip</code><br>An optional parameter representing the zero-based offset of the first SdsStream to retrieve. If not specified, a default value of 0 is used.</p>
-<p><code>int count</code><br>An optional parameter representing the maximum number of SdsStreams to retrieve. If not specified, a default value of 100 is used.</p>
-<p><code>string orderby</code><br>An optional parameter representing sorted order which SdsStreams will be returned. A field name is required. The sorting is based on the stored values for the given field (of type string). For example, <code>orderby=name</code> would sort the returned results by the <code>name</code> values (ascending by default). Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values <code>asc</code> or <code>desc</code>, respectively. For example, <code>orderby=name desc</code> would sort the returned results by the <code>name</code> values, descending. If no value is specified, there is no sorting of results.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>A collection of zero or more SdsStreams. Example response body:</p>
-<pre><code class="lang-json">HTTP/1.1 200
-Content-Type: application/json
-
-[  
-   {  
-      &quot;Id&quot;:&quot;Simple&quot;,
-      &quot;TypeId&quot;:&quot;Simple&quot;
-   },
-   {  
-      &quot;Id&quot;:&quot;Simple with Secondary&quot;,
-      &quot;TypeId&quot;:&quot;Simple&quot;,
-      &quot;Indexes&quot;:[  
-         {  
-            &quot;SdsTypePropertyId&quot;:&quot;Measurement&quot;
-         }
-      ]
-   },
-   {  
-      &quot;Id&quot;:&quot;Compound&quot;,
-      &quot;TypeId&quot;:&quot;Compound&quot;
-   },
+<h2 id="list-streams"><code>List Streams</code></h2>
+<p><a id="opIdStream_List Streams"></a></p>
+<p>Returns a list of streams</p>
+<h3 id="request">Request</h3>
+<pre><code class="lang-text">GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams?query={query}&amp;skip={skip}&amp;count={count}&amp;orderby={orderby}
+</code></pre><h4 id="parameters">Parameters</h4>
+<p><code>string tenantId</code>
+Tenant identifier</p>
+<p><code>string namespaceId</code>
+Namespace identifier</p>
+<p><code>[Optional] string query</code><br>Query identifier. See <a class="xref" href="../search.html">Search in SDS</a> for information about specifying the search parameter.</p>
+<p><code>[Optional] int skip</code><br>Parameter representing the zero-based offset of the first object to retrieve. If unspecified, a default value of <code>0</code> is used.</p>
+<p><code>[Optional] int count</code><br>Parameter representing the maximum number of objects to retrieve. If unspecified, a default value of <code>100</code> is used.</p>
+<p><code>[Optional] string orderby</code><br>Parameter representing sorted order. A field name is required. The sorting is based on the stored values for a given field (of type <code>string</code>). For example, <code>orderby=name</code> would sort the returned results by the <code>name</code> values (ascending by default). Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values <code>asc</code> or <code>desc</code>, respectively. For example, <code>orderby=name desc</code> would sort the returned results by the <code>name</code> values, descending. If no value is specified, there is no sorting of results.</p>
+<h3 id="response">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="#schemasdsstream">SdsStream</a>[]</td>
+<td>Returns a list of <code>SdsStream</code> objects</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body">Example response body</h4>
+<p>200 Response (<a href="#schemasdsstream">SdsStream</a>[])</p>
+<pre><code class="lang-json">[
+  {
+    &quot;Id&quot;: &quot;string&quot;,
+    &quot;Name&quot;: &quot;string&quot;,
+    &quot;Description&quot;: &quot;string&quot;,
+    &quot;TypeId&quot;: &quot;string&quot;,
+    &quot;Indexes&quot;: [
+      {
+        &quot;SdsTypePropertyId&quot;: &quot;string&quot;
+      }
+    ],
+    &quot;InterpolationMode&quot;: 0,
+    &quot;ExtrapolationMode&quot;: 0,
+    &quot;PropertyOverrides&quot;: [
+      {
+        &quot;SdsTypePropertyId&quot;: &quot;string&quot;,
+        &quot;Uom&quot;: &quot;string&quot;,
+        &quot;InterpolationMode&quot;: 0
+      }
+    ]
+  }
 ]
 </code></pre><hr>
-<h2 id="get-stream-type"><code>Get Stream Type</code></h2>
-<p>Returns the type definition that is associated with a given stream.</p>
-<p><strong>Request</strong>  </p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Type
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamId</code><br>The stream identifier.  </p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>The requested SdsType.</p>
-<hr>
-<h2 id="get-or-create-stream"><code>Get or Create Stream</code></h2>
-<p>Creates the specified stream. If a stream with a matching identifier already exists, SDS compares the existing stream with the stream that was sent. If the streams are identical, a <code>Found</code> (302) error is returned with the Location header set to the URI where the stream may be retrieved using a Get function. If the streams do not match, a <code>Conflict</code> (409) error is returned.</p>
-<p>For a matching stream (Found), clients that are capable of performing a redirect that includes the authorization header can automatically redirect to retrieve the stream. However, most clients, including the .NET HttpClient, consider redirecting with the authorization token to be a security vulnerability.</p>
-<p>When a client performs a redirect and strips the authorization header, SDS cannot authorize the request and returns <code>Unauthorized</code> (401). For this reason, it is recommended that when using clients that do not redirect with the authorization header, you should disable automatic redirect.</p>
-<p><strong>Request</strong> </p>
-<pre><code class="lang-text">POST api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamId</code><br>The stream identifier. The stream identifier must match the identifier in content.</p>
-<p><strong>Request body</strong><br>The request content is the serialized SdsStream.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>The newly created SdsStream.</p>
-<hr>
-<h2 id="create-or-update-stream"><code>Create or Update Stream</code></h2>
-<p>Creates the specified stream. If a stream with the same Id already exists, the definition of the stream is updated. The following changes are permitted:</p>
-<ul>
-<li>Name  </li>
-<li>Description  </li>
-<li>Indexes  </li>
-<li>InterpolationMode  </li>
-<li>ExtrapolationMode  </li>
-<li>PropertyOverrides  </li>
-</ul>
-<p>Note that modifying Indexes will result in re-indexing all of the stream&#39;s data for each additional secondary index.</p>
-<p>For more information on secondary indexes, see <a class="xref" href="../sds-streams.html#indexes">Indexes</a>.</p>
-<p>Unpermitted changes result in an error.</p>
-<p><strong>Request</strong>  </p>
-<pre><code class="lang-text">PUT api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamId</code><br>The stream identifier.</p>
-<p><strong>Request body</strong><br>The request content is the serialized SdsStream.</p>
-<p><strong>Response</strong><br>The response includes a status code.</p>
-<hr>
-<h2 id="update-stream-type"><code>Update Stream Type</code></h2>
-<p>Updates a stream’s type. The type is modified to match the specified stream view. Defined Indexes and PropertyOverrides are removed when updating a stream type.</p>
-<p><strong>Request</strong>  </p>
-<pre><code class="lang-text">  PUT api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Type?streamViewId={streamViewId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamId</code><br>The stream identifier.</p>
-<p><code>string streamViewId</code><br>The stream view identifier.  </p>
-<p><strong>Request body</strong><br>The request content is the serialized SdsStream.</p>
-<p><strong>Response</strong><br>The response includes a status code.</p>
-<p><strong>Response body</strong><br>On failure, the content contains a message describing the issue.</p>
-<hr>
+<h2 id="get-stream"><code>Get Stream</code></h2>
+<p><a id="opIdStream_Get Stream"></a></p>
+<p>Returns the specified stream</p>
+<h3 id="request-1">Request</h3>
+<pre><code class="lang-text">GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}
+</code></pre><h4 id="parameters-1">Parameters</h4>
+<p><code>string tenantId</code>
+Tenant identifier</p>
+<p><code>string namespaceId</code>
+Namespace identifier</p>
+<p><code>string streamId</code>
+Stream identifier</p>
+<h3 id="response-1">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="#schemasdsstream">SdsStream</a></td>
+<td>Returns the <code>SdsStream</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-1">Example response body</h4>
+<p>200 Response (<a href="#schemasdsstream">SdsStream</a>)</p>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;Description&quot;: &quot;string&quot;,
+  &quot;TypeId&quot;: &quot;string&quot;,
+  &quot;Indexes&quot;: [
+    {
+      &quot;SdsTypePropertyId&quot;: &quot;string&quot;
+    }
+  ],
+  &quot;InterpolationMode&quot;: 0,
+  &quot;ExtrapolationMode&quot;: 0,
+  &quot;PropertyOverrides&quot;: [
+    {
+      &quot;SdsTypePropertyId&quot;: &quot;string&quot;,
+      &quot;Uom&quot;: &quot;string&quot;,
+      &quot;InterpolationMode&quot;: 0
+    }
+  ]
+}
+</code></pre><hr>
+<h2 id="get-or-create-stream"><code>Get Or Create Stream</code></h2>
+<p><a id="opIdStream_Get Or Create Stream"></a></p>
+<p>Creates the specified stream. If a stream with a matching identifier already exists, SDS compares the existing stream with the stream that was sent.</p>
+<h3 id="request-2">Request</h3>
+<pre><code class="lang-text">POST /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}
+</code></pre><h4 id="parameters-2">Parameters</h4>
+<p><code>string tenantId</code>
+Tenant identifier</p>
+<p><code>string namespaceId</code>
+Namespace identifier</p>
+<p><code>string streamId</code>
+Stream identifier</p>
+<h3 id="response-2">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="#schemasdsstream">SdsStream</a></td>
+<td>Returns the <code>SdsStream</code></td>
+</tr>
+<tr>
+<td>201</td>
+<td><a href="#schemasdsstream">SdsStream</a></td>
+<td>Returns the <code>SdsStream</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>409</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Conflict</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-2">Example response body</h4>
+<p>200 Response (<a href="#schemasdsstream">SdsStream</a>)</p>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;Description&quot;: &quot;string&quot;,
+  &quot;TypeId&quot;: &quot;string&quot;,
+  &quot;Indexes&quot;: [
+    {
+      &quot;SdsTypePropertyId&quot;: &quot;string&quot;
+    }
+  ],
+  &quot;InterpolationMode&quot;: 0,
+  &quot;ExtrapolationMode&quot;: 0,
+  &quot;PropertyOverrides&quot;: [
+    {
+      &quot;SdsTypePropertyId&quot;: &quot;string&quot;,
+      &quot;Uom&quot;: &quot;string&quot;,
+      &quot;InterpolationMode&quot;: 0
+    }
+  ]
+}
+</code></pre><hr>
+<h2 id="create-or-update-stream"><code>Create Or Update Stream</code></h2>
+<p><a id="opIdStream_Create Or Update Stream"></a></p>
+<p>Creates the specified stream. If a stream with the same Id already exists, the definition of the stream is updated.</p>
+<h3 id="request-3">Request</h3>
+<pre><code class="lang-text">PUT /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}
+</code></pre><h4 id="parameters-3">Parameters</h4>
+<p><code>string tenantId</code>
+Tenant identifier</p>
+<p><code>string namespaceId</code>
+Namespace identifier</p>
+<p><code>string streamId</code>
+Stream identifier</p>
+<h3 id="response-3">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>201</td>
+<td><a href="#schemasdsstream">SdsStream</a></td>
+<td>Returns the <code>SdsStream</code></td>
+</tr>
+<tr>
+<td>204</td>
+<td>None</td>
+<td>Returns the <code>SdsStream</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>409</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Conflict</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-3">Example response body</h4>
+<p>201 Response (<a href="#schemasdsstream">SdsStream</a>)</p>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;Description&quot;: &quot;string&quot;,
+  &quot;TypeId&quot;: &quot;string&quot;,
+  &quot;Indexes&quot;: [
+    {
+      &quot;SdsTypePropertyId&quot;: &quot;string&quot;
+    }
+  ],
+  &quot;InterpolationMode&quot;: 0,
+  &quot;ExtrapolationMode&quot;: 0,
+  &quot;PropertyOverrides&quot;: [
+    {
+      &quot;SdsTypePropertyId&quot;: &quot;string&quot;,
+      &quot;Uom&quot;: &quot;string&quot;,
+      &quot;InterpolationMode&quot;: 0
+    }
+  ]
+}
+</code></pre><hr>
 <h2 id="delete-stream"><code>Delete Stream</code></h2>
-<p>Deletes a stream.</p>
-<p><strong>Request</strong>  </p>
-<pre><code class="lang-text">  DELETE api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamId</code><br>The stream identifier.</p>
-<p><strong>Response</strong><br>The response includes a status code.</p>
+<p><a id="opIdStream_Delete Stream"></a></p>
+<p>Deletes a stream from the specified tenant and namespace</p>
+<h3 id="request-4">Request</h3>
+<pre><code class="lang-text">DELETE /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}
+</code></pre><h4 id="parameters-4">Parameters</h4>
+<p><code>string tenantId</code>
+Tenant identifier</p>
+<p><code>string namespaceId</code>
+Namespace identifier</p>
+<p><code>string streamId</code>
+Stream identifier</p>
+<h3 id="response-4">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>204</td>
+<td>None</td>
+<td><code>SdsStream</code> was successfully deleted</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-4">Example response body</h4>
+<p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><hr>
+<h2 id="get-stream-type"><code>Get Stream Type</code></h2>
+<p><a id="opIdStream_Get Stream Type"></a></p>
+<p>Returns the type definition that is associated with a given stream</p>
+<h3 id="request-5">Request</h3>
+<pre><code class="lang-text">GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Type
+</code></pre><h4 id="parameters-5">Parameters</h4>
+<p><code>string tenantId</code>
+Tenant identifier</p>
+<p><code>string namespaceId</code>
+Namespace identifier</p>
+<p><code>string streamId</code>
+Stream identifier</p>
+<h3 id="response-5">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="#schemasdstype">SdsType</a></td>
+<td>Returns the <code>SdsType</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-5">Example response body</h4>
+<p>200 Response (<a href="#schemasdstype">SdsType</a>)</p>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;Description&quot;: &quot;string&quot;,
+  &quot;SdsTypeCode&quot;: 0,
+  &quot;IsGenericType&quot;: true,
+  &quot;IsReferenceType&quot;: true,
+  &quot;GenericArguments&quot;: [
+    {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;SdsTypeCode&quot;: 0,
+      &quot;IsGenericType&quot;: true,
+      &quot;IsReferenceType&quot;: true,
+      &quot;GenericArguments&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;SdsTypeCode&quot;: null,
+          &quot;IsGenericType&quot;: true,
+          &quot;IsReferenceType&quot;: true,
+          &quot;GenericArguments&quot;: [
+            {}
+          ],
+          &quot;Properties&quot;: [
+            {}
+          ],
+          &quot;BaseType&quot;: null,
+          &quot;DerivedTypes&quot;: [
+            {}
+          ],
+          &quot;InterpolationMode&quot;: null,
+          &quot;ExtrapolationMode&quot;: null
+        }
+      ],
+      &quot;Properties&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;Order&quot;: 0,
+          &quot;IsKey&quot;: true,
+          &quot;FixedSize&quot;: 0,
+          &quot;SdsType&quot;: null,
+          &quot;Value&quot;: null,
+          &quot;Uom&quot;: &quot;string&quot;,
+          &quot;InterpolationMode&quot;: null,
+          &quot;IsQuality&quot;: true
+        }
+      ],
+      &quot;BaseType&quot;: {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      },
+      &quot;DerivedTypes&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;SdsTypeCode&quot;: null,
+          &quot;IsGenericType&quot;: true,
+          &quot;IsReferenceType&quot;: true,
+          &quot;GenericArguments&quot;: [
+            {}
+          ],
+          &quot;Properties&quot;: [
+            {}
+          ],
+          &quot;BaseType&quot;: null,
+          &quot;DerivedTypes&quot;: [
+            {}
+          ],
+          &quot;InterpolationMode&quot;: null,
+          &quot;ExtrapolationMode&quot;: null
+        }
+      ],
+      &quot;InterpolationMode&quot;: 0,
+      &quot;ExtrapolationMode&quot;: 0
+    }
+  ],
+  &quot;Properties&quot;: [
+    {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;Order&quot;: 0,
+      &quot;IsKey&quot;: true,
+      &quot;FixedSize&quot;: 0,
+      &quot;SdsType&quot;: {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      },
+      &quot;Value&quot;: null,
+      &quot;Uom&quot;: &quot;string&quot;,
+      &quot;InterpolationMode&quot;: 0,
+      &quot;IsQuality&quot;: true
+    }
+  ],
+  &quot;BaseType&quot;: {
+    &quot;Id&quot;: &quot;string&quot;,
+    &quot;Name&quot;: &quot;string&quot;,
+    &quot;Description&quot;: &quot;string&quot;,
+    &quot;SdsTypeCode&quot;: 0,
+    &quot;IsGenericType&quot;: true,
+    &quot;IsReferenceType&quot;: true,
+    &quot;GenericArguments&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      }
+    ],
+    &quot;Properties&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;Order&quot;: 0,
+        &quot;IsKey&quot;: true,
+        &quot;FixedSize&quot;: 0,
+        &quot;SdsType&quot;: null,
+        &quot;Value&quot;: null,
+        &quot;Uom&quot;: &quot;string&quot;,
+        &quot;InterpolationMode&quot;: null,
+        &quot;IsQuality&quot;: true
+      }
+    ],
+    &quot;BaseType&quot;: {
+      &quot;Id&quot;: null,
+      &quot;Name&quot;: null,
+      &quot;Description&quot;: null,
+      &quot;SdsTypeCode&quot;: null,
+      &quot;IsGenericType&quot;: null,
+      &quot;IsReferenceType&quot;: null,
+      &quot;GenericArguments&quot;: null,
+      &quot;Properties&quot;: null,
+      &quot;BaseType&quot;: null,
+      &quot;DerivedTypes&quot;: null,
+      &quot;InterpolationMode&quot;: null,
+      &quot;ExtrapolationMode&quot;: null
+    },
+    &quot;DerivedTypes&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      }
+    ],
+    &quot;InterpolationMode&quot;: 0,
+    &quot;ExtrapolationMode&quot;: 0
+  },
+  &quot;DerivedTypes&quot;: [
+    {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;SdsTypeCode&quot;: 0,
+      &quot;IsGenericType&quot;: true,
+      &quot;IsReferenceType&quot;: true,
+      &quot;GenericArguments&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;SdsTypeCode&quot;: null,
+          &quot;IsGenericType&quot;: true,
+          &quot;IsReferenceType&quot;: true,
+          &quot;GenericArguments&quot;: [
+            {}
+          ],
+          &quot;Properties&quot;: [
+            {}
+          ],
+          &quot;BaseType&quot;: null,
+          &quot;DerivedTypes&quot;: [
+            {}
+          ],
+          &quot;InterpolationMode&quot;: null,
+          &quot;ExtrapolationMode&quot;: null
+        }
+      ],
+      &quot;Properties&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;Order&quot;: 0,
+          &quot;IsKey&quot;: true,
+          &quot;FixedSize&quot;: 0,
+          &quot;SdsType&quot;: null,
+          &quot;Value&quot;: null,
+          &quot;Uom&quot;: &quot;string&quot;,
+          &quot;InterpolationMode&quot;: null,
+          &quot;IsQuality&quot;: true
+        }
+      ],
+      &quot;BaseType&quot;: {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      },
+      &quot;DerivedTypes&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;SdsTypeCode&quot;: null,
+          &quot;IsGenericType&quot;: true,
+          &quot;IsReferenceType&quot;: true,
+          &quot;GenericArguments&quot;: [
+            {}
+          ],
+          &quot;Properties&quot;: [
+            {}
+          ],
+          &quot;BaseType&quot;: null,
+          &quot;DerivedTypes&quot;: [
+            {}
+          ],
+          &quot;InterpolationMode&quot;: null,
+          &quot;ExtrapolationMode&quot;: null
+        }
+      ],
+      &quot;InterpolationMode&quot;: 0,
+      &quot;ExtrapolationMode&quot;: 0
+    }
+  ],
+  &quot;InterpolationMode&quot;: 0,
+  &quot;ExtrapolationMode&quot;: 0
+}
+</code></pre><hr>
+<h2 id="update-stream-type"><code>Update Stream Type</code></h2>
+<p><a id="opIdStream_Update Stream Type"></a></p>
+<p>Returns the type definition that is associated with a given stream</p>
+<h3 id="request-6">Request</h3>
+<pre><code class="lang-text">PUT /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Type
+</code></pre><h4 id="parameters-6">Parameters</h4>
+<p><code>string tenantId</code>
+Tenant identifier</p>
+<p><code>string namespaceId</code>
+Namespace identifier</p>
+<p><code>string streamId</code>
+Stream identifier</p>
+<h3 id="response-6">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>204</td>
+<td>None</td>
+<td><code>SdsType</code> was successfully updated</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>409</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Conflict</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-6">Example response body</h4>
+<p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><hr>
+<h2 id="get-resolved-stream"><code>Get Resolved Stream</code></h2>
+<p><a id="opIdStream_Get Resolved Stream"></a></p>
+<h3 id="request-7">Request</h3>
+<pre><code class="lang-text">GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Resolved
+</code></pre><h4 id="parameters-7">Parameters</h4>
+<p><code>string tenantId</code>
+<code>string namespaceId</code>
+<code>string streamId</code></p>
+<h3 id="response-7">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="#schemasdsresolvedstream">SdsResolvedStream</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-7">Example response body</h4>
+<p>200 Response (<a href="#schemasdsresolvedstream">SdsResolvedStream</a>)</p>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;Description&quot;: &quot;string&quot;,
+  &quot;TypeId&quot;: &quot;string&quot;,
+  &quot;Indexes&quot;: [
+    {
+      &quot;SdsTypePropertyId&quot;: &quot;string&quot;
+    }
+  ],
+  &quot;InterpolationMode&quot;: 0,
+  &quot;ExtrapolationMode&quot;: 0,
+  &quot;PropertyOverrides&quot;: [
+    {
+      &quot;SdsTypePropertyId&quot;: &quot;string&quot;,
+      &quot;Uom&quot;: &quot;string&quot;,
+      &quot;InterpolationMode&quot;: 0
+    }
+  ],
+  &quot;Resolved&quot;: true,
+  &quot;Type&quot;: {
+    &quot;Id&quot;: &quot;string&quot;,
+    &quot;Name&quot;: &quot;string&quot;,
+    &quot;Description&quot;: &quot;string&quot;,
+    &quot;SdsTypeCode&quot;: &quot;Empty&quot;,
+    &quot;IsGenericType&quot;: true,
+    &quot;IsReferenceType&quot;: true,
+    &quot;GenericArguments&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: 0,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+        &quot;Properties&quot;: [
+          {
+            &quot;Id&quot;: &quot;string&quot;,
+            &quot;Name&quot;: &quot;string&quot;,
+            &quot;Description&quot;: &quot;string&quot;,
+            &quot;Order&quot;: 0,
+            &quot;IsKey&quot;: true,
+            &quot;FixedSize&quot;: 0,
+            &quot;SdsType&quot;: &quot;&lt;SdsType&gt;&quot;,
+            &quot;Value&quot;: null,
+            &quot;Uom&quot;: &quot;string&quot;,
+            &quot;InterpolationMode&quot;: 0,
+            &quot;IsQuality&quot;: true
+          }
+        ],
+        &quot;BaseType&quot;: &quot;&lt;SdsType&gt;&quot;,
+        &quot;DerivedTypes&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+        &quot;InterpolationMode&quot;: 0,
+        &quot;ExtrapolationMode&quot;: 0
+      }
+    ],
+    &quot;Properties&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;Order&quot;: 0,
+        &quot;IsKey&quot;: true,
+        &quot;FixedSize&quot;: 0,
+        &quot;SdsType&quot;: &quot;&lt;SdsResolvedType&gt;&quot;,
+        &quot;Value&quot;: null,
+        &quot;Uom&quot;: &quot;string&quot;,
+        &quot;InterpolationMode&quot;: &quot;Continuous&quot;,
+        &quot;IsQuality&quot;: true
+      }
+    ],
+    &quot;BaseType&quot;: {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;SdsTypeCode&quot;: 0,
+      &quot;IsGenericType&quot;: true,
+      &quot;IsReferenceType&quot;: true,
+      &quot;GenericArguments&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+      &quot;Properties&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;Order&quot;: 0,
+          &quot;IsKey&quot;: true,
+          &quot;FixedSize&quot;: 0,
+          &quot;SdsType&quot;: &quot;&lt;SdsType&gt;&quot;,
+          &quot;Value&quot;: null,
+          &quot;Uom&quot;: &quot;string&quot;,
+          &quot;InterpolationMode&quot;: 0,
+          &quot;IsQuality&quot;: true
+        }
+      ],
+      &quot;BaseType&quot;: &quot;&lt;SdsType&gt;&quot;,
+      &quot;DerivedTypes&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+      &quot;InterpolationMode&quot;: 0,
+      &quot;ExtrapolationMode&quot;: 0
+    },
+    &quot;DerivedTypes&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: 0,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+        &quot;Properties&quot;: [
+          {
+            &quot;Id&quot;: &quot;string&quot;,
+            &quot;Name&quot;: &quot;string&quot;,
+            &quot;Description&quot;: &quot;string&quot;,
+            &quot;Order&quot;: 0,
+            &quot;IsKey&quot;: true,
+            &quot;FixedSize&quot;: 0,
+            &quot;SdsType&quot;: &quot;&lt;SdsType&gt;&quot;,
+            &quot;Value&quot;: null,
+            &quot;Uom&quot;: &quot;string&quot;,
+            &quot;InterpolationMode&quot;: 0,
+            &quot;IsQuality&quot;: true
+          }
+        ],
+        &quot;BaseType&quot;: &quot;&lt;SdsType&gt;&quot;,
+        &quot;DerivedTypes&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+        &quot;InterpolationMode&quot;: 0,
+        &quot;ExtrapolationMode&quot;: 0
+      }
+    ],
+    &quot;InterpolationMode&quot;: &quot;Continuous&quot;,
+    &quot;ExtrapolationMode&quot;: &quot;All&quot;
+  }
+}
+</code></pre><hr>
+<h2 id="get-resolved-streams"><code>Get Resolved Streams</code></h2>
+<p><a id="opIdStream_Get Resolved Streams"></a></p>
+<h3 id="request-8">Request</h3>
+<pre><code class="lang-text">POST /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/Bulk/Streams/Resolved
+</code></pre><h4 id="parameters-8">Parameters</h4>
+<p><code>string tenantId</code>
+<code>string namespaceId</code></p>
+<h3 id="response-8">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>207</td>
+<td><a href="#schemasdsresolvedstreamsresponse">SdsResolvedStreamsResponse</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-8">Example response body</h4>
+<p>207 Response (<a href="#schemasdsresolvedstreamsresponse">SdsResolvedStreamsResponse</a>)</p>
+<pre><code class="lang-json">{
+  &quot;Data&quot;: [
+    {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;TypeId&quot;: &quot;string&quot;,
+      &quot;Indexes&quot;: [
+        {
+          &quot;SdsTypePropertyId&quot;: &quot;string&quot;
+        }
+      ],
+      &quot;InterpolationMode&quot;: 0,
+      &quot;ExtrapolationMode&quot;: 0,
+      &quot;PropertyOverrides&quot;: [
+        {
+          &quot;SdsTypePropertyId&quot;: &quot;string&quot;,
+          &quot;Uom&quot;: &quot;string&quot;,
+          &quot;InterpolationMode&quot;: 0
+        }
+      ],
+      &quot;Resolved&quot;: true,
+      &quot;Type&quot;: {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: &quot;Empty&quot;,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          {
+            &quot;Id&quot;: &quot;string&quot;,
+            &quot;Name&quot;: &quot;string&quot;,
+            &quot;Description&quot;: &quot;string&quot;,
+            &quot;SdsTypeCode&quot;: 0,
+            &quot;IsGenericType&quot;: true,
+            &quot;IsReferenceType&quot;: true,
+            &quot;GenericArguments&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+            &quot;Properties&quot;: [
+              {
+                &quot;Id&quot;: &quot;string&quot;,
+                &quot;Name&quot;: &quot;string&quot;,
+                &quot;Description&quot;: &quot;string&quot;,
+                &quot;Order&quot;: 0,
+                &quot;IsKey&quot;: true,
+                &quot;FixedSize&quot;: 0,
+                &quot;SdsType&quot;: &quot;&lt;SdsType&gt;&quot;,
+                &quot;Value&quot;: null,
+                &quot;Uom&quot;: &quot;string&quot;,
+                &quot;InterpolationMode&quot;: &quot;[&quot;,
+                &quot;IsQuality&quot;: true
+              }
+            ],
+            &quot;BaseType&quot;: &quot;&lt;SdsType&gt;&quot;,
+            &quot;DerivedTypes&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+            &quot;InterpolationMode&quot;: 0,
+            &quot;ExtrapolationMode&quot;: 0
+          }
+        ],
+        &quot;Properties&quot;: [
+          {
+            &quot;Id&quot;: &quot;string&quot;,
+            &quot;Name&quot;: &quot;string&quot;,
+            &quot;Description&quot;: &quot;string&quot;,
+            &quot;Order&quot;: 0,
+            &quot;IsKey&quot;: true,
+            &quot;FixedSize&quot;: 0,
+            &quot;SdsType&quot;: &quot;&lt;SdsResolvedType&gt;&quot;,
+            &quot;Value&quot;: null,
+            &quot;Uom&quot;: &quot;string&quot;,
+            &quot;InterpolationMode&quot;: &quot;Continuous&quot;,
+            &quot;IsQuality&quot;: true
+          }
+        ],
+        &quot;BaseType&quot;: {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;SdsTypeCode&quot;: 0,
+          &quot;IsGenericType&quot;: true,
+          &quot;IsReferenceType&quot;: true,
+          &quot;GenericArguments&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+          &quot;Properties&quot;: [
+            {
+              &quot;Id&quot;: &quot;string&quot;,
+              &quot;Name&quot;: &quot;string&quot;,
+              &quot;Description&quot;: &quot;string&quot;,
+              &quot;Order&quot;: 0,
+              &quot;IsKey&quot;: true,
+              &quot;FixedSize&quot;: 0,
+              &quot;SdsType&quot;: null,
+              &quot;Value&quot;: null,
+              &quot;Uom&quot;: &quot;string&quot;,
+              &quot;InterpolationMode&quot;: null,
+              &quot;IsQuality&quot;: true
+            }
+          ],
+          &quot;BaseType&quot;: &quot;&lt;SdsType&gt;&quot;,
+          &quot;DerivedTypes&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+          &quot;InterpolationMode&quot;: 0,
+          &quot;ExtrapolationMode&quot;: 0
+        },
+        &quot;DerivedTypes&quot;: [
+          {
+            &quot;Id&quot;: &quot;string&quot;,
+            &quot;Name&quot;: &quot;string&quot;,
+            &quot;Description&quot;: &quot;string&quot;,
+            &quot;SdsTypeCode&quot;: 0,
+            &quot;IsGenericType&quot;: true,
+            &quot;IsReferenceType&quot;: true,
+            &quot;GenericArguments&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+            &quot;Properties&quot;: [
+              {
+                &quot;Id&quot;: &quot;string&quot;,
+                &quot;Name&quot;: &quot;string&quot;,
+                &quot;Description&quot;: &quot;string&quot;,
+                &quot;Order&quot;: 0,
+                &quot;IsKey&quot;: true,
+                &quot;FixedSize&quot;: 0,
+                &quot;SdsType&quot;: &quot;&lt;SdsType&gt;&quot;,
+                &quot;Value&quot;: null,
+                &quot;Uom&quot;: &quot;string&quot;,
+                &quot;InterpolationMode&quot;: &quot;[&quot;,
+                &quot;IsQuality&quot;: true
+              }
+            ],
+            &quot;BaseType&quot;: &quot;&lt;SdsType&gt;&quot;,
+            &quot;DerivedTypes&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+            &quot;InterpolationMode&quot;: 0,
+            &quot;ExtrapolationMode&quot;: 0
+          }
+        ],
+        &quot;InterpolationMode&quot;: &quot;Continuous&quot;,
+        &quot;ExtrapolationMode&quot;: &quot;All&quot;
+      }
+    }
+  ],
+  &quot;ChildErrors&quot;: [
+    {
+      &quot;OperationId&quot;: &quot;string&quot;,
+      &quot;Error&quot;: &quot;string&quot;,
+      &quot;Reason&quot;: &quot;string&quot;,
+      &quot;Resolution&quot;: &quot;string&quot;,
+      &quot;Parameters&quot;: {
+        &quot;property1&quot;: &quot;string&quot;,
+        &quot;property2&quot;: &quot;string&quot;
+      },
+      &quot;StreamId&quot;: &quot;string&quot;,
+      &quot;StatusCode&quot;: 100
+    }
+  ]
+}
+</code></pre><hr>
+<h2 id="definitions">Definitions</h2>
+<h3 id="sdsstream">SdsStream</h3>
+<p><a id="schemasdsstream"></a>
+<a id="schema_SdsStream"></a>
+<a id="tocSsdsstream"></a>
+<a id="tocssdsstream"></a></p>
+<h4 id="properties">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>An unique identifier for the <code>SdsStream</code> object</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>An optional user-friendly name for the <code>SdsStream</code> object</td>
+</tr>
+<tr>
+<td><code>Description</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>A brief description of the <code>SdsStream</code> object</td>
+</tr>
+<tr>
+<td><code>TypeId</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>An unique identifier for the SdsType of the <code>SdsStream</code> object</td>
+</tr>
+<tr>
+<td><code>Indexes</code></td>
+<td>[<a href="#schemasdsstreamindex">SdsStreamIndex</a>]</td>
+<td>false</td>
+<td>true</td>
+<td>List of <code>SdsStreamIndex</code>s to define secondary indexes for the <code>SdsStream</code></td>
+</tr>
+<tr>
+<td><code>InterpolationMode</code></td>
+<td><a href="#schemasdsinterpolationmode">SdsInterpolationMode</a></td>
+<td>false</td>
+<td>true</td>
+<td>Defines the <code>SdsInterpolationMode</code> of the <code>SdsStream</code>. Default is <code>null</code>.</td>
+</tr>
+<tr>
+<td><code>ExtrapolationMode</code></td>
+<td><a href="#schemasdsextrapolationmode">SdsExtrapolationMode</a></td>
+<td>false</td>
+<td>true</td>
+<td>Defines the <code>SdsExtrapolationMode</code> of the <code>SdsStream</code>. Default is <code>null</code>.</td>
+</tr>
+<tr>
+<td><code>PropertyOverrides</code></td>
+<td>[<a href="#schemasdsstreampropertyoverride">SdsStreamPropertyOverride</a>]</td>
+<td>false</td>
+<td>true</td>
+<td>List of <code>SdsStreamPropertyOverrides</code> to define unit of measure and interpolation mode overrides for the <code>SdsStream</code></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;Description&quot;: &quot;string&quot;,
+  &quot;TypeId&quot;: &quot;string&quot;,
+  &quot;Indexes&quot;: [
+    {
+      &quot;SdsTypePropertyId&quot;: &quot;string&quot;
+    }
+  ],
+  &quot;InterpolationMode&quot;: 0,
+  &quot;ExtrapolationMode&quot;: 0,
+  &quot;PropertyOverrides&quot;: [
+    {
+      &quot;SdsTypePropertyId&quot;: &quot;string&quot;,
+      &quot;Uom&quot;: &quot;string&quot;,
+      &quot;InterpolationMode&quot;: 0
+    }
+  ]
+}
+</code></pre><hr>
+<h3 id="sdsstreamindex">SdsStreamIndex</h3>
+<p><a id="schemasdsstreamindex"></a>
+<a id="schema_SdsStreamIndex"></a>
+<a id="tocSsdsstreamindex"></a>
+<a id="tocssdsstreamindex"></a></p>
+<p>Indexes speed up and order the results of stream data filtering. <code>SdsStreamIndex</code> or secondary indexes is defined on the stream and is applied to a single property. You can define several secondary indexes. Secondary index values need not be unique.</p>
+<h4 id="properties-1">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SdsTypePropertyId</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>An unique identifier for the SdsTypeProperty</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;SdsTypePropertyId&quot;: &quot;string&quot;
+}
+</code></pre><hr>
+<h3 id="sdsinterpolationmode">SdsInterpolationMode</h3>
+<p><a id="schemasdsinterpolationmode"></a>
+<a id="schema_SdsInterpolationMode"></a>
+<a id="tocSsdsinterpolationmode"></a>
+<a id="tocssdsinterpolationmode"></a></p>
+<p>Interpolation modes that can be applied to <code>SdsType</code>, <code>SdsTypeProperty</code>, <code>SdsStream</code>, and <code>SdsStreamPropertyOverride</code> objects</p>
+<h4 id="enumerated-values">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default</td>
+<td>0</td>
+<td>Interpolation modes that can be applied to <code>SdsType</code>, <code>SdsTypeProperty</code>, <code>SdsStream</code>, and <code>SdsStreamPropertyOverride</code> objects</td>
+</tr>
+<tr>
+<td>Continuous</td>
+<td>0</td>
+<td>Interpolation modes that can be applied to <code>SdsType</code>, <code>SdsTypeProperty</code>, <code>SdsStream</code>, and <code>SdsStreamPropertyOverride</code> objects</td>
+</tr>
+<tr>
+<td>StepwiseContinuousLeading</td>
+<td>1</td>
+<td>Interpolation modes that can be applied to <code>SdsType</code>, <code>SdsTypeProperty</code>, <code>SdsStream</code>, and <code>SdsStreamPropertyOverride</code> objects</td>
+</tr>
+<tr>
+<td>StepwiseContinuousTrailing</td>
+<td>2</td>
+<td>Interpolation modes that can be applied to <code>SdsType</code>, <code>SdsTypeProperty</code>, <code>SdsStream</code>, and <code>SdsStreamPropertyOverride</code> objects</td>
+</tr>
+<tr>
+<td>Discrete</td>
+<td>3</td>
+<td>Interpolation modes that can be applied to <code>SdsType</code>, <code>SdsTypeProperty</code>, <code>SdsStream</code>, and <code>SdsStreamPropertyOverride</code> objects</td>
+</tr>
+<tr>
+<td>ContinuousNullableLeading</td>
+<td>4</td>
+<td>Interpolation modes that can be applied to <code>SdsType</code>, <code>SdsTypeProperty</code>, <code>SdsStream</code>, and <code>SdsStreamPropertyOverride</code> objects</td>
+</tr>
+<tr>
+<td>ContinuousNullableTrailing</td>
+<td>5</td>
+<td>Interpolation modes that can be applied to <code>SdsType</code>, <code>SdsTypeProperty</code>, <code>SdsStream</code>, and <code>SdsStreamPropertyOverride</code> objects</td>
+</tr>
+</tbody>
+</table>
 <hr>
+<h3 id="sdsextrapolationmode">SdsExtrapolationMode</h3>
+<p><a id="schemasdsextrapolationmode"></a>
+<a id="schema_SdsExtrapolationMode"></a>
+<a id="tocSsdsextrapolationmode"></a>
+<a id="tocssdsextrapolationmode"></a></p>
+<p>Defines how a stream responds to requests with indexes that precede or follow all data in the stream. Behavior also depends on the <code>SdsInterpolationMode</code> for a stream. If <code>SdsInterpolationMode</code> is set to <code>Discrete</code>, extrapolation will not occur. If <code>SdsInterpolationMode</code> is set to <code>ContinuousNullableLeading</code> or <code>ContinuousNullableTrailing</code>, default values will be returned instead of actual data.</p>
+<h4 id="enumerated-values-1">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All</td>
+<td>0</td>
+<td>Defines how a stream responds to requests with indexes that precede or follow all data in the stream. Behavior also depends on the <code>SdsInterpolationMode</code> for a stream. If <code>SdsInterpolationMode</code> is set to <code>Discrete</code>, extrapolation will not occur. If <code>SdsInterpolationMode</code> is set to <code>ContinuousNullableLeading</code> or <code>ContinuousNullableTrailing</code>, default values are returned instead of actual data.</td>
+</tr>
+<tr>
+<td>None</td>
+<td>1</td>
+<td>Defines how a stream responds to requests with indexes that precede or follow all data in the stream. Behavior also depends on the <code>SdsInterpolationMode</code> for a stream. If <code>SdsInterpolationMode</code> is set to <code>Discrete</code>, extrapolation will not occur. If <code>SdsInterpolationMode</code> is set to <code>ContinuousNullableLeading</code> or <code>ContinuousNullableTrailing</code>, default values are returned instead of actual data.</td>
+</tr>
+<tr>
+<td>Forward</td>
+<td>2</td>
+<td>Defines how a stream responds to requests with indexes that precede or follow all data in the stream. Behavior also depends on the <code>SdsInterpolationMode</code> for a stream. If <code>SdsInterpolationMode</code> is set to <code>Discrete</code>, extrapolation will not occur. If <code>SdsInterpolationMode</code> is set to <code>ContinuousNullableLeading</code> or <code>ContinuousNullableTrailing</code>, default values are returned instead of actual data.</td>
+</tr>
+<tr>
+<td>Backward</td>
+<td>3</td>
+<td>Defines how a stream responds to requests with indexes that precede or follow all data in the stream. Behavior also depends on the <code>SdsInterpolationMode</code> for a stream. If <code>SdsInterpolationMode</code> is set to <code>Discrete</code>, extrapolation will not occur. If <code>SdsInterpolationMode</code> is set to <code>ContinuousNullableLeading</code> or <code>ContinuousNullableTrailing</code>, default values are returned instead of actual data.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="sdsstreampropertyoverride">SdsStreamPropertyOverride</h3>
+<p><a id="schemasdsstreampropertyoverride"></a>
+<a id="schema_SdsStreamPropertyOverride"></a>
+<a id="tocSsdsstreampropertyoverride"></a>
+<a id="tocssdsstreampropertyoverride"></a></p>
+<h4 id="properties-2">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SdsTypePropertyId</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>An unique identifier for the <code>SdsTypeProperty</code> object that needs to be overridden</td>
+</tr>
+<tr>
+<td><code>Uom</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>The <code>Id</code>, name, or abbreviation of the unit of measure to be applied to the <code>SdsTypeProperty</code></td>
+</tr>
+<tr>
+<td><code>InterpolationMode</code></td>
+<td><a href="#schemasdsinterpolationmode">SdsInterpolationMode</a></td>
+<td>false</td>
+<td>true</td>
+<td>Defines the <code>InterpolationMode</code> of the <code>SdsTypeProperty</code></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;SdsTypePropertyId&quot;: &quot;string&quot;,
+  &quot;Uom&quot;: &quot;string&quot;,
+  &quot;InterpolationMode&quot;: 0
+}
+</code></pre><hr>
+<h3 id="errorresponsebody">ErrorResponseBody</h3>
+<p><a id="schemaerrorresponsebody"></a>
+<a id="schema_ErrorResponseBody"></a>
+<a id="tocSerrorresponsebody"></a>
+<a id="tocserrorresponsebody"></a></p>
+<p>Contains the error message format that follows the AVEVA Data Hub error standards</p>
+<h4 id="properties-3">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OperationId</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Operation unique identifier of action that caused the error</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Error description</td>
+</tr>
+<tr>
+<td>Reason</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Reason for the error</td>
+</tr>
+<tr>
+<td>Resolution</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Resolution to resolve the error</td>
+</tr>
+<tr>
+<td>Parameters</td>
+<td>object</td>
+<td>false</td>
+<td>true</td>
+<td><code>Ids</code> or values that are creating or are affected by the error</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><hr>
+<h3 id="sdstype">SdsType</h3>
+<p><a id="schemasdstype"></a>
+<a id="schema_SdsType"></a>
+<a id="tocSsdstype"></a>
+<a id="tocssdstype"></a></p>
+<p>A contract defining the type of data to read or write in a SdsStream</p>
+<h4 id="properties-4">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>A unique identifier for the <code>SdsType</code> object</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>An optional user-friendly name for the <code>SdsType</code> object</td>
+</tr>
+<tr>
+<td><code>Description</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>A brief description of the <code>SdsType</code> object</td>
+</tr>
+<tr>
+<td><code>SdsTypeCode</code></td>
+<td><a href="#schemasdstypecode">SdsTypeCode</a></td>
+<td>false</td>
+<td>false</td>
+<td>The <code>SdsTypeCode</code> of the <code>SdsType</code> object</td>
+</tr>
+<tr>
+<td><code>IsGenericType</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>false</td>
+<td>A boolean value indicating whether the current <code>SdsType</code> is a generic type This property is only used when using templates or generics. It will be automatically set if the <code>SdsType</code> is generated using <code>SdsTypeBuilder</code>. For further information on generics, please refer, <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/index">https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/index</a></td>
+</tr>
+<tr>
+<td><code>IsReferenceType</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>false</td>
+<td>Enabling this property preserves objects as references during serialization/de-serialization of the <code>SdsType</code> data while using the <code>SdsFormatter</code>. This property behaves similar to the <code>IsReference</code> property for <code>DataContractSerializer</code> and is only valid for serialization if <code>SdsFormatter</code> is used.</td>
+</tr>
+<tr>
+<td><code>GenericArguments</code></td>
+<td>[<a href="#schemasdstype">SdsType</a>]</td>
+<td>false</td>
+<td>true</td>
+<td>Contains the parameterized <code>SdsTypes</code> of the current generic <code>SdsType</code>. This property is only used when using templates or generics. It will be automatically set if the <code>SdsType</code> is generated using <code>SdsTypeBuilder</code>. For further information on generics, please refer to <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/index">https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/index</a></td>
+</tr>
+<tr>
+<td><code>Properties</code></td>
+<td>[<a href="#schemasdstypeproperty">SdsTypeProperty</a>]</td>
+<td>false</td>
+<td>true</td>
+<td>List of <code>SdsTypeProperty</code>s of the <code>SdsType</code></td>
+</tr>
+<tr>
+<td><code>BaseType</code></td>
+<td><a href="#schemasdstype">SdsType</a></td>
+<td>false</td>
+<td>true</td>
+<td>Defines the base type of the <code>SdsType</code>. Commonly used by <code>SdsTypeBuilder</code> to generate an <code>SdsType</code> from contracts not explicitly defined and maintained by the user.</td>
+</tr>
+<tr>
+<td><code>DerivedTypes</code></td>
+<td>[<a href="#schemasdstype">SdsType</a>]</td>
+<td>false</td>
+<td>true</td>
+<td>List of <code>SdsTypes</code> that should be recognized by <code>SdsFormatter</code> during serialization/de-serialization. This property behaves similar to <code>KnownTypeAttribute</code> attribute for <code>DataContractSerializer</code> and only valid for serialization if <code>SdsFormatter</code> is used.</td>
+</tr>
+<tr>
+<td><code>InterpolationMode</code></td>
+<td><a href="#schemasdsinterpolationmode">SdsInterpolationMode</a></td>
+<td>false</td>
+<td>false</td>
+<td>Defines the <code>SdsInterpolationMode</code> of the <code>SdsType</code>. This property is only valid for the root <code>SdsType</code> and invalid for <code>SdsTypes</code> of <code>SdsTypeProperty</code>s.</td>
+</tr>
+<tr>
+<td><code>ExtrapolationMode</code></td>
+<td><a href="#schemasdsextrapolationmode">SdsExtrapolationMode</a></td>
+<td>false</td>
+<td>false</td>
+<td>Defines the <code>SdsExtrapolationMode</code> of the <code>SdsType</code>. This property is only valid for the root <code>SdsType</code> and invalid for <code>SdsTypes</code> of <code>SdsTypeProperty</code>s.</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;Description&quot;: &quot;string&quot;,
+  &quot;SdsTypeCode&quot;: 0,
+  &quot;IsGenericType&quot;: true,
+  &quot;IsReferenceType&quot;: true,
+  &quot;GenericArguments&quot;: [
+    {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;SdsTypeCode&quot;: 0,
+      &quot;IsGenericType&quot;: true,
+      &quot;IsReferenceType&quot;: true,
+      &quot;GenericArguments&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;SdsTypeCode&quot;: null,
+          &quot;IsGenericType&quot;: true,
+          &quot;IsReferenceType&quot;: true,
+          &quot;GenericArguments&quot;: [
+            {}
+          ],
+          &quot;Properties&quot;: [
+            {}
+          ],
+          &quot;BaseType&quot;: null,
+          &quot;DerivedTypes&quot;: [
+            {}
+          ],
+          &quot;InterpolationMode&quot;: null,
+          &quot;ExtrapolationMode&quot;: null
+        }
+      ],
+      &quot;Properties&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;Order&quot;: 0,
+          &quot;IsKey&quot;: true,
+          &quot;FixedSize&quot;: 0,
+          &quot;SdsType&quot;: null,
+          &quot;Value&quot;: null,
+          &quot;Uom&quot;: &quot;string&quot;,
+          &quot;InterpolationMode&quot;: null,
+          &quot;IsQuality&quot;: true
+        }
+      ],
+      &quot;BaseType&quot;: {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      },
+      &quot;DerivedTypes&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;SdsTypeCode&quot;: null,
+          &quot;IsGenericType&quot;: true,
+          &quot;IsReferenceType&quot;: true,
+          &quot;GenericArguments&quot;: [
+            {}
+          ],
+          &quot;Properties&quot;: [
+            {}
+          ],
+          &quot;BaseType&quot;: null,
+          &quot;DerivedTypes&quot;: [
+            {}
+          ],
+          &quot;InterpolationMode&quot;: null,
+          &quot;ExtrapolationMode&quot;: null
+        }
+      ],
+      &quot;InterpolationMode&quot;: 0,
+      &quot;ExtrapolationMode&quot;: 0
+    }
+  ],
+  &quot;Properties&quot;: [
+    {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;Order&quot;: 0,
+      &quot;IsKey&quot;: true,
+      &quot;FixedSize&quot;: 0,
+      &quot;SdsType&quot;: {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      },
+      &quot;Value&quot;: null,
+      &quot;Uom&quot;: &quot;string&quot;,
+      &quot;InterpolationMode&quot;: 0,
+      &quot;IsQuality&quot;: true
+    }
+  ],
+  &quot;BaseType&quot;: {
+    &quot;Id&quot;: &quot;string&quot;,
+    &quot;Name&quot;: &quot;string&quot;,
+    &quot;Description&quot;: &quot;string&quot;,
+    &quot;SdsTypeCode&quot;: 0,
+    &quot;IsGenericType&quot;: true,
+    &quot;IsReferenceType&quot;: true,
+    &quot;GenericArguments&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      }
+    ],
+    &quot;Properties&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;Order&quot;: 0,
+        &quot;IsKey&quot;: true,
+        &quot;FixedSize&quot;: 0,
+        &quot;SdsType&quot;: null,
+        &quot;Value&quot;: null,
+        &quot;Uom&quot;: &quot;string&quot;,
+        &quot;InterpolationMode&quot;: null,
+        &quot;IsQuality&quot;: true
+      }
+    ],
+    &quot;BaseType&quot;: {
+      &quot;Id&quot;: null,
+      &quot;Name&quot;: null,
+      &quot;Description&quot;: null,
+      &quot;SdsTypeCode&quot;: null,
+      &quot;IsGenericType&quot;: null,
+      &quot;IsReferenceType&quot;: null,
+      &quot;GenericArguments&quot;: null,
+      &quot;Properties&quot;: null,
+      &quot;BaseType&quot;: null,
+      &quot;DerivedTypes&quot;: null,
+      &quot;InterpolationMode&quot;: null,
+      &quot;ExtrapolationMode&quot;: null
+    },
+    &quot;DerivedTypes&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      }
+    ],
+    &quot;InterpolationMode&quot;: 0,
+    &quot;ExtrapolationMode&quot;: 0
+  },
+  &quot;DerivedTypes&quot;: [
+    {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;SdsTypeCode&quot;: 0,
+      &quot;IsGenericType&quot;: true,
+      &quot;IsReferenceType&quot;: true,
+      &quot;GenericArguments&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;SdsTypeCode&quot;: null,
+          &quot;IsGenericType&quot;: true,
+          &quot;IsReferenceType&quot;: true,
+          &quot;GenericArguments&quot;: [
+            {}
+          ],
+          &quot;Properties&quot;: [
+            {}
+          ],
+          &quot;BaseType&quot;: null,
+          &quot;DerivedTypes&quot;: [
+            {}
+          ],
+          &quot;InterpolationMode&quot;: null,
+          &quot;ExtrapolationMode&quot;: null
+        }
+      ],
+      &quot;Properties&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;Order&quot;: 0,
+          &quot;IsKey&quot;: true,
+          &quot;FixedSize&quot;: 0,
+          &quot;SdsType&quot;: null,
+          &quot;Value&quot;: null,
+          &quot;Uom&quot;: &quot;string&quot;,
+          &quot;InterpolationMode&quot;: null,
+          &quot;IsQuality&quot;: true
+        }
+      ],
+      &quot;BaseType&quot;: {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      },
+      &quot;DerivedTypes&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;SdsTypeCode&quot;: null,
+          &quot;IsGenericType&quot;: true,
+          &quot;IsReferenceType&quot;: true,
+          &quot;GenericArguments&quot;: [
+            {}
+          ],
+          &quot;Properties&quot;: [
+            {}
+          ],
+          &quot;BaseType&quot;: null,
+          &quot;DerivedTypes&quot;: [
+            {}
+          ],
+          &quot;InterpolationMode&quot;: null,
+          &quot;ExtrapolationMode&quot;: null
+        }
+      ],
+      &quot;InterpolationMode&quot;: 0,
+      &quot;ExtrapolationMode&quot;: 0
+    }
+  ],
+  &quot;InterpolationMode&quot;: 0,
+  &quot;ExtrapolationMode&quot;: 0
+}
+</code></pre><hr>
+<h3 id="sdstypecode">SdsTypeCode</h3>
+<p><a id="schemasdstypecode"></a>
+<a id="schema_SdsTypeCode"></a>
+<a id="tocSsdstypecode"></a>
+<a id="tocssdstypecode"></a></p>
+<h4 id="enumerated-values-2">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Empty</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Char</td>
+<td>4</td>
+</tr>
+<tr>
+<td>SByte</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Byte</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Int16</td>
+<td>7</td>
+</tr>
+<tr>
+<td>UInt16</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Int32</td>
+<td>9</td>
+</tr>
+<tr>
+<td>UInt32</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Int64</td>
+<td>11</td>
+</tr>
+<tr>
+<td>UInt64</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>13</td>
+</tr>
+<tr>
+<td>Double</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Decimal</td>
+<td>15</td>
+</tr>
+<tr>
+<td>DateTime</td>
+<td>16</td>
+</tr>
+<tr>
+<td>String</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Guid</td>
+<td>19</td>
+</tr>
+<tr>
+<td>DateTimeOffset</td>
+<td>20</td>
+</tr>
+<tr>
+<td>TimeSpan</td>
+<td>21</td>
+</tr>
+<tr>
+<td>Version</td>
+<td>22</td>
+</tr>
+<tr>
+<td>NullableBoolean</td>
+<td>103</td>
+</tr>
+<tr>
+<td>NullableChar</td>
+<td>104</td>
+</tr>
+<tr>
+<td>NullableSByte</td>
+<td>105</td>
+</tr>
+<tr>
+<td>NullableByte</td>
+<td>106</td>
+</tr>
+<tr>
+<td>NullableInt16</td>
+<td>107</td>
+</tr>
+<tr>
+<td>NullableUInt16</td>
+<td>108</td>
+</tr>
+<tr>
+<td>NullableInt32</td>
+<td>109</td>
+</tr>
+<tr>
+<td>NullableUInt32</td>
+<td>110</td>
+</tr>
+<tr>
+<td>NullableInt64</td>
+<td>111</td>
+</tr>
+<tr>
+<td>NullableUInt64</td>
+<td>112</td>
+</tr>
+<tr>
+<td>NullableSingle</td>
+<td>113</td>
+</tr>
+<tr>
+<td>NullableDouble</td>
+<td>114</td>
+</tr>
+<tr>
+<td>NullableDecimal</td>
+<td>115</td>
+</tr>
+<tr>
+<td>NullableDateTime</td>
+<td>116</td>
+</tr>
+<tr>
+<td>NullableGuid</td>
+<td>119</td>
+</tr>
+<tr>
+<td>NullableDateTimeOffset</td>
+<td>120</td>
+</tr>
+<tr>
+<td>NullableTimeSpan</td>
+<td>121</td>
+</tr>
+<tr>
+<td>BooleanArray</td>
+<td>203</td>
+</tr>
+<tr>
+<td>CharArray</td>
+<td>204</td>
+</tr>
+<tr>
+<td>SByteArray</td>
+<td>205</td>
+</tr>
+<tr>
+<td>ByteArray</td>
+<td>206</td>
+</tr>
+<tr>
+<td>Int16Array</td>
+<td>207</td>
+</tr>
+<tr>
+<td>UInt16Array</td>
+<td>208</td>
+</tr>
+<tr>
+<td>Int32Array</td>
+<td>209</td>
+</tr>
+<tr>
+<td>UInt32Array</td>
+<td>210</td>
+</tr>
+<tr>
+<td>Int64Array</td>
+<td>211</td>
+</tr>
+<tr>
+<td>UInt64Array</td>
+<td>212</td>
+</tr>
+<tr>
+<td>SingleArray</td>
+<td>213</td>
+</tr>
+<tr>
+<td>DoubleArray</td>
+<td>214</td>
+</tr>
+<tr>
+<td>DecimalArray</td>
+<td>215</td>
+</tr>
+<tr>
+<td>DateTimeArray</td>
+<td>216</td>
+</tr>
+<tr>
+<td>StringArray</td>
+<td>218</td>
+</tr>
+<tr>
+<td>GuidArray</td>
+<td>219</td>
+</tr>
+<tr>
+<td>DateTimeOffsetArray</td>
+<td>220</td>
+</tr>
+<tr>
+<td>TimeSpanArray</td>
+<td>221</td>
+</tr>
+<tr>
+<td>VersionArray</td>
+<td>222</td>
+</tr>
+<tr>
+<td>Array</td>
+<td>400</td>
+</tr>
+<tr>
+<td>IList</td>
+<td>401</td>
+</tr>
+<tr>
+<td>IDictionary</td>
+<td>402</td>
+</tr>
+<tr>
+<td>IEnumerable</td>
+<td>403</td>
+</tr>
+<tr>
+<td>SdsType</td>
+<td>501</td>
+</tr>
+<tr>
+<td>SdsTypeProperty</td>
+<td>502</td>
+</tr>
+<tr>
+<td>SdsStreamView</td>
+<td>503</td>
+</tr>
+<tr>
+<td>SdsStreamViewProperty</td>
+<td>504</td>
+</tr>
+<tr>
+<td>SdsStreamViewMap</td>
+<td>505</td>
+</tr>
+<tr>
+<td>SdsStreamViewMapProperty</td>
+<td>506</td>
+</tr>
+<tr>
+<td>SdsStream</td>
+<td>507</td>
+</tr>
+<tr>
+<td>SdsStreamIndex</td>
+<td>508</td>
+</tr>
+<tr>
+<td>SdsTable</td>
+<td>509</td>
+</tr>
+<tr>
+<td>SdsColumn</td>
+<td>510</td>
+</tr>
+<tr>
+<td>SdsValues</td>
+<td>511</td>
+</tr>
+<tr>
+<td>SdsObject</td>
+<td>512</td>
+</tr>
+<tr>
+<td>SByteEnum</td>
+<td>605</td>
+</tr>
+<tr>
+<td>ByteEnum</td>
+<td>606</td>
+</tr>
+<tr>
+<td>Int16Enum</td>
+<td>607</td>
+</tr>
+<tr>
+<td>UInt16Enum</td>
+<td>608</td>
+</tr>
+<tr>
+<td>Int32Enum</td>
+<td>609</td>
+</tr>
+<tr>
+<td>UInt32Enum</td>
+<td>610</td>
+</tr>
+<tr>
+<td>Int64Enum</td>
+<td>611</td>
+</tr>
+<tr>
+<td>UInt64Enum</td>
+<td>612</td>
+</tr>
+<tr>
+<td>NullableSByteEnum</td>
+<td>705</td>
+</tr>
+<tr>
+<td>NullableByteEnum</td>
+<td>706</td>
+</tr>
+<tr>
+<td>NullableInt16Enum</td>
+<td>707</td>
+</tr>
+<tr>
+<td>NullableUInt16Enum</td>
+<td>708</td>
+</tr>
+<tr>
+<td>NullableInt32Enum</td>
+<td>709</td>
+</tr>
+<tr>
+<td>NullableUInt32Enum</td>
+<td>710</td>
+</tr>
+<tr>
+<td>NullableInt64Enum</td>
+<td>711</td>
+</tr>
+<tr>
+<td>NullableUInt64Enum</td>
+<td>712</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="sdstypeproperty">SdsTypeProperty</h3>
+<p><a id="schemasdstypeproperty"></a>
+<a id="schema_SdsTypeProperty"></a>
+<a id="tocSsdstypeproperty"></a>
+<a id="tocssdstypeproperty"></a></p>
+<p>A contract defining a property of a <code>SdsType</code></p>
+<h4 id="properties-5">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>An unique identifier for the <code>SdsTypeProperty</code> object</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>An optional user-friendly name for the <code>SdsTypeProperty</code> object</td>
+</tr>
+<tr>
+<td><code>Description</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>A brief description of the <code>SdsTypeProperty</code> object</td>
+</tr>
+<tr>
+<td><code>Order</code></td>
+<td>int32</td>
+<td>false</td>
+<td>false</td>
+<td>The order used for comparison among <code>SdsTypeProperty</code>s if a compound index is specified for <code>SdsType</code></td>
+</tr>
+<tr>
+<td><code>IsKey</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>false</td>
+<td>A boolean value indicating whether the current <code>SdsTypeProperty</code> must be used for indexing Used in combination with property to enable compound indexing</td>
+</tr>
+<tr>
+<td><code>FixedSize</code></td>
+<td>int32</td>
+<td>false</td>
+<td>false</td>
+<td>An optional property specifying the length of string.</td>
+</tr>
+<tr>
+<td><code>SdsType</code></td>
+<td><a href="#schemasdstype">SdsType</a></td>
+<td>false</td>
+<td>true</td>
+<td><code>SdsType</code> of the current <code>SdsTypeProperty</code></td>
+</tr>
+<tr>
+<td><code>Value</code></td>
+<td>any</td>
+<td>false</td>
+<td>true</td>
+<td>An enum value of the current <code>SdsTypeProperty</code>.</td>
+</tr>
+<tr>
+<td><code>Uom</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Indicates the Unit of Measure of the current <code>SdsTypeProperty</code></td>
+</tr>
+<tr>
+<td><code>InterpolationMode</code></td>
+<td><a href="#schemasdsinterpolationmode">SdsInterpolationMode</a></td>
+<td>false</td>
+<td>true</td>
+<td>An <code>InterpolationMode</code> that overrides the root <code>SdsType</code>&#39;s <code>InterpolationMode</code> for this <code>SdsTypeProperty</code></td>
+</tr>
+<tr>
+<td><code>IsQuality</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>false</td>
+<td>Indicates whether this property marks data quality</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;Description&quot;: &quot;string&quot;,
+  &quot;Order&quot;: 0,
+  &quot;IsKey&quot;: true,
+  &quot;FixedSize&quot;: 0,
+  &quot;SdsType&quot;: {
+    &quot;Id&quot;: &quot;string&quot;,
+    &quot;Name&quot;: &quot;string&quot;,
+    &quot;Description&quot;: &quot;string&quot;,
+    &quot;SdsTypeCode&quot;: 0,
+    &quot;IsGenericType&quot;: true,
+    &quot;IsReferenceType&quot;: true,
+    &quot;GenericArguments&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      }
+    ],
+    &quot;Properties&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;Order&quot;: 0,
+        &quot;IsKey&quot;: true,
+        &quot;FixedSize&quot;: 0,
+        &quot;SdsType&quot;: null,
+        &quot;Value&quot;: null,
+        &quot;Uom&quot;: &quot;string&quot;,
+        &quot;InterpolationMode&quot;: null,
+        &quot;IsQuality&quot;: true
+      }
+    ],
+    &quot;BaseType&quot;: {
+      &quot;Id&quot;: null,
+      &quot;Name&quot;: null,
+      &quot;Description&quot;: null,
+      &quot;SdsTypeCode&quot;: null,
+      &quot;IsGenericType&quot;: null,
+      &quot;IsReferenceType&quot;: null,
+      &quot;GenericArguments&quot;: null,
+      &quot;Properties&quot;: null,
+      &quot;BaseType&quot;: null,
+      &quot;DerivedTypes&quot;: null,
+      &quot;InterpolationMode&quot;: null,
+      &quot;ExtrapolationMode&quot;: null
+    },
+    &quot;DerivedTypes&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      }
+    ],
+    &quot;InterpolationMode&quot;: 0,
+    &quot;ExtrapolationMode&quot;: 0
+  },
+  &quot;Value&quot;: null,
+  &quot;Uom&quot;: &quot;string&quot;,
+  &quot;InterpolationMode&quot;: 0,
+  &quot;IsQuality&quot;: true
+}
+</code></pre><hr>
+<h3 id="sdsresolvedstream">SdsResolvedStream</h3>
+<p><a id="schemasdsresolvedstream"></a>
+<a id="schema_SdsResolvedStream"></a>
+<a id="tocSsdsresolvedstream"></a>
+<a id="tocssdsresolvedstream"></a></p>
+<p>A contract defining resolution of <code>SdsStream</code></p>
+<h4 id="properties-6">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>A unique identifier for the <code>SdsStream</code> object</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>An optional user-friendly name for the <code>SdsStream</code> object</td>
+</tr>
+<tr>
+<td><code>Description</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>A brief description of the <code>SdsStream</code> object</td>
+</tr>
+<tr>
+<td><code>TypeId</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>A unique identifier for the <code>SdsType</code> of the <code>SdsStream</code> object</td>
+</tr>
+<tr>
+<td><code>Indexes</code></td>
+<td>[<a href="#schemasdsstreamindex">SdsStreamIndex</a>]</td>
+<td>false</td>
+<td>true</td>
+<td>List of <code>SdsStreamIndex</code>s to define secondary indexes for the <code>SdsStream</code></td>
+</tr>
+<tr>
+<td><code>InterpolationMode</code></td>
+<td><a href="#schemasdsinterpolationmode">SdsInterpolationMode</a></td>
+<td>false</td>
+<td>true</td>
+<td>Defines the <code>SdsInterpolationMode</code> of the <code>SdsStream</code>. Default is <code>null</code>.</td>
+</tr>
+<tr>
+<td><code>ExtrapolationMode</code></td>
+<td><a href="#schemasdsextrapolationmode">SdsExtrapolationMode</a></td>
+<td>false</td>
+<td>true</td>
+<td>Defines the <code>SdsExtrapolationMode</code> of the <code>SdsStream</code>. Default is <code>null</code>.</td>
+</tr>
+<tr>
+<td><code>PropertyOverrides</code></td>
+<td>[<a href="#schemasdsstreampropertyoverride">SdsStreamPropertyOverride</a>]</td>
+<td>false</td>
+<td>true</td>
+<td>List of <code>SdsStreamPropertyOverride</code>s to define unit of measure and interpolation mode overrides for the <code>SdsStream</code></td>
+</tr>
+<tr>
+<td><code>Resolved</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>false</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>Type</code></td>
+<td><a href="#schemasdsresolvedtype">SdsResolvedType</a></td>
+<td>false</td>
+<td>true</td>
+<td>A contract defining the type of data to read or write in a <code>SdsResolvedStream</code></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;Description&quot;: &quot;string&quot;,
+  &quot;TypeId&quot;: &quot;string&quot;,
+  &quot;Indexes&quot;: [
+    {
+      &quot;SdsTypePropertyId&quot;: &quot;string&quot;
+    }
+  ],
+  &quot;InterpolationMode&quot;: 0,
+  &quot;ExtrapolationMode&quot;: 0,
+  &quot;PropertyOverrides&quot;: [
+    {
+      &quot;SdsTypePropertyId&quot;: &quot;string&quot;,
+      &quot;Uom&quot;: &quot;string&quot;,
+      &quot;InterpolationMode&quot;: 0
+    }
+  ],
+  &quot;Resolved&quot;: true,
+  &quot;Type&quot;: {
+    &quot;Id&quot;: &quot;string&quot;,
+    &quot;Name&quot;: &quot;string&quot;,
+    &quot;Description&quot;: &quot;string&quot;,
+    &quot;SdsTypeCode&quot;: &quot;Empty&quot;,
+    &quot;IsGenericType&quot;: true,
+    &quot;IsReferenceType&quot;: true,
+    &quot;GenericArguments&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: 0,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+        &quot;Properties&quot;: [
+          {
+            &quot;Id&quot;: &quot;string&quot;,
+            &quot;Name&quot;: &quot;string&quot;,
+            &quot;Description&quot;: &quot;string&quot;,
+            &quot;Order&quot;: 0,
+            &quot;IsKey&quot;: true,
+            &quot;FixedSize&quot;: 0,
+            &quot;SdsType&quot;: &quot;&lt;SdsType&gt;&quot;,
+            &quot;Value&quot;: null,
+            &quot;Uom&quot;: &quot;string&quot;,
+            &quot;InterpolationMode&quot;: 0,
+            &quot;IsQuality&quot;: true
+          }
+        ],
+        &quot;BaseType&quot;: &quot;&lt;SdsType&gt;&quot;,
+        &quot;DerivedTypes&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+        &quot;InterpolationMode&quot;: 0,
+        &quot;ExtrapolationMode&quot;: 0
+      }
+    ],
+    &quot;Properties&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;Order&quot;: 0,
+        &quot;IsKey&quot;: true,
+        &quot;FixedSize&quot;: 0,
+        &quot;SdsType&quot;: &quot;&lt;SdsResolvedType&gt;&quot;,
+        &quot;Value&quot;: null,
+        &quot;Uom&quot;: &quot;string&quot;,
+        &quot;InterpolationMode&quot;: &quot;Continuous&quot;,
+        &quot;IsQuality&quot;: true
+      }
+    ],
+    &quot;BaseType&quot;: {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;SdsTypeCode&quot;: 0,
+      &quot;IsGenericType&quot;: true,
+      &quot;IsReferenceType&quot;: true,
+      &quot;GenericArguments&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+      &quot;Properties&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;Order&quot;: 0,
+          &quot;IsKey&quot;: true,
+          &quot;FixedSize&quot;: 0,
+          &quot;SdsType&quot;: &quot;&lt;SdsType&gt;&quot;,
+          &quot;Value&quot;: null,
+          &quot;Uom&quot;: &quot;string&quot;,
+          &quot;InterpolationMode&quot;: 0,
+          &quot;IsQuality&quot;: true
+        }
+      ],
+      &quot;BaseType&quot;: &quot;&lt;SdsType&gt;&quot;,
+      &quot;DerivedTypes&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+      &quot;InterpolationMode&quot;: 0,
+      &quot;ExtrapolationMode&quot;: 0
+    },
+    &quot;DerivedTypes&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: 0,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+        &quot;Properties&quot;: [
+          {
+            &quot;Id&quot;: &quot;string&quot;,
+            &quot;Name&quot;: &quot;string&quot;,
+            &quot;Description&quot;: &quot;string&quot;,
+            &quot;Order&quot;: 0,
+            &quot;IsKey&quot;: true,
+            &quot;FixedSize&quot;: 0,
+            &quot;SdsType&quot;: &quot;&lt;SdsType&gt;&quot;,
+            &quot;Value&quot;: null,
+            &quot;Uom&quot;: &quot;string&quot;,
+            &quot;InterpolationMode&quot;: 0,
+            &quot;IsQuality&quot;: true
+          }
+        ],
+        &quot;BaseType&quot;: &quot;&lt;SdsType&gt;&quot;,
+        &quot;DerivedTypes&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+        &quot;InterpolationMode&quot;: 0,
+        &quot;ExtrapolationMode&quot;: 0
+      }
+    ],
+    &quot;InterpolationMode&quot;: &quot;Continuous&quot;,
+    &quot;ExtrapolationMode&quot;: &quot;All&quot;
+  }
+}
+</code></pre><hr>
+<h3 id="sdsresolvedtype">SdsResolvedType</h3>
+<p><a id="schemasdsresolvedtype"></a>
+<a id="schema_SdsResolvedType"></a>
+<a id="tocSsdsresolvedtype"></a>
+<a id="tocssdsresolvedtype"></a></p>
+<p>A contract defining the type of data to read or write in a <code>SdsResolvedStream</code></p>
+<h4 id="properties-7">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>A unique identifier for the <code>SdsType</code> object</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>An optional user-friendly name for the <code>SdsType</code> object</td>
+</tr>
+<tr>
+<td><code>Description</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>A brief description of the <code>SdsType</code> object</td>
+</tr>
+<tr>
+<td><code>SdsTypeCode</code></td>
+<td><a href="#schemasdstypecode2">SdsTypeCode2</a></td>
+<td>false</td>
+<td>false</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>IsGenericType</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>false</td>
+<td>A boolean value indicating whether the current <code>SdsType</code> is a generic type This property is only used when using templates or generics. It will be automatically set if the <code>SdsType</code> is generated using <code>SdsTypeBuilder</code>. For more information on generics, refer to <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/index">Generic classes and methods</a></td>
+</tr>
+<tr>
+<td><code>IsReferenceType</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>false</td>
+<td>Enabling this property preserves objects as references during serialization/de-serialization of the <code>SdsType</code> data while using the <code>SdsFormatter</code> This property behaves similar to <code>IsReference</code> property for <code>DataContractSerializer</code> and is only valid for serialization if <code>SdsFormatter</code> is used.</td>
+</tr>
+<tr>
+<td><code>GenericArguments</code></td>
+<td>[<a href="#schemasdstype">SdsType</a>]</td>
+<td>false</td>
+<td>true</td>
+<td>Contains the parameterized <code>SdsTypes</code> of the current generic <code>SdsType</code> This property is only used when using templates or generics. It will be automatically set if the <code>SdsType</code> is generated using <code>SdsTypeBuilder</code>. For more information on generics, refer to <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/index">Generic classes and methods</a></td>
+</tr>
+<tr>
+<td><code>Properties</code></td>
+<td>[<a href="#schemasdsresolvedtypeproperty">SdsResolvedTypeProperty</a>]</td>
+<td>false</td>
+<td>true</td>
+<td>[A contract defining the type of data to read or write in a <code>SdsResolvedType</code>]</td>
+</tr>
+<tr>
+<td><code>BaseType</code></td>
+<td><a href="#schemasdstype">SdsType</a></td>
+<td>false</td>
+<td>true</td>
+<td>Defines the base type of the <code>SdsType</code> Commonly used by <code>SdsTypeBuilder</code> to generate <code>SdsType</code> from contracts not explicitly defined and maintained by the user.</td>
+</tr>
+<tr>
+<td><code>DerivedTypes</code></td>
+<td>[<a href="#schemasdstype">SdsType</a>]</td>
+<td>false</td>
+<td>true</td>
+<td>List of <code>SdsTypes</code> that should be recognized by <code>SdsFormatter</code> during serialization/de-serialization. This property behaves similar to <code>KnownTypeAttribute</code> attribute for <code>DataContractSerializer</code> and only valid for serialization if <code>SdsFormatter</code> is used.</td>
+</tr>
+<tr>
+<td><code>InterpolationMode</code></td>
+<td><a href="#schemasdsinterpolationmode2">SdsInterpolationMode2</a></td>
+<td>false</td>
+<td>false</td>
+<td>Interpolation modes that can be applied to <code>SdsType</code>, <code>SdsTypeProperty</code>, <code>SdsStream</code>, and <code>SdsStreamPropertyOverride</code> objects</td>
+</tr>
+<tr>
+<td><code>ExtrapolationMode</code></td>
+<td><a href="#schemasdsextrapolationmode2">SdsExtrapolationMode2</a></td>
+<td>false</td>
+<td>false</td>
+<td>Defines how a stream responds to requests with indexes that precede or follow all data in the stream. Behavior also depends on the <code>SdsInterpolationMode</code> for a stream. If <code>SdsInterpolationMode</code> is set to <code>Discrete</code>, extrapolation will not occur. If <code>SdsInterpolationMode</code> is set to <code>ContinuousNullableLeading</code> or <code>ContinuousNullableTrailing</code>, default values will be returned instead of actual data.</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;Description&quot;: &quot;string&quot;,
+  &quot;SdsTypeCode&quot;: &quot;Empty&quot;,
+  &quot;IsGenericType&quot;: true,
+  &quot;IsReferenceType&quot;: true,
+  &quot;GenericArguments&quot;: [
+    {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;SdsTypeCode&quot;: 0,
+      &quot;IsGenericType&quot;: true,
+      &quot;IsReferenceType&quot;: true,
+      &quot;GenericArguments&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+      &quot;Properties&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;Order&quot;: 0,
+          &quot;IsKey&quot;: true,
+          &quot;FixedSize&quot;: 0,
+          &quot;SdsType&quot;: &quot;&lt;SdsType&gt;&quot;,
+          &quot;Value&quot;: null,
+          &quot;Uom&quot;: &quot;string&quot;,
+          &quot;InterpolationMode&quot;: 0,
+          &quot;IsQuality&quot;: true
+        }
+      ],
+      &quot;BaseType&quot;: &quot;&lt;SdsType&gt;&quot;,
+      &quot;DerivedTypes&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+      &quot;InterpolationMode&quot;: 0,
+      &quot;ExtrapolationMode&quot;: 0
+    }
+  ],
+  &quot;Properties&quot;: [
+    {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;Order&quot;: 0,
+      &quot;IsKey&quot;: true,
+      &quot;FixedSize&quot;: 0,
+      &quot;SdsType&quot;: &quot;&lt;SdsResolvedType&gt;&quot;,
+      &quot;Value&quot;: null,
+      &quot;Uom&quot;: &quot;string&quot;,
+      &quot;InterpolationMode&quot;: &quot;Continuous&quot;,
+      &quot;IsQuality&quot;: true
+    }
+  ],
+  &quot;BaseType&quot;: {
+    &quot;Id&quot;: &quot;string&quot;,
+    &quot;Name&quot;: &quot;string&quot;,
+    &quot;Description&quot;: &quot;string&quot;,
+    &quot;SdsTypeCode&quot;: 0,
+    &quot;IsGenericType&quot;: true,
+    &quot;IsReferenceType&quot;: true,
+    &quot;GenericArguments&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+    &quot;Properties&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;Order&quot;: 0,
+        &quot;IsKey&quot;: true,
+        &quot;FixedSize&quot;: 0,
+        &quot;SdsType&quot;: &quot;&lt;SdsType&gt;&quot;,
+        &quot;Value&quot;: null,
+        &quot;Uom&quot;: &quot;string&quot;,
+        &quot;InterpolationMode&quot;: 0,
+        &quot;IsQuality&quot;: true
+      }
+    ],
+    &quot;BaseType&quot;: &quot;&lt;SdsType&gt;&quot;,
+    &quot;DerivedTypes&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+    &quot;InterpolationMode&quot;: 0,
+    &quot;ExtrapolationMode&quot;: 0
+  },
+  &quot;DerivedTypes&quot;: [
+    {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;SdsTypeCode&quot;: 0,
+      &quot;IsGenericType&quot;: true,
+      &quot;IsReferenceType&quot;: true,
+      &quot;GenericArguments&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+      &quot;Properties&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;Order&quot;: 0,
+          &quot;IsKey&quot;: true,
+          &quot;FixedSize&quot;: 0,
+          &quot;SdsType&quot;: &quot;&lt;SdsType&gt;&quot;,
+          &quot;Value&quot;: null,
+          &quot;Uom&quot;: &quot;string&quot;,
+          &quot;InterpolationMode&quot;: 0,
+          &quot;IsQuality&quot;: true
+        }
+      ],
+      &quot;BaseType&quot;: &quot;&lt;SdsType&gt;&quot;,
+      &quot;DerivedTypes&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+      &quot;InterpolationMode&quot;: 0,
+      &quot;ExtrapolationMode&quot;: 0
+    }
+  ],
+  &quot;InterpolationMode&quot;: &quot;Continuous&quot;,
+  &quot;ExtrapolationMode&quot;: &quot;All&quot;
+}
+</code></pre><hr>
+<h3 id="sdsresolvedtypeproperty">SdsResolvedTypeProperty</h3>
+<p><a id="schemasdsresolvedtypeproperty"></a>
+<a id="schema_SdsResolvedTypeProperty"></a>
+<a id="tocSsdsresolvedtypeproperty"></a>
+<a id="tocssdsresolvedtypeproperty"></a></p>
+<p>A contract defining the type of data to read or write in a SdsResolvedType</p>
+<h4 id="properties-8">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>A unique identifier for the <code>SdsTypeProperty</code> object</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>An optional user-friendly name for the <code>SdsTypeProperty</code> object</td>
+</tr>
+<tr>
+<td><code>Description</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>A brief description of the SdsTypeProperty object</td>
+</tr>
+<tr>
+<td><code>Order</code></td>
+<td>int32</td>
+<td>false</td>
+<td>false</td>
+<td>The order used for comparison among <code>SdsTypeProperty</code>s if a compound index is specified for <code>SdsType</code></td>
+</tr>
+<tr>
+<td><code>IsKey</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>false</td>
+<td>A boolean value indicating whether the current <code>SdsTypeProperty</code> must be used for indexing. Used in combination with property to enable compound indexing.</td>
+</tr>
+<tr>
+<td><code>FixedSize</code></td>
+<td>int32</td>
+<td>false</td>
+<td>false</td>
+<td>An optional property specifying the length of string.</td>
+</tr>
+<tr>
+<td><code>SdsType</code></td>
+<td><a href="#schemasdsresolvedtype">SdsResolvedType</a></td>
+<td>false</td>
+<td>true</td>
+<td>A contract defining the type of data to read or write in a SdsResolvedStream</td>
+</tr>
+<tr>
+<td><code>Value</code></td>
+<td>any</td>
+<td>false</td>
+<td>true</td>
+<td>An enum value of the current SdsTypeProperty.</td>
+</tr>
+<tr>
+<td><code>Uom</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Indicates the Unit of Measure of the current <code>SdsTypeProperty</code></td>
+</tr>
+<tr>
+<td><code>InterpolationMode</code></td>
+<td><a href="#schemasdsinterpolationmode2">SdsInterpolationMode2</a></td>
+<td>false</td>
+<td>true</td>
+<td>Interpolation modes that can be applied to <code>SdsType</code>, <code>SdsTypeProperty</code>, <code>SdsStream</code>, and <code>SdsStreamPropertyOverride</code> objects</td>
+</tr>
+<tr>
+<td>IsQuality</td>
+<td>boolean</td>
+<td>false</td>
+<td>false</td>
+<td>Indicates whether this property marks data quality</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;Description&quot;: &quot;string&quot;,
+  &quot;Order&quot;: 0,
+  &quot;IsKey&quot;: true,
+  &quot;FixedSize&quot;: 0,
+  &quot;SdsType&quot;: {
+    &quot;Id&quot;: &quot;string&quot;,
+    &quot;Name&quot;: &quot;string&quot;,
+    &quot;Description&quot;: &quot;string&quot;,
+    &quot;SdsTypeCode&quot;: &quot;Empty&quot;,
+    &quot;IsGenericType&quot;: true,
+    &quot;IsReferenceType&quot;: true,
+    &quot;GenericArguments&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: 0,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+        &quot;Properties&quot;: [
+          {
+            &quot;Id&quot;: &quot;string&quot;,
+            &quot;Name&quot;: &quot;string&quot;,
+            &quot;Description&quot;: &quot;string&quot;,
+            &quot;Order&quot;: 0,
+            &quot;IsKey&quot;: true,
+            &quot;FixedSize&quot;: 0,
+            &quot;SdsType&quot;: &quot;&lt;SdsType&gt;&quot;,
+            &quot;Value&quot;: null,
+            &quot;Uom&quot;: &quot;string&quot;,
+            &quot;InterpolationMode&quot;: 0,
+            &quot;IsQuality&quot;: true
+          }
+        ],
+        &quot;BaseType&quot;: &quot;&lt;SdsType&gt;&quot;,
+        &quot;DerivedTypes&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+        &quot;InterpolationMode&quot;: 0,
+        &quot;ExtrapolationMode&quot;: 0
+      }
+    ],
+    &quot;Properties&quot;: &quot;[&lt;SdsResolvedTypeProperty&gt;]&quot;,
+    &quot;BaseType&quot;: {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;SdsTypeCode&quot;: 0,
+      &quot;IsGenericType&quot;: true,
+      &quot;IsReferenceType&quot;: true,
+      &quot;GenericArguments&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+      &quot;Properties&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;Order&quot;: 0,
+          &quot;IsKey&quot;: true,
+          &quot;FixedSize&quot;: 0,
+          &quot;SdsType&quot;: &quot;&lt;SdsType&gt;&quot;,
+          &quot;Value&quot;: null,
+          &quot;Uom&quot;: &quot;string&quot;,
+          &quot;InterpolationMode&quot;: 0,
+          &quot;IsQuality&quot;: true
+        }
+      ],
+      &quot;BaseType&quot;: &quot;&lt;SdsType&gt;&quot;,
+      &quot;DerivedTypes&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+      &quot;InterpolationMode&quot;: 0,
+      &quot;ExtrapolationMode&quot;: 0
+    },
+    &quot;DerivedTypes&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: 0,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+        &quot;Properties&quot;: [
+          {
+            &quot;Id&quot;: &quot;string&quot;,
+            &quot;Name&quot;: &quot;string&quot;,
+            &quot;Description&quot;: &quot;string&quot;,
+            &quot;Order&quot;: 0,
+            &quot;IsKey&quot;: true,
+            &quot;FixedSize&quot;: 0,
+            &quot;SdsType&quot;: &quot;&lt;SdsType&gt;&quot;,
+            &quot;Value&quot;: null,
+            &quot;Uom&quot;: &quot;string&quot;,
+            &quot;InterpolationMode&quot;: 0,
+            &quot;IsQuality&quot;: true
+          }
+        ],
+        &quot;BaseType&quot;: &quot;&lt;SdsType&gt;&quot;,
+        &quot;DerivedTypes&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+        &quot;InterpolationMode&quot;: 0,
+        &quot;ExtrapolationMode&quot;: 0
+      }
+    ],
+    &quot;InterpolationMode&quot;: &quot;Continuous&quot;,
+    &quot;ExtrapolationMode&quot;: &quot;All&quot;
+  },
+  &quot;Value&quot;: null,
+  &quot;Uom&quot;: &quot;string&quot;,
+  &quot;InterpolationMode&quot;: &quot;Continuous&quot;,
+  &quot;IsQuality&quot;: true
+}
+</code></pre><hr>
+<h3 id="sdsinterpolationmode2">SdsInterpolationMode2</h3>
+<p><a id="schemasdsinterpolationmode2"></a>
+<a id="schema_SdsInterpolationMode2"></a>
+<a id="tocSsdsinterpolationmode2"></a>
+<a id="tocssdsinterpolationmode2"></a></p>
+<p>Interpolation modes that can be applied to <code>SdsType</code>, <code>SdsTypeProperty</code>, <code>SdsStream</code>, and <code>SdsStreamPropertyOverride</code> objects</p>
+<h4 id="enumerated-values-3">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Default</code></td>
+<td>Continuous</td>
+</tr>
+<tr>
+<td><code>Continuous</code></td>
+<td>Continuous</td>
+</tr>
+<tr>
+<td><code>StepwiseContinuousLeading</code></td>
+<td>StepwiseContinuousLeading</td>
+</tr>
+<tr>
+<td><code>StepwiseContinuousTrailing</code></td>
+<td>StepwiseContinuousTrailing</td>
+</tr>
+<tr>
+<td><code>Discrete</code></td>
+<td>Discrete</td>
+</tr>
+<tr>
+<td><code>ContinuousNullableLeading</code></td>
+<td>ContinuousNullableLeading</td>
+</tr>
+<tr>
+<td><code>ContinuousNullableTrailing</code></td>
+<td>ContinuousNullableTrailing</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="sdstypecode2">SdsTypeCode2</h3>
+<p><a id="schemasdstypecode2"></a>
+<a id="schema_SdsTypeCode2"></a>
+<a id="tocSsdstypecode2"></a>
+<a id="tocssdstypecode2"></a></p>
+<h4 id="enumerated-values-4">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Empty</td>
+<td>Empty</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>Object</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>Char</td>
+<td>Char</td>
+</tr>
+<tr>
+<td>SByte</td>
+<td>SByte</td>
+</tr>
+<tr>
+<td>Byte</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>Int16</td>
+<td>Int16</td>
+</tr>
+<tr>
+<td>UInt16</td>
+<td>UInt16</td>
+</tr>
+<tr>
+<td>Int32</td>
+<td>Int32</td>
+</tr>
+<tr>
+<td>UInt32</td>
+<td>UInt32</td>
+</tr>
+<tr>
+<td>Int64</td>
+<td>Int64</td>
+</tr>
+<tr>
+<td>UInt64</td>
+<td>UInt64</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>Single</td>
+</tr>
+<tr>
+<td>Double</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>Decimal</td>
+<td>Decimal</td>
+</tr>
+<tr>
+<td>DateTime</td>
+<td>DateTime</td>
+</tr>
+<tr>
+<td>String</td>
+<td>String</td>
+</tr>
+<tr>
+<td>Guid</td>
+<td>Guid</td>
+</tr>
+<tr>
+<td>DateTimeOffset</td>
+<td>DateTimeOffset</td>
+</tr>
+<tr>
+<td>TimeSpan</td>
+<td>TimeSpan</td>
+</tr>
+<tr>
+<td>Version</td>
+<td>Version</td>
+</tr>
+<tr>
+<td>NullableBoolean</td>
+<td>NullableBoolean</td>
+</tr>
+<tr>
+<td>NullableChar</td>
+<td>NullableChar</td>
+</tr>
+<tr>
+<td>NullableSByte</td>
+<td>NullableSByte</td>
+</tr>
+<tr>
+<td>NullableByte</td>
+<td>NullableByte</td>
+</tr>
+<tr>
+<td>NullableInt16</td>
+<td>NullableInt16</td>
+</tr>
+<tr>
+<td>NullableUInt16</td>
+<td>NullableUInt16</td>
+</tr>
+<tr>
+<td>NullableInt32</td>
+<td>NullableInt32</td>
+</tr>
+<tr>
+<td>NullableUInt32</td>
+<td>NullableUInt32</td>
+</tr>
+<tr>
+<td>NullableInt64</td>
+<td>NullableInt64</td>
+</tr>
+<tr>
+<td>NullableUInt64</td>
+<td>NullableUInt64</td>
+</tr>
+<tr>
+<td>NullableSingle</td>
+<td>NullableSingle</td>
+</tr>
+<tr>
+<td>NullableDouble</td>
+<td>NullableDouble</td>
+</tr>
+<tr>
+<td>NullableDecimal</td>
+<td>NullableDecimal</td>
+</tr>
+<tr>
+<td>NullableDateTime</td>
+<td>NullableDateTime</td>
+</tr>
+<tr>
+<td>NullableGuid</td>
+<td>NullableGuid</td>
+</tr>
+<tr>
+<td>NullableDateTimeOffset</td>
+<td>NullableDateTimeOffset</td>
+</tr>
+<tr>
+<td>NullableTimeSpan</td>
+<td>NullableTimeSpan</td>
+</tr>
+<tr>
+<td>BooleanArray</td>
+<td>BooleanArray</td>
+</tr>
+<tr>
+<td>CharArray</td>
+<td>CharArray</td>
+</tr>
+<tr>
+<td>SByteArray</td>
+<td>SByteArray</td>
+</tr>
+<tr>
+<td>ByteArray</td>
+<td>ByteArray</td>
+</tr>
+<tr>
+<td>Int16Array</td>
+<td>Int16Array</td>
+</tr>
+<tr>
+<td>UInt16Array</td>
+<td>UInt16Array</td>
+</tr>
+<tr>
+<td>Int32Array</td>
+<td>Int32Array</td>
+</tr>
+<tr>
+<td>UInt32Array</td>
+<td>UInt32Array</td>
+</tr>
+<tr>
+<td>Int64Array</td>
+<td>Int64Array</td>
+</tr>
+<tr>
+<td>UInt64Array</td>
+<td>UInt64Array</td>
+</tr>
+<tr>
+<td>SingleArray</td>
+<td>SingleArray</td>
+</tr>
+<tr>
+<td>DoubleArray</td>
+<td>DoubleArray</td>
+</tr>
+<tr>
+<td>DecimalArray</td>
+<td>DecimalArray</td>
+</tr>
+<tr>
+<td>DateTimeArray</td>
+<td>DateTimeArray</td>
+</tr>
+<tr>
+<td>StringArray</td>
+<td>StringArray</td>
+</tr>
+<tr>
+<td>GuidArray</td>
+<td>GuidArray</td>
+</tr>
+<tr>
+<td>DateTimeOffsetArray</td>
+<td>DateTimeOffsetArray</td>
+</tr>
+<tr>
+<td>TimeSpanArray</td>
+<td>TimeSpanArray</td>
+</tr>
+<tr>
+<td>VersionArray</td>
+<td>VersionArray</td>
+</tr>
+<tr>
+<td>Array</td>
+<td>Array</td>
+</tr>
+<tr>
+<td>IList</td>
+<td>IList</td>
+</tr>
+<tr>
+<td>IDictionary</td>
+<td>IDictionary</td>
+</tr>
+<tr>
+<td>IEnumerable</td>
+<td>IEnumerable</td>
+</tr>
+<tr>
+<td>SdsType</td>
+<td>SdsType</td>
+</tr>
+<tr>
+<td>SdsTypeProperty</td>
+<td>SdsTypeProperty</td>
+</tr>
+<tr>
+<td>SdsStreamView</td>
+<td>SdsStreamView</td>
+</tr>
+<tr>
+<td>SdsStreamViewProperty</td>
+<td>SdsStreamViewProperty</td>
+</tr>
+<tr>
+<td>SdsStreamViewMap</td>
+<td>SdsStreamViewMap</td>
+</tr>
+<tr>
+<td>SdsStreamViewMapProperty</td>
+<td>SdsStreamViewMapProperty</td>
+</tr>
+<tr>
+<td>SdsStream</td>
+<td>SdsStream</td>
+</tr>
+<tr>
+<td>SdsStreamIndex</td>
+<td>SdsStreamIndex</td>
+</tr>
+<tr>
+<td>SdsTable</td>
+<td>SdsTable</td>
+</tr>
+<tr>
+<td>SdsColumn</td>
+<td>SdsColumn</td>
+</tr>
+<tr>
+<td>SdsValues</td>
+<td>SdsValues</td>
+</tr>
+<tr>
+<td>SdsObject</td>
+<td>SdsObject</td>
+</tr>
+<tr>
+<td>SByteEnum</td>
+<td>SByteEnum</td>
+</tr>
+<tr>
+<td>ByteEnum</td>
+<td>ByteEnum</td>
+</tr>
+<tr>
+<td>Int16Enum</td>
+<td>Int16Enum</td>
+</tr>
+<tr>
+<td>UInt16Enum</td>
+<td>UInt16Enum</td>
+</tr>
+<tr>
+<td>Int32Enum</td>
+<td>Int32Enum</td>
+</tr>
+<tr>
+<td>UInt32Enum</td>
+<td>UInt32Enum</td>
+</tr>
+<tr>
+<td>Int64Enum</td>
+<td>Int64Enum</td>
+</tr>
+<tr>
+<td>UInt64Enum</td>
+<td>UInt64Enum</td>
+</tr>
+<tr>
+<td>NullableSByteEnum</td>
+<td>NullableSByteEnum</td>
+</tr>
+<tr>
+<td>NullableByteEnum</td>
+<td>NullableByteEnum</td>
+</tr>
+<tr>
+<td>NullableInt16Enum</td>
+<td>NullableInt16Enum</td>
+</tr>
+<tr>
+<td>NullableUInt16Enum</td>
+<td>NullableUInt16Enum</td>
+</tr>
+<tr>
+<td>NullableInt32Enum</td>
+<td>NullableInt32Enum</td>
+</tr>
+<tr>
+<td>NullableUInt32Enum</td>
+<td>NullableUInt32Enum</td>
+</tr>
+<tr>
+<td>NullableInt64Enum</td>
+<td>NullableInt64Enum</td>
+</tr>
+<tr>
+<td>NullableUInt64Enum</td>
+<td>NullableUInt64Enum</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="sdsextrapolationmode2">SdsExtrapolationMode2</h3>
+<p><a id="schemasdsextrapolationmode2"></a>
+<a id="schema_SdsExtrapolationMode2"></a>
+<a id="tocSsdsextrapolationmode2"></a>
+<a id="tocssdsextrapolationmode2"></a></p>
+<p>Defines how a stream responds to requests with indexes that precede or follow all data in the stream. Behavior also depends on the <code>SdsInterpolationMode</code> for a stream. If <code>SdsInterpolationMode</code> is set to <code>Discrete</code>, extrapolation will not occur. If <code>SdsInterpolationMode</code> is set to <code>ContinuousNullableLeading</code> or <code>ContinuousNullableTrailing</code>, default values will be returned instead of actual data.</p>
+<h4 id="enumerated-values-5">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All</td>
+<td>All</td>
+</tr>
+<tr>
+<td>None</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Forward</td>
+<td>Forward</td>
+</tr>
+<tr>
+<td>Backward</td>
+<td>Backward</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="sdsresolvedstreamsresponse">SdsResolvedStreamsResponse</h3>
+<p><a id="schemasdsresolvedstreamsresponse"></a>
+<a id="schema_SdsResolvedStreamsResponse"></a>
+<a id="tocSsdsresolvedstreamsresponse"></a>
+<a id="tocssdsresolvedstreamsresponse"></a></p>
+<p>A contract defining bulk response of <code>SdsResolvedStream</code></p>
+<h4 id="properties-9">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Data</code></td>
+<td>[<a href="#schemasdsresolvedstream">SdsResolvedStream</a>]</td>
+<td>false</td>
+<td>true</td>
+<td>[A contract defining resolution of <code>SdsStream</code>]</td>
+</tr>
+<tr>
+<td><code>ChildErrors</code></td>
+<td>[<a href="#schemasdsresolvedstreamerrorresponsebody">SdsResolvedStreamErrorResponseBody</a>]</td>
+<td>false</td>
+<td>true</td>
+<td>[The error response contains details on the cause of stream resolution failure and resolution of the error.]</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;Data&quot;: [
+    {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;TypeId&quot;: &quot;string&quot;,
+      &quot;Indexes&quot;: [
+        {
+          &quot;SdsTypePropertyId&quot;: &quot;string&quot;
+        }
+      ],
+      &quot;InterpolationMode&quot;: 0,
+      &quot;ExtrapolationMode&quot;: 0,
+      &quot;PropertyOverrides&quot;: [
+        {
+          &quot;SdsTypePropertyId&quot;: &quot;string&quot;,
+          &quot;Uom&quot;: &quot;string&quot;,
+          &quot;InterpolationMode&quot;: 0
+        }
+      ],
+      &quot;Resolved&quot;: true,
+      &quot;Type&quot;: {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: &quot;Empty&quot;,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          {
+            &quot;Id&quot;: &quot;string&quot;,
+            &quot;Name&quot;: &quot;string&quot;,
+            &quot;Description&quot;: &quot;string&quot;,
+            &quot;SdsTypeCode&quot;: 0,
+            &quot;IsGenericType&quot;: true,
+            &quot;IsReferenceType&quot;: true,
+            &quot;GenericArguments&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+            &quot;Properties&quot;: [
+              {
+                &quot;Id&quot;: &quot;string&quot;,
+                &quot;Name&quot;: &quot;string&quot;,
+                &quot;Description&quot;: &quot;string&quot;,
+                &quot;Order&quot;: 0,
+                &quot;IsKey&quot;: true,
+                &quot;FixedSize&quot;: 0,
+                &quot;SdsType&quot;: &quot;&lt;SdsType&gt;&quot;,
+                &quot;Value&quot;: null,
+                &quot;Uom&quot;: &quot;string&quot;,
+                &quot;InterpolationMode&quot;: &quot;[&quot;,
+                &quot;IsQuality&quot;: true
+              }
+            ],
+            &quot;BaseType&quot;: &quot;&lt;SdsType&gt;&quot;,
+            &quot;DerivedTypes&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+            &quot;InterpolationMode&quot;: 0,
+            &quot;ExtrapolationMode&quot;: 0
+          }
+        ],
+        &quot;Properties&quot;: [
+          {
+            &quot;Id&quot;: &quot;string&quot;,
+            &quot;Name&quot;: &quot;string&quot;,
+            &quot;Description&quot;: &quot;string&quot;,
+            &quot;Order&quot;: 0,
+            &quot;IsKey&quot;: true,
+            &quot;FixedSize&quot;: 0,
+            &quot;SdsType&quot;: &quot;&lt;SdsResolvedType&gt;&quot;,
+            &quot;Value&quot;: null,
+            &quot;Uom&quot;: &quot;string&quot;,
+            &quot;InterpolationMode&quot;: &quot;Continuous&quot;,
+            &quot;IsQuality&quot;: true
+          }
+        ],
+        &quot;BaseType&quot;: {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;SdsTypeCode&quot;: 0,
+          &quot;IsGenericType&quot;: true,
+          &quot;IsReferenceType&quot;: true,
+          &quot;GenericArguments&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+          &quot;Properties&quot;: [
+            {
+              &quot;Id&quot;: &quot;string&quot;,
+              &quot;Name&quot;: &quot;string&quot;,
+              &quot;Description&quot;: &quot;string&quot;,
+              &quot;Order&quot;: 0,
+              &quot;IsKey&quot;: true,
+              &quot;FixedSize&quot;: 0,
+              &quot;SdsType&quot;: null,
+              &quot;Value&quot;: null,
+              &quot;Uom&quot;: &quot;string&quot;,
+              &quot;InterpolationMode&quot;: null,
+              &quot;IsQuality&quot;: true
+            }
+          ],
+          &quot;BaseType&quot;: &quot;&lt;SdsType&gt;&quot;,
+          &quot;DerivedTypes&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+          &quot;InterpolationMode&quot;: 0,
+          &quot;ExtrapolationMode&quot;: 0
+        },
+        &quot;DerivedTypes&quot;: [
+          {
+            &quot;Id&quot;: &quot;string&quot;,
+            &quot;Name&quot;: &quot;string&quot;,
+            &quot;Description&quot;: &quot;string&quot;,
+            &quot;SdsTypeCode&quot;: 0,
+            &quot;IsGenericType&quot;: true,
+            &quot;IsReferenceType&quot;: true,
+            &quot;GenericArguments&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+            &quot;Properties&quot;: [
+              {
+                &quot;Id&quot;: &quot;string&quot;,
+                &quot;Name&quot;: &quot;string&quot;,
+                &quot;Description&quot;: &quot;string&quot;,
+                &quot;Order&quot;: 0,
+                &quot;IsKey&quot;: true,
+                &quot;FixedSize&quot;: 0,
+                &quot;SdsType&quot;: &quot;&lt;SdsType&gt;&quot;,
+                &quot;Value&quot;: null,
+                &quot;Uom&quot;: &quot;string&quot;,
+                &quot;InterpolationMode&quot;: &quot;[&quot;,
+                &quot;IsQuality&quot;: true
+              }
+            ],
+            &quot;BaseType&quot;: &quot;&lt;SdsType&gt;&quot;,
+            &quot;DerivedTypes&quot;: &quot;[&lt;SdsType&gt;]&quot;,
+            &quot;InterpolationMode&quot;: 0,
+            &quot;ExtrapolationMode&quot;: 0
+          }
+        ],
+        &quot;InterpolationMode&quot;: &quot;Continuous&quot;,
+        &quot;ExtrapolationMode&quot;: &quot;All&quot;
+      }
+    }
+  ],
+  &quot;ChildErrors&quot;: [
+    {
+      &quot;OperationId&quot;: &quot;string&quot;,
+      &quot;Error&quot;: &quot;string&quot;,
+      &quot;Reason&quot;: &quot;string&quot;,
+      &quot;Resolution&quot;: &quot;string&quot;,
+      &quot;Parameters&quot;: {
+        &quot;property1&quot;: &quot;string&quot;,
+        &quot;property2&quot;: &quot;string&quot;
+      },
+      &quot;StreamId&quot;: &quot;string&quot;,
+      &quot;StatusCode&quot;: 100
+    }
+  ]
+}
+</code></pre><hr>
+<h3 id="sdsresolvedstreamerrorresponsebody">SdsResolvedStreamErrorResponseBody</h3>
+<p><a id="schemasdsresolvedstreamerrorresponsebody"></a>
+<a id="schema_SdsResolvedStreamErrorResponseBody"></a>
+<a id="tocSsdsresolvedstreamerrorresponsebody"></a>
+<a id="tocssdsresolvedstreamerrorresponsebody"></a></p>
+<p>The error response contains details on the cause of stream resolution failure and resolution of the error.</p>
+<h4 id="properties-10">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OperationId</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Operation unique identifier of action that caused the error</td>
+</tr>
+<tr>
+<td><code>Error</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Error description</td>
+</tr>
+<tr>
+<td><code>Reason</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Reason for the error</td>
+</tr>
+<tr>
+<td><code>Resolution</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Resolution to resolve the error</td>
+</tr>
+<tr>
+<td><code>Parameters</code></td>
+<td>object</td>
+<td>false</td>
+<td>true</td>
+<td><code>Id</code>s or values that are creating or are affected by the error</td>
+</tr>
+<tr>
+<td><code>StreamId</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>StatusCode</code></td>
+<td><a href="#schemahttpstatuscode">HttpStatusCode</a></td>
+<td>false</td>
+<td>false</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  },
+  &quot;StreamId&quot;: &quot;string&quot;,
+  &quot;StatusCode&quot;: 100
+}
+</code></pre><hr>
+<h2 id="list-summaries"><code>List Summaries</code></h2>
+<p><a id="opIdStreamData_List Summaries"></a></p>
+<p>Returns summary intervals between a specified start and end index. Index types that cannot be interpolated do not support summary requests. Strings are an example of indexes that cannot be interpolated. Summaries are not supported for streams with compound indexes. Interpolating between two indexes that consist of multiple properties is not defined and results in non-determinant behavior.</p>
+<h3 id="request-9">Request</h3>
+<pre><code class="lang-text">GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data/Summaries
+</code></pre><h4 id="parameters-9">Parameters</h4>
+<p><code>string tenantId</code>
+<br>Tenant identifier.<br><br><br><code>string namespaceId</code>
+<br>Namespace identifier.<br><br><br><code>string streamId</code>
+<br>Stream identifier.<br><br><br></p>
+<h3 id="response-9">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>Inline</td>
+<td>Returns a serialized collection of SdsIntervals. Each SdsInterval has a start, end, and collection of summary values.</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-9">Example response body</h4>
+<blockquote><p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+</blockquote>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><hr>
+<h2 id="list-sampled-values"><code>List Sampled Values</code></h2>
+<p><a id="opIdStreamData_List Sampled Values"></a></p>
+<p>Returns representative data sampled by intervals between a specified start and end index. Sampling is driven by a specified property or properties of the stream&#39;s Sds Type. Property types that cannot be interpolated do not support sampling requests. Strings are an example of a property that cannot be interpolated.</p>
+<h3 id="request-10">Request</h3>
+<pre><code class="lang-text">GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data/Sampled
+</code></pre><h4 id="parameters-10">Parameters</h4>
+<p><code>string tenantId</code>
+<br>Tenant identifier.<br><br><br><code>string namespaceId</code>
+<br>Namespace identifier.<br><br><br><code>string streamId</code>
+<br>Stream identifier.<br><br><br></p>
+<h3 id="response-10">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>Inline</td>
+<td>Returns a serialized collection of events</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-10">Example response body</h4>
+<blockquote><p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+</blockquote>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><h4 id="properties-11">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OperationId</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Operation unique identifier of action that caused the error</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Error description</td>
+</tr>
+<tr>
+<td>Reason</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Reason for the error</td>
+</tr>
+<tr>
+<td>Resolution</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Resolution to resolve the error</td>
+</tr>
+<tr>
+<td>Parameters</td>
+<td>object</td>
+<td>false</td>
+<td>true</td>
+<td>IDs or values that are creating or are affected by the error</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><hr>
+<h3 id="httpstatuscode">HttpStatusCode</h3>
+<p><a id="schemahttpstatuscode"></a>
+<a id="schema_HttpStatusCode"></a>
+<a id="tocShttpstatuscode"></a>
+<a id="tocshttpstatuscode"></a></p>
+<h4 id="enumerated-values-6">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Continue</td>
+<td>100</td>
+</tr>
+<tr>
+<td>SwitchingProtocols</td>
+<td>101</td>
+</tr>
+<tr>
+<td>Processing</td>
+<td>102</td>
+</tr>
+<tr>
+<td>EarlyHints</td>
+<td>103</td>
+</tr>
+<tr>
+<td>OK</td>
+<td>200</td>
+</tr>
+<tr>
+<td>Created</td>
+<td>201</td>
+</tr>
+<tr>
+<td>Accepted</td>
+<td>202</td>
+</tr>
+<tr>
+<td>NonAuthoritativeInformation</td>
+<td>203</td>
+</tr>
+<tr>
+<td>NoContent</td>
+<td>204</td>
+</tr>
+<tr>
+<td>ResetContent</td>
+<td>205</td>
+</tr>
+<tr>
+<td>PartialContent</td>
+<td>206</td>
+</tr>
+<tr>
+<td>MultiStatus</td>
+<td>207</td>
+</tr>
+<tr>
+<td>AlreadyReported</td>
+<td>208</td>
+</tr>
+<tr>
+<td>IMUsed</td>
+<td>226</td>
+</tr>
+<tr>
+<td>MultipleChoices</td>
+<td>300</td>
+</tr>
+<tr>
+<td>Ambiguous</td>
+<td>300</td>
+</tr>
+<tr>
+<td>MovedPermanently</td>
+<td>301</td>
+</tr>
+<tr>
+<td>Moved</td>
+<td>301</td>
+</tr>
+<tr>
+<td>Found</td>
+<td>302</td>
+</tr>
+<tr>
+<td>Redirect</td>
+<td>302</td>
+</tr>
+<tr>
+<td>SeeOther</td>
+<td>303</td>
+</tr>
+<tr>
+<td>RedirectMethod</td>
+<td>303</td>
+</tr>
+<tr>
+<td>NotModified</td>
+<td>304</td>
+</tr>
+<tr>
+<td>UseProxy</td>
+<td>305</td>
+</tr>
+<tr>
+<td>Unused</td>
+<td>306</td>
+</tr>
+<tr>
+<td>TemporaryRedirect</td>
+<td>307</td>
+</tr>
+<tr>
+<td>RedirectKeepVerb</td>
+<td>307</td>
+</tr>
+<tr>
+<td>PermanentRedirect</td>
+<td>308</td>
+</tr>
+<tr>
+<td>BadRequest</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Unauthorized</td>
+<td>401</td>
+</tr>
+<tr>
+<td>PaymentRequired</td>
+<td>402</td>
+</tr>
+<tr>
+<td>Forbidden</td>
+<td>403</td>
+</tr>
+<tr>
+<td>NotFound</td>
+<td>404</td>
+</tr>
+<tr>
+<td>MethodNotAllowed</td>
+<td>405</td>
+</tr>
+<tr>
+<td>NotAcceptable</td>
+<td>406</td>
+</tr>
+<tr>
+<td>ProxyAuthenticationRequired</td>
+<td>407</td>
+</tr>
+<tr>
+<td>RequestTimeout</td>
+<td>408</td>
+</tr>
+<tr>
+<td>Conflict</td>
+<td>409</td>
+</tr>
+<tr>
+<td>Gone</td>
+<td>410</td>
+</tr>
+<tr>
+<td>LengthRequired</td>
+<td>411</td>
+</tr>
+<tr>
+<td>PreconditionFailed</td>
+<td>412</td>
+</tr>
+<tr>
+<td>RequestEntityTooLarge</td>
+<td>413</td>
+</tr>
+<tr>
+<td>RequestUriTooLong</td>
+<td>414</td>
+</tr>
+<tr>
+<td>UnsupportedMediaType</td>
+<td>415</td>
+</tr>
+<tr>
+<td>RequestedRangeNotSatisfiable</td>
+<td>416</td>
+</tr>
+<tr>
+<td>ExpectationFailed</td>
+<td>417</td>
+</tr>
+<tr>
+<td>MisdirectedRequest</td>
+<td>421</td>
+</tr>
+<tr>
+<td>UnprocessableEntity</td>
+<td>422</td>
+</tr>
+<tr>
+<td>Locked</td>
+<td>423</td>
+</tr>
+<tr>
+<td>FailedDependency</td>
+<td>424</td>
+</tr>
+<tr>
+<td>UpgradeRequired</td>
+<td>426</td>
+</tr>
+<tr>
+<td>PreconditionRequired</td>
+<td>428</td>
+</tr>
+<tr>
+<td>TooManyRequests</td>
+<td>429</td>
+</tr>
+<tr>
+<td>RequestHeaderFieldsTooLarge</td>
+<td>431</td>
+</tr>
+<tr>
+<td>UnavailableForLegalReasons</td>
+<td>451</td>
+</tr>
+<tr>
+<td>InternalServerError</td>
+<td>500</td>
+</tr>
+<tr>
+<td>NotImplemented</td>
+<td>501</td>
+</tr>
+<tr>
+<td>BadGateway</td>
+<td>502</td>
+</tr>
+<tr>
+<td>ServiceUnavailable</td>
+<td>503</td>
+</tr>
+<tr>
+<td>GatewayTimeout</td>
+<td>504</td>
+</tr>
+<tr>
+<td>HttpVersionNotSupported</td>
+<td>505</td>
+</tr>
+<tr>
+<td>VariantAlsoNegotiates</td>
+<td>506</td>
+</tr>
+<tr>
+<td>InsufficientStorage</td>
+<td>507</td>
+</tr>
+<tr>
+<td>LoopDetected</td>
+<td>508</td>
+</tr>
+<tr>
+<td>NotExtended</td>
+<td>510</td>
+</tr>
+<tr>
+<td>NetworkAuthenticationRequired</td>
+<td>511</td>
+</tr>
+</tbody>
+</table>
 </article>
           </div>
           
@@ -200,7 +4513,7 @@ Content-Type: application/json
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/streams/sds-streams-api.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/sds/streams/sds-streams-api.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

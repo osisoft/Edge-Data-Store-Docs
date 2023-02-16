@@ -1,9 +1,24 @@
 ### YamlMime:XRefMap
 sorted: true
 references:
+- uid: AdapterDiagnostics
+  name: Diagnostics
+  href: content/shared-content/shared-content/diagnostics/diagnostics.html
+- uid: AdapterMetadata
+  name: Metadata
+  href: content/shared-content/shared-content/metadata/metadata.html
+- uid: adhEgressQuickStart
+  name: AVEVA Data Hub egress quick start
+  href: content/overview/adh-egress-quick-start.html
 - uid: analyticsQuickStart
   name: Edge Data Store analytics quick start
   href: content/overview/analytics-quick-start.html
+- uid: AutomaticHistoryRecovery
+  name: Automatic history recovery
+  href: content/shared-content/shared-content/configuration/history-recovery/automatic-history-recovery.html
+- uid: BufferingConfiguration
+  name: Buffering configuration
+  href: content/configuration/buffering.html
 - uid: commandLineLinuxQuickStart
   name: Command line quick start - Linux
   href: content/overview/command-line-linux-quick-start.html
@@ -23,14 +38,20 @@ references:
   name: Configuration tools
   href: content/administration/management-tools.html
 - uid: configureEgress
-  name: Configure data egress
+  name: Configure periodic data egress
   href: content/egress/configure-data-egress.html
+- uid: DataFiltersConfiguration
+  name: Data filters
+  href: content/shared-content/shared-content/configuration/data-filters.html
 - uid: DataTransformations
   name: Data transformations
   href: content/sds/read-data/data-transformations.html
 - uid: disasterRecovery
   name: Disaster recovery
   href: content/troubleshooting/disaster-recovery.html
+- uid: DiscoveryConfiguration
+  name: Discovery
+  href: content/shared-content/shared-content/configuration/discovery.html
 - uid: edge_system_schema
   name: Sample Edge Data Store configuration
   href: z-archive/Schemas/EdgeSystem_schema.html
@@ -59,41 +80,92 @@ references:
   name: Edge Data Store support
   href: content/support/edge-data-store-support.html
 - uid: edgeDocker
-  name: Install Edge Data Store using Docker
+  name: Install Edge Data Store with Docker
   href: content/docker/edge-docker.html
 - uid: EDSDataIngress
-  name: Data ingress configuration
+  name: Data ingress
   href: content/data-ingress/eds-data-ingress.html
 - uid: egress
-  name: Data egress configuration
+  name: Data egress
   href: content/egress/egress.html
+- uid: EgressDiagnostics
+  name: Egress
+  href: content/shared-content/shared-content/diagnostics/egress.html
+- uid: EgressEndpointsConfiguration
+  name: Egress endpoints
+  href: content/shared-content/shared-content/configuration/egress-endpoints.html
 - uid: EgressExecutionDetails
   name: Egress execution details
   href: content/egress/egress-execution-details.html
 - uid: Enums
   name: Enums
   href: content/sds/read-data/enums.html
+- uid: ErrorRate
+  name: Error rate
+  href: content/shared-content/shared-content/diagnostics/error-rate.html
 - uid: Feedback
   name: Technical support and feedback
   href: content/feedback.html
+- uid: GeneralConfiguration
+  name: Diagnostics and metadata
+  href: content/shared-content/shared-content/configuration/diagnostics-and-metadata.html
+- uid: GeneralEDSConfiguration
+  name: General configuration
+  href: content/configuration/general-configuration.html
+- uid: HealthEndpointConfiguration
+  name: Health endpoints
+  href: content/shared-content/shared-content/configuration/health-endpoints.html
 - uid: HealthEndpointsConfiguration
-  name: Health endpoints configuration
+  name: Configure health endpoints
   href: content/configuration/system-health-endpoints-configuration.html
+- uid: HistoryRecovery
+  name: History recovery
+  href: content/shared-content/shared-content/configuration/history-recovery.html
 - uid: index
   name: Edge Data Store
   href: content/index.html
+- uid: IndexesInDotNet
+  name: Indexes in .NET framework
+  href: content/sds/indexes/indexes-in-dotnet.html
+- uid: IndexesOutsideDotNet
+  name: Indexes outside of .NET framework
+  href: content/sds/indexes/indexes-outside-dotnet.html
+- uid: Installation
+  name: Installation
+  href: content/shared-content/shared-content/installation/installation.html
 - uid: installationOverview
   name: Installation
   href: content/installation/installation-overview.html
 - uid: InstallEdgeDataStore
   name: Install Edge Data Store
   href: content/installation/install-edge-data-store.html
+- uid: InstallTheAdapter
+  name: Install the adapter
+  href: content/shared-content/shared-content/installation/install-the-adapter.html
+- uid: InstallUsingDocker
+  name: Installation using Docker
+  href: content/shared-content/shared-content/installation/install-using-docker.html
+- uid: IntroToPiAdapters
+  name: "<!-- BEGIN ERROR INCLUDE: Unable to resolve [!include[product-name](../_includes/inline/product-name.md)]: Couldn't find file content/opc-ua/shared-content/content/main/shared-content/_includes/inline/product-name.md. -->[!include[product-name](../_includes/inline/product-name.md)]<!--END ERROR INCLUDE --> <!-- BEGIN ERROR INCLUDE: Unable to resolve [!include[product-version](../_includes/inline/product-version.md)]: Couldn't find file content/opc-ua/shared-content/content/main/shared-content/_includes/inline/product-version.md. -->[!include[product-version](../_includes/inline/product-version.md)]<!--END ERROR INCLUDE -->"
+  href: content/opc-ua/shared-content/content/main/shared-content/introduction/intro-to-pi-adapters.html
+- uid: IORate
+  name: IO rate
+  href: content/shared-content/shared-content/diagnostics/io-rate.html
+- uid: JSONPathSyntaxForValueRetrieval
+  name: JSONPath syntax for value retrieval
+  href: content/shared-content/shared-content/configuration/text-parser/jsonpath-syntax-for-value-retrieval.html
 - uid: linuxWindows
   name: Linux and Windows platform differences
   href: content/linux-windows/linux-windows.html
 - uid: LoggingConfig
-  name: Logging configuration
+  name: Configure logging
   href: content/logging/logging-configuration.html
+- uid: LoggingConfiguration
+  name: Logging
+  href: content/shared-content/shared-content/configuration/logging.html
+- uid: ManualEgress
+  name: Configure manual data egress
+  href: content/egress/manual-egress.html
 - uid: modbus_DataSelection_schema
   name: Sample Modbus TCP data selection configuration
   href: z-archive/Schemas/Modbus_DataSelection_schema.html
@@ -106,20 +178,26 @@ references:
 - uid: modbus_schema
   name: Modbus TCP configuration properties
   href: z-archive/Schemas/Modbus_schema.html
+- uid: ModbusDataFiltersConfiguration
+  name: Data filters
+  href: content/modbus/shared-content/content/data-filters.html
 - uid: modbusOverview
   name: Modbus TCP EDS adapter
   href: content/modbus/modbus-overview.html
 - uid: modbusQuickStart
   name: Modbus TCP EDS adapter quick start
   href: content/overview/modbus-quick-start.html
+- uid: ModbusSchedulesConfiguration
+  name: Schedules
+  href: content/modbus/shared-content/content/configuration/schedules.html
 - uid: ModbusTCPDataSelectionConfiguration
   name: Data selection configuration
   href: content/modbus/modbus-data-selection-configuration.html
 - uid: ModbusTCPDataSourceConfiguration
   name: Data source configuration
-  href: content/modbus/modbus-data-source-configuration.html
+  href: content/modbus/shared-content/content/configuration/data-source.html
 - uid: ocsEgressQuickStart
-  name: OCS egress quick start
+  name: AVEVA Data Hub egress quick start
   href: content/overview/ocs-egress-quick-start.html
 - uid: OMFMessages
   name: OMF messages
@@ -128,8 +206,11 @@ references:
   name: OSIsoft Message Format
   href: content/omf/omf-overview.html
 - uid: omfQuickStart
-  name: OMF quick start
+  name: OMF ingress quick start
   href: content/overview/omf-quick-start.html
+- uid: OnDemandHistoryRecoveryConfiguration
+  name: On-demand history recovery configuration
+  href: content/shared-content/shared-content/configuration/history-recovery/on-demand-history-recovery-configuration.html
 - uid: opcUa_DataSelection_schema
   name: Sample OPC UA data selection configuration
   href: z-archive/Schemas/OpcUa_DataSelection_schema.html
@@ -145,6 +226,9 @@ references:
 - uid: OPCUAAdapterSecurityConfiguration
   name: Adapter security
   href: content/opc-ua/opc-ua-adapter-security-configuration.html
+- uid: OPCUADataFiltersConfiguration
+  name: Data filters
+  href: content/opc-ua/shared-content/content/configuration/data-filters.html
 - uid: opcUaDataSelection
   name: Generate default OPC UA data selection configuration file
   href: content/opc-ua/opc-ua-data-selection.html
@@ -153,7 +237,7 @@ references:
   href: content/opc-ua/opc-ua-data-selection-configuration.html
 - uid: OPCUADataSourceConfiguration
   name: Data source configuration
-  href: content/opc-ua/opc-ua-data-source-configuration.html
+  href: content/opc-ua/shared-content/content/configuration/data-source.html
 - uid: opcUaOverview
   name: OPC UA EDS adapter
   href: content/opc-ua/opc-ua-overview.html
@@ -163,8 +247,11 @@ references:
 - uid: Performance
   name: Performance
   href: content/overview/performance.html
+- uid: PIAdapterForModbusSecurity
+  name: Security
+  href: content/modbus/shared-content/content/configuration/security.html
 - uid: piEgressQuickStart
-  name: PI egress quick start
+  name: PI Server egress quick start
   href: content/overview/pi-egress-quick-start.html
 - uid: PrepareEgressDestinations
   name: Prepare egress destinations
@@ -185,7 +272,7 @@ references:
   name: Reference
   href: z-archive/Reference/Reference_1-0.html
 - uid: releaseNotes
-  name: Release notes
+  name: Edge Data Store 2023 release notes
   href: content/release-notes/release-notes.html
 - uid: ResetEdgeDataStore
   name: Reset Edge Data Store
@@ -208,12 +295,18 @@ references:
 - uid: scalePerformance
   name: Design considerations
   href: content/overview/scale-performance.html
+- uid: SchedulesConfiguration
+  name: Schedules
+  href: content/shared-content/shared-content/configuration/schedules.html
 - uid: sdsCompression
   name: Compression
   href: content/sds/compression.html
 - uid: sdsFilterExpressions
   name: Filter expressions
   href: content/sds/read-data/filter-expressions.html
+- uid: sdsGSStreamViews
+  name: Get started with SdsStreamViews
+  href: content/sds/views/get-started-with-stream-views.html
 - uid: sdsIndexes
   name: Indexes
   href: content/sds/indexes.html
@@ -259,15 +352,18 @@ references:
 - uid: sdsTypeExamples
   name: Examples of SdsTypes
   href: content/sds/types/sds-type-examples.html
-- uid: sdsTypeProperty
-  name: SdsTypeProperty
-  href: content/sds/types/sds-type-property.html
 - uid: sdsTypeReusability
   name: SdsType reusability
   href: content/sds/types/sds-type-reusability.html
 - uid: sdsTypes
   name: Types
   href: content/sds/sds-types.html
+- uid: SdsTypesInDotNet
+  name: SdsTypes in .NET framework
+  href: content/sds/types/sds-type-in-dotnet.html
+- uid: SdsTypesOutsideDotNet
+  name: SdsTypes outside of .NET framework
+  href: content/sds/types/sds-types-outside-dotnet.html
 - uid: SdsUOMAPI
   name: SdsUom API
   href: content/sds/uom/sds-uom-api.html
@@ -307,6 +403,9 @@ references:
 - uid: storageruntime
   name: Storage runtime configuration
   href: content/configuration/storage-runtime-config.html
+- uid: StreamCount
+  name: Stream count
+  href: content/shared-content/shared-content/diagnostics/stream-count.html
 - uid: SupportedFeaturesModbus
   name: Supported features
   href: content/modbus/supported-features-modbus.html
@@ -316,6 +415,9 @@ references:
 - uid: SupportedUOM
   name: Supported units of measure
   href: content/sds/uom/supported-uom.html
+- uid: System
+  name: System
+  href: content/shared-content/shared-content/diagnostics/system.html
 - uid: system_Components_schema
   name: Sample Edge Data Store components configuration
   href: z-archive/Schemas/System_Components_schema.html
@@ -331,6 +433,9 @@ references:
 - uid: system_schema
   name: Sample system configuration
   href: z-archive/Schemas/System_schema.html
+- uid: SystemAndAdapterConfiguration
+  name: System and adapter
+  href: content/shared-content/shared-content/configuration/system-and-adapter.html
 - uid: SystemComponentsConfiguration
   name: System components configuration
   href: content/configuration/system-components-configuration.html
@@ -346,21 +451,39 @@ references:
 - uid: SystemRequirements
   name: System requirements
   href: content/installation/system-requirements.html
+- uid: TechnicalSupportAndFeedback
+  name: Technical support and feedback
+  href: content/shared-content/shared-content/technical-support-and-feedback.html
+- uid: TextParser
+  name: Text parser
+  href: content/shared-content/shared-content/configuration/text-parser/text-parser.html
 - uid: troubleShooting
   name: Troubleshoot Edge Data Store
   href: content/troubleshooting/troubleshooting.html
+- uid: TroubleshootTheAdapter
+  name: Troubleshooting
+  href: content/shared-content/shared-content/troubleshooting/troubleshooting.html
 - uid: UninstallEdgeDataStore
   name: Uninstall Edge Data Store
   href: content/installation/uninstall-edge-data-store.html
+- uid: UninstallTheAdapter
+  name: Uninstall the adapter
+  href: content/shared-content/shared-content/installation/uninstall-the-adapter.html
 - uid: unitsOfMeasure
   name: Units of measure
   href: content/sds/units-of-measure.html
 - uid: UomQuantities
   name: Supported quantities
   href: content/sds/uom/supported-uom-quantities.html
+- uid: UpgradeTheAdapter
+  name: Upgrade the adapter
+  href: content/shared-content/shared-content/installation/upgrade-the-adapter.html
 - uid: VerifyInstallation
   name: Verify installation
   href: content/installation/verify-installation.html
 - uid: visualizationQuickStart
   name: Edge Data Store visualization quick start
   href: content/overview/visualization-quick-start.html
+- uid: XPathAndCSVSyntaxForValueRetrieval
+  name: XPath and CSV syntax for value retrieval
+  href: content/shared-content/shared-content/configuration/text-parser/xpath-and-csv-syntax-for-value-retrieval.html

@@ -8,14 +8,14 @@
     <title>SdsType reusability </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="SdsType reusability ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
     <link rel="stylesheet" href="../../../styles/main.css">
     <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../../">
     
@@ -78,8 +78,7 @@
             <article class="content wrap" id="_content" data-uid="sdsTypeReusability">
 <h1 id="sdstype-reusability">SdsType reusability</h1>
 
-<p>An SdsType can also refer other SdsTypes by using their identifiers, which enables type reusability.</p>
-<p>For example, if there is a common index and value property for a group of types that may have additional properties, a base type can be created with those properties.</p>
+<p>An SdsType can refer other SdsTypes by using their identifiers. This enables type reusability. For example, if there is a common index and value property for a group of types that may have additional properties, you can create a base type with those properties. This is shown in the following example.</p>
 <pre><code class="lang-json">{
     &quot;Id&quot;: &quot;Simple&quot;,
     &quot;Name&quot;: &quot;Simple&quot;,
@@ -102,7 +101,7 @@
         }
     ]
 }
-</code></pre><p>If a new type should be created with additional properties to the ones above, add a reference to the base type by specifying the base type&#39;s Id.</p>
+</code></pre><p>If a new type should be created with additional properties to the ones above, add a reference to the base type by specifying the base type&#39;s <code>Id</code>, as shown in the following example.</p>
 <pre><code class="lang-json">{
     &quot;Id&quot;: &quot;Complex&quot;,
     &quot;Name&quot;: &quot;Complex&quot;,
@@ -120,7 +119,7 @@
         }
     ]
 }
-</code></pre><p>The new type may also include the full type definition of the reference type instead of specifying only the Id. For example:</p>
+</code></pre><p>The new type may also include the full type definition of the reference type instead of specifying only the <code>Id</code>, as shown in the following example.</p>
 <pre><code class="lang-json">{
     &quot;Id&quot;: &quot;Complex&quot;,
     &quot;Name&quot;: &quot;Complex&quot;,
@@ -157,10 +156,32 @@
         }
     ]
 }
-</code></pre><p>If the full definition is sent, the referenced types (base type &quot;Simple&quot; in the example above) should match the actual type initially created. If the full definition is sent and the referenced types do not exist, SDS creates them automatically. Further type creations can reference them as demonstrated above. </p>
+</code></pre><p>If you send the full definition, the referenced types (base type <code>Simple</code> in the example above) should match the actual type initially created. If you send the full definition and the referenced types do not exist, SDS creates them automatically. Further type creations can reference them as demonstrated above.</p>
 <p><strong>Note:</strong> When trying to get types back from SDS, the results will also include types that were automatically created by SDS.</p>
-<p>Base types and properties of type Object, Enum, and user-defined collections such as Array, List, and Dictionary will be treated as referenced types. Note that streams cannot be created using these referenced types. If a stream of particular type is to be created, the type should contain at least one property with a valid index type as described in <a class="xref" href="../indexes.html">Indexes</a>. The index property may also be in the base type as shown in the example above.</p>
-</article>
+<p>Base types and properties of type Object, Enum, and user-defined collections such as Array, List, and Dictionary are treated as referenced types. Note that you cannot create streams using these referenced types. If a stream of particular type is to be created, the type should contain at least one property with a valid index type as described in <a class="xref" href="../indexes.html">Indexes</a>. The index property may also be in the base type as shown in the example above.</p>
+<p>If needed, the base type&#39;s <code>Id</code> can be changed to be more meaningful.</p>
+<p>You can do this using any programming language. The following is a .NET example.</p>
+<pre><code class="lang-csharp">public class Basic
+{
+    [SdsMember(IsKey = true, Order = 0)]
+    public DateTime Time { get; set; }
+    public double Temperature { get; set; }
+}
+public class EngineMonitor : Basic
+{
+    public double PistonSpeed { get; set; }
+}
+public class WindShieldMonitor : Basic
+{
+    public double Luminance { get; set; }
+}
+SdsType engineType = SdsTypeBuilder.CreateSdsType&lt;EngineMonitor&gt;();
+engineType.Id = &quot;Engine&quot;;
+engineType.BaseType.Id = &quot;Basic&quot;;
+SdsType windShieldType = SdsTypeBuilder.CreateSdsType&lt;WindShieldMonitor&gt;();
+windShieldType.Id = &quot;WindShield&quot;;
+windShieldType.BaseType.Id = &quot;Basic&quot;;
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -168,7 +189,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/types/sds-type-reusability.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/sds/types/sds-type-reusability.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

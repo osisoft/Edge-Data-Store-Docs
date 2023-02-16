@@ -8,7 +8,7 @@
     <title>Diagnostics configuration </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Diagnostics configuration ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -78,13 +78,12 @@
             <article class="content wrap" id="_content" data-uid="EdgeDataStoreDiagnostics">
 <h1 id="diagnostics-configuration">Diagnostics configuration</h1>
 
-<p>Edge Data Store and its components produce performance and system data for diagnostic purposes which is stored locally in the Storage component, and may be queried locally or egressed to PI Web API endpoints or the OSIsoft Cloud Services or both. Diagnostic data is always produced and saved; it cannot be disabled.</p>
-<p>Diagnostic data is stored within the <em>diagnostics</em> namespace in Edge Storage. Local access to this data is available through SDS. For more information, see <a class="xref" href="../sds/read-data.html">Read data</a>.</p>
-<h2 id="egress-diagnostics-data-through-periodicegressendpoints">Egress diagnostics data through PeriodicEgressEndpoints</h2>
-<p>To egress diagnostics related data, Specify <code>diagnostics</code> as the NamespaceId in the periodic egress endpoint configuration. For details and instructions, see <a class="xref" href="../egress/egress.html">Data egress configuration</a>.</p>
+<p>Edge Data Store and its components produce performance and system data for diagnostic purposes and store that data locally in the storage component. You can query it locally or egress it to PI Web API endpoints, the AVEVA Data Hub, or both. Diagnostic data is produced and saved by default, but can be disabled using the <strong>enableDiagnostics</strong> parameter in the <code>System</code> component.</p>
+<p>All diagnostics streams will have an ID format of <code>{prefix}{DeviceName}.{StreamId}</code>; for example, <code>APrefixLocalhost.Storage.default.default.Counts</code>. EDS stores diagnostic data within the <code>diagnostics</code> namespace. Local access to this data is available through SDS. For more information, see <a class="xref" href="../sds/read-data.html">Read data</a>.</p>
+<h2 id="egress-diagnostics-data">Egress diagnostics data</h2>
+<p>To egress diagnostics related data, specify <code>diagnostics</code> as the <code>NamespaceId</code> in <code>EgressConfigurations</code>. For details and instructions, see <a class="xref" href="../egress/egress.html">Data egress configuration</a>.</p>
 <h2 id="edge-data-store-diagnostics">Edge Data Store diagnostics</h2>
-<p>The Diagnostics.System dynamic type includes these values which are logged in a stream with the ID System.Diagnostics.
-This diagnostic stream contains system-level information related to the host platform that Edge Data Store is running on.</p>
+<p>The Diagnostics.System dynamic type includes these values which are logged in a stream with the ID System.Diagnostics. This diagnostic stream contains system-level information related to the host platform that Edge Data Store is running on.</p>
 <table>
 <thead>
 <tr>
@@ -152,7 +151,7 @@ This diagnostic stream contains system-level information related to the host pla
 <tr>
 <td>double</td>
 <td>PeakPagedMemorySize (uom=MB) </td>
-<td>Maximum amount of memory in the virtual memory paging file, in bytes, used by the host process. <br><br><strong>Note:</strong> On Linux platiforms, this value is always reported as 0.</td>
+<td>Maximum amount of memory in the virtual memory paging file, in bytes, used by the host process. <br><br><strong>Note:</strong> On Linux platforms, this value is always reported as 0.</td>
 </tr>
 <tr>
 <td>double</td>
@@ -169,7 +168,7 @@ This diagnostic stream contains system-level information related to the host pla
 <h2 id="eds-adapter-diagnostics">EDS adapter diagnostics</h2>
 <p>Each EDS adapter of the Edge Data Store produces its own diagnostics streams.</p>
 <h3 id="stream-count">Stream count</h3>
-<p>The Diagnostics.StreamCountEvent dynamic type includes these values, which are logged in a stream with the id {componentid}.StreamCount. The stream count and type count include only types and streams created for sequential data received from a data source.</p>
+<p>The <code>Diagnostics.StreamCountEvent</code> dynamic type includes these values, which are logged in a stream with the id <code>{DeviceName}.{componentid}.StreamCount</code>. The stream count and type count include only types and streams created for sequential data received from a data source.</p>
 <table>
 <thead>
 <tr>
@@ -197,7 +196,7 @@ This diagnostic stream contains system-level information related to the host pla
 </tbody>
 </table>
 <h3 id="io-rate">IO rate</h3>
-<p>The Diagnostics.Adapter.IORate dynamic type includes these values, which are logged in a stream with the id {componentid}.IORate. IO rate includes only sequential data collected from a data source.</p>
+<p>The <code>Diagnostics.Adapter.IORate</code> dynamic type includes these values, which are logged in a stream with the id <code>{DeviceName}.{componentid}.IORate</code>. IO rate includes only sequential data collected from a data source.</p>
 <table>
 <thead>
 <tr>
@@ -220,7 +219,7 @@ This diagnostic stream contains system-level information related to the host pla
 </tbody>
 </table>
 <h3 id="error-rate">Error rate</h3>
-<p>The Diagnostics.Adapter.ErrorRate dynamic type includes these values, and are logged in a stream with the id {componentid}.ErrorRate.</p>
+<p>The <code>Diagnostics.Adapter.ErrorRate</code> dynamic type includes these values, and are logged in a stream with the Id <code>{DeviceName}.{componentid}.ErrorRate</code>.</p>
 <table>
 <thead>
 <tr>
@@ -245,7 +244,7 @@ This diagnostic stream contains system-level information related to the host pla
 <h2 id="edge-storage-diagnostics">Edge Storage diagnostics</h2>
 <p>The Storage component of Edge Data Store produces the following diagnostics streams.</p>
 <h3 id="storagedefaultdefaultcounts">Storage.default.default.Counts</h3>
-<p>The Storage.default.default.Counts stream includes counts of the types, streams, and stream views of the default namespace.</p>
+<p>The <code>Storage.default.default.Counts</code> stream includes counts of the types, streams, and stream views of the default namespace.</p>
 <table>
 <thead>
 <tr>
@@ -278,7 +277,7 @@ This diagnostic stream contains system-level information related to the host pla
 </tbody>
 </table>
 <h3 id="storagedefaultdiagnosticscounts">Storage.default.diagnostics.Counts</h3>
-<p>The Storage.default.default.Counts stream includes counts of the types, streams, and stream views of the diagnostics namespace.</p>
+<p>The <code>Storage.default.diagnostics.Counts</code> stream includes counts of the types, streams, and stream views of the diagnostics namespace.</p>
 <table>
 <thead>
 <tr>
@@ -311,7 +310,7 @@ This diagnostic stream contains system-level information related to the host pla
 </tbody>
 </table>
 <h3 id="storagetotalcounts">Storage.Total.Counts</h3>
-<p>The Storage.Totals.Counts stream includes counts of the types, streams, and stream views of all namespaces of the storage component.</p>
+<p>The <code>Storage.Totals.Counts</code> stream includes counts of the types, streams, and stream views of all namespaces of the storage component.</p>
 <table>
 <thead>
 <tr>
@@ -343,6 +342,29 @@ This diagnostic stream contains system-level information related to the host pla
 </tr>
 </tbody>
 </table>
+<h3 id="io-rate-1">IO rate</h3>
+<p>The <code>Diagnostics.Storage.IORate</code> dynamic type includes these values, which are logged in a stream with the id <code>{DeviceName}.Storage.{EgressType}.{EgressID}.IORate</code>, where <code>{EgressType}</code> can be <code>Periodic</code> or <code>Manual</code>. IO rate includes only sequential data successfully sent to an endpoint for the referenced egress configuration.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>timestamp</td>
+<td>Timestamp of event</td>
+</tr>
+<tr>
+<td>double</td>
+<td>IORate</td>
+<td>10-minute rolling average of data rate (streams/second)</td>
+</tr>
+</tbody>
+</table>
 </article>
           </div>
           
@@ -351,7 +373,7 @@ This diagnostic stream contains system-level information related to the host pla
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/diagnostics/diagnostics.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/diagnostics/diagnostics.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

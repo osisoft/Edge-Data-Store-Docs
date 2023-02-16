@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Data source configuration </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Data source configuration ">
+    <meta name="generator" content="docfx 2.59.1.0">
+    
+    <link rel="shortcut icon" href="../../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../content/index.html" width="46">
+                <img id="logo" src="../../../../../content/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge Data Store"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ModbusTCPDataSourceConfiguration">
+<h1 id="data-source-configuration">Data source configuration</h1>
+
+<p>For each instance of the Modbus TCP EDS adapter defined in system configuration, you must configure the data source from which it polls data.</p>
+<h2 id="configure-modbus-tcp-data-source">Configure Modbus TCP data source</h2>
+<p>You cannot manually modify Modbus TCP data source configurations. You must use the REST endpoints to add or edit the configuration.</p>
+<p>To configure the Modbus TCP data source:</p>
+<ol>
+<li><p>Using any text editor, create a file that contains a Modbus TCP data source in JSON format.</p>
+<ul>
+<li>For content structure, see <a href="#modbus-tcp-data-source-examples">Modbus TCP data source examples</a>.</li>
+</ul>
+</li>
+<li><p>Modify the parameters in the example to match your environment. For a table of all available parameters, see <a href="#parameters-for-modbus-tcp-data-source">Parameters for Modbus TCP data source</a>.</p>
+</li>
+<li><p>Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is <code>Modbus1</code>, name the file <code>Modbus1Datasource.json</code>.</p>
+</li>
+<li><p>Use any tool capable of making HTTP requests to execute a <code>POST</code> command with the contents of that file to the following endpoint: <code>http://localhost:&lt;port_number&gt;/api/v1/configuration/&lt;EDS adapterId&gt;/DataSource/</code>.</p>
+<p> The following examples show the HTTPS request using curl and EdgeCmd, which must be run from the same directory where the file is located, and uses the adapter instance created during installation, which is <code>Modbus1</code>:</p>
+<div class="tabGroup" id="tabgroup_uSTnsFVBjn">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_uSTnsFVBjn_tabid-1" role="tab" aria-controls="tabpanel_uSTnsFVBjn_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">curl</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_uSTnsFVBjn_tabid-2" role="tab" aria-controls="tabpanel_uSTnsFVBjn_tabid-2" data-tab="tabid-2" tabindex="-1">EdgeCmd</a>
+</li>
+</ul>
+<section id="tabpanel_uSTnsFVBjn_tabid-1" role="tabpanel" data-tab="tabid-1">
+<pre><code class="lang-bash">curl -d &quot;@Modbus1DataSource..json&quot; -H &quot;Content-Type: application/json&quot; &quot;http://localhost:5590/api/v1/configuration/Modbus1/DataSource&quot;
+</code></pre></section>
+<section id="tabpanel_uSTnsFVBjn_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code>edgecmd set dataSource -cid Modbus1 -file Modbus1DataSource..json
+</code></pre></section>
+</div>
+</li>
+</ol>
+<h2 id="parameters-for-modbus-tcp-data-source">Parameters for Modbus TCP data source</h2>
+<p>The following parameters are available for configuring a Modbus TCP data source.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Devices</strong></td>
+<td>Required</td>
+<td>Array of objects</td>
+<td>List of Modbus devices that this adapter instance reads. All devices read by the adapter share the common configuration defined in this table. For the properties that a device is comprised of, see the <a href="#devices">Devices</a> table.</td>
+</tr>
+<tr>
+<td><strong>StreamIdPrefix</strong></td>
+<td>Optional</td>
+<td><code>string</code></td>
+<td>Specifies what prefix is used for Stream IDs. The naming convention is <code>{StreamIdPrefix}{StreamId}</code>. An empty string means no prefix will be added to the Stream IDs and names. A <code>null</code> value defaults to ComponentID followed by a period. <br><br>Example: <code>Modbus1.{DeviceId}.{UnitId}.{RegisterType}.{RegisterOffset}</code><br><br><strong>Note:</strong> Every time you change the StreamIdPrefix of a configured adapter, for example when you delete and add a data source, you need to restart the adapter for the changes to take place. New streams are created on adapter restart and pre-existing streams are no longer updated.<br><br>Allowed value: any string<br>Default value: <code>null</code></td>
+</tr>
+<tr>
+<td><strong>DefaultStreamIdPattern</strong></td>
+<td>Optional</td>
+<td><code>string</code></td>
+<td>Specifies the default stream Id pattern to use.<br><br>Allowed value: any string<br>Default value:<br> <code>{DeviceId}.{UnitId}.{RegisterType}.{RegisterOffset}</code>.</td>
+</tr>
+<tr>
+<td><strong>ConnectTimeout</strong></td>
+<td>Optional</td>
+<td><code>string</code></td>
+<td>The length of time to wait when the adapter is trying to connect to the data source. * <br><br>Minimum value: <code>00:00:01</code><br>Maximum value: <code>00:00:30</code> <br>Default value: <code>00:00:05</code></td>
+</tr>
+<tr>
+<td><strong>ReconnectInterval</strong></td>
+<td>Optional</td>
+<td><code>string</code></td>
+<td>The length of time to wait before retrying to connect to the data source when the data source is offline. * <br><br>Minimum value: <code>00:00:00.1</code><br>Maximum value: <code>00:00:30</code> <br>Default value: <code>00:00:01</code></td>
+</tr>
+<tr>
+<td><strong>RequestTimeout</strong></td>
+<td>Optional</td>
+<td><code>string</code></td>
+<td>The length of time that the adapter waits for a pending request before marking it as timeout and dropping the request. * <br><br>Minimum value: must be positive <br> Maximum value: 48 hours or <code>02:00:00:00</code><br>Default value: <code>00:00:10</code></td>
+</tr>
+<tr>
+<td><strong>DelayBetweenRequests</strong></td>
+<td>Optional</td>
+<td><code>string</code></td>
+<td>The minimum length of time between two successive requests sent to the data source. * <br><br>Minimum value: <code>00:00:00</code><br>Maximum value: <code>00:00:01</code> <br>Default value: <code>00:00:00</code></td>
+</tr>
+<tr>
+<td><strong>MaxResponseDataLength</strong></td>
+<td>Optional</td>
+<td>number</td>
+<td>The maximum length (in bytes) of data that can be read within one transaction. This feature is provided to support devices that limit the number of bytes that can be returned. If there is no device limitation, the request length should be the maximum length of <code>250</code> bytes. <br><br>Minimum value: <code>2</code><br> Maximum value: <code>250</code><br>Default value: <code>250</code></td>
+</tr>
+<tr>
+<td><strong>SimultaneousRequests</strong></td>
+<td>Optional</td>
+<td>number</td>
+<td>The number of simultaneous reads from a single IP address and port combination to prevent scan overruns when a lot of data is being read from a single device. <br><br>Minimum value: <code>1</code><br>Maximum value: <code>16</code><br>Default value: <code>1</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> You can also specify timespans as numbers in seconds. For example, <code>&quot;RequestTimeout&quot;: 25</code> specifies 25 seconds, or <code>&quot;RequestTimeout&quot;: 125.5</code> specifies 2 minutes and 5.5 seconds.</p>
+<h3 id="devices">Devices</h3>
+<p>The following parameters are available for configuring the &#39;Devices&#39; parameter of a Modbus TCP data source.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Id</strong></td>
+<td>Required</td>
+<td><code>string</code></td>
+<td>The ID of the device that is used in data selection to associate a register with a device.</td>
+</tr>
+<tr>
+<td><strong>IpAddress</strong></td>
+<td>Required</td>
+<td><code>string</code></td>
+<td>The IP address of the device from which the data is collected using the Modbus TCP protocol. Host name is not supported.</td>
+</tr>
+<tr>
+<td><strong>Port</strong></td>
+<td>Optional</td>
+<td>number</td>
+<td>The TCP port of the target device that listens for and responds to Modbus TCP requests. The value ranges from <code>0</code> to <code>65535</code>. If you do not configure it, the default TCP port is <code>502</code>, which is the default port for Modbus TCP protocol.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="modbus-tcp-data-source-examples">Modbus TCP data source examples</h2>
+<p>The following are examples of valid Modbus TCP data source configurations:</p>
+<h3 id="minimal-data-source-configuration">Minimal data source configuration</h3>
+<pre><code class="lang-json">{
+    &quot;Devices&quot;:
+    [
+        {
+            &quot;Id&quot;: &quot;Device1&quot;,
+            &quot;IpAddress&quot;: &quot;127.0.0.1&quot;
+        }
+    ]
+}
+</code></pre><h3 id="complete-data-source-configuration">Complete data source configuration</h3>
+<pre><code class="lang-json">{
+    &quot;Devices&quot;:
+    [
+        {
+            &quot;Id&quot;: &quot;Device1&quot;,
+            &quot;IpAddress&quot;: &quot;127.0.0.1&quot;,
+            &quot;Port&quot;: 502
+        },
+        {
+            &quot;Id&quot;: &quot;Device2&quot;,
+            &quot;IpAddress&quot;: &quot;127.0.0.2&quot;,
+            &quot;Port&quot;: 502
+        },
+        {
+            &quot;Id&quot;: &quot;Device3&quot;,
+            &quot;IpAddress&quot;: &quot;127.0.0.3&quot;,
+            &quot;Port&quot;: 502
+        }
+    ],
+    &quot;StreamIdPrefix&quot;: &quot;my.prefix&quot;,
+    &quot;DefaultStreamIdPattern&quot;: &quot;{DeviceId}.{UnitId}.{RegisterType}.{RegisterOffset}&quot;,
+    &quot;ConnectTimeout&quot;: &quot;00:00:05&quot;,
+    &quot;ReconnectInterval&quot;: &quot;00:00:01&quot;,
+    &quot;RequestTimeout&quot;: &quot;00:00:10&quot;,
+    &quot;DelayBetweenRequests&quot;: &quot;00:00:00.5&quot;,
+    &quot;MaxResponseDataLength&quot;: 125,
+    &quot;SimultaneousRequests&quot;: 1
+}
+</code></pre><h2 id="rest-urls">REST URLs</h2>
+<table>
+<thead>
+<tr>
+<th>Relative URL</th>
+<th>HTTP verb</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api/v1/configuration/&lt;ComponentId>/DataSource</td>
+<td><code>GET</code></td>
+<td>Retrieves the data source configuration.</td>
+</tr>
+<tr>
+<td>api/v1/configuration/&lt;ComponentId>/DataSource</td>
+<td><code>POST</code></td>
+<td>Creates the data source configuration. The adapter starts collecting data after the following conditions are met:<br><br>&bull; The data source configuration <code>POST</code> request is received.<br>&bull; A data selection configuration is active.</td>
+</tr>
+<tr>
+<td>api/v1/configuration/&lt;ComponentId>/DataSource</td>
+<td><code>PUT</code></td>
+<td>Configures or updates the data source configuration. Overwrites any active data source configuration. If no configuration is active, the adapter starts collecting data after the following conditions are met:<br><br>&bull; The data source configuration <code>PUT</code> request is received.<br>&bull; A data selection configuration is active.</td>
+</tr>
+<tr>
+<td>api/v1/configuration/&lt;ComponentId>/DataSource</td>
+<td><code>DELETE</code></td>
+<td>Deletes the data source configuration. After the request is received, the adapter stops collecting data.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> Replace <code>ComponentId</code> with the Id of your Modbus TCP component. For example, <code>Modbus1</code>.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/modbus/shared-content/content/configuration/data-source.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span><a href="https://www.osisoft.com/copyright/">© 2019 - 2021 OSIsoft, LLC. All rights reserved.</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

@@ -8,14 +8,14 @@
     <title>Write data API </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Write data API ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
     <link rel="stylesheet" href="../../../styles/main.css">
     <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../../">
     
@@ -80,66 +80,96 @@
 
 <p>The following example API calls show different methods for writing data.</p>
 <h2 id="example-type-stream-and-data">Example type, stream, and data</h2>
-<p>The descriptions of the following API methods contain example requests and responses in JSON to highlight usage and specific behaviors. The following type, stream, and data are used in the examples:</p>
-<p><strong>Example type</strong><br><code>SimpleType</code> is an SdsType with a single index and two additional properties. This type is defined in Python and Javascript:</p>
-<h6 id="python">Python</h6>
+<p>Many of the API methods described below contain example requests and responses in JSON to highlight usage and specific behaviors. The following type, stream, and data are used in the examples.</p>
+<p><strong>Example type</strong><br><code>SimpleType</code> is an SdsType with a single index and two additional properties. This type is defined below in .NET, Python, and JavaScript:</p>
+<div class="tabGroup" id="tabgroup_aVdV7KZIei">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_aVdV7KZIei_tabid-1" role="tab" aria-controls="tabpanel_aVdV7KZIei_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">.NET</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_aVdV7KZIei_tabid-2" role="tab" aria-controls="tabpanel_aVdV7KZIei_tabid-2" data-tab="tabid-2" tabindex="-1">Python</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_aVdV7KZIei_tabid-3" role="tab" aria-controls="tabpanel_aVdV7KZIei_tabid-3" data-tab="tabid-3" tabindex="-1">JavaScript</a>
+</li>
+</ul>
+<section id="tabpanel_aVdV7KZIei_tabid-1" role="tabpanel" data-tab="tabid-1">
+<pre><code class="lang-csharp">public enum State
+{
+   Ok,
+   Warning,
+   Alarm
+}
+public class SimpleType
+{
+   [SdsMember(IsKey = true, Order = 0) ]
+   public DateTime Time { get; set; }
+   public State State { get; set; }
+   [SdsMember(Uom = &quot;meter&quot;)]
+   public Double Measurement { get; set; }
+}
+</code></pre></section>
+<section id="tabpanel_aVdV7KZIei_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
 <pre><code class="lang-python">class State(Enum):
   Ok = 0
   Warning = 1
   Alarm = 2
-
 class SimpleType(object):
   Time = property(getTime, setTime)
   def getTime(self):
     return self.__time
   def setTime(self, time):
     self.__time = time
-
   State = property(getState, setState)
   def getState(self):
     return self.__state
   def setState(self, state):
     self.__state = state
-
   Measurement = property(getValue, setValue)
   def getValue(self):
     return self.__measurement
   def setValue(self, measurement):
     self.__measurement = measurement
-</code></pre><h6 id="javascript">JavaScript</h6>
+</code></pre></section>
+<section id="tabpanel_aVdV7KZIei_tabid-3" role="tabpanel" data-tab="tabid-3" aria-hidden="true" hidden="hidden">
 <pre><code class="lang-javascript">var State =
 {
   Ok: 0,
   Warning: 1,
   Alarm: 2,
 }
-
 var SimpleType = function () {
   this.Time = null;
   this.State = null;
   this.Value = null;
 }
-</code></pre><p><strong>Example stream</strong><br><code>Simple</code> is an SdsStream of type <code>SimpleType</code>.</p>
-<p><strong>Example data</strong><br><code>Simple</code> has stored values as follows:
-      11/23/2017 12:00:00 PM: Ok  0
+</code></pre></section>
+</div>
+<p><strong>Example stream</strong><br><code>Simple</code> is an <code>SdsStream</code> of type <code>SimpleType</code>.</p>
+<p><strong>Example data</strong><br><code>Simple</code> has stored values as follows:</p>
+<pre><code>      11/23/2017 12:00:00 PM: Ok  0
       11/23/2017  1:00:00 PM: Ok 10
       11/23/2017  2:00:00 PM: Ok 20
       11/23/2017  3:00:00 PM: Ok 30
-      11/23/2017  4:00:00 PM: Ok 40</p>
-<p>All times are represented at offset 0, GMT.</p>
+      11/23/2017  4:00:00 PM: Ok 40
+</code></pre><p>All times are represented at offset 0, GMT.</p>
 <hr>
 <h2 id="insert-values"><code>Insert Values</code></h2>
 <p>Inserts data into the specified stream. Returns an error if data is already present at the index of any event.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">POST api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamId</code><br>The stream identifier. </p>
-<p><strong>Request body</strong><br>A serialized list of one or more events of the stream type.  </p>
-<p><strong>Response</strong><br>The response includes a status code.</p>
-<p><strong>Note:</strong> This request will return an error if an event already exists for any index in the request. If any individual index encounters a problem, the entire operation is rolled back and no insertions are made. The <code>streamId</code> and <code>index</code> that caused the issue are included in the error response.</p>
-<p><strong>Example</strong><br>The following request is used to insert events into stream <code>Simple</code> of <code>SimpleType</code>,</p>
-<pre><code class="lang-text">POST api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
-</code></pre><p>The request body specifies the values to insert:</p>
+<h3 id="request">Request</h3>
+<pre><code class="lang-text">   POST api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data
+</code></pre><h4 id="parameters">Parameters</h4>
+<p><code>string tenantId</code><br>Tenant identifier  </p>
+<p><code>string namespaceId</code><br>Namespace identifier</p>
+<p><code>string streamId</code><br>Stream identifier</p>
+<h5 id="request-body">Request body</h5>
+<p>A serialized list of one or more events of the stream type  </p>
+<h5 id="example-request">Example request</h5>
+<p>The following request is used to insert events into stream <code>Simple</code> of <code>SimpleType</code>:</p>
+<pre><code class="lang-text">   POST api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data
+</code></pre><h5 id="example-request-body">Example request body</h5>
+<p>The request body specifies the values to insert.</p>
 <pre><code class="lang-json">[
     {
         &quot;Time&quot;: &quot;2017-11-23T17:00:00Z&quot;,
@@ -152,83 +182,467 @@ var SimpleType = function () {
         &quot;Measurement&quot;: 60
     }
 ]
-</code></pre><hr>
+</code></pre><h3 id="response">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>204</td>
+<td>None</td>
+<td>Specified values were successfully added</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>409</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Conflict</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body">Example response body</h4>
+<blockquote><p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+</blockquote>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><p><strong>Note:</strong> This request will return an error if an event already exists for any index in the request. If any individual index encounters a problem, the entire operation is rolled back and no insertions are made. The <code>streamId</code> and <code>index</code> that caused the issue are included in the error response.</p>
+<h2 id="update-values"><code>Update Values</code></h2>
+<p>Writes one or more events to the specified stream</p>
+<h3 id="request-1">Request</h3>
+<pre><code class="lang-text">   PUT api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data
+</code></pre><h4 id="parameters-1">Parameters</h4>
+<p><code>string tenantId</code><br>Tenant identifier  </p>
+<p><code>string namespaceId</code><br>Namespace identifier  </p>
+<p><code>string streamId</code><br>Stream identifier</p>
+<h5 id="request-body-1">Request body</h5>
+<p>A serialized list of one or more events of the stream type</p>
+<h3 id="response-1">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>204</td>
+<td>None</td>
+<td>Specified values were successfully updated</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-1">Example response body</h4>
+<blockquote><p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+</blockquote>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><p><strong>Note:</strong> This request performs an insert or a replace depending on whether an event already exists at the event indexes. If any item fails to write, the entire operation is rolled back and no events are written to the stream. The index that caused the issue is included in the error response.</p>
+<hr>
+<h2 id="replace-values"><code>Replace Values</code></h2>
+<p>Writes one or more events over existing events in the specified stream</p>
+<h3 id="request-2">Request</h3>
+<pre><code class="lang-text">   PUT api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data
+       ?allowCreate=false
+</code></pre><h4 id="parameters-2">Parameters</h4>
+<p><code>string tenantId</code><br>Tenant identifier  </p>
+<p><code>string namespaceId</code><br>Namespace identifier  </p>
+<p><code>string streamId</code><br>Stream identifier</p>
+<h4 id="request-body-2">Request Body</h4>
+<p>A serialized list of one or more events of the stream type</p>
+<h3 id="response-2">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>204</td>
+<td>None</td>
+<td>Specified values were successfully deleted</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-2">Example response body</h4>
+<blockquote><p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+</blockquote>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><p><strong>Note:</strong> This request returns an error if the stream does not have an event to be replaced at the specified index. If any individual event fails to be replaced, the entire operation is rolled back and no replaces are performed. The index that caused the issue and the streamId are included in the error response.</p>
+<hr>
 <h2 id="patch-values"><code>Patch Values</code></h2>
 <p>Modifies the specified stream event(s). Patching affects only the data item parameters that are included in the call.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">PATCH api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
-  ?select={selectExpression}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamId</code><br>The stream identifier.</p>
-<p><code>string selectExpression</code><br>Comma-separated list of strings that indicates the event fields to be changed in stream events.  </p>
-<p><strong>Request body</strong><br>A serialized collection of one or more patch property events.</p>
-<p><strong>Response</strong><br>The response includes a status code.</p>
-<p>Consider you have a stream <code>Simple</code> of <code>SimpleType</code>, to change one property, <code>Measurement</code>, for one event specify the following request:</p>
-<pre><code class="lang-text">PATCH api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
-  ?select=measurement
-</code></pre><p>With the following request body,</p>
+<h3 id="request-3">Request</h3>
+<pre><code class="lang-text">   PATCH api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data
+        ?select={selectExpression}
+</code></pre><h4 id="parameters-3">Parameters</h4>
+<p><code>string tenantId</code><br>Tenant identifier</p>
+<p><code>string namespaceId</code><br>Namespace identifier</p>
+<p><code>string streamId</code><br>Stream identifier</p>
+<p><code>string selectExpression</code><br>Comma separated list of strings that indicates the event fields that will be changed in stream events  </p>
+<h4 id="request-body-3">Request body</h4>
+<p>A serialized collection of one or more patch property events</p>
+<h3 id="response-3">Response</h3>
+<p>The response includes a status code</p>
+<h4 id="example-request-1">Example request</h4>
+<p>Let&#39;s say that you have a stream <code>Simple</code> of <code>SimpleType</code>. To change one property (<code>Measurement</code>) for one event, you can use the request with the body below:</p>
+<pre><code class="lang-text">   PATCH api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/Simple/Data
+       ?select=measurement
+</code></pre><h5 id="example-request-body-1">Example request body</h5>
 <pre><code class="lang-json">[
   {  
     &quot;Time&quot;:&quot;2017-11-23T12:00:00Z&quot;,
     &quot;Measurement&quot;:500.0
   }
 ]
-</code></pre><p>This request will only change the <code>Measurement</code> value at the specified event index.</p>
-<p><strong>Note:</strong><br>Patching is used to patch the events of the selected fields for one or more events in the stream. Only the fields indicated in <code>selectExpression</code> are modified. The events to be modified are indicated by the index value of each entry in the collection. If there is a problem patching any individual event, the entire operation is rolled back and the error will indicate the <code>streamId</code> and <code>index</code> of the problem.  </p>
-<hr>
+</code></pre><p>This request only changes the <code>Measurement</code> value at the specified event index.</p>
+<p><strong>Note:</strong> Patching is used to patch the events of the selected fields for one or more events in the stream. Only the fields indicated in <code>selectExpression</code> are modified. The events to be modified are indicated by the index value of each entry in the collection.</p>
+<p>If there is a problem patching any individual event, the entire operation is rolled back and the error will indicate the <code>streamId</code> and <code>index</code> of the problem.  </p>
 <h2 id="remove-values"><code>Remove Values</code></h2>
 <p>There are two options for specifying which events to remove from a stream:</p>
 <ul>
-<li><a href="#removeindexcollection">Index Collection</a>: One or more indexes can be specified in the request.</li>
-<li><a href="#removewindow">Window</a>: A window can be specified with a start index and end index.</li>
+<li><p><a href="#removeindexcollection">Index Collection</a>: One or more indexes can be specified in the request.</p>
+</li>
+<li><p><a href="#window">Window</a>: A window can be specified with a start index and end index.</p>
+</li>
 </ul>
 <p><a name="removeindexcollection"></a></p>
 <h3 id="index-collection"><code>Index Collection</code></h3>
 <p>Removes the event at each index from the specified stream. Different overloads are available to make it easier to indicate the index where you want to remove a data event.</p>
-<p><strong>Request</strong>  </p>
-<pre><code class="lang-text">DELETE api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
-  ?index={index}[&amp;index={index}…]
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamId</code><br>The stream identifier.  </p>
-<p><code>string index</code><br>One or more indexes of events to remove.</p>
-<p><strong>Response</strong><br>The response includes a status code.</p>
-<p><strong>Note:</strong><br>If any individual event fails to be removed, the entire operation is rolled back and no events are removed. The streamId and index that caused the issue are included in the error response. If you attempt to remove events at indexes that have no events, an error is returned. If this occurs, you can use <a href="#removewindow">Window</a> request format to remove any events from a specified ‘window’ of indexes, which will not return an error if no data is found.</p>
+<h4 id="request-4">Request</h4>
+<pre><code class="lang-text">   DELETE api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data
+       ?index={index}[&amp;index={index}…]
+</code></pre><h5 id="parameters-4">Parameters</h5>
+<p><code>string tenantId</code><br>Tenant identifier  </p>
+<p><code>string namespaceId</code><br>Namespace identifier  </p>
+<p><code>string streamId</code><br>Stream identifier</p>
+<p><code>string index</code><br>One or more indexes of events to remove</p>
+<h3 id="response-4">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>204</td>
+<td>None</td>
+<td>Specified values were successfully deleted</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-3">Example response body</h4>
+<blockquote><p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+</blockquote>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><p><strong>Note:</strong> If any individual event fails to be removed, the entire operation is rolled back and no events are removed. The <code>streamId</code> and index that caused the issue are included in the error response. </p>
+<p>If you attempt to remove events at indexes that have no events, an error is returned. If this occurs, you can use <a href="#removewindow">Window</a> request format to remove any events from a specified &quot;window&quot; of indexes, which will not return an error if no data is found.</p>
 <p><a name="removewindow"></a></p>
 <h3 id="window"><code>Window</code></h3>
-<p>Removes events at and between the start index and end index.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">DELETE api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
-  ?startIndex={startIndex}&amp;endIndex={endIndex}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamId</code><br>The stream identifier.  </p>
-<p><code>string startIndex</code><br>The index defining the beginning of the window.</p>
-<p><code>string endIndex</code><br>The index defining the end of the window.  </p>
-<p><strong>Response</strong><br>The response includes a status code.</p>
-<p><strong>Note:</strong> If any individual event fails to be removed, the entire operation is rolled back and no removes are done.</p>
+<p>Removes events at and between the start index and end index</p>
+<h4 id="request-5">Request</h4>
+<pre><code class="lang-text">   DELETE api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data
+       ?startIndex={startIndex}&amp;endIndex={endIndex}
+</code></pre><h5 id="parameters-5">Parameters</h5>
+<p><code>string tenantId</code><br>Tenant identifier  </p>
+<p><code>string namespaceId</code><br>Namespace identifier  </p>
+<p><code>string streamId</code><br>Stream identifier</p>
+<p><code>string startIndex</code><br>The index defining the beginning of the window</p>
+<p><code>string endIndex</code><br>The index defining the end of the window  </p>
+<h3 id="response-5">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>204</td>
+<td>None</td>
+<td>Specified values were successfully deleted</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-4">Example response body</h4>
+<blockquote><p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+</blockquote>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><p><strong>Note:</strong> If any individual event fails to be removed, the entire operation is rolled back and no removes are done.</p>
 <hr>
-<h2 id="replace-values"><code>Replace Values</code></h2>
-<p>Writes one or more events over existing events in the specified stream.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">PUT api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
-  ?allowCreate=false
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamId</code><br>The stream identifier.  </p>
-<p><strong>Request body</strong>
-A serialized list of one or more events of the stream type.</p>
-<p><strong>Response</strong><br>The response includes a status code.</p>
-<p><strong>Note:</strong> This request returns an error if the stream does not have an event to be replaced at the specified index. If any individual event fails to be replaced, the entire operation is rolled back and no replaces are performed. The index that caused the issue and the streamId are included in the error response.</p>
-<hr>
-<h2 id="update-values"><code>Update Values</code></h2>
-<p>Writes one or more events to the specified stream.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">PUT api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamId</code><br>The stream identifier.  </p>
-<p><strong>Request body</strong><br>A serialized list of one or more events of the stream type.</p>
-<p><strong>Response</strong><br>The response includes a status code.</p>
-<p><strong>Note:</strong> This request performs an insert or a replace depending on whether an event already exists at the event indexes. If any item fails to write, the entire operation is rolled back and no events are written to the stream. The index that caused the issue is included in the error response.</p>
-<hr>
-</article>
+<h2 id="definitions">Definitions</h2>
+<h3 id="errorresponsebody">ErrorResponseBody</h3>
+<p><a id="schemaerrorresponsebody"></a>
+<a id="schema_ErrorResponseBody"></a>
+<a id="tocSerrorresponsebody"></a>
+<a id="tocserrorresponsebody"></a></p>
+<p>Contains the error message format that follows the AVEVA Data Hub error standards</p>
+<h4 id="properties">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OperationId</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Operation unique identifier of action that caused the error</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Error description</td>
+</tr>
+<tr>
+<td>Reason</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Reason for the error</td>
+</tr>
+<tr>
+<td>Resolution</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Resolution to resolve the error</td>
+</tr>
+<tr>
+<td>Parameters</td>
+<td>object</td>
+<td>false</td>
+<td>true</td>
+<td><code>Ids</code> or values that are creating or are affected by the error</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -236,7 +650,7 @@ A serialized list of one or more events of the stream type.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/write-data/writing-data-api.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/sds/write-data/writing-data-api.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

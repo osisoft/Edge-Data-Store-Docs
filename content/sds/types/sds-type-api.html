@@ -8,14 +8,14 @@
     <title>SdsType API </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="SdsType API ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
     <link rel="stylesheet" href="../../../styles/main.css">
     <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../../">
     
@@ -78,167 +78,69 @@
             <article class="content wrap" id="_content" data-uid="sdsTypeAPI">
 <h1 id="sdstype-api">SdsType API</h1>
 
-<p>The REST APIs provide programmatic access to read and write SDS data. The following APIs interact with SdsTypes. See <a class="xref" href="../sds-types.html">Types</a> for general SdsType information.</p>
-<hr>
-<h2 id="get-type"><code>Get Type</code></h2>
-<p>Returns the type corresponding to the specified typeId within a given namespace.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Types/{typeId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string typeId</code><br>The type identifier.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>The requested SdsType.</p>
-<p>Example response body:</p>
+<p>The REST APIs provide programmatic access to read and write SDS data. The following APIs interact with <code>SdsTypes</code>. For general <code>SdsType</code> information, see <a class="xref" href="../sds-types.html">Types</a>.</p>
+<h2 id="list-types"><code>List Types</code></h2>
+<p><a id="opIdType_List Types"></a></p>
+<p>Gets a list of <code>SdsType</code> objects. If you do not set the optional parameters, this call returns up to the first 100 <code>SdsTypes</code>.</p>
+<h3 id="request">Request</h3>
+<pre><code class="lang-text">GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types?query={query}&amp;skip={skip}&amp;count={count}&amp;orderby={orderby}
+</code></pre><h4 id="parameters">Parameters</h4>
+<p><code>string tenantId</code>
+Tenant identifier</p>
+<p><code>string namespaceId</code>
+Namespace identifier</p>
+<p><code>[Optional] string query</code><br>Query identifier. See <a class="xref" href="../search.html">Search in SDS</a> for information about specifying the search parameter.</p>
+<p><code>[Optional] int skip</code><br>Parameter representing the zero-based offset of the first object to retrieve. If unspecified, a default value of <code>0</code> is used.</p>
+<p><code>[Optional] int count</code><br>Parameter representing the maximum number of objects to retrieve. If unspecified, a default value of <code>100</code> is used.</p>
+<p><code>[Optional] string orderby</code><br>Parameter representing sorted order. A field name is required. The sorting is based on the stored values for a given field (of type <code>string</code>). For example, <code>orderby=name</code> would sort the returned results by the <code>name</code> values (ascending by default). Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values <code>asc</code> or <code>desc</code>, respectively. For example, <code>orderby=name desc</code> would sort the returned results by the <code>name</code> values, descending. If you do not specify a value, the results are not sorted.</p>
+<h3 id="response">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="#schemasdstype">SdsType</a>[]</td>
+<td>Returns a list of <code>SdsType</code> objects</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body">Example response body</h4>
+<p>200 Response</p>
 <pre><code class="lang-json">HTTP/1.1 200
 Content-Type: application/json
-
-{
-    &quot;Id&quot;: &quot;Simple&quot;,
-    &quot;Name&quot;: &quot;Simple&quot;,
-    &quot;SdsTypeCode&quot;: 1,
-    &quot;Properties&quot;: [
-        {
-            &quot;Id&quot;: &quot;Time&quot;,
-            &quot;Name&quot;: &quot;Time&quot;,
-            &quot;IsKey&quot;: true,
-            &quot;SdsType&quot;: {
-                &quot;Id&quot;: &quot;19a87a76-614a-385b-ba48-6f8b30ff6ab2&quot;,
-                &quot;Name&quot;: &quot;DateTime&quot;,
-                &quot;SdsTypeCode&quot;: 16
-            }
-        },
-        {
-            &quot;Id&quot;: &quot;State&quot;,
-            &quot;Name&quot;: &quot;State&quot;,
-            &quot;SdsType&quot;: {
-                &quot;Id&quot;: &quot;e20bdd7e-590b-3372-ab39-ff61950fb4f3&quot;,
-                &quot;Name&quot;: &quot;State&quot;,
-                &quot;SdsTypeCode&quot;: 609,
-                &quot;Properties&quot;: [
-                    {
-                        &quot;Id&quot;: &quot;Ok&quot;,
-                        &quot;Value&quot;: 0
-                    },
-                    {
-                        &quot;Id&quot;: &quot;Warning&quot;,
-                        &quot;Value&quot;: 1
-                    },
-                    {
-                        &quot;Id&quot;: &quot;Alarm&quot;,
-                        &quot;Value&quot;: 2
-                    }
-                ]
-            }
-        },
-        {
-            &quot;Id&quot;: &quot;Measurement&quot;,
-            &quot;Name&quot;: &quot;Measurement&quot;,
-            &quot;SdsType&quot;: {
-                &quot;Id&quot;: &quot;6fecef77-20b1-37ae-aa3b-e6bb838d5a86&quot;,
-                &quot;Name&quot;: &quot;Double&quot;,
-                &quot;SdsTypeCode&quot;: 14
-            }
-        }
-    ]
-}
-</code></pre><hr>
-<h2 id="get-type-reference-count"><code>Get Type Reference Count</code></h2>
-<p>Returns a dictionary mapping the object name to the number of references held by streams, stream views, and parent types for the specified type. For more information on the use of types to define streams and stream views, see <a class="xref" href="../sds-streams.html">Streams</a> and <a class="xref" href="../sds-views.html">Stream views</a>. For further details about type referencing, see <a class="xref" href="sds-type-reusability.html">Type reusability</a>.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Types/{typeId}/ReferenceCount
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string typeId</code><br>The type identifier.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>A dictionary mapping object name to number of references.</p>
-<p>Example response body:</p>
-<pre><code class="lang-json">    {
-        &quot;SdsStream&quot;: 3,
-        &quot;SdsStreamView&quot;: 2,
-        &quot;SdsType&quot;: 1
-    }
-</code></pre><hr>
-<h2 id="get-types"><code>Get Types</code></h2>
-<p>Returns a list of types within a given namespace.</p>
-<p>If you specify the optional search query parameter, the list of types returned will match the search criteria. If you do not specify the search query parameter, the list will include all types in the namespace. For information about specifying those respective parameters, see <a class="xref" href="../search.html">Search in SDS</a>.</p>
-<p><strong>Note:</strong> The results will also include types that were automatically created by SDS as a result of type referencing. For further details about type referencing, see <a class="xref" href="sds-type-reusability.html">Type reusability</a>.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Types?query={query}&amp;skip={skip}&amp;count={count}&amp;orderby={orderby}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string query</code><br>An optional query string to match which SdsTypes will be returned. For information about specifying the query parameter, see <a class="xref" href="../search.html">Search in SDS</a>.</p>
-<p><code>int skip</code><br>An optional value representing the zero-based offset of the first SdsType to retrieve. If not specified, a default value of 0 is used.</p>
-<p><code>int count</code><br>An optional value representing the maximum number of SdsTypes to retrieve. If not specified, a default value of 100 is used.</p>
-<p><code>string orderby</code><br>An optional parameter representing sorted order which SdsTypes will be returned. A field name is required. The sorting is based on the stored values for the given field (of type string). For example, <code>orderby=name</code> would sort the returned results by the <code>name</code> values (ascending by default). Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values <code>asc</code> or <code>desc</code>, respectively. For example, <code>orderby=name desc</code> would sort the returned results by the <code>name</code> values, descending. If no value is specified, there is no sorting of results.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>A collection of zero or more SdsTypes.</p>
-<p>Example response body:</p>
-<pre><code class="lang-json">HTTP/1.1 200
-Content-Type: application/json
-
-[
+[    
     {
-        &quot;Id&quot;: &quot;Simple&quot;,
-        &quot;Name&quot;: &quot;Simple&quot;,
-        &quot;SdsTypeCode&quot;: 1,
-        &quot;Properties&quot;: [
-            {
-                &quot;Id&quot;: &quot;Time&quot;,
-                &quot;Name&quot;: &quot;Time&quot;,
-                &quot;IsKey&quot;: true,
-                &quot;SdsType&quot;: {
-                    &quot;Id&quot;: &quot;19a87a76-614a-385b-ba48-6f8b30ff6ab2&quot;,
-                    &quot;Name&quot;: &quot;DateTime&quot;,
-                    &quot;SdsTypeCode&quot;: 16
-                }
-            },
-            {
-                &quot;Id&quot;: &quot;State&quot;,
-                &quot;Name&quot;: &quot;State&quot;,
-                &quot;SdsType&quot;: {
-                    &quot;Id&quot;: &quot;e20bdd7e-590b-3372-ab39-ff61950fb4f3&quot;,
-                    &quot;Name&quot;: &quot;State&quot;,
-                    &quot;SdsTypeCode&quot;: 609,
-                    &quot;Properties&quot;: [
-                        {
-                            &quot;Id&quot;: &quot;Ok&quot;,
-                            &quot;Value&quot;: 0
-                        },
-                        {
-                            &quot;Id&quot;: &quot;Warning&quot;,
-                            &quot;Value&quot;: 1
-                        },
-                        {
-                            &quot;Id&quot;: &quot;Alarm&quot;,
-                            &quot;Value&quot;: 2
-                        }
-                    ]
-                }
-            },
-            {
-                &quot;Id&quot;: &quot;Measurement&quot;,
-                &quot;Name&quot;: &quot;Measurement&quot;,
-                &quot;SdsType&quot;: {
-                    &quot;Id&quot;: &quot;6fecef77-20b1-37ae-aa3b-e6bb838d5a86&quot;,
-                    &quot;Name&quot;: &quot;Double&quot;,
-                    &quot;SdsTypeCode&quot;: 14
-                }
-            }
-        ]
-    },
-]
-</code></pre><hr>
-<h2 id="get-or-create-type"><code>Get or Create Type</code></h2>
-<p>Creates the specified type. If a type with a matching identifier already exists, SDS compares the existing type with the type that was sent.</p>
-<p>If the types are identical, a <code>Found</code> (302) error is returned with the Location header set to the URI where the type may be retrieved using a Get function.</p>
-<p>If the types do not match, a <code>Conflict</code> (409) error is returned. <strong>Note:</strong> A <code>Conflict</code> (409) error will also be returned if the type contains reference to any existing type, but the referenced type definition in the body does not match the existing type. You may reference an existing type without including the reference type definition in the body by using only the Ids. For further details about type referencing, see <a class="xref" href="sds-type-reusability.html">Type reusability</a>.</p>
-<p>For a matching type (<code>Found</code>), clients that are capable of performing a redirect that includes the authorization header can automatically redirect to retrieve the type. However, most clients, including the .NET HttpClient, consider redirecting with the authorization token to be a security vulnerability.</p>
-<p>When a client performs a redirect and strips the authorization header, SDS cannot authorize the request and returns <code>Unauthorized</code> (401). For this reason, OSIsoft recommends that when using clients that do not redirect with the authorization header, you should disable automatic redirect and perform the redirect manually.</p>
-<p><strong>Request</strong>  </p>
-<pre><code class="lang-text">POST api/v1/Tenants/default/Namespaces/{namespaceId}/Types/{typeId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string typeId</code><br>The type identifier. The identifier must match the <code>SdsType.Id</code> field in the request body.</p>
-<p><strong>Request body</strong><br>The request content is the serialized SdsType.</p>
-<p>Example SdsType content:</p>
-<pre><code class="lang-json">{
     &quot;Id&quot;: &quot;Simple&quot;,
     &quot;Name&quot;: &quot;Simple&quot;,
     &quot;SdsTypeCode&quot;: 1,
@@ -286,150 +188,1947 @@ Content-Type: application/json
             }
         }
     ]
+    },
+
+]
+</code></pre><p>401 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
 }
-</code></pre><p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>The request content is the serialized SdsType. OSIsoft recommends that you use JSON.</p>
-<p>Example Response body:</p>
+</code></pre><hr>
+<h2 id="get-type"><code>Get Type</code></h2>
+<p><a id="opIdType_Get Type"></a></p>
+<p>Gets the specified <code>SdsType</code></p>
+<h3 id="request-1">Request</h3>
+<pre><code class="lang-text">GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}
+</code></pre><h4 id="parameters-1">Parameters</h4>
+<p><code>string tenantId</code>
+Tenant identifier</p>
+<p><code>string namespaceId</code>
+Namespace identifier</p>
+<p><code>string typeId</code>
+Type identifier</p>
+<h3 id="response-1">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="#schemasdstype">SdsType</a></td>
+<td>Returns the <code>SdsType</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-1">Example response body</h4>
+<p>200 Response</p>
+<pre><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+{
+&quot;Id&quot;:&quot;Simple&quot;,
+&quot;Name&quot;:&quot;Simple&quot;,
+&quot;SdsTypeCode&quot;:1,
+&quot;Properties&quot;:[
+    {
+        &quot;Id&quot;:&quot;Time&quot;,
+        &quot;Name&quot;:&quot;Time&quot;,
+        &quot;IsKey&quot;:true,
+        &quot;SdsType&quot;:{
+            &quot;Id&quot;:&quot;19a87a76-614a-385b-ba48-6f8b30ff6ab2&quot;,
+            &quot;Name&quot;:&quot;DateTime&quot;,
+            &quot;SdsTypeCode&quot;:16
+        }
+    },
+    {
+        &quot;Id&quot;:&quot;State&quot;,
+        &quot;Name&quot;:&quot;State&quot;,
+        &quot;SdsType&quot;:{
+            &quot;Id&quot;:&quot;e20bdd7e-590b-3372-ab39-ff61950fb4f3&quot;,
+            &quot;Name&quot;:&quot;State&quot;,
+            &quot;SdsTypeCode&quot;:609,
+            &quot;Properties&quot;:[
+                {
+                    &quot;Id&quot;:&quot;Ok&quot;,
+                    &quot;Value&quot;:0
+                },
+                {
+                    &quot;Id&quot;:&quot;Warning&quot;,
+                    &quot;Value&quot;:1
+                },
+                {
+                    &quot;Id&quot;:&quot;Alarm&quot;,
+                    &quot;Value&quot;:2
+                }
+            ]
+        }
+    },
+    {
+        &quot;Id&quot;:&quot;Measurement&quot;,
+        &quot;Name&quot;:&quot;Measurement&quot;,
+        &quot;SdsType&quot;:{
+            &quot;Id&quot;:&quot;6fecef77-20b1-37ae-aa3b-e6bb838d5a86&quot;,
+            &quot;Name&quot;:&quot;Double&quot;,
+            &quot;SdsTypeCode&quot;:14
+        }
+    }
+]
+}
+</code></pre><p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><hr>
+<h2 id="get-or-create-type"><code>Get Or Create Type</code></h2>
+<p><a id="opIdType_Get Or Create Type"></a></p>
+<p>Creates the specified type. If a type with a matching identifier already exists, SDS compares the existing type with the type that was sent.</p>
+<h3 id="request-2">Request</h3>
+<pre><code class="lang-text">POST /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}
+</code></pre><h4 id="parameters-2">Parameters</h4>
+<p><code>string tenantId</code>
+Tenant identifier</p>
+<p><code>string namespaceId</code>
+Namespace identifier</p>
+<p><code>string typeId</code>
+Type identifier</p>
+<h3 id="response-2">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="#schemasdstype">SdsType</a></td>
+<td>Returns the <code>SdsType</code></td>
+</tr>
+<tr>
+<td>201</td>
+<td><a href="#schemasdstype">SdsType</a></td>
+<td>Returns the <code>SdsType</code></td>
+</tr>
+<tr>
+<td>302</td>
+<td>None</td>
+<td>The <code>SdsType</code> already exists</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>409</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Conflict</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-2">Example response body</h4>
+<p>200 Response (<a href="#schemasdstype">SdsType</a>)</p>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;Description&quot;: &quot;string&quot;,
+  &quot;SdsTypeCode&quot;: 0,
+  &quot;IsGenericType&quot;: true,
+  &quot;IsReferenceType&quot;: true,
+  &quot;GenericArguments&quot;: [
+    {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;SdsTypeCode&quot;: 0,
+      &quot;IsGenericType&quot;: true,
+      &quot;IsReferenceType&quot;: true,
+      &quot;GenericArguments&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;SdsTypeCode&quot;: null,
+          &quot;IsGenericType&quot;: true,
+          &quot;IsReferenceType&quot;: true,
+          &quot;GenericArguments&quot;: [
+            {}
+          ],
+          &quot;Properties&quot;: [
+            {}
+          ],
+          &quot;BaseType&quot;: null,
+          &quot;DerivedTypes&quot;: [
+            {}
+          ],
+          &quot;InterpolationMode&quot;: null,
+          &quot;ExtrapolationMode&quot;: null
+        }
+      ],
+      &quot;Properties&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;Order&quot;: 0,
+          &quot;IsKey&quot;: true,
+          &quot;FixedSize&quot;: 0,
+          &quot;SdsType&quot;: null,
+          &quot;Value&quot;: null,
+          &quot;Uom&quot;: &quot;string&quot;,
+          &quot;InterpolationMode&quot;: null,
+          &quot;IsQuality&quot;: true
+        }
+      ],
+      &quot;BaseType&quot;: {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      },
+      &quot;DerivedTypes&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;SdsTypeCode&quot;: null,
+          &quot;IsGenericType&quot;: true,
+          &quot;IsReferenceType&quot;: true,
+          &quot;GenericArguments&quot;: [
+            {}
+          ],
+          &quot;Properties&quot;: [
+            {}
+          ],
+          &quot;BaseType&quot;: null,
+          &quot;DerivedTypes&quot;: [
+            {}
+          ],
+          &quot;InterpolationMode&quot;: null,
+          &quot;ExtrapolationMode&quot;: null
+        }
+      ],
+      &quot;InterpolationMode&quot;: 0,
+      &quot;ExtrapolationMode&quot;: 0
+    }
+  ],
+  &quot;Properties&quot;: [
+    {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;Order&quot;: 0,
+      &quot;IsKey&quot;: true,
+      &quot;FixedSize&quot;: 0,
+      &quot;SdsType&quot;: {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      },
+      &quot;Value&quot;: null,
+      &quot;Uom&quot;: &quot;string&quot;,
+      &quot;InterpolationMode&quot;: 0,
+      &quot;IsQuality&quot;: true
+    }
+  ],
+  &quot;BaseType&quot;: {
+    &quot;Id&quot;: &quot;string&quot;,
+    &quot;Name&quot;: &quot;string&quot;,
+    &quot;Description&quot;: &quot;string&quot;,
+    &quot;SdsTypeCode&quot;: 0,
+    &quot;IsGenericType&quot;: true,
+    &quot;IsReferenceType&quot;: true,
+    &quot;GenericArguments&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      }
+    ],
+    &quot;Properties&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;Order&quot;: 0,
+        &quot;IsKey&quot;: true,
+        &quot;FixedSize&quot;: 0,
+        &quot;SdsType&quot;: null,
+        &quot;Value&quot;: null,
+        &quot;Uom&quot;: &quot;string&quot;,
+        &quot;InterpolationMode&quot;: null,
+        &quot;IsQuality&quot;: true
+      }
+    ],
+    &quot;BaseType&quot;: {
+      &quot;Id&quot;: null,
+      &quot;Name&quot;: null,
+      &quot;Description&quot;: null,
+      &quot;SdsTypeCode&quot;: null,
+      &quot;IsGenericType&quot;: null,
+      &quot;IsReferenceType&quot;: null,
+      &quot;GenericArguments&quot;: null,
+      &quot;Properties&quot;: null,
+      &quot;BaseType&quot;: null,
+      &quot;DerivedTypes&quot;: null,
+      &quot;InterpolationMode&quot;: null,
+      &quot;ExtrapolationMode&quot;: null
+    },
+    &quot;DerivedTypes&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      }
+    ],
+    &quot;InterpolationMode&quot;: 0,
+    &quot;ExtrapolationMode&quot;: 0
+  },
+  &quot;DerivedTypes&quot;: [
+    {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;SdsTypeCode&quot;: 0,
+      &quot;IsGenericType&quot;: true,
+      &quot;IsReferenceType&quot;: true,
+      &quot;GenericArguments&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;SdsTypeCode&quot;: null,
+          &quot;IsGenericType&quot;: true,
+          &quot;IsReferenceType&quot;: true,
+          &quot;GenericArguments&quot;: [
+            {}
+          ],
+          &quot;Properties&quot;: [
+            {}
+          ],
+          &quot;BaseType&quot;: null,
+          &quot;DerivedTypes&quot;: [
+            {}
+          ],
+          &quot;InterpolationMode&quot;: null,
+          &quot;ExtrapolationMode&quot;: null
+        }
+      ],
+      &quot;Properties&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;Order&quot;: 0,
+          &quot;IsKey&quot;: true,
+          &quot;FixedSize&quot;: 0,
+          &quot;SdsType&quot;: null,
+          &quot;Value&quot;: null,
+          &quot;Uom&quot;: &quot;string&quot;,
+          &quot;InterpolationMode&quot;: null,
+          &quot;IsQuality&quot;: true
+        }
+      ],
+      &quot;BaseType&quot;: {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      },
+      &quot;DerivedTypes&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;SdsTypeCode&quot;: null,
+          &quot;IsGenericType&quot;: true,
+          &quot;IsReferenceType&quot;: true,
+          &quot;GenericArguments&quot;: [
+            {}
+          ],
+          &quot;Properties&quot;: [
+            {}
+          ],
+          &quot;BaseType&quot;: null,
+          &quot;DerivedTypes&quot;: [
+            {}
+          ],
+          &quot;InterpolationMode&quot;: null,
+          &quot;ExtrapolationMode&quot;: null
+        }
+      ],
+      &quot;InterpolationMode&quot;: 0,
+      &quot;ExtrapolationMode&quot;: 0
+    }
+  ],
+  &quot;InterpolationMode&quot;: 0,
+  &quot;ExtrapolationMode&quot;: 0
+}
+</code></pre><blockquote><p>201 Response</p>
+</blockquote>
 <pre><code class="lang-json">HTTP/1.1 201
 Content-Type: application/json
-
 {
-    &quot;Id&quot;: &quot;Simple&quot;,
-    &quot;Name&quot;: &quot;Simple&quot;,
-    &quot;Description&quot;: null,
-    &quot;SdsTypeCode&quot;: 1,
-    &quot;IsGenericType&quot;: false,
-    &quot;IsReferenceType&quot;: false,
-    &quot;GenericArguments&quot;: null,
-    &quot;Properties&quot;: [
-        {
-            &quot;Id&quot;: &quot;Time&quot;,
-            &quot;Name&quot;: &quot;Time&quot;,
+&quot;Id&quot;: &quot;Simple&quot;,
+&quot;Name&quot;: &quot;Simple&quot;,
+&quot;Description&quot;: null,
+&quot;SdsTypeCode&quot;: 1,
+&quot;IsGenericType&quot;: false,
+&quot;IsReferenceType&quot;: false,
+&quot;GenericArguments&quot;: null,
+&quot;Properties&quot;: [
+    {
+        &quot;Id&quot;: &quot;Time&quot;,
+        &quot;Name&quot;: &quot;Time&quot;,
+        &quot;Description&quot;: null,
+        &quot;Order&quot;: 0,
+        &quot;IsKey&quot;: true,
+        &quot;FixedSize&quot;: 0,
+        &quot;SdsType&quot;: {
+            &quot;Id&quot;: &quot;19a87a76-614a-385b-ba48-6f8b30ff6ab2&quot;,
+            &quot;Name&quot;: &quot;DateTime&quot;,
             &quot;Description&quot;: null,
-            &quot;Order&quot;: 0,
-            &quot;IsKey&quot;: true,
-            &quot;FixedSize&quot;: 0,
-            &quot;SdsType&quot;: {
-                &quot;Id&quot;: &quot;19a87a76-614a-385b-ba48-6f8b30ff6ab2&quot;,
-                &quot;Name&quot;: &quot;DateTime&quot;,
-                &quot;Description&quot;: null,
-                &quot;SdsTypeCode&quot;: 16,
-                &quot;IsGenericType&quot;: false,
-                &quot;IsReferenceType&quot;: false,
-                &quot;GenericArguments&quot;: null,
-                &quot;Properties&quot;: null,
-                &quot;BaseType&quot;: null,
-                &quot;DerivedTypes&quot;: null,
-                &quot;InterpolationMode&quot;: 0,
-                &quot;ExtrapolationMode&quot;: 0
-            },
-            &quot;Value&quot;: null,
-            &quot;Uom&quot;: null,
-            &quot;InterpolationMode&quot;: null
+            &quot;SdsTypeCode&quot;: 16,
+            &quot;IsGenericType&quot;: false,
+            &quot;IsReferenceType&quot;: false,
+            &quot;GenericArguments&quot;: null,
+            &quot;Properties&quot;: null,
+            &quot;BaseType&quot;: null,
+            &quot;DerivedTypes&quot;: null,
+            &quot;InterpolationMode&quot;: 0,
+            &quot;ExtrapolationMode&quot;: 0
         },
-        {
-            &quot;Id&quot;: &quot;State&quot;,
+        &quot;Value&quot;: null,
+        &quot;Uom&quot;: null,
+        &quot;InterpolationMode&quot;: null
+    },
+    {
+        &quot;Id&quot;: &quot;State&quot;,
+        &quot;Name&quot;: &quot;State&quot;,
+        &quot;Description&quot;: null,
+        &quot;Order&quot;: 0,
+        &quot;IsKey&quot;: false,
+        &quot;FixedSize&quot;: 0,
+        &quot;SdsType&quot;: {
+            &quot;Id&quot;: &quot;e20bdd7e-590b-3372-ab39-ff61950fb4f3&quot;,
             &quot;Name&quot;: &quot;State&quot;,
             &quot;Description&quot;: null,
-            &quot;Order&quot;: 0,
-            &quot;IsKey&quot;: false,
-            &quot;FixedSize&quot;: 0,
-            &quot;SdsType&quot;: {
-                &quot;Id&quot;: &quot;e20bdd7e-590b-3372-ab39-ff61950fb4f3&quot;,
-                &quot;Name&quot;: &quot;State&quot;,
-                &quot;Description&quot;: null,
-                &quot;SdsTypeCode&quot;: 609,
-                &quot;IsGenericType&quot;: false,
-                &quot;IsReferenceType&quot;: false,
-                &quot;GenericArguments&quot;: null,
-                &quot;Properties&quot;: [
-                    {
-                        &quot;Id&quot;: &quot;Ok&quot;,
-                        &quot;Name&quot;: null,
-                        &quot;Description&quot;: null,
-                        &quot;Order&quot;: 0,
-                        &quot;IsKey&quot;: false,
-                        &quot;FixedSize&quot;: 0,
-                        &quot;SdsType&quot;: null,
-                        &quot;Value&quot;: 0,
-                        &quot;Uom&quot;: null,
-                        &quot;InterpolationMode&quot;: null
-                    },
-                    {
-                        &quot;Id&quot;: &quot;Warning&quot;,
-                        &quot;Name&quot;: null,
-                        &quot;Description&quot;: null,
-                        &quot;Order&quot;: 0,
-                        &quot;IsKey&quot;: false,
-                        &quot;FixedSize&quot;: 0,
-                        &quot;SdsType&quot;: null,
-                        &quot;Value&quot;: 1,
-                        &quot;Uom&quot;: null,
-                        &quot;InterpolationMode&quot;: null
-                    },
-                    {
-                        &quot;Id&quot;: &quot;Alarm&quot;,
-                        &quot;Name&quot;: null,
-                        &quot;Description&quot;: null,
-                        &quot;Order&quot;: 0,
-                        &quot;IsKey&quot;: false,
-                        &quot;FixedSize&quot;: 0,
-                        &quot;SdsType&quot;: null,
-                        &quot;Value&quot;: 2,
-                        &quot;Uom&quot;: null,
-                        &quot;InterpolationMode&quot;: null
-                    }
-                ],
-                &quot;BaseType&quot;: null,
-                &quot;DerivedTypes&quot;: null,
-                &quot;InterpolationMode&quot;: 0,
-                &quot;ExtrapolationMode&quot;: 0
-            },
-            &quot;Value&quot;: null,
-            &quot;Uom&quot;: null,
-            &quot;InterpolationMode&quot;: null
+            &quot;SdsTypeCode&quot;: 609,
+            &quot;IsGenericType&quot;: false,
+            &quot;IsReferenceType&quot;: false,
+            &quot;GenericArguments&quot;: null,
+            &quot;Properties&quot;: [
+                {
+                    &quot;Id&quot;: &quot;Ok&quot;,
+                    &quot;Name&quot;: null,
+                    &quot;Description&quot;: null,
+                    &quot;Order&quot;: 0,
+                    &quot;IsKey&quot;: false,
+                    &quot;FixedSize&quot;: 0,
+                    &quot;SdsType&quot;: null,
+                    &quot;Value&quot;: 0,
+                    &quot;Uom&quot;: null,
+                    &quot;InterpolationMode&quot;: null
+                },
+                {
+                    &quot;Id&quot;: &quot;Warning&quot;,
+                    &quot;Name&quot;: null,
+                    &quot;Description&quot;: null,
+                    &quot;Order&quot;: 0,
+                    &quot;IsKey&quot;: false,
+                    &quot;FixedSize&quot;: 0,
+                    &quot;SdsType&quot;: null,
+                    &quot;Value&quot;: 1,
+                    &quot;Uom&quot;: null,
+                    &quot;InterpolationMode&quot;: null
+                },
+                {
+                    &quot;Id&quot;: &quot;Alarm&quot;,
+                    &quot;Name&quot;: null,
+                    &quot;Description&quot;: null,
+                    &quot;Order&quot;: 0,
+                    &quot;IsKey&quot;: false,
+                    &quot;FixedSize&quot;: 0,
+                    &quot;SdsType&quot;: null,
+                    &quot;Value&quot;: 2,
+                    &quot;Uom&quot;: null,
+                    &quot;InterpolationMode&quot;: null
+                }
+            ],
+            &quot;BaseType&quot;: null,
+            &quot;DerivedTypes&quot;: null,
+            &quot;InterpolationMode&quot;: 0,
+            &quot;ExtrapolationMode&quot;: 0
         },
-        {
-            &quot;Id&quot;: &quot;Measurement&quot;,
-            &quot;Name&quot;: &quot;Measurement&quot;,
+        &quot;Value&quot;: null,
+        &quot;Uom&quot;: null,
+        &quot;InterpolationMode&quot;: null
+    },
+    {
+        &quot;Id&quot;: &quot;Measurement&quot;,
+        &quot;Name&quot;: &quot;Measurement&quot;,
+        &quot;Description&quot;: null,
+        &quot;Order&quot;: 0,
+        &quot;IsKey&quot;: false,
+        &quot;FixedSize&quot;: 0,
+        &quot;SdsType&quot;: {
+            &quot;Id&quot;: &quot;6fecef77-20b1-37ae-aa3b-e6bb838d5a86&quot;,
+            &quot;Name&quot;: &quot;Double&quot;,
             &quot;Description&quot;: null,
-            &quot;Order&quot;: 0,
-            &quot;IsKey&quot;: false,
-            &quot;FixedSize&quot;: 0,
-            &quot;SdsType&quot;: {
-                &quot;Id&quot;: &quot;6fecef77-20b1-37ae-aa3b-e6bb838d5a86&quot;,
-                &quot;Name&quot;: &quot;Double&quot;,
-                &quot;Description&quot;: null,
-                &quot;SdsTypeCode&quot;: 14,
-                &quot;IsGenericType&quot;: false,
-                &quot;IsReferenceType&quot;: false,
-                &quot;GenericArguments&quot;: null,
-                &quot;Properties&quot;: null,
-                &quot;BaseType&quot;: null,
-                &quot;DerivedTypes&quot;: null,
-                &quot;InterpolationMode&quot;: 0,
-                &quot;ExtrapolationMode&quot;: 0
-            },
-            &quot;Value&quot;: null,
-            &quot;Uom&quot;: null,
-            &quot;InterpolationMode&quot;: null
-        }
+            &quot;SdsTypeCode&quot;: 14,
+            &quot;IsGenericType&quot;: false,
+            &quot;IsReferenceType&quot;: false,
+            &quot;GenericArguments&quot;: null,
+            &quot;Properties&quot;: null,
+            &quot;BaseType&quot;: null,
+            &quot;DerivedTypes&quot;: null,
+            &quot;InterpolationMode&quot;: 0,
+            &quot;ExtrapolationMode&quot;: 0
+        },
+        &quot;Value&quot;: null,
+        &quot;Uom&quot;: null,
+        &quot;InterpolationMode&quot;: null
+    }
     ],
     &quot;BaseType&quot;: null,
     &quot;DerivedTypes&quot;: null,
     &quot;InterpolationMode&quot;: 0,
     &quot;ExtrapolationMode&quot;: 0
-}
+    }
 </code></pre><hr>
 <h2 id="delete-type"><code>Delete Type</code></h2>
+<p><a id="opIdType_Delete Type"></a></p>
 <p>Deletes a type from the specified tenant and namespace. Note that a type cannot be deleted if any streams, stream views, or other types reference it.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">DELETE api/v1/Tenants/default/Namespaces/{namespaceId}/Types/{typeId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string typeId</code><br>The type identifier.</p>
-<p><strong>Response</strong><br>The response includes a status code.</p>
+<h3 id="request-3">Request</h3>
+<pre><code class="lang-text">DELETE /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}
+</code></pre><h4 id="parameters-3">Parameters</h4>
+<p><code>string tenantId</code>
+Tenant identifier</p>
+<p><code>string namespaceId</code>
+Namespace identifier</p>
+<p><code>string typeId</code>
+Type identifier</p>
+<h3 id="response-3">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>204</td>
+<td>None</td>
+<td>The <code>SdsType</code> was successfully deleted</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>409</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Conflict</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-3">Example response body</h4>
+<blockquote><p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+</blockquote>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><hr>
+<h2 id="get-type-reference-count"><code>Get Type Reference Count</code></h2>
+<p><a id="opIdType_Get Type Reference Count"></a></p>
+<p>Returns a dictionary mapping the object name to the number of references held by streams, stream views and parent types for the specified type.</p>
+<h3 id="request-4">Request</h3>
+<pre><code class="lang-text">
+GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Types/{typeId}/ReferenceCount
+</code></pre><h4 id="parameters-4">Parameters</h4>
+<p><code>string tenantId</code>
+Tenant identifier</p>
+<p><code>string namespaceId</code>
+Namespace identifier</p>
+<p><code>string typeId</code>
+Type identifier</p>
+<h3 id="response-4">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>Inline</td>
+<td>Returns a dictionary mapping with object name to number of references</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-4">Example response body</h4>
+<blockquote><p>200 Response</p>
+</blockquote>
+<pre><code class="lang-json"> {
+&quot;SdsStream&quot;:3,
+&quot;SdsStreamView&quot;:2,
+&quot;SdsType&quot;:1
+}
+</code></pre><p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><hr>
+<h2 id="definitions">Definitions</h2>
+<h3 id="sdstype">SdsType</h3>
+<p><a id="schemasdstype"></a>
+<a id="schema_SdsType"></a>
+<a id="tocSsdstype"></a>
+<a id="tocssdstype"></a></p>
+<p>A contract defining the type of data to read or write in a <code>SdsStream</code></p>
+<h4 id="properties">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>A unique identifier for the <code>SdsType</code> object</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>An optional user-friendly name for the <code>SdsType</code> object</td>
+</tr>
+<tr>
+<td><code>Description</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>A brief description of the <code>SdsType</code> object</td>
+</tr>
+<tr>
+<td><code>SdsTypeCode</code></td>
+<td><a href="#schemasdstypecode">SdsTypeCode</a></td>
+<td>false</td>
+<td>false</td>
+<td>The <code>SdsTypeCode</code> of the <code>SdsType</code> object</td>
+</tr>
+<tr>
+<td><code>IsGenericType</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>false</td>
+<td>A boolean value indicating whether the current <code>SdsType</code> is a generic type. This property is only used when using templates or generics. It is automatically set if the <code>SdsType</code> is generated using <code>SdsTypeBuilder</code>. For further information on generics, refer to <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/index">Generic classes and methods</a>.</td>
+</tr>
+<tr>
+<td><code>IsReferenceType</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>false</td>
+<td>Enabling this property preserves objects as references during serialization/de-serialization of the <code>SdsType</code> data while using the <code>SdsFormatter</code>. This property behaves similar to <code>IsReference</code> property for <code>DataContractSerializer</code> and is only valid for serialization if <code>SdsFormatter</code> is used.</td>
+</tr>
+<tr>
+<td><code>GenericArguments</code></td>
+<td>[SdsType]</td>
+<td>false</td>
+<td>true</td>
+<td>Contains the parameterized <code>SdsTypes</code> of the current generic <code>SdsType</code>. This property is only used when using templates or generics. It is automatically set if the <code>SdsType</code> is generated using <code>SdsTypeBuilder</code>. For further information on generics,refer to <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/index">Generic classes and methods</a>.</td>
+</tr>
+<tr>
+<td><code>Properties</code></td>
+<td>[<a href="#schemasdstypeproperty">SdsTypeProperty</a>]</td>
+<td>false</td>
+<td>true</td>
+<td>List of <code>SdsTypeProperty</code>s of the <code>SdsType</code></td>
+</tr>
+<tr>
+<td><code>BaseType</code></td>
+<td>SdsType</td>
+<td>false</td>
+<td>true</td>
+<td>Defines the base type of the <code>SdsType</code>. Commonly used by <code>SdsTypeBuilder</code> to generate <code>SdsType</code> from contracts not explicitly defined and maintained by the user.</td>
+</tr>
+<tr>
+<td><code>DerivedTypes</code></td>
+<td>[SdsType]</td>
+<td>false</td>
+<td>true</td>
+<td>List of <code>SdsTypes</code> that should be recognized by <code>SdsFormatter</code> during serialization/de-serialization. This property behaves similar to <code>KnownTypeAttribute</code> attribute for <code>DataContractSerializer</code> and only valid for serialization if <code>SdsFormatter</code> is used.</td>
+</tr>
+<tr>
+<td><code>InterpolationMode</code></td>
+<td><a href="#schemasdsinterpolationmode">SdsInterpolationMode</a></td>
+<td>false</td>
+<td>false</td>
+<td>Defines the <code>SdsInterpolationMode</code> of the <code>SdsType</code>. This property is only valid for the root <code>SdsType</code> and invalid for <code>SdsTypes</code> of <code>SdsTypeProperty</code>s.</td>
+</tr>
+<tr>
+<td><code>ExtrapolationMode</code></td>
+<td><a href="#schemasdsextrapolationmode">SdsExtrapolationMode</a></td>
+<td>false</td>
+<td>false</td>
+<td>Defines the <code>SdsExtrapolationMode</code> of the <code>SdsType</code>. This property is only valid for the root <code>SdsType</code> and invalid for <code>SdsTypes</code> of <code>SdsTypeProperty</code>s.</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;Description&quot;: &quot;string&quot;,
+  &quot;SdsTypeCode&quot;: 0,
+  &quot;IsGenericType&quot;: true,
+  &quot;IsReferenceType&quot;: true,
+  &quot;GenericArguments&quot;: [
+    {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;SdsTypeCode&quot;: 0,
+      &quot;IsGenericType&quot;: true,
+      &quot;IsReferenceType&quot;: true,
+      &quot;GenericArguments&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;SdsTypeCode&quot;: null,
+          &quot;IsGenericType&quot;: true,
+          &quot;IsReferenceType&quot;: true,
+          &quot;GenericArguments&quot;: [
+            {}
+          ],
+          &quot;Properties&quot;: [
+            {}
+          ],
+          &quot;BaseType&quot;: null,
+          &quot;DerivedTypes&quot;: [
+            {}
+          ],
+          &quot;InterpolationMode&quot;: null,
+          &quot;ExtrapolationMode&quot;: null
+        }
+      ],
+      &quot;Properties&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;Order&quot;: 0,
+          &quot;IsKey&quot;: true,
+          &quot;FixedSize&quot;: 0,
+          &quot;SdsType&quot;: null,
+          &quot;Value&quot;: null,
+          &quot;Uom&quot;: &quot;string&quot;,
+          &quot;InterpolationMode&quot;: null,
+          &quot;IsQuality&quot;: true
+        }
+      ],
+      &quot;BaseType&quot;: {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      },
+      &quot;DerivedTypes&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;SdsTypeCode&quot;: null,
+          &quot;IsGenericType&quot;: true,
+          &quot;IsReferenceType&quot;: true,
+          &quot;GenericArguments&quot;: [
+            {}
+          ],
+          &quot;Properties&quot;: [
+            {}
+          ],
+          &quot;BaseType&quot;: null,
+          &quot;DerivedTypes&quot;: [
+            {}
+          ],
+          &quot;InterpolationMode&quot;: null,
+          &quot;ExtrapolationMode&quot;: null
+        }
+      ],
+      &quot;InterpolationMode&quot;: 0,
+      &quot;ExtrapolationMode&quot;: 0
+    }
+  ],
+  &quot;Properties&quot;: [
+    {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;Order&quot;: 0,
+      &quot;IsKey&quot;: true,
+      &quot;FixedSize&quot;: 0,
+      &quot;SdsType&quot;: {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      },
+      &quot;Value&quot;: null,
+      &quot;Uom&quot;: &quot;string&quot;,
+      &quot;InterpolationMode&quot;: 0,
+      &quot;IsQuality&quot;: true
+    }
+  ],
+  &quot;BaseType&quot;: {
+    &quot;Id&quot;: &quot;string&quot;,
+    &quot;Name&quot;: &quot;string&quot;,
+    &quot;Description&quot;: &quot;string&quot;,
+    &quot;SdsTypeCode&quot;: 0,
+    &quot;IsGenericType&quot;: true,
+    &quot;IsReferenceType&quot;: true,
+    &quot;GenericArguments&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      }
+    ],
+    &quot;Properties&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;Order&quot;: 0,
+        &quot;IsKey&quot;: true,
+        &quot;FixedSize&quot;: 0,
+        &quot;SdsType&quot;: null,
+        &quot;Value&quot;: null,
+        &quot;Uom&quot;: &quot;string&quot;,
+        &quot;InterpolationMode&quot;: null,
+        &quot;IsQuality&quot;: true
+      }
+    ],
+    &quot;BaseType&quot;: {
+      &quot;Id&quot;: null,
+      &quot;Name&quot;: null,
+      &quot;Description&quot;: null,
+      &quot;SdsTypeCode&quot;: null,
+      &quot;IsGenericType&quot;: null,
+      &quot;IsReferenceType&quot;: null,
+      &quot;GenericArguments&quot;: null,
+      &quot;Properties&quot;: null,
+      &quot;BaseType&quot;: null,
+      &quot;DerivedTypes&quot;: null,
+      &quot;InterpolationMode&quot;: null,
+      &quot;ExtrapolationMode&quot;: null
+    },
+    &quot;DerivedTypes&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      }
+    ],
+    &quot;InterpolationMode&quot;: 0,
+    &quot;ExtrapolationMode&quot;: 0
+  },
+  &quot;DerivedTypes&quot;: [
+    {
+      &quot;Id&quot;: &quot;string&quot;,
+      &quot;Name&quot;: &quot;string&quot;,
+      &quot;Description&quot;: &quot;string&quot;,
+      &quot;SdsTypeCode&quot;: 0,
+      &quot;IsGenericType&quot;: true,
+      &quot;IsReferenceType&quot;: true,
+      &quot;GenericArguments&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;SdsTypeCode&quot;: null,
+          &quot;IsGenericType&quot;: true,
+          &quot;IsReferenceType&quot;: true,
+          &quot;GenericArguments&quot;: [
+            {}
+          ],
+          &quot;Properties&quot;: [
+            {}
+          ],
+          &quot;BaseType&quot;: null,
+          &quot;DerivedTypes&quot;: [
+            {}
+          ],
+          &quot;InterpolationMode&quot;: null,
+          &quot;ExtrapolationMode&quot;: null
+        }
+      ],
+      &quot;Properties&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;Order&quot;: 0,
+          &quot;IsKey&quot;: true,
+          &quot;FixedSize&quot;: 0,
+          &quot;SdsType&quot;: null,
+          &quot;Value&quot;: null,
+          &quot;Uom&quot;: &quot;string&quot;,
+          &quot;InterpolationMode&quot;: null,
+          &quot;IsQuality&quot;: true
+        }
+      ],
+      &quot;BaseType&quot;: {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      },
+      &quot;DerivedTypes&quot;: [
+        {
+          &quot;Id&quot;: &quot;string&quot;,
+          &quot;Name&quot;: &quot;string&quot;,
+          &quot;Description&quot;: &quot;string&quot;,
+          &quot;SdsTypeCode&quot;: null,
+          &quot;IsGenericType&quot;: true,
+          &quot;IsReferenceType&quot;: true,
+          &quot;GenericArguments&quot;: [
+            {}
+          ],
+          &quot;Properties&quot;: [
+            {}
+          ],
+          &quot;BaseType&quot;: null,
+          &quot;DerivedTypes&quot;: [
+            {}
+          ],
+          &quot;InterpolationMode&quot;: null,
+          &quot;ExtrapolationMode&quot;: null
+        }
+      ],
+      &quot;InterpolationMode&quot;: 0,
+      &quot;ExtrapolationMode&quot;: 0
+    }
+  ],
+  &quot;InterpolationMode&quot;: 0,
+  &quot;ExtrapolationMode&quot;: 0
+}
+</code></pre><hr>
+<h3 id="sdstypecode">SdsTypeCode</h3>
+<p><a id="schemasdstypecode"></a>
+<a id="schema_SdsTypeCode"></a>
+<a id="tocSsdstypecode"></a>
+<a id="tocssdstypecode"></a></p>
+<h4 id="enumerated-values">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Empty</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Char</td>
+<td>4</td>
+</tr>
+<tr>
+<td>SByte</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Byte</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Int16</td>
+<td>7</td>
+</tr>
+<tr>
+<td>UInt16</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Int32</td>
+<td>9</td>
+</tr>
+<tr>
+<td>UInt32</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Int64</td>
+<td>11</td>
+</tr>
+<tr>
+<td>UInt64</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>13</td>
+</tr>
+<tr>
+<td>Double</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Decimal</td>
+<td>15</td>
+</tr>
+<tr>
+<td>DateTime</td>
+<td>16</td>
+</tr>
+<tr>
+<td>String</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Guid</td>
+<td>19</td>
+</tr>
+<tr>
+<td>DateTimeOffset</td>
+<td>20</td>
+</tr>
+<tr>
+<td>TimeSpan</td>
+<td>21</td>
+</tr>
+<tr>
+<td>Version</td>
+<td>22</td>
+</tr>
+<tr>
+<td>NullableBoolean</td>
+<td>103</td>
+</tr>
+<tr>
+<td>NullableChar</td>
+<td>104</td>
+</tr>
+<tr>
+<td>NullableSByte</td>
+<td>105</td>
+</tr>
+<tr>
+<td>NullableByte</td>
+<td>106</td>
+</tr>
+<tr>
+<td>NullableInt16</td>
+<td>107</td>
+</tr>
+<tr>
+<td>NullableUInt16</td>
+<td>108</td>
+</tr>
+<tr>
+<td>NullableInt32</td>
+<td>109</td>
+</tr>
+<tr>
+<td>NullableUInt32</td>
+<td>110</td>
+</tr>
+<tr>
+<td>NullableInt64</td>
+<td>111</td>
+</tr>
+<tr>
+<td>NullableUInt64</td>
+<td>112</td>
+</tr>
+<tr>
+<td>NullableSingle</td>
+<td>113</td>
+</tr>
+<tr>
+<td>NullableDouble</td>
+<td>114</td>
+</tr>
+<tr>
+<td>NullableDecimal</td>
+<td>115</td>
+</tr>
+<tr>
+<td>NullableDateTime</td>
+<td>116</td>
+</tr>
+<tr>
+<td>NullableGuid</td>
+<td>119</td>
+</tr>
+<tr>
+<td>NullableDateTimeOffset</td>
+<td>120</td>
+</tr>
+<tr>
+<td>NullableTimeSpan</td>
+<td>121</td>
+</tr>
+<tr>
+<td>BooleanArray</td>
+<td>203</td>
+</tr>
+<tr>
+<td>CharArray</td>
+<td>204</td>
+</tr>
+<tr>
+<td>SByteArray</td>
+<td>205</td>
+</tr>
+<tr>
+<td>ByteArray</td>
+<td>206</td>
+</tr>
+<tr>
+<td>Int16Array</td>
+<td>207</td>
+</tr>
+<tr>
+<td>UInt16Array</td>
+<td>208</td>
+</tr>
+<tr>
+<td>Int32Array</td>
+<td>209</td>
+</tr>
+<tr>
+<td>UInt32Array</td>
+<td>210</td>
+</tr>
+<tr>
+<td>Int64Array</td>
+<td>211</td>
+</tr>
+<tr>
+<td>UInt64Array</td>
+<td>212</td>
+</tr>
+<tr>
+<td>SingleArray</td>
+<td>213</td>
+</tr>
+<tr>
+<td>DoubleArray</td>
+<td>214</td>
+</tr>
+<tr>
+<td>DecimalArray</td>
+<td>215</td>
+</tr>
+<tr>
+<td>DateTimeArray</td>
+<td>216</td>
+</tr>
+<tr>
+<td>StringArray</td>
+<td>218</td>
+</tr>
+<tr>
+<td>GuidArray</td>
+<td>219</td>
+</tr>
+<tr>
+<td>DateTimeOffsetArray</td>
+<td>220</td>
+</tr>
+<tr>
+<td>TimeSpanArray</td>
+<td>221</td>
+</tr>
+<tr>
+<td>VersionArray</td>
+<td>222</td>
+</tr>
+<tr>
+<td>Array</td>
+<td>400</td>
+</tr>
+<tr>
+<td>IList</td>
+<td>401</td>
+</tr>
+<tr>
+<td>IDictionary</td>
+<td>402</td>
+</tr>
+<tr>
+<td>IEnumerable</td>
+<td>403</td>
+</tr>
+<tr>
+<td>SdsType</td>
+<td>501</td>
+</tr>
+<tr>
+<td>SdsTypeProperty</td>
+<td>502</td>
+</tr>
+<tr>
+<td>SdsStreamView</td>
+<td>503</td>
+</tr>
+<tr>
+<td>SdsStreamViewProperty</td>
+<td>504</td>
+</tr>
+<tr>
+<td>SdsStreamViewMap</td>
+<td>505</td>
+</tr>
+<tr>
+<td>SdsStreamViewMapProperty</td>
+<td>506</td>
+</tr>
+<tr>
+<td>SdsStream</td>
+<td>507</td>
+</tr>
+<tr>
+<td>SdsStreamIndex</td>
+<td>508</td>
+</tr>
+<tr>
+<td>SdsTable</td>
+<td>509</td>
+</tr>
+<tr>
+<td>SdsColumn</td>
+<td>510</td>
+</tr>
+<tr>
+<td>SdsValues</td>
+<td>511</td>
+</tr>
+<tr>
+<td>SdsObject</td>
+<td>512</td>
+</tr>
+<tr>
+<td>SByteEnum</td>
+<td>605</td>
+</tr>
+<tr>
+<td>ByteEnum</td>
+<td>606</td>
+</tr>
+<tr>
+<td>Int16Enum</td>
+<td>607</td>
+</tr>
+<tr>
+<td>UInt16Enum</td>
+<td>608</td>
+</tr>
+<tr>
+<td>Int32Enum</td>
+<td>609</td>
+</tr>
+<tr>
+<td>UInt32Enum</td>
+<td>610</td>
+</tr>
+<tr>
+<td>Int64Enum</td>
+<td>611</td>
+</tr>
+<tr>
+<td>UInt64Enum</td>
+<td>612</td>
+</tr>
+<tr>
+<td>NullableSByteEnum</td>
+<td>705</td>
+</tr>
+<tr>
+<td>NullableByteEnum</td>
+<td>706</td>
+</tr>
+<tr>
+<td>NullableInt16Enum</td>
+<td>707</td>
+</tr>
+<tr>
+<td>NullableUInt16Enum</td>
+<td>708</td>
+</tr>
+<tr>
+<td>NullableInt32Enum</td>
+<td>709</td>
+</tr>
+<tr>
+<td>NullableUInt32Enum</td>
+<td>710</td>
+</tr>
+<tr>
+<td>NullableInt64Enum</td>
+<td>711</td>
+</tr>
+<tr>
+<td>NullableUInt64Enum</td>
+<td>712</td>
+</tr>
+</tbody>
+</table>
 <hr>
-</article>
+<h3 id="sdstypeproperty">SdsTypeProperty</h3>
+<p><a id="schemasdstypeproperty"></a>
+<a id="schema_SdsTypeProperty"></a>
+<a id="tocSsdstypeproperty"></a>
+<a id="tocssdstypeproperty"></a></p>
+<p>A contract defining a property of a <code>SdsType</code></p>
+<h4 id="properties-1">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>An unique identifier for the <code>SdsTypeProperty</code> object</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>An optional user-friendly name for the <code>SdsTypeProperty</code> object</td>
+</tr>
+<tr>
+<td><code>Description</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>A brief description of the <code>SdsTypeProperty</code> object</td>
+</tr>
+<tr>
+<td><code>Order</code></td>
+<td>int32</td>
+<td>false</td>
+<td>false</td>
+<td>The order used for comparison among <code>SdsTypeProperty</code>s if a compound index is specified for <code>SdsType</code></td>
+</tr>
+<tr>
+<td><code>IsKey</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>false</td>
+<td>A boolean value indicating whether the current <code>SdsTypeProperty</code> must be used for indexing. Used in combination with property to enable compound indexing</td>
+</tr>
+<tr>
+<td><code>FixedSize</code></td>
+<td>int32</td>
+<td>false</td>
+<td>false</td>
+<td>An optional property specifying the length of string Exclusively used for that is of</td>
+</tr>
+<tr>
+<td><code>SdsType</code></td>
+<td><a href="#schemasdstype">SdsType</a></td>
+<td>false</td>
+<td>true</td>
+<td><code>SdsType</code> of the current <code>SdsTypeProperty</code></td>
+</tr>
+<tr>
+<td><code>Value</code></td>
+<td>any</td>
+<td>false</td>
+<td>true</td>
+<td>An enum value of the current <code>SdsTypeProperty</code>.</td>
+</tr>
+<tr>
+<td><code>Uom</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Indicates the Unit of Measure of the current <code>SdsTypeProperty</code></td>
+</tr>
+<tr>
+<td><code>InterpolationMode</code></td>
+<td><a href="#schemasdsinterpolationmode">SdsInterpolationMode</a></td>
+<td>false</td>
+<td>true</td>
+<td>An <code>InterpolationMode</code> that overrides the root <code>SdsType</code>&#39;s <code>InterpolationMode</code> for this <code>SdsTypeProperty</code></td>
+</tr>
+<tr>
+<td><code>IsQuality</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>false</td>
+<td>Indicates whether this property marks data quality</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;Description&quot;: &quot;string&quot;,
+  &quot;Order&quot;: 0,
+  &quot;IsKey&quot;: true,
+  &quot;FixedSize&quot;: 0,
+  &quot;SdsType&quot;: {
+    &quot;Id&quot;: &quot;string&quot;,
+    &quot;Name&quot;: &quot;string&quot;,
+    &quot;Description&quot;: &quot;string&quot;,
+    &quot;SdsTypeCode&quot;: 0,
+    &quot;IsGenericType&quot;: true,
+    &quot;IsReferenceType&quot;: true,
+    &quot;GenericArguments&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      }
+    ],
+    &quot;Properties&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;Order&quot;: 0,
+        &quot;IsKey&quot;: true,
+        &quot;FixedSize&quot;: 0,
+        &quot;SdsType&quot;: null,
+        &quot;Value&quot;: null,
+        &quot;Uom&quot;: &quot;string&quot;,
+        &quot;InterpolationMode&quot;: null,
+        &quot;IsQuality&quot;: true
+      }
+    ],
+    &quot;BaseType&quot;: {
+      &quot;Id&quot;: null,
+      &quot;Name&quot;: null,
+      &quot;Description&quot;: null,
+      &quot;SdsTypeCode&quot;: null,
+      &quot;IsGenericType&quot;: null,
+      &quot;IsReferenceType&quot;: null,
+      &quot;GenericArguments&quot;: null,
+      &quot;Properties&quot;: null,
+      &quot;BaseType&quot;: null,
+      &quot;DerivedTypes&quot;: null,
+      &quot;InterpolationMode&quot;: null,
+      &quot;ExtrapolationMode&quot;: null
+    },
+    &quot;DerivedTypes&quot;: [
+      {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SdsTypeCode&quot;: null,
+        &quot;IsGenericType&quot;: true,
+        &quot;IsReferenceType&quot;: true,
+        &quot;GenericArguments&quot;: [
+          null
+        ],
+        &quot;Properties&quot;: [
+          null
+        ],
+        &quot;BaseType&quot;: null,
+        &quot;DerivedTypes&quot;: [
+          null
+        ],
+        &quot;InterpolationMode&quot;: null,
+        &quot;ExtrapolationMode&quot;: null
+      }
+    ],
+    &quot;InterpolationMode&quot;: 0,
+    &quot;ExtrapolationMode&quot;: 0
+  },
+  &quot;Value&quot;: null,
+  &quot;Uom&quot;: &quot;string&quot;,
+  &quot;InterpolationMode&quot;: 0,
+  &quot;IsQuality&quot;: true
+}
+</code></pre><hr>
+<h3 id="sdsinterpolationmode">SdsInterpolationMode</h3>
+<p><a id="schemasdsinterpolationmode"></a>
+<a id="schema_SdsInterpolationMode"></a>
+<a id="tocSsdsinterpolationmode"></a>
+<a id="tocssdsinterpolationmode"></a></p>
+<p>Interpolation modes that can be applied to <code>SdsType</code>, <code>SdsTypeProperty</code>, <code>SdsStream</code>, and <code>SdsStreamPropertyOverride</code> objects</p>
+<h4 id="enumerated-values-1">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Default</code></td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>Continuous</code></td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>StepwiseContinuousLeading</code></td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>StepwiseContinuousTrailing</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>Discrete</code></td>
+<td>3</td>
+</tr>
+<tr>
+<td><code>ContinuousNullableLeading</code></td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>ContinuousNullableTrailing</code></td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="sdsextrapolationmode">SdsExtrapolationMode</h3>
+<p><a id="schemasdsextrapolationmode"></a>
+<a id="schema_SdsExtrapolationMode"></a>
+<a id="tocSsdsextrapolationmode"></a>
+<a id="tocssdsextrapolationmode"></a></p>
+<p>Defines how a stream responds to requests with indexes that precede or follow all data in the stream. Behavior also depends on the <code>SdsInterpolationMode</code> for a stream. If you set <code>SdsInterpolationMode</code> to <code>Discrete</code>, extrapolation does not occur. If you set <code>SdsInterpolationMode</code> to <code>ContinuousNullableLeading</code> or <code>ContinuousNullableTrailing</code>, default values are returned instead of actual data.</p>
+<h4 id="enumerated-values-2">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>All</code></td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>None</code></td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>Forward</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>Backward</code></td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="errorresponsebody">ErrorResponseBody</h3>
+<p><a id="schemaerrorresponsebody"></a>
+<a id="schema_ErrorResponseBody"></a>
+<a id="tocSerrorresponsebody"></a>
+<a id="tocserrorresponsebody"></a></p>
+<p>Contains the error message format that follows the AVEVA Data Hub error standards</p>
+<h4 id="properties-2">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OperationId</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Operation unique identifier of action that caused the error</td>
+</tr>
+<tr>
+<td><code>Error</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Error description</td>
+</tr>
+<tr>
+<td><code>Reason</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Reason for the error</td>
+</tr>
+<tr>
+<td><code>Resolution</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Resolution to resolve the error</td>
+</tr>
+<tr>
+<td><code>Parameters</code></td>
+<td>object</td>
+<td>false</td>
+<td>true</td>
+<td><code>Ids</code> or values that are creating or are affected by the error</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -437,7 +2136,7 @@ Content-Type: application/json
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/types/sds-type-api.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/sds/types/sds-type-api.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

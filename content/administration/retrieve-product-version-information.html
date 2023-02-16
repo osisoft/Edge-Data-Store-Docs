@@ -8,14 +8,14 @@
     <title>Retrieve product version information </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Retrieve product version information ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
     <link rel="stylesheet" href="../../styles/main.css">
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../../">
     
@@ -78,14 +78,38 @@
             <article class="content wrap" id="_content" data-uid="RetrieveProductVersionInformation">
 <h1 id="retrieve-product-version-information">Retrieve product version information</h1>
 
-<p>The product version information includes the Edge Data Store version number, the .NET Core version, the Core CLR version, and the operating system. This information can be useful for troubleshooting purposes.</p>
-<p>Complete the following steps to retrieve the product version of EDS:</p>
+<p>The product version information includes the Edge Data Store application version, the adapter framework version, the .NET runtime version, and the operating system. This information can be useful for troubleshooting purposes.</p>
+<p>To retrieve the product version information of EDS:</p>
 <ol>
-<li>Open a tool capable of making HTTP requests.</li>
+<li><p>Open a tool capable of making HTTP requests.</p>
+</li>
 <li><p>Run a GET command to the following endpoint, replacing <code>&lt;port_number&gt;</code> with the port specified for EDS:</p>
 <pre><code class="lang-http">http://localhost:&lt;port_number&gt;/api/v1/diagnostics/productinformation
-</code></pre><p>Example using curl and the default port number:</p>
+</code></pre><p>Example using curl and EdgeCmd and the default port number:</p>
+<div class="tabGroup" id="tabgroup_U3XPZyMEO8">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_U3XPZyMEO8_tabid-1" role="tab" aria-controls="tabpanel_U3XPZyMEO8_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">curl</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_U3XPZyMEO8_tabid-2" role="tab" aria-controls="tabpanel_U3XPZyMEO8_tabid-2" data-tab="tabid-2" tabindex="-1">EdgeCmd</a>
+</li>
+</ul>
+<section id="tabpanel_U3XPZyMEO8_tabid-1" role="tabpanel" data-tab="tabid-1">
 <pre><code class="lang-bash">curl -v http://localhost:5590/api/v1/Diagnostics/ProductInformation
+</code></pre></section>
+<section id="tabpanel_U3XPZyMEO8_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-bash">edgecmd get version
+</code></pre></section>
+</div>
+<p>Example Response</p>
+<pre><code class="lang-json">{
+ &quot;Product Name&quot;: &quot;Edge Data Store&quot;,
+ &quot;Product Version&quot;: &quot;1.1.1.46&quot;,
+ &quot;Adapter Framework Version&quot;: &quot;1.6.0.24&quot;,
+ &quot;Runtime Version&quot;: &quot;.NET 6.0.9&quot;,
+ &quot;Operating System&quot;: &quot;Microsoft Windows 10.0.19044&quot;
+}
 </code></pre></li>
 </ol>
 </article>
@@ -96,7 +120,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/administration/retrieve-product-version-information.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/administration/retrieve-product-version-information.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

@@ -8,14 +8,14 @@
     <title>Types </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Types ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
     <link rel="stylesheet" href="../../styles/main.css">
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../../">
     
@@ -78,14 +78,15 @@
             <article class="content wrap" id="_content" data-uid="sdsTypes">
 <h1 id="types">Types</h1>
 
-<p>An SdsType (used interchangeably with type throughout documentation) defines the shape of a single measured event or object. A type gives structure to the data. For example, if a device measures three things, such as longitude, latitude, and speed, at the same time, then the SdsType should include those three properties. </p>
+<p>An SdsType, also called a type, defines the shape of a single measured event or object. A type gives structure to the data. For example, if a device measures three things, such as longitude, latitude, and speed, at the same time, then the SdsType should include those three properties.</p>
 <p>An SdsType defines the structure of an event stored in an SdsStream and how to associate events within the SdsStream. An event is a single unit whose properties have values that relate to the index; that is, each property of an SdsType event is related to the event’s index. Each event is a single unit.</p>
 <p>SdsTypes can define simple atomic types, such as integers, floats, strings, arrays, and dictionaries, or complex types with nested SdsTypes using the Properties collection of an SdsType.</p>
-<p>An SdsType used to define an SdsStream must have a key, which is a property, or a combination of properties that constitute an ordered, unique identity. Because the key is ordered, it functions as an index. It is known as the primary index. While a timestamp (DateTime) is a very common key, any data that can be ordered is permitted. Other indexes (secondary indexes), are defined in the SdsStream. For more details on indexes, see <a class="xref" href="indexes.html">Indexes</a>.</p>
-<p>An SdsType is referenced by its identifier or Id field. SdsType identifiers must be unique within a Namespace. An SdsType can also refer other SdsTypes by using their identifiers. This enables type reusability. Nested types and base types are automatically created as separate types. For further information, see <a class="xref" href="types/sds-type-reusability.html">SdsType reusability</a>.</p>
-<p>Once an SdsType is created, it is immutable and its definition cannot be changed. If the SdsType definition is incorrect, you must delete and recreate it, and it can only be deleted if no streams, stream views, or types reference it.</p>
+<p>An SdsType used to define an SdsStream must have a key, which is a property, or a combination of properties that constitute an ordered, unique identity. Because the key is ordered, it functions as an index. It is known as the primary index. While a timestamp (DateTime) is a very common key, any ordered data can be used. Other indexes (secondary indexes), are defined in the SdsStream. For more details on indexes, see <a class="xref" href="indexes.html">Indexes</a>.</p>
+<p>An SdsType is referenced by its identifier or <code>Id</code> field. SdsType identifiers must be unique within a Namespace. An SdsType can also refer other SdsTypes by using their identifiers. This enables type reusability. Nested types and base types are automatically created as separate types. For further information, see <a class="xref" href="types/sds-type-reusability.html">SdsType reusability</a>.</p>
+<p>Once an SdsType is created, it is immutable and its definition cannot be changed. If the SdsType definition is incorrect, you must delete and recreate it, and it can only be deleted if no streams, stream views, or other types reference it.</p>
 <p>Only the SdsTypes used to define SdsStreams or SdsStreamViews are required to be added to the Sequential Data Store. SdsTypes that define properties or base types are contained within the parent SdsType do not need to be added to the Data Store separately.</p>
-<p>SdsTypes define how events are associated and read within an SdsStream. When attempting to read non-existent indexes, indexes that fall between, before or after existing indexes, the results are determined by the interpolation and extrapolation settings of the SdsType. For more information about interpolation and extrapolation, see <a class="xref" href="read-data/read-characteristics.html">Read characteristics</a>.</p>
+<p>SdsTypes define how events are associated and read within an SdsStream. When attempting to read non-existent indexes, indexes that fall between, before, or after existing indexes, the results are determined by the interpolation and extrapolation settings of the SdsType. For more information about interpolation and extrapolation, see <a class="xref" href="read-data/read-characteristics.html">Read characteristics</a>.</p>
+<h2 id="sdstype-fields-and-properties">SdsType fields and properties</h2>
 <p>The following table shows the SdsType fields. Fields that are not included are reserved for internal SDS use.</p>
 <table>
 <thead>
@@ -99,65 +100,163 @@
 </thead>
 <tbody>
 <tr>
-<td>ID</td>
+<td><code>ID</code></td>
 <td>String</td>
 <td>Required</td>
 <td>Yes</td>
-<td>Identifier for referencing the type.</td>
+<td>Identifier for referencing the type</td>
 </tr>
 <tr>
-<td>Name</td>
+<td><code>Name</code></td>
 <td>String</td>
 <td>Optional</td>
 <td>Yes</td>
-<td>Friendly name.</td>
+<td>Friendly name</td>
 </tr>
 <tr>
-<td>Description</td>
+<td><code>Description</code></td>
 <td>String</td>
 <td>Optional</td>
 <td>Yes</td>
-<td>Description text.</td>
+<td>Description text</td>
 </tr>
 <tr>
-<td>SdsTypeCode</td>
+<td><code>SdsTypeCode</code></td>
 <td>SdsTypeCode</td>
 <td>Required</td>
 <td>No</td>
-<td>Numeric code identifying the base SdsType.</td>
+<td>Numeric code identifying the base SdsType</td>
 </tr>
 <tr>
-<td>InterpolationMode</td>
+<td><code>InterpolationMode</code></td>
 <td>SdsInterpolationMode</td>
 <td>Optional</td>
 <td>No</td>
 <td>Interpolation setting of the type. Default is Continuous.</td>
 </tr>
 <tr>
-<td>ExtrapolationMode</td>
+<td><code>ExtrapolationMode</code></td>
 <td>SdsExtrapolationMode</td>
 <td>Optional</td>
 <td>No</td>
 <td>Extrapolation setting of the type. Default is All.</td>
 </tr>
 <tr>
-<td>Properties</td>
+<td><code>Properties</code></td>
 <td>IList&lt;SdsTypeProperty></td>
 <td>Required</td>
 <td>Yes, with limitations</td>
-<td>List of SdsTypeProperty items. See <a class="xref" href="types/sds-type-property.html">SdsTypeProperty</a>.</td>
+<td>List of <code>SdsTypeProperty</code> items. See SdsTypeProperty below.</td>
 </tr>
 </tbody>
 </table>
 <p>For search limitations, see <a class="xref" href="search.html">Search in SDS</a>.</p>
 <h2 id="rules-for-the-type-identifier-sdstypeid">Rules for the type identifier (SdsType.ID)</h2>
-<p>The type identifier, SdsType.ID, has the following requirements:</p>
+<p>The type identifier, <code>SdsType.ID</code>, has the following requirements:</p>
 <ul>
-<li>Is not case sensitive.</li>
-<li>Can contain spaces.</li>
-<li>Cannot contain forward slash (&quot;/&quot;).</li>
-<li>Contains a maximum of 100 characters. </li>
+<li><p>Is not case sensitive</p>
+</li>
+<li><p>Can contain spaces</p>
+</li>
+<li><p>Cannot contain forward slash (&quot;/&quot;)</p>
+</li>
+<li><p>Contains a maximum of 100 characters</p>
+</li>
 </ul>
+<p>Type management using the .NET SDS client libraries methods is performed through <code>ISdsMetadataService</code>. You can create <code>ISdsMetadataService</code> using one of the <code>SdsService.GetMetadataService()</code> factory methods. .NET client libraries provide <code>SdsTypeBuilder</code> to help build SdsTypes from .NET types.</p>
+<h2 id="sdstypeproperty"><code>SdsTypeProperty</code></h2>
+<p>The <code>Properties</code> collection defines each field in an SdsType. Type properties will appear in every stream that is created from a given type.</p>
+<p>The following table shows the required and optional <code>SdsTypeProperty</code> fields. Fields that are not included are reserved for internal SDS use.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Optionality</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Id</code></td>
+<td>String</td>
+<td>Required</td>
+<td>Identifier for referencing the type</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>String</td>
+<td>Optional</td>
+<td>Friendly name</td>
+</tr>
+<tr>
+<td><code>Description</code></td>
+<td>String</td>
+<td>Optional</td>
+<td>Description text</td>
+</tr>
+<tr>
+<td><code>SdsType</code></td>
+<td>SdsType</td>
+<td>Required</td>
+<td>Field defining the property&#39;s Type</td>
+</tr>
+<tr>
+<td><code>IsKey</code></td>
+<td>Boolean</td>
+<td>Required</td>
+<td>Identifies the property as the Key (Primary Index)</td>
+</tr>
+<tr>
+<td><code>Value</code></td>
+<td>Object</td>
+<td>Optional</td>
+<td>Value of the property</td>
+</tr>
+<tr>
+<td><code>Order</code></td>
+<td>Int</td>
+<td>Optional</td>
+<td>Order of comparison within a compound index</td>
+</tr>
+<tr>
+<td><code>InterpolationMode</code></td>
+<td>SdsInterpolationMode</td>
+<td>Optional</td>
+<td>Interpolation setting of the property. Default is null.</td>
+</tr>
+<tr>
+<td><code>Uom</code></td>
+<td>String</td>
+<td>Optional</td>
+<td>Unit of Measure of the property. For a list of units of measures that are supported for an SdsTypeProperty, see <a class="xref" href="uom/supported-uom.html">Units of measure</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>SdsTypeProperty</code> identifier has the same requirements as the <code>SdsType</code> identifier, which are:</p>
+<ul>
+<li><p>Is not case sensitive</p>
+</li>
+<li><p>Can contain spaces</p>
+</li>
+<li><p>Cannot contain forward slash (&quot;/&quot;)</p>
+</li>
+<li><p>Contains a maximum of 100 characters</p>
+</li>
+</ul>
+<h3 id="iskey"><code>IsKey</code></h3>
+<p><code>IsKey</code> is a Boolean value that identifies the SdsType Key. Each SdsType needs a Key to function as the primary index.</p>
+<p>A key defined by more than one property is called a compound key. A compound key can be defined by a maximum of three properties. In a compound key, each property that is included in the key is specified as <code>IsKey</code>. The <code>Order</code> field then defines how the keys are combined in the compound key.</p>
+<h3 id="value"><code>Value</code></h3>
+<p>The <code>Value</code> field is used for properties that represent a value. For example, the named constant for an enum is a property with a value. When representing an enum in a SdsType, the SdsType properties collection defines the constant list for the enum. The SdsTypeProperty Identifier represents the name of the constant and the SdsTypeProperty value represents the value of the constant (see the enum State definitions below).</p>
+<h3 id="interpolationmode"><code>InterpolationMode</code></h3>
+<p><code>InterpolationMode</code> is assigned when the property of the event should be interpolated in a specific way that differs from the interpolation mode of the SdsType. <code>InterpolationMode</code> is only applied to a property that is not part of the index. If the <code>InterpolationMode</code> is not set, the property inherits the <code>InterpolationMode</code> of the SdsType.</p>
+<p>An SdsType with the <code>InterpolationMode</code> set to <code>Discrete</code> cannot have a property with an <code>InterpolationMode</code>. For more information on interpolation of events, see <a class="xref" href="read-data/read-characteristics.html#interpolation">Interpolation</a>.</p>
+<h3 id="uom"><code>UOM</code></h3>
+<p><code>Uom</code> is the unit of measure for the property. The <code>Uom</code> of a property may be specified by the name or the abbreviation. The names and abbreviations of Uoms are case sensitive.</p>
+<p>The <code>InterpolationMode</code> and <code>Uom</code> of a property can be overridden on the stream. For more information, see <a class="xref" href="sds-streams.html#sdsstreampropertyoverride">SdsStreamPropertyOverride in Streams</a>.</p>
+<h3 id="supported-units-of-measure">Supported units of measure</h3>
+<p>For a list of units of measures that are supported for an SdsTypeProperty, see <a class="xref" href="uom/supported-uom.html">Units of measure</a>.</p>
 </article>
           </div>
           
@@ -166,7 +265,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/sds-types.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/sds/sds-types.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

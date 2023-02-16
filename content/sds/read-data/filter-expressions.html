@@ -8,14 +8,14 @@
     <title>Filter expressions </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Filter expressions ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
     <link rel="stylesheet" href="../../../styles/main.css">
     <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../../">
     
@@ -80,37 +80,87 @@
 
 <p>Apply filter expressions to any read that returns multiple values, including <code>Get Values</code>, <code>Get Range Values</code>, <code>Get Window Values</code>, and <code>Get Intervals</code> to further control the results of the read. The filter expression is applied to the collection events conditionally filtering events that do not meet the filter conditions.</p>
 <h2 id="sdstypecodes">SdsTypeCodes</h2>
-<p>The following types are supported for use within a filter expression:</p>
-<ul>
-<li><code>Boolean</code></li>
-<li><code>Byte</code></li>
-<li><code>Char</code></li>
-<li><code>DateTime</code></li>
-<li><code>DateTimeOffset</code></li>
-<li><code>Decimal</code></li>
-<li><code>Double</code></li>
-<li><code>Guid</code></li>
-<li><code>Int16</code></li>
-<li><code>Int32</code></li>
-<li><code>Int64</code></li>
-<li><code>Sbyte</code></li>
-<li><code>Single</code></li>
-<li><code>String</code></li>
-<li><code>Timespan</code></li>
-<li><code>UInt16</code></li>
-<li><code>UInt32</code></li>
-<li><code>Uint64</code></li>
-</ul>
-<p>The following types are not supported for use within a filter expression:</p>
-<ul>
-<li><code>Array</code></li>
-<li><code>IEnumerable</code></li>
-<li><code>IDictionary</code></li>
-<li><code>IList</code></li>
-<li><code>Nullable Types</code></li>
-</ul>
+<p>The following tables lists supported and unsupported types within a filter expression.</p>
+<table>
+<thead>
+<tr>
+<th>Supports</th>
+<th>Does not support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Boolean</code></td>
+<td><code>Array</code></td>
+</tr>
+<tr>
+<td><code>Byte</code></td>
+<td><code>IEnumerable</code></td>
+</tr>
+<tr>
+<td><code>Char</code></td>
+<td><code>IDictionary</code></td>
+</tr>
+<tr>
+<td><code>DateTime</code></td>
+<td><code>IList</code></td>
+</tr>
+<tr>
+<td><code>DateTimeOffset</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Decimal</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Double</code></td>
+<td><code>Nullable Types</code></td>
+</tr>
+<tr>
+<td><code>Guid</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Int16</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Int64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Sbyte</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Timespan</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>UInt16</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>UInt32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>UInt64</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h2 id="logical-operators">Logical operators</h2>
-<p>The following logical operators are supported for use within a filter expression:</p>
+<p>The following table shows the supported logical operators for use within a filter expression.</p>
 <table>
 <thead>
 <tr>
@@ -166,20 +216,29 @@
 </tbody>
 </table>
 <h3 id="logical-operator-examples">Logical operator examples</h3>
-<p>For the following examples, assume that the SDS Type event includes a field named <code>Value</code> of type <strong>double</strong>:</p>
+<p>For the following examples, assume that the SDS Type event includes a field named <strong>Value</strong> of type <code>double</code>:</p>
 <ul>
-<li><code>Value eq 1.0</code></li>
-<li><code>Value ne 15.6</code></li>
-<li><code>Value ge 5.0</code></li>
-<li><code>Value le 8.0</code></li>
-<li><code>Value gt 5.0</code></li>
-<li><code>Value lt 4.0</code></li>
-<li><code>Value gt 2.0 and Value lt 9.0</code></li>
-<li><code>Value gt 6.0 or Value lt 2.0</code></li>
-<li><code>not (Value eq 1.0)</code></li>
+<li><p><code>Value eq 1.0</code></p>
+</li>
+<li><p><code>Value ne 15.6</code></p>
+</li>
+<li><p><code>Value ge 5.0</code></p>
+</li>
+<li><p><code>Value le 8.0</code></p>
+</li>
+<li><p><code>Value gt 5.0</code></p>
+</li>
+<li><p><code>Value lt 4.0</code></p>
+</li>
+<li><p><code>Value gt 2.0 and Value lt 9.0</code></p>
+</li>
+<li><p><code>Value gt 6.0 or Value lt 2.0</code></p>
+</li>
+<li><p><code>not (Value eq 1.0)</code></p>
+</li>
 </ul>
 <h2 id="math-functions">Math functions</h2>
-<p>The following math functions are supported for use within a filter expression:</p>
+<p>The following tables shows supported math functions within a filter expression.</p>
 <table>
 <thead>
 <tr>
@@ -210,7 +269,7 @@
 </tr>
 <tr>
 <td><code>round</code></td>
-<td>Rounds to the nearest numeric component without a decimal, with the midpoint rounded away from 0. For example, 0.5 rounds to 1; -0.5 rounds to -1)</td>
+<td>Rounds to the nearest numeric component without a decimal, with the midpoint rounded away from 0. For example, 0.5 rounds to 1; -0.5 rounds to -1).</td>
 </tr>
 <tr>
 <td><code>floor</code></td>
@@ -223,19 +282,27 @@
 </tbody>
 </table>
 <h3 id="math-function-examples">Math function examples</h3>
-<p>For the following examples, assume that the SDS Type event includes a field named <code>Value</code> of type <strong>double</strong>:</p>
+<p>For the following examples, assume that the SdsType event includes a field named <strong>Value</strong> of type <code>double</code>:</p>
 <ul>
-<li><code>Value eq (6.0 add 3.0)</code></li>
-<li><code>Value eq (6.0 sub 3.0)</code></li>
-<li><code>Value eq (6.0 mul 3.0)</code></li>
-<li><code>Value eq (6.0 div 3.0)</code></li>
-<li><code>Value eq (7.0 mod 3.0)</code></li>
-<li><code>round(Value) eq 16</code></li>
-<li><code>floor(Value) eq 15</code></li>
-<li><code>ceiling(Value) eq 16</code></li>
+<li><p><code>Value eq (6.0 add 3.0)</code></p>
+</li>
+<li><p><code>Value eq (6.0 sub 3.0)</code></p>
+</li>
+<li><p><code>Value eq (6.0 mul 3.0)</code></p>
+</li>
+<li><p><code>Value eq (6.0 div 3.0)</code></p>
+</li>
+<li><p><code>Value eq (7.0 mod 3.0)</code></p>
+</li>
+<li><p><code>round(Value) eq 16</code></p>
+</li>
+<li><p><code>floor(Value) eq 15</code></p>
+</li>
+<li><p><code>ceiling(Value) eq 16</code></p>
+</li>
 </ul>
 <h2 id="string-functions">String functions</h2>
-<p>String operations are case sensitive. The character index in a string is 0-based. The following string functions are supported for use within a filter expression:</p>
+<p>String operations are case sensitive. The character index in a string is zero-based. The following table shows supported string functions within a filter expression.</p>
 <table>
 <thead>
 <tr>
@@ -291,7 +358,7 @@
 </tbody>
 </table>
 <h3 id="string-function-examples">String function examples</h3>
-<p>For the following examples, assume that the SDS Type event includes a field named <code>sValue</code> of type <strong>string</strong>:</p>
+<p>For the following examples, assume that the SDS Type event includes a field named <strong>sValue</strong> of type <code>string</code>:</p>
 <table>
 <thead>
 <tr>
@@ -347,7 +414,7 @@
 </tbody>
 </table>
 <h2 id="datetime-functions">DateTime functions</h2>
-<p>The following DateTime functions are supported for use within a filter expression:</p>
+<p>The following table shows supported DateTime functions within a filter expression.</p>
 <table>
 <thead>
 <tr>
@@ -383,17 +450,23 @@
 </tbody>
 </table>
 <h3 id="datetime-function-examples">DateTime function examples</h3>
-<p>For the following examples, assume that the SDS Type event includes a field named <code>TimeId</code> of type <strong>DateTime</strong>:</p>
+<p>For the following examples, assume that the SDS Type event includes a field named <strong>TimeId</strong> of type <code>DateTime</code>:</p>
 <ul>
-<li><code>year(TimeId) eq 2015</code></li>
-<li><code>month(TimeId) eq 11</code></li>
-<li><code>day(TimeId) eq 3</code></li>
-<li><code>hour(TimeId) eq 1</code></li>
-<li><code>minute(TimeId) eq 5</code></li>
-<li><code>second(TimeId) eq 3</code></li>
+<li><p><code>year(TimeId) eq 2015</code></p>
+</li>
+<li><p><code>month(TimeId) eq 11</code></p>
+</li>
+<li><p><code>day(TimeId) eq 3</code></p>
+</li>
+<li><p><code>hour(TimeId) eq 1</code></p>
+</li>
+<li><p><code>minute(TimeId) eq 5</code></p>
+</li>
+<li><p><code>second(TimeId) eq 3</code></p>
+</li>
 </ul>
 <h2 id="timespan-functions">TimeSpan functions</h2>
-<p>The following TimeSpan functions are supported for use within a filter expression:</p>
+<p>The following table shows supported TimeSpan functions for use within a filter expression.</p>
 <table>
 <thead>
 <tr>
@@ -425,13 +498,18 @@
 </tbody>
 </table>
 <h3 id="timespan-function-examples">TimeSpan function examples</h3>
-<p>For the following examples, assume that the SDS Type event includes a field named <code>TimeSpanValue</code> of type <strong>TimeSpan</strong>:</p>
+<p>For the following examples, assume that the SDS Type event includes a field named <strong>TimeSpanValue</strong> of type <code>TimeSpan</code>:</p>
 <ul>
-<li><code>years(TimeSpanValue) eq 1</code></li>
-<li><code>days(TimeSpanValue) eq 22</code></li>
-<li><code>hours(TimeSpanValue) eq 1</code></li>
-<li><code>minutes(TimeSpanValue) eq 1</code></li>
-<li><code>seconds(TimeSpanValue) eq 2</code></li>
+<li><p><code>years(TimeSpanValue) eq 1</code></p>
+</li>
+<li><p><code>days(TimeSpanValue) eq 22</code></p>
+</li>
+<li><p><code>hours(TimeSpanValue) eq 1</code></p>
+</li>
+<li><p><code>minutes(TimeSpanValue) eq 1</code></p>
+</li>
+<li><p><code>seconds(TimeSpanValue) eq 2</code></p>
+</li>
 </ul>
 </article>
           </div>
@@ -441,7 +519,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/read-data/filter-expressions.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/sds/read-data/filter-expressions.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

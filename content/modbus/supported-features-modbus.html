@@ -8,7 +8,7 @@
     <title>Supported features </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Supported features ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -80,7 +80,8 @@
 
 <p>The Modbus TCP EDS adapter collects data using register types and then converts the registers into data types. It can apply bitmaps and data conversion to values converted from reading the Modbus TCP devices.</p>
 <h2 id="register-types">Register types</h2>
-<p>The Modbus TCP EDS adapter supports 6 register types, corresponding to 4 function codes (1-4). Since one function code can return two types of registers, either 16-bit or 32-bit depending on the device, either the register type or the register type code is required when configuring the data selection for the adapter. The following table lists all the register types supported in the Modbus TCP EDS adapter.</p>
+<p>The Modbus TCP EDS adapter supports 6 register types, corresponding to 4 function codes (1-4). Since one function code can return two types of registers, either 16-bit or 32-bit depending on the device, either the register type or the register type code is required when configuring the data selection for the adapter.</p>
+<p>The following table lists all the register types supported in the Modbus TCP EDS adapter.</p>
 <table>
 <thead>
 <tr>
@@ -224,25 +225,31 @@
 </tbody>
 </table>
 <h2 id="apply-bitmap">Apply bitmap</h2>
-<p>The Modbus TCP EDS adapter supports applying bitmaps to the value converted from the readings from the Modbus TCP devices. A bitmap is a series of numbers used to extract and reorder bits from a word register. The format of the bitmap is uuvvwwxxyyzz, where uu, vv, ww, yy, and zz each refer to a single bit. A leading zero is required if the referenced bit is less than 10. The low-order bit is 01 and high-order bit is either 16 or 32. Up to 16 bits can be referenced for a 16-bit word (data types 10 and 20) and up to 32 bits can be referenced for a 32-bit word (data type 30 and 31). For example, the bitmap 0307120802 will map the second bit of the original word to the first bit of the new word, the eighth bit to the second bit, the twelfth bit to the third bit, and so on. The high-order bits of the new word are padded with zeros if they are not specified. </p>
-<p>Not all data types support applying bitmap. The data types supporting bitmap are: </p>
+<p>The Modbus TCP EDS adapter supports applying bitmaps to the value converted from the readings from the Modbus TCP devices. A bitmap is a series of numbers used to extract and reorder bits from a word register. The format of the bitmap is <code>uuvvwwxxyyzz</code>, where <code>uu</code>, <code>vv</code>, <code>ww</code>, <code>yy</code>, and <code>zz</code> each refer to a single bit. A leading zero is required if the referenced bit is less than 10. The low-order bit is 01 and high-order bit is either 16 or 32. Up to 16 bits can be referenced for a 16-bit word (data types 10 and 20) and up to 32 bits can be referenced for a 32-bit word (data type 30 and 31). For example, the bitmap <code>0307120802</code> maps the second bit of the original word to the first bit of the new word, the eighth bit to the second bit, the twelfth bit to the third bit, and so on. The high-order bits of the new word are padded with zeros if they are not specified.</p>
+<p>Not all data types support applying bitmap. The data types supporting bitmap are:</p>
 <ul>
-<li>Int16 (Data type code 10) </li>
-<li>UInt16 (Data type code 20)</li>
-<li>Int32 (Data type code 30 and 31) </li>
-</ul>
-<h2 id="apply-data-conversion">Apply data conversion</h2>
-<p>The Modbus TCP EDS adapter supports applying data conversion to the value converted from reading the Modbus TCP devices. A conversion factor and conversion offset can be specified. The conversion factor is used for scaling the value up or down, and the conversion offset is used for shifting the value. The mathematical equation used in conversion is the following: </p>
-<pre><code>&lt;After Conversion&gt; = &lt;Before Conversion&gt; / Factor - Offset 
-</code></pre><p> Not all data types support applying data conversion. Data types that support data conversion are: </p>
-<ul>
-<li>Int16 (Data type code 10) </li>
-<li>UInt16 (Data type code 20) </li>
-<li>Int32 (Data type code 30 and 31) </li>
-<li><p>Float32 (Data type code 100 and 101) </p>
-<p>The value with data conversion applied will always be converted to the 32-bit float type to maintain the precision of the conversion factor and conversion offset.</p>
+<li><p>Int16 (Data type code 10)</p>
+</li>
+<li><p>UInt16 (Data type code 20)</p>
+</li>
+<li><p>Int32 (Data type code 30 and 31)</p>
 </li>
 </ul>
+<h2 id="apply-data-conversion">Apply data conversion</h2>
+<p>The Modbus TCP EDS adapter supports applying data conversion to the value converted from reading the Modbus TCP devices. A conversion factor and conversion offset can be specified. The conversion factor is used for scaling the value up or down, and the conversion offset is used for shifting the value. The mathematical equation used in conversion is the following:</p>
+<pre><code>&lt;After Conversion&gt; = &lt;Before Conversion&gt; / Factor - Offset 
+</code></pre><p>Not all data types support applying data conversion. Data types that support data conversion are:</p>
+<ul>
+<li><p>Int16 (Data type code 10)</p>
+</li>
+<li><p>UInt16 (Data type code 20)</p>
+</li>
+<li><p>Int32 (Data type code 30 and 31)</p>
+</li>
+<li><p>Float32 (Data type code 100 and 101)</p>
+</li>
+</ul>
+<p>The value with data conversion applied will always be converted to the 32-bit float type to maintain the precision of the conversion factor and conversion offset.</p>
 </article>
           </div>
           
@@ -251,7 +258,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/modbus/supported-features-modbus.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/modbus/supported-features-modbus.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

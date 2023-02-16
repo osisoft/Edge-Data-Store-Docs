@@ -8,7 +8,7 @@
     <title>Edge Data Store health </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Edge Data Store health ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -79,9 +79,11 @@
 <h1 id="edge-data-store-health">Edge Data Store health</h1>
 
 <p>Edge Data Store and its components produce health information to provide insight into their status, which is critical for monitoring data collection. When configured, EDS transfers health information to OMF endpoints, including the types and containers that represent available health information. To enable this functionality, configure one or more health endpoints.</p>
+<p>EDS also produces diagnostic data. You can use diagnostic data to find more information about a particular component instance. Diagnostic data lives alongside the health data and you can egress it using a health endpoint and setting <code>EnableDiagnostics</code> to <code>true</code>. You can configure <code>EnableDiagnostics</code> in the system configuration. For more information on available adapter diagnostics data, see <a class="xref" href="../diagnostics/diagnostics.html">Diagnostics configuration</a>.</p>
 <h2 id="eds-adapter-health">EDS adapter health</h2>
 <p>The following health types and streams are created to reflect the health of EDS adapters.</p>
-<p>The Adapters static type includes these properties and servers as a root AF element with the ID Adapters.</p>
+<p><strong>Note:</strong> If a Health prefix is assigned in System_General&#39;s Health Prefix field (xref: GeneralConfiguration), all streams will be prefixed with <code>{HealthPrefix}</code>.</p>
+<p>The EDS static type includes these properties and servers as a root AF element with the ID.</p>
 <table>
 <thead>
 <tr>
@@ -94,7 +96,7 @@
 <tr>
 <td>Id</td>
 <td>string</td>
-<td>Adapters - root AF element</td>
+<td>Edge Data Stores - root AF element</td>
 </tr>
 <tr>
 <td>Description</td>
@@ -104,7 +106,7 @@
 </tbody>
 </table>
 <h3 id="eds-adapter-component-health">EDS adapter component health</h3>
-<p>The Adapter Health static type includes the following properties, which are logged in a stream with the ID {machinename}.{componentid}. The stream is linked to root AF element (Adapters).</p>
+<p>The DataCollectorService static type includes the following properties, which are logged in a stream with the ID <code>{machinename}.{EdgeDataStore}</code>. The stream is linked to root AF element (Adapters).</p>
 <table>
 <thead>
 <tr>
@@ -117,27 +119,27 @@
 <tr>
 <td>Id</td>
 <td>string</td>
-<td>{machinename}.{componentId}</td>
+<td>{machinename}.EdgeDataStore</td>
 </tr>
 <tr>
 <td>Description</td>
 <td>string</td>
-<td>{productname} health</td>
+<td>EDS Service Health</td>
 </tr>
 <tr>
-<td>Adapter Type</td>
+<td>Type</td>
 <td>string</td>
-<td>{adaptertype}</td>
+<td>Edge Data Store</td>
 </tr>
 <tr>
 <td>Version</td>
 <td>string</td>
-<td>{adapterversion}</td>
+<td>{EDS Version}</td>
 </tr>
 </tbody>
 </table>
 <h3 id="device-status">Device status</h3>
-<p>The DeviceStatus dynamic type includes the following values, which are logged in a stream with the ID Adapters.{machinename}.{componentid}.DeviceStatus. The stream is linked to {machinename}.{componentid} static stream.</p>
+<p>The DeviceStatus dynamic type includes the following values, which are logged in a stream with the ID Adapters.<code>{machinename}.{componentid}.DeviceStatus</code>. The stream is linked to <code>{machinename}.{componentid}</code> static stream.</p>
 <table>
 <thead>
 <tr>
@@ -160,7 +162,7 @@
 </tbody>
 </table>
 <h3 id="next-health-message-expected">Next health message expected</h3>
-<p>The NextHealthMessageExpected dynamic type includes the following values, which are logged in a stream with the ID Adapters.{machinename}.{componentid}.NextHealthMessageExpected. The stream is linked to {machinename}.{componentid} static stream. Heart beat message is expected once a minute.</p>
+<p>The NextHealthMessageExpected dynamic type includes the following values, which are logged in a stream with the ID <code>Adapters.{machinename}.{componentid}.NextHealthMessageExpected</code>. The stream is linked to <code>{machinename}.{componentid}</code> static stream. Heart beat message is expected once a minute.</p>
 <table>
 <thead>
 <tr>
@@ -182,32 +184,8 @@
 </tr>
 </tbody>
 </table>
-<h2 id="storage-component-health">Storage component health</h2>
-<p>The following health types and streams are created to reflect the health of the Storage component.</p>
-<p>The Storage static type includes the following properties and servers as a root AF element with the ID Storage.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Id</td>
-<td>string</td>
-<td>Storage - root AF element</td>
-</tr>
-<tr>
-<td>Description</td>
-<td>string</td>
-<td>Storage Health</td>
-</tr>
-</tbody>
-</table>
 <h3 id="storage-health">Storage health</h3>
-<p>The Storage Health static type includes the following properties, which are logged in a stream with the ID {machinename}.Storage. The stream is linked to root AF element (Storage).</p>
+<p>The Storage Health static type includes the following properties, which are logged in a stream with the ID <code>{machinename}.Storage</code>. The stream is linked to Edge Data Store&#39;s service element <code>{machinename}.EdgeDataStore</code>.</p>
 <table>
 <thead>
 <tr>
@@ -220,27 +198,27 @@
 <tr>
 <td>Id</td>
 <td>string</td>
-<td>{machinename}.Storage</td>
+<td><code>{machinename}.Storage</code></td>
 </tr>
 <tr>
 <td>Description</td>
 <td>string</td>
-<td>{productname} health</td>
+<td>Storage health</td>
 </tr>
 <tr>
-<td>Adapter Type</td>
+<td>Host</td>
 <td>string</td>
-<td>{adaptertype}</td>
+<td><code>{machinename}</code></td>
 </tr>
 <tr>
 <td>Version</td>
 <td>string</td>
-<td>{storageversion}</td>
+<td><code>{storageversion}</code></td>
 </tr>
 </tbody>
 </table>
 <h3 id="storage-device-status">Storage device status</h3>
-<p>The DeviceStatus dynamic type includes the following values, which are logged in a stream with the ID Storage.{machinename}.DeviceStatus. The stream is linked to {machinename}.Storage static stream.</p>
+<p>The DeviceStatus dynamic type includes the following values, which are logged in a stream with the ID Storage.<code>{machinename}.DeviceStatus</code>. The stream is linked to <code>{machinename}.Storage</code> static stream.</p>
 <table>
 <thead>
 <tr>
@@ -263,7 +241,7 @@
 </tbody>
 </table>
 <h3 id="storage-next-health-message-expected">Storage next health message expected</h3>
-<p>The NextHealthMessageExpected dynamic type includes the following values, which are logged in a stream with the ID Storage.{machinename}.NextHealthMessageExpected. The stream is linked to {machinename}.Storage static stream. Heart beat message is expected once a minute.</p>
+<p>The NextHealthMessageExpected dynamic type includes the following values, which are logged in a stream with the ID <code>Storage.{machinename}.NextHealthMessageExpected</code>. The stream is linked to <code>{machinename}.Storage</code> static stream. Heart beat message is expected once a minute.</p>
 <table>
 <thead>
 <tr>
@@ -285,6 +263,8 @@
 </tr>
 </tbody>
 </table>
+<p>Example health strucutre:
+<img src="../images/AFStructureExample.png" alt="AFStructureExample"></p>
 </article>
           </div>
           
@@ -293,7 +273,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/health/health.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/health/health.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

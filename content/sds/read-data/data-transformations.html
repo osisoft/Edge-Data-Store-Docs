@@ -8,14 +8,14 @@
     <title>Data transformations </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Data transformations ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
     <link rel="stylesheet" href="../../../styles/main.css">
     <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../../">
     
@@ -80,8 +80,10 @@
 
 <p>SDS supports the following data transformations on read requests:</p>
 <ul>
-<li>Reading with SdsStreamViews: Changing the shape of the returned data</li>
-<li>Unit of Measure Conversions: Converting the unit of measure of the data  </li>
+<li><p>Reading with SdsStreamViews: Changing the shape of the returned data</p>
+</li>
+<li><p>Unit of Measure Conversions: Converting the unit of measure of the data  </p>
+</li>
 </ul>
 <p>Data transformations are supported for all single stream reads, but transformations have specific endpoints. The following are the base URIs for the transformation endpoints:</p>
 <pre><code class="lang-text">  api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/Transform/First
@@ -91,13 +93,14 @@
   api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/Transform/Summaries
   api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/Transform/Sampled
 </code></pre><h2 id="reading-with-sdsstreamviews">Reading with SdsStreamViews</h2>
-<p>When you transform data with an SdsStreamView, the data read is converted to the <em>target type</em> specified in the SdsStreamView. For details on working with stream views, see <a class="xref" href="../sds-views.html">Stream Views</a>.</p>
+<p>When you transform data with an SdsStreamView, the data read is converted to the <code>target type</code> specified in the SdsStreamView. For details on working with stream views, see <a class="xref" href="../sds-views.html">Stream Views</a>.</p>
 <p>All stream view transformations are GET HTTP requests. Specify the stream view by appending the stream view identifier to requests to the transformation endpoint. For example, the following request would return the first event in the stream as the target type in the stream view specified by the <code>streamViewId</code>:</p>
 <pre><code class="lang-text">  GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/Transform/First?streamViewId={streamViewId}
 </code></pre><p>All single stream data reads support stream view transformations.</p>
-<p>When you request data with an SdsStreamView, the read characteristics defined by the <em>target type</em> of the SdsStreamView determine what is returned. The read characteristics are discussed in the code samples.</p>
+<p>When you request data with an SdsStreamView, the read characteristics defined by the <code>target type</code> of the SdsStreamView determine what is returned. The read characteristics are discussed in the code samples.</p>
 <h2 id="unit-of-measure-conversions">Unit of measure conversions</h2>
-<p>SDS supports assigning units of measure (UOM) to stream data. For more information, see <a class="xref" href="../units-of-measure.html">Units of measure</a>. If stream data has UOM information associated, SDS supports reading data with unit conversions applied. On each read data request, unit conversions are specified by a user defined collection of <code>SdsStreamPropertyOverride</code> objects in read requests. The <code>SdsStreamPropertyOverride</code> object has the following structure:</p>
+<p>SDS supports assigning units of measure (UOM) to stream data. For more information, see <a class="xref" href="../units-of-measure.html">Units of measure</a>. If stream data has UOM information associated, SDS supports reading data with unit conversions applied. On each read data request, unit conversions are specified by a user defined collection of <code>SdsStreamPropertyOverride</code> objects in read requests.</p>
+<p>The properties of the <code>SdsStreamPropertyOverride</code> object are described in the following table.</p>
 <table>
 <thead>
 <tr>
@@ -131,8 +134,8 @@
 <p>This is supported in the REST API through HTTP POST calls with a request body containing a collection of <code>SdsStreamPropertyOverride</code> objects.  </p>
 <p>All unit conversions are POST HTTP requests. The unit conversion transformation URI is as follows:</p>
 <pre><code class="lang-text">  POST api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data/Transform
-</code></pre><p><strong>Request body</strong>
-The Request Body contains a collection of <code>SdsStreamPropertyOverride</code> objects.</p>
+</code></pre><h3 id="request-body">Request body</h3>
+<p>The Request Body contains a collection of <code>SdsStreamPropertyOverride</code> objects.</p>
 <p>The example request body below requests SDS to convert the <code>Measurement</code> property of the returned data from meter to centimeter.</p>
 <pre><code class="lang-json">[
   {
@@ -149,7 +152,7 @@ The Request Body contains a collection of <code>SdsStreamPropertyOverride</code>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/read-data/data-transformations.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/sds/read-data/data-transformations.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

@@ -13,14 +13,11 @@
           <ul class="nav level1">
                 <li>
                     <span class="expand-stub"></span>
-                    <a href="index.html" name="" title="Edge Data Store">Edge Data Store</a>
+                    <a href="edge-data-store.html" name="" title="Edge Data Store">Edge Data Store</a>
                     
                     <ul class="nav level2">
                           <li>
                               <a href="overview/scale-performance.html" name="" title="Design considerations">Design considerations</a>
-                          </li>
-                          <li>
-                              <a href="overview/performance.html" name="" title="Performance">Performance</a>
                           </li>
                           <li>
                               <a href="security/security-overview.html" name="" title="Security">Security</a>
@@ -39,13 +36,13 @@
                               <a href="overview/modbus-quick-start.html" name="" title="Modbus TCP EDS adapter quick start">Modbus TCP EDS adapter quick start</a>
                           </li>
                           <li>
-                              <a href="overview/omf-quick-start.html" name="" title="OMF quick start">OMF quick start</a>
+                              <a href="overview/omf-quick-start.html" name="" title="OMF ingress quick start">OMF ingress quick start</a>
                           </li>
                           <li>
-                              <a href="overview/ocs-egress-quick-start.html" name="" title="OCS egress quick start">OCS egress quick start</a>
+                              <a href="overview/adh-egress-quick-start.html" name="" title="AVEVA Data Hub egress quick start">AVEVA Data Hub egress quick start</a>
                           </li>
                           <li>
-                              <a href="overview/pi-egress-quick-start.html" name="" title="PI egress quick start">PI egress quick start</a>
+                              <a href="overview/pi-egress-quick-start.html" name="" title="PI Server egress quick start">PI Server egress quick start</a>
                           </li>
                           <li>
                               <a href="overview/sds-quick-start.html" name="" title="SDS quick start">SDS quick start</a>
@@ -74,7 +71,7 @@
                               </ul>
                           </li>
                           <li>
-                              <a href="docker/edge-docker.html" name="" title="Install Edge Data Store using Docker">Install Edge Data Store using Docker</a>
+                              <a href="docker/edge-docker.html" name="" title="Install Edge Data Store with Docker">Install Edge Data Store with Docker</a>
                           </li>
                           <li>
                               <a href="installation/verify-installation.html" name="" title="Verify installation">Verify installation</a>
@@ -104,13 +101,16 @@
                                         <a href="configuration/system-port-configuration.html" name="" title="System port configuration">System port configuration</a>
                                     </li>
                                     <li>
-                                        <a href="configuration/eds-configuration.html" name="" title="Edge Data Store configuration">Edge Data Store configuration</a>
+                                        <a href="configuration/general-configuration.html" name="" title="General configuration">General configuration</a>
+                                    </li>
+                                    <li>
+                                        <a href="configuration/buffering.html" name="" title="Buffering configuration">Buffering configuration</a>
                                     </li>
                               </ul>
                           </li>
                           <li>
                               <span class="expand-stub"></span>
-                              <a href="data-ingress/eds-data-ingress.html" name="" title="Data ingress configuration">Data ingress configuration</a>
+                              <a href="data-ingress/eds-data-ingress.html" name="" title="Data ingress">Data ingress</a>
                               
                               <ul class="nav level3">
                                     <li>
@@ -125,13 +125,20 @@
                                                   <a href="opc-ua/supported-features-opc-ua.html" name="" title="Data type mapping">Data type mapping</a>
                                               </li>
                                               <li>
-                                                  <a href="opc-ua/opc-ua-data-source-configuration.html" name="" title="Data source configuration">Data source configuration</a>
+                                                  <a href="opc-ua/shared-content/content/configuration/data-source.html" name="" title="Data source configuration">Data source configuration</a>
                                               </li>
                                               <li>
                                                   <a href="opc-ua/opc-ua-adapter-security-configuration.html" name="" title="Adapter security">Adapter security</a>
                                               </li>
                                               <li>
+                                                  <span class="expand-stub"></span>
                                                   <a href="opc-ua/opc-ua-data-selection-configuration.html" name="" title="Data selection configuration">Data selection configuration</a>
+                                                  
+                                                  <ul class="nav level5">
+                                                        <li>
+                                                            <a href="opc-ua/shared-content/content/configuration/data-filters.html" name="" title="Data filters">Data filters</a>
+                                                        </li>
+                                                  </ul>
                                               </li>
                                         </ul>
                                     </li>
@@ -147,16 +154,26 @@
                                                   <a href="modbus/supported-features-modbus.html" name="" title="Supported features">Supported features</a>
                                               </li>
                                               <li>
-                                                  <a href="modbus/modbus-data-source-configuration.html" name="" title="Data source configuration">Data source configuration</a>
+                                                  <a href="modbus/shared-content/content/configuration/data-source.html" name="" title="Data source configuration">Data source configuration</a>
                                               </li>
                                               <li>
+                                                  <span class="expand-stub"></span>
                                                   <a href="modbus/modbus-data-selection-configuration.html" name="" title="Data selection configuration">Data selection configuration</a>
+                                                  
+                                                  <ul class="nav level5">
+                                                        <li>
+                                                            <a href="modbus/shared-content/content/data-filters.html" name="" title="Data filters">Data filters</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="modbus/shared-content/content/configuration/schedules.html" name="" title="Schedules">Schedules</a>
+                                                        </li>
+                                                  </ul>
                                               </li>
                                         </ul>
                                     </li>
                                     <li>
                                         <span class="expand-stub"></span>
-                                        <a href="omf/omf-overview.html" name="" title="OSIsoft Message Format (OMF)">OSIsoft Message Format (OMF)</a>
+                                        <a href="omf/omf-overview.html" name="" title="OSIsoft Message Format">OSIsoft Message Format</a>
                                         
                                         <ul class="nav level4">
                                               <li>
@@ -178,14 +195,17 @@
                           </li>
                           <li>
                               <span class="expand-stub"></span>
-                              <a href="egress/egress.html" name="" title="Data egress configuration">Data egress configuration</a>
+                              <a href="egress/egress.html" name="" title="Data egress">Data egress</a>
                               
                               <ul class="nav level3">
                                     <li>
                                         <a href="egress/prepare-egress-destinations.html" name="" title="Prepare egress destinations">Prepare egress destinations</a>
                                     </li>
                                     <li>
-                                        <a href="egress/configure-data-egress.html" name="" title="Configure data egress">Configure data egress</a>
+                                        <a href="egress/configure-data-egress.html" name="" title="Configure periodic data egress">Configure periodic data egress</a>
+                                    </li>
+                                    <li>
+                                        <a href="egress/manual-egress.html" name="" title="Configure manual data egress">Configure manual data egress</a>
                                     </li>
                                     <li>
                                         <a href="egress/egress-execution-details.html" name="" title="Egress execution details">Egress execution details</a>
@@ -197,26 +217,16 @@
                           </li>
                           <li>
                               <span class="expand-stub"></span>
-                              <a href="health/health.html" name="" title="Edge Data Store Health">Edge Data Store Health</a>
+                              <a href="health/health.html" name="" title="Edge Data Store health">Edge Data Store health</a>
                               
                               <ul class="nav level3">
                                     <li>
-                                        <a href="configuration/system-health-endpoints-configuration.html" name="" title="Health endpoints configuration">Health endpoints configuration</a>
+                                        <a href="configuration/system-health-endpoints-configuration.html" name="" title="Configure health endpoints">Configure health endpoints</a>
                                     </li>
                               </ul>
                           </li>
                           <li>
-                              <span class="expand-stub"></span>
-                              <a href="logging/logging-configuration.html" name="" title="Logging configuration">Logging configuration</a>
-                              
-                              <ul class="nav level3">
-                                    <li>
-                                        <a href="logging/system-logging.html" name="" title="System-level logging configuration">System-level logging configuration</a>
-                                    </li>
-                                    <li>
-                                        <a href="logging/component-logging.html" name="" title="Component-level logging configuration">Component-level logging configuration</a>
-                                    </li>
-                              </ul>
+                              <a href="logging/logging-configuration.html" name="" title="Configure logging">Configure logging</a>
                           </li>
                     </ul>
                 </li>
@@ -263,13 +273,13 @@
                                         <a href="sds/types/sds-type-code.html" name="" title="SdsTypeCode">SdsTypeCode</a>
                                     </li>
                                     <li>
-                                        <a href="sds/types/sds-type-property.html" name="" title="SdsTypeProperty">SdsTypeProperty</a>
+                                        <a href="sds/types/sds-type-in-dotnet.html" name="" title="SdsTypes in .NET framework">SdsTypes in .NET framework</a>
                                     </li>
                                     <li>
-                                        <a href="sds/types/sds-type-examples.html" name="" title="Examples of SdsTypes">Examples of SdsTypes</a>
+                                        <a href="sds/types/sds-types-outside-dotnet.html" name="" title="SdsTypes outside of .NET framework">SdsTypes outside of .NET framework</a>
                                     </li>
                                     <li>
-                                        <a href="sds/types/sds-type-reusability.html" name="" title="SdsType Reusability">SdsType Reusability</a>
+                                        <a href="sds/types/sds-type-reusability.html" name="" title="SdsType reusability">SdsType reusability</a>
                                     </li>
                                     <li>
                                         <a href="sds/types/sds-type-api.html" name="" title="SdsType API">SdsType API</a>
@@ -292,7 +302,10 @@
                               
                               <ul class="nav level3">
                                     <li>
-                                        <a href="sds/views/sds-stream-view-api.html" name="" title="Stream view API">Stream view API</a>
+                                        <a href="sds/views/get-started-with-stream-views.html" name="" title="Get started with SdsStreamViews">Get started with SdsStreamViews</a>
+                                    </li>
+                                    <li>
+                                        <a href="sds/views/sds-stream-view-api.html" name="" title="SdsStreamView API">SdsStreamView API</a>
                                     </li>
                               </ul>
                           </li>
@@ -302,7 +315,10 @@
                               
                               <ul class="nav level3">
                                     <li>
-                                        <a href="sds/indexes/indexes-examples.html" name="" title="Index examples">Index examples</a>
+                                        <a href="sds/indexes/indexes-in-dotnet.html" name="" title="Indexes in .NET framework">Indexes in .NET framework</a>
+                                    </li>
+                                    <li>
+                                        <a href="sds/indexes/indexes-outside-dotnet.html" name="" title="Indexes outside of .NET framework">Indexes outside of .NET framework</a>
                                     </li>
                               </ul>
                           </li>
@@ -340,7 +356,7 @@
                               
                               <ul class="nav level3">
                                     <li>
-                                        <a href="sds/write-data/response-format-write.html" name="" title="Response format">Response format</a>
+                                        <a href="sds/write-data/response-format-write.html" name="" title="Response format for write APIs">Response format for write APIs</a>
                                     </li>
                                     <li>
                                         <a href="sds/write-data/writing-data-api.html" name="" title="Write data API">Write data API</a>
@@ -375,7 +391,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="release-notes/release-notes.html" name="" title="Release notes">Release notes</a>
+                    <a href="release-notes/release-notes.html" name="" title="Edge Data Store 2023 release notes">Edge Data Store 2023 release notes</a>
                 </li>
                 <li>
                     <a href="feedback.html" name="" title="Technical support and feedback">Technical support and feedback</a>

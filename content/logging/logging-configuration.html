@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Logging configuration </title>
+    <title>Configure logging </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Logging configuration ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="title" content="Configure logging ">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -76,10 +76,157 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="LoggingConfig">
-<h1 id="logging-configuration">Logging configuration</h1>
+<h1 id="configure-logging">Configure logging</h1>
 
 <p>Use the logging configuration to collect information about how Edge Data Store and its components are performing. Set the severity level for the messages to capture, anywhere from critical errors only to debugging messages for troubleshooting.</p>
-</article>
+<p>Edge Data Store writes daily log messages to flat text files in the following locations:</p>
+<ul>
+<li><p>Windows: <code>%ProgramData%\OSIsoft\EdgeDataStore\Logs</code></p>
+</li>
+<li><p>Linux: <code>/usr/share/OSIsoft/EdgeDataStore/Logs</code></p>
+</li>
+</ul>
+<p>Each message in the log displays the message severity level, timestamp, and the message itself. </p>
+<h2 id="configure-logging-1">Configure logging</h2>
+<p>To change the message logging behavior:</p>
+<ol>
+<li><p>Using any text editor, open the log configuration file that you want.</p>
+</li>
+<li><p>Change the values as needed so it looks similar to the <a href="#example-logging-configuration">Logging example</a>.</p>
+</li>
+<li><p>Use any tool capable of making HTTP requests to execute a <code>POST</code> command with the contents of that file to the respective endpoint.</p>
+<p> <strong>Note:</strong>  Replace <code>&lt;ComponentId&gt;</code> with the <code>ComponentId</code> of the adapter instance or Storage component, for example <code>OpcUa1</code>.</p>
+<p>   Example using curl or EdgeCmd (run this command from the same directory where the file is located):</p>
+<div class="tabGroup" id="tabgroup_rPyidFexNj">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_rPyidFexNj_tabid-1" role="tab" aria-controls="tabpanel_rPyidFexNj_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">curl</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_rPyidFexNj_tabid-2" role="tab" aria-controls="tabpanel_rPyidFexNj_tabid-2" data-tab="tabid-2" tabindex="-1">EdgeCmd</a>
+</li>
+</ul>
+<section id="tabpanel_rPyidFexNj_tabid-1" role="tabpanel" data-tab="tabid-1">
+<pre><code class="lang-bash">curl -d &quot;@componentId_Logging.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/&lt;ComponentId&gt;/Logging
+</code></pre></section>
+<section id="tabpanel_rPyidFexNj_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code>edgecmd edit logging -cid &lt;componentID&gt; -loglevel &lt;LogLevel&gt;
+</code></pre></section>
+</div>
+</li>
+</ol>
+<p>The component endpoints are the following:</p>
+<ul>
+<li><p>Edge Data Store: <code>http://localhost:5590/api/v1/configuration/System/Logging</code></p>
+</li>
+<li><p>Storage: <code>http://localhost:5590/api/v1/configuration/Storage/Logging</code></p>
+</li>
+<li><p>OSIsoft Adapter for OPC UA: <code>http://localhost:5590/api/v1/configuration/OpcUa1/Logging</code></p>
+</li>
+<li><p>OSIsoft Adapter for Modbus TCP: <code>http://localhost:5590/api/v1/configuration/Modbus1/Logging</code></p>
+</li>
+</ul>
+<h2 id="logging-schema">Logging schema</h2>
+<p>The full schema definition for the logging configuration is in the component specific logging file:</p>
+<ul>
+<li><p>Edge Data Store: <code>System_Logging.json</code></p>
+</li>
+<li><p>Storage: <code>Storage_Logging.json</code></p>
+</li>
+<li><p>OSIsoft Adapter for OPC UA: <code>OpcUa1_Logging.json</code></p>
+</li>
+<li><p>OSIsoft Adapter for Modbus TCP: <code>Modbus1_Logging.json</code></p>
+</li>
+</ul>
+<p>If you have more than one adapter of the same kind configured, the default file name incrementally changed, for example, <code>OpcUa2_Logging.json</code>.</p>
+<p>The component specific logging files are located in the following folders:</p>
+<ul>
+<li><p>Windows: <code>%ProgramFlies%\OSIsoft\EdgeDataStore\Schemas</code></p>
+</li>
+<li><p>Linux: <code>/usr/share/OSIsoft/EdgeDataStore/Schemas</code></p>
+</li>
+</ul>
+<h2 id="parameters-for-logging">Parameters for logging</h2>
+<p>The following parameters are available for configuring logging.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LogFileCountLimit</strong></td>
+<td>Optional</td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The maximum number of log files that the service will create for the component. It must be a positive integer.  <br> Minimum value: <code>1</code> <br> Maximum value: <code>2147483647</code> <br> Default value: <code>31</code></td>
+</tr>
+<tr>
+<td><strong>LogFileSizeLimitBytes</strong></td>
+<td>Optional</td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The maximum size in bytes of log files that the service will create for the component. It must be a positive integer.     <br> Minimum value: <code>1000</code> <br> Maximum value: <code>9223372036854775807</code>  <br> Default value: <code>34636833</code></td>
+</tr>
+<tr>
+<td><strong>LogLevel</strong></td>
+<td>Optional</td>
+<td>reference</td>
+<td>No</td>
+<td>The log level settings that you want. The following options are available: <br> <code>Verbose</code> - Captures all messages: Verbose, Debug, Information, Warning and Error <br> <code>Debug</code> - Captures most messages: Debug, Information, Warning and Error <br> <code>Information</code> - Captures most messages: Information, Warning and Error <br> <code>Warning</code> - Captures only Warning and Error messages <br> <code>Error</code> - Captures Error messages only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="log-levels">Log levels</h3>
+<p>The logLevel sets the minimum severity for messages to be included in the logs. Messages with a severity below the level set are not included. The log levels in their increasing order of severity are as follows: <code>Trace</code>, <code>Debug</code>, <code>Information</code>, <code>Warning</code>, <code>Error</code>, <code>Critical</code>.</p>
+<p>The following table has general guidelines for setting the log level.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Level</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trace</td>
+<td>Logs that contain the most detailed messages. These messages may contain sensitive application data like actual received values and should not be enabled in a production environment.</td>
+</tr>
+<tr>
+<td>Debug</td>
+<td>Logs that can be used to troubleshoot data flow issues by recording metrics and detailed flow-related information.</td>
+</tr>
+<tr>
+<td>Information</td>
+<td>Logs that track the general flow of the application. Any non-repetitive general information (like version information relating to the software at startup, what external services are being used, data source connection string, number of measurements, egress URL, change of state &quot;Starting&quot;, &quot;Stopping&quot;, or configuration) can be useful for diagnosing potential application errors.</td>
+</tr>
+<tr>
+<td>Warning</td>
+<td>Logs that highlight an abnormal or unexpected event in the application flow, but does not otherwise cause the application execution to stop. Warning messages can indicate a data source state that is not configured, that a communication with backup failover instance has been lost, an insecure communication channel in use, or any other event that could require attention, but that does not impact data flow.</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>Logs that highlight when the current flow of execution is stopped due to a failure. These should indicate a failure in the current activity, not an application-wide failure. This can indicate an invalid configuration, unavailable external endpoint, internal flow error, and so on.</td>
+</tr>
+<tr>
+<td>Critical</td>
+<td>Logs that describe an unrecoverable application, system crash, or a catastrophic failure that requires immediate attention. This can indicate application wide failures like beta timeout expired, unable to start self-hosted endpoint, unable to access vital resource (for example, Data Protection key file), and so on.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example-logging-configuration">Example logging configuration</h2>
+<p>By default, logging captures Information, Warning, Error, and Critical messages in the message logs. The following logging configuration is the installation default for a component:</p>
+<pre><code class="lang-bash">{
+&quot;LogLevel&quot;: &quot;Information&quot;,
+&quot;LogFileSizeLimitBytes&quot;: 34636833,
+&quot;LogFileCountLimit&quot;: 31
+}
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -87,7 +234,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/logging/logging-configuration.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/logging/logging-configuration.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

@@ -8,14 +8,14 @@
     <title>SdsStreamView API </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="SdsStreamView API ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
     <link rel="stylesheet" href="../../../styles/main.css">
     <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../../">
     
@@ -79,150 +79,947 @@
 <h1 id="sdsstreamview-api">SdsStreamView API</h1>
 
 <p>The REST APIs provide programmatic access to read and write SDS data. The APIs in this section interact with SdsStreamViews. For general SdsStreamView information, see <a class="xref" href="../sds-views.html">Stream views</a>.</p>
-<hr>
-<h2 id="get-stream-view"><code>Get Stream View</code></h2>
-<p>Returns the stream view corresponding to the specified streamViewId within a given namespace.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews/{streamViewId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamViewId</code><br>The stream view identifier.  </p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>The requested SdsStreamView.</p>
-<p>Example response body:</p>
+<h2 id="list-stream-views"><code>List Stream Views</code></h2>
+<p><a id="opIdView_List Stream Views"></a></p>
+<p>Returns a list of <code>SdsStreamView</code></p>
+<h3 id="request">Request</h3>
+<pre><code class="lang-text">GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/StreamViews?query={query}&amp;skip={skip}&amp;count={count}&amp;orderby={orderby}
+</code></pre><h4 id="parameters">Parameters</h4>
+<p><code>string tenantId</code>
+Tenant identifier</p>
+<p><code>string namespaceId</code>
+Namespace identifier</p>
+<p><code>[Optional] string query</code><br>Query identifier. See <a class="xref" href="../search.html">Search in SDS</a> for information about specifying the search parameter.</p>
+<p><code>[Optional] int skip</code><br>Parameter representing the zero-based offset of the first object to retrieve. If unspecified, a default value of <code>0</code> is used.</p>
+<p><code>[Optional] int count</code><br>Parameter representing the maximum number of objects to retrieve. If unspecified, a default value of <code>100</code> is used.</p>
+<p><code>[Optional] string orderby</code><br>Parameter representing sorted order.
+A field name is required.
+The sorting is based on the stored values for a given field (of type <code>string</code>). For example, <code>orderby=name</code> would sort the returned results by the <code>name</code> values (ascending by default). Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values <code>asc</code> or <code>desc</code>, respectively. For example, <code>orderby=name desc</code> sorts the returned results by descending <code>name</code> values. If you do not specify a value, the results are not sorted.</p>
+<h3 id="response">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="#schemasdsstreamview">SdsStreamView</a>[]</td>
+<td>Returns a list of <code>SdsStreamView</code> objects</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body">Example response body</h4>
+<p>200 Response</p>
 <pre><code class="lang-json">HTTP/1.1 200
 Content-Type: application/json
-{  
-   &quot;Id&quot;:&quot;StreamView&quot;,
-   &quot;Name&quot;:&quot;StreamView&quot;,
-   &quot;SourceTypeId&quot;:&quot;Simple&quot;,
-   &quot;TargetTypeId&quot;:&quot;Simple3&quot;,
-   &quot;Properties&quot;:[  
-      {  
-         &quot;SourceId&quot;:&quot;Time&quot;,
-         &quot;TargetId&quot;:&quot;Time&quot;
-      },
-      {  
-         &quot;SourceId&quot;:&quot;State&quot;,
-         &quot;TargetId&quot;:&quot;State&quot;
-      },
-      {  
-         &quot;SourceId&quot;:&quot;Measurement&quot;,
-         &quot;TargetId&quot;:&quot;Value&quot;
+[
+{
+    &quot;Id&quot;:&quot;StreamView&quot;,
+    &quot;Name&quot;:&quot;StreamView&quot;,
+    &quot;SourceTypeId&quot;:&quot;Simple&quot;,
+    &quot;TargetTypeId&quot;:&quot;Simple3&quot;
+},
+{
+    &quot;Id&quot;:&quot;StreamViewWithProperties&quot;,
+    &quot;Name&quot;:&quot;StreamViewWithProperties&quot;,
+    &quot;SourceTypeId&quot;:&quot;Simple&quot;,
+    &quot;TargetTypeId&quot;:&quot;Simple3&quot;,
+    &quot;Properties&quot;:[
+        {
+            &quot;SourceId&quot;:&quot;Time&quot;,
+            &quot;TargetId&quot;:&quot;Time&quot;
+        },
+        {
+            &quot;SourceId&quot;:&quot;State&quot;,
+            &quot;TargetId&quot;:&quot;State&quot;
+        },
+        {
+            &quot;SourceId&quot;:&quot;Measurement&quot;,
+            &quot;TargetId&quot;:&quot;Value&quot;
+        }
+    ]
+}
+]
+</code></pre><p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><hr>
+<h2 id="get-stream-view"><code>Get Stream View</code></h2>
+<p><a id="opIdView_Get Stream View"></a></p>
+<p>Returns the <code>SdsStreamView</code></p>
+<h3 id="request-1">Request</h3>
+<pre><code class="lang-text">GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/StreamViews/{streamViewId}
+</code></pre><h4 id="parameters-1">Parameters</h4>
+<p><code>string tenantId</code>
+Tenant identifier</p>
+<p><code>string namespaceId</code>
+Namespace identifier</p>
+<p><code>string streamViewId</code>
+Stream view identifier</p>
+<h3 id="response-1">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="#schemasdsstreamview">SdsStreamView</a></td>
+<td>Returns the <code>SdsStreamView</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-1">Example response body</h4>
+<p>200 Response</p>
+<pre><code class="lang-json">HTTP/1.1 200
+Content-Type: application/json
+{
+    &quot;Id&quot;:&quot;StreamView&quot;,
+    &quot;Name&quot;:&quot;StreamView&quot;,
+    &quot;SourceTypeId&quot;:&quot;Simple&quot;,
+    &quot;TargetTypeId&quot;:&quot;Simple3&quot;,
+    &quot;Properties&quot;:[
+        {
+            &quot;SourceId&quot;:&quot;Time&quot;,
+            &quot;TargetId&quot;:&quot;Time&quot;
+        },
+    {
+        &quot;SourceId&quot;:&quot;State&quot;,
+        &quot;TargetId&quot;:&quot;State&quot;
+    },
+    {
+        &quot;SourceId&quot;:&quot;Measurement&quot;,
+        &quot;TargetId&quot;:&quot;Value&quot;
+    }
+    ]
+}
+</code></pre><p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><hr>
+<h2 id="get-or-create-stream-view"><code>Get Or Create Stream View</code></h2>
+<p><a id="opIdView_Get Or Create Stream View"></a></p>
+<p>If an <code>SdsStreamView</code> with a matching identifier already exists, the stream view passed in is compared with the existing stream view. If the stream views are identical, a Found (302) status is returned. If the stream views are different, the Conflict (409) error is returned. If no matching identifier is found, the specified stream view is created.</p>
+<h3 id="request-2">Request</h3>
+<pre><code class="lang-text">POST /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/StreamViews/{streamViewId}
+</code></pre><h4 id="parameters-2">Parameters</h4>
+<p><code>string tenantId</code>
+Tenant identifier</p>
+<p><code>string namespaceId</code>
+Namespace identifier</p>
+<p><code>string streamViewId</code>
+Stream view identifier</p>
+<h3 id="response-2">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="#schemasdsstreamview">SdsStreamView</a></td>
+<td>Returns the <code>SdsStreamView</code></td>
+</tr>
+<tr>
+<td>302</td>
+<td><a href="#schemasdsstreamview">SdsStreamView</a></td>
+<td>Found a Stream View</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>409</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Conflict</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-2">Example response body</h4>
+<p>200 Response (<a href="#schemasdsstreamview">SdsStreamView</a>)</p>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;Description&quot;: &quot;string&quot;,
+  &quot;SourceTypeId&quot;: &quot;string&quot;,
+  &quot;TargetTypeId&quot;: &quot;string&quot;,
+  &quot;Properties&quot;: [
+    {
+      &quot;SourceId&quot;: &quot;string&quot;,
+      &quot;TargetId&quot;: &quot;string&quot;,
+      &quot;SdsStreamView&quot;: {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SourceTypeId&quot;: &quot;string&quot;,
+        &quot;TargetTypeId&quot;: &quot;string&quot;,
+        &quot;Properties&quot;: [
+          null
+        ]
       }
-   ]
+    }
+  ]
+}
+</code></pre><hr>
+<h2 id="create-or-update-stream-view"><code>Create Or Update Stream View</code></h2>
+<p><a id="opIdView_Create Or Update Stream View"></a></p>
+<p>Creates or updates the definition of a <code>SdsStreamView</code></p>
+<h3 id="request-3">Request</h3>
+<pre><code class="lang-text">PUT /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/StreamViews/{streamViewId}
+</code></pre><h4 id="parameters-3">Parameters</h4>
+<p><code>string tenantId</code>
+Tenant identifier</p>
+<p><code>string namespaceId</code>
+Namespace identifier</p>
+<p><code>string streamViewId</code>
+Stream view identifier</p>
+<h3 id="response-3">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="#schemasdsstreamview">SdsStreamView</a></td>
+<td>Returns the <code>SdsStreamView</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>409</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Conflict</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-3">Example response body</h4>
+<blockquote><p>200 Response (<a href="#schemasdsstreamview">SdsStreamView</a>)</p>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;Description&quot;: &quot;string&quot;,
+  &quot;SourceTypeId&quot;: &quot;string&quot;,
+  &quot;TargetTypeId&quot;: &quot;string&quot;,
+  &quot;Properties&quot;: [
+    {
+      &quot;SourceId&quot;: &quot;string&quot;,
+      &quot;TargetId&quot;: &quot;string&quot;,
+      &quot;SdsStreamView&quot;: {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SourceTypeId&quot;: &quot;string&quot;,
+        &quot;TargetTypeId&quot;: &quot;string&quot;,
+        &quot;Properties&quot;: [
+          null
+        ]
+      }
+    }
+  ]
+}
+</code></pre></blockquote>
+<hr>
+<h2 id="delete-stream-view"><code>Delete Stream View</code></h2>
+<p><a id="opIdView_Delete Stream View"></a></p>
+<p>Deletes a stream view from the specified tenant and namespace</p>
+<h3 id="request-4">Request</h3>
+<pre><code class="lang-text">DELETE /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/StreamViews/{streamViewId}
+</code></pre><h4 id="parameters-4">Parameters</h4>
+<p><code>string tenantId</code>
+Tenant identifier</p>
+<p><code>string namespaceId</code>
+Namespace identifier</p>
+<p><code>string streamViewId</code>
+Stream view identifier</p>
+<h3 id="response-4">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>204</td>
+<td>None</td>
+<td><code>SdsStreamView</code> was successfully deleted.</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-4">Example response body</h4>
+<p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
 }
 </code></pre><hr>
 <h2 id="get-stream-view-map"><code>Get Stream View Map</code></h2>
-<p>Returns the stream view map corresponding to the specified streamViewId within a given namespace.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews/{streamViewId}/Map
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamViewId</code><br>The stream view identifier.  </p>
-<p><strong>Response</strong><br> The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>The requested SdsStreamView.</p>
-<p>Example response body:</p>
+<p><a id="opIdView_Get Stream View Map"></a></p>
+<p>Returns the <code>SdsStreamViewMap</code> corresponding to the specified streamViewId</p>
+<h3 id="request-5">Request</h3>
+<pre><code class="lang-text">GET /api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/StreamViews/{streamViewId}/Map
+</code></pre><h4 id="parameters-5">Parameters</h4>
+<p><code>string tenantId</code>
+Tenant identifier</p>
+<p><code>string namespaceId</code>
+Namespace identifier</p>
+<p><code>string streamViewId</code>
+Stream view identifier</p>
+<h3 id="response-5">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Body Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="#schemasdsstreamviewmap">SdsStreamViewMap</a></td>
+<td>Returns the <code>SdsStreamViewMap</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Missing or invalid inputs</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>One of the resources specified was not found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="#schemaerrorresponsebody">ErrorResponseBody</a></td>
+<td>Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-response-body-5">Example response body</h4>
+<p>200 Response</p>
 <pre><code class="lang-json">HTTP/1.1 200
 Content-Type: application/json
-
-{  
-   &quot;SourceTypeId&quot;:&quot;Simple&quot;,
-   &quot;TargetTypeId&quot;:&quot;Simple3&quot;,
-   &quot;Properties&quot;:[  
-      {  
-         &quot;SourceId&quot;:&quot;Time&quot;,
-         &quot;TargetId&quot;:&quot;Time&quot;
-      },
-      {  
-         &quot;SourceId&quot;:&quot;Measurement&quot;,
-         &quot;TargetId&quot;:&quot;Value&quot;,
-         &quot;Mode&quot;:20
-      },
-      {  
-         &quot;SourceId&quot;:&quot;State&quot;,
-         &quot;Mode&quot;:2
-      },
-      {  
-         &quot;TargetId&quot;:&quot;State&quot;,
-         &quot;Mode&quot;:1
-      }
-   ]
+{
+    &quot;SourceTypeId&quot;: &quot;Simple&quot;,
+    &quot;TargetTypeId&quot;: &quot;Simple3&quot;,
+    &quot;Properties&quot;: [
+        {
+            &quot;SourceId&quot;: &quot;Time&quot;,
+            &quot;TargetId&quot;: &quot;Time&quot;
+        },
+        {
+            &quot;SourceId&quot;: &quot;Measurement&quot;,
+            &quot;TargetId&quot;: &quot;Value&quot;,
+            &quot;Mode&quot;: 20
+        },
+        {
+            &quot;SourceId&quot;: &quot;State&quot;,
+            &quot;Mode&quot;: 2
+        },
+        {
+            &quot;TargetId&quot;: &quot;State&quot;,
+            &quot;Mode&quot;: 1
+        }
+    ]
+}
+</code></pre><p>400 Response (<a href="#schemaerrorresponsebody">ErrorResponseBody</a>)</p>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
 }
 </code></pre><hr>
-<h2 id="get-stream-views"><code>Get Stream Views</code></h2>
-<p>Returns a list of stream views within a given namespace.</p>
-<p>If specifying the optional search query parameter, the list of stream views returned will match
-the search criteria. If the search query parameter is not specified, the list will include
-all stream views in the Namespace. See <a class="xref" href="../search.html">Search in SDS</a> for information about specifying those respective parameters.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews?query={query}&amp;skip={skip}&amp;count={count}&amp;orderby={orderby}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string query</code><br>An optional parameter representing a string search. For information about specifying the search parameter, see <a class="xref" href="../search.html">Search in SDS</a>.</p>
-<p><code>int skip</code><br>An optional parameter representing the zero-based offset of the first SdsStreamView to retrieve. If not specified, a default value of 0 is used.</p>
-<p><code>int count</code><br>An optional parameter representing the maximum number of SdsStreamViews to retrieve. If not specified, a default value of 100 is used.</p>
-<p><code>string orderby</code><br>An optional parameter representing sorted order which SdsStreamViews will be returned. A field name is required. The sorting is based   on the stored values for the given field (of type string). For example, <code>orderby=name</code> would sort the returned results by the <code>name</code> values (ascending by default). Additionally, a value can be provided along with the field name to identify whether to sort ascending or descending, by using values <code>asc</code> or <code>desc</code>, respectively. For example, <code>orderby=name desc</code> would sort the returned results by the <code>name</code> values, descending. If no value is specified, there is no sorting of results.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>A collection of zero or more SdsStreamViews.</p>
-<p>Example response body:</p>
-<pre><code class="lang-json">HTTP/1.1 200
-Content-Type: application/json
-[  
-  {  
-     &quot;Id&quot;:&quot;StreamView&quot;,
-     &quot;Name&quot;:&quot;StreamView&quot;,
-     &quot;SourceTypeId&quot;:&quot;Simple&quot;,
-     &quot;TargetTypeId&quot;:&quot;Simple3&quot;
-  },
-  {  
-     &quot;Id&quot;:&quot;StreamViewWithProperties&quot;,
-     &quot;Name&quot;:&quot;StreamViewWithProperties&quot;,
-     &quot;SourceTypeId&quot;:&quot;Simple&quot;,
-     &quot;TargetTypeId&quot;:&quot;Simple3&quot;,
-     &quot;Properties&quot;:[  
-        {  
-           &quot;SourceId&quot;:&quot;Time&quot;,
-           &quot;TargetId&quot;:&quot;Time&quot;
-        },
-        {
-           &quot;SourceId&quot;:&quot;State&quot;,
-           &quot;TargetId&quot;:&quot;State&quot;
-        },
-        {
-           &quot;SourceId&quot;:&quot;Measurement&quot;,
-           &quot;TargetId&quot;:&quot;Value&quot;
-        }
-     ]
-  }
-]
+<h2 id="definitions">Definitions</h2>
+<h3 id="sdsstreamview">SdsStreamView</h3>
+<p><a id="schemasdsstreamview"></a>
+<a id="schema_SdsStreamView"></a>
+<a id="tocSsdsstreamview"></a>
+<a id="tocssdsstreamview"></a></p>
+<p>A contract defining the stream view</p>
+<h4 id="properties">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Id</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>A unique identifier for the <code>SdsStreamView</code></td>
+</tr>
+<tr>
+<td>Name</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>An optional user-friendly name for the <code>SdsStreamView</code></td>
+</tr>
+<tr>
+<td>Description</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>A brief description of the <code>SdsStreamView</code></td>
+</tr>
+<tr>
+<td>SourceTypeId</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Identifier of the <code>SdsType</code> of the <code>SdsStream</code></td>
+</tr>
+<tr>
+<td>TargetTypeId</td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Identifier of the <code>SdsType</code> to convert events to</td>
+</tr>
+<tr>
+<td>Properties</td>
+<td>[<a href="#schemasdsstreamviewproperty">SdsStreamViewProperty</a>]</td>
+<td>false</td>
+<td>true</td>
+<td>List of <code>SdsStreamViewProperty</code></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;Id&quot;: &quot;string&quot;,
+  &quot;Name&quot;: &quot;string&quot;,
+  &quot;Description&quot;: &quot;string&quot;,
+  &quot;SourceTypeId&quot;: &quot;string&quot;,
+  &quot;TargetTypeId&quot;: &quot;string&quot;,
+  &quot;Properties&quot;: [
+    {
+      &quot;SourceId&quot;: &quot;string&quot;,
+      &quot;TargetId&quot;: &quot;string&quot;,
+      &quot;SdsStreamView&quot;: {
+        &quot;Id&quot;: &quot;string&quot;,
+        &quot;Name&quot;: &quot;string&quot;,
+        &quot;Description&quot;: &quot;string&quot;,
+        &quot;SourceTypeId&quot;: &quot;string&quot;,
+        &quot;TargetTypeId&quot;: &quot;string&quot;,
+        &quot;Properties&quot;: [
+          null
+        ]
+      }
+    }
+  ]
+}
 </code></pre><hr>
-<h2 id="get-or-create-stream-view"><code>Get or Create Stream View</code></h2>
-<p>If a stream view with a matching identifier already exists, the stream view passed in is compared with the existing stream view. If the stream views are identical, a Found (302) status is returned and the stream view. If the stream views are different, the Conflict (409) error is returned.</p>
-<p>If no matching identifier is found, the specified stream view is created.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">POST api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews/{streamViewId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamViewId</code><br>The stream view identifier. The identifier must match the <code>SdsStreamView.Id</code> field.</p>
-<p><strong>Request body</strong><br>The request content is the serialized SdsStreamView.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>The newly created or matching SdsStreamView.</p>
-<hr>
-<h2 id="create-or-update-stream-view"><code>Create or Update Stream View</code></h2>
-<p>Creates or updates the definition of a stream view.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">PUT api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews/{streamViewId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamViewId</code><br>The stream view identifier.</p>
-<p><strong>Request body</strong><br>The request content is the serialized SdsStreamView.</p>
-<p><strong>Response</strong><br>The response includes a status code and a response body.</p>
-<p><strong>Response body</strong><br>The newly created or updated SdsStreamView.</p>
-<hr>
-<h2 id="delete-stream-view"><code>Delete Stream View</code></h2>
-<p>Deletes a stream view from the specified tenant and namespace.</p>
-<p><strong>Request</strong></p>
-<pre><code class="lang-text">DELETE api/v1/Tenants/default/Namespaces/{namespaceId}/StreamViews/{streamViewId}
-</code></pre><p><strong>Parameters</strong><br><code>string namespaceId</code><br>The namespace; either default or diagnostics.</p>
-<p><code>string streamViewId</code><br>The stream view identifier.</p>
-<p><strong>Response</strong><br>The response includes a status code.</p>
-<hr>
+<h3 id="sdsstreamviewproperty">SdsStreamViewProperty</h3>
+<p><a id="schemasdsstreamviewproperty"></a>
+<a id="schema_SdsStreamViewProperty"></a>
+<a id="tocSsdsstreamviewproperty"></a>
+<a id="tocssdsstreamviewproperty"></a></p>
+<p>A contract defining the stream view property</p>
+<h4 id="properties-1">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SourceId</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Identifier of the <code>SdsTypeProperty</code> from the source <code>SdsType</code> Properties list</td>
+</tr>
+<tr>
+<td><code>TargetId</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Identifier of the <code>SdsTypeProperty</code> from the target <code>SdsType</code> Properties list</td>
+</tr>
+<tr>
+<td><code>SdsStreamView</code></td>
+<td><a href="#schemasdsstreamview">SdsStreamView</a></td>
+<td>false</td>
+<td>true</td>
+<td>Additional mapping instructions for derived types</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;SourceId&quot;: &quot;string&quot;,
+  &quot;TargetId&quot;: &quot;string&quot;,
+  &quot;SdsStreamView&quot;: {
+    &quot;Id&quot;: &quot;string&quot;,
+    &quot;Name&quot;: &quot;string&quot;,
+    &quot;Description&quot;: &quot;string&quot;,
+    &quot;SourceTypeId&quot;: &quot;string&quot;,
+    &quot;TargetTypeId&quot;: &quot;string&quot;,
+    &quot;Properties&quot;: [
+      {
+        &quot;SourceId&quot;: &quot;string&quot;,
+        &quot;TargetId&quot;: &quot;string&quot;,
+        &quot;SdsStreamView&quot;: null
+      }
+    ]
+  }
+}
+</code></pre><hr>
+<h3 id="errorresponsebody">ErrorResponseBody</h3>
+<p><a id="schemaerrorresponsebody"></a>
+<a id="schema_ErrorResponseBody"></a>
+<a id="tocSerrorresponsebody"></a>
+<a id="tocserrorresponsebody"></a></p>
+<p>Contains the error message format that follows the AVEVA Data Hub error standards</p>
+<h4 id="properties-2">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OperationId</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Operation unique identifier of action that caused the error</td>
+</tr>
+<tr>
+<td><code>Error</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Error description</td>
+</tr>
+<tr>
+<td><code>Reason</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Reason for the error</td>
+</tr>
+<tr>
+<td><code>Resolution</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Resolution to resolve the error</td>
+</tr>
+<tr>
+<td><code>Parameters</code></td>
+<td>object</td>
+<td>false</td>
+<td>true</td>
+<td>IDs or values that are creating or are affected by the error</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;OperationId&quot;: &quot;string&quot;,
+  &quot;Error&quot;: &quot;string&quot;,
+  &quot;Reason&quot;: &quot;string&quot;,
+  &quot;Resolution&quot;: &quot;string&quot;,
+  &quot;Parameters&quot;: {
+    &quot;property1&quot;: &quot;string&quot;,
+    &quot;property2&quot;: &quot;string&quot;
+  }
+}
+</code></pre><hr>
+<h3 id="sdsstreamviewmap">SdsStreamViewMap</h3>
+<p><a id="schemasdsstreamviewmap"></a>
+<a id="schema_SdsStreamViewMap"></a>
+<a id="tocSsdsstreamviewmap"></a>
+<a id="tocssdsstreamviewmap"></a></p>
+<p>A contract defining the stream view map</p>
+<h4 id="properties-3">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SourceTypeId</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Identifier of the <code>SdsType</code> of the <code>SdsStream</code></td>
+</tr>
+<tr>
+<td><code>TargetTypeId</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Identifier of the <code>SdsType</code> to convert events to</td>
+</tr>
+<tr>
+<td><code>Properties</code></td>
+<td>[<a href="#schemasdsstreamviewmapproperty">SdsStreamViewMapProperty</a>]</td>
+<td>false</td>
+<td>true</td>
+<td>Identifier of the <code>SdsStreamViewMapProperty</code> from the target <code>SdsType</code> Properties list</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;SourceTypeId&quot;: &quot;string&quot;,
+  &quot;TargetTypeId&quot;: &quot;string&quot;,
+  &quot;Properties&quot;: [
+    {
+      &quot;SourceId&quot;: &quot;string&quot;,
+      &quot;TargetId&quot;: &quot;string&quot;,
+      &quot;Mode&quot;: 0,
+      &quot;StreamViewMap&quot;: {
+        &quot;SourceTypeId&quot;: &quot;string&quot;,
+        &quot;TargetTypeId&quot;: &quot;string&quot;,
+        &quot;Properties&quot;: [
+          null
+        ]
+      }
+    }
+  ]
+}
+</code></pre><hr>
+<h3 id="sdsstreamviewmapproperty">SdsStreamViewMapProperty</h3>
+<p><a id="schemasdsstreamviewmapproperty"></a>
+<a id="schema_SdsStreamViewMapProperty"></a>
+<a id="tocSsdsstreamviewmapproperty"></a>
+<a id="tocssdsstreamviewmapproperty"></a></p>
+<p>A contract defining stream view map property</p>
+<h4 id="properties-4">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SourceId</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Identifier of the SdsType of the SdsStream</td>
+</tr>
+<tr>
+<td><code>TargetId</code></td>
+<td>string</td>
+<td>false</td>
+<td>true</td>
+<td>Identifier of the SdsType to convert events to</td>
+</tr>
+<tr>
+<td><code>Mode</code></td>
+<td><a href="#schemasdsstreamviewmode">SdsStreamViewMode</a></td>
+<td>false</td>
+<td>false</td>
+<td>Aggregate of actions applied to the properties. <code>SdsStreamViewMode</code> are combined via binary arithmetic.</td>
+</tr>
+<tr>
+<td><code>StreamViewMap</code></td>
+<td><a href="#schemasdsstreamviewmap">SdsStreamViewMap</a></td>
+<td>false</td>
+<td>true</td>
+<td>Mapping for derived types</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;SourceId&quot;: &quot;string&quot;,
+  &quot;TargetId&quot;: &quot;string&quot;,
+  &quot;Mode&quot;: 0,
+  &quot;StreamViewMap&quot;: {
+    &quot;SourceTypeId&quot;: &quot;string&quot;,
+    &quot;TargetTypeId&quot;: &quot;string&quot;,
+    &quot;Properties&quot;: [
+      {
+        &quot;SourceId&quot;: &quot;string&quot;,
+        &quot;TargetId&quot;: &quot;string&quot;,
+        &quot;Mode&quot;: null,
+        &quot;StreamViewMap&quot;: null
+      }
+    ]
+  }
+}
+</code></pre><hr>
+<h3 id="sdsstreamviewmode">SdsStreamViewMode</h3>
+<p><a id="schemasdsstreamviewmode"></a>
+<a id="schema_SdsStreamViewMode"></a>
+<a id="tocSsdsstreamviewmode"></a>
+<a id="tocssdsstreamviewmode"></a></p>
+<h4 id="enumerated-values">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>None</code></td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>FieldAdd</code></td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>FieldRemove</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>FieldRename</code></td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>FieldMove</code></td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>FieldConversion</code></td>
+<td>16</td>
+</tr>
+<tr>
+<td><code>InvalidFieldConversion</code></td>
+<td>32</td>
+</tr>
+</tbody>
+</table>
 </article>
           </div>
           
@@ -231,7 +1028,7 @@ Content-Type: application/json
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/views/sds-stream-view-api.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/sds/views/sds-stream-view-api.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

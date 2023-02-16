@@ -8,7 +8,7 @@
     <title>Operational overview </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Operational overview ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -82,11 +82,14 @@
 <h2 id="adapter-configuration">Adapter configuration</h2>
 <p>For an OPC UA EDS adapter instance to start data collection, configure the adapter by defining the following:</p>
 <ul>
-<li>Data source: Provide the connection information for the OPC UA data source.</li>
-<li>Data selection: Specify the OPC UA items to which the adapter instance should subscribe for data.</li>
-<li>Logging: Set up the logging behavior for the adapter instance.</li>
+<li><p>Data source - Provide the connection information for the OPC UA data source.</p>
+</li>
+<li><p>Data selection - Specify the OPC UA items to which the adapter instance should subscribe for data.</p>
+</li>
+<li><p>Logging - Set up the logging behavior for the adapter instance.</p>
+</li>
 </ul>
-<p>For more information, see <a class="xref" href="opc-ua-data-source-configuration.html">Data source configuration</a> and <a class="xref" href="opc-ua-data-selection-configuration.html">Data selection configuration</a>. For more information on how to configure logging, see <a class="xref" href="../logging/component-logging.html">Component-level logging configuration</a>.</p>
+<p>For more information, see <a class="xref" href="shared-content/content/configuration/data-source.html">Data source configuration</a> and <a class="xref" href="opc-ua-data-selection-configuration.html">Data selection configuration</a>. For more information on how to configure logging, see <a class="xref" href="../logging/component-logging.html">Component-level logging configuration</a>.</p>
 <h2 id="connection">Connection</h2>
 <p>The OPC UA EDS adapter uses the binary opc.tcp protocol to communicate with the OPC UA servers. A secured connection is enabled by default where the X.509-type client and server certificates are exchanged and verified and the connection between the OPC UA EDS adapter and the configured OPC UA server is established.</p>
 <h2 id="stream-creation">Stream creation</h2>
@@ -94,7 +97,7 @@
 <h2 id="data-collection">Data collection</h2>
 <p>The OPC UA EDS adapter collects time-series data from selected OPC UA dynamic variables through OPC UA subscriptions (unsolicited reads). The adapter supports the Data Access (DA) part of OPC UA specification.</p>
 <h2 id="stream-properties">Stream properties</h2>
-<p>The OPC UA EDS adapter creates a stream with two properties per selected OPC UA item. The properties are described in the following table:</p>
+<p>The OPC UA EDS adapter creates a stream with two properties per selected OPC UA item. The properties are described in the following table.</p>
 <table>
 <thead>
 <tr>
@@ -118,14 +121,16 @@
 </table>
 <p>Stream ID is a unique identifier for each stream created by the adapter for a given OPC UA item. If the Custom Stream ID is specified for the OPC UA item in data selection configuration, the OPC UA EDS adapter uses that as a stream ID for the stream. Otherwise, the adapter constructs the stream ID using the following format constructed from the OPC UA item node ID:</p>
 <pre><code>&lt;Adapter Component ID&gt;.&lt;Namespace&gt;.&lt;Identifier&gt;
-</code></pre><p><strong>Note:</strong> The naming convention is affected by StreamIdPrefix and ApplyPrefixToStreamID settings in data source configuration. For more information, see <a class="xref" href="opc-ua-data-source-configuration.html">Data source configuration</a>.</p>
+</code></pre><p><strong>Note:</strong> The naming convention is affected by StreamIdPrefix and ApplyPrefixToStreamID settings in data source configuration. For more information, see <a class="xref" href="shared-content/content/configuration/data-source.html">Data source configuration</a>.</p>
 <h2 id="export-operation">Export operation</h2>
-<p>The OPC UA EDS adapter is able to export available OPC UA dynamic variables by browsing the OPC UA hierarchies or sub-hierarchies as part of the data source configuration process. For more information, see <a class="xref" href="opc-ua-data-source-configuration.html">Data source configuration</a>.</p>
+<p>The OPC UA EDS adapter is able to export available OPC UA dynamic variables by browsing the OPC UA hierarchies or sub-hierarchies as part of the data source configuration process. For more information, see <a class="xref" href="shared-content/content/configuration/data-source.html">Data source configuration</a>.</p>
 <h2 id="buffering">Buffering</h2>
-<p>Because the OPC UA EDS adapter sends data directly to EDS, buffering capability is not provided. EDS acts as a buffer before the data is egressed to either a PI Server or OCS. The amount of data stored in EDS is controlled by the following storage parameters:</p>
+<p>Because the OPC UA EDS adapter sends data directly to EDS, buffering capability is not provided. EDS acts as a buffer before the data is egressed to either a PI Server or AVEVA Data Hub. The amount of data stored in EDS is controlled by the following storage parameters:</p>
 <ul>
-<li><code>StreamStorageLimitMb</code></li>
-<li><code>StreamStorageTargetMb</code></li>
+<li><p><strong>StreamStorageLimitMb</strong></p>
+</li>
+<li><p><strong>StreamStorageTargetMb</strong></p>
+</li>
 </ul>
 <p>For more information about configuring data storage in EDS, see <a class="xref" href="../configuration/storage-runtime-config.html">Storage runtime configuration</a>.</p>
 </article>
@@ -136,7 +141,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/opc-ua/operational-overview-opc-ua.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/opc-ua/operational-overview-opc-ua.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

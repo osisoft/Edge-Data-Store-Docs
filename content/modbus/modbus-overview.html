@@ -8,7 +8,7 @@
     <title>Modbus TCP EDS adapter </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Modbus TCP EDS adapter ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -78,11 +78,10 @@
             <article class="content wrap" id="_content" data-uid="modbusOverview">
 <h1 id="modbus-tcp-eds-adapter">Modbus TCP EDS adapter</h1>
 
-<h2 id="overview">Overview</h2>
 <p>The Modbus TCP EDS adapter is a component of Edge Data Store that transfers time-series data from a device to EDS. Modbus TCP is a commonly available communication protocol used for connecting and transmitting information between industrial electronic devices. The Modbus TCP EDS adapter can communicate with any device conforming to the Modbus TCP/IP protocol through a gateway or router; devices and routers do not need to be on the same subnet as Edge Data Store.</p>
 <p>The following diagram depicts the data flow of a single instance of Modbus TCP EDS adapter:</p>
-<p><img src="https://osisoft.github.io/Edge-Data-Store-Docs/content/images/ModbusTCP.jpg" alt="Modbus TCP EDS" title="Modbus TCP EDS"></p>
-<p>The adapter instance requests data from the Modbus TCP device and then the device sends its data. The adapter sends the collected data to the storage component where it is held until it can be egressed to permanent storage in PI Server or OSIsoft Cloud Services. The adapter instance can be configured from the device where EDS is installed, and EDS collects health information about the adapter that can be egressed.</p>
+<p><img src="../images/ModbusTCP.jpg" alt="Modbus TCP EDS" title="Modbus TCP EDS"></p>
+<p>The adapter instance requests data from the Modbus TCP device and then the device sends its data. The adapter sends the collected data to the storage component where it is held until it can be egressed to permanent storage in PI Server or AVEVA Data Hub. You can configure the adapter instance from the device where EDS is installed and EDS collects health information about the adapter that can be egressed.</p>
 <p>The Modbus TCP EDS adapter can connect to multiple devices by defining one instance of the adapter for each device. The EDS installation includes the Modbus TCP EDS adapter and the option to add a single Modbus TCP EDS adapter instance. Add additional instances after installation using system components configuration.</p>
 <p>Once an adapter instance is defined, manually configure it with JSON documents that specify the following:</p>
 <ul>
@@ -91,7 +90,7 @@
 <li><p>Data selection configuration - specifies what data is collected from the device and how it is identified. Each adapter component instance requires a data selection configuration.</p>
 </li>
 </ul>
-<p>With these configurations completed, the Modbus TCP EDS adapter polls devices to capture data, at the rate specified in the configuration and sends it to EDS, where it is stored locally until it can be sent to a PI System or OSIsoft Cloud Services for long-term storage and analysis.</p>
+<p>With these configurations completed, the Modbus TCP EDS adapter polls devices to capture data, at the rate specified in the configuration and sends it to EDS, where it is stored locally until it can be sent to a PI System or AVEVA Data Hub for long-term storage and analysis.</p>
 </article>
           </div>
           
@@ -100,7 +99,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/modbus/modbus-overview.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/modbus/modbus-overview.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

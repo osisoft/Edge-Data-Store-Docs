@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Configure data egress </title>
+    <title>Configure periodic data egress </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Configure data egress ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="title" content="Configure periodic data egress ">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -76,26 +76,143 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="configureEgress">
-<h1 id="configure-data-egress">Configure data egress</h1>
+<h1 id="configure-periodic-data-egress">Configure periodic data egress</h1>
 
-<p>Once the OCS or PI Server destinations are prepared to receive OMF messages, configure data egress endpoints to create the connection to the destination and specify the details of the data transfer.</p>
-<p><strong>Note:</strong> You cannot add egress configurations manually because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit egress configuration. For additional endpoints, see <a href="#rest-urls">REST URLs</a>.</p>
-<p><strong>Warning:</strong> If a periodic egress endpoint is deleted/removed and then recreated with backfilling set to true, duplicate data will appear on any stream that was previously egressed successfully. New streams will not see duplicate data.</p>
-<h2 id="create-egress-endpoints">Create egress endpoints</h2>
-<p>Complete the following procedure to create new egress endpoints:</p>
+<p>Periodic data egress is a recurring task that sends the timeseries data collected by EDS to long term storage in either AVEVA Data Hub or PI Server. You can create multiple egress destinations and multiple periodic egress tasks. Periodic egress runs on a regular schedule to ensure that data is sent to long term storage.</p>
+<p>Once the AVEVA Data Hub or PI Server destinations are prepared to receive OMF messages, configure data egress to create the connection to the destination and specify the details of the data egress, including the data to include and the frequency to send it. For more information on egress destinations, see <a class="xref" href="prepare-egress-destinations.html">Prepare egress destinations</a>.</p>
+<p>To support the reuse of common configuration blocks, EDS egress configuration is divided into four facets, which can be configured together or separately:</p>
+<ul>
+<li><p><code>EgressEndpoints</code> - Describes the egress endpoint connectivity information</p>
+</li>
+<li><p><code>Schedules</code> - Describes the timing of data egress</p>
+</li>
+<li><p><code>DataSelectors</code> - Describes which data to egress and includes stream and data filtering</p>
+</li>
+<li><p><code>EgressConfigurations</code> - Ties together the three previous facets and includes settings for type and stream prefixing, backfill, and more</p>
+</li>
+</ul>
+<p><strong>Warnings:</strong></p>
+<ul>
+<li><p>You cannot add configurations manually because some parameters are stored to disk encrypted. You must use the REST endpoints to add/edit configurations. For additional endpoints, see <a href="#rest-urls">REST URLs</a>.</p>
+</li>
+<li><p>If you delete or remove an egress configuration and then recreate it with <code>Backfill</code> set to <code>true</code>, duplicate data will appear on any stream that was previously egressed successfully. New streams will not see duplicate data.</p>
+</li>
+</ul>
+<h2 id="create-egress-configuration">Create egress configuration</h2>
+<p>To configure EDS for data egress:</p>
 <ol>
-<li>Create a JSON file containing one or more egress endpoints.<ul>
-<li>For content structure, see the following <a href="#examples">Examples</a>. </li>
+<li><p>Create a JSON file.</p>
+<ul>
+<li>For content structure, see the following <a href="#examples">Examples</a>.</li>
 </ul>
 </li>
-<li>Update the parameters as needed. For a table of all available parameters, see <a href="#parameters">Parameters</a>.</li>
-<li>Save the JSON file with the name <em>PeriodicEgressEndpoints.json</em> to any directory on the device where Edge Data Store is installed.</li>
-<li>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints/</code></li>
+<li><p>Update the parameters as needed. For a table of all available parameters, see <a href="#parameters">Parameters</a>.</p>
+</li>
+<li><p>Save the JSON file to any directory on the device where Edge Data Store is installed.</p>
+</li>
+<li><p>Use any tool capable of making HTTP requests to send the contents of the JSON file to the appropriate configuration endpoints:</p>
+</li>
 </ol>
-<p>Example using cURL, which must be run from the directory where the JSON file is saved:</p>
-<pre><code class="lang-bash">curl -d &quot;@PeriodicEgressEndpoints.config.json&quot; -H &quot;Content-Type: application/json&quot; &quot;http://localhost:5590/api/v1/configuration/storage/periodicegressendpoints&quot;
-</code></pre><p><strong>Note</strong> The @ symbol is a required prefix for the above command.</p>
-<h3 id="parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Use Case</th>
+<th>Filename</th>
+<th>Command</th>
+<th>Endpoint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Configures multiple egress facets</td>
+<td><strong>StorageEgress.json</strong></td>
+<td>PUT</td>
+<td><code>http://localhost:5590/api/v1/configuration</code></td>
+</tr>
+<tr>
+<td>Creates EgressEndpoints only</td>
+<td><strong>EgressEndpoints.json</strong></td>
+<td>POST</td>
+<td><code>http://localhost:5590/api/v1/configuration/storage/egressendpoints</code></td>
+</tr>
+<tr>
+<td>Creates Schedules only</td>
+<td><strong>Schedules.json</strong></td>
+<td>POST</td>
+<td><code>http://localhost:5590/api/v1/configuration/storage/schedules</code></td>
+</tr>
+<tr>
+<td>Creates DataSelectors only</td>
+<td><strong>DataSelectors.json</strong></td>
+<td>POST</td>
+<td><code>http://localhost:5590/api/v1/configuration/storage/dataselectors</code></td>
+</tr>
+<tr>
+<td>Creates EgressConfigurations only</td>
+<td><strong>EgressConfigurations.json</strong></td>
+<td>POST</td>
+<td><code>http://localhost:5590/api/v1/configuration/storage/egressconfigurations</code></td>
+</tr>
+</tbody>
+</table>
+<p>Examples using cURL and EdgeCmd, which must be run from the directory where the JSON file is saved:</p>
+<div class="tabGroup" id="tabgroup_vA9hiG7uZz">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_vA9hiG7uZz_tabid-1" role="tab" aria-controls="tabpanel_vA9hiG7uZz_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">curl</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_vA9hiG7uZz_tabid-2" role="tab" aria-controls="tabpanel_vA9hiG7uZz_tabid-2" data-tab="tabid-2" tabindex="-1">EdgeCmd</a>
+</li>
+</ul>
+<section id="tabpanel_vA9hiG7uZz_tabid-1" role="tabpanel" data-tab="tabid-1">
+<pre><code class="lang-bash">curl -d &quot;@{Filename}&quot; -H &quot;Content-Type: application/json&quot; -X {Command} {Endpoint}
+</code></pre></section>
+<section id="tabpanel_vA9hiG7uZz_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code>EdgeCmd {Command} {Endpoint} -file {Filename}
+</code></pre></section>
+</div>
+<p><strong>Note:</strong> The @ symbol is a required prefix for this command. <code>{Filename}</code>, <code>{Command}</code> and <code>{Endpoint}</code> should be replaced by the corresponding filename, command, and endpoint.</p>
+<ul>
+<li><p>To configure multiple egress facets together:</p>
+<div class="tabGroup" id="tabgroup_vA9hiG7uZz-1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_vA9hiG7uZz-1_tabid-1" role="tab" aria-controls="tabpanel_vA9hiG7uZz-1_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">curl</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_vA9hiG7uZz-1_tabid-2" role="tab" aria-controls="tabpanel_vA9hiG7uZz-1_tabid-2" data-tab="tabid-2" tabindex="-1">EdgeCmd</a>
+</li>
+</ul>
+<section id="tabpanel_vA9hiG7uZz-1_tabid-1" role="tabpanel" data-tab="tabid-1">
+<pre><code class="lang-bash">curl -d &quot;@StorageEgress.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration
+</code></pre></section>
+<section id="tabpanel_vA9hiG7uZz-1_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code>edgecmd set application -file StorageEgress.json
+</code></pre></section>
+</div>
+</li>
+<li><p>To configure the Schedules facet:</p>
+<div class="tabGroup" id="tabgroup_vA9hiG7uZz-2">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_vA9hiG7uZz-2_tabid-1" role="tab" aria-controls="tabpanel_vA9hiG7uZz-2_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">curl</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_vA9hiG7uZz-2_tabid-2" role="tab" aria-controls="tabpanel_vA9hiG7uZz-2_tabid-2" data-tab="tabid-2" tabindex="-1">EdgeCmd</a>
+</li>
+</ul>
+<section id="tabpanel_vA9hiG7uZz-2_tabid-1" role="tabpanel" data-tab="tabid-1">
+<pre><code class="lang-bash">curl -d &quot;@Schedules.json&quot; -H &quot;Content-Type: application/json&quot; -X POST http://localhost:5590/api/v1/configuration/storage/schedules
+</code></pre></section>
+<section id="tabpanel_vA9hiG7uZz-2_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code>edgecmd set schedules -file Schedules.json
+</code></pre></section>
+</div>
+</li>
+</ul>
+<h2 id="parameters">Parameters</h2>
+<p>The following table lists egress parameters for <code>EgressEndpoints</code>.</p>
 <table>
 <thead>
 <tr>
@@ -107,64 +224,151 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>Backfill</strong></td>
-<td>Optional</td>
-<td>Boolean</td>
-<td>An indicator of whether data should be backfilled. Enabling the backfill flag will result in all data from the earliest index to the latest stored index being egressed. Backfilling occurs for each stream, including when a new stream is added. Once backfilling is complete for a stream, any out-of-order data is not egressed.  Defaults to false.</td>
-</tr>
-<tr>
-<td><strong>ClientId</strong></td>
-<td>Required for OCS endpoint</td>
+<td><strong>Id</strong></td>
+<td>Required</td>
 <td>string</td>
-<td>Used for authentication with the OCS OMF endpoint.</td>
-</tr>
-<tr>
-<td><strong>ClientSecret</strong></td>
-<td>Required for OCS endpoint</td>
-<td>string</td>
-<td>Used for authentication with the OCS OMF endpoint.</td>
-</tr>
-<tr>
-<td><strong>DebugExpiration</strong></td>
-<td>Optional</td>
-<td>string</td>
-<td>Enables logging of detailed information, for each outbound HTTP request pertaining to this egress endpoint, to disk. The value represents the date and time this detailed information should stop being saved. Examples of valid strings representing date and time:  UTC: &quot;yyyy-mm-ddThh:mm:ssZ&quot;, Local: &quot;mm-dd-yyyy hh:mm:ss&quot;. For more information, see <a href="xref:troubleShooting1-0">Troubleshoot Edge Data Store</a>.</td>
-</tr>
-<tr>
-<td><strong>Description</strong></td>
-<td>Optional</td>
-<td>string</td>
-<td>Friendly description</td>
-</tr>
-<tr>
-<td><strong>EgressFilter</strong></td>
-<td>Optional</td>
-<td>string</td>
-<td>A filter used to determine which streams and types are egressed. For more information on valid filters, see <a href="xref:sdsSearching1-0">Search in SDS</a>.</td>
-</tr>
-<tr>
-<td><strong>Enabled</strong></td>
-<td>Optional</td>
-<td>Boolean</td>
-<td>An indicator of whether egress is enabled when the egress endpoint is loaded. Defaults to true.</td>
+<td>Unique identifier of the endpoint configuration</td>
 </tr>
 <tr>
 <td><strong>Endpoint</strong></td>
 <td>Required</td>
 <td>string</td>
-<td>Destination that accepts OMF v1.1 messages. Supported destinations include OCS and PI.</td>
+<td>Destination that accepts OMF v1.2 and older messages. Supported destinations include AVEVA Data Hub and PI Server.</td>
 </tr>
 <tr>
-<td><strong>ExecutionPeriod</strong></td>
+<td><strong>Username</strong></td>
+<td>Required for PI Server endpoint</td>
+<td>string</td>
+<td>User name used for authentication to PI Web API OMF endpoint. If domain is required, the backslash must be escaped (for example, <em>domain</em>\\<em>username</em>).</td>
+</tr>
+<tr>
+<td><strong>Password</strong></td>
+<td>Required for PI Server endpoint</td>
+<td>string</td>
+<td>Password used for authentication to PI Web API OMF endpoint</td>
+</tr>
+<tr>
+<td><strong>ClientId</strong></td>
+<td>Required for AVEVA Data Hub endpoint</td>
+<td>string</td>
+<td>Client ID used for authentication to AVEVA Data Hub OMF endpoint</td>
+</tr>
+<tr>
+<td><strong>ClientSecret</strong></td>
+<td>Required for AVEVA Data Hub endpoint</td>
+<td>string</td>
+<td>Client Secret used for authentication with the AVEVA Data Hub OMF endpoint</td>
+</tr>
+<tr>
+<td><strong>DebugExpiration</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>Enables logging of detailed information for each outbound HTTP request pertaining to this egress endpoint to disk. The value represents the date and time this logging will stop. Examples of valid strings representing date and time:  UTC: <code>yyyy-mm-ddThh:mm:ssZ</code>, Local: <code>yyyy-mm-ddThh:mm:ss</code>. For more information, see <a class="xref" href="../troubleshooting/troubleshooting.html">Troubleshoot Edge Data Store</a>.</td>
+</tr>
+<tr>
+<td><strong>TokenEndpoint</strong></td>
+<td>Optional for AVEVA Data Hub endpoint</td>
+<td>string</td>
+<td>Used to retrieve an AVEVA Data Hub token from an alternative endpoint. <em>This is not normally necessary with AVEVA Data Hub. Only use if directed to do so by customer support.</em></td>
+</tr>
+<tr>
+<td><strong>ValidateEndpointCertificate</strong></td>
+<td>Optional</td>
+<td>boolean</td>
+<td>Validate endpoint certificate (recommended). If <code>false</code>, egress accepts any endpoint certificate. Use for testing only with self-signed certificates. Defaults to <code>true</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>The following table lists egress parameters for <code>Schedules</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Id</strong></td>
 <td>Required</td>
 <td>string</td>
-<td>Frequency of time between each egress action. Must be a string in the format d.hh:mm:ss.##.</td>
+<td>Unique identifier of the schedule configuration</td>
 </tr>
+<tr>
+<td><strong>Period</strong></td>
+<td>Required</td>
+<td>string</td>
+<td>Frequency of time between each egress action beginning at or after the <strong>StartTime</strong>. Must be a string in the following format <code>d.hh:mm:ss.##</code>. See <strong>StartTime</strong> for additional information.</td>
+</tr>
+<tr>
+<td><strong>StartTime</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>The date and time when egress actions will begin. Valid formats are: UTC: <code>yyyy-mm-ddThh:mm:ssZ</code> and Local: <code>yyyy-mm-ddThh:mm:ss</code>. Use the <strong>StartTime</strong> parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a <strong>StartTime</strong>, egress begins as soon as you submit the configuration and will occur again whenever the length of the <strong>Period</strong> completes. For example, a <strong>Period</strong> of <code>00:15:00</code> without a defined <strong>StartTime</strong> results in immediate data egress when you submit the configuration and then every 15 minutes thereafter. Conversely, if you use a <strong>StartTime</strong> of <code>2022-10-02T06:00:00</code>, a <strong>Period</strong> of <code>00:15:00</code>, and you submit your configuration at 6:07 on October 2, 2022, egress will begin at 6:15 and will continue every 15 minutes thereafter.</td>
+</tr>
+</tbody>
+</table>
+<p>The following table lists egress parameters for <code>DataSelectors</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Id</strong></td>
+<td>Required</td>
+<td>string</td>
+<td>Unique identifier of the data selector configuration</td>
+</tr>
+<tr>
+<td><strong>StreamFilter</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>A filter used to determine which streams and types are egressed. For more information on valid filters, see <a class="xref" href="../sds/search.html">Search in SDS</a>.</td>
+</tr>
+<tr>
+<td><strong>AbsoluteDeadband</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>Specifies the absolute change in data value that will cause the current value to pass the filter test. At least one of <strong>AbsoluteDeadband</strong> or <strong>PercentChange</strong> must be specified.</td>
+</tr>
+<tr>
+<td><strong>PercentChange</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>Specifies the percent change from previous value that will cause the current value to pass the filter test. At least one of <strong>AbsoluteDeadband</strong> or <strong>PercentChange</strong> must be specified.</td>
+</tr>
+<tr>
+<td><strong>ExpirationPeriod</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>The length in time that can elapse after an event before automatically storing the next event. The expected format is <code>HH:MM:SS.###</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>The following table lists egress parameters for <code>EgressConfigurations</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td><strong>Id</strong></td>
 <td>Optional</td>
 <td>string</td>
-<td>Unique identifier</td>
+<td>Unique identifier of the configuration</td>
 </tr>
 <tr>
 <td><strong>Name</strong></td>
@@ -173,126 +377,282 @@
 <td>Friendly name</td>
 </tr>
 <tr>
+<td><strong>Description</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>Friendly description</td>
+</tr>
+<tr>
+<td><strong>Enabled</strong></td>
+<td>Optional</td>
+<td>boolean</td>
+<td>An indicator of whether egress is enabled when the egress endpoint is loaded. Defaults to <code>true</code>.</td>
+</tr>
+<tr>
+<td><strong>EndpointId</strong></td>
+<td>Required</td>
+<td>string</td>
+<td>Id of the endpoint selected for egress</td>
+</tr>
+<tr>
+<td><strong>ScheduleId</strong></td>
+<td>Required</td>
+<td>string</td>
+<td>Id of the schedule selected for egress</td>
+</tr>
+<tr>
+<td><strong>DataSelectorIds</strong></td>
+<td>Optional</td>
+<td>array</td>
+<td>Ids of the data selectors for egress</td>
+</tr>
+<tr>
 <td><strong>NamespaceId</strong></td>
 <td>Optional</td>
 <td>string</td>
-<td>Represents the namespace that will be egressed. There are two available namespaces: default and diagnostics. Default namespace is &quot;default&quot;.</td>
+<td>Represents the namespace that will be egressed. There are two available namespaces: <code>default</code> and <code>diagnostics</code>. The default namespace is <code>default</code>.</td>
 </tr>
 <tr>
-<td><strong>Password</strong></td>
-<td>Required for PI endpoint</td>
-<td>string</td>
-<td>Used for Basic authentication to the PI Web API OMF endpoint.</td>
+<td><strong>Backfill</strong></td>
+<td>Optional</td>
+<td>boolean</td>
+<td>Indicates whether data will be backfilled. Data backfill occurs when you run the egress endpoint for the first time after application startup. This results in all data from the earliest to the latest stored index being egressed. Set to <code>true</code> to backfill data. Defaults to <code>false</code>.</td>
 </tr>
 <tr>
 <td><strong>StreamPrefix</strong></td>
 <td>Optional</td>
 <td>string</td>
-<td>Prefix applied to any streams that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ &amp; &#39; ( ) \ * + , ; = %</td>
-</tr>
-<tr>
-<td><strong>TokenEndpoint</strong></td>
-<td>Optional for OCS endpoint</td>
-<td>string</td>
-<td>Used to retrieve an OCS token from an alternative endpoint. <em>This is not normally necessary with OCS. Only use if directed to do so by customer support</em>.</td>
+<td>Prefix applied to any streams that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ &amp; &#39; ( ) \ * + , ; = % | &lt; &gt; { } ` &quot;</td>
 </tr>
 <tr>
 <td><strong>TypePrefix</strong></td>
 <td>Optional</td>
 <td>string</td>
-<td>Prefix applied to any types that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ &amp; &#39; ( ) \ * + , ; = %</td>
-</tr>
-<tr>
-<td><strong>Username</strong></td>
-<td>Required for PI endpoint</td>
-<td>string</td>
-<td>Used for Basic authentication to the PI Web API OMF endpoint. If domain is required, the backslash must be escaped (e.g., <em>domain</em>\\<em>username</em>).</td>
-</tr>
-<tr>
-<td><strong>ValidateEndpointCertificate</strong></td>
-<td>Optional</td>
-<td>Boolean</td>
-<td>Used to disable verification of destination certificate. Use for testing only with self-signed certificates. Defaults to true.</td>
+<td>Prefix applied to any types that are egressed. A null string or a string containing only empty spaces will be ignored. The following restricted characters are not allowed: / : ? # [ ] @ ! $ &amp; &#39; ( ) \ * + , ; = % | &lt; &gt; { } ` &quot;</td>
 </tr>
 </tbody>
 </table>
-<h3 id="examples">Examples</h3>
-<p>The following are valid egress configuration examples.</p>
-<p><strong>Egress data to OCS. All streams, every 15 seconds.</strong></p>
-<pre><code class="lang-json">[{
-    &quot;Id&quot;: &quot;OCS&quot;,
-    &quot;ExecutionPeriod&quot; : &quot;00:00:15&quot;,
-    &quot;Endpoint&quot; : &quot;https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf&quot;,
-    &quot;ClientId&quot; : &quot;{clientId}&quot;,
-    &quot;ClientSecret&quot; : &quot;{clientSecret}&quot;
-}]
-</code></pre><p><strong>Egress data to OCS - streams with a specific TypeId value, every 15 seconds.</strong></p>
-<pre><code class="lang-json">[{
-    &quot;Id&quot;: &quot;OCS&quot;,
-    &quot;ExecutionPeriod&quot; : &quot;00:00:15&quot;,
-    &quot;EgressFilter&quot; : &quot;TypeId:myType&quot;,
-    &quot;Endpoint&quot; : &quot;https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf&quot;,
-    &quot;ClientId&quot; : &quot;{clientId}&quot;,
-    &quot;ClientSecret&quot; : &quot;{clientSecret}&quot;
-}]
-</code></pre><p><strong>Egress data to OCS - all streams, every 15 seconds, including backfilling.</strong></p>
-<pre><code class="lang-json">[{
-    &quot;Id&quot;: &quot;OCS&quot;,
-    &quot;ExecutionPeriod&quot; : &quot;00:00:15&quot;,
-    &quot;Backfill&quot; : true,
-    &quot;Endpoint&quot; : &quot;https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf&quot;,
-    &quot;ClientId&quot; : &quot;{clientId}&quot;,
-    &quot;ClientSecret&quot; : &quot;{clientSecret}&quot;
-}]
-</code></pre><p><strong>Egress diagnostic data to OCS - every 1 hour.</strong></p>
-<pre><code class="lang-json">[{
-    &quot;Id&quot;: &quot;OCS&quot;,
-    &quot;ExecutionPeriod&quot; : &quot;01:00:00&quot;,
-    &quot;Endpoint&quot; : &quot;https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf&quot;,
-    &quot;ClientId&quot; : &quot;{clientId}&quot;,
-    &quot;ClientSecret&quot; : &quot;{clientSecret}&quot;,
-    &quot;NamespaceId&quot; : &quot;diagnostics&quot;
-}]
-</code></pre><p><strong>Egress data to PI - all streams, every 15 seconds, including both type and stream prefix. All properties explicitly listed.</strong></p>
-<pre><code class="lang-json">[{
+<h2 id="examples">Examples</h2>
+<p>The following are valid configuration examples for egress.</p>
+<h3 id="configure-multiple-egress-facets-in-a-single-request">Configure multiple egress facets in a single request</h3>
+<p><code>PUT http://localhost:5590/api/v1/configuration</code></p>
+<p>Create configuration for egress of all data for all streams to AVEVA Data Hub every 15 seconds.</p>
+<pre><code class="lang-json">{
+    &quot;Storage&quot;: {
+        &quot;EgressEndpoints&quot;: [
+            {
+                &quot;Id&quot;: &quot;Endpoint-AVEVA Data Hub&quot;,
+                &quot;Endpoint&quot;: &quot;https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf&quot;,
+                &quot;ClientId&quot;: &quot;{clientId}&quot;,
+                &quot;ClientSecret&quot;: &quot;{clientSecret}&quot;
+            }
+        ],
+        &quot;Schedules&quot;: [
+            {
+                &quot;Id&quot;: &quot;Schedule-15sec&quot;,
+                &quot;Period&quot;: &quot;00:00:15&quot;
+            }
+        ],
+        &quot;EgressConfigurations&quot;: [
+            {
+                &quot;Id&quot;: &quot;AVEVA Data Hub&quot;,
+                &quot;EndpointId&quot;: &quot;Endpoint-AVEVA Data Hub&quot;,
+                &quot;ScheduleId&quot;: &quot;Schedule-15sec&quot;
+            }
+        ]
+    }
+}
+</code></pre><p>Create configuration for egress of some data for some streams, to AVEVA Data Hub and PI Server, every 2 days starting January 1st, 2022 at 9:00. EgressEndpoints/Schedules/DataSelectors definitions are shared.</p>
+<pre><code class="lang-json">{
+    &quot;Storage&quot;: {
+        &quot;EgressEndpoints&quot;: [
+            {
+                &quot;Id&quot;: &quot;Endpoint-AVEVA Data Hub&quot;,
+                &quot;Endpoint&quot;: &quot;https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf&quot;,
+                &quot;ClientId&quot;: &quot;{clientId}&quot;,
+                &quot;ClientSecret&quot;: &quot;{clientSecret}&quot;
+            },
+            {
+                &quot;Id&quot;: &quot;Endpoint-PI&quot;,
+                &quot;Endpoint&quot;: &quot;https://{webApiLocation}/piwebapi/omf/&quot;,
+                &quot;Username&quot;: &quot;{username}&quot;,
+                &quot;Password&quot;: &quot;{password}&quot;
+            }
+        ],
+        &quot;Schedules&quot;: [
+            {
+            &quot;Id&quot;: &quot;Schedule1&quot;,
+            &quot;StartTime&quot;: &quot;2022-01-01T09:00:00&quot;,
+            &quot;Period&quot;: &quot;2.00:00:00&quot;
+            }
+        ],
+        &quot;DataSelectors&quot;: [
+            {
+                &quot;Id&quot;: &quot;DataSelector1&quot;,
+                &quot;StreamFilter&quot;: &quot;TypeId:TestType1&quot;,
+                &quot;AbsoluteDeadband&quot;: 50,
+                &quot;ExpirationPeriod&quot;: &quot;12:00:00&quot;
+            },
+            {
+                &quot;Id&quot;: &quot;DataSelector2&quot;,
+                &quot;StreamFilter&quot;: &quot;TypeId:TestType1&quot;,
+                &quot;PercentChange&quot;: 80
+            }
+        ],
+        &quot;EgressConfigurations&quot;: [
+            {
+                &quot;Id&quot;: &quot;AVEVA Data Hub&quot;,
+                &quot;EndpointId&quot;: &quot;Endpoint-AVEVA Data Hub&quot;,
+                &quot;ScheduleId&quot;: &quot;Schedule1&quot;,
+                &quot;DataSelectorIds&quot;: [&quot;DataSelector1&quot;]
+            },
+            {
+                &quot;Id&quot;: &quot;PI&quot;,
+                &quot;EndpointId&quot;: &quot;Endpoint-PI&quot;,
+                &quot;ScheduleId&quot;: &quot;Schedule1&quot;,
+                &quot;DataSelectorIds&quot;: [&quot;DataSelector1&quot;, &quot;DataSelector2&quot;]
+            }
+        ]
+    }
+}
+</code></pre><h3 id="create-egressendpoints-only">Create EgressEndpoints only</h3>
+<p><code>POST http://localhost:5590/api/v1/configuration/storage/egressendpoints</code></p>
+<p>Add a single new egress endpoint to PI.</p>
+<pre><code class="lang-json">{
+    &quot;Id&quot;: &quot;Endpoint-PI&quot;,
+    &quot;Endpoint&quot;: &quot;https://{webApiLocation}/piwebapi/omf/&quot;,
+    &quot;Username&quot;: &quot;{username}&quot;,
+    &quot;Password&quot;: &quot;{password}&quot;
+}
+</code></pre><p>Add multiple new egress endpoints to AVEVA Data Hub and PI with the use of a domain in the username. All properties are explicitly listed.</p>
+<pre><code class="lang-json">[
+    {
+        &quot;Id&quot;: &quot;Endpoint-AVEVA Data Hub&quot;,
+        &quot;Endpoint&quot;: &quot;https://{OcsLocation}/api/Tenants/{tenantId}/Namespaces/{namespaceId}/omf&quot;,
+        &quot;ClientId&quot;: &quot;{clientId}&quot;,
+        &quot;ClientSecret&quot;: &quot;{clientSecret}&quot;,
+        &quot;Username&quot;: null,
+        &quot;Password&quot;: null,
+        &quot;TokenEndpoint&quot;: null,
+        &quot;ValidateEndpointCertificate&quot;: true,
+        &quot;DebugExpiration&quot;: null
+    },
+    {
+        &quot;Id&quot;: &quot;Endpoint-PI-WithDomain&quot;,
+        &quot;Endpoint&quot;: &quot;https://{webApiLocation}/piwebapi/omf/&quot;,
+        &quot;ClientId&quot;: null,
+        &quot;ClientSecret&quot;: null,
+        &quot;Username&quot;: &quot;{domain}\\{username}&quot;,
+        &quot;Password&quot;: &quot;{password}&quot;,
+        &quot;TokenEndpoint&quot;: null,
+        &quot;ValidateEndpointCertificate&quot;: true,
+        &quot;DebugExpiration&quot;: null
+    }
+]
+</code></pre><h3 id="create-schedules-only">Create Schedules only</h3>
+<p><code>POST http://localhost:5590/api/v1/configuration/storage/schedules</code></p>
+<p>Add a single new schedule for egress every 15 seconds.</p>
+<pre><code class="lang-json">{
+    &quot;Id&quot;: &quot;Schedule-15sec&quot;,
+    &quot;Period&quot;: &quot;00:00:15&quot;
+}
+</code></pre><p>Add multiple new schedules for egress every minute and every hour starting January 1st, 2022 at 9:00. All properties are explicitly listed.</p>
+<pre><code class="lang-json">[
+    {
+        &quot;Id&quot;: &quot;Schedule-1min&quot;,
+        &quot;StartTime&quot;: null,
+        &quot;Period&quot;: &quot;00:01:00&quot;
+    },
+    {
+        &quot;Id&quot;: &quot;Schedule-1hr&quot;,
+        &quot;StartTime&quot;: &quot;2022-01-01T09:00:00&quot;,
+        &quot;Period&quot;: &quot;01:00:00&quot;
+    }
+]
+</code></pre><h3 id="create-dataselectors-only">Create DataSelectors only</h3>
+<p><code>POST http://localhost:5590/api/v1/configuration/storage/dataselectors</code></p>
+<p>  Add single new data selector for egress of data filtered by percent change of 10 for streams whose Id contains &quot;Modbus&quot; or &quot;Opc&quot;.</p>
+<pre><code class="lang-json">{
+    &quot;Id&quot;: &quot;DataFilterByPercentChange-StreamFilterById&quot;,
+    &quot;StreamFilter&quot;: &quot;Id:*Modbus* OR Id:*Opc*&quot;,
+    &quot;PercentChange&quot;: 10
+}
+</code></pre><p>Add a single new data selector for data egress filtered by an absolute deadband of 5 and expiration period of 10 minutes for all streams. All properties are explicitly listed.</p>
+<pre><code class="lang-json">{
+    &quot;Id&quot;: &quot;DataFilterByAbsoluteDeadbandWithExpiration&quot;,
+    &quot;StreamFilter&quot;: null,
+    &quot;AbsoluteDeadband&quot;: 5,
+    &quot;PercentChange&quot;: null,
+    &quot;ExpirationPeriod&quot;: &quot;00:10:00&quot;
+}
+</code></pre><p>Add multiple new data selectors for egress of all data for streams with a specific <code>TypeId</code> value and streams with a field that begins with <code>Unique</code>.</p>
+<pre><code class="lang-json">[
+    {
+        &quot;Id&quot;: &quot;StreamFilterByTypeId&quot;,
+        &quot;StreamFilter&quot;: &quot;TypeId:myType&quot;,
+        &quot;AbsoluteDeadband&quot;: 0
+    },
+    {
+        &quot;Id&quot;: &quot;StreamFilterByFieldName&quot;,
+        &quot;StreamFilter&quot;: &quot;Unique*&quot;,
+        &quot;PercentChange&quot;: 0
+    }
+]
+</code></pre><h3 id="create-egressconfigurations-only">Create EgressConfigurations only</h3>
+<p><code>POST http://localhost:5590/api/v1/configuration/storage/egressconfigurations</code></p>
+<p>Add a single new configuration for egress of all data for all streams to AVEVA Data Hub every 15 seconds.</p>
+<pre><code class="lang-json">{
+    &quot;Id&quot;: &quot;AVEVA Data Hub&quot;,
+    &quot;EndpointId&quot;: &quot;Endpoint-AVEVA Data Hub&quot;,
+    &quot;ScheduleId&quot;: &quot;Schedule-15sec&quot;
+}
+</code></pre><p>Add a single new configuration for egress of all data for all streams to PI every 15 seconds and include both the type and stream prefix. All properties are explicitly listed.</p>
+<pre><code class="lang-json">{
     &quot;Id&quot;: &quot;PI&quot;,
-    &quot;Name&quot; : null,
-    &quot;Description&quot; : null,
-    &quot;ExecutionPeriod&quot; : &quot;00:00:15&quot;,
-    &quot;Enabled&quot; : true,
-    &quot;Backfill&quot; : false,
-    &quot;EgressFilter&quot; : null,
-    &quot;Endpoint&quot; : &quot;https://{webApiLocation}/piwebapi/omf/&quot;,
-    &quot;ClientId&quot; : null,
-    &quot;ClientSecret&quot; : null,
-    &quot;Username&quot; : &quot;{username}&quot;,
-    &quot;Password&quot; : &quot;{password}&quot;,
-    &quot;StreamPrefix&quot; : &quot;1ValidPrefix.&quot;,
-    &quot;TypePrefix&quot; : &quot;AlsoValid_&quot;,
-    &quot;DebugExpiration&quot; : null,
-    &quot;NamespaceId&quot; : &quot;default&quot;,
-    &quot;TokenEndpoint&quot; : null,
-    &quot;ValidateEndpointCertificate&quot; : true
-}]
-</code></pre><p><strong>Egress data to PI - streams whose Id contains &quot;Modbus&quot; or &quot;Opc&quot;, every 1 minute. Includes use of domain for username.</strong></p>
-<pre><code class="lang-json">[{
-    &quot;Id&quot;: &quot;PI&quot;,
-    &quot;ExecutionPeriod&quot; : &quot;00:01:00&quot;,
-    &quot;EgressFilter&quot; : &quot;Id:*Modbus* OR Id:*Opc*&quot;,
-    &quot;Endpoint&quot; : &quot;https://{webApiLocation}/piwebapi/omf/&quot;,
-    &quot;Username&quot; : &quot;{domain}\\{username}&quot;,
-    &quot;Password&quot; : &quot;{password}&quot;
-}]
-</code></pre><p><strong>Egress data to PI - streams containing a field that begins with &quot;Unique&quot;, every 1 hour.</strong></p>
-<pre><code class="lang-json">[{
-    &quot;Id&quot;: &quot;PI&quot;,
-    &quot;ExecutionPeriod&quot; : &quot;01:00:00&quot;,
-    &quot;EgressFilter&quot; : &quot;Unique*&quot;,
-    &quot;Endpoint&quot; : &quot;https://{webApiLocation}/piwebapi/omf/&quot;,
-    &quot;Username&quot; : &quot;{username}&quot;,
-    &quot;Password&quot; : &quot;{password}&quot;
-}]
+    &quot;Name&quot;: null,
+    &quot;Description&quot;: null,
+    &quot;Enabled&quot;: true,
+    &quot;EndpointId&quot;: &quot;Endpoint-PI&quot;,
+    &quot;ScheduleId&quot;: &quot;Schedule-15sec&quot;,
+    &quot;DataSelectorIds&quot;: null,
+    &quot;NamespaceId&quot;: &quot;default&quot;
+    &quot;Backfill&quot;: false,
+    &quot;StreamPrefix&quot;: &quot;1ValidPrefix.&quot;,
+    &quot;TypePrefix&quot;: &quot;AlsoValid_&quot;,
+}
+</code></pre><p>Add a single new configuration for egress of all data for streams with a specific <code>TypeId</code> value, to AVEVA Data Hub every 15 seconds.</p>
+<pre><code class="lang-json">{
+    &quot;EndpointId&quot;: &quot;Endpoint-AVEVA Data Hub&quot;,
+    &quot;ScheduleId&quot;: &quot;Schedule-15sec&quot;,
+    &quot;DataSelectorIds&quot;: [&quot;StreamFilterByTypeId&quot;]
+}
+</code></pre><p>Add a single new configuration for egress of all data for streams containing a field that begins with <code>Unique</code> but with data filtered by percent change of 10 for streams whose Id contains <code>Modbus</code> or <code>Opc</code> to PI Server every minute.</p>
+<pre><code class="lang-json">{
+    &quot;EndpointId&quot;: &quot;Endpoint-PI&quot;,
+    &quot;ScheduleId&quot;: &quot;Schedule-1min&quot;,
+    &quot;DataSelectorIds&quot;: [&quot;StreamFilterByFieldName&quot;, &quot;DataFilterByPercentChange-StreamFilterById&quot;]
+}
+</code></pre><p>Add multiple new configurations for egress with backfill, diagnostics data, or PI Server endpoint with domain in username. <code>EgressEndpoints</code>, <code>Schedules</code>, and <code>DataSelectors</code> definitions are shared.</p>
+<pre><code class="lang-json">[
+    {
+        &quot;EndpointId&quot;: &quot;Endpoint-AVEVA Data Hub&quot;,
+        &quot;ScheduleId&quot;: &quot;Schedule-15sec&quot;,
+        &quot;Backfill&quot;: true
+    },
+    {
+        &quot;EndpointId&quot;: &quot;Endpoint-AVEVA Data Hub&quot;,
+        &quot;ScheduleId&quot;: &quot;Schedule-1hr&quot;,
+        &quot;DataSelectorIds&quot;: [&quot;DataFilterByAbsoluteDeadbandWithExpiration&quot;],
+        &quot;NamespaceId&quot;: &quot;diagnostics&quot;
+    },
+    {
+        &quot;EndpointId&quot;: &quot;Endpoint-PI-WithDomain&quot;,
+        &quot;ScheduleId&quot;: &quot;Schedule-1hr&quot;,
+        &quot;DataSelectorIds&quot;: [&quot;StreamFilterByTypeId&quot;, &quot;DataFilterByAbsoluteDeadbandWithExpiration&quot;]
+    }
+]
 </code></pre><h3 id="rest-urls">REST URLs</h3>
+<p>The following table shows examples of REST URLS. The <code>{egressFacet}</code> parameter can be any of the four egress facets: <code>EgressEndpoints</code>, <code>Schedules</code>, <code>DataSelectors</code>, or <code>EgressConfigurations</code>.</p>
 <table>
 <thead>
 <tr>
@@ -303,49 +663,49 @@
 </thead>
 <tbody>
 <tr>
-<td>api/v1/configuration/storage/periodicegressendpoints</td>
-<td>GET</td>
-<td>Gets all configured egress endpoints.</td>
+<td><code>api/v1/configuration/storage/{egressFacet}</code></td>
+<td><code>GET</code></td>
+<td>Gets all configured objects of the <em>egressFacet</em>.</td>
 </tr>
 <tr>
-<td>api/v1/configuration/storage/periodicegressendpoints</td>
-<td>DELETE</td>
-<td>Deletes all configured egress endpoints.</td>
+<td><code>api/v1/configuration/storage/{egressFacet}</code></td>
+<td><code>DELETE</code></td>
+<td>Deletes all configured objects of the <em>egressFacet</em>.</td>
 </tr>
 <tr>
-<td>api/v1/configuration/storage/periodicegressendpoints</td>
-<td>POST</td>
-<td>Adds an array of egress endpoints, fails if any endpoint already exists.</td>
+<td><code>api/v1/configuration/storage/{egressFacet}</code></td>
+<td><code>POST</code></td>
+<td>Adds an array of objects to the <em>egressFacet</em>, fails if any object already exists.</td>
 </tr>
 <tr>
-<td>api/v1/configuration/storage/periodicegressendpoints</td>
-<td>POST</td>
-<td>Adds a single egress endpoint, fails if endpoint already exists.</td>
+<td><code>api/v1/configuration/storage/{egressFacet}</code></td>
+<td><code>POST</code></td>
+<td>Adds a single object to the <em>egressFacet</em>, fails if the object already exists.</td>
 </tr>
 <tr>
-<td>api/v1/configuration/storage/periodicegressendpoints</td>
-<td>PUT</td>
-<td>Replaces all egress endpoints.</td>
+<td><code>api/v1/configuration/storage/{egressFacet}</code></td>
+<td><code>PUT</code></td>
+<td>Replaces all objects in the <em>egressFacet</em>.</td>
 </tr>
 <tr>
-<td>api/v1/configuration/storage/periodicegressendpoints/{id}</td>
-<td>GET</td>
-<td>Gets configured endpoint with <em>id</em>.</td>
+<td><code>api/v1/configuration/storage/{egressFacet}/{id}</code></td>
+<td><code>GET</code></td>
+<td>Gets the configured object with <em>id</em> in the <em>egressFacet</em>.</td>
 </tr>
 <tr>
-<td>api/v1/configuration/storage/periodicegressendpoints/{id}</td>
-<td>DELETE</td>
-<td>Deletes configured endpoint with <em>id</em>.</td>
+<td><code>api/v1/configuration/storage/{egressFacet}/{id}</code></td>
+<td><code>DELETE</code></td>
+<td>Deletes the configured object with <em>id</em> in the <em>egressFacet</em>.</td>
 </tr>
 <tr>
-<td>api/v1/configuration/storage/periodicegressendpoints/{id}</td>
-<td>PUT</td>
-<td>Replaces egress endpoint with <em>id</em>, fails if endpoint does not exist.</td>
+<td><code>api/v1/configuration/storage/{egressFacet}/{id}</code></td>
+<td><code>PUT</code></td>
+<td>Replaces the object with <em>id</em> in the <em>egressFacet</em>, fails if the object does not exist.</td>
 </tr>
 <tr>
-<td>api/v1/configuration/storage/periodicegressendpoints/{id}</td>
-<td>PATCH</td>
-<td>Allows partial updating of configured endpoint with <em>id</em>.</td>
+<td><code>api/v1/configuration/storage/{egressFacet}/{id}</code></td>
+<td><code>PATCH</code></td>
+<td>Allows partial updating of the configured object with <em>id</em> in the <em>egressFacet</em>.</td>
 </tr>
 </tbody>
 </table>
@@ -357,7 +717,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/egress/configure-data-egress.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/egress/configure-data-egress.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

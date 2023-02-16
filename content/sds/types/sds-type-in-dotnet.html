@@ -1,0 +1,469 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SdsTypes in .NET framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SdsTypes in .NET framework ">
+    <meta name="generator" content="docfx 2.59.1.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../content/index.html" width="46">
+                <img id="logo" src="../../../content/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge Data Store"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="SdsTypesInDotNet">
+<h1 id="sdstypes-in-net-framework">SdsTypes in .NET framework</h1>
+
+<p>When working in .NET, use the <code>SdsTypeBuilder</code> to create <code>SdsType</code>s. The <code>SdsTypeBuilder</code> eliminates potential errors that can occur when working with SdsTypes manually.</p>
+<p>There are several ways to work with the <code>SdsTypeBuilder</code>. One is to use the static methods for convenience:</p>
+<pre><code class="lang-csharp">public enum State
+{
+    Ok,
+    Warning,
+    Alarm
+}
+public class Simple
+{
+    [SdsMember(IsKey = true, Order = 0)]
+    public DateTime Time { get; set; }
+
+    [SdsMember(IsQuality = true)]
+    public State State { get; set; }
+
+    public Double Measurement { get; set; }
+}
+SdsType simpleType = SdsTypeBuilder.CreateSdsType&lt;Simple&gt;();
+simpleType.Id = &quot;Simple&quot;;
+simpleType.Name = &quot;Simple&quot;;
+simpleType.Description = &quot;Basic sample type&quot;;
+</code></pre><p><code>SdsTypeBuilder</code> recognizes the <code>System.ComponentModel.DataAnnotations.KeyAttribute</code> and its own <code>OSIsoft.Sds.SdsMemberAttribute</code>. When using the <code>SdsMemberAttribute</code> to specify
+the primary index, set the <code>IsKey</code> to <code>true</code>.</p>
+<p>The <code>SdsType</code> is created with the following parameters. <code>SdsTypeBuilder</code> automatically generates unique identifiers. Note that the following table contains only a partial list of fields.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Values</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Id</td>
+<td>Simple</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Simple</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Basic sample type</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Properties</td>
+<td>Count = 3</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[0]</td>
+<td>Id</td>
+<td>Time</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Name</td>
+<td>Time</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Description</td>
+<td>null</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Order</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>IsKey</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>SdsType</td>
+<td>Id</td>
+<td>c48bfdf5-a271-384b-bf13-bd21d931c1bf</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Name</td>
+<td>DateTime</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Description</td>
+<td>null</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Properties</td>
+<td>null</td>
+</tr>
+<tr>
+<td></td>
+<td>Value</td>
+<td>null</td>
+<td></td>
+</tr>
+<tr>
+<td>[1]</td>
+<td>Id</td>
+<td>State</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Name</td>
+<td>State</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Description</td>
+<td>null</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Order</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>IsKey</td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>SdsType</td>
+<td>Id</td>
+<td>02728a4f-4a2d-3588-b669-e08f19c35fe5</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Name</td>
+<td>State</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Description</td>
+<td>null</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Properties</td>
+<td>Count = 3</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>[0]</td>
+<td>Id</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Name</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Description</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Order</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>SdsType</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Value</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>[1]</td>
+<td>Id</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Name</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Description</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Order</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>SdsType</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Value</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>[2]</td>
+<td>Id</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Name</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Description</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Order</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>SdsType</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Value</td>
+</tr>
+<tr>
+<td></td>
+<td>Value</td>
+<td>null</td>
+<td></td>
+</tr>
+<tr>
+<td>[2]</td>
+<td>Id</td>
+<td>Measurement</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Name</td>
+<td>Measurement</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Description</td>
+<td>null</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Order</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>IsKey</td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>SdsType</td>
+<td>Id</td>
+<td>0f4f147f-4369-3388-8e4b-71e20c96f9ad</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Name</td>
+<td>Double</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Description</td>
+<td>null</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Properties</td>
+<td>null</td>
+</tr>
+<tr>
+<td></td>
+<td>Value</td>
+<td>null</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The <code>SdsTypeBuilder</code> also supports derived types. You need not add the base types to SDS before using <code>SdsTypeBuilder</code>. Base types are maintained within the SdsType.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/sds/types/sds-type-in-dotnet.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span><a href="https://www.osisoft.com/copyright/">© 2019 - 2021 OSIsoft, LLC. All rights reserved.</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

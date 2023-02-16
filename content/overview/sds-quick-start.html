@@ -8,7 +8,7 @@
     <title>SDS quick start </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="SDS quick start ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -78,13 +78,13 @@
             <article class="content wrap" id="_content" data-uid="sdsQuickStart">
 <h1 id="sds-quick-start">SDS quick start</h1>
 
-<p>Create a custom application using Sequential Data Store (SDS) REST API to send data to Edge Data Store from sources that cannot use Modbus or OPC UA protocols. </p>
+<p>Create a custom application using Sequential Data Store (SDS) REST API to send data to Edge Data Store from sources that cannot use Modbus or OPC UA protocols.</p>
 <p>The following diagram depicts the data flow from an SDS custom application into EDS:</p>
-<p><img src="https://osisoft.github.io/Edge-Data-Store-Docs/content/images/SDSApplicationExample.jpg" alt="SDS Application Example" title="SDS Application Example"></p>
-<p>The SDS application collects data from a data source and sends it to the EDS endpoint. The EDS endpoint sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or OSIsoft Cloud Services. All data from all sources on EDS (Modbus TCP, OPC UA, OMF, SDS) can be read using the SDS REST APIs on the local device, in the default tenant and the default namespace. </p>
+<p><img src="../images/SDSApplicationExample.jpg" alt="SDS Application Example" title="SDS Application Example"></p>
+<p>The SDS application collects data from a data source and sends it to the EDS endpoint. The EDS endpoint sends the data to the storage component where it is held until it can be egressed to permanent storage in PI Server or AVEVA Data Hub. All data from all sources on EDS can be read using the SDS REST APIs on the local device in the default tenant and the default namespace.</p>
 <p>To get started using the SDS REST API to ingress data into EDS, create an SDS type and stream and then write data events to the SDS stream. Use the Sequential Data Store (SDS) REST API to read the data back from EDS.</p>
 <h2 id="create-an-sds-type">Create an SDS type</h2>
-<p>Complete the following steps to create an SDS type that describes the format of the data to be stored in a container:</p>
+<p>To create an SDS type that describes the format of the data to be stored in a container:</p>
 <ol>
 <li><p>Create a JSON file using the example below:</p>
 <pre><code class="lang-json">{
@@ -109,9 +109,9 @@
         }
     ]
 }
-</code></pre><p><strong>Note:</strong> The data to be written is a timestamp and numeric value. It is indexed by a timestamp, and the numeric value that will be stored is a 64-bit floating point value. </p>
+</code></pre><p><strong>Note:</strong> The data to be written is a timestamp and numeric value. It is indexed by a timestamp, and the numeric value is a 64-bit floating point value.</p>
 </li>
-<li><p>Save the JSON file the name <em>SDSCreateType.json</em>.</p>
+<li><p>Save the JSON file the name <code>SDSCreateType.json</code>.</p>
 </li>
 <li><p>Run the following curl script from the directory where the file is located:</p>
 <pre><code class="lang-bash">curl -d &quot;@SDSCreateType.json&quot; -H &quot;Content-Type: application/json&quot;  -X POST   http://localhost:5590/api/v1/tenants/default/namespaces/default/types/Simple
@@ -119,7 +119,7 @@
 </li>
 </ol>
 <h2 id="create-an-sds-stream">Create an SDS stream</h2>
-<p>Complete the following steps to create an SDS stream: </p>
+<p>To create an SDS stream:</p>
 <ol>
 <li><p>Create a JSON file using the example below:</p>
 <pre><code class="lang-json">{
@@ -129,7 +129,7 @@
 }
 </code></pre><p><strong>Note:</strong> This stream references the type you created earlier. An error occurs if the type does not exist when the stream is created. As with an SDS type, create a stream once before sending data events. Resending the same definition repeatedly does not cause an error.</p>
 </li>
-<li><p>Save the JSON file with the name <em>SDSCreateStream.json</em>.</p>
+<li><p>Save the JSON file with the name <code>SDSCreateStream.json</code>.</p>
 </li>
 <li><p>Run the following curl script from the directory where the file is located:</p>
 <pre><code class="lang-bash">curl -d &quot;@SDSCreateStream.json&quot; -H &quot;Content-Type: application/json&quot;  -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/Simple
@@ -137,7 +137,7 @@
 </li>
 </ol>
 <h2 id="write-data-events-to-the-sds-stream">Write data events to the SDS stream</h2>
-<p>After you create a type and container, use SDS to write data to a stream.</p>
+<p>After you create a type and container, follow these steps to use SDS to write data to a stream:</p>
 <ol>
 <li><p>Create a JSON file using the example below:</p>
 <pre><code class="lang-json">[{
@@ -150,7 +150,7 @@
 }]
 </code></pre><p><strong>Note:</strong> This example includes two data events that will be stored in the SDS Stream created in the previous steps. For optimal performance, batch SDS values when writing them.</p>
 </li>
-<li><p>Save the JSON file with the name <em>SDSWriteData.json</em>.</p>
+<li><p>Save the JSON file with the name <code>SDSWriteData.json</code>.</p>
 </li>
 <li><p>Run the following curl script from the directory where the file is located:</p>
 <pre><code class="lang-bash">curl -d &quot;@SDSWriteData.json&quot; -H &quot;Content-Type: application/json&quot;  -X POST http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/Simple/Data
@@ -158,9 +158,10 @@
 </li>
 </ol>
 <h2 id="read-last-data-written-using-sds">Read last data written using SDS</h2>
-<p>Use the SDS REST API to read back the last data event written to the server. </p>
+<p>To use the SDS REST API to read back the last data event written to the server:</p>
 <ol>
-<li>Start the curl command line tool.</li>
+<li><p>Start the curl command line tool.</p>
+</li>
 <li><p>Run the following curl command to return the last value written:</p>
 <pre><code class="lang-bash">curl http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/MyCustomContainer/Data/Last
 </code></pre><p>Sample output:</p>
@@ -168,9 +169,10 @@
 </code></pre></li>
 </ol>
 <h2 id="read-a-range-of-data-events-written-using-sds">Read a range of data events written using SDS</h2>
-<p>Use the SDS REST API to read back the a range of data written to the server. </p>
+<p>To use the SDS REST API to read back the a range of data written to the server:</p>
 <ol>
-<li>Start the curl command line tool.</li>
+<li><p>Start the curl command line tool.</p>
+</li>
 <li><p>Run the following curl command to return up to 100 values after the startIndex specified:</p>
 <pre><code class="lang-bash">curl &quot;http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/MyCustomContainer/Data?startIndex=2017-07-08T13:00:00Z&amp;count=100&quot;
 </code></pre><p>Sample output:</p>
@@ -186,7 +188,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/overview/sds-quick-start.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/overview/sds-quick-start.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

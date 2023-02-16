@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>SdsTypeProperty </title>
+    <title>Technical support and feedback </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="SdsTypeProperty ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="title" content="Technical support and feedback ">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
@@ -75,90 +75,34 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="sdsTypeProperty">
-<h1 id="sdstypeproperty">SdsTypeProperty</h1>
+            <article class="content wrap" id="_content" data-uid="TechnicalSupportAndFeedback">
+<h1 id="technical-support-and-feedback">Technical support and feedback</h1>
 
-<p>The properties collection defines each field in an SdsType.</p>
-<p>The following table shows the required and optional SdsTypeProperty fields. Fields that are not included are reserved for internal SDS use.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Optionality</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Id</td>
-<td>String</td>
-<td>Required</td>
-<td>Identifier for referencing the type.</td>
-</tr>
-<tr>
-<td>Name</td>
-<td>String</td>
-<td>Optional</td>
-<td>Friendly name.</td>
-</tr>
-<tr>
-<td>Description</td>
-<td>String</td>
-<td>Optional</td>
-<td>Description text.</td>
-</tr>
-<tr>
-<td>SdsType</td>
-<td>SdsType</td>
-<td>Required</td>
-<td>Field defining the property&#39;s Type.</td>
-</tr>
-<tr>
-<td>IsKey</td>
-<td>Boolean</td>
-<td>Required</td>
-<td>Identifies the property as the Key (Primary Index).</td>
-</tr>
-<tr>
-<td>Value</td>
-<td>Object</td>
-<td>Optional</td>
-<td>Value of the property.</td>
-</tr>
-<tr>
-<td>Order</td>
-<td>Int</td>
-<td>Optional</td>
-<td>Order of comparison within a compound index.</td>
-</tr>
-<tr>
-<td>InterpolationMode</td>
-<td>SdsInterpolationMode</td>
-<td>Optional</td>
-<td>Interpolation setting of the property. Default is null.</td>
-</tr>
-<tr>
-<td>Uom</td>
-<td>String</td>
-<td>Optional</td>
-<td>Unit of Measure of the property. For a list of units of measures that are supported for an SdsTypeProperty, see <a class="xref" href="../uom/supported-uom.html">Units of measure</a>.</td>
-</tr>
-</tbody>
-</table>
-<p>The SdsTypeProperty identifier has the same requirements as the SdsType identifier, which are:</p>
+<p>OSIsoft provides several ways to report issues and provide feedback on PI Adapters.</p>
+<h2 id="technical-support">Technical support</h2>
+<p>For technical assistance with PI Adapters, contact OSIsoft Technical Support through the <a href="https://my.osisoft.com/">OSIsoft Customer Portal</a>. We can help you identify the problem, provide workarounds and address any concerns you may have. Remote access to your facilities may be necessary during the session.</p>
+<p><strong>Note:</strong>  You must have an account set up in the <a href="https://my.osisoft.com/">OSIsoft Customer Portal</a> before you can open a case. If you do not have a portal account, see <a href="https://explore.osisoft.com/myosisoft-customer-portal/how-to-get-a-login">How to Get a Login to OSIsoft Customer Portal</a>.</p>
+<p>Alternatively, call OSIsoft Technical Support at +1 510-297-5828.</p>
+<p>When you contact OSIsoft Technical Support, be prepared to provide this information:</p>
 <ul>
-<li>Is not case sensitive.</li>
-<li>Can contain spaces.</li>
-<li>Cannot contain forward slash (&quot;/&quot;).</li>
-<li>Contains a maximum of 100 characters. </li>
+<li>Product name, version, and build numbers</li>
+<li>Details about your computer platform (CPU type, operating system, and version number)</li>
+<li>Time that the difficulty started</li>
+<li>Log files at that time</li>
+<li>Details of any environment changes prior to the start of the issue</li>
+<li>Summary of the issue, including any relevant log files during the time the issue occurred</li>
 </ul>
-<p>The Boolean value, <code>IsKey</code> identifies the SdsType Key. Each SdsType needs a Key to function as the primary index. A key defined by more than one property is called a compound key. A compound key can be defined by a maximum of three properties. In a compound key, each property that is included in the key is specified as <code>IsKey</code>. The <code>Order</code> field defines the precedence of fields applied to the index.</p>
-<p>The <code>Value</code> field is used for properties that represent a value. For example, the named constant for an enum is a property with a value. When representing an enum in a SdsType, the SdsType properties collection defines the constant list for the enum. The SdsTypeProperty Identifier represents the name of the constant and the SdsTypeProperty value represents the value of the constant (see the enum State definitions below).</p>
-<p><code>InterpolationMode</code> is assigned when the property of the event should be interpolated in a specific way that differs from the <code>InterpolationMode</code> of the SdsType. <code>InterpolationMode</code> is only applied to a property that is not part of the Index. If the <code>InterpolationMode</code> is not set, the property inherits the <code>IntepolationMode</code> of the SdsType.</p>
-<p>An SdsType with the <code>InterpolationMode</code> set to <code>Discrete</code> cannot have a property with an <code>InteroplationMode</code>. For more information on interpolation of events, see <a class="xref" href="../read-data/read-characteristics.html#interpolation">Interpolation</a>.</p>
-<p><code>Uom</code> is the unit of measure for the property. The <code>Uom</code> of a property may be specified by the name or the abbreviation. The names and abbreviations of Uoms are case sensitive.</p>
-<p>The <code>InterpolationMode</code> and <code>Uom</code> of a property can be overridden on the stream. For more information, see <a class="xref" href="../sds-streams.html#propertyoverrides">PropertyOverrides in Streams</a>.</p>
+<!--To view a brief primer on PI Adapters, see the [PI Adapters playbook](https://customers.osisoft.com/s/knowledgearticle?knowledgeArticleUrl=Playbook-PI-adapters) in the OSIsoft Customer Portal.-->
+<h2 id="product-feedback">Product feedback</h2>
+<p>To submit product feedback for PI Adapters, visit the <a href="https://feedback.osisoft.com/forums/930280-pi-adapters">PI Adapters feedback page</a>. The product team at OSIsoft regularly monitors the page.</p>
+<h2 id="documentation-feedback">Documentation feedback</h2>
+<p>To submit documentation feedback for PI Adapters, send an email to <a href="mailto:documentation@osisoft.com?subject=PI%20adapter%20documentation&amp;body=Product%20name%20and%20version%20-%20Documentation%20topic%20URL%20-%20Details%20of%20the%20suggestion%20or%20error">documentation@osisoft.com</a>. Be sure to include the following information with your feedback:</p>
+<ul>
+<li>Product name and version</li>
+<li>Documentation topic URL</li>
+<li>Details of the suggestion or error</li>
+</ul>
+<p>The technical documentation team at OSIsoft will review and respond to your feedback.</p>
 </article>
           </div>
           
@@ -167,7 +111,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/types/sds-type-property.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/shared-content/shared-content/technical-support-and-feedback.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

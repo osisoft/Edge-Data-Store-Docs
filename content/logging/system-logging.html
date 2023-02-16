@@ -8,14 +8,14 @@
     <title>System-level logging configuration </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="System-level logging configuration ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
     <link rel="stylesheet" href="../../styles/main.css">
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../../">
     
@@ -79,9 +79,14 @@
 <h1 id="system-level-logging-configuration">System-level logging configuration</h1>
 
 <p>Edge Data Store writes daily log messages to flat text files in the following locations:</p>
-<p>• Windows: <em>%ProgramData%/OSIsoft/EdgeDataStore/Logs</em></p>
-<p>• Linux: <em>/usr/share/OSIsoft/EdgeDataStore/Logs</em></p>
-<p>Each message in the log displays the message severity level, timestamp, and the message itself.</p>
+<ul>
+<li><p>Windows: <code>%ProgramData%\OSIsoft\EdgeDataStore\Logs</code></p>
+</li>
+<li><p>Linux: <code>/usr/share/OSIsoft/EdgeDataStore/Logs</code></p>
+</li>
+</ul>
+<p>Each message in the log displays the message severity level, timestamp, and the message itself. </p>
+<p>If the transaction log reaches its maximum size, EDS sends a <code>DeviceinError</code> message.</p>
 <h2 id="default-logging-configuration-and-schema">Default logging configuration and schema</h2>
 <p>By default, logging captures Information, Warning, Error, and Critical messages in the message logs.
 The following logging configuration is the default for a component on install:</p>
@@ -90,14 +95,17 @@ The following logging configuration is the default for a component on install:</
   &quot;logFileSizeLimitBytes&quot;: 34636833,
   &quot;logFileCountLimit&quot;: 31   
 }
-</code></pre><p>The schema file specifies how to formally describe the configuration parameters for message logging. 
-It is located in:</p>
-<p>• Windows: <em>%ProgramFiles%/OSIsoft/EdgeDataStore/Schema</em></p>
-<p>• Linux: <em>/opt/OSIsoft/EdgeDataStore/Schema</em></p>
+</code></pre><p>The schema file specifies how to formally describe the configuration parameters for message logging. It is located in:</p>
+<ul>
+<li><p>Windows: <code>%ProgramFiles%\OSIsoft\EdgeDataStore\Schema</code></p>
+</li>
+<li><p>Linux: <code>/opt/OSIsoft/EdgeDataStore/Schema</code></p>
+</li>
+</ul>
 <h2 id="change-logging-configuration">Change logging configuration</h2>
-<p>Complete the following to change the logging configuration:</p>
+<p>To change the logging configuration:</p>
 <ol>
-<li><p>Update the parameters of the message logging configuration JSON file that you want as needed. For example, the <em>System_Logging.json</em> file:</p>
+<li><p>Edit the message logging configuration JSON file that you want to update the parameters as needed. For example, the <code>System_Logging.json</code> file:</p>
 <pre><code class="lang-json">{
   &quot;logLevel&quot;: &quot;Warning&quot;,
   &quot;logFileSizeLimitBytes&quot;: 16777216,
@@ -109,13 +117,13 @@ It is located in:</p>
 <li><p>Use any tool capable of making HTTP requests to execute a PUT command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/System/Logging</code>.</p>
 <p>   Example using curl (run this command from the same directory where the file is located):</p>
 <pre><code class="lang-bash">curl -d &quot;@System_Logging.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/System/Logging
-</code></pre><p> On successful execution, the log level change takes effect immediately during runtime. The other configurations (log file size and file count) get updated after Edge Data Store is restarted. </p>
+</code></pre><p> On successful execution, the log-level change takes effect immediately during runtime. The other configurations (log file size and file count) get updated after Edge Data Store is restarted.</p>
 <p> <strong>Note:</strong>  Any parameter not specified in the updated configuration file will revert to the default schema value.</p>
 </li>
 </ol>
 <h3 id="log-levels">Log levels</h3>
-<p>The logLevel sets the minimum severity for messages to be included in the logs. Messages with a severity below the level set are not included. The log levels in their increasing order of severity are as follows: Trace, Debug, Information, Warning, Error, Critical.</p>
-<p>Table: General guidelines for setting the log level.</p>
+<p>The logLevel sets the minimum severity for messages to be included in the logs. Messages with a severity below the level set are not included. The log levels in their increasing order of severity are as follows: <code>Trace</code>, <code>Debug</code>, <code>Information</code>, <code>Warning</code>, <code>Error</code>, <code>Critical</code>.</p>
+<p>The following table has general guidelines for setting the log level.</p>
 <table>
 <thead>
 <tr>
@@ -138,7 +146,7 @@ It is located in:</p>
 </tr>
 <tr>
 <td>Warning</td>
-<td>Logs that highlight an abnormal or unexpected event in the application flow, but does not otherwise cause the application execution to stop. Warning messages can indicate an unconfigured data source state, that a communication with backup failover instance has been lost, an insecure communication channel in use, or any other event that could require attention, but that does not impact data flow.</td>
+<td>Logs that highlight an abnormal or unexpected event in the application flow, but does not otherwise cause the application execution to stop. Warning messages can indicate a data source state that is not configured, that a communication with backup failover instance has been lost, an insecure communication channel in use, or any other event that could require attention, but that does not impact data flow.</td>
 </tr>
 <tr>
 <td>Error</td>
@@ -194,7 +202,7 @@ It is located in:</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/logging/system-logging.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/logging/system-logging.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

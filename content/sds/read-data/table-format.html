@@ -8,14 +8,14 @@
     <title>Table format </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Table format ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
     <link rel="stylesheet" href="../../../styles/main.css">
     <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../../">
     
@@ -78,228 +78,299 @@
             <article class="content wrap" id="_content" data-uid="sdsTableFormat">
 <h1 id="table-format">Table format</h1>
 
-<p>Results of a query can be organized into tables by directing the form parameter to return a table. Two forms of table are available: table and header table. Apply the table format to any read that returns multiple values and summaries by setting the form variable to specify a table or a table with headers.</p>
-<p>When the form parameter is specified as <code>table</code>, <code>?form=table</code>, events are returned in row column form. Results include a collection named Columns that lists column name and type and a collection named Rows containing a collection of rows matching the order of the columns.</p>
+<p>You can organize results of a query into tables by directing the form parameter to return a table. Two table forms are available: table and header table. Apply the table format to any read that returns multiple values and summaries by setting the form variable to specify a table or a table with headers.</p>
+<p>When the form parameter is specified as <code>table</code>, <code>?form=table</code>, events are returned in row column form. Results include a collection named <code>Columns</code> that lists column name and type and a collection named <code>Rows</code> containing a collection of rows matching the order of the columns.</p>
 <p>Specifying a form of type <code>table-headers</code>, <code>?form=tableh</code>, results in a collection where the Rows collection contains a column header list.</p>
-<p>The following is a request to retrieve values using the window parameters:</p>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
-   ?startIndex=2017-04-01T07:00:00Z&amp;endIndex=2017-04-01T07:10:00Z
-</code></pre><p>The following response would be returned from the above code:</p>
-<pre><code class="lang-json">Content-Type: application/json
-
-[
-   {  
-      &quot;Time&quot;:&quot;2017-04-01T07:00:00Z&quot;,
-      &quot;State&quot;:1
-   },
-   {  
-      &quot;Time&quot;:&quot;2017-04-01T07:01:00Z&quot;,
-      &quot;State&quot;:1,
-      &quot;Measurement&quot;:1.0
-   },
-   {  
-      &quot;Time&quot;:&quot;2017-04-01T07:02:00Z&quot;,
-      &quot;State&quot;:1,
-      &quot;Measurement&quot;:2.0
-   },
-   {  
-      &quot;Time&quot;:&quot;2017-04-01T07:03:00Z&quot;,
-      &quot;State&quot;:1,
-      &quot;Measurement&quot;:3.0
-   },
-   {
-      &quot;Time&quot;:&quot;2017-04-01T07:04:00Z&quot;,
-      &quot;State&quot;:1,
-      &quot;Measurement&quot;:4.0
-   },
-   {  
-      &quot;Time&quot;:&quot;2017-04-01T07:05:00Z&quot;,
-      &quot;State&quot;:1,
-      &quot;Measurement&quot;:5.0
-   },
-   {  
-      &quot;Time&quot;:&quot;2017-04-01T07:06:00Z&quot;,
-      &quot;State&quot;:1,
-      &quot;Measurement&quot;:6.0
-   },
-   {  
-      &quot;Time&quot;:&quot;2017-04-01T07:07:00Z&quot;,
-      &quot;State&quot;:1,
-      &quot;Measurement&quot;:7.0
-   },
-   {  
-      &quot;Time&quot;:&quot;2017-04-01T07:08:00Z&quot;,
-      &quot;State&quot;:1,
-      &quot;Measurement&quot;:8.0
-   },
-   {  
-      &quot;Time&quot;:&quot;2017-04-01T07:09:00Z&quot;,
-      &quot;State&quot;:1,
-      &quot;Measurement&quot;:9.0
-   }
-]
-</code></pre><ul>
-<li>To retrieve the results in table format, add the form variable and specify <code>table</code>.</li>
+<p>Table format can be applied to any read that returns multiple values and summaries.</p>
+<div class="tabGroup" id="tabgroup_iELSmWLYep">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_iELSmWLYep_tabid-0" role="tab" aria-controls="tabpanel_iELSmWLYep_tabid-0" data-tab="tabid-0" tabindex="0" aria-selected="true">Csharp</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_iELSmWLYep_tabid-1" role="tab" aria-controls="tabpanel_iELSmWLYep_tabid-1" data-tab="tabid-1" tabindex="-1">Python</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_iELSmWLYep_tabid-2" role="tab" aria-controls="tabpanel_iELSmWLYep_tabid-2" data-tab="tabid-2" tabindex="-1">JavaScript</a>
+</li>
 </ul>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
-   ?startIndex=2017-04-01T07:00:00Z&amp;endIndex=2017-04-01T07:10:00Z
-   &amp;form=table
-</code></pre><p>Response</p>
-<pre><code class="lang-json">Content-Type: application/json
-
-{  
-   &quot;Name&quot;:&quot;Simple&quot;,
-   &quot;Columns&quot;:[  
-      {  
-         &quot;Name&quot;:&quot;Time&quot;,
-         &quot;Type&quot;:&quot;DateTime&quot;
-      },
-      {  
-         &quot;Name&quot;:&quot;State&quot;,
-         &quot;Type&quot;:&quot;Int32Enum&quot;
-      },
-      {  
-         &quot;Name&quot;:&quot;Measurement&quot;,
-         &quot;Type&quot;:&quot;Double&quot;
+<section id="tabpanel_iELSmWLYep_tabid-0" role="tabpanel" data-tab="tabid-0">
+<pre><code class="lang-csharp">      public enum State
+      {
+        Ok,
+        Warning,
+        Alarm
       }
-   ],
-   &quot;Rows&quot;:[  
-      [  
-         &quot;2017-04-01T07:00:00Z&quot;,
-         1,
-         0.0
-      ],
-      [  
-         &quot;2017-04-01T07:01:00Z&quot;,
-         1,
-         1.0
-      ],
-      [  
-         &quot;2017-04-01T07:02:00Z&quot;,
-         1,
-         2.0
-      ],
-      [  
-         &quot;2017-04-01T07:03:00Z&quot;,
-         1,
-         3.0
-      ],
-      [  
-         &quot;2017-04-01T07:04:00Z&quot;,
-         1,
-         4.0
-      ],
-      [  
-         &quot;2017-04-01T07:05:00Z&quot;,
-         1,
-         5.0
-      ],
-      [  
-         &quot;2017-04-01T07:06:00Z&quot;,
-         1,
-         6.0
-      ],
-      [  
-         &quot;2017-04-01T07:07:00Z&quot;,
-         1,
-         7.0
-      ],
-      [  
-         &quot;2017-04-01T07:08:00Z&quot;,
-         1,
-         8.0
-      ],
-      [  
-         &quot;2017-04-01T07:09:00Z&quot;,
-         1,
-         9.0
-      ]
-   ]
-}
-</code></pre><ul>
-<li>To retrieve the results in table format with column headers, add the form variable and specify <code>tableh</code>.</li>
-</ul>
-<pre><code class="lang-text">GET api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/Simple/Data
-   ?startIndex=2017-04-01T07:00:00Z&amp;endIndex=2017-04-01T07:10:00Z
-   &amp;form=tableh
-</code></pre><p>Response</p>
-<pre><code class="lang-json">Content-Type: application/json
-
-{  
-   &quot;Name&quot;:&quot;Simple&quot;,
-   &quot;Columns&quot;:[  
-      {  
-         &quot;Name&quot;:&quot;Time&quot;,
-         &quot;Type&quot;:&quot;DateTime&quot;
-      },
-      {  
-         &quot;Name&quot;:&quot;State&quot;,
-         &quot;Type&quot;:&quot;Int32Enum&quot;
-      },
-      {  
-         &quot;Name&quot;:&quot;Measurement&quot;,
-         &quot;Type&quot;:&quot;Double&quot;
+      public class Simple
+      {
+        [SdsMember(IsKey = true, Order = 0) ]
+        public DateTime Time { get; set; }
+        public State State { get; set; }
+        public Double Measurement { get; set; }
       }
-   ],
-   &quot;Rows&quot;:[  
-      [  
-         &quot;Time&quot;,
-         &quot;State&quot;,
-         &quot;Measurement&quot;
-      ],
-      [  
-         &quot;2017-04-01T07:00:00Z&quot;,
-         1,
-         0.0
-      ],
-      [  
-         &quot;2017-04-01T07:01:00Z&quot;,
-         1,
-         1.0
-      ],
-      [  
-         &quot;2017-04-01T07:02:00Z&quot;,
-         1,
-         2.0
-      ],
-      [  
-         &quot;2017-04-01T07:03:00Z&quot;,
-         1,
-         3.0
-      ],
-      [  
-         &quot;2017-04-01T07:04:00Z&quot;,
-         1,
-         4.0
-      ],
-      [  
-         &quot;2017-04-01T07:05:00Z&quot;,
-         1,
-         5.0
-      ],
-      [  
-         &quot;2017-04-01T07:06:00Z&quot;,
-         1,
-         6.0
-      ],
-      [  
-         &quot;2017-04-01T07:07:00Z&quot;,
-         1,
-         7.0
-      ],
-      [  
-         &quot;2017-04-01T07:08:00Z&quot;,
-         1,
-         8.0
-      ],
-      [  
-         &quot;2017-04-01T07:09:00Z&quot;,
-         1,
-         9.0
+</code></pre></section>
+<section id="tabpanel_iELSmWLYep_tabid-1" role="tabpanel" data-tab="tabid-1" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-python">      class State(Enum):
+        Ok = 0
+        Warning = 1
+        Alarm = 2
+      class Simple(object):
+        Time = property(getTime, setTime)
+        def getTime(self):
+          return self.__time
+        def setTime(self, time):
+          self.__time = time
+        State = property(getState, setState)
+        def getState(self):
+          return self.__state
+        def setState(self, state):
+          self.__state = state
+        Measurement = property(getValue, setValue)
+        def getValue(self):
+          return self.__measurement
+        def setValue(self, measurement):
+          self.__measurement = measurement
+</code></pre></section>
+<section id="tabpanel_iELSmWLYep_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-javascript">      var State =
+      {
+        Ok: 0,
+        Warning: 1,
+        Alarm: 2,
+      }
+      var Simple = function () {
+        this.Time = null;
+        this.State = null;
+        this.Value = null;
+      }
+      With values as follows:
+      4/1/2017 7:00:00 AM : Warning  0
+      4/1/2017 7:01:00 AM : Warning  1
+      4/1/2017 7:02:00 AM : Warning  2
+      4/1/2017 7:03:00 AM : Warning  3
+      4/1/2017 7:04:00 AM : Warning  4
+      4/1/2017 7:05:00 AM : Warning  5
+      4/1/2017 7:06:00 AM : Warning  6
+      4/1/2017 7:07:00 AM : Warning  7
+      4/1/2017 7:08:00 AM : Warning  8
+      4/1/2017 7:09:00 AM : Warning  9 
+</code></pre><p>The following is a request to retrieve values using the window parameters:</p>
+<pre><code class="lang-text">     GET api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/Simple/Data
+     ?startIndex=2017-04-01T07:00:00Z&amp;endIndex=2017-04-01T07:10:00Z
+</code></pre><p>The following response is returned by the code above:</p>
+<pre><code>      Content-Type: application/json
+
+      [
+         {  
+            &quot;Time&quot;:&quot;2017-04-01T07:00:00Z&quot;,
+            &quot;State&quot;:1
+         },
+         {  
+            &quot;Time&quot;:&quot;2017-04-01T07:01:00Z&quot;,
+            &quot;State&quot;:1,
+            &quot;Measurement&quot;:1.0
+         },
+         {  
+            &quot;Time&quot;:&quot;2017-04-01T07:02:00Z&quot;,
+            &quot;State&quot;:1,
+            &quot;Measurement&quot;:2.0
+         },
+         {  
+            &quot;Time&quot;:&quot;2017-04-01T07:03:00Z&quot;,
+            &quot;State&quot;:1, 
+            &quot;Measurement&quot;:3.0
+         },
+         {   
+            &quot;Time&quot;:&quot;2017-04-01T07:04:00Z&quot;,
+            &quot;State&quot;:1,
+            &quot;Measurement&quot;:4.0
+         },
+         {  
+            &quot;Time&quot;:&quot;2017-04-01T07:05:00Z&quot;,
+            &quot;State&quot;:1,
+            &quot;Measurement&quot;:5.0
+         },
+         {  
+            &quot;Time&quot;:&quot;2017-04-01T07:06:00Z&quot;,
+            &quot;State&quot;:1,
+            &quot;Measurement&quot;:6.0
+         },
+         {  
+            &quot;Time&quot;:&quot;2017-04-01T07:07:00Z&quot;,
+            &quot;State&quot;:1,
+            &quot;Measurement&quot;:7.0
+         },
+         {  
+            &quot;Time&quot;:&quot;2017-04-01T07:08:00Z&quot;,
+            &quot;State&quot;:1,
+            &quot;Measurement&quot;:8.0
+         },
+         {  
+            &quot;Time&quot;:&quot;2017-04-01T07:09:00Z&quot;,
+            &quot;State&quot;:1,
+            &quot;Measurement&quot;:9.0
+         }
       ]
-   ]
-}
-</code></pre></article>
+</code></pre><p>To retrieve the results in table format, add the form variable and specify table.</p>
+<pre><code class="lang-text">     GET api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/Simple/Data
+     ?startIndex=2017-04-01T07:00:00Z&amp;endIndex=2017-04-01T07:10:00Z
+     &amp;form=table
+</code></pre><h4 id="response">Response</h4>
+<pre><code>      Content-Type: application/json
+
+      {  
+         &quot;Name&quot;:&quot;Simple&quot;,
+         &quot;Columns&quot;:[  
+            {  
+               &quot;Name&quot;:&quot;Time&quot;,
+               &quot;Type&quot;:&quot;DateTime&quot;
+            },
+            {  
+               &quot;Name&quot;:&quot;State&quot;,
+               &quot;Type&quot;:&quot;Int32Enum&quot;
+            },
+            {  
+               &quot;Name&quot;:&quot;Measurement&quot;,
+               &quot;Type&quot;:&quot;Double&quot;
+            }
+         ],
+         &quot;Rows&quot;:[  
+            [  
+               &quot;2017-04-01T07:00:00Z&quot;,
+               1,
+               0.0
+            ],
+            [  
+               &quot;2017-04-01T07:01:00Z&quot;,
+               1,
+               1.0
+            ],
+            [  
+               &quot;2017-04-01T07:02:00Z&quot;,
+               1,
+               2.0
+            ],
+            [  
+               &quot;2017-04-01T07:03:00Z&quot;,
+               1,
+               3.0
+            ],
+            [  
+               &quot;2017-04-01T07:04:00Z&quot;,
+               1,
+               4.0
+            ],
+            [  
+               &quot;2017-04-01T07:05:00Z&quot;,
+               1,
+               5.0
+            ],
+            [  
+               &quot;2017-04-01T07:06:00Z&quot;,
+               1,
+               6.0
+            ],
+            [  
+               &quot;2017-04-01T07:07:00Z&quot;,
+               1,
+               7.0
+            ],
+            [  
+               &quot;2017-04-01T07:08:00Z&quot;,
+               1,
+               8.0
+            ],
+            [  
+               &quot;2017-04-01T07:09:00Z&quot;,
+               1,
+               9.0
+            ]
+         ]
+      }
+</code></pre><p>To retrieve the results in table format with column headers, add the form variable and specify <code>tableh</code>.</p>
+<pre><code class="lang-text">     GET api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/Simple/Data
+     ?startIndex=2017-04-01T07:00:00Z&amp;endIndex=2017-04-01T07:10:00Z
+     &amp;form=tableh
+</code></pre><h4 id="response-1">Response</h4>
+<pre><code>      Content-Type: application/json
+
+      {  
+         &quot;Name&quot;:&quot;Simple&quot;,
+         &quot;Columns&quot;:[  
+            {  
+               &quot;Name&quot;:&quot;Time&quot;,
+               &quot;Type&quot;:&quot;DateTime&quot;
+            },
+            {  
+               &quot;Name&quot;:&quot;State&quot;,
+               &quot;Type&quot;:&quot;Int32Enum&quot;
+            },
+            {  
+               &quot;Name&quot;:&quot;Measurement&quot;,
+               &quot;Type&quot;:&quot;Double&quot;
+            }
+         ],
+         &quot;Rows&quot;:[  
+            [  
+               &quot;Time&quot;,
+               &quot;State&quot;,
+               &quot;Measurement&quot;
+            ],
+            [  
+               &quot;2017-04-01T07:00:00Z&quot;,
+               1,
+               0.0
+            ],
+            [  
+               &quot;2017-04-01T07:01:00Z&quot;,
+               1,
+               1.0
+            ],
+            [  
+               &quot;2017-04-01T07:02:00Z&quot;,
+               1,
+               2.0
+            ],
+            [  
+               &quot;2017-04-01T07:03:00Z&quot;,
+               1,
+               3.0
+            ],
+            [  
+               &quot;2017-04-01T07:04:00Z&quot;,
+               1,
+               4.0
+            ],
+            [  
+               &quot;2017-04-01T07:05:00Z&quot;,
+               1,
+               5.0
+            ],
+            [  
+               &quot;2017-04-01T07:06:00Z&quot;,
+               1,
+               6.0
+            ],
+            [  
+               &quot;2017-04-01T07:07:00Z&quot;,
+               1,
+               7.0
+            ],
+            [  
+               &quot;2017-04-01T07:08:00Z&quot;,
+               1,
+               8.0
+            ],
+            [  
+               &quot;2017-04-01T07:09:00Z&quot;,
+               1,
+               9.0
+            ]
+         ]
+      }
+</code></pre></section>
+</div>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -307,7 +378,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/read-data/table-format.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/sds/read-data/table-format.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

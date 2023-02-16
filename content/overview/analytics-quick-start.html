@@ -8,14 +8,14 @@
     <title>Edge Data Store analytics quick start </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Edge Data Store analytics quick start ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
     <link rel="stylesheet" href="../../styles/main.css">
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../../">
     
@@ -78,7 +78,7 @@
             <article class="content wrap" id="_content" data-uid="analyticsQuickStart">
 <h1 id="edge-data-store-analytics-quick-start">Edge Data Store analytics quick start</h1>
 
-<p>This topic provides a quick start for a very simple analytic you can write using Edge Data Store. The intended input device is an Modbus TCP EDS adapter or other sensor that outputs 4 Boolean values. </p>
+<p>This topic provides a quick start for a very simple analytic you can write using Edge Data Store. The intended input device is an Modbus TCP EDS adapter or other sensor that outputs 4 Boolean values.</p>
 <p>The normal range of operation is that the values are neither all true or all false. If all values are true, the exception condition High is triggered. If all values are false, the exception condition Low is triggered. Any other combination of Boolean values is Normal. Three analytic streams are created to track these changes. The ValueRangeHigh stream is 1 when High and 0 when anything else. The ValueRangeLow stream is -1 when Low and 0 when anything else. The ValueRangeOut stream is -1 when Low, 0 when Normal, and 1 when High.</p>
 <p>This example assumes Edge Data Store was installed with the default port (5590):</p>
 <pre><code class="lang-csharp">using System;
@@ -275,7 +275,7 @@ namespace ExceptionReportingSample
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/overview/analytics-quick-start.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/overview/analytics-quick-start.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

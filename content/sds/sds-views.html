@@ -8,14 +8,14 @@
     <title>Stream views </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Stream views ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
     <link rel="stylesheet" href="../../styles/main.css">
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../../">
     
@@ -78,11 +78,10 @@
             <article class="content wrap" id="_content" data-uid="sdsStreamViews">
 <h1 id="stream-views">Stream views</h1>
 
-<p>SdsStreamViews (or stream views) provide flexibility in the use of SdsTypes. While you cannot actually change the properties of SdsTypes themselves, use the stream views feature to create a view of a selected SdsStream that appears as if you had changed the SdsType on which it is based. Create a stream view by choosing a source and target type then a set of mappings between properties of those two types. Using a stream view to leverage existing SdsType properties is preferable to creating a new SdsType, because the SdsStream that is based on the SdsType continues to function with its previously archived stream data intact.</p>
-<p>See the impact of the stream view on a stream either in an ad hoc manner through a GET method or by assigning the stream view to a stream with a PUT method.</p>
-<p>An SdsStreamView provides a way to map stream data requests from one data type to another. You can apply a stream view to any read or GET operation. SdsStreamView is used to specify the mapping between source and target types.</p>
-<p>SDS attempts to map properties from the source to the destination. When the mapping is straightforward, such as when the properties are in the same position and of the same data type, or when the properties have the same name, SDS will map the properties automatically.</p>
-<p>When SDS is unable to determine how to map a source property, the property is removed. If SDS encounters a target property that it cannot map to, the property is added and configured with a default value. To map a property that SDS cannot map automatically, define an SdsStreamViewProperty and add it to the SdsStreamView’s Properties collection.</p>
+<p>Stream views provide flexibility in the use of SdsTypes. While you cannot actually change the properties of SdsTypes themselves, use the stream views feature to create a view of a selected SdsStream that appears as if you had changed the SdsType on which it is based. Create a stream view by choosing a source and target type. Then, create a set of mappings between properties of those two types. Using a stream view to leverage existing SdsType properties is preferable to creating a new SdsType because the SdsStream that is based on the SdsType continues to function with its previously archived stream data intact.</p>
+<p>See the impact of the stream view on a stream either in an ad hoc manner through a <code>GET</code> method or by assigning the stream view to a stream with a <code>PUT</code> method.</p>
+<p>An SdsStreamView provides a way to map stream data requests from one data type to another. You can apply a stream view to any read or <code>GET</code> operation. SdsStreamView is used to specify the mapping between source and target types.</p>
+<h2 id="stream-view-fields-and-properties">Stream view fields and properties</h2>
 <p>The following table shows the SdsStreamView fields. Fields that are not included are reserved for internal SDS use. For more information on search limitations, see <a class="xref" href="search.html">Search in SDS</a>.</p>
 <table>
 <thead>
@@ -96,60 +95,132 @@
 </thead>
 <tbody>
 <tr>
-<td>Id</td>
+<td><code>Id</code></td>
 <td>String</td>
 <td>Required</td>
 <td>Yes</td>
-<td>Identifier for referencing the stream view.</td>
+<td>Identifier for referencing the stream view</td>
 </tr>
 <tr>
-<td>Name</td>
+<td><code>Name</code></td>
 <td>String</td>
 <td>Optional</td>
 <td>Yes</td>
-<td>Friendly name.</td>
+<td>Friendly name</td>
 </tr>
 <tr>
-<td>Description</td>
+<td><code>Description</code></td>
 <td>String</td>
 <td>Optional</td>
 <td>Yes</td>
-<td>Description text.</td>
+<td>Description text</td>
 </tr>
 <tr>
-<td>SourceTypeId</td>
+<td><code>SourceTypeId</code></td>
 <td>String</td>
 <td>Required</td>
 <td>Yes</td>
-<td>Identifier of the SdsType of the SdsStream.</td>
+<td>Identifier of the SdsType of the SdsStream</td>
 </tr>
 <tr>
-<td>TargetTypeId</td>
+<td><code>TargetTypeId</code></td>
 <td>String</td>
 <td>Required</td>
 <td>Yes</td>
-<td>Identifier of the SdsType to convert events to.</td>
+<td>Identifier of the SdsType to convert events to</td>
 </tr>
 <tr>
-<td>Properties</td>
+<td><code>Properties</code></td>
 <td>IList&lt;SdsStreamViewProperty></td>
 <td>Optional</td>
 <td>Yes, with limitations</td>
-<td>Property level mapping.</td>
+<td>Property level mapping</td>
 </tr>
 </tbody>
 </table>
-<h2 id="rules-for-the-stream-view-identifier-sdsstreamviewid">Rules for the stream view identifier (SdsStreamView.Id)</h2>
-<p>The type identifier, SdsStreamView.ID, has the following requirements:</p>
+<p><strong>Note:</strong>  SdsStreamViewProperty objects are not searchable. Only the SdsStreamViewProperty&#39;s SdsStreamView is searchable by its <code>Id</code>, <code>SourceTypeId</code>, and <code>TargetTypeId</code>. These are used to return the top level SdsStreamView object when searching. The same is true for nested SdsStreamViewProperties.</p>
+<h3 id="rules-for-the-stream-view-identifier-sdsstreamviewid">Rules for the stream view identifier (SdsStreamView.Id)</h3>
+<p>The type identifier, <code>SdsStreamView.ID</code>, has the following requirements:</p>
 <ul>
-<li>Is not case sensitive.</li>
-<li>Can contain spaces.</li>
-<li>Cannot contain forward slash (&quot;/&quot;).</li>
-<li>Contains a maximum of 100 characters.</li>
+<li><p>Is not case sensitive</p>
+</li>
+<li><p>Can contain spaces</p>
+</li>
+<li><p>Cannot contain forward slash (&quot;/&quot;)</p>
+</li>
+<li><p>Contains a maximum of 100 characters</p>
+</li>
 </ul>
-<h2 id="properties--sdsstreamviewproperty">Properties / SdsStreamViewProperty</h2>
-<p>The SdsStreamView Properties collection provides detailed instructions for mapping of event properties. Each SdsStreamViewProperty in the properties collection defines the mapping of an event’s property. SdsStreamView properties are required only when property mapping is not straightforward. Additionally, if you do not want a type property mapped, it is not necessary to create an SdsStreamView property for it.</p>
-<p>The following table shows the required and optional SdsStreamViewProperty fields.</p>
+<h2 id="sdsstreamview-mapping">SdsStreamView mapping</h2>
+<p>SDS attempts to map properties from the source to the destination. When the mapping is straightforward, SDS automatically maps properties from the source to the target type. For example:</p>
+<ul>
+<li><p>The properties are in the same position</p>
+</li>
+<li><p>The properties are of the same data type</p>
+</li>
+<li><p>The properties have the same name</p>
+</li>
+</ul>
+<p>When SDS is unable to determine how to map a source property, the property is removed. If SDS encounters a target property that it cannot map to, the property is added and configured with a default value. To map a property that SDS cannot map automatically, define an <code>SdsStreamViewProperty</code> and add it to the SdsStreamView’s properties.</p>
+<p>The following table show mapping compatibilities. SDS largely supports mapping within the same data type.</p>
+<table>
+<thead>
+<tr>
+<th>Source type\ Target type</th>
+<th>Numeric types</th>
+<th>Nullable numeric types</th>
+<th>Enumeration types</th>
+<th>Nullable enumeration types</th>
+<th>Object types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Numeric types</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Nullable numeric types</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Enumeration types</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Nullable enumeration types</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Object types</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes*</td>
+</tr>
+</tbody>
+</table>
+<p>* Mappable if <code>typeId</code> matches between the source and the target type</p>
+<h2 id="sdsstreamviewproperty"><code>SdsStreamViewProperty</code></h2>
+<p>The SdsStreamView properties collection provides detailed instructions for mapping of event properties. Each <code>SdsStreamViewProperty</code> in the properties collection defines the mapping of an event’s property. <code>SdsStreamView</code> properties are required only when property mapping is not straightforward. Additionally, if you do not want a type property mapped, it is not necessary to create an <code>SdsStreamView</code> property for it.</p>
+<p>The following table shows the required and optional <code>SdsStreamViewProperty</code> fields.</p>
 <table>
 <thead>
 <tr>
@@ -161,30 +232,28 @@
 </thead>
 <tbody>
 <tr>
-<td>SourceId</td>
+<td><code>SourceId</code></td>
 <td>String</td>
 <td>Required</td>
-<td>Identifier of the SdsTypeProperty from the source SdsType Properties list.</td>
+<td>Identifier of the <code>SdsTypeProperty</code> from the source SdsType Properties list</td>
 </tr>
 <tr>
-<td>TargetId</td>
+<td><code>TargetId</code></td>
 <td>String</td>
 <td>Required</td>
-<td>Identifier of the SdsTypeProperty from the target SdsType Properties list.</td>
+<td>Identifier of the <code>SdsTypeProperty</code> from the target SdsType Properties list</td>
 </tr>
 <tr>
-<td>SdsStreamView</td>
+<td><code>SdsStreamView</code></td>
 <td>SdsStreamView</td>
 <td>Optional</td>
-<td>Additional mapping instructions for derived types.</td>
+<td>Additional mapping instructions for derived types. Supports nested properties</td>
 </tr>
 </tbody>
 </table>
-<p>The SdsStreamView field supports nested properties.</p>
-<h2 id="sdsstreamviewmap">SdsStreamViewMap</h2>
-<p>When an SdsStreamView is added, SDS defines a plan mappingand stores it as an SdsStreamViewMap. The SdsStreamViewMap provides a detailed property-by-property definition of the mapping.</p>
-<p>The following table shows the SdsStreamViewMap fields. The SdsStreamViewMap cannot be written to SDS, it can only be
-retrieved from SDS, so required and optional have no meaning.</p>
+<h2 id="sdsstreamviewmap"><code>SdsStreamViewMap</code></h2>
+<p>When an SdsStreamView is added, SDS defines a plan mapping and stores it as an <code>SdsStreamViewMap</code>. The <code>SdsStreamViewMap</code> provides a detailed property-by-property definition of the mapping.</p>
+<p>The following table shows the <code>SdsStreamViewMap</code> fields. The <code>SdsStreamViewMap</code> cannot be written to SDS, it can only be retrieved from SDS, so required and optional have no meaning.</p>
 <table>
 <thead>
 <tr>
@@ -196,30 +265,28 @@ retrieved from SDS, so required and optional have no meaning.</p>
 </thead>
 <tbody>
 <tr>
-<td>SourceTypeId</td>
+<td><code>SourceTypeId</code></td>
 <td>String</td>
 <td>Required</td>
-<td>Identifier of the SdsType of the SdsStream.</td>
+<td>Identifier of the SdsType of the SdsStream</td>
 </tr>
 <tr>
-<td>TargetTypeId</td>
+<td><code>TargetTypeId</code></td>
 <td>String</td>
 <td>Required</td>
-<td>Identifier of the SdsType to convert events to.</td>
+<td>Identifier of the SdsType to convert events to</td>
 </tr>
 <tr>
-<td>Properties</td>
+<td><code>Properties</code></td>
 <td>IList&lt;SdsStreamViewMapProperty></td>
 <td>Optional</td>
-<td>Property level mapping.</td>
+<td>Property level mapping</td>
 </tr>
 </tbody>
 </table>
-<h3 id="properties--sdsstreamviewmapproperty">Properties / SdsStreamViewMapProperty</h3>
-<p>The SdsStreamViewMapProperty is similar an SdsStreamViewProperty but adds a mode detailing one or more actions taken on
-the property.</p>
-<p>The following table shows the SdsStreamViewMapProperty fields. The SdsStreamViewMap cannot be written to SDS; it can only be
-retrieved from SDS, so required and optional have no meaning.</p>
+<h3 id="properties--sdsstreamviewmapproperty">Properties / <code>SdsStreamViewMapProperty</code></h3>
+<p>The <code>SdsStreamViewMapProperty</code> is similar an <code>SdsStreamViewProperty</code> but adds a mode detailing one or more actions taken on the property.</p>
+<p>The following table shows the <code>SdsStreamViewMapProperty</code> fields. The <code>SdsStreamViewMap</code> cannot be written to SDS; it can only be retrieved from SDS, so required and optional have no meaning.</p>
 <table>
 <thead>
 <tr>
@@ -230,28 +297,28 @@ retrieved from SDS, so required and optional have no meaning.</p>
 </thead>
 <tbody>
 <tr>
-<td>SourceTypeId</td>
+<td><code>SourceTypeId</code></td>
 <td>String</td>
-<td>Identifier of the SdsType of the SdsStream.</td>
+<td>Identifier of the SdsType of the SdsStream</td>
 </tr>
 <tr>
-<td>TargetTypeId</td>
+<td><code>TargetTypeId</code></td>
 <td>String</td>
-<td>Identifier of the SdsType to convert events to.</td>
+<td>Identifier of the SdsType to convert events to</td>
 </tr>
 <tr>
-<td>Mode</td>
+<td><code>Mode</code></td>
 <td>SdsStreamViewMode</td>
-<td>Aggregate of actions applied to the properties. SdsStreamViewModes are combined via binary arithmetic.</td>
+<td>Aggregate of actions applied to the properties. <code>SdsStreamViewModes</code> are combined via binary arithmetic.</td>
 </tr>
 <tr>
+<td><code>SdsStreamViewMap</code></td>
 <td>SdsStreamViewMap</td>
-<td>SdsStreamViewMap</td>
-<td>Mapping for derived types.</td>
+<td>Mapping for derived types</td>
 </tr>
 </tbody>
 </table>
-<p>The available SdsStreamViewModes are shown in the following table.</p>
+<p>The available <code>SdsStreamViewModes</code> are shown in the following table.</p>
 <table>
 <thead>
 <tr>
@@ -264,75 +331,46 @@ retrieved from SDS, so required and optional have no meaning.</p>
 <tr>
 <td>None</td>
 <td>0x0000</td>
-<td>No action.</td>
+<td>No action</td>
 </tr>
 <tr>
 <td>FieldAdd</td>
 <td>0x0001</td>
-<td>Add a property matching the specified SdsTypeProperty.</td>
+<td>Add a property matching the specified SdsTypeProperty</td>
 </tr>
 <tr>
 <td>FieldRemove</td>
 <td>0x0002</td>
-<td>Remove the property matching the specified SdsTypeProperty.</td>
+<td>Remove the property matching the specified SdsTypeProperty</td>
 </tr>
 <tr>
 <td>FieldRename</td>
 <td>0x0004</td>
-<td>Rename the property matching the source SdsTypeProperty to the target SdsTypeProperty.</td>
+<td>Rename the property matching the source SdsTypeProperty to the target SdsTypeProperty</td>
 </tr>
 <tr>
 <td>FieldMove</td>
 <td>0x0008</td>
-<td>Move the property from the location in the source to the location in the target.</td>
+<td>Move the property from the location in the source to the location in the target</td>
 </tr>
 <tr>
 <td>FieldConversion</td>
 <td>0x0016</td>
-<td>Converts the source property to the target type.</td>
+<td>Converts the source property to the target type</td>
 </tr>
 <tr>
 <td>InvalidFieldConversion</td>
 <td>0x0032</td>
-<td>Cannot perform the specified mapping.</td>
+<td>Cannot perform the specified mapping</td>
 </tr>
 </tbody>
 </table>
 <h2 id="changing-stream-type">Changing stream type</h2>
 <p>Stream views can be used to change the type defining a stream. You cannot modify the SdsType; types are immutable. But you can map a stream from its current type to a new type.</p>
-<p>To update a stream&#39;s type, define an SdsStreamView and PUT the stream view to the following:</p>
+<p>To update a stream&#39;s type, define an <code>SdsStreamView</code> and <code>PUT</code> the stream view to the following:</p>
 <pre><code class="lang-text">PUT api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Type?streamViewId={streamViewId}
 </code></pre><p>For details, see <a class="xref" href="streams/sds-streams-api.html#update-stream-type">Update Stream Type</a>.</p>
-<h2 id="working-with-sdsstreamviews">Working with SdsStreamViews</h2>
-<p>When working with stream views, either invoke HTTP directly or use some of the sample code. Both Python and JavaScript samples have SdsStreamView definitions.</p>
-<p>The JSON for a simple mapping between a source type with identifier Sample and a target type with identifier Sample1 would appear as follows.</p>
-<pre><code class="lang-json">{  
-  &quot;Id&quot;:&quot;StreamView&quot;,
-  &quot;Name&quot;:&quot;StreamView&quot;,
-  &quot;SourceTypeId&quot;:&quot;Simple&quot;,
-  &quot;TargetTypeId&quot;:&quot;Simple1&quot;
-}
-</code></pre><p>The SdsStreamViewMap would appear as follows.</p>
-<pre><code class="lang-json">{  
-  &quot;SourceTypeId&quot;:&quot;Simple&quot;,
-  &quot;TargetTypeId&quot;:&quot;Simple1&quot;,
-  &quot;Properties&quot;:[  
-      {  
-        &quot;SourceId&quot;:&quot;Time&quot;,
-        &quot;TargetId&quot;:&quot;Time&quot;
-      },
-      {  
-        &quot;SourceId&quot;:&quot;State&quot;,
-        &quot;TargetId&quot;:&quot;State&quot;
-      },
-      {  
-        &quot;SourceId&quot;:&quot;Measurement&quot;,
-        &quot;TargetId&quot;:&quot;Value&quot;,
-        &quot;Mode&quot;:4
-      }
-  ]
-}
-</code></pre></article>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -340,7 +378,7 @@ retrieved from SDS, so required and optional have no meaning.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/sds-views.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/sds/sds-views.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

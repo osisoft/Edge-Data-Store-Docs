@@ -8,7 +8,7 @@
     <title>Modbus TCP EDS adapter quick start </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Modbus TCP EDS adapter quick start ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -80,91 +80,137 @@
 
 <p>The Modbus TCP EDS adapter is a component of Edge Data Store that defines connections to and receives data from Modbus TCP capable devices. The Modbus TCP EDS adapter can connect to multiple devices by defining one instance of the adapter for each device. The EDS installation includes the Modbus TCP EDS adapter and the option to add a single Modbus TCP EDS adapter instance. Add additional instances after installation using the system components configuration. For more information about installation, see <a class="xref" href="../installation/install-edge-data-store.html">Install Edge Data Store</a>. To get started collecting data with an instance of the Modbus TCP EDS adapter, you need to configure the data source, which specifies the device connection, and the data selection, which specifies the data to collect.</p>
 <p>The following diagram depicts the data flow of a single instance of Modbus TCP EDS adapter:</p>
-<p><img src="https://osisoft.github.io/Edge-Data-Store-Docs/content/images/ModbusTCP.jpg" alt="Modbus TCP EDS" title="Modbus TCP EDS"></p>
-<p>The adapter instance requests data from the Modbus TCP device and then the device sends its data. The adapter sends the collected data to the storage component where it is held until it can be egressed to permanent storage in PI Server or OSIsoft Cloud Services. The adapter instance can be configured from the device where EDS is installed, and EDS collects health information about the adapter that can be egressed.</p>
+<p><img src="../images/ModbusTCP.jpg" alt="Modbus TCP EDS" title="Modbus TCP EDS"></p>
+<p>The adapter instance requests data from the Modbus TCP device and then the device sends its data. The adapter sends the collected data to the storage component where it is held until it can be egressed to permanent storage in PI Server or AVEVA Data Hub. The adapter instance can be configured from the device where EDS is installed, and EDS collects health information about the adapter that can be egressed.</p>
 <h2 id="configure-a-modbus-tcp-data-source">Configure a Modbus TCP data source</h2>
-<p>To configure a data source to connect a Modbus TCP device to the Modbus TCP EDS adapter instance, perform the following steps</p>
+<p>To configure a data source to connect a Modbus TCP device to the Modbus TCP EDS adapter instance:</p>
 <ol>
-<li><p>Using a text editor, copy the example below to create a file in JSON format to describe the location of the Modbus TCP data source. </p>
+<li><p>Using a text editor, copy the example below to create a file in JSON format to describe the location of the Modbus TCP data source.</p>
 <pre><code class="lang-json">{
-    &quot;IpAddress&quot;: &quot;&lt;Modbus IP Address&gt;&quot;,
-    &quot;Port&quot;: &lt;Port - usually 502&gt;,
-    &quot;ConnectTimeout&quot;: 15000,
-    &quot;ReconnectInterval&quot;: 5000,
-    &quot;RequestTimeout&quot;: 9000,
-    &quot;DelayBetweenRequests&quot;: 0,
-    &quot;MaxResponseDataLength&quot;: 250
+    &quot;Devices&quot;:
+     [
+         {
+             &quot;Id&quot;: &quot;Device1&quot;,
+             &quot;IpAddress&quot;: &quot;&lt;Modbus IP Address&gt;&quot;,
+             &quot;Port&quot;: &lt;Port - usually 502&gt;,
+         }
+     ],
+     &quot;ReconnectInterval&quot;: &quot;00:00:01&quot;,
+     &quot;RequestTimeout&quot;: &quot;00:00:10&quot;,
+     &quot;DelayBetweenRequests&quot;: &quot;00:00:00.5&quot;,
+     &quot;MaxResponseDataLength&quot;: 125
 }
 </code></pre></li>
 <li><p>Modify the values in the example to match your environment, including the IP address and port for the Modbus data source.</p>
 </li>
-<li>Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is Modbus1, name the file <em>Modbus1DataSource.json</em>. </li>
-<li>Run the following curl script from the same directory where the file is located, updating the file name and destination in the script if needed. </li>
-</ol>
+<li><p>Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is <code>Modbus1</code>, name the file <code>Modbus1DataSource.json</code>.</p>
+</li>
+<li><p>Run the following command from the same directory where the file is located, updating the file name and destination in the script if needed.</p>
+<div class="tabGroup" id="tabgroup_JN3rta8IoR">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_JN3rta8IoR_tabid-1" role="tab" aria-controls="tabpanel_JN3rta8IoR_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">curl</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_JN3rta8IoR_tabid-2" role="tab" aria-controls="tabpanel_JN3rta8IoR_tabid-2" data-tab="tabid-2" tabindex="-1">EdgeCmd</a>
+</li>
+</ul>
+<section id="tabpanel_JN3rta8IoR_tabid-1" role="tabpanel" data-tab="tabid-1">
 <pre><code class="lang-bash">curl -d &quot;@Modbus1Datasource.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Datasource
-</code></pre><p>When the command completes successfully (a 204 is returned by curl), the Modbus TCP data source has been created. If you get a 400 error, check the JSON file for errors. If you receive a 404 or 500 error, check that EDS is running on the device.</p>
-<h2 id="configure-modbus-tcp-data-selection">Configure Modbus TCP data selection</h2>
-<p>After you create the data source file, select the streams to store in EDS by configuring Modbus data selection. To configure the data selection file, complete the following steps:</p>
+</code></pre></section>
+<section id="tabpanel_JN3rta8IoR_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-bash">edgecmd set dataSource -cid Modbus1 -file Modbus1DataSource.json
+</code></pre></section>
+</div>
+</li>
+</ol>
+<p>When the command completes successfully, that is a <code>204</code> is returned, the Modbus TCP data source has been created. If a <code>400</code> error is returned, check the JSON file for errors. If a <code>404</code> or <code>500</code> error is returned, check that EDS is running on the device.</p>
+<h2 id="configure-a-schedule">Configure a Schedule</h2>
+<p>Data selection items will use schedules to perform their scans for data. To configure the schedule file, complete the following steps:</p>
 <ol>
-<li><p>Using a text editor, copy the example below to create a file in JSON format to define each stream to ingress to EDS. </p>
-<pre><code class="lang-json">[{
-        &quot;Selected&quot;: &quot;true&quot;,
+<li><p>Using a text editor, copy the example below to create a file in JSON format to define the schedule.</p>
+<pre><code class="lang-json">[
+    {
+        &quot;Id&quot;: &quot;Schedule1&quot;,
+        &quot;Period&quot;: &quot;00:00:01.500&quot;,
+        &quot;Offset&quot;: &quot;00:02:03&quot;
+    }
+]
+</code></pre></li>
+<li><p>Modify the values in the example to match your environment.</p>
+</li>
+<li><p>Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is <code>Modbus1</code>, name the file <code>Modbus1Schedules.json</code>.</p>
+</li>
+<li><p>Run the following command from the same directory where the file is located, updating the file name and the endpoint URL in the script if needed.</p>
+<div class="tabGroup" id="tabgroup_JN3rta8IoR-1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_JN3rta8IoR-1_tabid-1" role="tab" aria-controls="tabpanel_JN3rta8IoR-1_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">curl</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_JN3rta8IoR-1_tabid-2" role="tab" aria-controls="tabpanel_JN3rta8IoR-1_tabid-2" data-tab="tabid-2" tabindex="-1">EdgeCmd</a>
+</li>
+</ul>
+<section id="tabpanel_JN3rta8IoR-1_tabid-1" role="tabpanel" data-tab="tabid-1">
+<pre><code class="lang-bash">curl -d &quot;@Modbus1Schedules.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Schedules
+</code></pre></section>
+<section id="tabpanel_JN3rta8IoR-1_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-bash">edgecmd set schedules -cid Modbus1 -file Modbus1ConfigureSchedules.json
+</code></pre></section>
+</div>
+</li>
+</ol>
+<h2 id="configure-modbus-tcp-data-selection">Configure Modbus TCP data selection</h2>
+<p>After you create the data source file and schedule file, select the streams to store in EDS by configuring Modbus data selection. To configure the data selection file, complete the following steps:</p>
+<ol>
+<li><p>Using a text editor, copy the example below to create a file in JSON format to define each stream to ingress to EDS.</p>
+<pre><code class="lang-json">[
+    {
+        &quot;DeviceId&quot; : &quot;Device1&quot;,
+        &quot;Selected&quot;: true,
         &quot;UnitId&quot;: 1,
         &quot;RegisterType&quot;: 3,
         &quot;RegisterOffset&quot;: 1,
         &quot;DataTypeCode&quot;: 20,
         &quot;ConversionFactor&quot;: 2,
         &quot;ConversionOffset&quot;: 3.4,
-        &quot;ScanRate&quot;: 500
+        &quot;ScheduleId&quot;: &quot;Schedule1&quot;
     },
     {
-        &quot;Selected&quot;: &quot;true&quot;,
+        &quot;DeviceId&quot; : &quot;Device1&quot;,
+        &quot;Selected&quot;: true,
         &quot;UnitId&quot;: 1,
         &quot;RegisterType&quot;: 3,
         &quot;RegisterOffset&quot;: 2,
         &quot;DataTypeCode&quot;: 20,
         &quot;ConversionFactor&quot;: 2,
         &quot;ConversionOffset&quot;: 3.4,
-        &quot;ScanRate&quot;: 500
-    },
-    {
-        &quot;Selected&quot;: &quot;true&quot;,
-        &quot;UnitId&quot;: 1,
-        &quot;RegisterType&quot;: 3,
-        &quot;RegisterOffset&quot;: 3,
-        &quot;DataTypeCode&quot;: 20,
-        &quot;ConversionFactor&quot;: 2,
-        &quot;ConversionOffset&quot;: 3.4,
-        &quot;ScanRate&quot;: 500
-    },
-    {
-        &quot;Selected&quot;: &quot;true&quot;,
-        &quot;UnitId&quot;: 1,
-        &quot;RegisterType&quot;: 3,
-        &quot;RegisterOffset&quot;: 4,
-        &quot;DataTypeCode&quot;: 20,
-        &quot;ConversionFactor&quot;: 2,
-        &quot;ConversionOffset&quot;: 3.4,
-        &quot;ScanRate&quot;: 500
-    },
-    {
-        &quot;Selected&quot;: &quot;true&quot;,
-        &quot;UnitId&quot;: 1,
-        &quot;RegisterType&quot;: 3,
-        &quot;RegisterOffset&quot;: 5,
-        &quot;DataTypeCode&quot;: 20,
-        &quot;ConversionFactor&quot;: 2,
-        &quot;ConversionOffset&quot;: 3.4,
-        &quot;ScanRate&quot;: 500
+        &quot;ScheduleId&quot;: &quot;Schedule1&quot;
     }
 ]
 </code></pre></li>
 <li><p>Modify the values in the example to match your environment.</p>
 </li>
-<li>Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is Modbus1, name the file <em>Modbus1DataSelection.json</em>. </li>
+<li><p>Save the file to the device with EDS installed using a file name based on the adapter instance name. For example, to use the adapter instance created during installation, which is <code>Modbus1</code>, name the file <code>Modbus1DataSelection.json</code>.</p>
+</li>
 <li><p>Run the following curl script from the same directory where the file is located, updating the file name and the endpoint URL in the script if needed.</p>
+<div class="tabGroup" id="tabgroup_JN3rta8IoR-2">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_JN3rta8IoR-2_tabid-1" role="tab" aria-controls="tabpanel_JN3rta8IoR-2_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">curl</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_JN3rta8IoR-2_tabid-2" role="tab" aria-controls="tabpanel_JN3rta8IoR-2_tabid-2" data-tab="tabid-2" tabindex="-1">EdgeCmd</a>
+</li>
+</ul>
+<section id="tabpanel_JN3rta8IoR-2_tabid-1" role="tabpanel" data-tab="tabid-1">
 <pre><code class="lang-bash">curl -d &quot;@Modbus1Dataselection.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/Modbus1/Dataselection
-</code></pre></li>
+</code></pre></section>
+<section id="tabpanel_JN3rta8IoR-2_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-bash">edgecmd set dataSelection -cid Modbus1 -file Modbus1DataSelection.json
+</code></pre></section>
+</div>
+</li>
 </ol>
 </article>
           </div>
@@ -174,7 +220,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/overview/modbus-quick-start.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/overview/modbus-quick-start.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

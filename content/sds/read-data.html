@@ -8,14 +8,14 @@
     <title>Read data </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Read data ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
     <link rel="stylesheet" href="../../styles/main.css">
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../../">
     
@@ -78,34 +78,147 @@
             <article class="content wrap" id="_content" data-uid="sdsReadingData">
 <h1 id="read-data">Read data</h1>
 
-<p>The REST APIs provide programmatic access to read stream data from SDS. The results returned by the APIs are affected by types, stream views, filter expressions, and table format.</p>
+<p>The .NET and REST APIs provide programmatic access to read and write data. This section identifies and describes the APIs used to read <a class="xref" href="sds-streams.html">SdsStreams</a> data. Results are influenced by <a class="xref" href="sds-types.html">SdsTypes</a>, <a class="xref" href="sds-views.html">SdsStreamViews</a>, <a class="xref" href="read-data/filter-expressions.html">filter expressions</a>, and <a class="xref" href="read-data/table-format.html">table format</a>.</p>
+<p>If you are working in a .NET environment, convenient SDS Client Libraries are available. The <code>ISdsDataService</code> interface, which is accessed using the <code>SdsService.GetDataService()</code> helper, defines the functions that are available.</p>
+<h2 id="reading-data-from-streams">Reading data from streams</h2>
+<p>While SDS is a robust data storage, it performs best if you follow certain guidelines:</p>
+<ul>
+<li><p>Maximum limit for events in read data calls</p>
+</li>
+<li><p>Increase the Request-Timeout in the header</p>
+</li>
+<li><p>Enable compression</p>
+</li>
+<li><p>Use available read data APIs</p>
+</li>
+</ul>
+<h3 id="maximum-limit-for-events-in-read-data-calls">Maximum limit for events in read data calls</h3>
+<p>Read data API is limited to retrieve less than 250,000 events per request. An error message is returned when the maximum limit is reached. This maximum limit applies to <a class="xref" href="streams/sds-streams-api.html#list-streams">List Values</a>, <a class="xref" href="streams/sds-streams-api.html#list-summaries">List Summaries</a>, <a class="xref" href="streams/sds-streams-api.html#list-sampled-values">List Sampled Values</a>.</p>
+<pre><code class="lang-text">400 bad request error
+{ 
+               &quot;Error&quot;: &quot;The request is not valid.&quot;, 
+               &quot;Reason&quot;: &quot;Exceeded the maximum return count of 250000 events.&quot; 
+               &quot;Resolution&quot;: &quot;Reduce query size and resubmit the request.&quot; 
+} 
+</code></pre><h3 id="increase-the-request-timeout-in-the-header">Increase the Request-Timeout in the header</h3>
+<p>Increase the Request-Timeout in the header to 5 minutes for large range calls that are requesting 250,000 events in a read call. The gateway will send <code>408 - Operation timed out error</code> if the request needs more than 30 seconds.</p>
+<p>The range of values that are held in memory can be large and be anywhere between 1 GB and 2 GB, so the system needs enough time to read and return the data.</p>
+<p>If multiple calls return <code>408 - Operation timed out error</code> even after increasing the timeout limit to 5 minutes, do one of the following:</p>
+<ul>
+<li><p>Reduce the range in the request calls of this type</p>
+</li>
+<li><p>Retry with an exponential back-off policy</p>
+</li>
+</ul>
+<h3 id="compression">Compression</h3>
+<p>Include <code>Accept-Encoding: gzip, deflate</code> in the HTTP header. This enables compression. For more information, see <a class="xref" href="compression.html#supported-compression-schemes">Compression</a>.</p>
+<h3 id="use-available-read-data-apis">Use available read data APIs</h3>
+<p>Depending on the scenario, there are different read data APIs available. They return an overview of the values instead of reading all values at once. These APIs provide a good high-level view of the values without displaying them all at the same time:</p>
+<ul>
+<li><p><a class="xref" href="read-data/reading-data-api.html#list-values">List Values</a> with filters</p>
+</li>
+<li><p><a class="xref" href="read-data/reading-data-api.html#get-summaries">Get Summaries</a></p>
+</li>
+<li><p><a class="xref" href="read-data/reading-data-api.html#get-sampled-values">Get Sampled Values</a></p>
+</li>
+</ul>
 <h2 id="single-stream-reads">Single stream reads</h2>
 <p>The following methods for reading a single value are available:</p>
 <ul>
-<li><a class="xref" href="read-data/reading-data-api.html#get-first-value">Get First Value</a> returns the first value in the stream.</li>
-<li><a class="xref" href="read-data/reading-data-api.html#get-last-value">Get Last Value</a> returns the last value in the stream.</li>
-<li><a class="xref" href="read-data/reading-data-api.html#find-distinct-value">Find Distinct Value</a> returns a value based on a starting index and search criteria.</li>
+<li><p><a class="xref" href="read-data/reading-data-api.html#get-first-value">Get First Value</a> returns the first value in the stream.</p>
+</li>
+<li><p><a class="xref" href="read-data/reading-data-api.html#get-last-value">Get Last Value</a> returns the last value in the stream.</p>
+</li>
+<li><p><a class="xref" href="read-data/reading-data-api.html#find-distinct-value">Find Distinct Value</a> returns a value based on a starting index and search criteria.</p>
+</li>
 </ul>
 <p>In addition, the following methods support reading multiple values:</p>
 <ul>
-<li><a class="xref" href="read-data/reading-data-api.html#get-values">Get Values</a> retrieves a collection of stored values based on the request parameters.</li>
-<li><a class="xref" href="read-data/reading-data-api.html#get-interpolated-values">Get Interpolated Values</a> retrieves a collection of stored or calculated values based on the request parameters.</li>
-<li><a class="xref" href="read-data/reading-data-api.html#get-summaries">Get Summaries</a> retrieves a collection of evenly spaced summary intervals based on a count 
-and specified start and end indexes.</li>
-<li><a class="xref" href="read-data/reading-data-api.html#get-sampled-values">Get Sampled Values</a> retrieves a collection of sampled data based on the request parameters.</li>
+<li><p><a class="xref" href="read-data/reading-data-api.html#list-values">List Values</a> retrieves a collection of stored values based on the request parameters.</p>
+</li>
+<li><p><a class="xref" href="read-data/reading-data-api.html#list-interpolated-values">List Interpolated Values</a> retrieves a collection of stored or calculated values based on the request parameters.</p>
+</li>
+<li><p><a class="xref" href="read-data/reading-data-api.html#get-summaries">Get Summaries</a> retrieves a collection of evenly spaced summary intervals based on a count and specified start and end indexes.</p>
+</li>
+<li><p><a class="xref" href="read-data/reading-data-api.html#get-sampled-values">Get Sampled Values</a> retrieves a collection of sampled data based on the request parameters.</p>
+</li>
 </ul>
-<p>All single stream reads are HTTP GET actions, because reading data involves getting events from streams. The base reading URI from a single stream is as follows:</p>
-<pre><code class="lang-text">  api/v1/Tenants/default/Namespaces/{namespaceId}/Streams/{streamId}/Data
-</code></pre><p><strong>Parameters</strong><br><strong>string namespaceId</strong><br>The namespace; either default or diagnostics.</p>
-<p><strong>string streamId</strong><br>The stream identifier.</p>
 <h2 id="bulk-reads">Bulk reads</h2>
-<p>SDS supports reading from multiple streams in one request using the following method:</p>
-<p><a class="xref" href="read-data/reading-data-api.html#join-values">Join Values</a> retrieves a collection of events across multiple streams and joins the results based on the request parameters.</p>
-<p>Multi-stream reads can be either HTTP GET or HTTP POST actions. The base reading URI for reading from multiple streams is the following:</p>
-<pre><code class="lang-text">  api/v1/Tenants/default/Namespaces/{namespaceId}/Bulk/Streams/Data
-</code></pre><p><strong>Parameters</strong><br><strong>string namespaceId</strong><br>The namespace; either default or diagnostics.</p>
-<h2 id="indexes-and-reading-data">Indexes and reading data</h2>
-<p>Most read operations take at least one index as a parameter. Indexes may be specified as strings. For additional details about working with indexes, see <a class="xref" href="indexes.html">Indexes</a>.</p>
+<p>SDS supports reading from multiple streams in one request. The following method for reading data from multiple streams is available:</p>
+<ul>
+<li><a class="xref" href="read-data/reading-data-api.html#join-values">Join Values</a> retrieves a collection of events across multiple streams and joins the results based on the request parameters.</li>
+</ul>
+<h2 id="sdsboundarytype">SdsBoundaryType</h2>
+<p>The <code>SdsBoundaryType</code> enum defines how data on the boundary of queries is handled—around the start index for range value queries and around the start and end index for window values. The following are valid values for <code>SdsBoundaryType</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Boundary</th>
+<th>Enumeration value</th>
+<th>Operation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Exact</code></td>
+<td>0</td>
+<td>Results include the event at the specified index boundary if a stored event exists at that index.</td>
+</tr>
+<tr>
+<td><code>Inside</code></td>
+<td>1</td>
+<td>Results include only events within the index boundaries</td>
+</tr>
+<tr>
+<td><code>Outside</code></td>
+<td>2</td>
+<td>Results include up to one event that falls immediately outside of the specified index boundary.</td>
+</tr>
+<tr>
+<td><code>ExactOrCalculated</code></td>
+<td>3</td>
+<td>Results include the event at the specified index boundary. If no stored event exists at that index, one is calculated based on the index type and interpolation and extrapolation settings.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sdssearchmode">SdsSearchMode</h2>
+<p>The <code>SdsSearchMode</code> enum defines search behavior when seeking a stored event near a specified index. The following table shows valid values for <code>SdsSearchMode</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Enumeration value</th>
+<th>Operation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Exact</code></td>
+<td>0</td>
+<td>If a stored event exists at the specified index, that event is returned. Otherwise, no event is returned.</td>
+</tr>
+<tr>
+<td><code>ExactOrNext</code></td>
+<td>1</td>
+<td>If a stored event exists at the specified index, that event is returned. Otherwise, the next event in the stream is returned.</td>
+</tr>
+<tr>
+<td><code>Next</code></td>
+<td>2</td>
+<td>Returns the stored event after the specified index.</td>
+</tr>
+<tr>
+<td><code>ExactOrPrevious</code></td>
+<td>3</td>
+<td>If a stored event exists at the specified index, that event is returned. Otherwise, the previous event in the stream is returned.</td>
+</tr>
+<tr>
+<td><code>Previous</code></td>
+<td>4</td>
+<td>Returns the stored event before the specified index.</td>
+</tr>
+</tbody>
+</table>
 </article>
           </div>
           
@@ -114,7 +227,7 @@ and specified start and end indexes.</li>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/read-data.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/sds/read-data.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

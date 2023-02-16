@@ -8,7 +8,7 @@
     <title>Data selection configuration </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Data selection configuration ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -80,21 +80,40 @@
 
 <p>Once a data source is configured for a Modbus TCP instance, create a data selection configuration file to specify the data for the Modbus TCP EDS adapter instance to collect from the data source.</p>
 <h2 id="configure-modbus-tcp-data-selection">Configure Modbus TCP data selection</h2>
-<p>Complete the following to configure Modbus TCP data selection:</p>
+<p>To configure Modbus TCP data selection:</p>
 <ol>
-<li>Using any text editor, create a file that contains a Modbus TCP data selection in JSON form.<ul>
-<li>For content structure, see <a href="#modbus-tcp-data-selection-examples">Modbus TCP data selection examples</a>. </li>
+<li><p>Using any text editor, create a file that contains a Modbus TCP data selection in JSON form.</p>
+<ul>
+<li>For content structure, see <a href="#modbus-tcp-data-selection-examples">Modbus TCP data selection examples</a>.</li>
 </ul>
 </li>
-<li>Update the parameters as needed. For a table of all available parameters, see <a href="#parameters-for-modbus-tcp-data-selection">Parameters for Modbus TCP data selection</a>. </li>
-<li>Save the file to the device with EDS installed with the name <em>DataSelection.config.json</em>.</li>
-<li>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:&lt;port_number&gt;/api/v1/configuration/&lt;EDS adapterId&gt;/DataSelection/</code>.</li>
-</ol>
-<p>The following example shows the HTTPS request using curl, which must be run from the same directory where the file is located, and uses the adapter instance created during installation, which is Modbus1:</p>
-<pre><code class="lang-bash">curl -d &quot;@DataSelection.config.json&quot; -H &quot;Content-Type: application/json&quot; &quot;http://localhost:5590/api/v1/configuration/Modbus1/DataSelection&quot;
-</code></pre><p>To see the streams that have been created in EDS storage for the data specified in the configuration, run the following curl script:</p>
+<li><p>Update the parameters as needed. For a table of all available parameters, see <a href="#parameters-for-modbus-tcp-data-selection">Parameters for Modbus TCP data selection</a>.</p>
+</li>
+<li><p>Save the file to the device with EDS installed with the name <code>Modbus1DataSelection..json</code>.</p>
+</li>
+<li><p>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:&lt;port_number&gt;/api/v1/configuration/&lt;EDS adapterId&gt;/DataSelection/</code>.</p>
+<p> The following example shows the HTTPS request using curl, which must be run from the same directory where the file is located, and uses the adapter instance created during installation, which is Modbus1:</p>
+<div class="tabGroup" id="tabgroup_02htak7j8Z">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_02htak7j8Z_tabid-1" role="tab" aria-controls="tabpanel_02htak7j8Z_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">curl</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_02htak7j8Z_tabid-2" role="tab" aria-controls="tabpanel_02htak7j8Z_tabid-2" data-tab="tabid-2" tabindex="-1">EdgeCmd</a>
+</li>
+</ul>
+<section id="tabpanel_02htak7j8Z_tabid-1" role="tabpanel" data-tab="tabid-1">
+<pre><code class="lang-bash">curl -d &quot;@ModbusDataSelection..json&quot; -H &quot;Content-Type: application/json&quot; &quot;http://localhost:5590/api/v1/configuration/Modbus1/DataSelection&quot;
+</code></pre></section>
+<section id="tabpanel_02htak7j8Z_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code>edgecmd set dataSelection -cid Modbus1 -file Modbus1DataSelection..json
+</code></pre></section>
+</div>
+<p> To see the streams that have been created in EDS storage for the data specified in the configuration, run the following curl script:</p>
 <pre><code class="lang-bash">curl http://localhost:5590/api/v1/tenants/default/namespaces/default/streams/
-</code></pre><h2 id="parameters-for-modbus-tcp-data-selection">Parameters for Modbus TCP data selection</h2>
+</code></pre></li>
+</ol>
+<h2 id="parameters-for-modbus-tcp-data-selection">Parameters for Modbus TCP data selection</h2>
 <p>The following parameters are available for configuring Modbus TCP data selection.</p>
 <table>
 <thead>
@@ -108,11 +127,11 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>Id</strong></td>
-<td>Optional</td>
+<td><strong>DeviceId</strong></td>
+<td>Required</td>
 <td><code>string</code></td>
-<td>Yes</td>
-<td>Used to update an existing measurement. The ID automatically updates when there are changes to the measurement and will follow the format of <code>&lt;UnitId</code>&gt;.<code>&lt;RegisterType</code>&gt;.<code>&lt;RegisterOffset</code>&gt;.</td>
+<td>No</td>
+<td>Specifies the DataSource device that this data selection item is read from. The value must match one of the <code>&lt;Id&gt;</code> values specified in the DataSource Devices configuration.</td>
 </tr>
 <tr>
 <td><strong>Selected</strong></td>
@@ -199,6 +218,7 @@
 <p><strong>Minimum data selection configuration:</strong></p>
 <pre><code class="lang-json">[
     {
+        &quot;DeviceId&quot;: &quot;Device1&quot;,
         &quot;UnitId&quot;: 1,
         &quot;RegisterType&quot;: 3,
         &quot;RegisterOffset&quot;: 122,
@@ -209,7 +229,7 @@
 </code></pre><p><strong>Maximum data selection configuration:</strong></p>
 <pre><code class="lang-json">[
     {
-        &quot;Id&quot;: &quot;DataItem1&quot;,
+        &quot;DeviceId&quot;: &quot;Device1&quot;,
         &quot;Selected&quot;: true,
         &quot;Name&quot;: &quot;MyDataItem&quot;,
         &quot;UnitId&quot;: 1,
@@ -231,7 +251,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/modbus/modbus-data-selection-configuration.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/modbus/modbus-data-selection-configuration.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

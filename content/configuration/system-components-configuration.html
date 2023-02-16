@@ -8,7 +8,7 @@
     <title>System components configuration </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="System components configuration ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -79,30 +79,46 @@
 <h1 id="system-components-configuration">System components configuration</h1>
 
 <p>Edge Data Store components are Modbus TCP EDS adapter, OPC UA EDS adapter, and the Storage component. These components are only active if they are configured for the system to use them. EDS itself needs only a small amount of configuration - the list of components and the HTTP Port used for REST calls.</p>
-<p>The default <em>System_Components.json</em> file for the System component contains the following information. </p>
+<p>The default <em>System_Components.json</em> file for the System component contains the following information:</p>
 <pre><code class="lang-json">[
   {
     &quot;ComponentId&quot;: &quot;Storage&quot;,
-    &quot;ComponentType&quot;: &quot;EDS.Component&quot;
+    &quot;ComponentType&quot;: &quot;Storage&quot;
   }
 ]
 </code></pre><p>The Storage component is required for Edge Data Store to run and only one Storage component instance is supported. Each Modbus device needs a separate Modbus TCP EDS adapter component instance to connect to EDS, and each OPC UA device needs a separate OPC UA EDS adapter component instance to connect to EDS. Multiple Modbus TCP EDS adapter component instances and the OPC UA EDS adapter component instances are supported.  </p>
 <h2 id="add-system-components">Add system components</h2>
+<p>To add system components:</p>
 <ol>
-<li><p>Using any text editor, create a JSON file with the ComponentId and ComponentType. The following example adds a Modbus TCP EDS adapter instance. </p>
-<pre><code class="lang-json">  {
-    &quot;ComponentId&quot;: &quot;Modbus1&quot;,
-    &quot;ComponentType&quot;: &quot;Modbus&quot;
-  }
-</code></pre><p><strong>Note:</strong> The ComponentId must be a unique value. This example uses the ComponentId Modbus1, since it is the first Modbus TCP EDS adapter.</p>
+<li><p>Using any text editor, create a JSON file with a <code>ComponentId</code> and <code>ComponentType</code>. The following example adds a Modbus TCP EDS adapter instance.</p>
+<pre><code class="lang-json"> {
+   &quot;ComponentId&quot;: &quot;Modbus1&quot;,
+   &quot;ComponentType&quot;: &quot;Modbus&quot;
+ }
+</code></pre><p><strong>Note:</strong> The <code>ComponentId</code> must be a unique value. This example uses the <code>ComponentId</code> &quot;Modbus1,&quot; since it is the first Modbus TCP EDS adapter.</p>
 </li>
-<li><p>Save the JSON file with the name <em>AddComponent.json</em>. </p>
+<li><p>Save the JSON file with the name <code>AddComponent.json</code>.</p>
 </li>
-<li><p>From the same directory where the file exists, run the following curl script:</p>
+<li><p>From the same directory where the file exists, run the following curl script or EdgeCmd:</p>
+<div class="tabGroup" id="tabgroup_ahoyOpeoHy">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_ahoyOpeoHy_tabid-1" role="tab" aria-controls="tabpanel_ahoyOpeoHy_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">curl</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_ahoyOpeoHy_tabid-2" role="tab" aria-controls="tabpanel_ahoyOpeoHy_tabid-2" data-tab="tabid-2" tabindex="-1">EdgeCmd</a>
+</li>
+</ul>
+<section id="tabpanel_ahoyOpeoHy_tabid-1" role="tabpanel" data-tab="tabid-1">
 <pre><code class="lang-bash">curl -d &quot;@AddComponent.json&quot; -H &quot;Content-Type: application/json&quot; http://localhost:5590/api/v1/configuration/system/components
-</code></pre></li>
+</code></pre></section>
+<section id="tabpanel_ahoyOpeoHy_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code>edgecmd add components -type Modbus -id Modbus1
+</code></pre></section>
+</div>
+</li>
 </ol>
-<p>After the curl command completes successfully, the new component is available for configuration and use.</p>
+<p>After the command completes successfully, the new component is available for configuration and use.</p>
 <h2 id="parameters-for-system-components">Parameters for system components</h2>
 <p>The following parameters are used to define system components.</p>
 <table>
@@ -117,34 +133,34 @@
 </thead>
 <tbody>
 <tr>
-<td>ComponentId</td>
+<td><strong>ComponentId</strong></td>
 <td>Required</td>
 <td><code>string</code></td>
 <td>Yes</td>
 <td>The unique ID of the component instance. It can be any alphanumeric string, for example Storage.</td>
 </tr>
 <tr>
-<td>ComponentType</td>
+<td><strong>ComponentType</strong></td>
 <td>Required</td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td>The type of the component, for example EDS.Component. There are three types of components: Storage identified by <em>EDS.Component</em>, OPC UA EDS Adapter identified by <em>OpcUa</em>, and Modbus TCP EDS Adapter identified by <em>Modbus</em>.</td>
+<td>The type of the component, for example <code>Storage</code>. There are three types of components: Storage identified by <code>Storage</code>, OPC UA EDS Adapter identified by <code>OpcUa</code>, and Modbus TCP EDS Adapter identified by <code>Modbus</code>.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="system-components-example">System components example</h2>
 <pre><code class="lang-json">[
   {
-                &quot;componentId&quot;: &quot;OpcUa1&quot;,
-                &quot;componentType&quot;: &quot;OpcUa&quot;
-            },
-            {
-                &quot;componentId&quot;: &quot;Modbus1&quot;,
-                &quot;componentType&quot;: &quot;Modbus&quot;
-            },
-            {
-                &quot;componentId&quot;: &quot;Storage&quot;,
-                &quot;componentType&quot;: &quot;EDS.Component&quot;
+    &quot;componentId&quot;: &quot;OpcUa1&quot;,
+    &quot;componentType&quot;: &quot;OpcUa&quot;
+    },
+    {
+      &quot;componentId&quot;: &quot;Modbus1&quot;,
+      &quot;componentType&quot;: &quot;Modbus&quot;
+    },
+    {
+      &quot;componentId&quot;: &quot;Storage&quot;,
+      &quot;componentType&quot;: &quot;Storage&quot;
    }
 ]
 </code></pre></article>
@@ -155,7 +171,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/configuration/system-components-configuration.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/configuration/system-components-configuration.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

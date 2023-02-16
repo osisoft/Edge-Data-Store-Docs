@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Configure manual data egress </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Configure manual data egress ">
+    <meta name="generator" content="docfx 2.59.1.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../content/index.html" width="46">
+                <img id="logo" src="../../content/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge Data Store"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ManualEgress">
+<h1 id="configure-manual-data-egress">Configure manual data egress</h1>
+
+<p>Manual data egress is a task that sends the timeseries data collected by EDS to long term storage in either AVEVA Data Hub or PI Server. You can create multiple manual egress tasks.</p>
+<p>Once you prepare the AVEVA Data Hub or PI Server destinations to receive OMF messages and configure <code>EgressEndpoints</code> for the chosen destination, you can send manual egress requests as needed. For example, you may need to backfill data or want to review data for an event as soon as possible. For more information on egress destinations, see <a class="xref" href="prepare-egress-destinations.html">Prepare egress destinations</a>. </p>
+<p>Make requests in JSON using parameters, similar to periodic egress, to specify which data to egress and when the egress should happen. You can either save the parameters in a file to send them or send the request directly. In addition to creating manual egress requests, you can cancel, resume, and delete these requests. For a list of other REST operations you can perform, see <a href="#rest-urls">REST URLs</a>.</p>
+<p><strong>Note:</strong> The maximum number of manual egress jobs is 50, including completed jobs. If the maximum number is reached, new manual egress requests are rejected. Use the delete REST operation to remove egress jobs that you no longer need.  </p>
+<h2 id="send-manual-data-egress-request">Send manual data egress request</h2>
+<p>To send a manual data egress request:</p>
+<ol>
+<li><p>Create a JSON file.</p>
+<ul>
+<li>For content structure, see the following <a href="#example-manual-egress-request">Example manual egress request</a>.</li>
+</ul>
+<p><strong>Note:</strong> If you prefer, you can send the JSON request directly without saving the parameters to a file.</p>
+</li>
+<li><p>Update the parameters as needed. For descriptions of all available parameters, see <a href="#parameters">Parameters</a>.</p>
+</li>
+<li><p>Save the JSON file to any directory on the device where Edge Data Store is installed. For example, as <code>ManualEgress.json</code>.</p>
+</li>
+<li><p>Use any tool capable of making HTTP requests to send the contents of the JSON request to the following configuration endpoint using <code>POST</code>:</p>
+<p><code>http://localhost:5590/api/v1/configuration/storage/manualegresses</code></p>
+</li>
+</ol>
+<p>Example using cURL, which must be run from the directory where the JSON file is saved:</p>
+<pre><code class="lang-bash">curl -d &quot;@ManualEgress.json&quot; -H &quot;Content-Type: application/json&quot; -X POST http://localhost:5590/api/v1/configuration/storage/manualegresses
+</code></pre><h2 id="parameters">Parameters</h2>
+<p>The following table lists the parameters for manual egress.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Id</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>Unique identifier of the request.</td>
+</tr>
+<tr>
+<td><strong>EndpointId</strong></td>
+<td>Required</td>
+<td>string</td>
+<td>Unique identifier of the endpoint destination. <br><strong>Note:</strong> You must configure the endpoint before sending manual egress requests.</td>
+</tr>
+<tr>
+<td><strong>Period</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>The frequency of time between each egress action after the initial egress. Must be a string in the format <code>d.hh:mm:ss.##</code>. See <strong>ScheduledTime</strong> for additional information. If you do not set the <strong>Period</strong>, the default value is <code>01:00:00</code>, which is 1 hour. If the entire range of data specified by the <code>StartIndex</code> and <code>EndIndex</code> is in the past, the <strong>Period</strong> is not used.</td>
+</tr>
+<tr>
+<td><strong>ScheduledTime</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>The date and time when the egress request will begin. Valid formats are: UTC: <code>yyyy-mm-ddThh:mm:ssZ</code> and Local: <code>yyyy-mm-ddThh:mm:ss</code>. Use the <strong>ScheduledTime</strong> parameter if you want data egress to begin at or after a specific time instead of beginning immediately. If you do not specify a <strong>ScheduledTime</strong>, EDS uses the time the request is received. <br><strong>Note:</strong> Only one manual egress job runs at a time.</td>
+</tr>
+<tr>
+<td><strong>StartIndex</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>Identifies the first data point to transfer. If <code>null</code>, it is interpreted as the date and time egress is scheduled to start. The Valid formats are: UTC: <code>yyyy-mm-ddThh:mm:ssZ</code>, Local: <code>yyyy-mm-ddThh:mm:ss</code>, and Relative: <code>+d.hh:mm:ss.##</code> or <code>-d.hh:mm:ss.##</code>. <br>Relative time strings are calculated based on the <strong>ScheduledTime</strong>. If the <strong>ScheduledTime</strong> is not specified, the relative time string is calculated based on the time the egress job request is received.</td>
+</tr>
+<tr>
+<td><strong>EndIndex</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>Identifies the last data point to transfer. If <code>null</code>, it is interpreted as the date and time egress is scheduled to start. Valid formats are: UTC: <code>yyyy-mm-ddThh:mm:ssZ</code>, Local: <code>yyyy-mm-ddThh:mm:ss</code>, and Relative: <code>+d.hh:mm:ss.##</code>. <br>Relative time strings are calculated based on the <strong>StartIndex</strong>. Relative time strings must be positive to ensure a range of data is selected for egress.</td>
+</tr>
+<tr>
+<td><strong>DataSelectors</strong></td>
+<td>Optional</td>
+<td>array</td>
+<td>An array of configuration settings to select data for egress. See the <strong>DataSelectors</strong> parameters in the following table.</td>
+</tr>
+</tbody>
+</table>
+<p>The following table lists egress parameters for <strong>DataSelectors</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Id</strong></td>
+<td>Required</td>
+<td>string</td>
+<td>Unique identifier of the data selector configuration.</td>
+</tr>
+<tr>
+<td><strong>StreamFilter</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>A filter used to determine which streams and types are egressed. For more information on valid filters, see <a class="xref" href="../sds/search.html">Search in SDS</a>.</td>
+</tr>
+<tr>
+<td><strong>AbsoluteDeadband</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>Specifies the absolute change in data value that will cause the current value to pass the filter test.</td>
+</tr>
+<tr>
+<td><strong>PercentChange</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>Specifies the percent change from previous value that will cause the current value to pass the filter test.</td>
+</tr>
+<tr>
+<td><strong>ExpirationPeriod</strong></td>
+<td>Optional</td>
+<td>string</td>
+<td>The length in time that can elapse after an event before automatically storing the next event. The expected format is <code>HH:MM:SS.###</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example-manual-egress-request">Example manual egress request</h2>
+<p>The following is an example manual egress request.</p>
+<pre><code class="lang-JSON">{
+    &quot;Id&quot;: &quot;Egress1&quot;,
+    &quot;EndpointId&quot;: &quot;AVEVA Data Hub_Location&quot;,
+    &quot;Period&quot;: &quot;00:00:30&quot;,
+    &quot;ScheduledTime&quot;: &quot;2022-08-10T21:20:00Z&quot;,
+    &quot;StartIndex&quot;: &quot;2022-08-08T18:20:00Z&quot;,
+    &quot;EndIndex&quot;: &quot;+ 04:00:00&quot;,
+    &quot;DataSelectors&quot;: [
+        {
+            &quot;id&quot;: &quot;PercentChangeFilter&quot;,
+            &quot;percentChange&quot;: 1
+        }
+    ]
+}
+</code></pre><h2 id="example-manual-egress-response">Example manual egress response</h2>
+<p>The following is an example response for a manual egress request.</p>
+<pre><code class="lang-JSON">{ 
+    &quot;id&quot;: &quot;Egress1&quot;, 
+    &quot;endpointId&quot;: &quot;AVEVA Data Hub_Location&quot;, 
+    &quot;period&quot;: &quot;00:00:30&quot;, 
+    &quot;requestTimeUtc&quot;: &quot;2022-08-10T13:45:58.607148Z&quot;, 
+    &quot;scheduledTime&quot;: &quot;2022-08-10T21:20:00Z&quot;, 
+    &quot;dataSelectors&quot;: [ 
+        { 
+            &quot;id&quot;: &quot;PercentChangeFilter&quot;,
+            &quot;streamFilter&quot;: null, 
+            &quot;absoluteDeadband&quot;: null,
+            &quot;percentChange&quot;: 1, 
+            &quot;expirationPeriod&quot;: null
+        } 
+    ], 
+    &quot;startIndex&quot;: &quot;2022-08-08T18:20:00Z&quot;, 
+    &quot;endIndex&quot;: &quot;+ 04:00:00&quot;, 
+    &quot;startIndexDateTimeUtc&quot;: &quot;2022-08-08T18:20:00Z&quot;, 
+    &quot;endIndexDateTimeUtc&quot;: &quot;2022-08-08T22:20:00Z&quot;, 
+    &quot;checkpoint&quot;: null, 
+    &quot;progress&quot;: 0, 
+    &quot;status&quot;: &quot;Active&quot;, 
+    &quot;errors&quot;: null 
+}
+</code></pre><h3 id="response-parameters">Response parameters</h3>
+<p>Response parameters include information sent in the manual egress request and additional information about how the request will be processed. The following table lists the response parameters for manual egress.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RequestTimeUtc</strong></td>
+<td>The date and time EDS received the egress request.</td>
+</tr>
+<tr>
+<td><strong>StartIndexDateTimeUtc</strong></td>
+<td>The date and time of the first data point to transfer in Coordinated Universal Time (UTC). If you specified a relative time, this is the calculated result.</td>
+</tr>
+<tr>
+<td><strong>EndIndexDateTimeUtc</strong></td>
+<td>The date and time of the last data point to transfer Coordinated Universal Time (UTC). If you specified a relative time, this is the calculated result.</td>
+</tr>
+<tr>
+<td><strong>Checkpoint</strong></td>
+<td>The latest timestamp that the egress has completed with the range between <strong>StartIndex</strong> and <strong>EndIndex</strong>.</td>
+</tr>
+<tr>
+<td><strong>Progress</strong></td>
+<td>Current percent complete of the egress job.</td>
+</tr>
+<tr>
+<td><strong>Status</strong></td>
+<td>Status of the egress job. Values are <code>Active</code>, <code>Canceled</code>, <code>Complete</code>, and <code>Failed</code>.</td>
+</tr>
+<tr>
+<td><strong>Errors</strong></td>
+<td>Errors encountered during egress.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="rest-urls">REST URLs</h2>
+<table>
+<thead>
+<tr>
+<th>Relative URL</th>
+<th>HTTP verb</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>api/v1/configuration/storage/manualegresses</code></td>
+<td><code>POST</code></td>
+<td>Requests a manual egress job</td>
+</tr>
+<tr>
+<td><code>api/v1/configuration/storage/manualegresses</code></td>
+<td><code>GET</code></td>
+<td>Returns the state of all manual egress jobs in the queue</td>
+</tr>
+<tr>
+<td><code>api/v1/configuration/storage/manualegresses</code></td>
+<td><code>DELETE</code></td>
+<td>Cancels all active manual egress job and removes states</td>
+</tr>
+<tr>
+<td><code>api/v1/configuration/storage/manualegresses/&lt;Id&gt;</code></td>
+<td><code>GET</code></td>
+<td>Returns the state of a specific egress job</td>
+</tr>
+<tr>
+<td><code>api/v1/configuration/storage/manualegresses/&lt;Id&gt;</code></td>
+<td><code>DELETE</code></td>
+<td>Deletes the state of an individual egress job</td>
+</tr>
+<tr>
+<td><code>api/v1/configuration/storage/manualegresses/&lt;Id&gt;/cancel</code></td>
+<td><code>POST</code></td>
+<td>Cancels an egress job</td>
+</tr>
+<tr>
+<td><code>api/v1/configuration/storage/manualegresses/&lt;Id&gt;/resume</code></td>
+<td><code>POST</code></td>
+<td>Resumes a canceled or failed egress job</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> Replace <code>&lt;Id&gt;</code> with the Id of the egress job for which you want to perform the action.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/egress/manual-egress.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span><a href="https://www.osisoft.com/copyright/">© 2019 - 2021 OSIsoft, LLC. All rights reserved.</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

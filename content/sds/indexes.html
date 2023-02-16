@@ -8,14 +8,14 @@
     <title>Indexes </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Indexes ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
     <link rel="stylesheet" href="../../styles/main.css">
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../../">
     
@@ -78,11 +78,13 @@
             <article class="content wrap" id="_content" data-uid="sdsIndexes">
 <h1 id="indexes">Indexes</h1>
 
-<p>Indexes speed up and order the results of searches. A key uniquely identifies a record within a collection of records.</p>
+<p>Indexes speed up and order the results of searches. A key uniquely identifies a record within a collection of records. Keys are unique within the collection.</p>
 <p>In SDS, the key of an SdsType is also an index. The key is often referred to as the <em>primary index</em>, while all other indexes are referred to as <em>secondary indexes</em> or <em>secondaries</em>.</p>
-<p>An SdsType that is used to define an SdsStream must specify a key. When inserting data into an SdsStream, every key value must be unique. SDS will not store more than a single event for a given key. An event with a particular key may be deleted or updated, but two events with the same key cannot exist.</p>
+<p>An SdsType that is used to define an SdsStream must specify a key. When you add data to a stream, every key value must be unique. SDS will not store more than a single event for a given key. An event with a particular key may be deleted or updated, but two events with the same key cannot exist.</p>
+<p>In .NET, the SdsType properties that define the primary index are identified using an <code>OSIsoft.Sds.SdsMemberAttribute</code> and setting its <code>IsKey</code> field to <code>true</code>. If the key consists of only a single property, you can use the <code>System.ComponentModel.DataAnnotations.KeyAttribute</code>. Property or properties representing the primary index of a type have their <code>SdsTypeProperty.IsKey</code> field set to <code>true</code>.</p>
 <p>Secondary indexes are defined on SdsStreams and applied to a single property. You can define many secondary indexes and the values do not need to be unique.</p>
-<p>The following table contains supported index types:</p>
+<h2 id="supported-types-for-an-index">Supported types for an index</h2>
+<p>The following table shows supported index types.</p>
 <table>
 <thead>
 <tr>
@@ -165,7 +167,27 @@
 </tr>
 </tbody>
 </table>
-</article>
+<h2 id="compound-indexes">Compound indexes</h2>
+<p>A single property, such as <code>DateTime</code>, is adequate for defining an index most of the time. For more complex scenarios, SDS allows you to define multiple properties. Indexes defined by multiple properties are known as <em>compound indexes</em>. Only the primary index (or key) supports compound indexes.</p>
+<p>When you define a compound index within the .NET framework, you should apply the <code>OSIsoft.Sds.SdsMemberAttribute</code> on each property field of the SdsType that is combined to define the index. Set the property <code>IsKey</code> to <code>true</code> and give the <strong>Order</strong> field a zero-based index value. The <strong>Order</strong> field defines the precedence of the property when sorting. A property with an order of <code>0</code> has highest precedence.</p>
+<p>When defining compound indexes outside of .NET framework, specify the <code>IsKey</code> and <code>Order</code> fields
+on the <code>SdsTypeProperty</code> object.</p>
+<p>You can specify a maximum of three properties to define a compound index. In read and write data operations, specify compound indexes in the URI by ordering each property that composes the index separated by the pipe character, ‘|’. To help those using compound indexes, .NET client libraries methods also allow the use of tuples for indexes.</p>
+<p><strong>Note:</strong> Compound indexing only applies to types. In other words, there is no compound indexing for secondary indexes that are on streams. For more information, see <a class="xref" href="sds-streams.html#indexes">Streams</a>.</p>
+<p>The examples below are for compound indexes on types and not of secondary indexes on streams.</p>
+<h3 id="rest-api-example">REST API example</h3>
+<pre><code class="lang-text">// Read data located between two compound indexes:
+GET api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data?startIndex={firstIndex|secondIndex|thirdIndex}&amp;endIndex={firstIndex|secondIndex|thirdIndex}
+GET api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data?startIndex={firstIndex|secondIndex}&amp;endIndex={firstIndex|secondIndex}
+// Delete data with a compound index:
+DELETE api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data?index={firstIndex|secondIndex}
+DELETE api/v1/Tenants/{tenantId}/Namespaces/{namespaceId}/Streams/{streamId}/Data?startIndex={firstIndex|secondIndex|thirdIndex}&amp;endIndex={firstIndex|secondIndex|thirdIndex}
+</code></pre><h3 id="net-examples">.NET examples</h3>
+<pre><code class="lang-c#">// Read data located between two compound indexes:
+IEnumerable&lt;DerivedCompoundIndex&gt; compoundValues = await client.GetWindowValuesAsync&lt;DerivedCompoundIndex&gt;(compoundStream.Id, 1/20/2017 01:00|1/20/2017 00:00, 1/20/2017 02:00|1/20/2017 14:00);
+// Remove data with a compound index:
+Task RemoveValueAsync(compoundStream.Id, 1/20/2017 01:00|1/20/2017 00:00);
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -173,7 +195,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/indexes.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/sds/indexes.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

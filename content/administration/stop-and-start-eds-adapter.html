@@ -8,14 +8,14 @@
     <title>Stop and start an EDS adapter </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Stop and start an EDS adapter ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
     <link rel="stylesheet" href="../../styles/main.css">
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../../">
     
@@ -80,25 +80,57 @@
 
 <p>By default, when Edge Data Store starts, all currently configured EDS adapter instance are started and remain running until the product shuts down.</p>
 <h2 id="stop-an-eds-adapter">Stop an EDS adapter</h2>
-<p>Complete the following steps to stop an EDS adapter instance:</p>
+<p>To stop an EDS adapter instance:</p>
 <ol>
-<li>Open a tool capable of making HTTP requests.</li>
+<li><p>Open a tool capable of making HTTP requests.</p>
+</li>
 <li><p>Run a POST command to the following endpoint, replacing <code>&lt;adapterId&gt;</code> with the adapter instance to stop and <code>&lt;port_number&gt;</code> with the port specified for EDS:</p>
 <pre><code class="lang-http">http://localhost:&lt;port_number&gt;/api/v1/administration/&lt;adapterId&gt;/Stop
-</code></pre><p> Example <strong>Stop the OpcUa1 adapter</strong> using curl and the default port: </p>
+</code></pre><p> Example <strong>Stop the OpcUa1 adapter</strong> using curl or EdgeCmd and the default port:</p>
+<div class="tabGroup" id="tabgroup_5iTHPuG7Eu">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_5iTHPuG7Eu_tabid-1" role="tab" aria-controls="tabpanel_5iTHPuG7Eu_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">curl</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_5iTHPuG7Eu_tabid-2" role="tab" aria-controls="tabpanel_5iTHPuG7Eu_tabid-2" data-tab="tabid-2" tabindex="-1">EdgeCmd</a>
+</li>
+</ul>
+<section id="tabpanel_5iTHPuG7Eu_tabid-1" role="tabpanel" data-tab="tabid-1">
 <pre><code class="lang-bash">curl -d &quot;&quot; http://localhost:5590/api/v1/Administration/OpcUa1/Stop
-</code></pre><p> An HTTP status 204 message indicates success.</p>
+</code></pre></section>
+<section id="tabpanel_5iTHPuG7Eu_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code>edgecmd -cid &lt;ComponentID&gt; stop
+</code></pre></section>
+</div>
+<p> An HTTP status 204 message indicates success.</p>
 </li>
 </ol>
 <h2 id="start-an-eds-adapter">Start an EDS adapter</h2>
-<p>Complete the following steps to start an EDS adapter instance:</p>
+<p>To start an EDS adapter instance:</p>
 <ol>
-<li>Open a tool capable of making HTTP requests.</li>
+<li><p>Open a tool capable of making HTTP requests.</p>
+</li>
 <li><p>Run a POST command to the following endpoint, replacing <code>&lt;adapterId&gt;</code> with the adapter instance to start and <code>&lt;port_number&gt;</code> with the port specified for EDS:</p>
 <pre><code class="lang-http">http://localhost:&lt;port_number&gt;/api/v1/administration/&lt;adapterId&gt;/Start
-</code></pre><p> Example <strong>Stop the Modbus1 adapter</strong> using curl and the default port:</p>
+</code></pre><p> Example <strong>Stop the Modbus1 adapter</strong> using curl or EdgeCmd and the default port:</p>
+<div class="tabGroup" id="tabgroup_5iTHPuG7Eu-1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_5iTHPuG7Eu-1_tabid-1" role="tab" aria-controls="tabpanel_5iTHPuG7Eu-1_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">curl</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_5iTHPuG7Eu-1_tabid-2" role="tab" aria-controls="tabpanel_5iTHPuG7Eu-1_tabid-2" data-tab="tabid-2" tabindex="-1">EdgeCmd</a>
+</li>
+</ul>
+<section id="tabpanel_5iTHPuG7Eu-1_tabid-1" role="tabpanel" data-tab="tabid-1">
 <pre><code class="lang-bash">curl -d &quot;&quot; http://localhost:5590/api/v1/Administration/Modbus1/Start
-</code></pre><p> An HTTP status 204 message indicates success.</p>
+</code></pre></section>
+<section id="tabpanel_5iTHPuG7Eu-1_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code>edgecmd -cid &lt;ComponentID&gt; start
+</code></pre></section>
+</div>
+<p> An HTTP status 204 message indicates success.</p>
 </li>
 </ol>
 </article>
@@ -109,7 +141,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/administration/stop-and-start-eds-adapter.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/administration/stop-and-start-eds-adapter.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

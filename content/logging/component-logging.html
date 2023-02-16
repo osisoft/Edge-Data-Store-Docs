@@ -8,14 +8,14 @@
     <title>Component-level logging configuration </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Component-level logging configuration ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
     <link rel="stylesheet" href="../../styles/main.css">
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../../">
     
@@ -79,69 +79,50 @@
 <h1 id="component-level-logging-configuration">Component-level logging configuration</h1>
 
 <p>Component-level logging collects information about how the components of Edge Data Store are performing. Each message in the log displays the message severity level, timestamp, and the message itself. By default, EDS captures Information, Warning, and Error messages in the message log.</p>
-<p><strong>Note:</strong> The individual logging files of EDS and the components are the following:<br></p>
-<ul>
-<li>Edge Data Store: <em>System_Logging.json</em></li>
-<li>Storage: <em>Storage_Logging.json</em></li>
-<li>OSIsoft Adapter for OPC UA: <em>OpcUa1_Logging.json</em></li>
-<li>OSIsoft Adapter for Modbus TCP: <em>Modbus1_Logging.json</em> <br><br>
-If you have more than one OSIsoft Adapter of the same kind configured, the default file name will incrementally change, for example <em>OpcUa2_Logging.json</em></li>
-</ul>
 <h2 id="configure-logging">Configure logging</h2>
-<p>To adjust the message logging behavior, complete the following:</p>
+<p>To change the message logging behavior:</p>
 <ol>
-<li>Using any text editor, open the <em>componentId_Logging.json</em> file that you want.</li>
-<li>Change the values as needed, so it looks similar to the <a href="#logging-example">Logging example</a>.</li>
+<li><p>Using any text editor, open the log configuration file that you want.</p>
+</li>
+<li><p>Change the values as needed, so it looks similar to the <a href="#logging-example">Logging example</a>.</p>
+</li>
 <li><p>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the respective endpoint.</p>
-<p> <strong>Note:</strong>  Replace <code>&lt;ComponentId&gt;</code> with the ComponentId of the adapter instance or Storage component, for example <em>OpcUa1</em>.</p>
+<p> <strong>Note:</strong>  Replace <code>&lt;ComponentId&gt;</code> with the ComponentId of the adapter instance or Storage component, for example <code>OpcUa1</code>.</p>
 <p>   Example using curl (run this command from the same directory where the file is located):</p>
 <pre><code class="lang-bash">curl -d &quot;@componentId_Logging.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/&lt;ComponentId&gt;/Logging
 </code></pre></li>
 </ol>
-<p><strong>Note:</strong> The other endpoints are the following:<br></p>
+<p>The component endpoints are the following:</p>
 <ul>
-<li>Edge Data Store: <code>http://localhost:5590/api/v1/configuration/System/Logging</code></li>
-<li>Storage: <code>http://localhost:5590/api/v1/configuration/Storage/Logging</code></li>
-<li>OSIsoft Adapter for OPC UA: <code>http://localhost:5590/api/v1/configuration/OpcUa1/Logging</code></li>
-<li>OSIsoft Adapter for Modbus TCP: <code>http://localhost:5590/api/v1/configuration/Modbus1/Logging</code></li>
+<li><p>Edge Data Store: <code>http://localhost:5590/api/v1/configuration/System/Logging</code></p>
+</li>
+<li><p>Storage: <code>http://localhost:5590/api/v1/configuration/Storage/Logging</code></p>
+</li>
+<li><p>OSIsoft Adapter for OPC UA: <code>http://localhost:5590/api/v1/configuration/OpcUa1/Logging</code></p>
+</li>
+<li><p>OSIsoft Adapter for Modbus TCP: <code>http://localhost:5590/api/v1/configuration/Modbus1/Logging</code></p>
+</li>
 </ul>
-<h3 id="log-levels">Log levels</h3>
-<p>The logLevel sets the minimum severity for messages to be included in the logs. Messages with a severity below the level set are not included. The log levels in their increasing order of severity are as follows: Trace, Debug, Information, Warning, Error, Critical.</p>
-<p>Table: General guidelines for setting the log level.</p>
-<table>
-<thead>
-<tr>
-<th><strong>Level</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Trace</td>
-<td>Logs that contain the most detailed messages. These messages may contain sensitive application data like actual received values and should not be enabled in a production environment.</td>
-</tr>
-<tr>
-<td>Debug</td>
-<td>Logs that can be used to troubleshoot data flow issues by recording metrics and detailed flow related information.</td>
-</tr>
-<tr>
-<td>Information</td>
-<td>Logs that track the general flow of the application. Any non-repetitive general information (like version information relating to the software at startup, what external services are being used, data source connection string, number of measurements, egress URL, change of state &quot;Starting&quot;, &quot;Stopping&quot;, or configuration) can be useful for diagnosing potential application errors.</td>
-</tr>
-<tr>
-<td>Warning</td>
-<td>Logs that highlight an abnormal or unexpected event in the application flow, but does not otherwise cause the application execution to stop. Warning messages can indicate an unconfigured data source state, that a communication with backup failover instance has been lost, an insecure communication channel in use, or any other event that could require attention, but that does not impact data flow.</td>
-</tr>
-<tr>
-<td>Error</td>
-<td>Logs that highlight when the current flow of execution is stopped due to a failure. These should indicate a failure in the current activity, not an application-wide failure. This can indicate an invalid configuration, unavailable external endpoint, internal flow error, and so on.</td>
-</tr>
-<tr>
-<td>Critical</td>
-<td>Logs that describe an unrecoverable application or system crash, or a catastrophic failure that requires immediate attention. This can indicate application wide failures like beta timeout expired, unable to start self-hosted endpoint, unable to access vital resource (for example, Data Protection key file), and so on.</td>
-</tr>
-</tbody>
-</table>
+<h2 id="logging-schema">Logging schema</h2>
+<p>The full schema definition for the logging configuration is in the component specific logging file:</p>
+<ul>
+<li><p>Edge Data Store: <code>System_Logging.json</code></p>
+</li>
+<li><p>Storage: <code>Storage_Logging.json</code></p>
+</li>
+<li><p>OSIsoft Adapter for OPC UA: <code>OpcUa1_Logging.json</code></p>
+</li>
+<li><p>OSIsoft Adapter for Modbus TCP: <code>Modbus1_Logging.json</code></p>
+</li>
+</ul>
+<p>If you have more than one adapter of the same kind configured, the default file name incrementally changes, for example, <code>OpcUa2_Logging.json</code>.</p>
+<p>The component specific logging files are located in the following folders:</p>
+<ul>
+<li><p>Windows: <code>%ProgramFlies%\OSIsoft\EdgeDataStore\Schemas</code></p>
+</li>
+<li><p>Linux: <code>/usr/share/OSIsoft/EdgeDataStore/Schemas</code></p>
+</li>
+</ul>
 <h2 id="parameters-for-logging">Parameters for logging</h2>
 <p>The following parameters are available for configuring logging.</p>
 <table>
@@ -160,21 +141,58 @@ If you have more than one OSIsoft Adapter of the same kind configured, the defau
 <td>Optional</td>
 <td><code>integer</code></td>
 <td>Yes</td>
-<td>The maximum number of log files that the service will create for the component. It must be a positive integer.</td>
+<td>The maximum number of log files that the service will create for the component. It must be a positive integer.  <br> Minimum value: <code>1</code> <br> Maximum value: <code>2147483647</code> <br> Default value: <code>31</code></td>
 </tr>
 <tr>
 <td><strong>LogFileSizeLimitBytes</strong></td>
 <td>Optional</td>
 <td><code>integer</code></td>
 <td>Yes</td>
-<td>The maximum size in bytes of log files that the service will create for the component. It must be a positive integer.</td>
+<td>The maximum size in bytes of log files that the service will create for the component. It must be a positive integer.     <br> Minimum value: <code>1000</code> <br> Maximum value: <code>9223372036854775807</code>  <br> Default value: <code>34636833</code></td>
 </tr>
 <tr>
 <td><strong>LogLevel</strong></td>
 <td>Optional</td>
 <td>reference</td>
 <td>No</td>
-<td>The log level settings that you want. The following options are available: <br> <strong>Verbose</strong> - Captures all messages: Verbose, Debug, Information, Warning and Error <br> <strong>Debug</strong> - Captures most messages: Debug, Information, Warning and Error <br> <strong>Information</strong> - Captures most messages: Information, Warning and Error <br> <strong>Warning</strong> - Captures only Warning and Error messages <br> <strong>Error</strong> - Captures Error messages only</td>
+<td>The log level settings that you want. The following options are available: <br> <code>Verbose</code> - Captures all messages: Verbose, Debug, Information, Warning and Error <br> <code>Debug</code> - Captures most messages: Debug, Information, Warning and Error <br> <code>Information</code> - Captures most messages: Information, Warning and Error <br> <code>Warning</code> - Captures only Warning and Error messages <br> <code>Error</code> - Captures Error messages only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="log-levels">Log levels</h3>
+<p>The <code>logLevel</code> sets the minimum severity for messages included in the logs. Messages with a severity below the level set are not included. The log levels in their increasing order of severity are as follows: <code>Trace</code>, <code>Debug</code>, <code>Information</code>, <code>Warning</code>, <code>Error</code>, <code>Critical</code>.</p>
+<p>The following table has general guidelines for setting the log level.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Level</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trace</td>
+<td>Logs that contain the most detailed messages. These messages may contain sensitive application data like actual received values and should not be enabled in a production environment.</td>
+</tr>
+<tr>
+<td>Debug</td>
+<td>Logs that can be used to troubleshoot data flow issues by recording metrics and detailed flow-related information.</td>
+</tr>
+<tr>
+<td>Information</td>
+<td>Logs that track the general flow of the application. Any non-repetitive general information (like version information relating to the software at startup, what external services are being used, data source connection string, number of measurements, egress URL, change of state &quot;Starting&quot;, &quot;Stopping&quot;, or configuration) can be useful for diagnosing potential application errors.</td>
+</tr>
+<tr>
+<td>Warning</td>
+<td>Logs that highlight an abnormal or unexpected event in the application flow, but does not otherwise cause the application execution to stop. Warning messages can indicate a data source state that is not configured, that a communication with backup failover instance has been lost, an insecure communication channel in use, or any other event that could require attention, but that does not impact data flow.</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>Logs that highlight when the current flow of execution is stopped due to a failure. These should indicate a failure in the current activity, not an application-wide failure. This can indicate an invalid configuration, unavailable external endpoint, internal flow error, and so on.</td>
+</tr>
+<tr>
+<td>Critical</td>
+<td>Logs that describe an unrecoverable application or system crash, or a catastrophic failure that requires immediate attention. This can indicate application wide failures like beta timeout expired, unable to start self-hosted endpoint, unable to access vital resource (for example, Data Protection key file), and so on.</td>
 </tr>
 </tbody>
 </table>
@@ -192,7 +210,7 @@ If you have more than one OSIsoft Adapter of the same kind configured, the defau
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/logging/component-logging.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/logging/component-logging.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

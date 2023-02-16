@@ -8,14 +8,14 @@
     <title>Reset the Storage component </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Reset the Storage component ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
     <link rel="stylesheet" href="../../styles/main.css">
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../../">
     
@@ -79,14 +79,30 @@
 <h1 id="reset-the-storage-component">Reset the Storage component</h1>
 
 <p>When applied at the storage component level, the Reset command deletes all event and configuration data related to the Storage component and restarts Edge Data Store.</p>
-<p>Complete the following steps to reset the Storage component:</p>
+<p>To reset the Storage component:</p>
 <ol>
-<li>Open a tool capable of making HTTP requests.</li>
+<li><p>Open a tool capable of making HTTP requests.</p>
+</li>
 <li><p>Run a POST command to the following endpoint, replacing <code>&lt;port_number&gt;</code> with the port specified for EDS:</p>
 <pre><code class="lang-http">http://localhost:&lt;port_number&gt;/api/v1/administration/Storage/Reset
-</code></pre><p> Example using curl and the default port:</p>
+</code></pre><p> Example using curl or EdgeCmd and the default port:</p>
+<div class="tabGroup" id="tabgroup_Z+u9Zgy1Uc">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_Z+u9Zgy1Uc_tabid-1" role="tab" aria-controls="tabpanel_Z+u9Zgy1Uc_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">curl</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_Z+u9Zgy1Uc_tabid-2" role="tab" aria-controls="tabpanel_Z+u9Zgy1Uc_tabid-2" data-tab="tabid-2" tabindex="-1">EdgeCmd</a>
+</li>
+</ul>
+<section id="tabpanel_Z+u9Zgy1Uc_tabid-1" role="tabpanel" data-tab="tabid-1">
 <pre><code class="lang-bash">curl -d &quot;&quot; http://localhost:5590/api/v1/Administration/Storage/Reset
-</code></pre><p> An HTTP status 204 message indicates success.</p>
+</code></pre></section>
+<section id="tabpanel_Z+u9Zgy1Uc_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<p> edgecmd storage reset</p>
+</section>
+</div>
+<p> An HTTP status 204 message indicates success.</p>
 </li>
 </ol>
 </article>
@@ -97,7 +113,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/administration/reset-storage-component.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/administration/reset-storage-component.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

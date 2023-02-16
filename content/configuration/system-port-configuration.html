@@ -8,7 +8,7 @@
     <title>System port configuration </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="System port configuration ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -78,47 +78,27 @@
             <article class="content wrap" id="_content" data-uid="SystemPortConfiguration">
 <h1 id="system-port-configuration">System port configuration</h1>
 
-<p>The <em>System_Port.json</em> file specifies the port on which Edge Data Store is listening for REST API calls. The same port is used for configuration and for writing data to OMF and SDS. The default port is 5590. Valid ports are in the range of 1024-65535. </p>
-<h2 id="configure-system-port">Configure system port</h2>
-<p>Before changing the port, ensure that no other service or application on the device running EDS is using that port because only one application or service can use a port. If you change the port number through the REST API, you must restart EDS.</p>
+<p>The <code>appsettings.json</code> file specifies the port on which Edge Data Store listens for REST API calls. EDS uses the same port for configuration and for writing data to OMF and SDS. The default port is <code>5590</code>. Valid ports are in the range of 1024-65535. During installation, a prompt allows you to specify a non-default port.</p>
+<h2 id="reconfigure-system-port">Reconfigure system port</h2>
+<p>Before changing the port, ensure that no other service or application on the device running EDS uses that port because only one application or service can use a port. After reconfiguring the port, you must restart EDS for the changes to take effect.</p>
+<p>To reconfigure the port:</p>
 <ol>
-<li><p>Using any text editor, create a JSON file based on the following example and enter the new port number:</p>
-<pre><code class="lang-json">{
-  &quot;Port&quot;: 5590
-}
-</code></pre></li>
-<li><p>Save the JSON file with the name <em>EdgePort.json</em> </p>
+<li><p>Open the <code>appsettings.json</code> file in a text editor. </p>
+<p>This file is located in <code>C:\Program Files\OSIsoft\EdgeDataStore\</code> on Windows, in <code>/opt/OSIsoft/EdgeDataStore/</code> on Linux, or in the location specified during installation.</p>
 </li>
-<li><p>Run the following script:</p>
-<pre><code class="lang-bash">curl -d &quot;@EdgePort.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/system/port
-</code></pre><p> <strong>Note:</strong> The port number in the script must be the current port number, not the new port number in the file.</p>
+<li><p>Change the port value to a valid value between <code>1024</code> and <code>65535</code> and save the file.</p>
 </li>
-<li><p>After the REST command completes, restart EDS for the change to take effect.</p>
+<li><p>Restart the Edge Data Store service.</p>
 </li>
 </ol>
-<h2 id="parameters-for-system-port">Parameters for system port</h2>
-<p>The following parameters is used to specify the system port.</p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Nullable</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Port</strong></td>
-<td>Required</td>
-<td><code>integer</code></td>
-<td>No</td>
-<td>The TCP port to bind EDS to. (Range [1024,65535]) Example: 5590</td>
-</tr>
-</tbody>
-</table>
-</article>
+<h2 id="sample-json-file">Sample JSON file</h2>
+<pre><code class="lang-json">{
+  &quot;ApplicationSettings&quot;: {
+    &quot;Port&quot;: 5590,
+    &quot;ApplicationDataDirectory&quot;: &quot;EdgeDataStore&quot;
+  }
+}
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -126,7 +106,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/configuration/system-port-configuration.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/configuration/system-port-configuration.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

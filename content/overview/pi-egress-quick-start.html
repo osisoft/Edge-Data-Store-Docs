@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>PI egress quick start </title>
+    <title>PI Server egress quick start </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="PI egress quick start ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="title" content="PI Server egress quick start ">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -76,58 +76,27 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="piEgressQuickStart">
-<h1 id="pi-egress-quick-start">PI egress quick start</h1>
+<h1 id="pi-server-egress-quick-start">PI Server egress quick start</h1>
 
-<p>Data egress provides a mechanism to transfer data to PI Server using OMF messages through a PI Web API endpoint. To get started sending data stored in Edge Data Store to a PI System, create a PI Web API OMF endpoint and configure periodic egress to use the PI Web API endpoint.</p>
+<p>Data egress provides a mechanism to transfer data to PI Server using OMF messages through a PI Web API endpoint. To get started sending data stored in Edge Data Store to a PI Server, create a PI Web API OMF endpoint and configure periodic egress to use the PI Web API endpoint.</p>
 <h2 id="create-a-pi-web-api-omf-endpoint">Create a PI Web API OMF endpoint</h2>
-<p>Complete the following steps to create a PI Web API OMF endpoint:</p>
+<p>To create a PI Web API OMF endpoint:</p>
 <ol>
-<li>Install PI Web API and enable the <strong>OSIsoft Message Format (OMF) Services</strong> feature.<ul>
-<li>During configuration, choose an AF database and PI Data Archive where metadata and data will be stored.</li>
-<li>The account used in an egress configuration needs permissions to create AF elements, element templates, and PI points.</li>
+<li><p>Install PI Web API and enable the <strong>OSIsoft Message Format (OMF) Services</strong> feature.</p>
+<ul>
+<li><p>During configuration, choose an AF database and PI Data Archive where metadata and data will be stored.</p>
+</li>
+<li><p>The account used in an egress configuration needs permissions to create AF elements, element templates, and PI points.</p>
+</li>
 </ul>
 </li>
-<li><p>Configure PI Web API to use <em>Basic</em> authentication.</p>
-<p>For complete steps, as well as best practices and recommendations, see the <a href="https://livelibrary.osisoft.com/LiveLibrary/content/en/web-api-v12/GUID-D807EF71-7F37-43DB-A357-EF03CCD001F1">PI Web API User Guide</a> on Live Library.</p>
-<p><strong>Note:</strong>  The certificate used by PI Web API must be trusted by the device running EDS, otherwise the egress configuration <em>ValidateEndpointCertificate</em> property needs to be set to false (this can be the case with a <strong>self-signed certificate</strong> but should only be used for testing purposes).</p>
+<li><p>Configure PI Web API to use <code>Basic</code> authentication.</p>
+<p>For complete steps, as well as best practices and recommendations, see the <a href="https://docs.osisoft.com/bundle/pi-web-api/page/pi-web-api.html">PI Web API User Guide</a>.</p>
+<p><strong>Note:</strong>  The certificate used by PI Web API must be trusted by the device running EDS, otherwise the egress configuration <strong>ValidateEndpointCertificate</strong> property needs to be set to <code>false</code>, which can be the case with a self-signed certificate, but should only be used for testing purposes.</p>
 </li>
 </ol>
 <h2 id="create-a-periodic-egress-configuration">Create a periodic egress configuration</h2>
-<p>Complete the following steps to configure Edge Storage periodic egress for the PI Web API endpoint and credentials:</p>
-<ol>
-<li><p>Create a JSON file containing one or more egress endpoints, by copying the following example into a text editor.</p>
-<pre><code class="lang-json">[{
-    &quot;Id&quot;: &quot;PWA&quot;,
-    &quot;ExecutionPeriod&quot;: &quot;00:00:50&quot;,
-    &quot;Name&quot;: null,
-    &quot;NamespaceId&quot;: &quot;default&quot;,
-    &quot;Description&quot;: null,
-    &quot;Enabled&quot;: true,
-    &quot;Backfill&quot;: false,
-    &quot;EgressFilter&quot;: &quot;&quot;,
-    &quot;StreamPrefix&quot;: &quot;&lt;unique stream prefix&gt;&quot;,
-    &quot;TypePrefix&quot;: &quot;&lt;unique type prefix&gt;&quot;,
-    &quot;Endpoint&quot;: &quot;https://&lt;your PI Web API Server&gt;/piwebapi/omf/&quot;,
-    &quot;ClientId&quot;: null,
-    &quot;ClientSecret&quot;: null,
-    &quot;UserName&quot;: &quot;&lt;username&gt;&quot;,
-    &quot;Password&quot;: &quot;&lt;password&gt;&quot;,
-    &quot;DebugExpiration&quot;: null,
-    &quot;ValidateEndpointCertificate&quot;: true,
-    &quot;TokenEndpoint&quot;: null
-}]
-</code></pre></li>
-<li><p>Modify the <strong>Endpoint</strong> parameter with the name of the PI Web API sever.</p>
-</li>
-<li><p>Modify the <strong>Username</strong> and <strong>Password</strong> parameters to specify a valid user account that can write data via PI Web API using Basic authentication. For examples, see <a class="xref" href="../egress/configure-data-egress.html">Configure data egress</a>.</p>
-<p><strong>Note:</strong> The <strong>StreamPrefix</strong> and <strong>TypePrefix</strong> parameters ensure uniqueness on the destination system, if required. The StreamPrefix value creates unique PI Points on the PI System. To only send specific streams, edit the <strong>EgressFilter</strong> value. For examples of more advanced scenarios, see <a class="xref" href="../egress/egress.html">Data egress configuration</a>.</p>
-</li>
-<li><p>Save the JSON file with the name <em>PeriodicEgressEndpoints.json</em> to any directory on the device where EDS is installed.</p>
-</li>
-<li>To configure Edge Storage to send data to the PI System, run the following curl script from the directory where the JSON file is located. </li>
-</ol>
-<pre><code class="lang-bash">curl -d &quot;@PeriodicEgressEndpoints.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/storage/PeriodicEgressEndpoints/
-</code></pre><p>When the command completes successfully, data egress to the PI System begins.</p>
+<p>To configure periodic egress for the PI Server, follow the steps in <a href="https://docs.osisoft.com/bundle/edge-data-store/page/egress/configure-data-egress.html#create-configurations">Configure data egress</a>.</p>
 </article>
           </div>
           
@@ -136,7 +105,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/overview/pi-egress-quick-start.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/overview/pi-egress-quick-start.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

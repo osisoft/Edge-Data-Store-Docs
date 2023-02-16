@@ -1,0 +1,441 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SdsTypes outside of .NET framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SdsTypes outside of .NET framework ">
+    <meta name="generator" content="docfx 2.59.1.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../content/index.html" width="46">
+                <img id="logo" src="../../../content/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge Data Store"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="SdsTypesOutsideDotNet">
+<h1 id="sdstypes-outside-of-net-framework">SdsTypes outside of .NET framework</h1>
+
+<p>You can manually build types when .NET <code>SdsTypeBuilder</code> is unavailable. In the following examples, types are built and defined in Python and Javascript. For more detailed examples, see the AVEVA Data Hub code samples in GitHub for<a href="https://github.com/osisoft/sample-ocs-waveform-python">Python</a> and <a href="https://github.com/osisoft/sample-ocs-waveform-nodejs">JavaScript</a>.</p>
+<p>For samples in other languages, go to [AVEVA Data Hub code samples in GitHub](<a href="https://github.com/osisoft/OSI-Samples-AVEVA">https://github.com/osisoft/OSI-Samples-AVEVA</a> Data Hub/blob/master/docs/SDS_WAVEFORM_README.md).</p>
+<h2 id="sdstypecode-sdstypeproperty-and-sdstype">SdsTypeCode, SdsTypeProperty, and SdsType</h2>
+<div class="tabGroup" id="tabgroup_N8mXq0CvEK">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_N8mXq0CvEK_tabid-1" role="tab" aria-controls="tabpanel_N8mXq0CvEK_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">Python</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_N8mXq0CvEK_tabid-2" role="tab" aria-controls="tabpanel_N8mXq0CvEK_tabid-2" data-tab="tabid-2" tabindex="-1">JavaScript</a>
+</li>
+</ul>
+<section id="tabpanel_N8mXq0CvEK_tabid-1" role="tabpanel" data-tab="tabid-1">
+<pre><code class="lang-python">class SdsTypeCode(Enum):
+    Empty = 0
+    Object = 1
+    DBNull = 2
+    Boolean = 3
+    Char = 4
+      ...
+class SdsTypeProperty(object):
+    &quot;&quot;&quot;SDS type property definition&quot;&quot;&quot;
+    def __init__(self):
+            self.__isKey = False
+    @property
+    def Id(self):
+        return self.__id
+    @Id.setter
+    def Id(self, id):
+        self.__id = id
+      ...
+    @property
+    def IsKey(self):
+        return self.__isKey
+    @IsKey.setter
+    def IsKey(self, iskey):
+        self.__isKey = iskey
+    @property
+    def SdsType(self):
+        return self.__SdsType
+    @SdsType.setter
+    def SdsType(self, SdsType):
+        self.__SdsType=SdsType
+      ...
+class SdsType(object):
+    &quot;&quot;&quot;SDS type definitions&quot;&quot;&quot;
+    def __init__(self):
+        self.SdsTypeCode = SdsTypeCode.Object
+    @property
+    def Id(self):
+        return self.__id
+    @Id.setter
+    def Id(self, id):
+        self.__id = id
+      ...
+    @property
+    def BaseType(self):
+        return self.__baseType
+    @BaseType.setter
+    def BaseType(self, baseType):
+        self.__baseType = baseType
+    @property
+    def SdsTypeCode(self):
+        return self.__typeCode
+    @SdsTypeCode.setter
+    def SdsTypeCode(self, typeCode):
+        self.__typeCode = typeCode
+    @property
+    def Properties(self):
+        return self.__properties
+    @Properties.setter
+    def Properties(self, properties):
+        self.__properties = properties
+</code></pre></section>
+<section id="tabpanel_N8mXq0CvEK_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-javascript">SdsTypeCodeMap: {
+    Empty: 0,
+    &quot;Object&quot;: 1,
+    DBNull: 2,
+    &quot;Boolean&quot;: 3,
+    Char: 4,
+    ...
+SdsTypeProperty: function (SdsTypeProperty) {
+    if (SdsTypeProperty.Id) {
+        this.Id = SdsTypeProperty.Id;
+    }
+    if (SdsTypeProperty.Name) {
+        this.Name = SdsTypeProperty.Name;
+    }
+    if (SdsTypeProperty.Description) {
+        this.Description = SdsTypeProperty.Description;
+    }
+    if (SdsTypeProperty.SdsType) {
+        this.SdsType = SdsTypeProperty.SdsType;
+    }
+    if (SdsTypeProperty.IsKey) {
+        this.IsKey = SdsTypeProperty.IsKey;
+    }
+},
+SdsType: function (SdsType) {
+    if (SdsType.Id) {
+        this.Id = SdsType.Id
+    }
+    if (SdsType.Name) {
+        this.Name = SdsType.Name;
+    }
+    if (SdsType.Description) {
+        this.Description = SdsType.Description;
+    }
+    if (SdsType.SdsTypeCode) {
+        this.SdsTypeCode = SdsType.SdsTypeCode;
+    }
+    if (SdsType.Properties) {
+        this.Properties = SdsType.Properties;
+    }
+},
+</code></pre></section>
+</div>
+<h2 id="enum-state-and-type-simple">Enum <code>State</code> and type <code>Simple</code></h2>
+<div class="tabGroup" id="tabgroup_N8mXq0CvEK-1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_N8mXq0CvEK-1_tabid-a" role="tab" aria-controls="tabpanel_N8mXq0CvEK-1_tabid-a" data-tab="tabid-a" tabindex="0" aria-selected="true">Python</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_N8mXq0CvEK-1_tabid-b" role="tab" aria-controls="tabpanel_N8mXq0CvEK-1_tabid-b" data-tab="tabid-b" tabindex="-1">JavaScript</a>
+</li>
+</ul>
+<section id="tabpanel_N8mXq0CvEK-1_tabid-a" role="tabpanel" data-tab="tabid-a">
+<pre><code class="lang-python">class State(Enum):
+    Ok = 0
+    Warning = 1
+    Alarm = 2
+class Simple(object):
+    Time = property(getTime, setTime)
+    def getTime(self):
+        return self.__time
+    def setTime(self, time):
+        self.__time = time
+    State = property(getState, setState)
+    def getState(self):
+        return self.__state
+    def setState(self, state):
+        self.__state = state
+    Measurement = property(getMeasurement, setMeasurement)
+    def getMeasurement(self):
+        return self.__measurement
+    def setMeasurement(self, measurement):
+        self.__measurement = measurement
+</code></pre></section>
+<section id="tabpanel_N8mXq0CvEK-1_tabid-b" role="tabpanel" data-tab="tabid-b" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-javascript">var State =
+{
+    Ok: 0,
+    Warning: 1,
+    Alarm: 2,
+}
+var Simple = function () {
+    this.Time = null;
+    this.State = null;
+    this.Measurement = null;
+}
+</code></pre></section>
+</div>
+<h2 id="defining-and-creating-types">Defining and creating types</h2>
+<div class="tabGroup" id="tabgroup_N8mXq0CvEK-2">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_N8mXq0CvEK-2_tabid-c" role="tab" aria-controls="tabpanel_N8mXq0CvEK-2_tabid-c" data-tab="tabid-c" tabindex="0" aria-selected="true">Python</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_N8mXq0CvEK-2_tabid-d" role="tab" aria-controls="tabpanel_N8mXq0CvEK-2_tabid-d" data-tab="tabid-d" tabindex="-1">JavaScript</a>
+</li>
+</ul>
+<section id="tabpanel_N8mXq0CvEK-2_tabid-c" role="tabpanel" data-tab="tabid-c">
+<pre><code class="lang-python"># Create the properties
+# Time is the primary index
+time = SdsTypeProperty()
+time.Id = &quot;Time&quot;
+time.Name = &quot;Time&quot;
+time.IsKey = True
+time.SdsType = SdsType()
+time.SdsType.Id = &quot;DateTime&quot;
+time.SdsType.Name = &quot;DateTime&quot;
+time.SdsType.SdsTypeCode = SdsTypeCode.DateTime
+# State is not a pre-defined type. SdsType must be defined to represent the enum
+stateTypePropertyOk = SdsTypeProperty()
+stateTypePropertyOk.Id = &quot;Ok&quot;
+stateTypePropertyOk.Value = State.Ok
+stateTypePropertyWarning = SdsTypeProperty()
+stateTypePropertyWarning.Id = &quot;Warning&quot;
+stateTypePropertyWarning.Value = State.Warning
+stateTypePropertyAlarm = SdsTypeProperty()
+stateTypePropertyAlarm.Id = &quot;Alarm&quot;
+stateTypePropertyAlarm.Value = State.Alarm
+stateType = SdsType()
+stateType.Id = &quot;State&quot;
+stateType.Name = &quot;State&quot;
+stateType.Properties = [ stateTypePropertyOk, stateTypePropertyWarning, \
+                        stateTypePropertyAlarm ]
+state = SdsTypeProperty()
+state.Id = &quot;State&quot;
+state.Name = &quot;State&quot;
+state.SdsType = stateType
+# Value property is a simple non-indexed, pre-defined type
+value = SdsTypeProperty()
+value.Id = &quot;Measurement&quot;
+value.Name = &quot;Measurement&quot;
+value.SdsType = SdsType()
+value.SdsType.Id = &quot;Double&quot;
+value.SdsType.Name = &quot;Double&quot;
+# Create the Simple SdsType
+simpleType = SdsType()
+simpleType.Id = &quot;Simple&quot;
+simpleType.Name = &quot;Simple&quot;
+simpleType.Description = &quot;Basic sample type&quot;
+simpleType.SdsTypeCode = SdsTypeCode.Object
+simpleType.Properties = [ time ]
+</code></pre></section>
+<section id="tabpanel_N8mXq0CvEK-2_tabid-d" role="tabpanel" data-tab="tabid-d" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-javascript">// Time is the primary index
+var timeProperty = new SdsObjects.SdsTypeProperty({
+    &quot;Id&quot;: &quot;Time&quot;,
+    &quot;IsKey&quot;: true,
+    &quot;SdsType&quot;: new SdsObjects.SdsType({
+        &quot;Id&quot;: &quot;dateType&quot;,
+        &quot;SdsTypeCode&quot;: SdsObjects.SdsTypeCodeMap.DateTime
+    })
+});
+// State is not a pre-defined type. An SdsType must be defined to represent the enum
+var stateTypePropertyOk = new SdsObjects.SdsTypeProperty({
+    &quot;Id&quot;: &quot;Ok&quot;,
+    &quot;Value&quot;: State.Ok
+});
+var stateTypePropertyWarning = new SdsObjects.SdsTypeProperty({
+    &quot;Id&quot;: &quot;Warning&quot;,
+    &quot;Value&quot;: State.Warning
+});
+var stateTypePropertyAlarm = new SdsObjects.SdsTypeProperty({
+    &quot;Id&quot;: &quot;Alarm&quot;,
+    &quot;Value&quot;: State.Alarm
+});
+var stateType = new SdsObjects.SdsType({
+    &quot;Id&quot;: &quot;State&quot;,
+    &quot;Name&quot;: &quot;State&quot;,
+    &quot;SdsTypeCode&quot;: SdsObjects.SdsTypeCodeMap.Int32Enum,
+    &quot;Properties&quot;: [stateTypePropertyOk, stateTypePropertyWarning,
+        stateTypePropertyAlarm, stateTypePropertyRed]
+});
+// Measurement property is a simple non-indexed, pre-defined type
+var measurementProperty = new SdsObjects.SdsTypeProperty({
+    &quot;Id&quot;: &quot;Measurement&quot;,
+    &quot;Name&quot;: &quot;Measurement&quot;,
+    &quot;SdsType&quot;: new SdsObjects.SdsType({
+        &quot;Id&quot;: &quot;doubleType&quot;,
+        &quot;SdsTypeCode&quot;: SdsObjects.SdsTypeCodeMap.Double
+    })
+});
+// Create the Simple SdsType
+var simpleType = new SdsObjects.SdsType({
+    &quot;Id&quot;: &quot;Simple&quot;,
+    &quot;Name&quot;: &quot;Simple&quot;, 
+    &quot;Description&quot;: &quot;This is a simple SDS type &quot;,
+    &quot;SdsTypeCode&quot;: SdsObjects.SdsTypeCodeMap.Object,
+    &quot;Properties&quot;: [timeProperty, stateProperty, measurementProperty]
+});
+</code></pre><p>Working with a derived class is easy. For example, this is a derived class:</p>
+<pre><code class="lang-javascript">class Derived(Simple):
+    @property
+    def Observation(self):
+        return self.__observation
+    @Observation.setter
+    def Observation(self, observation):
+        self.__observation = observation
+</code></pre></section>
+</div>
+<h2 id="extending-the-types">Extending the types</h2>
+<div class="tabGroup" id="tabgroup_N8mXq0CvEK-3">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_N8mXq0CvEK-3_tabid-e" role="tab" aria-controls="tabpanel_N8mXq0CvEK-3_tabid-e" data-tab="tabid-e" tabindex="0" aria-selected="true">Python</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_N8mXq0CvEK-3_tabid-f" role="tab" aria-controls="tabpanel_N8mXq0CvEK-3_tabid-f" data-tab="tabid-f" tabindex="-1">JavaScript</a>
+</li>
+</ul>
+<section id="tabpanel_N8mXq0CvEK-3_tabid-e" role="tabpanel" data-tab="tabid-e">
+<pre><code class="lang-python"># Observation property is a simple non-indexed, standard data type
+observation = SdsTypeProperty()
+observation.Id = &quot;Observation&quot;
+observation.Name = &quot;Observation&quot;
+observation.SdsType = SdsType()
+observation.SdsType.Id = &quot;String&quot;
+observation.SdsType.Name = &quot;String&quot;
+observation.SdsType.SdsTypeCode = SdsTypeCode.String
+# Create the derived SdsType
+derived = SdsType()
+derived.Id = &quot;Derived&quot;
+derived.Name = &quot;Derived&quot;
+derived.Description = &quot;Derived sample type&quot;
+derived.BaseType = simpleType # Set the base type to the derived type
+derived.SdsTypeCode = SdsTypeCode.Object
+derived.Properties = [ observation ]
+</code></pre></section>
+<section id="tabpanel_N8mXq0CvEK-3_tabid-f" role="tabpanel" data-tab="tabid-f" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-javascript">var observationProprety = new SdsObjects.SdsTypeProperty({
+    &quot;Id&quot;: &quot;Observation&quot;,
+    &quot;SdsType&quot;: new SdsObjects.SdsType({
+        &quot;Id&quot;: &quot;strType&quot;,
+        &quot;SdsTypeCode&quot;: SdsObjects.SdsTypeCodeMap.String
+    })
+});
+var derivedType = new SdsObjects.SdsType({
+    &quot;Id&quot;: &quot;Derived&quot;,
+    &quot;Name&quot;: &quot;Derived&quot;,
+    &quot;Description&quot;: &quot; Derived sample type&quot;,
+    &quot;BaseType&quot;: simpleType,
+    &quot;SdsTypeCode&quot;: SdsObjects.SdsTypeCodeMap.Object,
+    &quot;Properties&quot;: [ observationProprety ]
+});
+</code></pre></section>
+</div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/sds/types/sds-types-outside-dotnet.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span><a href="https://www.osisoft.com/copyright/">© 2019 - 2021 OSIsoft, LLC. All rights reserved.</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -8,7 +8,7 @@
     <title>Storage runtime configuration </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Storage runtime configuration ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -78,23 +78,39 @@
             <article class="content wrap" id="_content" data-uid="storageruntime">
 <h1 id="storage-runtime-configuration">Storage runtime configuration</h1>
 
-<p>The Edge Data Store storage component is install with default configurations that are sufficient for most scenarios; however, the runtime characteristics of the storage component can be configured.  </p>
-<p><strong>Note:</strong> Consult with OSIsoft Support personnel before modifying the default configuration.</p>
-<h2 id="configure-storage-runtime">Configure storage runtime</h2>
-<p>To update the storage runtime configuration, complete the following:</p>
+<p>The Edge Data Store storage component is installed with default configurations that are sufficient for most scenarios; however, you can configure the runtime characteristics of the storage component.</p>
+<p><strong>Note:</strong> Consult with Technical Support before you modify the default configuration.</p>
+<p>To update the storage runtime configuration:</p>
 <ol>
-<li><p>Create a JSON file with the storage runtime configuration.</p>
-<p><strong>Note:</strong> See the following <em>Parameters</em> table for all available runtime parameters to define.
-       See the following <em>Examples</em> section for an example of a valid runtime configuration file.</p>
+<li><p>Using any text editor, create a JSON file that contains the storage runtime configuration.</p>
+<ul>
+<li>For the content structure, see <a href="#parameters">Parameters</a>.</li>
+</ul>
 </li>
-<li><p>Save the JSON file with the name Storage_Runtime.config.json.</p>
+<li><p>Save the JSON file with the name <code>Storage_Runtime..json</code>.</p>
 </li>
-<li><p>From the same directory where the file exists, run the following curl script:</p>
-<pre><code class="lang-bash">curl -d &quot;@Storage_Runtime.config.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/storage/Runtime
-</code></pre><p><strong>Note:</strong> The @ symbol is a required prefix for the above command.</p>
+<li><p>From the same directory where the file exists, run the following curl script or EdgeCmd:</p>
+<div class="tabGroup" id="tabgroup_oc8K8ou1Mv">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_oc8K8ou1Mv_tabid-1" role="tab" aria-controls="tabpanel_oc8K8ou1Mv_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">curl</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_oc8K8ou1Mv_tabid-2" role="tab" aria-controls="tabpanel_oc8K8ou1Mv_tabid-2" data-tab="tabid-2" tabindex="-1">EdgeCmd</a>
+</li>
+</ul>
+<section id="tabpanel_oc8K8ou1Mv_tabid-1" role="tabpanel" data-tab="tabid-1">
+<pre><code class="lang-bash">curl -d &quot;@Storage_Runtime..json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/storage/Runtime
+</code></pre></section>
+<section id="tabpanel_oc8K8ou1Mv_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code>edgecmd set runtime -file Storage_Runtime..json
+</code></pre></section>
+</div>
+<p><strong>Note:</strong> The @ symbol is a required prefix for this command.</p>
 </li>
 </ol>
-<h3 id="parameters">Parameters</h3>
+<h2 id="parameters">Parameters</h2>
+<p>The following table lists all available runtime parameters for EDS storage configuration.</p>
 <table>
 <thead>
 <tr>
@@ -108,42 +124,42 @@
 <tr>
 <td><strong>IngressDebugExpiration</strong></td>
 <td>Required</td>
-<td>string</td>
-<td>If set, defines how long OMF ingress debug files should be produced.</td>
+<td><code>string</code></td>
+<td>Sets the date and time when debugging should be disabled. If you specify a future date and time, incoming OMF messages are logged and the HTTP request and response content is stored to disk for review. The debug logging stops at the date and time specified. Set the value to <code>null</code> to disable logging.<br>Every incoming OMF message logs a request and response log file. Log files are located in <code>C:\ProgramData\OSIsoft\EdgeDataStore\Logs\IngressDebugLogs\</code> and grouped by the associated OMF message type. Each log file name is in the format: <code>{ticks}-{operationId}-{Request/Response}.txt</code>. <br>Valid formats are UTC: <code>yyyy-mm-ddThh:mm:ssZ</code> and Local: <code>mm-dd-yyyy hh:mm:ss</code>. <br>When you activate logging, the content of an incoming OMF message, including the headers, is written to multiple files in the <code>Logs</code> directory. Those files are written to the <code>IngressDebugLogs</code> directory in the usual logs directory for every incoming OMF type, container, and data message.</td>
 </tr>
 <tr>
 <td><strong>StreamStorageLimitMb</strong></td>
 <td>Required</td>
-<td>integer</td>
-<td>The maximum size in megabytes that a stream can reach.</td>
+<td><code>integer</code></td>
+<td>The maximum size in megabytes that a stream can reach. When a stream exceeds the specified size, older data is deleted from the file until the stream is at or below the <strong>StreamStorageTargetMb</strong> value. The target value, set in the <strong>StreamStorageTargetMb</strong> property, needs to be smaller than the maximum specified in this property. Minimum value: <code>2</code>. Maximum value: <code>2147483647</code>.</td>
 </tr>
 <tr>
 <td><strong>StreamStorageTargetMb</strong></td>
 <td>Required</td>
-<td>integer</td>
-<td>The size in megabytes that a stream will be reduced to after StreamStorageLimitMb size is reached for a single stream.</td>
-</tr>
-<tr>
-<td><strong>EnableTransactionLog</strong></td>
-<td>No</td>
-<td>Boolean</td>
-<td>Enables or disables the transaction log. The transaction log helps to ensure no data is lost should a device lose power.</td>
+<td><code>integer</code></td>
+<td>The size in megabytes that a stream will be reduced to after <strong>StreamStorageLimitMb</strong> size is reached for a single stream. When a stream exceeds the size specified in the <strong>StreamStorageLimitMb</strong> property, older data is deleted from the file until the stream is at or below the <strong>StreamStorageTargetMb</strong> value. The target value needs to be smaller than the maximum specified in the <strong>StreamStorageLimitMb</strong> property. Minimum value: <code>1</code>. Maximum value: <code>2147483647</code>.</td>
 </tr>
 <tr>
 <td><strong>TransactionLogLimitMB</strong></td>
 <td>No</td>
-<td>integer</td>
-<td>Maximum size for transaction log file. Transaction log files larger than this size will be deleted, resulting is loss of data should the device lose power.</td>
+<td><code>integer</code></td>
+<td>Maximum size in megabytes for transaction log file. When a transaction log exceeds this size, it is deleted, which reduces the amount of data that you can recover if the host device loses power. Minimum value: <code>1</code>. Maximum value: <code>2147483647</code>.</td>
 </tr>
 <tr>
 <td><strong>CheckpointRateInSec</strong></td>
 <td>No</td>
-<td>integer</td>
-<td>How often to flush new data to store.</td>
+<td><code>integer</code></td>
+<td>Defines, in seconds, how often the storage component ensures recent data and configuration changes are flushed to storage. A setting of <code>0</code> disables checkpointing. Disabling checkpointing reduces the resiliency of the product, which can result in data loss if the host device loses power. Minimum value: <code>0</code>. Maximum value: <code>86400</code>.</td>
+</tr>
+<tr>
+<td><strong>EnableMetrics</strong></td>
+<td>No</td>
+<td><code>Boolean</code></td>
+<td>Enables EDS to create a new stream in the diagnostics namespace to track some metrics about internal storage operations. These metrics have no value outside of troubleshooting specific issues with the help of OSIsoft support. This should be set to <code>false</code> unless directed by OSIsoft support.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="examples">Examples</h3>
+<h2 id="examples">Examples</h2>
 <p>The following is a valid runtime configuration example.</p>
 <pre><code>{
   &quot;streamStorageLimitMb&quot;: 2,
@@ -151,163 +167,10 @@
   &quot;ingressDebugExpiration&quot;: &quot;0001-01-01T00:00:00&quot;,
   &quot;checkpointRateInSec&quot;: 30,
   &quot;transactionLogLimitMB&quot;: 250,
-  &quot;enableTransactionLog&quot;: true
+  &quot;enableTransactionLog&quot;: true,
+  &quot;enableMetrics&quot;: false
 }
-</code></pre><h2 id="storage-runtime-configuration-properties">Storage runtime configuration properties</h2>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Nullable</th>
-<th>Defined by</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#ingressdebugexpiration">IngressDebugExpiration</a></td>
-<td><code>string</code></td>
-<td><strong>Required</strong></td>
-<td>No</td>
-<td>StorageRuntimeConfiguration (this schema)</td>
-</tr>
-<tr>
-<td><a href="#streamstoragelimitmb">StreamStorageLimitMb</a></td>
-<td><code>integer</code></td>
-<td><strong>Required</strong></td>
-<td>No</td>
-<td>StorageRuntimeConfiguration (this schema)</td>
-</tr>
-<tr>
-<td><a href="#streamstoragetargetmb">StreamStorageTargetMb</a></td>
-<td><code>integer</code></td>
-<td><strong>Required</strong></td>
-<td>No</td>
-<td>StorageRuntimeConfiguration (this schema)</td>
-</tr>
-<tr>
-<td><a href="#enabletransactionlog">EnableTransactionLog</a></td>
-<td><code>bool</code></td>
-<td>No</td>
-<td>No</td>
-<td>StorageRuntimeConfiguration (this schema)</td>
-</tr>
-<tr>
-<td><a href="#transactionloglimitmb">TransactionLogLimitMB</a></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td>No</td>
-<td>StorageRuntimeConfiguration (this schema)</td>
-</tr>
-<tr>
-<td><a href="#checkpointrateinsec">CheckpointRateInSec</a></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td>No</td>
-<td>StorageRuntimeConfiguration (this schema)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="ingressdebugexpiration">IngressDebugExpiration</h3>
-<p>Use the Ingress Debug Expiration property when debugging OMF to set the date and time when debugging should be disabled. If a future date and time is is specified, incoming OMF messages are logged and HTTP request and response content is stored to disk for review. The debug logging stops at the data and time specified. Set the value to <em>null</em> to disable logging.</p>
-<p>Examples of valid strings representing date and time:</p>
-<pre><code>UTC: &quot;yyyy-mm-ddThh:mm:ssZ&quot;
-
-Local: &quot;mm-dd-yyyy hh:mm:ss&quot;
-</code></pre><p>When logging is activated, the content of an incoming OMF message, including the headers, is written to a file in the Logs directory. For an active application, this file can become quite large. As a result, debug information is stored to disk in another format than usual log messages. A single file is written to the usual logs directory for every incoming OMF type, container, and data message.</p>
-<h4 id="ingressdebugexpiration-type">IngressDebugExpiration type</h4>
-<p><code>string</code></p>
-<ul>
-<li>format: <code>date-time</code> date and time (according to <a href="http://tools.ietf.org/html/rfc3339">RFC 3339, section 5.6</a>)</li>
-<li>minimum length: 1 character</li>
-</ul>
-<h3 id="streamstoragelimitmb">StreamStorageLimitMb</h3>
-<p>Use the StreamStorageLimitMb property to set the maximum size in megabytes that a stream can reach. When a stream exceeds the size specified, older data is deleted from the file until the stream is at or below the StreamStorageTargetMb value. The target value, set in the StreamStorageTargetMb property, needs to be smaller than the maximum specified in this property.</p>
-<h4 id="streamstoragelimitmb-type">StreamStorageLimitMb type</h4>
-<p><code>integer</code></p>
-<ul>
-<li>minimum value: <code>2</code></li>
-<li>maximum value: <code>2147483647</code></li>
-</ul>
-<h3 id="streamstoragetargetmb">StreamStorageTargetMb</h3>
-<p>Use the StreamStorageTargetMb property to set the size in megabytes that a stream will be reduced to after StreamStorageLimitMb size is reached for a single stream. When a stream exceeds the size specified in the StreamStorageLimitMb property, older data is deleted from the file until the stream is at or below the StreamStorageTargetMb value. The target value needs to be smaller than the maximum specified in the StreamStorageLimitMb property.</p>
-<h4 id="streamstoragetargetmb-type">StreamStorageTargetMb type</h4>
-<p><code>integer</code></p>
-<ul>
-<li>minimum value: <code>1</code></li>
-<li>maximum value: <code>2147483647</code></li>
-</ul>
-<h3 id="enabletransactionlog">EnableTransactionLog</h3>
-<p>Use the EnableTransactionLog property to define whether the Storage component maintains a transaction log between checkpoint operations. The transaction log helps the product reduce data loss, should the host device lose power.</p>
-<h4 id="enabletransactionlog-type">EnableTransactionLog type</h4>
-<p><code>bool</code></p>
-<h3 id="transactionloglimitmb">TransactionLogLimitMB</h3>
-<p>Use the TransactionLogLimitMB property to define the maximum size, in MB, of a transaction log. When a transaction log exceeds this size, it is deleted, which reduces the amount of data that can be recovered should the host device lose power.</p>
-<h4 id="transactionloglimitmb-type">TransactionLogLimitMB type</h4>
-<p><code>integer</code></p>
-<ul>
-<li>minimum value: <code>1</code></li>
-<li>maximum value: <code>2147483647</code></li>
-</ul>
-<h3 id="checkpointrateinsec">CheckpointRateInSec</h3>
-<p>Use the CheckpointRateInSec property to define, in seconds, how often the storage component ensures recent data and configuration changes are flushed to storage.  </p>
-<p>A setting of 0 disables checkpointing. Disabling checkpointing reduces the resiliency of the product and thus data loss can occur if the host device loses power.</p>
-<h4 id="checkpointrateinsec-type">CheckpointRateInSec type</h4>
-<p><code>integer</code></p>
-<ul>
-<li>minimum value: <code>0</code></li>
-<li>maximum value: <code>86400</code></li>
-</ul>
-<p><strong>Note:</strong> All of the following <em>requirements</em> need to be fulfilled.</p>
-<h5 id="requirement-1">Requirement 1</h5>
-<ul>
-<li><a href=""></a> <code>#/definitions/EdgeConfigurationBase</code></li>
-</ul>
-<h5 id="requirement-2">Requirement 2</h5>
-<p><code>object</code> with following properties:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>IngressDebugExpiration</code></td>
-<td>string</td>
-<td><strong>Required</strong></td>
-</tr>
-<tr>
-<td><code>StreamStorageLimitMb</code></td>
-<td>integer</td>
-<td><strong>Required</strong></td>
-</tr>
-<tr>
-<td><code>StreamStorageTargetMb</code></td>
-<td>integer</td>
-<td><strong>Required</strong></td>
-</tr>
-<tr>
-<td><code>EnableTransactionLog</code></td>
-<td>Boolean</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td><code>TransactionLogLimitMB</code></td>
-<td>integer</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td><code>CheckpointRateInSec</code></td>
-<td>integer</td>
-<td>Optional</td>
-</tr>
-</tbody>
-</table>
-</article>
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -315,7 +178,7 @@ Local: &quot;mm-dd-yyyy hh:mm:ss&quot;
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/configuration/storage-runtime-config.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/configuration/storage-runtime-config.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

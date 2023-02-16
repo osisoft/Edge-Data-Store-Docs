@@ -8,14 +8,14 @@
     <title>Verify installation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Verify installation ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
     <link rel="stylesheet" href="../../styles/main.css">
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../../">
     
@@ -78,47 +78,58 @@
             <article class="content wrap" id="_content" data-uid="VerifyInstallation">
 <h1 id="verify-installation">Verify installation</h1>
 
-<p>Depending on the device capabilities, it may take some time before the Edge Data Store is fully initialized and running for the first time. After allowing time for start up, use the following steps to verify that Edge Data Store is correctly installed. </p>
+<p>Depending on the device capabilities, it may take some time before the Edge Data Store is fully initialized and running for the first time. Allow time for start up before verifying that Edge Data Store is correctly installed.</p>
+<p>To verify the Edge Data Store installation, follow these steps.</p>
 <ol>
-<li><p>Open a terminal window and run the following command, replacing <em>&lt;port_number&gt;</em> with the port number specified during installation:</p>
+<li><p>Open a terminal window and run the following command, replacing <code>&lt;port_number&gt;</code> with the port number specified during installation:</p>
 <pre><code class="lang-bash">curl http://localhost:&lt;port_number&gt;/api/v1/configuration
 </code></pre></li>
 <li><p>If you receive an error, wait a few seconds and try the script again. If the installation was successful, a JSON copy of the default system configuration is returned:</p>
-<pre><code class="lang-json">    {
-    &quot;Storage&quot;: {
-        &quot;PeriodicEgressEndpoints&quot;: [],
-        &quot;Runtime&quot;: {
-        &quot;streamStorageLimitMb&quot;: 2,
-        &quot;streamStorageTargetMb&quot;: 1,
-        &quot;ingressDebugExpiration&quot;: &quot;0001-01-01T00:00:00&quot;,
-        &quot;checkpointRateInSec&quot;: 30,
-        &quot;transactionLogLimitMB&quot;: 250,
-        &quot;enableTransactionLog&quot;: true
-        },
-        &quot;Logging&quot;: {
-        &quot;logLevel&quot;: &quot;Information&quot;,
-        &quot;logFileSizeLimitBytes&quot;: 34636833,
-        &quot;logFileCountLimit&quot;: 31
-        }
-    },
-    &quot;System&quot;: {
-        &quot;Logging&quot;: {
-        &quot;logLevel&quot;: &quot;Information&quot;,
-        &quot;logFileSizeLimitBytes&quot;: 34636833,
-        &quot;logFileCountLimit&quot;: 31
-        },
-        &quot;HealthEndpoints&quot;: [],
-        &quot;Port&quot;: {
-        &quot;port&quot;: 5590
-        },
-        &quot;Components&quot;: [
-        {
-            &quot;componentId&quot;: &quot;Storage&quot;,
-            &quot;componentType&quot;: &quot;EDS.Component&quot;
-        }
-        ]
-    }
-    }
+<pre><code class="lang-json">{
+ &quot;Storage&quot;: {
+     &quot;EgressEndpoints&quot;: [],
+     &quot;Schedules&quot;: [],
+     &quot;DataSelectors&quot;: [],
+     &quot;EgressConfigurations&quot;: [],
+     &quot;Runtime&quot;: {
+         &quot;streamStorageLimitMb&quot;: 2,
+         &quot;streamStorageTargetMb&quot;: 1,
+         &quot;ingressDebugExpiration&quot;: &quot;0001-01-01T00:00:00&quot;,
+         &quot;checkpointRateInSec&quot;: 30,
+         &quot;transactionLogLimitMB&quot;: 250,
+         &quot;enableMetrics&quot;: false
+     },
+     &quot;Logging&quot;: {
+         &quot;logLevel&quot;: &quot;Information&quot;,
+         &quot;logFileSizeLimitBytes&quot;: 34636833,
+         &quot;logFileCountLimit&quot;: 31
+     }
+ },
+ &quot;System&quot;: {
+     &quot;Logging&quot;: {
+         &quot;logLevel&quot;: &quot;Information&quot;,
+         &quot;logFileSizeLimitBytes&quot;: 34636833,
+         &quot;logFileCountLimit&quot;: 31
+     },
+     &quot;HealthEndpoints&quot;: [],
+     &quot;Components&quot;: [
+         {
+             &quot;componentId&quot;: &quot;Storage&quot;,
+             &quot;componentType&quot;: &quot;Storage&quot;
+         }
+     ],
+     &quot;Buffering&quot;: {
+         &quot;bufferLocation&quot;: &quot;C:/ProgramData/OSIsoft/EdgeDataStore/Buffers&quot;,
+         &quot;maxBufferSizeMB&quot;: 1024,
+         &quot;enablePersistentBuffering&quot;: true
+     },
+     &quot;General&quot;: {
+         &quot;enableDiagnostics&quot;: true,
+         &quot;metadataLevel&quot;: &quot;Medium&quot;,
+         &quot;healthPrefix&quot;: null
+     }
+ }
+}
 </code></pre></li>
 </ol>
 </article>
@@ -129,7 +140,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/installation/verify-installation.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/installation/verify-installation.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

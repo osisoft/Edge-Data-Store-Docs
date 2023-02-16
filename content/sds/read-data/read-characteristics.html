@@ -8,14 +8,14 @@
     <title>Read characteristics </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Read characteristics ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
     <link rel="stylesheet" href="../../../styles/main.css">
     <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../../">
     
@@ -79,12 +79,12 @@
 <h1 id="read-characteristics">Read characteristics</h1>
 
 <p>When data is requested at an index for which no stored event exists, the read characteristics determine whether the result is an error, no event, interpolated event, or extrapolated event. The combination of the type of the index and the interpolation and extrapolation modes of the SdsType and the SdsStream determine the read characteristics.</p>
-<h3 id="interpolation">Interpolation</h3>
-<p>Interpolation determines how a stream behaves when asked to return an event at an index between two existing events. InterpolationMode determines how the returned event is constructed. The table below lists InterpolationModes:</p>
+<h2 id="interpolation">Interpolation</h2>
+<p>Interpolation determines how a stream behaves when asked to return an event at an index between two existing events. <code>InterpolationMode</code> determines how the returned event is constructed. The following table lists interpolation modes.</p>
 <table>
 <thead>
 <tr>
-<th>Mode</th>
+<th>Interpolation Mode</th>
 <th>Enumeration value</th>
 <th>Operation</th>
 </tr>
@@ -113,13 +113,23 @@
 <tr>
 <td>Discrete</td>
 <td>3</td>
-<td>Returns ‘null’.</td>
+<td>Returns <code>null</code>.</td>
+</tr>
+<tr>
+<td>ContinuousNullableLeading</td>
+<td>4</td>
+<td>Returns interpolated data or data from the previous index if either of the surrounding indexes has a null value</td>
+</tr>
+<tr>
+<td>ContinuousNullableTrailing</td>
+<td>5</td>
+<td>Returns interpolated data or data from the trailing index if either of the surrounding indexes has a null value</td>
 </tr>
 </tbody>
 </table>
-<p>Note that <code>Continuous</code> cannot return events for values that cannot be interpolated, such as when the type is not numeric.</p>
-<p>The table below describes how the <strong>Continuous InterpolationMode</strong> affects indexes that occur between data in a stream:</p>
-<p><strong>InterpolationMode = Continuous or Default</strong></p>
+<p><strong>Note:</strong> <code>Continuous</code> mode cannot return events for values that cannot be interpolated, such as when the type is not numeric.</p>
+<p>The following table describes how the <code>Continuous</code> interpolation mode affects indexes that occur between data in a stream.</p>
+<h3 id="interpolationmode--continuous-or-default">InterpolationMode = Continuous or Default</h3>
 <table>
 <thead>
 <tr>
@@ -131,7 +141,7 @@
 <tbody>
 <tr>
 <td>Numeric Types</td>
-<td>Interpolated*</td>
+<td>Interpolated<sup>1</sup></td>
 <td>Rounding is done as needed for integer types.</td>
 </tr>
 <tr>
@@ -141,7 +151,7 @@
 </tr>
 <tr>
 <td>Nullable Types</td>
-<td>Interpolated**</td>
+<td>Interpolated<sup>2</sup></td>
 <td>Limited support for nullable numeric types.</td>
 </tr>
 <tr>
@@ -179,15 +189,26 @@
 <td>No event is returned</td>
 <td>Dictionary, Array, List, and so on.</td>
 </tr>
+<tr>
+<td>Empty Type</td>
+<td>Not supported</td>
+<td></td>
+</tr>
+<tr>
+<td>Object Type</td>
+<td>Not supported</td>
+<td></td>
+</tr>
 </tbody>
 </table>
-<p>*When extreme values are involved in an interpolation (for example, Decimal.MaxValue) the call might result in a BadRequest exception.</p>
-<p>**For the Continuous interpolation mode, nullable types are interpolated in the same manner as their non-nullable equivalents as long as the values surrounding the requested interpolation index are non-null. If either of the values are null, the interpolated value will be null.</p>
-<p>If the InterpolationMode is not assigned, the events are interpolated in the default manner, unless the interpolation mode is overridden in the SdsTypeProperty or the SdsStream. For more information on overriding the interpolation mode on a specific type property, see <a class="xref" href="../types/sds-type-property.html">SdsTypeProperty</a>. For more information on overriding the interpolation mode for a specific stream, see <a class="xref" href="../sds-streams.html">Streams</a>.</p>
-<h3 id="extrapolation">Extrapolation</h3>
-<p>Extrapolation defines how a stream responds to requests with indexes that precede or follow all data in the steam. ExtrapolationMode acts as a master switch to determine whether extrapolation occurs and at which end of the data.</p>
-<p>ExtrapolationMode works with the InterpolationMode to determine how a stream responds. The following tables show how ExtrapolationMode affects returned values for each InterpolationMode value:</p>
-<p><strong>ExtrapolationMode with InterpolationMode = Default (or Continuous), StepwiseContinuousLeading and StepwiseContinuousTrailing</strong> </p>
+<p><sup>1</sup> When extreme values are involved in an interpolation (for example, <code>Decimal.MaxValue</code>) the call might result in a <code>BadRequest</code> exception.</p>
+<p><sup>2</sup> For the Continuous interpolation mode, nullable types are interpolated in the same manner as their non-nullable equivalents as long as the values surrounding the requested interpolation index are non-null. If either of the values are null, the interpolated value will be null.</p>
+<p>If the <code>InterpolationMode</code> is not assigned, the events are interpolated in the default manner, unless the interpolation mode is overridden in the <code>SdsTypeProperty</code> or the <code>SdsStream</code>. For more information on overriding the interpolation mode on a specific type property, see <a class="xref" href="../sds-types.html#sdstypeproperty">SdsTypeProperty</a>. For more information on overriding the interpolation mode for a specific stream, see <a class="xref" href="../sds-streams.html">Streams</a>.</p>
+<h2 id="extrapolation">Extrapolation</h2>
+<p>Extrapolation defines how a stream responds to requests with indexes that precede or follow all data in the steam. <code>ExtrapolationMode</code> acts as a master switch to determine whether extrapolation occurs and at which end of the data.</p>
+<p><code>ExtrapolationMode</code> works with the <code>InterpolationMode</code> to determine how a stream responds. The following tables show how <code>ExtrapolationMode</code> affects returned values for each <code>InterpolationMode</code> value.</p>
+<p>If the <code>ExtrapolationMode</code> is not assigned, the events are extrapolated in the default manner, unless the extrapolation mode is overridden on the <code>SdsStream</code>. For more information on overriding the extrapolation mode on a specific stream, see <a class="xref" href="../sds-streams.html">Streams</a>.</p>
+<h3 id="extrapolationmode-with-interpolationmode--default-or-continuous-stepwisecontinuousleading-and-stepwisecontinuoustrailing">ExtrapolationMode with InterpolationMode = Default (or Continuous), StepwiseContinuousLeading and StepwiseContinuousTrailing</h3>
 <table>
 <thead>
 <tr>
@@ -224,7 +245,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>ExtrapolationMode with InterpolationMode = Discrete</strong>  </p>
+<h3 id="extrapolationmode-with-interpolationmode--discrete">ExtrapolationMode with InterpolationMode = Discrete</h3>
 <table>
 <thead>
 <tr>
@@ -261,7 +282,6 @@
 </tr>
 </tbody>
 </table>
-<p>If the ExtrapolationMode is not assigned, the events are extrapolated in the default manner, unless the extrapolation mode is overridden on the SdsStream. For more information on overriding the extrapolation mode on a specific stream, see <a class="xref" href="../sds-streams.html">Streams</a>.</p>
 <p>For additional information about the effect of read characteristics for the available read methods, see <a class="xref" href="reading-data-api.html">Read data API</a>.</p>
 </article>
           </div>
@@ -271,7 +291,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/read-data/read-characteristics.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/sds/read-data/read-characteristics.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

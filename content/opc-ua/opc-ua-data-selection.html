@@ -8,7 +8,7 @@
     <title>Generate default OPC UA data selection configuration file </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Generate default OPC UA data selection configuration file ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -80,11 +80,10 @@
 
 <p>When you add a data source, the OPC UA EDS adapter browses the entire OPC UA server address space and exports the available OPC UA variables into a JSON file for data selection. Data is collected automatically based upon user demands. OPC UA data from OPC UA variables is read through subscriptions (unsolicited reads).</p>
 <p>A default OPC UA data selection file will be created if there is no OPC UA data selection configuration, but a valid OPC UA data source exists.</p>
-<blockquote><p><strong>Note:</strong> To avoid possibly expensive browse operations, OSIsoft recommends that you manually create a data selection file instead of generating the default data selection file. For more information, see <a class="xref" href="opc-ua-data-selection-configuration.html">Data selection configuration</a>.</p>
-</blockquote>
-<p>Complete the following steps in order for this default data selection file to be generated:</p>
+<p> <strong>Note:</strong> Generating the default data selection file can tax system resources. To avoid possibly expensive browse operations, OSIsoft recommends that you manually create a data selection file instead of generating the default data selection file. For more information, see <a class="xref" href="opc-ua-data-selection-configuration.html">Data selection configuration</a>.</p>
+<p>To generate the default data selection file:</p>
 <ol>
-<li><p>Add an <a class="xref" href="../configuration/eds-configuration.html">OPC UA EDS adapter</a> with a unique ComponentId. </p>
+<li><p>Add an <a class="xref" href="../configuration/eds-configuration.html">OPC UA EDS adapter</a> with a unique ComponentId.</p>
 <p>During the installation of Edge Data Store, enabling the OPC UA EDS adapter results in addition of a unique component that also satisfies this condition.</p>
 </li>
 <li><p>Configure a valid <a class="xref" href="opc-ua-overview.html">OPC UA data source</a>.</p>
@@ -111,7 +110,7 @@ Linux: /usr/share/OSIsoft/EdgeDataStore/Configuration/OpcUa1_DataSelection.json
  }
 ]
 </code></pre></li>
-<li><p>In a text editor, edit the file and change the value of any Selected key from false to true in order to transfer the OPC UA data to be stored in Edge Data Store. </p>
+<li><p>In a text editor, edit the file and change the value of any Selected key from <code>false</code> to <code>true</code> in order to transfer the OPC UA data to be stored in Edge Data Store.</p>
 </li>
 <li><p>In the same directory where you edited the file, run the following curl command:</p>
 <pre><code class="lang-bash">curl -i -d &quot;@OpcUa1_DataSelection.json&quot; -H &quot;Content-Type: application/json&quot; -X PUT http://localhost:5590/api/v1/configuration/OpcUa1/Dataselection
@@ -125,7 +124,7 @@ Linux: /usr/share/OSIsoft/EdgeDataStore/Configuration/OpcUa1_DataSelection.json
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/opc-ua/opc-ua-data-selection.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/opc-ua/opc-ua-data-selection.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

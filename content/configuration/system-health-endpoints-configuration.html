@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Health endpoints configuration </title>
+    <title>Configure health endpoints </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Health endpoints configuration ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="title" content="Configure health endpoints ">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -76,25 +76,44 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="HealthEndpointsConfiguration">
-<h1 id="health-endpoints-configuration">Health endpoints configuration</h1>
+<h1 id="configure-health-endpoints">Configure health endpoints</h1>
 
 <p>To monitor the status of Edge Data Store, configure health information egress for its components to an OMF endpoint capable of receiving health messages. Health data is transmitted at a one minute interval.</p>
 <h2 id="configure-system-health-endpoints">Configure system health endpoints</h2>
-<p>Complete the following steps to configure system health endpoints:</p>
+<p>To configure system health endpoints:</p>
 <ol>
-<li>Using any text editor, create a JSON file containing system health endpoints.<ul>
-<li>For content structure, see <a href="#system-health-endpoints-example">System health endpoints example</a>.  </li>
+<li><p>Using any text editor, create a JSON file containing system health endpoints.</p>
+<ul>
+<li>For content structure, see <a href="#system-health-endpoints-example">System health endpoints example</a>.</li>
 </ul>
 </li>
-<li>Update the parameters as needed. For a table of all available parameters, see <a href="#parameters">Parameters</a>.</li>
-<li>Save the file with the name <em>System_HealthEndpoints.config.json</em>.</li>
+<li><p>Update the parameters as needed. For a table of all available parameters, see <a href="#parameters">Parameters</a>.</p>
+</li>
+<li><p>Save the file with the name <em>System_HealthEndpoints..json</em>.</p>
+</li>
 <li><p>Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: <code>http://localhost:5590/api/v1/configuration/System/HealthEndpoints</code>, updating the port number if needed.</p>
-<p> Example using curl (run this command from the same directory where the file is located):</p>
+<p> Examples using curl and EdgeCmd (run this command from the same directory where the file is located):</p>
+<div class="tabGroup" id="tabgroup_OZoj+mzTMQ">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_OZoj+mzTMQ_tabid-1" role="tab" aria-controls="tabpanel_OZoj+mzTMQ_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">curl</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_OZoj+mzTMQ_tabid-2" role="tab" aria-controls="tabpanel_OZoj+mzTMQ_tabid-2" data-tab="tabid-2" tabindex="-1">EdgeCmd</a>
+</li>
+</ul>
+<section id="tabpanel_OZoj+mzTMQ_tabid-1" role="tabpanel" data-tab="tabid-1">
 <pre><code class="lang-bash">curl -d &quot;@System_HealthEndpoints.json&quot; -H &quot;Content-Type: application/json&quot; http://localhost:5590/api/v1/configuration/System/HealthEndpoints
-</code></pre></li>
+</code></pre></section>
+<section id="tabpanel_OZoj+mzTMQ_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code>edgecmd set HealthEndpoints -file System_HealthEndpoints.json
+</code></pre></section>
+</div>
+</li>
 </ol>
 <h2 id="parameters">Parameters</h2>
 <p>The following parameters are available for configuring system health endpoints.</p>
+<p>NOTE: Parameters &quot;Buffering&quot; and &quot;MaxBufferSizeMb&quot; have been removed from the JSON. Configure buffering at <a class="xref" href="buffering.html">Buffering configuration</a>.</p>
 <table>
 <thead>
 <tr>
@@ -107,25 +126,18 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>Buffering</strong></td>
-<td>Optional</td>
-<td>reference</td>
-<td>No</td>
-<td>Sets the buffering type for messages to this endpoint. <br> Options are memory, disk, or none. The default is none.</td>
-</tr>
-<tr>
 <td><strong>ClientId</strong></td>
 <td>Optional</td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td>The Client ID used for authentication to OSIsoft Cloud Services.</td>
+<td>The ID of the client used for authentication to AVEVA Data Hub.</td>
 </tr>
 <tr>
 <td><strong>ClientSecret</strong></td>
 <td>Optional</td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td>The Client Secret used for authentication to OSIsoft Cloud Services.</td>
+<td>The client secret used for authentication to AVEVA Data Hub.</td>
 </tr>
 <tr>
 <td><strong>Endpoint</strong></td>
@@ -139,28 +151,28 @@
 <td>Optional</td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td>The ID of the health endpoint configuration. <br> The ID can be any alphanumeric string; for example, Endpoint1. If you do not specify an ID, Edge Data Store generates one automatically.</td>
-</tr>
-<tr>
-<td><strong>MaxBufferSizeMB</strong></td>
-<td>Optional</td>
-<td><code>integer</code></td>
-<td>No</td>
-<td>The limit on the maximum megabytes of data to buffer for messages to this endpoint if an integer is &gt; 0. This parameter is useful if you want to limit memory or disk usage growth in the event of disconnection to the endpoint. If the buffer is full, old messages will be discarded for new messages. The default is 0.</td>
+<td>The <strong>Id</strong> of the health endpoint configuration. <br> The <strong>Id</strong> can be any alphanumeric string; for example, <code>Endpoint1</code>. If you do not specify an <strong>Id</strong>, Edge Data Store generates one automatically.</td>
 </tr>
 <tr>
 <td><strong>Password</strong></td>
 <td>Optional</td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td>The password used for authentication to PI Web API OMF endpoint.</td>
+<td>The password used for authentication to PI Web API OMF endpoint</td>
 </tr>
 <tr>
 <td><strong>UserName</strong></td>
 <td>Optional</td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td>The user name used for authentication to PI Web API OMF endpoint.</td>
+<td>The user name used for authentication to PI Web API OMF endpoint</td>
+</tr>
+<tr>
+<td><strong>TokenEndpoint</strong></td>
+<td>Optional</td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Retrieves an AVEVA Data Hub token from an alternative endpoint. <br><br>Allowed values are well-formed http or https endpoint string. <br>Default value: <code>null</code>.</td>
 </tr>
 <tr>
 <td><strong>ValidateEndpointCertificate</strong></td>
@@ -168,6 +180,13 @@
 <td><code>Boolean</code></td>
 <td>No</td>
 <td>The OSIsoft Adapter validates the endpoint certificate if set to true (recommended). If set to false, the OSIsoft Adapter accepts any endpoint certificate. OSIsoft strongly recommends using disabled endpoint certificate validation for testing purposes only.</td>
+</tr>
+<tr>
+<td><strong>EnableDiagnostics</strong></td>
+<td>Optional</td>
+<td><code>Boolean</code></td>
+<td>No</td>
+<td>Determines if diagnostics are enabled</td>
 </tr>
 </tbody>
 </table>
@@ -180,7 +199,7 @@
         &quot;maxBufferSizeMB&quot;: 0
     },
     {
-        &quot;Endpoint&quot;: &quot;https://&lt;OCS OMF endpoint&gt;&quot;,
+        &quot;Endpoint&quot;: &quot;https://&lt;AVEVA Data Hub OMF endpoint&gt;&quot;,
         &quot;ClientId&quot;: &quot;&lt;clientid&gt;&quot;,
         &quot;ClientSecret&quot;: &quot;&lt;clientsecret&gt;&quot;,
         &quot;buffering&quot;: &quot;disk&quot;,
@@ -195,7 +214,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/configuration/system-health-endpoints-configuration.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/configuration/system-health-endpoints-configuration.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

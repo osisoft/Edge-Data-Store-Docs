@@ -8,14 +8,14 @@
     <title>Examples of SdsTypes </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Examples of SdsTypes ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../../styles/docfx.css">
     <link rel="stylesheet" href="../../../styles/main.css">
     <meta property="docfx:navrel" content="../../../toc.html">
-    <meta property="docfx:tocrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../../">
     
@@ -80,7 +80,7 @@
 
 <p>The examples in this section refer to the following types and are defined in Python and JavaScript samples. 
 In the sample code, <code>SdsType</code>, <code>SdsTypeProperty</code>, and <code>SdsTypeCode</code> are defined as in the code snippets shown here:</p>
-<p><strong>Python</strong></p>
+<h2 id="python">Python</h2>
 <pre><code class="lang-python">class SdsTypeCode(Enum):
     Empty = 0
     Object = 1
@@ -152,7 +152,7 @@ class SdsType(object):
     @Properties.setter
     def Properties(self, properties):
         self.__properties = properties
-</code></pre><p><strong>JavaScript</strong></p>
+</code></pre><h2 id="javascript">JavaScript</h2>
 <pre><code class="lang-javascript">SdsTypeCodeMap: {
     Empty: 0,
     &quot;Object&quot;: 1,
@@ -195,7 +195,7 @@ SdsType: function (SdsType) {
     }
 },
 </code></pre><p>Working with the following types (both Python and JavaScript classes are shown):</p>
-<p><strong>Python</strong></p>
+<h2 id="python-1">Python</h2>
 <pre><code class="lang-python">class State(Enum):
     Ok = 0
     Warning = 1
@@ -219,7 +219,7 @@ class Simple(object):
         return self.__measurement
     def setMeasurement(self, measurement):
         self.__measurement = measurement
-</code></pre><p><strong>JavaScript</strong></p>
+</code></pre><h2 id="javascript-1">JavaScript</h2>
 <pre><code class="lang-javascript">var State =
 {
     Ok: 0,
@@ -233,7 +233,7 @@ var Simple = function () {
     this.Measurement = null;
 }
 </code></pre><p>Define the SdsType as follows:</p>
-<p><strong>Python</strong></p>
+<h2 id="python-2">Python</h2>
 <pre><code class="lang-python"># Create the properties
 
 # Time is the primary key
@@ -283,7 +283,7 @@ simpleType.Name = &quot;Simple&quot;
 simpleType.Description = &quot;Basic sample type&quot;
 simpleType.SdsTypeCode = SdsTypeCode.Object
 simpleType.Properties = [ time ]
-</code></pre><p><strong>JavaScript</strong></p>
+</code></pre><h2 id="javascript-2">JavaScript</h2>
 <pre><code class="lang-javascript">// Time is the primary key
 var timeProperty = new SdsObjects.SdsTypeProperty({
     &quot;Id&quot;: &quot;Time&quot;,
@@ -343,7 +343,7 @@ var simpleType = new SdsObjects.SdsType({
     def Observation(self, observation):
         self.__observation = observation
 </code></pre><p>Extend the SdsType as follows:</p>
-<p><strong>Python</strong></p>
+<h2 id="python-3">Python</h2>
 <pre><code class="lang-python"># Observation property is a simple non-indexed, standard data type
 observation = SdsTypeProperty()
 observation.Id = &quot;Observation&quot;
@@ -361,7 +361,7 @@ derived.Description = &quot;Derived sample type&quot;
 derived.BaseType = simpleType # Set the base type to the derived type
 derived.SdsTypeCode = SdsTypeCode.Object
 derived.Properties = [ observation ]
-</code></pre><p><strong>JavaScript</strong></p>
+</code></pre><h2 id="javascript-3">JavaScript</h2>
 <pre><code class="lang-javascript">var observationProperty = new SdsObjects.SdsTypeProperty({
     &quot;Id&quot;: &quot;Observation&quot;,
     &quot;SdsType&quot;: new SdsObjects.SdsType({
@@ -386,7 +386,7 @@ var derivedType = new SdsObjects.SdsType({
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/sds/types/sds-type-examples.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/sds/types/sds-type-examples.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

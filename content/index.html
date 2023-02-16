@@ -8,7 +8,7 @@
     <title>Edge Data Store </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Edge Data Store ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -78,35 +78,47 @@
             <article class="content wrap" id="_content" data-uid="index">
 <h1 id="edge-data-store">Edge Data Store</h1>
 
-<p>Edge Data Store (EDS) is a lightweight data collection and storage application designed to capture data at the edge of networks for historical storage and analysis. It runs on small, rugged devices or embedded in existing industrial hardware, and is designed to be resilient and require minimal installation and administration. While not a replacement for a PI System or OSIsoft Cloud Services (OCS), EDS augments the PI System and OCS by collecting and storing data in situations where deploying a full system is impractical. It can collect data that is beyond the reach of automation systems, in unreliable network conditions, and in environments too rough for traditional computers. Edge Data Store can run almost anywhere you can install a sensor, such as beam pumps, mining trucks, wind mills, etc.</p>
+<p>Edge Data Store (EDS) is a lightweight data collection and storage application designed to capture data at the edge of networks for historical storage and analysis. It runs on small, rugged devices or embedded in existing industrial hardware and is designed for resilience and require minimal installation and administration. While not a replacement for a PI System or AVEVA Data Hub, EDS augments the PI System and AVEVA Data Hub by collecting and storing data in situations where deploying a full system is impractical. It can collect data that is beyond the reach of automation systems, in unreliable network conditions, and in environments too rough for traditional computers. Edge Data Store can run almost anywhere you can install a sensor, such as beam pumps, mining trucks, wind mills, and more.</p>
 <p>The following diagram shows conceptually how EDS captures data and sends to permanent storage:</p>
-<p><img src="https://osisoft.github.io/Edge-Data-Store-Docs/content/images/EDSConceptualDiag.jpg" alt="EDS conceptual diagram" title="EDS conecptual diagram"></p>
+<p><img src="https://osisoft.github.io/Edge-Data-Store-Docs/content/images/EDSConceptualDiag.jpg" alt="EDS conceptual diagram" title="EDS conceptual diagram"></p>
 <p>EDS collects data using any of the following methods:</p>
 <ul>
-<li>Built-in OPC UA connectivity</li>
-<li>Built-in Modbus TCP connectivity</li>
-<li>Custom application using OSIsoft Message Format (OMF) </li>
-<li>Custom application using REST API</li>
+<li><p>Built-in OPC UA connectivity</p>
+</li>
+<li><p>Built-in Modbus TCP connectivity</p>
+</li>
+<li><p>Custom application using OSIsoft Message Format (OMF)</p>
+</li>
+<li><p>Custom application using REST API</p>
+</li>
 </ul>
-<p>Once collected, the data is stored locally in configurable data storage within EDS, until it can be sent to permanent storage in a PI System or in OSIsoft Cloud Services through periodic egress. The data can also be read from local storage by custom applications using REST APIs.</p>
+<p>Once collected, EDS stores the data locally in configurable data storage within EDS until it can be sent to permanent storage in a PI System or in AVEVA Data Hub through periodic egress. The data can also be read from local storage with custom applications that use REST APIs.</p>
 <h2 id="edge-data-store-architecture">Edge Data Store architecture</h2>
 <p>EDS runs on both Linux and Windows platforms and is comprised of separate components that each perform a specific function within EDS. The following diagram shows Edge Data Store architecture with all of its components and how the data flow through those components:</p>
 <p><img src="https://osisoft.github.io/Edge-Data-Store-Docs/content/images/EDSArchitecturalDiag.jpg" alt="EDS architecture" title="EDS architecture"></p>
 <p>EDS components are shown in grey within the Edge Data Store in the diagram:</p>
 <ul>
-<li>Modbus TCP EDS adapter – Collects data from Modbus TCP devices and writes it to data storage</li>
-<li>OPC UA EDS adapter – Collects data from OPC UA devices and writes it to data storage</li>
-<li>Data Storage – Stores data locally until it can be egressed</li>
-<li>Data egress – Sends data from storage to PI Server or OSIsoft Cloud Services</li>
-<li>Health – Records health information of components and sends it to PI Server or OSIsoft Cloud Services</li>
+<li><p>Modbus TCP EDS adapter – Collects data from Modbus TCP devices and writes it to data storage</p>
+</li>
+<li><p>OPC UA EDS adapter – Collects data from OPC UA devices and writes it to data storage</p>
+</li>
+<li><p>Data Storage – Stores data locally until it can be egressed</p>
+</li>
+<li><p>Data egress – Sends data from storage to PI Server or AVEVA Data Hub</p>
+</li>
+<li><p>Health – Records health information of components and sends it to PI Server or AVEVA Data Hub</p>
+</li>
 </ul>
 <p>Blue boxes in the diagram show ways to interact with EDS from the local device:</p>
 <ul>
-<li>OMF REST – Use OSIsoft Message Format to write data to the data storage component programmatically</li>
-<li>SDS REST APIs – Use SDS REST APIs to read data from and write data to the data storage component programmatically</li>
-<li>Configuration – Use REST or the EdgeCmd tool to configure EDS as a whole or each component individually and to view the current configuration</li>
+<li><p>OMF REST – Use OSIsoft Message Format to write data to the data storage component programmatically</p>
+</li>
+<li><p>SDS REST APIs – Use SDS REST APIs to read data from and write data to the data storage component programmatically</p>
+</li>
+<li><p>Configuration – Use REST or the EdgeCmd tool to configure EDS as a whole or each component individually and to view the current configuration</p>
+</li>
 </ul>
-<p>EDS requires an endpoint to connect to REST APIs on the local device, which is shown outlined in blue in the diagram. By default, the endpoint uses port 5590; however, it can be configured to use another port. </p>
+<p>EDS requires an endpoint to connect to REST APIs on the local device, which is shown outlined in blue in the diagram. By default, the endpoint uses port 5590; however, you can configure it to use another port.</p>
 <p>Orange arrows show data flowing into EDS and blue arrows show data flowing out of EDS.</p>
 <p>For detailed information about configuring each component of EDS, see <a class="xref" href="configuration/configuration.html">Configuration</a>.</p>
 <!--
@@ -122,7 +134,7 @@
   - [OPC UA EDS adapter quick start](xref:opcUaQuickStart)
   - [Modbus TCP adapter quick start](xref:modbusQuickStart)
   - [OMF quick start](xref:omfQuickStart)
-  - [OCS egress quick start](xref:ocsEgressQuickStart)
+  - [AVEVA Data Hub egress quick start](xref:ocsEgressQuickStart)
   - [PI egress quick start](xref:piEgressQuickStart)
   - [SDS Read/Write quick start](xref:sdsQuickStart)
   - [Command line quick start - Linux](xref:commandLineLinuxQuickStart)
@@ -196,7 +208,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

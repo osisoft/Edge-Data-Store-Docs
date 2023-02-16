@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Data egress configuration </title>
+    <title>Data egress </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Data egress configuration ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="title" content="Data egress ">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -76,13 +76,21 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="egress">
-<h1 id="data-egress-configuration">Data egress configuration</h1>
+<h1 id="data-egress">Data egress</h1>
 
-<p>Edge Data Store provides an egress mechanism to copy and transfer data through OMF to OSIsoft Cloud Services or a PI Server. For each egress destination, the destination needs to be prepared and an endpoint needs to be configured.</p>
-<p>Prepare egress destinations to ensure that OCS or PI Server are properly configured to receive OMF messages and record information needed to create a connection to the destination.</p>
+<p>Edge Data Store provides an egress mechanism to transfer data through OMF to AVEVA Data Hub or a PI Server. For each egress destination, you need to prepare the destination and configure an endpoint.</p>
+<p>Prepare egress destinations to ensure that AVEVA Data Hub or PI Server are properly configured to receive OMF messages and record information needed to create a connection to the destination.</p>
 <p>Configure an egress endpoint to specify the connection information for a destination and the details of the data transfer. Each endpoint is independent of all other egress endpoints, and more than one endpoint for the same destination is allowed.</p>
 <p><strong>Note:</strong> Only streams with a single, timeseries-based index can be egressed. For more information, see <a class="xref" href="egress-execution-details.html">Egress execution details</a>.</p>
-<p>Edge Data Store supports one <a href="https://ocs-docs.osisoft.com/Content_Portal/Documentation/Management/Account_Tenant.html">tenant</a> and two <a href="https://ocs-docs.osisoft.com/Content_Portal/Documentation/Management/Account_Namespace_1.html">namespaces</a>. The EDS tenant name is <em>default</em>, and the two namespaces are <em>default</em> and <em>diagnostics</em>. The default namespace is where adapter and OMF data is written. The diagnostics namespace is where performance and system information is written, which can be used locally or egressed to a remote PI server or OCS for monitoring. A separate egress definition is required for each namespace from which you want to egress data.</p>
+<p>EDS allows the following types of egress:</p>
+<ul>
+<li><p>Periodic egress - Once configured, periodic egress runs at regularly scheduled intervals.</p>
+</li>
+<li><p>Manual egress - Manual egress is configured and run on an as needed basis.</p>
+</li>
+</ul>
+<p>Periodic egress ensures that all the data EDS collects is sent to permanent storage on a regular basis. Manual egress gives you the flexibility to retrieve data whenever you need it. For example, say you have EDS configured to collect data on a wind turbine. You configure periodic egress to send data to AVEVA Data Hub every Friday at noon. A strong storm passes through the area of the wind turbine over the weekend, and you do not want to wait until Friday afternoon to review what occurred with the turbine during the storm. You send a manual egress request to EDS to send the weekend data to AVEVA Data Hub, so that you can start analyzing the data today.</p>
+<p><strong>Note:</strong> OSIsoft Cloud Services is also supported as an egress destination. The setup process is similar to AVEVA Data Hub.</p>
 </article>
           </div>
           
@@ -91,7 +99,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/master/content/egress/egress.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/egress/egress.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
