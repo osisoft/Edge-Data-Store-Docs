@@ -116,6 +116,6 @@
     - topicUid: SdsUOMQuantityAPI
   - topicUid: sdsCompression
   - topicUid: sdsSearching
-- topicUid: releaseNotes
+- topicUid: ReleaseNotes
 - topicUid: Feedback
 
