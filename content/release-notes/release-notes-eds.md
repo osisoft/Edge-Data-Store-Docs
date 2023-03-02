@@ -1,5 +1,5 @@
 ---
-uid: releaseNotes
+uid: ReleaseNotesEDS
 ---
 
 # Edge Data Store 2023 release notes
