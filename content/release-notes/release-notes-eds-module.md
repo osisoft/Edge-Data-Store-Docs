@@ -1,5 +1,5 @@
 ---
-uid: releaseNotes
+uid: ReleaseNotesEDSModule
 ---
 
 # Edge Data Store 2023 (Module) release notes
