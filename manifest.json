@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "README.html",
-          "hash": "33CJWFINYhhAM1e0SAMFGTcKRJ3NqjUiET5Vna00SCA="
+          "hash": "yLeifluWmf/Xqu2ZkMtAXbRbhD6brp6zPYIT7nDnBHs="
         }
       },
       "is_incremental": false,
@@ -1318,11 +1318,23 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "content/release-notes/release-notes.md",
+      "source_relative_path": "content/release-notes/release-notes-eds-module.md",
       "output": {
         ".html": {
-          "relative_path": "content/release-notes/release-notes.html",
-          "hash": "izebucKqT2L/gL1xR9N9CO5nN5UePVokhCjTz17HLXI="
+          "relative_path": "content/release-notes/release-notes-eds-module.html",
+          "hash": "8lgvNChhPKRtRPzaTS18xqImuXD7M53IZNHmBoh/DdQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "content/release-notes/release-notes-eds.md",
+      "output": {
+        ".html": {
+          "relative_path": "content/release-notes/release-notes-eds.html",
+          "hash": "9Q6ln4H9MZAFu70LSo0WfW/FOPBmlaSXUKgdm3C2jR0="
         }
       },
       "is_incremental": false,
@@ -2320,12 +2332,15 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "UidNotFound"
+      ],
       "type": "Toc",
       "source_relative_path": "content/toc.yml",
       "output": {
         ".html": {
           "relative_path": "content/toc.html",
-          "hash": "ZrKXtp0nQXUhl4pe7F5Hq0mo5r8Eeiux9aYhExZfh3w="
+          "hash": "DDPnErmMyNl5Iq+p/bLQZc71HKUf0I/B8hMzSeSvrYY="
         }
       },
       "is_incremental": false,
@@ -2658,7 +2673,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 179,
+          "total_file_count": 180,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Edge Data Store 2023 (Module) release notes </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Edge Data Store 2023 (Module) release notes ">
+    <meta name="generator" content="docfx 2.59.1.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../content/index.html" width="46">
+                <img id="logo" src="../../content/images/atlas_icon.png" height="46" width="46" alt="OSIsoft Edge Data Store"> 
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ReleaseNotesEDSModule">
+<h1 id="edge-data-store-2023-module-release-notes">Edge Data Store 2023 (Module) release notes</h1>
+
+<p>Edge Data Store (EDS) is a lightweight data collection and storage application designed to capture data at the edge of networks for historical storage and analysis. It runs on small, rugged devices or embedded in existing industrial hardware and is designed to be resilient and require minimal installation and administration.</p>
+<h2 id="enhancements">Enhancements</h2>
+<p>The following features were added: </p>
+<ul>
+<li><p>Added support for OMF 1.2 ingress and egress </p>
+</li>
+<li><p>Added support for the latest OPC UA and Modbus adapters </p>
+</li>
+<li><p>Enhanced SDS performance and stability  </p>
+</li>
+<li><p>Enhanced health and diagnostics reporting, including egress IO rate </p>
+</li>
+<li><p>Added support for stream tags and metadata </p>
+</li>
+<li><p>Periodic egress improvements include: </p>
+<ul>
+<li><p>Added parameter to specify start time </p>
+</li>
+<li><p>Improved flexibility of egress configuration </p>
+</li>
+<li><p>Added data filtering, consistent with Adapters </p>
+</li>
+</ul>
+</li>
+<li><p>Added manual egress feature to allow data egress to permanent storage outside of regular periodic schedule </p>
+</li>
+<li><p>Improved compatibility with PI Web API </p>
+</li>
+<li><p>OPC UA component improvements include:</p>
+<ul>
+<li><p>Reduced load on OPC UA server during history recovery by caching user access level </p>
+</li>
+<li><p>Enhanced logged messages to include status code in hexadecimal instead of decimal and aliased data types </p>
+</li>
+<li><p>Enhanced edge system configuration secrets management by storing in a centralized location while maintaining backward compatibility </p>
+</li>
+<li><p>Excluded read-only facets from top level configuration in <code>GET</code> requests </p>
+</li>
+<li><p>Increased the payload size to 64 MB </p>
+</li>
+<li><p>Removed logging and eliminated error when the same component is added multiple times </p>
+</li>
+</ul>
+</li>
+<li><p>Modbus component improvements include:</p>
+<ul>
+<li>PI Adapter for Modbus now leverages a Schedules configuration consistent with other adapters. Instead of specifying a scanRate for each selection item, you configure a schedule in the schedules config facet, then reference that schedule with the scheduleId property on each selection item.  </li>
+</ul>
+</li>
+</ul>
+<h2 id="fixes">Fixes</h2>
+<p>The following items were resolved: </p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>298730</td>
+<td>Fixed FormatException from parsing UOM CSV using some cultures.</td>
+</tr>
+<tr>
+<td>294320</td>
+<td>Fixed an issue causing data to stop flowing to a first ADH endpoint after a second endpoint is added.</td>
+</tr>
+<tr>
+<td>308001</td>
+<td>OPC UA now correctly distinguishes between local and UTC time as inputs to History Recovery only mode. History recovery starttime and endtime supplied in local time format will be treated as a local time by the adapter node instead of the UTC time.</td>
+</tr>
+<tr>
+<td>335628</td>
+<td>Fixed an issue that prevented built-in adapters from sending string data.</td>
+</tr>
+<tr>
+<td>275072</td>
+<td>Data collection for the OPC UA server data items will no longer be skipped when the source OPC UA Server has invalid data item attributes like: DataType, Description, BrowseName, DisplayName, UserAccessLevel.</td>
+</tr>
+<tr>
+<td>338424</td>
+<td>The OpcUa Data Type &#39;UtcTime&#39; is now supported as a DateTime type.</td>
+</tr>
+<tr>
+<td>270854</td>
+<td>Fixed an issue that caused data to be collected for selection items with <code>&quot;selected&quot;: false</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="known-issues">Known issues</h2>
+<p>Some EDS egress configuration changes are not respected until EDS is restarted.</p>
+<h2 id="upgrade-considerations">Upgrade considerations</h2>
+<p>This is a list of known changes in Edge Data Store 2023 that may be relevant to upgrading customers.</p>
+<ul>
+<li><p>Downtime during upgrade is expected to be approximately 6 seconds. </p>
+</li>
+<li><p>Built-in Adapter types have been updated since the previous EDS release to either include Data Quality, new OMF 1.2 feature, or to improve their naming. EDS will automatically migrate to these new types using StreamViews. Clients using EDS’s generic OMF endpoint must manually migrate if types are updated. For detail, see the KB article, <a href="https://customers.osisoft.com/s/knowledgearticle?knowledgeArticleUrl=000037807">OPC UA Adapter - Upgrade from v1.1 to v1.2</a>. </p>
+</li>
+<li><p>Periodic egress configuration has been reorganized in order to support the reuse of common configuration blocks. When EDS is upgraded, it will automatically migrate existing configurations to the new format. However, any subsequent configuration changes made will need to use the updated API and format. See documentation for more information. </p>
+</li>
+<li><p>The <code>ApplyPrefixToStreamId</code> configuration property has been removed. </p>
+</li>
+<li><p>OMF 1.2 is now supported. EDS supports ingress of both OMF 1.1 and 1.2. However, it will only egress OMF 1.2, so its egress endpoints must be capable of receiving OMF 1.2, which requires PI Web API 2021 or later. </p>
+</li>
+<li><p>Stream Tags and Metadata are now supported. OMF Data Source, if provided, will be written to EDS as custom metadata and then egressed properly using the OMF Data Source property. </p>
+</li>
+<li><p>Upgraded to .NET 6. </p>
+</li>
+<li><p>The following deprecated operating systems are no longer supported: Debian 9 and Ubuntu 18.04.</p>
+</li>
+<li><p>Renamed the <code>Edge Data Store Schema</code> directory to <code>Schemas</code>.</p>
+</li>
+<li><p>OPC UA component considerations:</p>
+<ul>
+<li><p>The <code>DeviceStatus</code> value <code>NotConfigured</code> is now <code>Not Configured</code>. </p>
+</li>
+<li><p>Moved trusted certificates from <code>\EdgeDataStore\{componentId}\Certificates\Trusted\certs</code> to <code>\EdgeDataStore\Certificates\trusted\certs</code>.</p>
+</li>
+<li><p>The configuration items <code>ApplyPrefixToStreamId</code> and <code>rootNodeIds</code> have been removed from the Data Source configuration. They will be removed automatically. </p>
+</li>
+<li><p>Existing data selection items that did not have a Stream Id specified will be given a default Stream Id taken from the <code>DefaultStreamIdPattern</code> configuration item in the Data Source configuration. </p>
+</li>
+</ul>
+</li>
+<li><p>Modbus component considerations:</p>
+<ul>
+<li><p>The <code>DeviceStatus</code> value <code>NotConfigured</code> is now <code>Not Configured</code>. </p>
+</li>
+<li><p>Data Source </p>
+<ul>
+<li><p>Moved <code>IpAddress</code> and <code>Port</code> to new Devices array to support connecting to multiple Modbus devices.  </p>
+</li>
+<li><p>Changed intervals and timeouts to <code>Timespan</code> data type instead of <code>Integer</code>. </p>
+</li>
+<li><p><code>ConnectTimeout</code> has been removed from the data source configuration. </p>
+</li>
+<li><p><code>ApplyPrefixToStreamId</code> has been removed from the data source configuration. </p>
+</li>
+</ul>
+</li>
+<li><p>Data Selection </p>
+<ul>
+<li><p><code>ScanRate</code> replaced by <code>ScheduleId</code>. </p>
+</li>
+<li><p>The <code>RegisterType</code> property no longer supports <code>Input32</code> or <code>Holding32</code> register types. </p>
+</li>
+</ul>
+</li>
+<li><p>Default <code>StreamId</code> now includes <code>DeviceId</code>.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="security-information-and-guidance">Security information and guidance</h2>
+<p>OSIsoft is <a href="https://docs.osisoft.com/bundle/security-commitment-and-disclosure-standards/page/securitycommitmentanddisclosurestandards.html">committed to releasing secure products</a>. This section is intended to provide relevant security-related information to guide your installation or upgrade decision.  </p>
+<p>OSIsoft <a href="https://docs.osisoft.com/bundle/security-commitment-and-disclosure-standards/page/securitycommitmentanddisclosurestandards.html#vulnerability-communication">proactively discloses</a> aggregate information about the number and severity of security vulnerabilities addressed in each release. The tables below provide an overview of security issues addressed and their relative severity based on <a href="https://docs.osisoft.com/bundle/security-commitment-and-disclosure-standards/page/securitycommitmentanddisclosurestandards.html#vulnerability-scoring">standard scoring</a>. </p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Version</th>
+<th>CVE or Reference</th>
+<th>CVSS</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zlib</td>
+<td>1.2.11</td>
+<td>CVE-2018-25032</td>
+<td>7.5</td>
+<td>The Edge Data Store&#39;s utilization of zlib through .NET 6 does not expose these vulnerabilities.</td>
+</tr>
+<tr>
+<td>zlib</td>
+<td>1.2.11</td>
+<td>CVE-2022-37434</td>
+<td>9.8</td>
+<td>The Edge Data Store&#39;s utilization of zlib through .NET 6 does not expose these vulnerabilities.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="distribution-kit-files">Distribution kit files</h2>
+<ul>
+<li><p>EdgeDataStore_1.1.1.46-arm_.deb</p>
+</li>
+<li><p>EdgeDataStore_1.1.1.46-arm64_.deb</p>
+</li>
+<li><p>EdgeDataStore_1.1.1.46-x64_.deb</p>
+</li>
+<li><p>EdgeDataStore_1.1.1.46-x64_.msi</p>
+</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/osisoft/Edge-Data-Store-Docs/blob/main/content/release-notes/release-notes-eds-module.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span><a href="https://www.osisoft.com/copyright/">© 2019 - 2021 OSIsoft, LLC. All rights reserved.</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
