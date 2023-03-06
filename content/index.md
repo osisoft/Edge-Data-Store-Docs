@@ -130,6 +130,6 @@ For detailed information about configuring each component of EDS, see [Configura
     - [Compression](xref:sdsCompression)
     - [Searching](xref:sdsSearching)
   - [EdgeCmd commands](xref:EdgecmdCommands)
-  - [Release notes](xref:releaseNotes)
+  - [Release notes](xref:ReleaseNotes)
   - [Technical support and feedback](xref:Feedback)
 -->
