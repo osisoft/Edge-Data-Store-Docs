@@ -1081,7 +1081,6 @@
     {
       "log_codes": [
         "InvalidInclude",
-        "DuplicateUids",
         "InvalidFileLink"
       ],
       "type": "Conceptual",
@@ -1320,7 +1319,7 @@
       "output": {
         ".html": {
           "relative_path": "content/release-notes/release-notes-eds-module.html",
-          "hash": "8lgvNChhPKRtRPzaTS18xqImuXD7M53IZNHmBoh/DdQ="
+          "hash": "zVG7O9ywJ8k+MaNzQ2XaGXLDfEEmM3ed3qfEPFPTbiU="
         }
       },
       "is_incremental": false,
@@ -1332,7 +1331,7 @@
       "output": {
         ".html": {
           "relative_path": "content/release-notes/release-notes-eds.html",
-          "hash": "9Q6ln4H9MZAFu70LSo0WfW/FOPBmlaSXUKgdm3C2jR0="
+          "hash": "i4H7IxamVu+xscuQxz8hEeLpqwkMLJcIfQZFgfCYp3c="
         }
       },
       "is_incremental": false,
@@ -2270,6 +2269,7 @@
     },
     {
       "log_codes": [
+        "DuplicateUids",
         "InvalidFileLink"
       ],
       "type": "Conceptual",
@@ -2340,7 +2340,7 @@
       "output": {
         ".html": {
           "relative_path": "content/toc.html",
-          "hash": "T1nadBow/17CfpaWyyd0Fzry1nQ3MTHI31PQ2XGIkcU="
+          "hash": "4K18FIJIM15tmX0cEu+mnASGvalTB8Tu7a73o5CIP74="
         }
       },
       "is_incremental": false,
