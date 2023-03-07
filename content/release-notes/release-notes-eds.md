@@ -66,7 +66,7 @@ The following items were resolved:
 | 338424   | The OpcUa Data Type 'UtcTime' is now supported as a DateTime type.    |
 | 270854   | Fixed an issue that caused data to be collected for selection items with `"selected": false`.  |
 | 386061   | Fixed an issue where OMF type conflicts when egressing to the AVEVA System caused data to be sent repeatedly.    |
-| 373300   | Fixed an issue that caused EDS to not respect some egress configuration updates until EDS ins restarted.  |
+| 373300   | Fixed an issue that caused EDS to not respect some egress configuration updates until EDS is restarted.  |
 | 374875   | Fixed an issue that caused egress to stop processing when exceptions are raised.  |
 
 ## Known issues 
