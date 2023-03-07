@@ -2,7 +2,7 @@
 uid: ReleaseNotesEDS
 ---
 
-# Edge Data Store 2023 release notes
+# Edge Data Store 2023 Patch 1 release notes
 
 Edge Data Store (EDS) is a lightweight data collection and storage application designed to capture data at the edge of networks for historical storage and analysis. It runs on small, rugged devices or embedded in existing industrial hardware and is designed to be resilient and require minimal installation and administration.
 
@@ -50,6 +50,8 @@ The following features were added:
 
   - PI Adapter for Modbus now leverages a Schedules configuration consistent with other adapters. Instead of specifying a scanRate for each selection item, you configure a schedule in the schedules config facet, then reference that schedule with the scheduleId property on each selection item.  
 
+  - For Windows 10 installations, the latest Microsoft Visual C++ Redistributable for Visual Studio 2015, 2017 and 2019 is required and installed by the EDS installation kit. As a best practice, AVEVA recommends installing the [latest supported Microsoft Visual C++ downloads] (https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) to receive the latest available updates.
+
 ## Fixes
 
 The following items were resolved: 
@@ -63,6 +65,9 @@ The following items were resolved:
 | 275072   | Data collection for the OPC UA server data items will no longer be skipped when the source OPC UA Server has invalid data item attributes like: DataType, Description, BrowseName, DisplayName, UserAccessLevel.	|  
 | 338424   | The OpcUa Data Type 'UtcTime' is now supported as a DateTime type.    |
 | 270854   | Fixed an issue that caused data to be collected for selection items with `"selected": false`.  |
+| 386061   | Fixed an issue where OMF type conflicts when egressing to the AVEVA System caused data to be sent repeatedly.    |
+| 373300   | Fixed an issue that caused EDS to not respect some egress configuration updates until EDS ins restarted.  |
+| 374875   | Fixed an issue that caused egress to stop processing when exceptions are raised.  |
 
 ## Known issues 
 
