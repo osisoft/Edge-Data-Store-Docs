@@ -50,8 +50,6 @@ The following features were added:
 
   - PI Adapter for Modbus now leverages a Schedules configuration consistent with other adapters. Instead of specifying a scanRate for each selection item, you configure a schedule in the schedules config facet, then reference that schedule with the scheduleId property on each selection item.  
 
-  - For Windows 10 installations, the latest Microsoft Visual C++ Redistributable for Visual Studio 2015, 2017 and 2019 is required and installed by the EDS installation kit. As a best practice, AVEVA recommends installing the [latest supported Microsoft Visual C++ downloads] (https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) to receive the latest available updates.
-
 ## Fixes
 
 The following items were resolved: 
