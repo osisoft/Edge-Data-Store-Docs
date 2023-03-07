@@ -2,7 +2,7 @@
 uid: ReleaseNotesEDS
 ---
 
-# Edge Data Store 2023 release notes
+# Edge Data Store 2023 Patch 1 release notes
 
 Edge Data Store (EDS) is a lightweight data collection and storage application designed to capture data at the edge of networks for historical storage and analysis. It runs on small, rugged devices or embedded in existing industrial hardware and is designed to be resilient and require minimal installation and administration.
 
