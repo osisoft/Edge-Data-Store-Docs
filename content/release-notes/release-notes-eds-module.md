@@ -1,8 +1,8 @@
 ---
-uid: releaseNotes
+uid: ReleaseNotesEDSModule
 ---
 
-# Edge Data Store 2023 release notes
+# Edge Data Store 2023 (Module) release notes
 
 Edge Data Store (EDS) is a lightweight data collection and storage application designed to capture data at the edge of networks for historical storage and analysis. It runs on small, rugged devices or embedded in existing industrial hardware and is designed to be resilient and require minimal installation and administration.
 
@@ -63,10 +63,13 @@ The following items were resolved:
 | 275072   | Data collection for the OPC UA server data items will no longer be skipped when the source OPC UA Server has invalid data item attributes like: DataType, Description, BrowseName, DisplayName, UserAccessLevel.	|  
 | 338424   | The OpcUa Data Type 'UtcTime' is now supported as a DateTime type.    |
 | 270854   | Fixed an issue that caused data to be collected for selection items with `"selected": false`.  |
+| 386061   | Fixed an issue where OMF type conflicts when egressing to the AVEVA System caused data to be sent repeatedly.    |
+| 373300   | Fixed an issue that caused EDS to not respect some egress configuration updates until EDS is restarted.  |
+| 374875   | Fixed an issue that caused egress to stop processing when exceptions are raised.  |
 
 ## Known issues 
 
-Some EDS egress configuration changes are not respected until EDS is restarted.
+No known issues.
 
 ## Upgrade considerations
 
@@ -135,10 +138,10 @@ OSIsoft [proactively discloses](https://docs.osisoft.com/bundle/security-commitm
 
 ## Distribution kit files 
 
-  - EdgeDataStore_1.1.1.46-arm_.deb
+  - EdgeDataStore_1.1.3.2-arm_.deb
 
-  - EdgeDataStore_1.1.1.46-arm64_.deb
+  - EdgeDataStore_1.1.3.2-arm64_.deb
 
-  - EdgeDataStore_1.1.1.46-x64_.deb
+  - EdgeDataStore_1.1.3.2-x64_.deb
 
-  - EdgeDataStore_1.1.1.46-x64_.msi
+  - EdgeDataStore_1.1.3.2-x64_.msi
