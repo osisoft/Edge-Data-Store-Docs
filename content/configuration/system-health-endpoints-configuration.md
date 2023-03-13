@@ -16,7 +16,7 @@ To configure system health endpoints:
 
 1. Update the parameters as needed. For a table of all available parameters, see [Parameters](#parameters).
 
-1. Save the file with the name _System_HealthEndpoints..json_.
+1. Save the file with the name _System_HealthEndpoints.json_.
 
 1. Use any tool capable of making HTTP requests to execute a POST command with the contents of that file to the following endpoint: `http://localhost:5590/api/v1/configuration/System/HealthEndpoints`, updating the port number if needed.
 
