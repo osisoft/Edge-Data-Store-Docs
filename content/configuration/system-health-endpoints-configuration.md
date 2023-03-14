@@ -62,16 +62,12 @@ The following parameters are available for configuring system health endpoints.
     {
         "endpoint": "https://<pi web api server>/piwebapi/omf/",
         "UserName": "<username>",
-        "Password": "<password>",
-        "buffering": "none",
-        "maxBufferSizeMB": 0
+        "Password": "<password>"
     },
     {
         "Endpoint": "https://<AVEVA Data Hub OMF endpoint>",
         "ClientId": "<clientid>",
-        "ClientSecret": "<clientsecret>",
-        "buffering": "disk",
-        "maxBufferSizeMB": 0
+        "ClientSecret": "<clientsecret>"
     }
 ]
 ```
