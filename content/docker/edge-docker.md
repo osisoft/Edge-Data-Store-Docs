@@ -147,6 +147,20 @@ To run EDS inside a Docker container while using the host for persistent storage
 
 Port `5590` is accessible from the host and you can make REST calls to EDS from applications on the local host computer. In this example, all data written to the container is written to the host directory instead and the host directory is a directory on the local machine, <!-- customize -->`/edgeds`. You can specify any directory.
 
+### Run the Docker container with Trusted Certificate Store
+
+By default EDS validates the endpoint server certificate unless ValidateEndpointCertificate setting of egress configuration is disabled explicitly. To enable access to the trusted root certificate store on host within the container, the trusted root certificate directory should be mounted using the Docker run command.
+
+For example:
+
+1. Use the docker container image edgedatastore you previously created.
+
+1. Type the following in the command line:
+
+  **Note:** You may need to include the sudo command.docker run -d -v /etc/ssl/certs:/etc/ssl/certs/ edgedatastore
+
+In this example, trusted root certificates in /etc/ssl/certs directory on host are available inside /etc/ssl/certs path in the container.
+
 ### Change port number
 
 To use a port other than `5590`, you can specify a `portnum` variable on the `docker run` command line. For example, to start EDS using port `6000` instead of `5590`, use the following command:
