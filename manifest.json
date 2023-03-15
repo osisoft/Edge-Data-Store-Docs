@@ -109,9 +109,6 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "DuplicateUids"
-      ],
       "type": "Conceptual",
       "source_relative_path": "content/configuration/buffering.md",
       "output": {
@@ -237,7 +234,7 @@
       "output": {
         ".html": {
           "relative_path": "content/configuration/system-health-endpoints-configuration.html",
-          "hash": "gGrJexRWzdptu+Joyow8NvJwn61Lz4U6HRz5RXcdFz0="
+          "hash": "RCVwpDKWcKPRxVm5/7eKXMcYYS4wbgKm2ZL1VzKfREA="
         }
       },
       "is_incremental": false,
@@ -1084,7 +1081,6 @@
     {
       "log_codes": [
         "InvalidInclude",
-        "DuplicateUids",
         "InvalidFileLink"
       ],
       "type": "Conceptual",
@@ -1957,6 +1953,9 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "DuplicateUids"
+      ],
       "type": "Conceptual",
       "source_relative_path": "content/shared-content/shared-content/configuration/buffering.md",
       "output": {
@@ -2270,6 +2269,7 @@
     },
     {
       "log_codes": [
+        "DuplicateUids",
         "InvalidFileLink"
       ],
       "type": "Conceptual",
