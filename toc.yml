@@ -1,6 +1,6 @@
 - name: Edge Data Store versions
   dropdown: true
   items:
-  - name: Edge Data Store 1.1
+  - name: Edge Data Store 2023
     href: content/
     topicHref: content/index.md
