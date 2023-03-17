@@ -175,6 +175,18 @@ ENTRYPOINT [&quot;/edsdockerstart.sh&quot;]
 </code></pre></li>
 </ol>
 <p>Port <code>5590</code> is accessible from the host and you can make REST calls to EDS from applications on the local host computer. In this example, all data written to the container is written to the host directory instead and the host directory is a directory on the local machine, <!-- customize --><code>/edgeds</code>. You can specify any directory.</p>
+<h3 id="run-the-docker-container-with-trusted-certificate-store">Run the Docker container with Trusted Certificate Store</h3>
+<p>By default EDS validates the endpoint server certificate unless ValidateEndpointCertificate setting of egress configuration is disabled explicitly. To enable access to the trusted root certificate store on host within the container, the trusted root certificate directory should be mounted using the Docker run command.</p>
+<p>For example:</p>
+<ol>
+<li><p>Use the docker container image edgedatastore you previously created.</p>
+</li>
+<li><p>Type the following in the command line:</p>
+<p><strong>Note:</strong> You may need to include the sudo command.</p>
+<pre><code class="lang-bash">docker run -d -v /etc/ssl/certs:/etc/ssl/certs/ edgedatastore
+</code></pre></li>
+</ol>
+<p>In this example, trusted root certificates in /etc/ssl/certs directory on host are available inside /etc/ssl/certs path in the container.</p>
 <h3 id="change-port-number">Change port number</h3>
 <p>To use a port other than <code>5590</code>, you can specify a <code>portnum</code> variable on the <code>docker run</code> command line. For example, to start EDS using port <code>6000</code> instead of <code>5590</code>, use the following command:</p>
 <pre><code class="lang-bash">docker run -d -e portnum=6000 --network host edgedatastore

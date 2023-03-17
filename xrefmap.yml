@@ -271,6 +271,9 @@ references:
 - uid: Reference
   name: Reference
   href: z-archive/Reference/Reference_1-0.html
+- uid: ReleaseNotes
+  name: Release notes
+  href: content/release-notes/release-notes.html
 - uid: ReleaseNotesEDS
   name: Edge Data Store 2023 Patch 1 release notes
   href: content/release-notes/release-notes-eds.html

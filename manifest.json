@@ -285,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "content/docker/edge-docker.html",
-          "hash": "Q7st8gXExNGMxobv9QAJ53lNsgRJtT8aUU/xY7gvQlo="
+          "hash": "mzDu+fYvypF9i+c1mNdVZ68sTRSy9gW0OummR0yEeas="
         }
       },
       "is_incremental": false,
@@ -1084,7 +1084,6 @@
     {
       "log_codes": [
         "InvalidInclude",
-        "DuplicateUids",
         "InvalidFileLink"
       ],
       "type": "Conceptual",
@@ -1336,6 +1335,18 @@
         ".html": {
           "relative_path": "content/release-notes/release-notes-eds.html",
           "hash": "i4H7IxamVu+xscuQxz8hEeLpqwkMLJcIfQZFgfCYp3c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "content/release-notes/release-notes.md",
+      "output": {
+        ".html": {
+          "relative_path": "content/release-notes/release-notes.html",
+          "hash": "f9vlef2a7ypTjQowq5F8d1CySJB0teKzlGSUb0amxAQ="
         }
       },
       "is_incremental": false,
@@ -2270,6 +2281,7 @@
     },
     {
       "log_codes": [
+        "DuplicateUids",
         "InvalidFileLink"
       ],
       "type": "Conceptual",
@@ -2332,15 +2344,12 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "UidNotFound"
-      ],
       "type": "Toc",
       "source_relative_path": "content/toc.yml",
       "output": {
         ".html": {
           "relative_path": "content/toc.html",
-          "hash": "4K18FIJIM15tmX0cEu+mnASGvalTB8Tu7a73o5CIP74="
+          "hash": "WSE76F4Xs/TBadJ/FyZn1NLgXPf0FF0OMqk5r9qkJlE="
         }
       },
       "is_incremental": false,
@@ -2388,7 +2397,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "mt3TFwIHa51uD5bdwVd9HgOeNNjk+nIF9jTrZZT5NvA="
+          "hash": "qvuiAz4WL5d6XCpUFm89MnD9IkDc6XgVOf/1FN/r8QI="
         }
       },
       "is_incremental": false,
@@ -2673,7 +2682,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 180,
+          "total_file_count": 181,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
