@@ -157,7 +157,11 @@ For example:
 
 1. Type the following in the command line:
 
-  **Note:** You may need to include the sudo command.docker run -d -v /etc/ssl/certs:/etc/ssl/certs/ edgedatastore
+  **Note:** You may need to include the sudo command.
+  
+  ```bash
+  docker run -d -v /etc/ssl/certs:/etc/ssl/certs/ edgedatastore
+  ```
 
 In this example, trusted root certificates in /etc/ssl/certs directory on host are available inside /etc/ssl/certs path in the container.
 
