@@ -54,7 +54,7 @@ The `Diagnostics.Adapter.IORate` dynamic type includes these values, which are l
 | Type         | Property |  Description     |
 |--------|--------------|-----------------------------------|
 | string | timestamp | Timestamp of event |
-| double | IORate | 10-minute rolling average of data rate (streams/second) |
+| double | IORate | 10-minute rolling average of data rate (event/s) |
 
 ### Error rate
 
@@ -63,7 +63,7 @@ The `Diagnostics.Adapter.ErrorRate` dynamic type includes these values, and are 
 | Type         | Property |  Description     |
 |--------|--------------|-----------------------------------|
 | string | timestamp | Timestamp of event |
-| double | ErrorRate | 10-minute rolling average of error rate (streams/second)
+| double | ErrorRate | 10-minute rolling average of error rate (event/s)
 
 ## Edge Storage diagnostics
 
@@ -109,4 +109,4 @@ The `Diagnostics.Storage.IORate` dynamic type includes these values, which are l
 | Type         | Property |  Description     |
 |--------|--------------|-----------------------------------|
 | string | timestamp | Timestamp of event |
-| double | IORate | 10-minute rolling average of data rate (streams/second) |
+| double | IORate | 10-minute rolling average of data rate (event/s) |
