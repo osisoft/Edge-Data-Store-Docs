@@ -109,6 +109,9 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "DuplicateUids"
+      ],
       "type": "Conceptual",
       "source_relative_path": "content/configuration/buffering.md",
       "output": {
@@ -1081,7 +1084,6 @@
     {
       "log_codes": [
         "InvalidInclude",
-        "DuplicateUids",
         "InvalidFileLink"
       ],
       "type": "Conceptual",
@@ -1966,9 +1968,6 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "DuplicateUids"
-      ],
       "type": "Conceptual",
       "source_relative_path": "content/shared-content/shared-content/configuration/buffering.md",
       "output": {
@@ -2282,6 +2281,7 @@
     },
     {
       "log_codes": [
+        "DuplicateUids",
         "InvalidFileLink"
       ],
       "type": "Conceptual",
