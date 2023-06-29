@@ -10,9 +10,9 @@ If you have questions, comments, or other feedback about the Edge Data Store doc
 
 ## Technical support and other resources
 
-For technical assistance, contact OSIsoft Technical Support at +1 510-297-5828 or through the [OSIsoft Customer Portal Contact Us page](https://customers.osisoft.com/s/contactus). The Contact Us page offers additional contact options for customers outside of the United States.
+For technical assistance, contact AVEVA PI Support at +1 510-297-5828 or through the [AVEVA Customer Portal Contact Us page](https://customers.osisoft.com/s/contactus). The Contact Us page offers additional contact options for customers outside of the United States.
 
-When you contact OSIsoft Technical Support, be prepared to provide this information:
+When you contact AVEVA PI Support, be prepared to provide this information:
 
 - Product name, version, and build numbers
 

@@ -107,4 +107,4 @@ The OMF specific elements of the file structure are defined in the following tab
 
 ## Additional resources
 
-For information about specific log messages and possible resolutions, refer to the [OSIsoft Customer Portal](https://my.osisoft.com/).
+For information about specific log messages and possible resolutions, refer to the [AVEVA Customer Portal](https://my.osisoft.com/).

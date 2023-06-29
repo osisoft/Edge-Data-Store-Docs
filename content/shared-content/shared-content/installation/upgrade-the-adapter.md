@@ -10,7 +10,7 @@ When a new version of the adapter is released, you can upgrade to the latest ver
 
 Complete the following steps to upgrade a PI adapter on a Windows computer:
 
-1. Download <code>[!include[installer](../_includes/inline/installer-name.md)]-x64_.msi</code> from the [OSIsoft Customer Portal](https://customers.osisoft.com/s/products).
+1. Download <code>[!include[installer](../_includes/inline/installer-name.md)]-x64_.msi</code> from the [AVEVA Customer Portal](https://customers.osisoft.com/s/products).
 
     **Note:** Customer login credentials are required to access the portal.
 
@@ -38,7 +38,7 @@ Complete the following steps to upgrade a PI adapter on a Windows computer:
 
 Complete the following steps to upgrade a PI adapter on a Linux computer:
 
-1. Download the appropriate Linux distribution file from the [OSIsoft Customer Portal](https://customers.osisoft.com/s/products).
+1. Download the appropriate Linux distribution file from the [AVEVA Customer Portal](https://customers.osisoft.com/s/products).
 
     **Note:** Customer login credentials are required to access the portal.
 
