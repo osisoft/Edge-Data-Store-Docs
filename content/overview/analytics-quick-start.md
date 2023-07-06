@@ -23,7 +23,7 @@ namespace ExceptionReportingSample
     class ModbusField
     {
         public string StreamId { get; set; }
-        public int ScanRate { get; set; }
+        public int ScheduleId { get; set; }
     }
 
     enum Alert
@@ -56,9 +56,9 @@ namespace ExceptionReportingSample
             {
                 foreach (string StreamId in StreamIds)
                 {
-                    if (StreamId == value.StreamId && value.ScanRate < pollingMilliseconds)
+                    if (StreamId == value.StreamId && value.ScheduleId < pollingMilliseconds)
                     {
-                        pollingMilliseconds = value.ScanRate;
+                        pollingMilliseconds = value.ScheduleId;
                     }
                 }
             }
