@@ -49,6 +49,9 @@ The following table lists the parameters for manual egress.
 | **StartIndex**          | Optional       | string    | Identifies the first data point to transfer. If `null`, it is interpreted as the date and time egress is scheduled to start. The Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`, and Relative: `+d.hh:mm:ss.##` or `-d.hh:mm:ss.##`. </br></br>Relative time strings are calculated based on the **ScheduledTime**. If the **ScheduledTime** is not specified, the relative time string is calculated based on the time the egress job request is received. |
 | **EndIndex**            | Optional       | string    | Identifies the last data point to transfer. If `null`, it is interpreted as the date and time egress is scheduled to end. Valid formats are: UTC: `yyyy-mm-ddThh:mm:ssZ`, Local: `yyyy-mm-ddThh:mm:ss`, and Relative: `+d.hh:mm:ss.##`. </br></br>Relative time strings are calculated based on the **StartIndex**. Relative time strings must be positive to ensure a range of data is selected for egress. |
 | **DataSelectors**       | Optional       | array     | An array of configuration settings to select data for egress. See the **DataSelectors** parameters in the following table.    |
+| **NamespaceId**          | Optional       | string    | The namespace ID received in the egress request. |
+| **TypePrefix**            | Optional       | string    | The type prefix received in the egress request. |
+| **StreamPrefix**       | Optional       | string     | The stream prefix received in the egress request. |
 
 The following table lists egress parameters for **DataSelectors**.
 
@@ -86,29 +89,33 @@ The following is an example manual egress request.
 The following is an example response for a manual egress request.
 
 ```JSON
-{ 
-    "id": "Egress1", 
-    "endpointId": "AVEVA Data Hub_Location", 
-    "period": "00:00:30", 
-    "requestTimeUtc": "2022-08-10T13:45:58.607148Z", 
-    "scheduledTime": "2022-08-10T21:20:00Z", 
-    "dataSelectors": [ 
-        { 
+{
+    "Id": "Egress1",
+    "EndpointId": "AVEVA Data Hub_Location",
+    "Period": "00:00:30",
+    "ScheduledTime": "2022-08-10T21:20:00Z",
+    "StartIndex": "2022-08-08T18:20:00Z",
+    "EndIndex": "+ 04:00:00",
+    "DataSelectors": [
+        {
             "id": "PercentChangeFilter",
-            "streamFilter": null, 
+            "streamFilter": null,
             "absoluteDeadband": null,
-            "percentChange": 1, 
+            "percentChange": 1,
             "expirationPeriod": null
-        } 
-    ], 
-    "startIndex": "2022-08-08T18:20:00Z", 
-    "endIndex": "+ 04:00:00", 
-    "startIndexDateTimeUtc": "2022-08-08T18:20:00Z", 
-    "endIndexDateTimeUtc": "2022-08-08T22:20:00Z", 
-    "checkpoint": null, 
-    "progress": 0, 
-    "status": "Active", 
-    "errors": null 
+        }
+    ],
+    "startIndex": "2022-08-08T18:20:00Z",
+    "endIndex": "+04:00:00",
+    "startIndexDateTimeUtc": "2022-08-08T18:20:00Z",
+    "endIndexDateTimeUtc": "2022-08-08T22:20:00Z",
+    "namespaceId": null,
+    "TypePrefix": "AlsoValid_",
+    "streamPrefix": "1ValidPrefix.",
+    "checkpoint": null,
+    "progress": 0,
+    "status": "Active",
+    "errors": null
 }
 ```
 
